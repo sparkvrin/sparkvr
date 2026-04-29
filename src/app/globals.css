@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   SparkVR Design System — Brand Guidelines v1.0
+   Primary: #0052cc | Cyan: #1fb3ff | Navy: #001a4d
+   Font: AR ONE SANS | Buttons: Pill 24px radius
+═══════════════════════════════════════════════════════════ */
+
+@theme {
+  --color-primary:     #0052cc;
+  --color-cyan:        #1fb3ff;
+  --color-navy:        #001a4d;
+  --color-navy-mid:    #002366;
+  --color-blue-elec:   #0066ff;
+  --color-white:       #ffffff;
+  --color-grey-light:  #f5f5f5;
+  --color-grey-dark:   #333333;
+  --color-text-muted:  #6b7a99;
+
+  --radius-pill: 24px;
+  --radius-card: 12px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+  --space-16: 128px;
+}
+
+/* ─── Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #ffffff;
+  color: #001a4d;
+  font-family: "AR One Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #001a4d; }
+::-webkit-scrollbar-thumb  { background: #0052cc; border-radius: 999px; }
+
+/* ═══════════════════════════════════════════════════════════
+   BUTTON SYSTEM — Figma / Brand Guidelines Exact
+═══════════════════════════════════════════════════════════ */
+
+/* Primary CTA — #0052cc pill, white text */
+.spark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 24px;           /* Pill — brand spec */
+  font-family: "AR One Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Primary */
+.spark-btn-primary {
+  background: #0052cc;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 82, 204, 0.3);
+}
+.spark-btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+  transform: translateX(-110%);
+  transition: transform 0.55s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.spark-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,82,204,0.45); }
+.spark-btn-primary:hover::after { transform: translateX(110%); }
+.spark-btn-primary:active { transform: translateY(0) scale(0.97); }
+
+/* Secondary — transparent bg, primary text & border */
+.spark-btn-secondary {
+  background: transparent;
+  color: #0052cc;
+  border: 1.5px solid #0052cc;
+  box-shadow: none;
+}
+.spark-btn-secondary:hover { background: rgba(0,82,204,0.06); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,82,204,0.15); }
+.spark-btn-secondary:active { transform: translateY(0) scale(0.97); }
+
+/* Ghost — for dark backgrounds */
+.spark-btn-ghost {
+  background: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.spark-btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #ffffff; transform: translateY(-2px); }
+.spark-btn-ghost:active { transform: translateY(0) scale(0.97); }
+
+/* Cyan accent variant */
+.spark-btn-cyan {
+  background: #1fb3ff;
+  color: #001a4d;
+  box-shadow: 0 4px 20px rgba(31,179,255,0.35);
+}
+.spark-btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(31,179,255,0.5); }
+.spark-btn-cyan:active { transform: translateY(0) scale(0.97); }
+
+/* Small pill variant */
+.spark-btn-sm { padding: 10px 22px; font-size: 13px; }
+
+/* ═══════════════════════════════════════════════════════════
+   FIGMA-EXACT "BOOK FREE WORKSHOP" BUTTON
+   Blue pill + white JetBrains Mono text + cyan circle icon
+═══════════════════════════════════════════════════════════ */
+.spark-btn-figma {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 34px;
+  padding: 0 0 0 16px;
+  background: linear-gradient(135deg, #0052cc 0%, #0066ee 100%);
+  border-radius: 17px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.35s ease;
+  box-shadow: 0 4px 16px rgba(0,82,204,0.35);
+}
+.spark-btn-figma:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 28px rgba(0,82,204,0.5);
+}
+.spark-btn-figma:active { transform: translateY(0) scale(0.97); }
+
+/* Shimmer sweep */
+.spark-btn-figma::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+  transform: translateX(-110%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.spark-btn-figma:hover::before { transform: translateX(110%); }
+
+/* Text */
+.spark-btn-figma__text {
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  padding-right: 10px;
+}
+
+/* Cyan circle icon */
+.spark-btn-figma__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  background: #61D7F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+.spark-btn-figma:hover .spark-btn-figma__icon { background: #4dc8e8; }
+
+/* Arrow inside the cyan circle */
+.spark-btn-figma__arrow {
+  width: 14px;
+  height: 10px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.spark-btn-figma:hover .spark-btn-figma__arrow { transform: translateX(2px); }
+
+/* Larger variant for CTAs in sections */
+.spark-btn-figma--lg {
+  height: 48px;
+  padding: 0 0 0 24px;
+  border-radius: 24px;
+}
+.spark-btn-figma--lg .spark-btn-figma__text {
+  font-size: 12px;
+  padding-right: 14px;
+}
+.spark-btn-figma--lg .spark-btn-figma__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+.spark-btn-figma--lg .spark-btn-figma__arrow {
+  width: 18px;
+  height: 13px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GLASS CARDS
+═══════════════════════════════════════════════════════════ */
+.glass-dark {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.09);
+}
+.glass-light {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,82,204,0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND UTILITIES
+═══════════════════════════════════════════════════════════ */
+.gradient-primary { background: linear-gradient(135deg, #0052cc 0%, #1fb3ff 100%); }
+.gradient-navy    { background: linear-gradient(135deg, #001a4d 0%, #002d7a 100%); }
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #0052cc, #1fb3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg { display: block; width: 100%; }
+
+/* 45° geometric triangle accent (brand pattern) */
+.geo-triangle {
+  position: absolute;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1fb3ff;
+}
+
+/* Input fields — brand spec */
+.spark-input {
+  height: 48px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-family: "AR One Sans", sans-serif;
+  font-size: 14px;
+  color: #001a4d;
+  background: #ffffff;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.spark-input:focus {
+  border-color: #0052cc;
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+}
+.spark-input::placeholder { color: #999999; }
+
+.spark-textarea {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: "AR One Sans", sans-serif;
+  font-size: 14px;
+  color: #001a4d;
+  background: #ffffff;
+  width: 100%;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.spark-textarea:focus {
+  border-color: #0052cc;
+  box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
+}
