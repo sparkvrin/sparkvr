@@ -158,7 +158,6 @@ const BG_ORBS = [
 export default function Hero() {
   return (
     <div
-      className="hero-container"
       style={{
         position: "relative",
         width: "100%",
@@ -169,36 +168,6 @@ export default function Hero() {
         fontFamily: "'AR One Sans', sans-serif",
       }}
     >
-      <style>{`
-        /* Responsive Overrides ensuring Desktop remains EXACTLY the same */
-        @media (max-width: 1024px) {
-          .hero-container { height: auto !important; min-height: 100vh !important; overflow-y: auto !important; overflow-x: hidden !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
-          .left-text-col { position: relative !important; top: auto !important; bottom: auto !important; padding-top: 140px !important; padding-bottom: 20px !important; padding-left: 24px !important; padding-right: 24px !important; width: 100% !important; max-width: 100% !important; z-index: 50 !important; align-items: flex-start !important; }
-          .left-text-col > div { max-width: 100% !important; }
-          .buttons-row { flex-direction: column !important; width: 100% !important; gap: 16px !important; }
-          .buttons-row a { width: 100% !important; justify-content: center !important; }
-          
-          .student-img { position: relative !important; left: auto !important; bottom: auto !important; height: 50vh !important; margin-top: 40px !important; margin-bottom: 20px !important; transform: none !important; object-fit: contain !important; }
-          
-          .bubble-wrapper { transform: scale(0.65) !important; margin-top: -100px !important; }
-          .bubble-atoms { top: 40% !important; left: 5% !important; }
-          .bubble-anatomy { top: 40% !important; left: auto !important; right: 5% !important; }
-          .bubble-cells { top: 60% !important; left: 5% !important; }
-          .bubble-space { top: 60% !important; left: auto !important; right: 5% !important; }
-          
-          .stats-bar-wrapper { position: relative !important; bottom: auto !important; left: auto !important; transform: none !important; width: 92% !important; margin-bottom: 40px !important; margin-top: 20px !important; }
-          .stats-inner-box { flex-wrap: wrap !important; gap: 20px !important; justify-content: center !important; padding: 24px !important; }
-          .stat-item { width: 40% !important; align-items: center !important; text-align: center !important; }
-          .stat-divider { display: none !important; }
-        }
-        @media (max-width: 768px) {
-          .left-text-col h1 { font-size: 36px !important; }
-          .bubble-wrapper { transform: scale(0.45) !important; }
-          .student-img { height: 40vh !important; }
-          .stat-item { width: 45% !important; }
-        }
-      `}</style>
-
       {/* ── BACKGROUND: TOP WHITE → BOTTOM PURPLE-BLUE WAVE ── */}
       {/* Base gradient matching reference exactly */}
       <div style={{
@@ -243,12 +212,126 @@ export default function Hero() {
         />
       ))}
 
-      {/* ── LEFT TEXT COLUMN ── */}
+      {/* ── STUDENT IMAGE (positioned right of center ~55% from left) ── */}
+      <motion.img
+        src="/student_proper.png"
+        alt="Student with VR headset"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          bottom: 76,
+          left: "31.50%",
+          transform: "translateX(-50%)",
+          height: "88vh",
+          objectFit: "contain",
+          objectPosition: "top",
+          zIndex: 10,
+          pointerEvents: "none",
+          filter: "drop-shadow(0 20px 48px rgba(60,40,150,0.18))",
+        }}
+      />
+
+
+      {/* ── ATOMS (Top-Left) ── */}
       <motion.div
-        className="left-text-col"
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        animate={{ y: [0, -18, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+        style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "none" }}
+      >
+        <div style={{ ...GLASS_STYLE, width: 168, height: 168 }}>
+          <Canvas
+            camera={{ position: [0, 0, 3.6], fov: 42 }}
+            gl={{ alpha: true, antialias: true }}
+            style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
+          >
+            <ambientLight intensity={2.2} />
+            <directionalLight position={[5, 6, 5]} intensity={3.2} />
+            <Suspense fallback={null}>
+              <Atom3D />
+            </Suspense>
+          </Canvas>
+        </div>
+        <div style={{ ...LABEL_STYLE, bottom: -14 }}>ATOMS</div>
+      </motion.div>
+
+      {/* ── HUMAN ANATOMY (Top-Right) ── */}
+      <motion.div
+        animate={{ y: [0, -14, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "none" }}
+      >
+        <div style={{ ...GLASS_STYLE, width: 148, height: 148 }}>
+          {/* White backing to eliminate image background */}
+          <div style={{
+            position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
+            background: "rgba(255,255,255,0.6)",
+          }} />
+          <img
+            src="/anatomy.png"
+            alt="Human Anatomy"
+            style={{
+              width: "78%", height: "78%",
+              objectFit: "contain",
+              position: "relative", zIndex: 1,
+              filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)",
+            }}
+          />
+        </div>
+        <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>HUMAN ANATOMY</div>
+      </motion.div>
+
+      {/* ── CELLS (Mid-Left) ── */}
+      <motion.div
+        animate={{ y: [0, 16, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "none" }}
+      >
+        <div style={{ ...GLASS_STYLE, width: 155, height: 155 }}>
+          <div style={{
+            position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
+            background: "rgba(255,255,255,0.55)",
+          }} />
+          <img
+            src="/cell_proper.png"
+            alt="Cell Structure"
+            style={{
+              width: "82%", height: "82%",
+              objectFit: "contain",
+              position: "relative", zIndex: 1,
+              filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)",
+            }}
+          />
+        </div>
+        <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
+      </motion.div>
+
+      {/* ── SPACE / SATURN (Mid-Right) ── */}
+      <motion.div
+        animate={{ y: [0, 14, 0] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+        style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}
+      >
+        <div style={{ ...GLASS_STYLE, width: 155, height: 155 }}>
+          <Canvas
+            camera={{ position: [0, 0, 3.8], fov: 42 }}
+            gl={{ alpha: true, antialias: true }}
+            style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
+          >
+            <ambientLight intensity={1.8} />
+            <directionalLight position={[-5, 6, 5]} intensity={3.5} />
+            <Suspense fallback={null}>
+              <Saturn3D />
+            </Suspense>
+          </Canvas>
+        </div>
+        <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>SPACE</div>
+      </motion.div>
+
+      {/* ══════════════════════════════════════════════
+          LEFT TEXT COLUMN — exactly as per reference
+      ══════════════════════════════════════════════ */}
+      <div
         style={{
           position: "absolute",
           left: 0, top: 0, bottom: 0,
@@ -261,34 +344,28 @@ export default function Hero() {
         <div style={{ maxWidth: 600 }}>
 
           {/* Badge pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}
-            style={{
-              display: "inline-flex", alignItems: "center",
-              background: "rgba(255,255,255,0.9)",
-              border: "1px solid rgba(0,82,204,0.15)",
-              borderRadius: 30, padding: "8px 20px",
-              marginBottom: 28,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-            }}
-          >
+          <div style={{
+            display: "inline-flex", alignItems: "center",
+            background: "rgba(255,255,255,0.9)",
+            border: "1px solid rgba(0,82,204,0.15)",
+            borderRadius: 30, padding: "8px 20px",
+            marginBottom: 28,
+            boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+          }}>
             <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", color: "#1d4ed8", textTransform: "uppercase" }}>
               THE FUTURE OF LEARNING
             </span>
-          </motion.div>
+          </div>
 
           {/* H1 */}
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }}
-            style={{
-              fontSize: "clamp(42px, 4.5vw, 64px)",
-              fontWeight: 800,
-              lineHeight: 1.15,
-              color: "#0f172a",
-              margin: "0 0 24px",
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h1 style={{
+            fontSize: "clamp(42px, 4.5vw, 64px)",
+            fontWeight: 800,
+            lineHeight: 1.15,
+            color: "#0f172a",
+            margin: "0 0 24px",
+            letterSpacing: "-0.02em",
+          }}>
             What if students didn&#39;t have to <br />
             <span style={{
               background: "linear-gradient(90deg, #e040fb 0%, #7c3aed 55%, #38bdf8 100%)",
@@ -298,30 +375,23 @@ export default function Hero() {
             }}>
               imagine
             </span>{" "}anymore?
-          </motion.h1>
+          </h1>
 
           {/* Sub-text */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}
-            style={{
-              fontSize: 18,
-              fontWeight: 500,
-              lineHeight: 1.6,
-              color: "#475569",
-              margin: "0 0 40px",
-              maxWidth: 500,
-            }}
-          >
+          <p style={{
+            fontSize: 18,
+            fontWeight: 500,
+            lineHeight: 1.6,
+            color: "#475569",
+            margin: "0 0 40px",
+            maxWidth: 500,
+          }}>
             We believe clarity begins with experience.<br />
             SparkVR transforms abstract concepts into observable understanding.
-          </motion.p>
+          </p>
 
           {/* Buttons row */}
-          <motion.div
-            className="buttons-row"
-            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}
-            style={{ display: "flex", alignItems: "center", gap: 20 }}
-          >
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
             {/* CTA Button 1 */}
             <motion.a
               href="/services"
@@ -364,150 +434,24 @@ export default function Hero() {
             >
               BOOK FREE WORKSHOP
             </motion.a>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* ── STUDENT IMAGE ── */}
-      <motion.img
-        className="student-img"
-        src="/student_proper.png"
-        alt="Student with VR headset"
-        initial={{ opacity: 0, scale: 0.8, y: 40 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", opacity: { duration: 1.2 }, scale: { duration: 1.2 } }}
-        style={{
-          position: "absolute",
-          bottom: 76,
-          left: "31.50%",
-          transform: "translateX(-50%)",
-          height: "88vh",
-          objectFit: "contain",
-          objectPosition: "top",
-          zIndex: 10,
-          pointerEvents: "none",
-          filter: "drop-shadow(0 20px 48px rgba(60,40,150,0.18))",
-        }}
-      />
-
-
-      {/* ── ATOMS (Top-Left) ── */}
-      <motion.div
-        className="bubble-wrapper bubble-atoms"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -18, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.2, opacity: { duration: 0.8 }, scale: { duration: 0.8 } }}
-        style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "none" }}
-      >
-        <div style={{ ...GLASS_STYLE, width: 168, height: 168 }}>
-          <Canvas
-            camera={{ position: [0, 0, 3.6], fov: 42 }}
-            gl={{ alpha: true, antialias: true }}
-            style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-          >
-            <ambientLight intensity={2.2} />
-            <directionalLight position={[5, 6, 5]} intensity={3.2} />
-            <Suspense fallback={null}>
-              <Atom3D />
-            </Suspense>
-          </Canvas>
-        </div>
-        <div style={{ ...LABEL_STYLE, bottom: -14 }}>ATOMS</div>
-      </motion.div>
-
-      {/* ── HUMAN ANATOMY (Top-Right) ── */}
-      <motion.div
-        className="bubble-wrapper bubble-anatomy"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -14, 0] }}
-        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.4, opacity: { duration: 0.8 }, scale: { duration: 0.8 } }}
-        style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "none" }}
-      >
-        <div style={{ ...GLASS_STYLE, width: 148, height: 148 }}>
-          <div style={{
-            position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
-            background: "rgba(255,255,255,0.6)",
-          }} />
-          <img
-            src="/anatomy.png"
-            alt="Human Anatomy"
-            style={{
-              width: "78%", height: "78%",
-              objectFit: "contain",
-              position: "relative", zIndex: 1,
-              filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)",
-            }}
-          />
-        </div>
-        <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>HUMAN ANATOMY</div>
-      </motion.div>
-
-      {/* ── CELLS (Mid-Left) ── */}
-      <motion.div
-        className="bubble-wrapper bubble-cells"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1, y: [0, 16, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.6, opacity: { duration: 0.8 }, scale: { duration: 0.8 } }}
-        style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "none" }}
-      >
-        <div style={{ ...GLASS_STYLE, width: 155, height: 155 }}>
-          <div style={{
-            position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
-            background: "rgba(255,255,255,0.55)",
-          }} />
-          <img
-            src="/cell_proper.png"
-            alt="Cell Structure"
-            style={{
-              width: "82%", height: "82%",
-              objectFit: "contain",
-              position: "relative", zIndex: 1,
-              filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)",
-            }}
-          />
-        </div>
-        <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
-      </motion.div>
-
-      {/* ── SPACE / SATURN (Mid-Right) ── */}
-      <motion.div
-        className="bubble-wrapper bubble-space"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1, y: [0, 14, 0] }}
-        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.8, opacity: { duration: 0.8 }, scale: { duration: 0.8 } }}
-        style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}
-      >
-        <div style={{ ...GLASS_STYLE, width: 155, height: 155 }}>
-          <Canvas
-            camera={{ position: [0, 0, 3.8], fov: 42 }}
-            gl={{ alpha: true, antialias: true }}
-            style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-          >
-            <ambientLight intensity={1.8} />
-            <directionalLight position={[-5, 6, 5]} intensity={3.5} />
-            <Suspense fallback={null}>
-              <Saturn3D />
-            </Suspense>
-          </Canvas>
-        </div>
-        <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>SPACE</div>
-      </motion.div>
-
-      {/* ── BOTTOM STATS BAR ── */}
-      <div className="stats-bar-wrapper" style={{
+      {/* ── BOTTOM STATS BAR (Transparent / Glassmorphic) Overlapping Student ── */}
+      <div style={{
         position: "absolute",
         bottom: 0,
-        left: "53%",
+        left: "62%",
         transform: "translateX(-50%)",
         width: "82%",
         maxWidth: 1000,
         zIndex: 40,
       }}>
         <motion.div
-          className="stats-inner-box"
-          initial={{ y: 40, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -522,42 +466,42 @@ export default function Hero() {
           }}
         >
           {/* Stat 1 */}
-          <motion.div className="stat-item" whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>500+</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Curriculum-aligned<br/>modules</p>
           </motion.div>
-          <div className="stat-divider" style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
 
           {/* Stat 2 */}
-          <motion.div className="stat-item" whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>40-min</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Structured<br/>sessions</p>
           </motion.div>
-          <div className="stat-divider" style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
 
           {/* Stat 3 */}
-          <motion.div className="stat-item" whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #f59e0b 0%, #ef4444 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>8</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Teacher-guided<br/>delivery</p>
           </motion.div>
-          <div className="stat-divider" style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
 
           {/* Stat 4 */}
-          <motion.div className="stat-item" whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #10b981 0%, #3b82f6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>10,000+</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3 }}>Students Engaged</p>
           </motion.div>
-          <div className="stat-divider" style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
 
           {/* Stat 5 */}
-          <motion.div className="stat-item" whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>260</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3 }}>Schools Partnered</p>
           </motion.div>
-          <div className="stat-divider" style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
 
           {/* Stat 6 */}
-          <motion.div className="stat-item" whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>95%</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Concept Clarity<br/>improvement</p>
           </motion.div>
@@ -579,6 +523,8 @@ export default function Hero() {
           }} />
         ))}
       </div>
+
+
 
     </div>
   );
