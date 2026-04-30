@@ -30,12 +30,12 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -140, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: 80,
+          position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
+          height: 140,
           background: scrolled ? "rgba(255,255,255,0.88)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "none",
@@ -49,7 +49,7 @@ export default function Navbar() {
         }}>
           {/* LOGO */}
           <Link href="/" style={{ display:"flex", alignItems:"center", textDecoration:"none", flexShrink:0 }}>
-            <img src="/logo.png" alt="SparkVR" style={{ height: 60, objectFit:"contain" }} />
+            <img src="/logo.png" alt="SparkVR" style={{ height: 130, objectFit:"contain" }} />
           </Link>
 
           {/* RIGHT: CTA + Hamburger */}

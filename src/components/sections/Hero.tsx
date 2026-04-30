@@ -125,31 +125,20 @@ const LABEL_STYLE: React.CSSProperties = {
    BACKGROUND ORBS (Floating dots like the reference)
 ═══════════════════════════════════════════════════════ */
 const BG_ORBS = [
-  // top row
-  { top: "8%",  left: "20%",  size: 22, color: "#f472b6" },
-  { top: "6%",  left: "36%",  size: 14, color: "#22d3ee" },
+  // top row — right/animation side only
   { top: "9%",  left: "58%",  size: 18, color: "#3b82f6" },
   { top: "5%",  left: "70%",  size: 11, color: "#e0f2fe" },
   { top: "7%",  left: "82%",  size: 26, color: "#f472b6" },
   { top: "10%", left: "91%",  size: 12, color: "#38bdf8" },
-  // left side
-  { top: "22%", left: "4%",   size: 40, color: "#3b82f6" },
-  { top: "38%", left: "2%",   size: 20, color: "#f9a8d4" },
-  { top: "58%", left: "3%",   size: 12, color: "#22d3ee" },
-  { top: "70%", left: "8%",   size: 50, color: "#93c5fd" },
-  // right side
+  // right edge
   { top: "18%", left: "92%",  size: 14, color: "#818cf8" },
   { top: "30%", left: "96%",  size: 11, color: "#22d3ee" },
   { top: "52%", left: "94%",  size: 16, color: "#818cf8" },
   { top: "65%", left: "88%",  size: 44, color: "#fb923c" },
   { top: "72%", left: "96%",  size: 18, color: "#f472b6" },
-  // mid scatter
-  { top: "20%", left: "26%",  size: 16, color: "#f9a8d4" },
+  // mid scatter — right side only
   { top: "28%", left: "80%",  size: 14, color: "#e879f9" },
-  { top: "42%", left: "15%",  size: 12, color: "#fbbf24" },
-  { top: "75%", left: "20%",  size: 28, color: "#fb923c" },
   { top: "78%", left: "60%",  size: 20, color: "#f472b6" },
-  { top: "82%", left: "40%",  size: 38, color: "#60a5fa" },
 ];
 
 /* ═══════════════════════════════════════════════════════
@@ -343,20 +332,7 @@ export default function Hero() {
       >
         <div style={{ maxWidth: 600 }}>
 
-          {/* Badge pill */}
-          <div style={{
-            display: "inline-flex", alignItems: "center",
-            background: "rgba(255,255,255,0.9)",
-            border: "1px solid rgba(0,82,204,0.15)",
-            borderRadius: 30, padding: "8px 20px",
-            marginBottom: 28,
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-          }}>
-            <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", color: "#1d4ed8", textTransform: "uppercase" }}>
-              THE FUTURE OF LEARNING
-            </span>
-          </div>
-
+         
           {/* H1 */}
           <h1 style={{
             fontSize: "clamp(42px, 4.5vw, 64px)",
@@ -457,10 +433,10 @@ export default function Hero() {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "16px 32px",
-            background: "rgba(255, 255, 255, 0.45)",
+            background: "rgba(255, 255, 255, 0.15)",
             backdropFilter: "blur(28px)",
             WebkitBackdropFilter: "blur(28px)",
-            border: "1px solid rgba(255, 255, 255, 0.8)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
             borderRadius: 20,
             boxShadow: "0 20px 40px rgba(0,0,0,0.06)",
           }}
@@ -470,35 +446,35 @@ export default function Hero() {
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>500+</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Curriculum-aligned<br/>modules</p>
           </motion.div>
-          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.2)" }} />
 
           {/* Stat 2 */}
           <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>40-min</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Structured<br/>sessions</p>
           </motion.div>
-          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.2)" }} />
 
           {/* Stat 3 */}
           <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #f59e0b 0%, #ef4444 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>8</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120 }}>Teacher-guided<br/>delivery</p>
           </motion.div>
-          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.2)" }} />
 
           {/* Stat 4 */}
           <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #10b981 0%, #3b82f6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>10,000+</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3 }}>Students Engaged</p>
           </motion.div>
-          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.2)" }} />
 
           {/* Stat 5 */}
           <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
              <h3 style={{ fontSize: 22, fontWeight: 800, margin: 0, lineHeight: 1, background: "linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>260</h3>
              <p style={{ fontSize: 11, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3 }}>Schools Partnered</p>
           </motion.div>
-          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.7)" }} />
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.2)" }} />
 
           {/* Stat 6 */}
           <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
