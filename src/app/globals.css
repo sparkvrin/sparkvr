@@ -307,3 +307,72 @@ body {
   border-color: #0052cc;
   box-shadow: 0 0 0 3px rgba(0,82,204,0.12);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   3D ANIMATION KEYFRAMES & UTILITIES
+═══════════════════════════════════════════════════════════ */
+
+@keyframes dashFlow {
+  to { stroke-dashoffset: -32; }
+}
+
+@keyframes float3D {
+  0%, 100% { transform: translateY(0px) rotateX(0deg) rotateZ(0deg); }
+  33%       { transform: translateY(-14px) rotateX(4deg) rotateZ(1deg); }
+  66%       { transform: translateY(8px) rotateX(-2deg) rotateZ(-0.5deg); }
+}
+
+@keyframes glowRingPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 0.8;  transform: scale(1.055); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotateSlowReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(31,179,255,0.3), 0 0 24px rgba(31,179,255,0.1); }
+  50%       { box-shadow: 0 0 28px rgba(31,179,255,0.65), 0 0 60px rgba(31,179,255,0.22); }
+}
+
+@keyframes particleOrbit {
+  from { transform: rotate(0deg) translateX(50px) rotate(0deg);   opacity: 0.9; }
+  to   { transform: rotate(360deg) translateX(50px) rotate(-360deg); opacity: 0.9; }
+}
+
+@keyframes shimmerSweep {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%)  skewX(-20deg); }
+}
+
+@keyframes depthPulse {
+  0%, 100% { transform: scale(1) translateZ(0); }
+  50%       { transform: scale(1.04) translateZ(20px); }
+}
+
+@keyframes scanLine {
+  0%   { top: -4px;    opacity: 0; }
+  5%   { opacity: 0.5; }
+  95%  { opacity: 0.5; }
+  100% { top: 100%;    opacity: 0; }
+}
+
+/* Utility classes */
+.perspective-deep  { perspective: 1200px; }
+.preserve-3d       { transform-style: preserve-3d; }
+.animate-float3d   { animation: float3D 7s ease-in-out infinite; }
+.animate-glow-ring { animation: glowRingPulse 3s ease-in-out infinite; }
+.animate-rotate    { animation: rotateSlow 20s linear infinite; }
+.animate-neon      { animation: neonPulse 2.5s ease-in-out infinite; }

@@ -60,15 +60,24 @@ function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
     <motion.div
       initial={{ opacity:0, scale:0.65, y:18 }} whileInView={{ opacity:1, scale:1, y:0 }}
       viewport={{ once:true }} transition={{ delay, duration:0.78, ease:[0.34,1.56,0.64,1] }}
-      style={{ position:"absolute", zIndex:10, ...pos }}
+      style={{ position:"absolute", zIndex:10, ...pos, perspective: 800 }}
     >
-      <motion.div animate={{ y:[0,dir*14,0] }} transition={{ duration:5.5+delay*0.45, repeat:Infinity, ease:"easeInOut", delay:delay*0.25 }} style={{ position:"relative" }}>
+      <motion.div 
+        animate={{ y:[0,dir*14,0], rotateX: [0, 6, 0, -6, 0], rotateY: [0, -6, 0, 6, 0] }} 
+        transition={{ duration:5.5+delay*0.45, repeat:Infinity, ease:"easeInOut", delay:delay*0.25 }} 
+        style={{ position:"relative", transformStyle: "preserve-3d" }}
+      >
         <div style={{ position:"absolute", inset:-10, borderRadius:"50%", background:"radial-gradient(circle,rgba(160,210,255,0.42) 0%,transparent 68%)", filter:"blur(14px)", pointerEvents:"none" }}/>
         <div style={{ position:"relative", background:"rgba(255,255,255,0.18)", backdropFilter:"blur(14px)", WebkitBackdropFilter:"blur(14px)", borderRadius:42, boxShadow:"0 22px 58px rgba(0,50,140,0.18),inset 0 2px 0 rgba(255,255,255,0.7)", border:"2px solid rgba(255,255,255,0.5)", width:w, height:w*0.8, display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden", padding:4 }}>
           <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center" }}>{children}</div>
         </div>
-        <div style={{ position:"absolute", top:-42, left:"50%", transform:"translateX(-50%)", background:"rgba(255,255,255,0.95)", borderRadius:30, padding:"6px 20px", boxShadow:"0 8px 24px rgba(0,60,160,0.14)", zIndex:20, whiteSpace:"nowrap", border:"1px solid rgba(255,255,255,0.9)" }}>
-          <span style={{ fontSize:11, fontWeight:800, letterSpacing:"0.1em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}>{label}</span>
+        <div style={{ position:"absolute", top:-42, left:"50%", transform:"translateX(-50%)", zIndex:20 }}>
+          <motion.div 
+            animate={{ y: [0, -4, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay * 0.5 }}
+            style={{ background:"rgba(255,255,255,0.95)", borderRadius:30, padding:"6px 20px", boxShadow:"0 8px 24px rgba(0,60,160,0.14)", whiteSpace:"nowrap", border:"1px solid rgba(255,255,255,0.9)", transformStyle: "preserve-3d" }}
+          >
+            <span style={{ fontSize:11, fontWeight:800, letterSpacing:"0.1em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}>{label}</span>
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>
@@ -105,10 +114,11 @@ function TiltCard({ children, style }: { children: React.ReactNode; style?: Reac
    5 cards × 72° = perfectly equal spacing, starting at top (-90°)
    -90 → -18 → 54 → 126 → 198
 ───────────────────────────────────────────────────────── */
-const ORBIT_CX  = 400;   // centre of the orbital canvas
-const ORBIT_CY  = 400;   // centred (same as CX)
-const ORBIT_SVG = 220;   // radius of the dashed SVG ring
-const CARD_R    = 330;   // radius to each card's centre — clean gap from ring
+const ORBIT_CX    = 380;   // true centre of 760×760 canvas
+const ORBIT_CY    = 380;
+const ORBIT_SVG   = 265;   // orbit ring — cards sit exactly on this ring
+const CARD_R      = 265;   // cards ON the orbit ring (same radius)
+const INDICATOR_R = 175;   // glowing dots in gap between logo (r≈124) and cards
 
 const CARDS = [
   {
@@ -220,8 +230,8 @@ export default function ServicesSection() {
             style={{ display:"flex", alignItems:"center", gap:12, marginBottom:24 }}>
             <span style={{ fontSize:10, fontWeight:800, letterSpacing:"0.22em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}></span>
           </motion.div>
-          <motion.h2 initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:0.08 }}
-            style={{ fontSize:"clamp(34px,4.5vw,62px)", fontWeight:800, lineHeight:1.1, color:"#0b1a3b", margin:"0 0 40px", fontFamily:"'AR One Sans',sans-serif" }}>
+          <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.08, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+            style={{ fontSize:"clamp(34px,4.5vw,62px)", fontWeight:800, lineHeight:1.1, color:"#0b1a3b", margin:"0 0 40px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>
             For decades, education has relied on <br/>
             <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#7c3aed 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>explanation.</span>
           </motion.h2>
@@ -233,11 +243,15 @@ export default function ServicesSection() {
               { Icon:MedalIcon,     text:"Yet many concepts remain abstract." },
             ] as { Icon:()=>React.ReactNode; text:string }[]).map(({ Icon, text }, i) => (
               <motion.div key={i} initial={{ opacity:0, x:-14 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ delay:0.12+i*0.1 }}
-                style={{ display:"flex", alignItems:"center", gap:16 }}>
-                <div style={{ width:52, height:52, borderRadius:"50%", flexShrink:0, background:"linear-gradient(135deg,rgba(29,78,216,0.1) 0%,rgba(124,58,237,0.1) 100%)", border:"1.5px solid rgba(29,78,216,0.15)", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                whileHover={{ scale: 1.05, x: 10, rotateX: 10 }}
+                style={{ display:"flex", alignItems:"center", gap:16, cursor: "default", perspective: 500, transformStyle: "preserve-3d" }}>
+                <motion.div 
+                  animate={{ y: [0, -4, 0] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
+                  style={{ width:52, height:52, borderRadius:"50%", flexShrink:0, background:"linear-gradient(135deg,rgba(29,78,216,0.1) 0%,rgba(124,58,237,0.1) 100%)", border:"1.5px solid rgba(29,78,216,0.15)", display:"flex", alignItems:"center", justifyContent:"center", transform: "translateZ(20px)" }}
+                >
                   <Icon />
-                </div>
-                <p style={{ fontSize:"clamp(17px,1.6vw,21px)", fontWeight:500, color:"#1a2a4a", margin:0, fontFamily:"'AR One Sans',sans-serif", lineHeight:1.45 }}>{text}</p>
+                </motion.div>
+                <p style={{ fontSize:"clamp(17px,1.6vw,21px)", fontWeight:500, color:"#1a2a4a", margin:0, fontFamily:"'AR One Sans',sans-serif", lineHeight:1.45, transform: "translateZ(10px)" }}>{text}</p>
               </motion.div>
             ))}
           </div>
@@ -246,10 +260,9 @@ export default function ServicesSection() {
         {/* RIGHT */}
         <div style={{ flex:1, position:"relative", overflow:"hidden", minHeight:"100vh", backgroundImage:"url('/background.png')", backgroundSize:"cover", backgroundPosition:"center" }}>
           <img src="/student.png" alt="Student" style={{ position:"absolute", bottom:0, left:"67.5%", transform:"translateX(-50%)", height:"48%", objectFit:"contain", objectPosition:"bottom center", zIndex:6, pointerEvents:"none", filter:"drop-shadow(0 30px 60px rgba(0,40,130,0.25))" }}/>
-          <motion.div animate={{ scale:[1,1.09,1], opacity:[0.72,1,0.72], y:[0,-12,0] }} transition={{ duration:5, repeat:Infinity, ease:"easeInOut" }}
-            style={{ position:"absolute", top:"20%", left:"56%", transform:"translate(-50%,-50%)", zIndex:7, pointerEvents:"none" }}>
-            <img src="/quastion.png" alt="Question cloud" style={{ width:240, height:"auto", filter:"drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}/>
-          </motion.div>
+          <div style={{ position:"absolute", top:"28%", left:"67.5%", transform:"translate(-50%,-50%)", zIndex:7, pointerEvents:"none" }}>
+            <motion.img animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} src="/quastion.png" alt="Question cloud" style={{ width:260, height:"auto", filter:"drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}/>
+          </div>
           <SubjectBubble label="FORCES"             pos={{ top:"14%",left:"28%" }}  delay={0.2} dir={-1} w={190}><ForcesSVG /></SubjectBubble>
           <SubjectBubble label="HUMAN ANATOMY"      pos={{ top:"12%",right:"4%" }}  delay={1.2} dir={-1} w={180}><AnatomySVG /></SubjectBubble>
           <SubjectBubble label="CELL"               pos={{ top:"54%",left:"26%" }}  delay={1.8} dir={1}  w={220}><CellSVG /></SubjectBubble>
@@ -293,8 +306,8 @@ export default function ServicesSection() {
             THE&nbsp;&nbsp;HOW
           </motion.p>
 
-          <motion.h2 initial={{ opacity:0, y:18 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:0.1 }}
-            style={{ fontSize:"clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 8px", fontFamily:"'AR One Sans',sans-serif" }}>
+          <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+            style={{ fontSize:"clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 8px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>
             We make concepts<br/>
             <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>observable</span>{" "}—<br/>
             without disrupting schools.
@@ -319,7 +332,7 @@ export default function ServicesSection() {
         >
           {/* parallax wrapper */}
           <motion.div
-            animate={{ x:mouse.x, y:mouse.y }}
+            animate={{ x:mouse.x, y:mouse.y, rotateX: mouse.y * -0.5, rotateY: mouse.x * 0.5 }}
             transition={{ type:"spring", stiffness:55, damping:16 }}
             ref={canvasRef}
             style={{
@@ -329,25 +342,61 @@ export default function ServicesSection() {
               overflow:"visible",
               transform:`scale(${scale})`,
               transformOrigin:"center center",
+              transformStyle: "preserve-3d"
             }}
           >
 
-            {/* ── dashed orbit ring + coloured dots ── */}
+            {/* ── orbit ring + indicator dots + spokes ── */}
             <svg style={{ position:"absolute", inset:0, width:"100%", height:"100%", overflow:"visible" }} viewBox="0 0 760 760">
-              {/* outer faint halo ring */}
-              <circle cx={ORBIT_CX} cy={ORBIT_CY} r={ORBIT_SVG + 18}
-                stroke="rgba(147,197,253,0.18)" strokeWidth="28" fill="none"/>
-              {/* main dashed orbit */}
-              <circle cx={ORBIT_CX} cy={ORBIT_CY} r={ORBIT_SVG}
-                stroke="rgba(100,149,237,0.35)" strokeWidth="1.5" strokeDasharray="9 7" fill="none"/>
-              {/* coloured dots on the orbit ring */}
+
+              {/* Subtle spoke lines from centre → each card (direction indicators) */}
               {CARDS.map((c, i) => {
                 const { x, y } = orbitXY(ORBIT_SVG, c.angle);
                 return (
+                  <line key={`spoke-${i}`}
+                    x1={ORBIT_CX} y1={ORBIT_CY} x2={x} y2={y}
+                    stroke="rgba(147,197,253,0.11)"
+                    strokeWidth="1" strokeDasharray="3 7"
+                  />
+                );
+              })}
+
+              {/* Outer soft halo band around the orbit ring */}
+              <circle cx={ORBIT_CX} cy={ORBIT_CY} r={ORBIT_SVG + 18}
+                stroke="rgba(147,197,253,0.10)" strokeWidth="24" fill="none"/>
+
+              {/* Main dashed orbit ring — cards sit ON this ring */}
+              <motion.circle
+                cx={ORBIT_CX} cy={ORBIT_CY} r={ORBIT_SVG}
+                stroke="rgba(100,149,237,0.52)" strokeWidth="1.5" strokeDasharray="9 7" fill="none"
+                animate={{ strokeDashoffset: [0, -64] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* Second decorative ring (opposite flow) */}
+              <motion.circle
+                cx={ORBIT_CX} cy={ORBIT_CY} r={ORBIT_SVG + 18}
+                stroke="rgba(147,197,253,0.13)" strokeWidth="1" strokeDasharray="4 12" fill="none"
+                animate={{ strokeDashoffset: [0, 64] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* Glowing indicator dots — positioned between centre logo and each card
+                  INDICATOR_R=175 sits in the gap between logo edge (r≈124) and card inner edge (r≈186) */}
+              {CARDS.map((c, i) => {
+                const { x, y } = orbitXY(INDICATOR_R, c.angle);
+                return (
                   <g key={i}>
-                    <circle cx={x} cy={y} r={7} fill={c.dotColor} opacity={0.22}/>
+                    {/* pulsing outer glow */}
+                    <motion.circle
+                      cx={x} cy={y} r={10}
+                      fill={c.dotColor} opacity={0.22}
+                      animate={{ r: [10, 17, 10], opacity: [0.22, 0.50, 0.22] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                    />
+                    {/* solid colour dot */}
                     <circle cx={x} cy={y} r={5} fill={c.dotColor}
-                      style={{ filter:`drop-shadow(0 0 5px ${c.dotColor})` }}/>
+                      style={{ filter:`drop-shadow(0 0 8px ${c.dotColor})` }}/>
                   </g>
                 );
               })}
@@ -357,54 +406,69 @@ export default function ServicesSection() {
             <div style={{ position:"absolute", left:ORBIT_CX, top:ORBIT_CY, transform:"translate(-50%,-50%)", zIndex:5 }}>
               {/* outer pulse glow */}
               <motion.div
-                animate={{ scale:[1,1.12,1], opacity:[0.22,0.48,0.22] }}
+                animate={{ scale:[1,1.18,1], opacity:[0.18,0.52,0.18] }}
                 transition={{ duration:3, repeat:Infinity, ease:"easeInOut" }}
-                style={{ position:"absolute", inset:-32, borderRadius:"50%", background:"radial-gradient(circle,rgba(59,130,246,0.45) 0%,transparent 70%)", pointerEvents:"none" }}
+                style={{ position:"absolute", inset:-40, borderRadius:"50%", background:"radial-gradient(circle,rgba(59,130,246,0.5) 0%,transparent 70%)", pointerEvents:"none" }}
+              />
+              {/* secondary glow ring */}
+              <motion.div
+                animate={{ scale:[1.1,1.25,1.1], opacity:[0.08,0.22,0.08] }}
+                transition={{ duration:4.5, repeat:Infinity, ease:"easeInOut", delay:1.5 }}
+                style={{ position:"absolute", inset:-60, borderRadius:"50%", background:"radial-gradient(circle,rgba(129,140,248,0.4) 0%,transparent 65%)", pointerEvents:"none" }}
               />
               {/* rotating gradient border */}
-              <div
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                 style={{ width:248, height:248, borderRadius:"50%", background:"conic-gradient(from 0deg,#60a5fa 0%,#1d4ed8 30%,#818cf8 50%,#1d4ed8 70%,#60a5fa 100%)", padding:3.5, boxShadow:"0 0 48px rgba(59,130,246,0.5),0 0 96px rgba(59,130,246,0.22)" }}
               >
-                {/* white separator */}
-                <div style={{ width:"100%", height:"100%", borderRadius:"50%", background:"#f3f8ff", display:"flex", alignItems:"center", justifyContent:"center" }}>
-                  {/* ring 1 */}
+                {/* counter-rotate inner content to stay upright */}
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                  style={{ width:"100%", height:"100%", borderRadius:"50%", background:"#f3f8ff", display:"flex", alignItems:"center", justifyContent:"center" }}
+                >
                   <div style={{ width:216, height:216, borderRadius:"50%", background:"linear-gradient(145deg,#e8f2ff 0%,#d4e8ff 100%)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"inset 0 0 28px rgba(59,130,246,0.14)" }}>
-                    {/* ring 2 */}
                     <div style={{ width:182, height:182, borderRadius:"50%", background:"linear-gradient(145deg,#dbeeff 0%,#c6dfff 100%)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"inset 0 0 20px rgba(59,130,246,0.1)" }}>
-                      {/* inner logo circle */}
-                      <div style={{ width:152, height:152, borderRadius:"50%", background:"linear-gradient(160deg,#e8f4ff 0%,#d8eeff 100%)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 6px 28px rgba(59,130,246,0.28)" }}>
+                      <motion.div
+                        whileHover={{ scale: 1.08 }}
+                        style={{ width:152, height:152, borderRadius:"50%", background:"linear-gradient(160deg,#e8f4ff 0%,#d8eeff 100%)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 6px 28px rgba(59,130,246,0.28)" }}
+                      >
                         <img src="/logo.png" alt="SparkVR" style={{ width:112, height:"auto", objectFit:"contain" }}/>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
 
             {/* ── feature cards ── */}
             {CARDS.map((c, i) => {
               const { x, y } = orbitXY(CARD_R, c.angle);
               return (
-                <motion.div
+                <div
                   key={i}
-                  /* Use animate driven by inView state so it always fires */
-                  initial={{ opacity:0, scale:0.65, y:12 }}
-                  animate={inView
-                    ? { opacity:1, scale:1, y:0 }
-                    : { opacity:0, scale:0.65, y:12 }}
-                  transition={{ delay: 0.3 + i * 0.13, duration:0.7, ease:[0.34,1.56,0.64,1] }}
                   style={{ position:"absolute", left:x, top:y, transform:"translate(-50%,-50%)", zIndex:6 }}
                 >
-                  {/* continuous float */}
                   <motion.div
-                    animate={{ y:[0, c.floatAmp, 0] }}
-                    transition={{ duration:c.floatDur, repeat:Infinity, ease:"easeInOut", delay:i*0.4 }}
+                    initial={{ opacity:0, scale:0.65, y:18, rotateX: 25 }}
+                    animate={inView
+                      ? { opacity:1, scale:1, y:0, rotateX: 0 }
+                      : { opacity:0, scale:0.65, y:18, rotateX: 25 }}
+                    transition={{ delay: 0.3 + i * 0.13, duration:0.75, ease:[0.34,1.56,0.64,1] }}
+                    style={{ transformPerspective: 800, transformStyle: "preserve-3d" }}
                   >
-                    <TiltCard>
-                      <motion.div
-                        whileHover={{ scale:1.06, boxShadow:"0 20px 48px rgba(0,60,180,0.18)" }}
-                        transition={{ duration:0.22 }}
-                        style={{
+                    <motion.div
+                      animate={{ rotateX: [0, 4, 0, -4, 0], rotateY: [0, -4, 0, 4, 0] }}
+                      transition={{ duration: c.floatDur + 1, repeat: Infinity, ease: "easeInOut" }}
+                      style={{ transformStyle: "preserve-3d" }}
+                    >
+                      <TiltCard>
+                        <motion.div
+                          whileHover={{ scale:1.06, boxShadow:"0 20px 48px rgba(0,60,180,0.18)", z: 20 }}
+                          transition={{ duration:0.22 }}
+                          style={{
+
                           width:158, minHeight:106,
                           background:"rgba(255,255,255,0.96)",
                           backdropFilter:"blur(18px)",
@@ -434,6 +498,7 @@ export default function ServicesSection() {
                     </TiltCard>
                   </motion.div>
                 </motion.div>
+              </div>
               );
             })}
 

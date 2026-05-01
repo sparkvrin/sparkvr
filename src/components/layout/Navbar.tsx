@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -171,40 +171,42 @@ export default function Navbar() {
                     exit={{ opacity: 0, x: 40 }}
                     transition={{ delay: 0.1 + i * 0.06, duration: 0.4 }}
                   >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      style={{
-                        display: "flex", alignItems: "center", gap: 16,
-                        padding: "18px 20px",
-                        borderRadius: 16,
-                        textDecoration: "none",
-                        fontFamily: "'AR One Sans',sans-serif",
-                        fontSize: 15, fontWeight: 600, letterSpacing: "0.08em",
-                        color: "rgba(255,255,255,0.7)",
-                        transition: "all 0.25s ease",
-                        background: "transparent",
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.color = "#ffffff";
-                        e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                        e.currentTarget.style.transform = "translateX(8px)";
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-                        e.currentTarget.style.background = "transparent";
-                        e.currentTarget.style.transform = "translateX(0)";
-                      }}
-                    >
-                      {/* Accent dot */}
-                      <div style={{
-                        width: 6, height: 6, borderRadius: "50%",
-                        background: "#1fb3ff",
-                        boxShadow: "0 0 8px rgba(31,179,255,0.5)",
-                        flexShrink: 0,
-                      }} />
-                      {link.label}
-                    </Link>
+                    <motion.div whileHover={{ x: 10, scale: 1.02 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 280, damping: 20 }}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        style={{
+                          display: "flex", alignItems: "center", gap: 16,
+                          padding: "18px 20px",
+                          borderRadius: 16,
+                          textDecoration: "none",
+                          fontFamily: "'AR One Sans',sans-serif",
+                          fontSize: 15, fontWeight: 600, letterSpacing: "0.08em",
+                          color: "rgba(255,255,255,0.7)",
+                          transition: "color 0.25s ease, background 0.25s ease",
+                          background: "transparent",
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.color = "#ffffff";
+                          e.currentTarget.style.background = "rgba(255,255,255,0.07)";
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                          e.currentTarget.style.background = "transparent";
+                        }}
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.5 }}
+                          style={{
+                            width: 6, height: 6, borderRadius: "50%",
+                            background: "#1fb3ff",
+                            boxShadow: "0 0 8px rgba(31,179,255,0.5)",
+                            flexShrink: 0,
+                          }}
+                        />
+                        {link.label}
+                      </Link>
+                    </motion.div>
                   </motion.div>
                 ))}
               </nav>
