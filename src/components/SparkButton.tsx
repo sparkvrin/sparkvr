@@ -9,6 +9,7 @@ interface SparkButtonProps {
   text?: string;
   large?: boolean;
   variant?: "primary" | "white";
+  secondary?: boolean;
   onClick?: () => void;
   type?: "button" | "submit";
   fullWidth?: boolean;
@@ -20,6 +21,7 @@ export default function SparkButton({
   text = "Book free workshop",
   large = false,
   variant = "primary",
+  secondary = false,
   onClick,
   type = "button",
   fullWidth = false,
