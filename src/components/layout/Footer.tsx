@@ -1,4 +1,5 @@
 "use client";
+// Force rebuild to sync Light Footer UI
 
 import React from "react";
 import Link from "next/link";
