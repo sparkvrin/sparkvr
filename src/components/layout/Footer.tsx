@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
-  Package, Building2, BookOpen, ChevronRight, ShieldCheck, Mail, ArrowRight
+  Package, Building2, BookOpen, ChevronRight, ShieldCheck 
 } from "lucide-react";
 
 const FacebookIcon = () => (
@@ -36,124 +36,97 @@ const InstagramIcon = () => (
 export default function Footer() {
   return (
     <footer style={{
-      background: "#001a4d",
+      background: "linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #e0e7ff 100%)",
       position: "relative",
       overflow: "hidden",
-      paddingTop: 100,
+      paddingTop: 80,
       paddingBottom: 40,
-      fontFamily: "'AR One Sans', sans-serif"
+      fontFamily: "'Inter', sans-serif"
     }}>
-      {/* ── 3D AMBIENT BACKGROUND ── */}
-      <div style={{ position: "absolute", top: -100, right: -100, width: 800, height: 800, pointerEvents: "none" }}>
-        {[400, 600, 800].map((size, i) => (
+      {/* ── Background Graphics (Arcs & Floating Orbs) ── */}
+      <div style={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, pointerEvents: "none" }}>
+        {[400, 500, 600].map((size, i) => (
           <motion.div
             key={i}
-            animate={{ rotate: 360, opacity: [0.05, 0.1, 0.05] }}
-            transition={{ duration: 50 + i * 15, repeat: Infinity, ease: "linear" }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40 + i * 10, repeat: Infinity, ease: "linear" }}
             style={{
               position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
               width: size, height: size, borderRadius: "50%",
-              border: `1.5px solid rgba(31,179,255,0.2)`,
+              border: `1px solid rgba(59,130,246,${0.15 - i * 0.04})`,
             }}
           />
         ))}
       </div>
 
-      {/* Floating 3D Orbs */}
+      {/* Floating orbs in background */}
       {[
-        { size: 120, color: "rgba(0,82,204,0.15)", top: "10%", left: "5%", delay: 0 },
-        { size: 150, color: "rgba(31,179,255,0.1)", bottom: "15%", right: "10%", delay: 2 },
+        { size: 10, color: "#3b82f6", top: "10%", right: "20%", delay: 0 },
+        { size: 12, color: "#a855f7", top: "25%", right: "12%", delay: 0.5 },
+        { size: 8,  color: "#ef4444", top: "22%", right: "5%",  delay: 1 },
+        { size: 14, color: "#3b82f6", top: "45%", right: "3%",  delay: 0.2 },
       ].map((orb, i) => (
         <motion.div
           key={i}
-          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5], y: [0, -20, 0] }}
-          transition={{ duration: 6 + i * 2, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
           style={{
-            position: "absolute", top: orb.top, left: orb.left, bottom: orb.bottom, right: orb.right,
+            position: "absolute", top: orb.top, right: orb.right,
             width: orb.size, height: orb.size, borderRadius: "50%",
-            background: orb.color, filter: "blur(60px)", pointerEvents: "none"
+            background: orb.color,
+            boxShadow: `0 0 10px ${orb.color}88`,
+            pointerEvents: "none"
           }}
         />
       ))}
 
+      {/* VR Headset Wireframe Background Image */}
+      <div
+        style={{
+          position: "absolute", top: "10%", right: "-12%",
+          width: 550, opacity: 0.7, pointerEvents: "none",
+          mixBlendMode: "multiply",
+          zIndex: 0
+        }}
+      >
+        <motion.img 
+          animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          src="/vr_wireframe.png" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }} 
+        />
+      </div>
+
+
       <div style={{ maxWidth: 1300, margin: "0 auto", padding: "0 40px", position: "relative", zIndex: 10 }}>
         
-        {/* ── NEWSLETTER MODULE ── */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{
-            background: "rgba(255,255,255,0.03)",
-            backdropFilter: "blur(20px)",
-            borderRadius: 32,
-            padding: "48px 60px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 32,
-            marginBottom: 80,
-            boxShadow: "0 30px 60px rgba(0,0,0,0.2)"
-          }}
-        >
-          <div style={{ maxWidth: 460 }}>
-            <h3 style={{ fontSize: 26, fontWeight: 800, color: "#fff", marginBottom: 12 }}>Stay ahead in Education.</h3>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>Get the latest insights on VR pedagogy and school transformation directly to your inbox.</p>
-          </div>
-          <div style={{ flex: 1, minWidth: 320, position: "relative" }}>
-            <div style={{
-              display: "flex", gap: 12, background: "rgba(255,255,255,0.05)",
-              padding: 8, borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)"
-            }}>
-              <input 
-                type="email" 
-                placeholder="Enter your school email"
-                style={{
-                  background: "transparent", border: "none", outline: "none",
-                  padding: "0 20px", color: "#fff", fontSize: 14, flex: 1,
-                  fontFamily: "inherit"
-                }}
-              />
-              <motion.button
-                whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#001a4d" }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  background: "#0052cc", color: "#fff", border: "none",
-                  padding: "12px 24px", borderRadius: 14, fontSize: 13, fontWeight: 800,
-                  cursor: "pointer", transition: "all 0.3s",
-                  display: "flex", alignItems: "center", gap: 8
-                }}
-              >
-                SUBSCRIBE <ArrowRight size={16} />
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ── MAIN LINKS SECTION ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 60, marginBottom: 80 }}>
+        {/* ── Top Main Content ── */}
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 60, marginBottom: 60 }}>
           
-          {/* Brand Info */}
-          <div>
-            <Link href="/">
-              <img src="/logo.png" alt="SparkVR" style={{ height: 110, marginBottom: 20, filter: "brightness(0) invert(1)" }} />
+          {/* Left Column: Brand & Socials */}
+          <div style={{ maxWidth: 350, flexShrink: 0 }}>
+            <Link href="/" style={{ display: "inline-block", marginBottom: -10 }}>
+              <img src="/logo.png" alt="SparkVR" style={{ height: 140, objectFit: "contain", transform: "translateX(-15px)" }} />
             </Link>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 32 }}>
-              Built at IIT Indore with a mission to bring clarity and depth to classrooms through world-class immersive pedagogy.
+            <p style={{ fontSize: 19, color: "#334155", lineHeight: 1.6, marginBottom: 40, fontWeight: 500, transform: "translateX(-8px)" }}>
+              Transforming abstract learning into observable understanding through immersive experiences.
             </p>
-            <div style={{ display: "flex", gap: 12 }}>
+            
+            {/* Social Icons */}
+            <div style={{ display: "flex", gap: 16 }}>
               {[FacebookIcon, LinkedinIcon, YoutubeIcon, InstagramIcon].map((Icon, i) => (
                 <motion.a
                   key={i} href="#"
-                  whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
+                  whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 20px rgba(37,99,235,0.15)" }}
+                  whileTap={{ scale: 0.95 }}
                   style={{
-                    width: 44, height: 44, borderRadius: 14,
-                    background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
+                    width: 44, height: 44, borderRadius: "50%",
+                    background: "white", border: "1px solid rgba(59,130,246,0.1)",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#fff", cursor: "pointer", transition: "all 0.3s"
+                    color: "#1e3a8a", boxShadow: "0 4px 10px rgba(0,0,0,0.03)",
+                    transition: "color 0.3s", cursor: "pointer"
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = "#3b82f6"}
+                  onMouseLeave={(e) => e.currentTarget.style.color = "#1e3a8a"}
                 >
                   <Icon />
                 </motion.a>
@@ -161,92 +134,113 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link Columns */}
-          {[
-            {
-              title: "EXPLORE",
-              links: [
-                { label: "Vision", href: "/#vision" },
-                { label: "About Us", href: "/about" },
-                { label: "Our Blog", href: "/blog" },
-                { label: "Modules", href: "/services" }
-              ]
-            },
-            {
-              title: "SOLUTIONS",
-              links: [
-                { label: "For Schools", href: "/contact" },
-                { label: "For Teachers", href: "/contact" },
-                { label: "VR Lab setup", href: "/contact" },
-                { label: "Case Studies", href: "/blog" }
-              ]
-            },
-            {
-              title: "CONNECT",
-              links: [
-                { label: "Book Workshop", href: "/contact" },
-                { label: "Contact Us", href: "/contact" },
-                { label: "Help Center", href: "/contact" },
-                { label: "Careers", href: "/about" }
-              ]
-            }
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 style={{ fontSize: 13, fontWeight: 800, color: "#1fb3ff", letterSpacing: "0.15em", marginBottom: 32 }}>
-                {col.title}
-              </h4>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link 
-                      href={link.href}
-                      style={{ 
-                        fontSize: 15, color: "rgba(255,255,255,0.5)", textDecoration: "none", 
-                        fontWeight: 600, transition: "all 0.3s", display: "flex", alignItems: "center", gap: 8 
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as any).style.color = "#fff";
-                        (e.currentTarget as any).style.transform = "translateX(5px)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as any).style.color = "rgba(255,255,255,0.5)";
-                        (e.currentTarget as any).style.transform = "translateX(0px)";
-                      }}
-                    >
-                      <ChevronRight size={14} style={{ opacity: 0.5 }} />
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Right Columns: Links Grid */}
+          <div style={{ 
+            display: "flex", flex: 1, justifyContent: "space-between", 
+            paddingTop: 10, gap: 20
+          }}>
+            {[
+              {
+                title: "Product", icon: Package,
+                links: ["Why SparkVR", "How It Works", "Curriculum", "Outcomes"]
+              },
+              {
+                title: "Solutions", icon: Building2,
+                links: ["For Schools", "For Teachers", "VR Labs", "Subjects & Grades"]
+              },
+              {
+                title: "Resources", icon: BookOpen,
+                links: ["Case Studies", "Blog", "Help Center", "Contact"]
+              }
+            ].map((col, idx) => (
+              <div key={col.title} style={{ 
+                flex: 1, 
+                borderLeft: idx !== 0 ? "1px solid rgba(59,130,246,0.15)" : "none",
+                paddingLeft: idx !== 0 ? 40 : 0
+              }}>
+                
+                {/* Column Header */}
+                <motion.div 
+                  whileHover={{ scale: 1.05, x: 5 }}
+                  style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28, cursor: "default" }}
+                >
+                  <motion.div 
+                    whileHover={{ rotate: 180 }}
+                    transition={{ duration: 0.5 }}
+                    style={{
+                      width: 42, height: 42, borderRadius: "50%",
+                      background: "#eff6ff", border: "1px solid #dbeafe",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#2563eb", boxShadow: "0 4px 10px rgba(59,130,246,0.1), inset 0 2px 4px white"
+                    }}
+                  >
+                    <col.icon size={20} strokeWidth={2} />
+                  </motion.div>
+                  <h4 style={{ fontSize: 18, fontWeight: 700, color: "#0f172a", margin: 0 }}>
+                    {col.title}
+                  </h4>
+                </motion.div>
+
+                {/* Column Links */}
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 18 }}>
+                  {col.links.map((link) => (
+                    <li key={link}>
+                      <motion.a
+                        href="#"
+                        whileHover={{ x: 8, color: "#2563eb" }}
+                        style={{
+                          display: "flex", justifyContent: "space-between", alignItems: "center",
+                          fontSize: 15, color: "#475569", textDecoration: "none", fontWeight: 500,
+                          cursor: "pointer", borderBottom: "1px solid rgba(59,130,246,0.08)", paddingBottom: 10,
+                          transition: "color 0.2s"
+                        }}
+                      >
+                        {link}
+                        <motion.div whileHover={{ x: 3 }}>
+                          <ChevronRight size={16} color="#94a3b8" />
+                        </motion.div>
+                      </motion.a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
         </div>
 
-        {/* ── BOTTOM COPYRIGHT BAR ── */}
+        {/* ── Bottom Bar ── */}
         <div style={{ 
-          borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: 40,
-          display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 24
+          borderTop: "1px solid rgba(59,130,246,0.15)", paddingTop: 28,
+          display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 20
         }}>
+          {/* Copyright */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <ShieldCheck size={18} color="#1fb3ff" />
-            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", margin: 0, fontWeight: 500 }}>
+            <div style={{
+              width: 36, height: 36, borderRadius: "50%",
+              background: "#eff6ff", border: "1px solid #dbeafe",
+              display: "flex", alignItems: "center", justifyContent: "center", color: "#2563eb"
+            }}>
+              <ShieldCheck size={18} strokeWidth={2} />
+            </div>
+            <p style={{ fontSize: 14, color: "#475569", margin: 0, fontWeight: 500 }}>
               © {new Date().getFullYear()} SparkVR EdTech Pvt. Ltd. All rights reserved.
             </p>
           </div>
-          <div style={{ display: "flex", gap: 32 }}>
-            {["Privacy Policy", "Terms of Use", "Cookie Settings"].map((item) => (
-              <Link 
-                key={item} href="/about" 
-                style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", textDecoration: "none", fontWeight: 600, transition: "color 0.3s" }}
-                onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
-                onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.4)"}
-              >
-                {item}
-              </Link>
+
+          {/* Legal Links */}
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((item, i) => (
+              <React.Fragment key={item}>
+                <a href="#" style={{ fontSize: 14, color: "#475569", textDecoration: "none", fontWeight: 500 }}>
+                  {item}
+                </a>
+                {i < 2 && <span style={{ color: "#cbd5e1" }}>|</span>}
+              </React.Fragment>
             ))}
           </div>
         </div>
+
       </div>
     </footer>
   );
