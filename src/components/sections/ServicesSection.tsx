@@ -301,10 +301,7 @@ export default function ServicesSection() {
         {/* ── LEFT TEXT COLUMN ── */}
         <div style={{ width:"36%", flexShrink:0, padding:"clamp(40px,6vh,72px) clamp(8px,1vw,12px) clamp(24px,3vh,48px) clamp(20px,3.5vw,52px)", display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2 }}>
 
-          <motion.p initial={{ opacity:0, x:-14 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }}
-            style={{ fontSize:11, fontWeight:700, letterSpacing:"0.28em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif", margin:"0 0 10px" }}>
-            THE&nbsp;&nbsp;HOW
-          </motion.p>
+         
 
           <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
             style={{ fontSize:"clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 8px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>

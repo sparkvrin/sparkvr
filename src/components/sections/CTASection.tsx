@@ -190,15 +190,7 @@ export default function CTASection() {
             LEFT COLUMN - TEXT & CTA
         ───────────────────────────────────────────────────────── */}
         <div style={{ flex: "1 1 45%", minWidth: 350, maxWidth: 600, paddingBottom: 40 }}>
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-              <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.15em", color: "#1d4ed8", textTransform: "uppercase" }}>THE FUTURE IS CLEAR</span>
-              <motion.div 
-                animate={{ width: [40, 60, 40] }} transition={{ duration: 3, repeat: Infinity }}
-                style={{ height: 2, background: "#1d4ed8" }} 
-              />
-            </div>
-          </motion.div>
+         
 
           <motion.h2 
             initial={{ opacity: 0, y: 30, rotateX: 20 }} 

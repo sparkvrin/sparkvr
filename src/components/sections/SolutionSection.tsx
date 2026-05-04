@@ -305,7 +305,6 @@ export default function SolutionSection() {
         <div style={{ flex: "1 1 45%", minWidth: 350, maxWidth: 600, paddingBottom: 60 }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-              <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.2em", color: "#1d4ed8", textTransform: "uppercase" }}>THE SOLUTION</span>
               <motion.div 
                 animate={{ width: [40, 60, 40] }} transition={{ duration: 3, repeat: Infinity }}
                 style={{ height: 2, background: "#1d4ed8" }} 
@@ -551,8 +550,8 @@ export default function SolutionSection() {
             {/* Bottom Right - Future Subjects */}
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% + 260px), calc(-50% + 290px))" }}>
               <SubjectCard 
-                title="FUTURE INTERDISCIPLINARY\nSUBJECTS" 
-                desc="Preparing students\nfor the future of\nknowledge." 
+                title="INTERDISCIPLINARY" 
+                desc="Preparing students for the future of knowledge." 
                 gradient="linear-gradient(135deg, #78350f 0%, #b45309 50%, #f59e0b 100%)" 
                 delay={0.8} icon={Rocket}
                 threeDNode={

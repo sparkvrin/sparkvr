@@ -1,14 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "VISION",         href: "/#vision" },
-  { label: "CURRICULUM",     href: "/#curriculum" },
-  { label: "INFRASTRUCTURE", href: "/#infrastructure" },
-  { label: "OUTCOMES",       href: "/#outcomes" },
   { label: "ABOUT US",       href: "/about" },
+  { label: "BLOG",           href: "/blog" },
+  { label: "CONTACT",        href: "/contact" },
+  { label: "BOOKING",        href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -32,44 +33,45 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -140, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: 140,
-          background: scrolled ? "rgba(255,255,255,0.88)" : "transparent",
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "none",
-          transition: "background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s",
+          height: 120,
+          display: "flex", alignItems: "center",
+          background: "transparent",
         }}
       >
         <div style={{
-          maxWidth: 1440, margin: "0 auto", height: "100%",
-          padding: "0 48px",
+          maxWidth: 1440, margin: "0 auto", width: "100%", height: "100%",
+          padding: "0 60px",
           display: "flex", alignItems: "center", justifyContent: "space-between",
         }}>
           {/* LOGO */}
-          <Link href="/" style={{ display:"flex", alignItems:"center", textDecoration:"none", flexShrink:0 }}>
-            <img src="/logo.png" alt="SparkVR" style={{ height: 130, objectFit:"contain" }} />
+          <Link href="/" style={{ display:"flex", alignItems:"center", textDecoration:"none", height: "100%" }}>
+            <img 
+              src="/logo.png" 
+              alt="SparkVR" 
+              style={{ height: 110, width: "auto", objectFit:"contain" }} 
+            />
           </Link>
 
-          {/* RIGHT: CTA + Hamburger */}
-          <div style={{ display:"flex", alignItems:"center", gap:16, flexShrink:0 }}>
+          {/* RIGHT SIDE: CTA + Hamburger (Desktop links hidden per request) */}
+          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
             <Link href="/contact" style={{ textDecoration:"none" }}>
               <motion.div
-                whileHover={{ scale:1.04, boxShadow:"0 12px 28px rgba(0,100,255,0.35)" }}
+                whileHover={{ scale:1.04, y: -2, boxShadow:"0 12px 28px rgba(0,102,255,0.3)" }}
                 whileTap={{ scale:0.96 }}
                 style={{
-                  background:"#0066ff",
-                  borderRadius:30, padding:"11px 22px",
+                  background:"#0052cc",
+                  borderRadius:30, padding:"13px 28px",
                   display:"flex", alignItems:"center", justifyContent:"center",
-                  boxShadow:"0 6px 18px rgba(0,102,255,0.28)",
+                  boxShadow:"0 8px 20px rgba(0,82,204,0.2)",
                   cursor:"pointer",
                 }}
               >
                 <span style={{
-                  fontFamily:"'AR One Sans',sans-serif",
-                  color:"#fff", fontSize:11, fontWeight:700,
-                  letterSpacing:"0.1em", lineHeight:1, whiteSpace:"nowrap",
+                  color:"#fff", fontSize:11, fontWeight:800,
+                  letterSpacing:"0.12em", lineHeight:1, whiteSpace:"nowrap",
                 }}>BOOK FREE WORKSHOP</span>
               </motion.div>
             </Link>
@@ -79,42 +81,33 @@ export default function Navbar() {
               onClick={() => setMenuOpen(o => !o)}
               aria-label="Toggle menu"
               style={{
-                width:44, height:44, borderRadius:"50%",
-                background: menuOpen ? "#0052cc" : "rgba(255,255,255,0.9)",
-                border: menuOpen ? "none" : "1px solid rgba(0,0,0,0.08)",
+                width:48, height:48, borderRadius:"50%",
+                background: menuOpen ? "#0052cc" : "rgba(255,255,255,0.8)",
+                border: "1px solid rgba(0,0,0,0.05)",
                 display:"flex", flexDirection:"column",
-                alignItems:"center", justifyContent:"center", gap: menuOpen ? 0 : 5,
+                alignItems:"center", justifyContent:"center", gap: menuOpen ? 0 : 6,
                 cursor:"pointer",
-                boxShadow:"0 2px 10px rgba(0,0,0,0.07)",
+                boxShadow:"0 4px 15px rgba(0,0,0,0.05)",
                 position: "relative",
                 zIndex: 1002,
-                transition: "background 0.3s, border 0.3s",
+                transition: "all 0.3s ease",
               }}
             >
-              {/* Animated hamburger → X */}
               <motion.div
-                animate={menuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -3 }}
-                transition={{ duration: 0.25 }}
-                style={{ width:15, height:2, background: menuOpen ? "#fff" : "#334155", borderRadius:2, position: menuOpen ? "absolute" : "relative" }}
+                animate={menuOpen ? { rotate: 45, y: 1 } : { rotate: 0, y: 0 }}
+                style={{ width:18, height:2, background: menuOpen ? "#fff" : "#001a4d", borderRadius:2, position: menuOpen ? "absolute" : "relative" }}
               />
+              {!menuOpen && <div style={{ width:18, height:2, background:"#001a4d", borderRadius:2 }} />}
               <motion.div
-                animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-                transition={{ duration: 0.15 }}
-                style={{ width:15, height:2, background:"#334155", borderRadius:2 }}
-              />
-              <motion.div
-                animate={menuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 3 }}
-                transition={{ duration: 0.25 }}
-                style={{ width:15, height:2, background: menuOpen ? "#fff" : "#334155", borderRadius:2, position: menuOpen ? "absolute" : "relative" }}
+                animate={menuOpen ? { rotate: -45, y: -1 } : { rotate: 0, y: 0 }}
+                style={{ width:18, height:2, background: menuOpen ? "#fff" : "#001a4d", borderRadius:2, position: menuOpen ? "absolute" : "relative" }}
               />
             </button>
           </div>
         </div>
       </motion.nav>
 
-      {/* ═══════════════════════════════════════════
-          FULL-SCREEN MENU OVERLAY
-      ═══════════════════════════════════════════ */}
+      {/* FULL SCREEN MENU OVERLAY */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -155,23 +148,18 @@ export default function Navbar() {
                 transition={{ duration:8, repeat:Infinity, ease:"easeInOut" }}
                 style={{ position:"absolute",top:"15%",left:"10%",width:100,height:100,borderRadius:"50%",background:"rgba(31,179,255,0.1)",filter:"blur(40px)",pointerEvents:"none" }}
               />
-              <motion.div
-                animate={{ y:[0,10,0], opacity:[0.1,0.2,0.1] }}
-                transition={{ duration:10, repeat:Infinity, ease:"easeInOut", delay:3 }}
-                style={{ position:"absolute",bottom:"20%",right:"15%",width:80,height:80,borderRadius:"50%",background:"rgba(204,47,255,0.08)",filter:"blur(35px)",pointerEvents:"none" }}
-              />
 
               {/* Nav links */}
               <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
                 {NAV_LINKS.map((link, i) => (
                   <motion.div
-                    key={link.href}
+                    key={link.label} 
                     initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 40 }}
                     transition={{ delay: 0.1 + i * 0.06, duration: 0.4 }}
                   >
-                    <motion.div whileHover={{ x: 10, scale: 1.02 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 280, damping: 20 }}>
+                    <motion.div whileHover={{ x: 10, scale: 1.02 }} whileTap={{ scale: 0.97 }}>
                       <Link
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
@@ -180,30 +168,12 @@ export default function Navbar() {
                           padding: "18px 20px",
                           borderRadius: 16,
                           textDecoration: "none",
-                          fontFamily: "'AR One Sans',sans-serif",
                           fontSize: 15, fontWeight: 600, letterSpacing: "0.08em",
                           color: "rgba(255,255,255,0.7)",
-                          transition: "color 0.25s ease, background 0.25s ease",
-                          background: "transparent",
-                        }}
-                        onMouseEnter={e => {
-                          e.currentTarget.style.color = "#ffffff";
-                          e.currentTarget.style.background = "rgba(255,255,255,0.07)";
-                        }}
-                        onMouseLeave={e => {
-                          e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-                          e.currentTarget.style.background = "transparent";
+                          transition: "all 0.25s ease",
                         }}
                       >
-                        <motion.div
-                          whileHover={{ scale: 1.5 }}
-                          style={{
-                            width: 6, height: 6, borderRadius: "50%",
-                            background: "#1fb3ff",
-                            boxShadow: "0 0 8px rgba(31,179,255,0.5)",
-                            flexShrink: 0,
-                          }}
-                        />
+                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#1fb3ff" }} />
                         {link.label}
                       </Link>
                     </motion.div>
@@ -211,7 +181,7 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              {/* Bottom section: CTA + tagline */}
+              {/* Bottom section: CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -227,24 +197,16 @@ export default function Navbar() {
                       borderRadius: 30, padding: "16px 0",
                       textAlign: "center", cursor: "pointer",
                       boxShadow: "0 8px 24px rgba(0,82,204,0.35)",
-                      marginBottom: 24,
                     }}
                   >
-                    <span style={{
-                      fontFamily:"'AR One Sans',sans-serif",
-                      color:"#fff", fontSize:12, fontWeight:700,
-                      letterSpacing:"0.12em",
-                    }}>BOOK FREE WORKSHOP</span>
+                    <span style={{ color:"#fff", fontSize:12, fontWeight:700, letterSpacing:"0.12em" }}>
+                      BOOK FREE WORKSHOP
+                    </span>
                   </motion.div>
                 </Link>
-
-                <p style={{
-                  fontFamily:"'AR One Sans',sans-serif",
-                  fontSize: 12, color: "rgba(255,255,255,0.2)",
-                  textAlign: "center", letterSpacing: "0.1em",
-                }}>
-                  Every Idea Begins With A Spark ✦
-                </p>
+                <div style={{ marginTop: 24, textAlign: "center" }}>
+                   <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>© 2024 SPARKVR EDUCATION</p>
+                </div>
               </motion.div>
             </motion.div>
           </>

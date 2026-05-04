@@ -1,222 +1,364 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, CheckCircle } from "lucide-react";
-import SparkButton from "@/components/SparkButton";
-import TiltCard from "@/components/TiltCard";
+import React from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { 
+  Calendar, Download, ShieldCheck, GraduationCap, Users, School, 
+  MapPin, User, Phone, Mail, MessageSquare, Lock, Clock, ChevronRight 
+} from "lucide-react";
 
-export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", school: "", email: "", phone: "", message: "" });
+/* ─── ANIMATION VARIANTS ─── */
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+const fadeUp = (delay = 0, duration = 0.8) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true as const },
+  transition: { delay, duration, ease: EASE },
+});
+
+const fadeUpRotate = (delay = 0) => ({
+  initial: { opacity: 0, y: 30, rotateX: 10 },
+  whileInView: { opacity: 1, y: 0, rotateX: 0 },
+  viewport: { once: true as const },
+  transition: { delay, duration: 0.9, ease: EASE },
+});
+
+/* ─── HELPER COMPONENTS (POWER 3D) ─── */
+function InteractiveButton({ children, primary = false, icon: Icon }: any) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05, y: -5, boxShadow: primary ? "0 15px 35px rgba(0,82,204,0.3)" : "none" }}
+      whileTap={{ scale: 0.96 }}
+      style={{
+        display: "flex", alignItems: "center", gap: 12,
+        padding: "16px 34px", borderRadius: 14,
+        background: primary ? "#0052cc" : "transparent",
+        border: primary ? "none" : "2px solid #0052cc",
+        color: primary ? "#fff" : "#0052cc",
+        cursor: "pointer", fontWeight: 800, fontSize: 15,
+        transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)"
+      }}
+    >
+      <Icon size={20} strokeWidth={2.5} />
+      {children}
+    </motion.div>
+  );
+}
+
+function FormInput({ label, placeholder, icon: Icon }: any) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-30, 30], [10, -10]);
+  const rotateY = useTransform(x, [-30, 30], [-10, 10]);
+  const springX = useSpring(rotateX, { stiffness: 300, damping: 20 });
+  const springY = useSpring(rotateY, { stiffness: 300, damping: 20 });
+
+  function handleMouse(event: React.MouseEvent) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    x.set(event.clientX - (rect.left + rect.width / 2));
+    y.set(event.clientY - (rect.top + rect.height / 2));
+  }
 
   return (
-    <div>
-      {/* ── Hero ── */}
-      <section style={{
-        background: "linear-gradient(180deg, rgba(0,26,77,0.92) 0%, rgba(0,45,122,0.90) 100%)",
-        backdropFilter: "blur(12px)",
-        padding: "160px 24px 96px", position: "relative", overflow: "hidden",
-      }}>
-        <div style={{ position: "absolute", top: 0, right: 0, pointerEvents: "none" }}>
-          <svg width="220" height="220" viewBox="0 0 220 220" style={{ opacity: 0.08 }}>
-            <polygon points="220,0 220,220 0,0" fill="#1fb3ff" />
-          </svg>
+    <motion.div 
+      style={{ perspective: 1000 }}
+      onMouseMove={handleMouse}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+    >
+      <motion.div 
+        style={{ 
+          rotateX: springX, rotateY: springY,
+          display: "flex", alignItems: "center", gap: 14, 
+          background: "#f8fafc", padding: "16px 22px", 
+          borderRadius: 16, border: "1.5px solid rgba(0,82,204,0.08)",
+          boxShadow: "0 4px 12px rgba(0,26,77,0.02)",
+          transition: "border-color 0.3s ease"
+        }}
+        whileHover={{ borderColor: "#0052cc40", boxShadow: "0 10px 30px rgba(0,82,204,0.06)" }}
+      >
+        <Icon size={20} color="#0052cc" strokeWidth={2.2} />
+        <div style={{ flex: 1 }}>
+           <p style={{ fontSize: 11, fontWeight: 900, color: "#001a4d", marginBottom: 3, opacity: 0.8 }}>{label}</p>
+           <input placeholder={placeholder} style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500 }} />
         </div>
-        {[1, 2, 3].map(n => (
-          <motion.div key={n}
-            style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: n * 240, height: n * 240, borderRadius: "50%", border: `1px solid rgba(31,179,255,${0.12 / n})`, pointerEvents: "none" }}
-            animate={{ scale: [1, 1.05, 1], rotate: [0, n % 2 === 0 ? 360 : -360] }}
-            transition={{ scale: { duration: 4 + n, repeat: Infinity, ease: "easeInOut", delay: n * 0.5 }, rotate: { duration: 45 + n * 15, repeat: Infinity, ease: "linear" } }}
-          />
-        ))}
-        <motion.div animate={{ y: [0, -15, 0], opacity: [0.15, 0.34, 0.15], scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          style={{ position: "absolute", top: "30%", right: "15%", width: 140, height: 140, borderRadius: "50%", background: "rgba(31,179,255,0.08)", filter: "blur(52px)", pointerEvents: "none" }} />
+      </motion.div>
+    </motion.div>
+  );
+}
 
-        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="section-label" style={{ marginBottom: 20 }}>Get in touch</motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 36, rotateX: 20 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ delay: 0.1, duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.02em", lineHeight: 1.15, transformPerspective: 800 }}
+function InfoItem({ icon: Icon, label, value }: any) {
+  return (
+    <motion.div 
+      whileHover={{ x: 8 }}
+      style={{ display: "flex", alignItems: "center", gap: 20, cursor: "default" }}
+    >
+       <div style={{ 
+         width: 48, height: 48, borderRadius: "50%", 
+         background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", 
+         color: "#0052cc", boxShadow: "0 10px 25px rgba(0,26,77,0.05)",
+         border: "1px solid rgba(0,82,204,0.05)"
+       }}>
+          <Icon size={22} strokeWidth={2.2} />
+       </div>
+       <div>
+          <p style={{ fontSize: 13, fontWeight: 900, color: "#001a4d", marginBottom: 4 }}>{label}</p>
+          <p style={{ fontSize: 14, color: "#64748b", fontWeight: 600 }}>{value}</p>
+       </div>
+    </motion.div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <main style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#fff" }}>
+      
+      {/* ─── SECTION 1: HERO ─── */}
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          style={{
+            position: "absolute", inset: 0,
+            backgroundImage: "url('/backgroundcontact.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center right",
+            zIndex: 0,
+          }}
+        />
+
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to right, #ffffff 0%, #ffffff 35%, rgba(255,255,255,0.8) 55%, rgba(255,255,255,0) 90%)",
+          zIndex: 1,
+        }} />
+
+        <div style={{
+          position: "relative", zIndex: 10,
+          maxWidth: 1440, margin: "0 auto", width: "100%",
+          padding: "160px 100px 40px",
+          flex: 1,
+          display: "flex", flexDirection: "column",
+        }}>
+          
+          <motion.div {...fadeUp(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 40 }}>
+             <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#0052cc" }} />
+             <span style={{ fontSize: 12, fontWeight: 900, color: "#0052cc", letterSpacing: "0.2em" }}>CONTACT US</span>
+             <div style={{ width: 40, height: 1.5, background: "#0052cc", opacity: 0.2, borderRadius: 4 }} />
+          </motion.div>
+
+          <div style={{ maxWidth: 680, marginBottom: 80 }}>
+            <motion.h1
+              {...fadeUpRotate(0.2)}
+              style={{
+                fontSize: "clamp(44px, 5vw, 60px)",
+                fontWeight: 900, color: "#001a4d",
+                lineHeight: 1.05, letterSpacing: "-0.03em",
+                marginBottom: 28,
+              }}
+            >
+              Let's explore how SparkVR <br />
+              can transform learning <br />
+              in <span className="text-gradient-primary">your school.</span>
+            </motion.h1>
+
+            <motion.p
+              {...fadeUp(0.35)}
+              style={{
+                fontSize: 18, color: "#475569", lineHeight: 1.6,
+                marginBottom: 56, maxWidth: 580, fontWeight: 500
+              }}
+            >
+              Request a guided demonstration and experience curriculum-aligned immersive learning.
+            </motion.p>
+
+            <motion.div {...fadeUp(0.5)} style={{ display: "flex", gap: 24 }}>
+               <InteractiveButton primary icon={Calendar}>Schedule a Demo</InteractiveButton>
+               <InteractiveButton icon={Download}>Download Brochure</InteractiveButton>
+            </motion.div>
+          </div>
+
+          {/* Bottom Module Layered Pop-In */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 1.2, ease: EASE }}
+            style={{
+              marginTop: "auto",
+              marginBottom: 60,
+              background: "rgba(255,255,255,0.92)",
+              backdropFilter: "blur(24px)",
+              borderRadius: 28,
+              padding: "28px 56px",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: 20,
+              boxShadow: "0 20px 60px rgba(0,26,77,0.05)",
+              border: "1px solid #fff",
+            }}
           >
-            Book a free <span className="text-gradient-primary">workshop.</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            style={{ fontSize: 18, color: "rgba(255,255,255,0.55)", maxWidth: 520, margin: "24px auto 0", lineHeight: 1.7 }}>
-            Let your students see what they have only been asked to imagine. No commitment — just an experience.
-          </motion.p>
+            {[
+              { icon: ShieldCheck, text: "Trusted by Schools" },
+              { icon: GraduationCap, text: "Curriculum Aligned" },
+              { icon: Users, text: "Teacher Guided" },
+              { icon: School, text: "Incubated at IIT Indore" },
+            ].map((item, i) => (
+              <motion.div key={i} whileHover={{ y: -3 }} style={{ display: "flex", alignItems: "center", gap: 18, borderRight: i < 3 ? "1px solid rgba(0,26,77,0.06)" : "none" }}>
+                <div style={{ width: 42, height: 42, borderRadius: 12, background: "rgba(0,82,204,0.05)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc" }}>
+                  <item.icon size={22} strokeWidth={2} />
+                </div>
+                <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d" }}>{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Wave */}
-      <div style={{ background: "rgba(0,45,122,0.90)", marginBottom: -1 }}>
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ width: "100%", height: 80, display: "block" }}>
-          <defs><linearGradient id="wG3" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.25)" /><stop offset="100%" stopColor="rgba(240,248,255,0.25)" />
-          </linearGradient></defs>
-          <path d="M0,40 C480,80 960,0 1440,60 L1440,80 L0,80 Z" fill="url(#wG3)" />
-        </svg>
-      </div>
+      {/* ─── SECTION 2: CONVERSATION & FORM (POWER 3D) ─── */}
+      <section style={{ background: "#ffffff", padding: "140px 0 160px", position: "relative" }}>
+        <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
+        
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 100px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 100, alignItems: "start" }}>
+            
+            {/* LEFT SIDE: FORM */}
+            <motion.div {...fadeUp(0.1)}>
+              <h2 style={{ fontSize: 46, fontWeight: 900, color: "#001a4d", marginBottom: 28, letterSpacing: "-0.02em" }}>
+                Let's start a conversation.
+              </h2>
+              <div style={{ width: 48, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 32 }} />
+              <p style={{ fontSize: 17, color: "#64748b", fontWeight: 500, marginBottom: 56, maxWidth: 520, lineHeight: 1.6 }}>
+                Fill in your details and our academic team will get in touch to schedule your guided demonstration.
+              </p>
 
-      {/* ── Form + Info ── */}
-      <section style={{ background: "rgba(255,255,255,0.25)", backdropFilter: "blur(24px)", padding: "96px 24px 128px" }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 3fr", gap: 48 }}>
-
-          {/* Info panel */}
-          <motion.div
-            initial={{ opacity: 0, x: -36, rotateY: 12 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ transformPerspective: 900 }}
-          >
-            <p className="section-label" style={{ marginBottom: 24 }}>Contact details</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 40 }}>
-              {[
-                { Icon: Mail,   label: "Email",    val: "hello@sparkvr.in" },
-                { Icon: Phone,  label: "Phone",    val: "+91 98765 43210" },
-                { Icon: MapPin, label: "Location", val: "Bangalore, Karnataka, India" },
-              ].map(({ Icon, label, val }) => (
-                <motion.div key={label} whileHover={{ x: 6 }} transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                  style={{ display: "flex", alignItems: "flex-start", gap: 14, cursor: "default" }}>
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 12, boxShadow: "0 8px 24px rgba(0,82,204,0.18)" }}
-                    transition={{ type: "spring", stiffness: 280, damping: 18 }}
-                    style={{ width: 44, height: 44, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "rgba(0,82,204,0.08)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,82,204,0.08)", color: "#0052cc" }}>
-                    <Icon size={18} />
-                  </motion.div>
-                  <div>
-                    <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#001a4d", opacity: 0.4, marginBottom: 4 }}>{label}</p>
-                    <p style={{ fontSize: 15, fontWeight: 500, color: "#001a4d" }}>{val}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <TiltCard maxTilt={6} style={{ borderRadius: 20, display: "block" }}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                style={{
-                  background: "rgba(255,255,255,0.6)", backdropFilter: "blur(16px)",
-                  borderRadius: 20, padding: "28px 24px",
-                  border: "1px solid rgba(255,255,255,0.5)",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
-                }}
-              >
-                <p className="section-label" style={{ marginBottom: 20 }}>What happens next</p>
-                {[
-                  "Our team reaches out within 24 hours",
-                  "We schedule a 30-minute discovery call",
-                  "Your school gets a free pilot session",
-                  "Students experience SparkVR firsthand",
-                ].map((step, i) => (
-                  <motion.div key={i}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: i < 3 ? 16 : 0 }}
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.25, rotate: 10, background: "rgba(0,82,204,0.15)" }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(0,82,204,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}
-                    >
-                      <span style={{ fontSize: 12, fontWeight: 700, color: "#0052cc" }}>{i + 1}</span>
-                    </motion.div>
-                    <p style={{ fontSize: 14, color: "#333", lineHeight: 1.55 }}>{step}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </TiltCard>
-          </motion.div>
-
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 36, rotateY: -12 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ transformPerspective: 900 }}
-          >
-            {submitted ? (
-              <motion.div initial={{ opacity: 0, scale: 0.9, rotateX: 12 }} animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-                transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
-                style={{
-                  background: "rgba(255,255,255,0.6)", backdropFilter: "blur(16px)",
-                  borderRadius: 24, padding: "80px 40px",
-                  border: "1px solid rgba(255,255,255,0.5)",
-                  textAlign: "center", height: "100%",
-                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 20,
-                  transformPerspective: 800,
-                }}>
-                <motion.div
-                  animate={{ scale: [1, 1.12, 1], rotate: [0, 8, -8, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ width: 72, height: 72, borderRadius: "50%", background: "rgba(0,82,204,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}
-                >
-                  <CheckCircle size={36} color="#0052cc" />
-                </motion.div>
-                <h3 style={{ fontSize: 28, fontWeight: 700, color: "#001a4d" }}>We will be in touch!</h3>
-                <p style={{ fontSize: 16, color: "#333", opacity: 0.7 }}>Our team will reach out within 24 hours to schedule your free workshop.</p>
-              </motion.div>
-            ) : (
-              <TiltCard maxTilt={5} style={{ borderRadius: 24, display: "block" }}>
-                <motion.form onSubmit={handleSubmit}
-                  whileHover={{ y: -3 }}
-                  style={{
-                    background: "rgba(255,255,255,0.65)", backdropFilter: "blur(16px)",
-                    borderRadius: 24, padding: "40px 32px",
-                    border: "1px solid rgba(255,255,255,0.5)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.04)",
+              <form style={{ display: "grid", gap: 24 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                   <FormInput label="School Name" placeholder="Enter school name" icon={School} />
+                   <FormInput label="City" placeholder="Enter your city" icon={MapPin} />
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                   <FormInput label="Contact Person" placeholder="Your full name" icon={User} />
+                   <FormInput label="Phone Number" placeholder="Enter phone number" icon={Phone} />
+                </div>
+                <FormInput label="Email Address" placeholder="Enter email address" icon={Mail} />
+                
+                <motion.div whileHover={{ scale: 1.005 }} style={{ perspective: 1000 }}>
+                  <div style={{ 
+                    display: "flex", alignItems: "flex-start", gap: 14, 
+                    background: "#f8fafc", padding: "20px 22px", 
+                    borderRadius: 20, border: "1.5px solid rgba(0,82,204,0.06)",
+                    boxShadow: "0 4px 12px rgba(0,26,77,0.02)"
                   }}>
-                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#001a4d", opacity: 0.35, marginBottom: 32 }}>
-                    Workshop request form
-                  </p>
+                     <MessageSquare size={20} color="#0052cc" style={{ marginTop: 4 }} strokeWidth={2.2} />
+                     <div style={{ flex: 1 }}>
+                        <p style={{ fontSize: 11, fontWeight: 900, color: "#001a4d", marginBottom: 6, opacity: 0.8 }}>Message (Optional)</p>
+                        <textarea placeholder="Tell us about your requirements or any specific questions." style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500, resize: "none", height: 100 }} />
+                     </div>
+                  </div>
+                </motion.div>
 
-                  {[
-                    { id: "name",   label: "Your name",            type: "text",  ph: "Dr. Priya Sharma" },
-                    { id: "school", label: "School / institution",  type: "text",  ph: "Greenfield Academy" },
-                    { id: "email",  label: "Email address",         type: "email", ph: "priya@school.edu.in" },
-                    { id: "phone",  label: "Phone number",          type: "tel",   ph: "+91 98765 43210" },
-                  ].map((f) => (
-                    <div key={f.id} style={{ marginBottom: 20 }}>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#001a4d", marginBottom: 8 }}>{f.label}</label>
-                      <input
-                        type={f.type}
-                        placeholder={f.ph}
-                        required
-                        value={form[f.id as keyof typeof form]}
-                        onChange={e => setForm(p => ({ ...p, [f.id]: e.target.value }))}
-                        className="spark-input"
-                        style={{ background: "rgba(255,255,255,0.8)", borderColor: "rgba(0,82,204,0.1)" }}
-                      />
-                    </div>
-                  ))}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>
+                   <div style={{ display: "flex", alignItems: "center", gap: 14, maxWidth: 320 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <Lock size={16} color="#94a3b8" strokeWidth={2.5} />
+                      </div>
+                      <p style={{ fontSize: 11, color: "#64748b", lineHeight: 1.5, fontWeight: 500 }}>
+                        We respect your privacy. Your information will only be used to connect with you regarding your demo request.
+                      </p>
+                   </div>
+                   <InteractiveButton primary icon={ChevronRight}>Request a Demo</InteractiveButton>
+                </div>
+              </form>
+            </motion.div>
 
-                  <div style={{ marginBottom: 32 }}>
-                    <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#001a4d", marginBottom: 8 }}>Message (optional)</label>
-                    <textarea
-                      rows={4}
-                      placeholder="Tell us about your school..."
-                      value={form.message}
-                      onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                      className="spark-textarea"
-                      style={{ background: "rgba(255,255,255,0.8)", borderColor: "rgba(0,82,204,0.1)" }}
-                    />
+            {/* RIGHT SIDE: INFO BOX (POWER 3D FLOAT) */}
+            <motion.div 
+              {...fadeUp(0.3)}
+              whileHover={{ y: -8, rotateY: -2, rotateX: 2 }}
+              transition={{ duration: 0.4 }}
+              style={{ perspective: 1500 }}
+            >
+               <div style={{ 
+                 background: "rgba(248,250,252,0.7)", 
+                 backdropFilter: "blur(30px)",
+                 borderRadius: 40, 
+                 padding: "56px 48px",
+                 border: "1.5px solid #fff",
+                 boxShadow: "0 30px 70px rgba(0,26,77,0.05)",
+                 position: "relative", overflow: "hidden"
+               }}>
+                  <h3 style={{ fontSize: 26, fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>We're here to help</h3>
+                  <div style={{ width: 50, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 48 }} />
+                  
+                  <div style={{ display: "flex", flexDirection: "column", gap: 36, marginBottom: 56 }}>
+                     <InfoItem icon={Phone} label="Call Us" value="+91 79990 12345" />
+                     <InfoItem icon={Mail} label="Email Us" value="hello@sparkvr.in" />
+                     <InfoItem icon={Clock} label="Response Time" value="Within 24 working hours" />
+                     <InfoItem icon={MapPin} label="Head Office" value="IIT Indore Research Park, Indore, Madhya Pradesh, India" />
                   </div>
 
-                  <SparkButton type="submit" text="Submit workshop request" large fullWidth />
-                </motion.form>
-              </TiltCard>
-            )}
+                  <motion.div 
+                    whileHover={{ scale: 1.03 }}
+                    style={{ borderRadius: 28, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", border: "4px solid #fff" }}
+                  >
+                     <img src="/backgroundcontact.png" alt="VR Experience" style={{ width: "100%", height: 200, objectFit: "cover" }} />
+                  </motion.div>
+               </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 1.2, ease: EASE }}
+            style={{
+              marginTop: 120,
+              background: "#f8fafc",
+              borderRadius: 36,
+              padding: "48px 80px",
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 40,
+              border: "1px solid rgba(0,82,204,0.04)",
+              boxShadow: "inset 0 2px 10px rgba(0,0,0,0.01)"
+            }}
+          >
+            {[
+              { icon: ShieldCheck, title: "No Commitment", desc: "Request a demo with no obligation." },
+              { icon: Users, title: "Academic Focused", desc: "Designed for real classrooms." },
+              { icon: Lock, title: "Secure & Private", desc: "We value your privacy." },
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                whileHover={{ scale: 1.02 }}
+                style={{ display: "flex", alignItems: "center", gap: 24, borderRight: i < 2 ? "1px solid rgba(0,0,0,0.06)" : "none" }}
+              >
+                 <div style={{ 
+                   width: 56, height: 56, borderRadius: 16, 
+                   background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", 
+                   color: "#0052cc", boxShadow: "0 10px 20px rgba(0,26,77,0.04)" 
+                 }}>
+                    <item.icon size={26} strokeWidth={2.2} />
+                 </div>
+                 <div>
+                    <h4 style={{ fontSize: 17, fontWeight: 900, color: "#001a4d", marginBottom: 6 }}>{item.title}</h4>
+                    <p style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>{item.desc}</p>
+                 </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
-    </div>
+
+      <style jsx global>{`
+        .text-gradient-primary {
+          background: linear-gradient(135deg, #0052cc 0%, #001a4d 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      `}</style>
+    </main>
   );
 }
