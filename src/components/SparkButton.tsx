@@ -9,6 +9,7 @@ interface SparkButtonProps {
   text?: string;
   large?: boolean;
   variant?: "primary" | "white";
+  secondary?: boolean;
   onClick?: () => void;
   type?: "button" | "submit";
   fullWidth?: boolean;
@@ -20,6 +21,7 @@ export default function SparkButton({
   text = "Book free workshop",
   large = false,
   variant = "primary",
+  secondary = false,
   onClick,
   type = "button",
   fullWidth = false,
@@ -48,9 +50,9 @@ export default function SparkButton({
     mouseY.set(0);
   };
 
-  const h        = large ? 48 : 34;
-  const fontSize = large ? 12 : 10;
-  const padX     = large ? 32 : 24;
+  const h        = large ? 52 : 44;
+  const fontSize = large ? 12 : 11;
+  const padX     = large ? 36 : 28;
 
   const isWhite = variant === "white";
 
@@ -68,39 +70,41 @@ export default function SparkButton({
         alignItems: "center",
         justifyContent: "center",
         height: h,
-        minWidth: large ? 220 : 179,
+        minWidth: large ? 240 : 180,
         width: fullWidth ? "100%" : undefined,
         padding: `0 ${padX}px`,
         /* Variant Styling */
-        backgroundImage: isWhite ? "none" : "url('/c.png')",
-        backgroundColor: isWhite ? "#ffffff" : "transparent",
+        backgroundImage: (isWhite || secondary) ? "none" : "url('/c.png')",
+        backgroundColor: secondary ? "transparent" : (isWhite ? "#ffffff" : "transparent"),
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
         borderRadius: h / 2,
-        border: isWhite ? "1px solid rgba(0,82,204,0.1)" : "none",
+        border: secondary ? "1.5px solid rgba(0,82,204,0.3)" : (isWhite ? "1px solid rgba(0,82,204,0.1)" : "none"),
         cursor: "pointer",
         position: "relative",
-        boxShadow: isWhite 
-          ? "0 4px 15px rgba(0,0,0,0.05)" 
-          : "0 6px 20px rgba(0,82,204,0.35)",
+        boxShadow: secondary 
+          ? "0 4px 15px rgba(0,82,204,0.05)" 
+          : (isWhite ? "0 4px 15px rgba(0,0,0,0.05)" : "0 6px 20px rgba(0,82,204,0.35)"),
         zIndex: 1,
       }}
       whileHover={{ 
         scale: 1.05, 
-        boxShadow: isWhite 
-          ? "0 8px 25px rgba(0,0,0,0.1)" 
-          : "0 10px 30px rgba(0,82,204,0.5)" 
+        backgroundColor: secondary ? "rgba(0,82,204,0.03)" : undefined,
+        borderColor: secondary ? "#0052cc" : undefined,
+        boxShadow: secondary
+          ? "0 8px 25px rgba(0,82,204,0.12)"
+          : (isWhite ? "0 8px 25px rgba(0,0,0,0.1)" : "0 10px 30px rgba(0,82,204,0.5)") 
       }}
       whileTap={{ scale: 0.98 }}
     >
       <span
         style={{
-          fontFamily: "var(--font-jetbrains), 'JetBrains Mono', monospace",
-          fontWeight: 500,
+          fontFamily: "'AR One Sans', sans-serif",
+          fontWeight: 800,
           fontSize,
           lineHeight: 1,
-          letterSpacing: "0.2em",
-          color: isWhite ? "#0052cc" : "#ffffff",
+          letterSpacing: "0.15em",
+          color: secondary ? "#0052cc" : (isWhite ? "#0052cc" : "#ffffff"),
           textAlign: "center",
           whiteSpace: "nowrap",
           textTransform: "uppercase",
