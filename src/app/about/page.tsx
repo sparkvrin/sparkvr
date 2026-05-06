@@ -1314,19 +1314,7 @@ export default function AboutPage() {
             {/* TOP ROW: TEXT ON LEFT */}
             <div style={{ maxWidth: 540 }}>
               {/* Animated Label */}
-              <motion.div {...fadeUp(0)} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                <motion.div 
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{ width: 6, height: 6, borderRadius: "50%", background: "#0052cc" }} 
-                />
-                <span style={{ fontSize: 11, letterSpacing: "0.22em", fontWeight: 800, color: "#0052cc" }}>JOIN THE MOVEMENT</span>
-                <motion.div 
-                  initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.8 }}
-                  style={{ width: 30, height: 1.5, background: "rgba(0,82,204,0.2)", transformOrigin: "left" }} 
-                />
-              </motion.div>
+            
 
               {/* Compact Heading */}
               <motion.h2
@@ -1343,13 +1331,13 @@ export default function AboutPage() {
                 <span className="text-gradient-primary">together.</span>
               </motion.h2>
 
-              <motion.p {...fadeUp(0.2)} style={{ fontSize: 16, color: "#475569", lineHeight: 1.6, marginBottom: 16, fontWeight: 500 }}>
+              <motion.p {...fadeUp(0.2)} style={{ fontSize: 16, color: "#475569", lineHeight: 1.6, marginBottom: 8, fontWeight: 500 }}>
                 SparkVR is more than a platform — it&apos;s a partnership. Whether you&apos;re a school, educator, or institution, we&apos;re here to help you create impact that lasts.
               </motion.p>
             </div>
 
             {/* MIDDLE ROW: FEATURES & CTA CARD (Pushed even lower) */}
-            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 40, marginTop: 12 }}>
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 80, marginTop: 60 }}>
               
               {/* Features (Left) */}
               <div style={{ display: "flex", alignItems: "stretch", flex: "1 1 500px" }}>
@@ -1394,8 +1382,8 @@ export default function AboutPage() {
               <div style={{ 
                 flex: "0 0 auto", 
                 width: "100%", 
-                maxWidth: 360, 
-                marginTop: 100, // Even more spacing to stay at the very bottom
+                maxWidth: 390, 
+                marginTop: 220, // Even lower on the right
               }}>
                 <TiltCard style={{ width: "100%" }}>
                   <motion.div

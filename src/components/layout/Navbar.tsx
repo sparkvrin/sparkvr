@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "VISION",         href: "/#vision" },
-  { label: "ABOUT US",       href: "/about" },
+  { label: "SCHOOL HUB",   href: "/schools" },
+    { label: "ABOUT US",       href: "/about" },
   { label: "BLOG",           href: "/blog" },
   { label: "CONTACT",        href: "/contact" },
-  { label: "BOOKING",        href: "/contact" },
 ];
 
 export default function Navbar() {
