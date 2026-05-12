@@ -143,15 +143,30 @@ export default function Footer() {
             {[
               {
                 title: "Product", icon: Package,
-                links: ["Why SparkVR", "How It Works", "Curriculum", "Outcomes"]
+                links: [
+                  { label: "Why SparkVR", href: "/#vision" },
+                  { label: "How It Works", href: "/#how" },
+                  { label: "Curriculum", href: "/#curriculum" },
+                  { label: "Outcomes", href: "/#outcomes" }
+                ]
               },
               {
                 title: "Solutions", icon: Building2,
-                links: ["For Schools", "For Teachers", "VR Labs", "Subjects & Grades"]
+                links: [
+                  { label: "For Schools", href: "/schools" },
+                  { label: "For Teachers", href: "/teachers" },
+                  { label: "VR Labs", href: "/vr-labs" },
+                  { label: "Subjects & Grades", href: "/subjects" }
+                ]
               },
               {
                 title: "Resources", icon: BookOpen,
-                links: ["Case Studies", "Blog", "Help Center", "Contact"]
+                links: [
+                  { label: "Case Studies", href: "/case-studies" },
+                  { label: "Blog", href: "/blog" },
+                  { label: "Help Center", href: "/help" },
+                  { label: "Contact", href: "/contact" }
+                ]
               }
             ].map((col, idx) => (
               <div key={col.title} style={{ 
@@ -185,22 +200,23 @@ export default function Footer() {
                 {/* Column Links */}
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 18 }}>
                   {col.links.map((link) => (
-                    <li key={link}>
-                      <motion.a
-                        href="#"
-                        whileHover={{ x: 8, color: "#2563eb" }}
-                        style={{
-                          display: "flex", justifyContent: "space-between", alignItems: "center",
-                          fontSize: 15, color: "#475569", textDecoration: "none", fontWeight: 500,
-                          cursor: "pointer", borderBottom: "1px solid rgba(59,130,246,0.08)", paddingBottom: 10,
-                          transition: "color 0.2s"
-                        }}
-                      >
-                        {link}
-                        <motion.div whileHover={{ x: 3 }}>
-                          <ChevronRight size={16} color="#94a3b8" />
+                    <li key={link.label}>
+                      <Link href={link.href} style={{ textDecoration: "none" }}>
+                        <motion.div
+                          whileHover={{ x: 8, color: "#2563eb" }}
+                          style={{
+                            display: "flex", justifyContent: "space-between", alignItems: "center",
+                            fontSize: 15, color: "#475569", fontWeight: 500,
+                            cursor: "pointer", borderBottom: "1px solid rgba(59,130,246,0.08)", paddingBottom: 10,
+                            transition: "color 0.2s"
+                          }}
+                        >
+                          {link.label}
+                          <motion.div whileHover={{ x: 3 }}>
+                            <ChevronRight size={16} color="#94a3b8" />
+                          </motion.div>
                         </motion.div>
-                      </motion.a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -5,11 +5,14 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "VISION",         href: "/#vision" },
-  { label: "SCHOOL HUB",   href: "/schools" },
-    { label: "ABOUT US",       href: "/about" },
-  { label: "BLOG",           href: "/blog" },
-  { label: "CONTACT",        href: "/contact" },
+  { label: "FOR SCHOOLS",       href: "/schools" },
+  { label: "FOR TEACHERS",      href: "/teachers" },
+  { label: "VR LABS",           href: "/vr-labs" },
+  { label: "SUBJECTS & GRADES", href: "/subjects" },
+  { label: "CASE STUDIES",      href: "/case-studies" },
+  { label: "BLOG",              href: "/blog" },
+  { label: "HELP CENTER",       href: "/help" },
+  { label: "CONTACT",           href: "/contact" },
 ];
 
 export default function Navbar() {
