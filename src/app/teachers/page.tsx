@@ -6,7 +6,8 @@ import {
   GraduationCap, Target, Settings, BookOpen, ShieldCheck,
   Users, MessageSquare, ClipboardList, TrendingUp, Presentation,
   Calendar, Layers, CheckCircle2, MonitorPlay, Zap, Globe,
-  Rocket, Search, ShieldAlert, Award, Clock
+  Rocket, Search, ShieldAlert, Award, Clock,
+  Headphones, Mail, Star, Heart, RefreshCcw, Glasses, Lightbulb, BarChart2, Quote, ArrowRight
 } from "lucide-react";
 
 /* ─── ANIMATION VARIANTS ─── */
@@ -21,6 +22,13 @@ const fadeUp = (delay = 0, duration = 0.8) => ({
 
 const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -50 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true as const },
+  transition: { delay, duration: 0.9, ease: EASE },
+});
+
+const fadeRight = (delay = 0) => ({
+  initial: { opacity: 0, x: 50 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true as const },
   transition: { delay, duration: 0.9, ease: EASE },
@@ -396,14 +404,14 @@ export default function TeachersPage() {
 
           {/* Thin Summary Bar at bottom */}
           <motion.div {...fadeUp(0.7)} style={{ background: "#f8faff", borderRadius: 16, padding: "16px 32px", marginTop: 20, border: "1px solid #e0e7ff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 16, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><Award size={18} color="#fff" /></div>
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", margin: 0 }}>A clear flow for every lesson. Better engagement. Stronger outcomes.</p>
-             </div>
-             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <Users size={24} color="#4f46e5" />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#4f46e5", margin: 0 }}>You lead. SparkVR supports. Students succeed.</p>
-             </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <div style={{ width: 32, height: 32, borderRadius: 16, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><Award size={18} color="#fff" /></div>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", margin: 0 }}>A clear flow for every lesson. Better engagement. Stronger outcomes.</p>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <Users size={24} color="#4f46e5" />
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#4f46e5", margin: 0 }}>You lead. SparkVR supports. Students succeed.</p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -413,7 +421,7 @@ export default function TeachersPage() {
       ══════════════════════════════════════ */}
       <section style={{ padding: "60px 0", background: "#f8f9fc", position: "relative", overflow: "hidden" }}>
         {/* Right Side Image - 35% Width as requested */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: EASE }}
@@ -421,9 +429,9 @@ export default function TeachersPage() {
           style={{ position: "absolute", top: 0, right: 0, width: "35%", height: "80%", zIndex: 0 }}
         >
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
-            <motion.img 
+            <motion.img
               whileHover={{ scale: 1.05 }}
-              src="/teacher_4.png" alt="VR Learning Effortless" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} 
+              src="/teacher_4.png" alt="VR Learning Effortless" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.5) 50%, transparent 100%)" }} />
@@ -441,7 +449,7 @@ export default function TeachersPage() {
               </motion.div>
 
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(32px, 4vw, 44px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
-                Powerful learning.<br/>
+                Powerful learning.<br />
                 <span style={{ color: "#4f46e5" }}>Effortless for teachers.</span>
               </motion.h2>
 
@@ -457,23 +465,23 @@ export default function TeachersPage() {
                   { icon: MonitorPlay, title: "Works across devices", desc: "Compatible with your existing devices\nand classroom setup.", color: "#f59e0b" },
                   { icon: ShieldAlert, title: "Built for classrooms", desc: "Reliable, stable, and easy to manage\nin real classroom environments.", color: "#3b82f6" }
                 ].map((item, idx) => (
-                  <motion.div 
-                    key={idx} 
-                    {...fadeLeft(0.4 + idx * 0.1)} 
-                    whileHover={{ 
-                      rotateX: 5, 
-                      rotateY: -5, 
+                  <motion.div
+                    key={idx}
+                    {...fadeLeft(0.4 + idx * 0.1)}
+                    whileHover={{
+                      rotateX: 5,
+                      rotateY: -5,
                       scale: 1.02,
                       boxShadow: "0 20px 40px rgba(0,0,0,0.08)"
-                    }} 
-                    style={{ 
-                      display: "flex", 
-                      alignItems: "center", 
-                      gap: 20, 
-                      background: "#ffffff", 
-                      padding: "20px", 
-                      borderRadius: 16, 
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.03)", 
+                    }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 20,
+                      background: "#ffffff",
+                      padding: "20px",
+                      borderRadius: 16,
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
                       border: "1px solid #f1f5f9",
                       transformStyle: "preserve-3d" as const,
                       cursor: "pointer"
@@ -493,47 +501,47 @@ export default function TeachersPage() {
 
             {/* Right side area */}
             <div style={{ flex: 1.2, position: "relative", minHeight: 450, perspective: 1000 }}>
-               {/* Floating Pedagogy Box with 3D Effect - Smaller and Lower */}
-               <motion.div 
-                 initial={{ opacity: 0, y: 30 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 whileHover={{ rotateX: -5, rotateY: 5, scale: 1.05 }}
-                 style={{ 
-                   position: "absolute", 
-                   bottom: "0%", 
-                   right: "0%", 
-                   background: "rgba(255,255,255,0.95)", 
-                   backdropFilter: "blur(10px)", 
-                   padding: "12px 20px", 
-                   borderRadius: 20, 
-                   boxShadow: "0 15px 35px rgba(0,0,0,0.1)", 
-                   maxWidth: 260, 
-                   zIndex: 5, 
-                   border: "1px solid rgba(79, 70, 229, 0.1)",
-                   transformStyle: "preserve-3d" as const
-                 }}
-               >
-                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 18, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", flexShrink: 0 }}>
-                       <CheckCircle2 size={22} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                       <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a4d", margin: "0 0 2px 0", lineHeight: 1.2 }}>Less setup.<br/><span style={{ color: "#4f46e5" }}>More teaching.</span></h3>
-                       <p style={{ fontSize: 11, color: "#475569", margin: 0, fontWeight: 500, lineHeight: 1.3 }}>SparkVR makes learning simple and stress-free.</p>
-                    </div>
-                 </div>
-               </motion.div>
+              {/* Floating Pedagogy Box with 3D Effect - Smaller and Lower */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ rotateX: -5, rotateY: 5, scale: 1.05 }}
+                style={{
+                  position: "absolute",
+                  bottom: "0%",
+                  right: "0%",
+                  background: "rgba(255,255,255,0.95)",
+                  backdropFilter: "blur(10px)",
+                  padding: "12px 20px",
+                  borderRadius: 20,
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                  maxWidth: 260,
+                  zIndex: 5,
+                  border: "1px solid rgba(79, 70, 229, 0.1)",
+                  transformStyle: "preserve-3d" as const
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 18, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", flexShrink: 0 }}>
+                    <CheckCircle2 size={22} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a4d", margin: "0 0 2px 0", lineHeight: 1.2 }}>Less setup.<br /><span style={{ color: "#4f46e5" }}>More teaching.</span></h3>
+                    <p style={{ fontSize: 11, color: "#475569", margin: 0, fontWeight: 500, lineHeight: 1.3 }}>SparkVR makes learning simple and stress-free.</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Bottom Step Flow - Ultra Compact Height */}
           <motion.div {...fadeUp(0.6)} style={{ background: "#ffffff", borderRadius: 24, padding: "12px 40px", marginTop: 20, border: "1px solid #e2e8f0", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
             <h3 style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", textAlign: "center", marginBottom: 16 }}>Get started in 4 easy steps</h3>
-            
+
             <div style={{ display: "flex", justifyContent: "space-between", position: "relative", maxWidth: 1000, margin: "0 auto" }}>
               {/* Dotted Connecting Line */}
               <div style={{ position: "absolute", top: 28, left: "10%", right: "10%", height: 1, borderTop: "2px dotted #cbd5e1", zIndex: 0 }} />
-              
+
               {[
                 { num: 1, title: "Choose a lesson", desc: "Select curriculum lessons.", icon: BookOpen },
                 { num: 2, title: "Review content", desc: "Preview & adjust settings.", icon: Settings },
@@ -543,12 +551,12 @@ export default function TeachersPage() {
                 <motion.div key={idx} whileHover={{ y: -3 }} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1 }}>
                   {/* Number Badge */}
                   <div style={{ width: 16, height: 16, borderRadius: 8, background: "#4f46e5", color: "#fff", fontSize: 9, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 8 }}>{step.num}</div>
-                  
+
                   {/* Icon Box - Shrunk to 48px */}
                   <div style={{ width: 48, height: 48, borderRadius: 12, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 5px 15px rgba(0,0,0,0.04)", marginBottom: 12, border: "1px solid #f1f5f9" }}>
                     <step.icon size={22} color="#4f46e5" strokeWidth={1.5} />
                   </div>
-                  
+
                   {/* Text - Optimized for height */}
                   <h4 style={{ fontSize: 13, fontWeight: 800, color: "#0f172a", marginBottom: 2 }}>{step.title}</h4>
                   <p style={{ fontSize: 10, color: "#64748b", margin: 0, lineHeight: 1.2 }}>{step.desc}</p>
@@ -559,26 +567,26 @@ export default function TeachersPage() {
 
           {/* Thin Summary Bar at bottom */}
           <motion.div {...fadeUp(0.7)} style={{ background: "#f8faff", borderRadius: 16, padding: "16px 32px", marginTop: 20, border: "1px solid #e0e7ff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 16, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><Award size={18} color="#fff" /></div>
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", margin: 0 }}>Simple for you. Powerful for your students. <span style={{ fontWeight: 500, color: "#475569" }}>SparkVR fits seamlessly into your teaching.</span></p>
-             </div>
-             
-             <div style={{ display: "flex", gap: 40 }}>
-               {[
-                 { icon: Rocket, label: "Easy to learn", desc: "No complex training." },
-                 { icon: Clock, label: "Saves time", desc: "Streamlined tools." },
-                 { icon: ShieldCheck, label: "Stress-free", desc: "Reliable technology." }
-               ].map((item, idx) => (
-                 <div key={idx} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                   <item.icon size={24} color="#4f46e5" />
-                   <div>
-                     <h5 style={{ fontSize: 13, fontWeight: 800, color: "#001a4d", margin: 0 }}>{item.label}</h5>
-                     <p style={{ fontSize: 11, color: "#64748b", margin: 0 }}>{item.desc}</p>
-                   </div>
-                 </div>
-               ))}
-             </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <div style={{ width: 32, height: 32, borderRadius: 16, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><Award size={18} color="#fff" /></div>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", margin: 0 }}>Simple for you. Powerful for your students. <span style={{ fontWeight: 500, color: "#475569" }}>SparkVR fits seamlessly into your teaching.</span></p>
+            </div>
+
+            <div style={{ display: "flex", gap: 40 }}>
+              {[
+                { icon: Rocket, label: "Easy to learn", desc: "No complex training." },
+                { icon: Clock, label: "Saves time", desc: "Streamlined tools." },
+                { icon: ShieldCheck, label: "Stress-free", desc: "Reliable technology." }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <item.icon size={24} color="#4f46e5" />
+                  <div>
+                    <h5 style={{ fontSize: 13, fontWeight: 800, color: "#001a4d", margin: 0 }}>{item.label}</h5>
+                    <p style={{ fontSize: 11, color: "#64748b", margin: 0 }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -631,24 +639,24 @@ export default function TeachersPage() {
                   { icon: ClipboardList, title: "Assessment ready", desc: "Built-in prompts to check understanding.", color: "#f59e0b" },
                   { icon: Zap, title: "Supports real learning", desc: "Encourages critical thinking and curiosity.", color: "#3b82f6" }
                 ].map((item, idx) => (
-                  <motion.div 
-                    key={idx} 
-                    {...fadeLeft(0.4 + idx * 0.1)} 
-                    whileHover={{ 
-                      x: 10, 
-                      rotateX: 5, 
-                      rotateY: -5, 
+                  <motion.div
+                    key={idx}
+                    {...fadeLeft(0.4 + idx * 0.1)}
+                    whileHover={{
+                      x: 10,
+                      rotateX: 5,
+                      rotateY: -5,
                       scale: 1.02,
                       background: "#ffffff",
                       boxShadow: "0 10px 25px rgba(0,0,0,0.05)"
-                    }} 
-                    style={{ 
-                      display: "flex", 
-                      alignItems: "center", 
-                      gap: 16, 
-                      background: "rgba(255,255,255,0.7)", 
-                      padding: "12px 20px", 
-                      borderRadius: 14, 
+                    }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 16,
+                      background: "rgba(255,255,255,0.7)",
+                      padding: "12px 20px",
+                      borderRadius: 14,
                       border: "1px solid #f1f5f9",
                       transition: "all 0.3s ease",
                       transformStyle: "preserve-3d" as const,
@@ -669,21 +677,21 @@ export default function TeachersPage() {
             {/* Spacer for Right side */}
             <div style={{ flex: 1, position: "relative", minHeight: 350, perspective: 1000 }}>
               {/* Floating overlay box on image - Shrunk and Moved to Bottom */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ rotateX: -5, rotateY: 5, scale: 1.05 }} 
-                style={{ 
-                  position: "absolute", 
-                  bottom: "0%", 
-                  right: "5%", 
-                  background: "rgba(255,255,255,0.95)", 
-                  backdropFilter: "blur(10px)", 
-                  padding: "12px 20px", 
-                  borderRadius: 20, 
-                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)", 
+                whileHover={{ rotateX: -5, rotateY: 5, scale: 1.05 }}
+                style={{
+                  position: "absolute",
+                  bottom: "-15%",
+                  left: "-15%",
+                  background: "rgba(255,255,255,0.95)",
+                  backdropFilter: "blur(10px)",
+                  padding: "12px 20px",
+                  borderRadius: 20,
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
                   maxWidth: 260,
-                  zIndex: 5,
+                  zIndex: 10,
                   border: "1px solid rgba(79, 70, 229, 0.1)",
                   transformStyle: "preserve-3d" as const
                 }}
@@ -697,46 +705,334 @@ export default function TeachersPage() {
             </div>
           </div>
 
-          {/* Bottom Banner - Ultra Compact & Flush */}
-          <motion.div {...fadeUp(0.6)} className="bottom-banner" style={{ background: "#ffffff", borderRadius: 20, padding: "12px 32px", marginTop: 8, border: "1px solid #e2e8f0", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
-            <h3 style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", textAlign: "center", marginBottom: 12 }}>Aligned where it matters</h3>
 
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 16 }}>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          BOTTOM ALIGNMENT BANNER
+      ══════════════════════════════════════ */}
+      <div style={{ maxWidth: 1240, margin: "0 auto 60px", padding: "0 20px", position: "relative", zIndex: 2 }}>
+        <motion.div {...fadeUp(0.2)} className="bottom-banner" style={{ background: "#ffffff", borderRadius: 24, padding: "20px 40px", border: "1px solid #e2e8f0", boxShadow: "0 20px 50px rgba(0,0,0,0.04)" }}>
+          <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a4d", textAlign: "center", marginBottom: 20, letterSpacing: "-0.01em" }}>Aligned where it matters</h3>
+
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 24, marginBottom: 24 }}>
+            {[
+              { icon: BookOpen, title: "Subject coverage", desc: "Science, maths, & more." },
+              { icon: ClipboardList, title: "Grade appropriate", desc: "Designed for all stages." },
+              { icon: Layers, title: "Standards support", desc: "National frameworks." },
+              { icon: CheckCircle2, title: "Teacher confidence", desc: "Teach with certainty." },
+              { icon: TrendingUp, title: "Measurable impact", desc: "Improve outcomes." }
+            ].map((step, idx) => (
+              <motion.div key={idx} whileHover={{ y: -5 }} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", marginBottom: 4 }}>
+                  <step.icon size={22} strokeWidth={1.5} />
+                </div>
+                <h4 style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", margin: 0 }}>{step.title}</h4>
+                <p style={{ fontSize: 11, color: "#64748b", margin: 0, lineHeight: 1.3 }}>{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 32px", background: "linear-gradient(90deg, #f0f5ff 0%, #ffffff 100%)", borderRadius: 20, border: "1px solid #e0e7ff" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <div style={{ width: 44, height: 44, borderRadius: 22, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 5px 15px rgba(79, 70, 229, 0.2)" }}><ShieldCheck size={22} color="#fff" /></div>
+              <div>
+                <h4 style={{ fontSize: 17, fontWeight: 800, color: "#001a4d", margin: "0 0 2px 0" }}>Academic alignment you can trust.</h4>
+                <p style={{ fontSize: 13, color: "#4f46e5", fontWeight: 700, margin: 0 }}>Better teaching. Better outcomes.</p>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", gap: 32 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Target size={20} color="#4f46e5" />
+                <h5 style={{ fontSize: 13, fontWeight: 800, color: "#001a4d", margin: 0 }}>Teach with purpose</h5>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Users size={20} color="#4f46e5" />
+                <h5 style={{ fontSize: 13, fontWeight: 800, color: "#001a4d", margin: 0 }}>Engage with confidence</h5>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ══════════════════════════════════════
+          SECTION 6: Support & Training
+      ══════════════════════════════════════ */}
+      <section style={{ padding: "60px 0", background: "#f8fafc", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px" }}>
+          <div style={{ display: "flex", gap: 60, alignItems: "stretch", marginBottom: 40 }}>
+            {/* Left Content */}
+            <div style={{ flex: 1, maxWidth: "45%" }}>
+              <motion.div {...fadeUp(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <Headphones size={24} color="#6366f1" strokeWidth={2} />
+                <span style={{ fontSize: 14, fontWeight: 800, color: "#6366f1", letterSpacing: "0.1em", textTransform: "uppercase" }}>SUPPORT &amp; TRAINING</span>
+              </motion.div>
+              
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 4vw, 44px)", fontWeight: 900, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
+                You're never alone.<br />
+                <span style={{ color: "#6366f1" }}>We're here to help you succeed.</span>
+              </motion.h2>
+
+              <motion.p {...fadeUp(0.3)} style={{ fontSize: 18, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 32 }}>
+                SparkVR provides ongoing support and training so you can teach with confidence.
+              </motion.p>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {[
+                  { icon: Presentation, title: "Comprehensive training", desc: "Hands-on training to help you get started and go further.", color: "#8b5cf6" },
+                  { icon: Headphones, title: "Dedicated support", desc: "Our support team is always ready to assist you.", color: "#10b981" },
+                  { icon: BookOpen, title: "Teaching resources", desc: "Access lesson guides, worksheets, and best practices.", color: "#f59e0b" },
+                  { icon: TrendingUp, title: "Continuous growth", desc: "Workshops, webinars, and updates to keep your skills and lessons ahead.", color: "#3b82f6" }
+                ].map((item, idx) => (
+                  <motion.div 
+                    key={idx} 
+                    {...fadeLeft(0.4 + idx * 0.1)} 
+                    whileHover={{ scale: 1.02, x: 5, boxShadow: "0 10px 25px rgba(0,0,0,0.05)", borderColor: `${item.color}40` }}
+                    style={{ display: "flex", alignItems: "flex-start", gap: 16, background: "#ffffff", padding: "16px 20px", borderRadius: 16, boxShadow: "0 4px 20px rgba(0,0,0,0.03)", border: "1px solid #f1f5f9", cursor: "pointer", transition: "all 0.3s ease" }}
+                  >
+                    <div style={{ width: 48, height: 48, borderRadius: 24, background: `${item.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: item.color }}>
+                      <item.icon size={24} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: 16, fontWeight: 800, color: item.color, margin: "0 0 4px 0" }}>{item.title}</h4>
+                      <p style={{ fontSize: 14, color: "#64748b", margin: 0, lineHeight: 1.4 }}>{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Image Container */}
+            <div style={{ flex: 1, position: "relative", minHeight: 500 }}>
+              <motion.div {...fadeRight(0.4)} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, borderRadius: 24, overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.1)" }}>
+                <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_4.png" alt="SparkVR Training" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+              </motion.div>
+              
+              {/* Floating Card Right */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30, y: 10 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6, ease: EASE }}
+                whileHover={{ y: -5, boxShadow: "0 25px 50px rgba(0,0,0,0.12)" }}
+                style={{ position: "absolute", top: 40, right: -30, background: "#ffffff", borderRadius: 16, padding: "20px", boxShadow: "0 20px 40px rgba(0,0,0,0.08)", border: "1px solid #e0e7ff", width: 240, zIndex: 10 }}
+              >
+                <div style={{ background: "linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)", margin: "-20px -20px 20px -20px", padding: "16px 20px", borderTopLeftRadius: 16, borderTopRightRadius: 16, display: "flex", alignItems: "center", gap: 10 }}>
+                  <Headphones size={18} color="#ffffff" />
+                  <h4 style={{ color: "#ffffff", fontSize: 15, fontWeight: 800, margin: 0, letterSpacing: "0.02em" }}>We're here for you</h4>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  {[
+                    { icon: MessageSquare, text: "Quick help when you need it", color: "#8b5cf6" },
+                    { icon: Mail, text: "Multiple support channels", color: "#3b82f6" },
+                    { icon: Users, text: "A team that understands education", color: "#10b981" },
+                    { icon: Star, text: "Reliable. Responsive. Available.", color: "#f59e0b" }
+                  ].map((it, i) => (
+                    <motion.div key={i} whileHover={{ x: 4 }} style={{ display: "flex", alignItems: "flex-start", gap: 14, cursor: "pointer" }}>
+                      <div style={{ width: 24, height: 24, borderRadius: 6, background: `${it.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <it.icon size={14} color={it.color} />
+                      </div>
+                      <p style={{ fontSize: 13, color: "#334155", margin: 0, fontWeight: 600, lineHeight: 1.4 }}>{it.text}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Floating Card Bottom - Pushed to corner so center is free */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
+                whileHover={{ y: -5, scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
+                style={{ position: "absolute", bottom: -20, left: -20, maxWidth: 360, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", padding: "16px 24px", borderRadius: 16, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(79, 70, 229, 0.1)", display: "flex", gap: 16, alignItems: "center", zIndex: 10 }}
+              >
+                <div style={{ width: 48, height: 48, borderRadius: 24, background: "linear-gradient(135deg, #f0f5ff 0%, #e0e7ff 100%)", border: "1px solid #c7d2fe", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <ShieldCheck size={24} color="#4f46e5" />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#0f172a", margin: "0 0 2px 0" }}>Your success is our priority.</h4>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: "#4f46e5", margin: "0 0 4px 0" }}>We support you at every step.</p>
+                  <p style={{ fontSize: 12, color: "#475569", margin: 0, fontWeight: 500 }}>So you can focus on what matters most—your students.</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Bottom Banner */}
+          <motion.div {...fadeUp(0.6)} style={{ background: "#f0f5ff", borderRadius: 24, padding: "30px", border: "1px solid #e0e7ff" }}>
+            <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", textAlign: "center", marginBottom: 24 }}>Support that empowers educators</h3>
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 20, marginBottom: 24 }}>
               {[
-                { icon: BookOpen, title: "Subject coverage", desc: "Science, maths, & more." },
-                { icon: ClipboardList, title: "Grade appropriate", desc: "Designed for all stages." },
-                { icon: Layers, title: "Standards support", desc: "National frameworks." },
-                { icon: CheckCircle2, title: "Teacher confidence", desc: "Teach with certainty." },
-                { icon: TrendingUp, title: "Measurable impact", desc: "Improve outcomes." }
+                { icon: Users, title: "Onboarding & Training", desc: "Get up to speed with guided sessions and hands-on practice." },
+                { icon: Headphones, title: "Help & Troubleshooting", desc: "Fast, friendly support whenever you need it." },
+                { icon: BookOpen, title: "Resource Library", desc: "Access lesson plans, guides, and classroom materials." },
+                { icon: Calendar, title: "Webinars & Workshops", desc: "Stay updated with expert sessions and peer learning." },
+                { icon: RefreshCcw, title: "Updates & Innovations", desc: "Regular feature updates to enhance your teaching." }
               ].map((step, idx) => (
-                <motion.div key={idx} whileHover={{ y: -3 }} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                  <step.icon size={20} color="#4f46e5" strokeWidth={1.5} />
-                  <h4 style={{ fontSize: 13, fontWeight: 800, color: "#0f172a", margin: 0 }}>{step.title}</h4>
-                  <p style={{ fontSize: 10, color: "#64748b", margin: 0, lineHeight: 1.2 }}>{step.desc}</p>
+                <motion.div key={idx} whileHover={{ y: -5 }} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, cursor: "pointer" }}>
+                  <motion.div whileHover={{ scale: 1.1, backgroundColor: "#6366f1", color: "#ffffff" }} transition={{ duration: 0.2 }} style={{ width: 44, height: 44, borderRadius: 22, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", color: "#6366f1", marginBottom: 4, boxShadow: "0 8px 15px rgba(0,0,0,0.05)" }}>
+                    <step.icon size={22} strokeWidth={1.5} />
+                  </motion.div>
+                  <h4 style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", margin: 0 }}>{step.title}</h4>
+                  <p style={{ fontSize: 12, color: "#64748b", margin: 0, lineHeight: 1.4, fontWeight: 500 }}>{step.desc}</p>
                 </motion.div>
               ))}
             </div>
-
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12, padding: "10px 24px", background: "#f0f5ff", borderRadius: 16 }}>
+            
+            <div style={{ background: "#ffffff", borderRadius: 16, padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", border: "1px solid #e2e8f0" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 18, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><ShieldCheck size={18} color="#fff" /></div>
+                <Heart size={20} color="#6366f1" />
+                <h4 style={{ fontSize: 16, fontWeight: 800, color: "#0f172a", margin: 0 }}>We're more than a platform. We're your teaching partner.</h4>
+              </div>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "#6366f1", margin: 0 }}>Together, we create better learning experiences.</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SECTION 7: Get Started / CTA
+      ══════════════════════════════════════ */}
+      <section style={{ padding: "80px 0 60px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px" }}>
+          <div style={{ display: "flex", gap: 60, alignItems: "stretch", marginBottom: 60 }}>
+            {/* Left Content */}
+            <div style={{ flex: 1, maxWidth: "45%" }}>
+              <motion.div {...fadeUp(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+                <Rocket size={24} color="#6366f1" strokeWidth={2} />
+                <span style={{ fontSize: 14, fontWeight: 800, color: "#6366f1", letterSpacing: "0.1em", textTransform: "uppercase" }}>GET STARTED WITH SPARKVR</span>
+              </motion.div>
+              
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 4.5vw, 48px)", fontWeight: 900, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+                Ready to transform<br />
+                <span style={{ color: "#6366f1" }}>the way you teach?</span>
+              </motion.h2>
+
+              <motion.p {...fadeUp(0.3)} style={{ fontSize: 18, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 40 }}>
+                Join thousands of teachers who are creating engaging, effective, and meaningful learning experiences with SparkVR.
+              </motion.p>
+
+              {/* Big CTA Card */}
+              <motion.div {...fadeUp(0.4)} whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.06)" }} style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)", borderRadius: 24, padding: "32px", border: "1px solid #e2e8f0", boxShadow: "0 10px 30px rgba(0,0,0,0.03)", transition: "all 0.3s ease" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 24 }}>
+                  <motion.div whileHover={{ rotate: 15, scale: 1.1 }} style={{ width: 80, height: 80, borderRadius: 20, background: "linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(79, 70, 229, 0.3)" }}>
+                    <Rocket size={40} color="#ffffff" strokeWidth={1.5} />
+                  </motion.div>
+                  <div>
+                    <h3 style={{ fontSize: 24, fontWeight: 800, color: "#0f172a", margin: "0 0 8px 0" }}>Let's create better</h3>
+                    <h3 style={{ fontSize: 24, fontWeight: 800, color: "#6366f1", margin: 0 }}>learning together.</h3>
+                  </div>
+                </div>
+                <p style={{ fontSize: 16, color: "#475569", fontWeight: 600, marginBottom: 24 }}>Get started in minutes and see the impact in every class.</p>
+                <div style={{ position: "relative" }}>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} style={{ width: "100%", padding: "16px 24px", background: "linear-gradient(90deg, #4f46e5 0%, #6366f1 100%)", color: "#ffffff", border: "none", borderRadius: 12, fontSize: 18, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 12, boxShadow: "0 10px 20px rgba(99, 102, 241, 0.3)" }}>
+                    Get Started Now <ArrowRight size={20} strokeWidth={2.5} />
+                  </motion.div>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 16 }}>
+                  <ShieldCheck size={16} color="#475569" />
+                  <span style={{ fontSize: 13, color: "#475569", fontWeight: 600 }}>Trusted by educators. Built for classrooms.</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Image Container */}
+            <div style={{ flex: 1, position: "relative", minHeight: 500 }}>
+              <motion.div {...fadeLeft(0.4)} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, borderRadius: 24, overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.1)" }}>
+                <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_2.png" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+              </motion.div>
+              
+              {/* Floating Card Right - pushed to corner so center is free */}
+              <motion.div 
+                initial="initial" 
+                whileInView="whileInView" 
+                viewport={{ once: true }} 
+                variants={{
+                  initial: {},
+                  whileInView: { transition: { staggerChildren: 0.15, delayChildren: 0.6 } }
+                }}
+                style={{ position: "absolute", top: 40, right: -40, display: "flex", flexDirection: "column", gap: 10, zIndex: 10 }}
+              >
+                {[
+                  { icon: Users, text: "Engage", color: "#8b5cf6" },
+                  { icon: Glasses, text: "Explore", color: "#3b82f6" },
+                  { icon: Lightbulb, text: "Explain", color: "#10b981" },
+                  { icon: BarChart2, text: "Excel", color: "#f59e0b" }
+                ].map((it, i) => (
+                  <motion.div 
+                    key={i} 
+                    variants={{
+                      initial: { opacity: 0, x: 20 },
+                      whileInView: { opacity: 1, x: 0 }
+                    }}
+                    transition={{ type: "spring", stiffness: 100, damping: 12 }}
+                    whileHover={{ x: -10, scale: 1.05, boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
+                    style={{ background: "#ffffff", padding: "12px 24px", borderRadius: 14, display: "flex", alignItems: "center", gap: 16, boxShadow: "0 10px 20px rgba(0,0,0,0.06)", border: "1px solid #e2e8f0", borderLeft: `5px solid ${it.color}`, cursor: "pointer" }}
+                  >
+                    <it.icon size={22} color={it.color} />
+                    <span style={{ fontSize: 16, fontWeight: 800, color: "#0f172a", letterSpacing: "0.02em" }}>{it.text}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Bottom Banner */}
+          <motion.div {...fadeUp(0.6)} style={{ background: "#f8fafc", borderRadius: 24, padding: "30px", border: "1px solid #e2e8f0" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 24 }}>
+              <div style={{ height: 2, width: 40, background: "#cbd5e1" }}></div>
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", textAlign: "center", margin: 0 }}>Why teachers choose SparkVR</h3>
+              <div style={{ height: 2, width: 40, background: "#cbd5e1" }}></div>
+            </div>
+            
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 16, marginBottom: 30 }}>
+              {[
+                { icon: ShieldCheck, title: "Teacher-guided", desc: "and in control" },
+                { icon: Target, title: "Aligned with", desc: "curriculum" },
+                { icon: Users, title: "Engaging for", desc: "every student" },
+                { icon: Settings, title: "Simple, reliable,", desc: "and easy to use" },
+                { icon: Headphones, title: "Support that", desc: "empowers you" }
+              ].map((step, idx) => (
+                <motion.div key={idx} whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.05)", borderColor: "#c7d2fe" }} style={{ flex: 1, display: "flex", alignItems: "center", gap: 12, background: "#ffffff", padding: "14px", borderRadius: 16, border: "1px solid #e2e8f0", cursor: "pointer", transition: "all 0.3s ease" }}>
+                  <motion.div whileHover={{ rotate: 15 }} style={{ width: 40, height: 40, borderRadius: 12, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", flexShrink: 0 }}>
+                    <step.icon size={20} strokeWidth={2} />
+                  </motion.div>
+                  <div>
+                    <h4 style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", margin: "0 0 2px 0", lineHeight: 1.2 }}>{step.title}</h4>
+                    <p style={{ fontSize: 12, color: "#64748b", margin: 0, fontWeight: 500 }}>{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.05)", borderColor: "#c7d2fe" }} style={{ background: "#ffffff", borderRadius: 20, padding: "24px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", border: "1px solid #e2e8f0", transition: "all 0.3s ease" }}>
+              <div style={{ flex: 1, display: "flex", gap: 16, borderRight: "1px solid #e2e8f0", paddingRight: 32 }}>
+                <Quote size={40} color="#8b5cf6" style={{ opacity: 0.3, flexShrink: 0, marginTop: -8 }} />
                 <div>
-                  <h4 style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px 0" }}>Academic alignment you can trust.</h4>
-                  <p style={{ fontSize: 12, color: "#4f46e5", fontWeight: 600, margin: 0 }}>Better teaching. Better outcomes.</p>
+                  <p style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", margin: "0 0 12px 0", lineHeight: 1.5, fontStyle: "italic" }}>"SparkVR empowers me to teach better and helps my students learn deeper."</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ width: 24, height: 24, borderRadius: 12, background: "#e2e8f0", display: "flex", alignItems: "center", justifyContent: "center" }}><Users size={12} color="#64748b" /></div>
+                    <p style={{ fontSize: 13, color: "#64748b", margin: 0, textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 800 }}>A Teacher</p>
+                  </div>
                 </div>
               </div>
 
-              <div style={{ display: "flex", gap: 20 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <Target size={18} color="#4f46e5" />
-                  <h5 style={{ fontSize: 12, fontWeight: 800, color: "#001a4d", margin: 0 }}>Teach with purpose</h5>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <Users size={18} color="#4f46e5" />
-                  <h5 style={{ fontSize: 12, fontWeight: 800, color: "#001a4d", margin: 0 }}>Engage with confidence</h5>
+              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 20, paddingLeft: 32 }}>
+                <motion.div whileHover={{ rotate: 10, scale: 1.1 }} style={{ width: 56, height: 56, borderRadius: 16, background: "linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(79, 70, 229, 0.3)" }}><ShieldCheck size={28} color="#fff" /></motion.div>
+                <div>
+                  <h4 style={{ fontSize: 20, fontWeight: 900, color: "#0f172a", margin: "0 0 4px 0", letterSpacing: "-0.01em" }}>You teach. We support.</h4>
+                  <p style={{ fontSize: 15, color: "#6366f1", fontWeight: 800, margin: 0 }}>Together, we create better learning.</p>
                 </div>
               </div>
-            </div>
+
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", paddingLeft: 32 }}>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ padding: "16px 28px", background: "#0f172a", color: "#ffffff", border: "none", borderRadius: 14, fontSize: 16, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", gap: 10, boxShadow: "0 10px 20px rgba(15, 23, 42, 0.2)", marginBottom: 12 }}>
+                  Start Your Journey <ArrowRight size={18} strokeWidth={2.5} />
+                </motion.div>
+                <p style={{ fontSize: 13, color: "#64748b", margin: 0, fontWeight: 600 }}>Better teaching. Better outcomes.</p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

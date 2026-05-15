@@ -9,8 +9,11 @@ const NAV_LINKS = [
   { label: "FOR TEACHERS",      href: "/teachers" },
   { label: "VR LABS",           href: "/vr-labs" },
   { label: "SUBJECTS & GRADES", href: "/subjects" },
+  { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
+  { label: "TIMETABLE",         href: "/timetable" },
   { label: "CASE STUDIES",      href: "/case-studies" },
   { label: "BLOG",              href: "/blog" },
+  { label: "ABOUT",             href: "/about" },
   { label: "HELP CENTER",       href: "/help" },
   { label: "CONTACT",           href: "/contact" },
 ];
