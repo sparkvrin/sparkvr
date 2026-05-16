@@ -348,13 +348,27 @@ export default function Hero() {
 
       {/* ── SPACE / SATURN (Mid-Right) with floating animation ── */}
       <div style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}>
-                <ambientLight intensity={1.8} />
-                <directionalLight position={[-5, 6, 5]} intensity={3.5} />
-                <Suspense fallback={null}><Saturn3D /></Suspense>
-              </Canvas>
-            </motion.div>
-            <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>SPACE</div>
+        <motion.div
+          animate={{ y: [0, 18, 0], rotateX: [0, -8, 0], rotateY: [0, 8, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(180,130,50,0.22), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+            transition={{ duration: 0.3 }}
+            style={{ ...GLASS_STYLE, width: 155, height: 155 }}
+          >
+            <Canvas
+              camera={{ position: [0, 0, 3.8], fov: 42 }}
+              gl={{ alpha: true, antialias: true }}
+              style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
+            >
+              <ambientLight intensity={1.8} />
+              <directionalLight position={[-5, 6, 5]} intensity={3.5} />
+              <Suspense fallback={null}><Saturn3D /></Suspense>
+            </Canvas>
           </motion.div>
+          <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>SPACE</div>
         </motion.div>
       </div>
 
