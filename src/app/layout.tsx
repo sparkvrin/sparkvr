@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AR_One_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./responsive.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -20,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr.com"),
+  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
   title: "SparkVR | Every Idea Begins With A Spark",
   description: "SparkVR transforms abstract textbook concepts into unforgettable 3D VR explorations. Immersive learning for modern classrooms.",
   keywords: ["VR", "Education", "Virtual Reality", "EdTech", "SparkVR", "Immersive Learning", "STEM", "Classroom Tech"],
@@ -49,12 +50,24 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en">
       <body className={`${arOneSans.variable} ${arOneSans.className} ${jetbrainsMono.variable}`}>
+        <link
+          rel="preload"
+          href="/hero-background.webp"
+          as="image"
+          type="image/webp"
+        />
         <ScrollProgress />
         <Navbar />
         <main>{children}</main>

@@ -101,10 +101,10 @@ export default function Footer() {
       <div style={{ maxWidth: 1300, margin: "0 auto", padding: "0 40px", position: "relative", zIndex: 10 }}>
         
         {/* ── Top Main Content ── */}
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 60, marginBottom: 60 }}>
+        <div className="footer-main-grid" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 60, marginBottom: 60 }}>
           
           {/* Left Column: Brand & Socials */}
-          <div style={{ maxWidth: 350, flexShrink: 0 }}>
+          <div className="footer-brand-col" style={{ maxWidth: 350, flexShrink: 0 }}>
             <Link href="/" style={{ display: "inline-block", marginBottom: -10 }}>
               <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ height: 140, objectFit: "contain", transform: "translateX(-15px)" }} />
             </Link>
@@ -136,10 +136,14 @@ export default function Footer() {
           </div>
 
           {/* Right Columns: Links Grid */}
-          <div style={{ 
-            display: "flex", flex: 1, justifyContent: "space-between", 
-            paddingTop: 10, gap: 20
-          }}>
+          <div
+            className="footer-links-grid"
+            style={{ 
+              display: "flex", flex: 1, justifyContent: "space-between", 
+              paddingTop: 10, gap: 20,
+              flexWrap: "wrap",
+            }}
+          >
             {[
               {
                 title: "Product", icon: Package,
@@ -227,10 +231,13 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div style={{ 
-          borderTop: "1px solid rgba(59,130,246,0.15)", paddingTop: 28,
-          display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 20
-        }}>
+        <div
+          className="footer-bottom-bar"
+          style={{ 
+            borderTop: "1px solid rgba(59,130,246,0.15)", paddingTop: 28,
+            display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 20
+          }}
+        >
           {/* Copyright */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{
@@ -246,7 +253,7 @@ export default function Footer() {
           </div>
 
           {/* Legal Links */}
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div className="footer-legal-links" style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
             {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((item, i) => (
               <React.Fragment key={item}>
                 <a href="#" style={{ fontSize: 14, color: "#475569", textDecoration: "none", fontWeight: 500 }}>
