@@ -184,7 +184,7 @@ export default function Hero() {
         height: "100vh",
         minHeight: 640,
         overflow: "hidden",
-        background: "url('/hero-background.png') center/cover no-repeat",
+        background: "url('/hero-background.webp') center/cover no-repeat",
         backgroundColor: "#f6f8ff",
         fontFamily: "'AR One Sans', sans-serif",
       }}
@@ -216,7 +216,7 @@ export default function Hero() {
         transition={{ duration: 160, repeat: Infinity, ease: "linear" }}
         style={{
           position: "absolute", top: "50%", left: "65%",
-          width: 680, height: 680, marginTop: -340, marginLeft: -340,
+          width: "min(100%, 680px)", height: 680, marginTop: -340, marginLeft: -340,
           borderRadius: "50%",
           border: "1.5px solid rgba(147,197,253,0.2)",
           zIndex: 0, pointerEvents: "none",
@@ -227,7 +227,7 @@ export default function Hero() {
         transition={{ duration: 240, repeat: Infinity, ease: "linear" }}
         style={{
           position: "absolute", top: "50%", left: "65%",
-          width: 960, height: 960, marginTop: -480, marginLeft: -480,
+          width: "min(100%, 960px)", height: 960, marginTop: -480, marginLeft: -480,
           borderRadius: "50%",
           border: "1px solid rgba(196,181,253,0.11)",
           zIndex: 0, pointerEvents: "none",
@@ -238,7 +238,7 @@ export default function Hero() {
         transition={{ duration: 320, repeat: Infinity, ease: "linear" }}
         style={{
           position: "absolute", top: "50%", left: "65%",
-          width: 1240, height: 1240, marginTop: -620, marginLeft: -620,
+          width: "min(100%, 1240px)", height: 1240, marginTop: -620, marginLeft: -620,
           borderRadius: "50%",
           border: "0.5px solid rgba(147,197,253,0.07)",
           zIndex: 0, pointerEvents: "none",
@@ -274,8 +274,8 @@ export default function Hero() {
         zIndex: 10, pointerEvents: "none",
       }}>
         <motion.div style={{ x: imgX, y: imgY, perspective: 1000, transformStyle: "preserve-3d" }}>
-          <motion.img
-            src="/student_proper.png"
+          <motion.img loading="lazy" decoding="async"
+            src="/student_proper.webp"
             alt="Student with VR headset"
             animate={{ 
               y: [0, -18, 0],
@@ -340,8 +340,8 @@ export default function Hero() {
                 position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
                 background: "rgba(255,255,255,0.6)",
               }} />
-              <img
-                src="/anatomy.png"
+              <img loading="lazy" decoding="async"
+                src="/anatomy.webp"
                 alt="Human Anatomy"
                 style={{
                   width: "78%", height: "78%",
@@ -373,8 +373,8 @@ export default function Hero() {
                 position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
                 background: "rgba(255,255,255,0.55)",
               }} />
-              <img
-                src="/cell_proper.png"
+              <img loading="lazy" decoding="async"
+                src="/cell_proper.webp"
                 alt="Cell Structure"
                 style={{
                   width: "82%", height: "82%",

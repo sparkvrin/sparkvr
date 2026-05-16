@@ -172,7 +172,7 @@ export default function CTASection() {
         width: "100%", 
         minHeight: "100vh", 
         padding: "clamp(60px, 8vh, 120px) clamp(24px, 5vw, 60px)",
-        backgroundImage: "url('/backgroundimagesecsion5.png')",
+        backgroundImage: "url('/backgroundimagesecsion5.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -189,7 +189,7 @@ export default function CTASection() {
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - TEXT & CTA
         ───────────────────────────────────────────────────────── */}
-        <div style={{ flex: "1 1 45%", minWidth: 350, maxWidth: 600, paddingBottom: 40 }}>
+        <div style={{ flex: "1 1 45%", minWidth: "min(100%, 350px)", maxWidth: 600, paddingBottom: 40 }}>
          
 
           <motion.h2 
@@ -299,7 +299,7 @@ export default function CTASection() {
             <motion.div 
               style={{ position: "absolute", bottom: "-25%", left: "0%", right: "10%", height: "170%", zIndex: 10, display: "flex", justifyContent: "center" }}
             >
-               <img src="/girl_vr_tapping.png" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
+               <img loading="lazy" decoding="async" src="/girl_vr_tapping.webp" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
             </motion.div>
 
             {/* Floating Cards (Properly Spaced) */}

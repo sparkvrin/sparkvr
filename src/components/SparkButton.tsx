@@ -74,7 +74,7 @@ export default function SparkButton({
         width: fullWidth ? "100%" : undefined,
         padding: `0 ${padX}px`,
         /* Variant Styling */
-        backgroundImage: isWhite ? "none" : "url('/c.png')",
+        backgroundImage: isWhite ? "none" : "url('/c.webp')",
         backgroundColor: isWhite ? "#ffffff" : "transparent",
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",

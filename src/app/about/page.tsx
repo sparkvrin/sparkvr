@@ -146,7 +146,7 @@ export default function AboutPage() {
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/backgroundabout.png')",
+            backgroundImage: "url('/backgroundabout.webp')",
             backgroundSize: "cover", backgroundPosition: "center", zIndex: 0,
           }}
         />
@@ -475,7 +475,7 @@ export default function AboutPage() {
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
           style={{
             position: "absolute", top: "-10%", right: "-5%",
-            width: 600, height: 600,
+            width: "min(100%, 600px)", height: 600,
             backgroundImage: "radial-gradient(circle, rgba(0,82,204,0.06) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
             maskImage: "radial-gradient(circle, black, transparent 70%)",
@@ -658,7 +658,7 @@ export default function AboutPage() {
               boxShadow: "0 15px 40px rgba(0,0,0,0.02)", gap: 20, flexWrap: "wrap",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 20, flex: 1, minWidth: 280 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 20, flex: 1, minWidth: "min(100%, 280px)" }}>
               <motion.div
                 animate={{
                   boxShadow: ["0 8px 20px rgba(0,82,204,0.2)", "0 14px 32px rgba(0,82,204,0.38)", "0 8px 20px rgba(0,82,204,0.2)"],
@@ -718,7 +718,7 @@ export default function AboutPage() {
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/aboutbackground4thsection.png')",
+            backgroundImage: "url('/aboutbackground4thsection.webp')",
             backgroundSize: "cover", backgroundPosition: "center right", zIndex: 0,
           }}
         />
@@ -1282,7 +1282,7 @@ export default function AboutPage() {
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/background6thimage.png')",
+            backgroundImage: "url('/background6thimage.webp')",
             backgroundSize: "cover",
             backgroundPosition: "right 15% top 5%", // Precision positioning to clear faces
             zIndex: 0,

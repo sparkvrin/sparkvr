@@ -69,7 +69,7 @@ export default function SchoolHubPage() {
         <div style={{
           position: "relative",
           width: "32%",
-          minWidth: "450px",
+          minWidth: "min(100%, 450px)",
           minHeight: "100vh",
           background: "#f0f5ff",
           display: "flex",
@@ -142,7 +142,7 @@ export default function SchoolHubPage() {
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5, ease: EASE }}
-            style={{ position: "absolute", inset: 0, backgroundImage: "url('/backgroundimageschoolhub.png')", backgroundSize: "cover", backgroundPosition: "center center" }}
+            style={{ position: "absolute", inset: 0, backgroundImage: "url('/backgroundimageschoolhub.webp')", backgroundSize: "cover", backgroundPosition: "center center" }}
           />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #f0f5ff 0%, rgba(240,245,255,0.4) 10%, transparent 25%)" }} />
         </div>
@@ -206,25 +206,25 @@ export default function SchoolHubPage() {
               <div style={{ padding: "32px 24px", display: "flex", flexDirection: "column", gap: 32 }}>
                 {[
                   {
-                    image: "/school_empty_room.png",
+                    image: "/school_empty_room.webp",
                     icon: <LayoutTemplate size={24} color="#dc2626" />,
                     title: "We don't have enough\nspace or infrastructure.",
                     desc: "Setting up a new lab seems difficult\nand expensive."
                   },
                   {
-                    image: "/school_router_offline.png",
+                    image: "/school_router_offline.webp",
                     icon: <WifiOff size={24} color="#dc2626" />,
                     title: "It will need constant\ninternet connectivity.",
                     desc: "Our internet is unreliable and\ndowntime will disrupt learning."
                   },
                   {
-                    image: "/school_teacher_stressed.png",
+                    image: "/school_teacher_stressed.webp",
                     icon: <User size={24} color="#dc2626" />,
                     title: "Teachers may find it\ndifficult to manage.",
                     desc: "New technology means more\ntraining and extra workload."
                   },
                   {
-                    image: "/school_vr_repair.png",
+                    image: "/school_vr_repair.webp",
                     icon: <Wrench size={24} color="#dc2626" />,
                     title: "Maintenance will be\ncomplex and costly.",
                     desc: "We worry about breakdowns,\nrepairs and hidden costs."
@@ -232,7 +232,7 @@ export default function SchoolHubPage() {
                 ].map((item, idx) => (
                   <motion.div key={idx} whileHover={{ scale: 1.02, x: 8, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", alignItems: "center", gap: 20, padding: 10, borderRadius: 16 }}>
                     <div style={{ width: 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
-                      <img src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ display: "flex", gap: 16 }}>
                       <div style={{ width: 48, height: 48, borderRadius: 24, background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -267,25 +267,25 @@ export default function SchoolHubPage() {
               <div style={{ padding: "32px 24px", display: "flex", flexDirection: "column", gap: 32 }}>
                 {[
                   {
-                    image: "/sparkvr_classroom.png",
+                    image: "/sparkvr_classroom.webp",
                     icon: <Box size={24} color="#16a34a" />,
                     title: "Uses existing rooms\nand infrastructure.",
                     desc: "SparkVR fits into your current\nclassrooms. No construction,\nno structural changes."
                   },
                   {
-                    image: "/sparkvr_kid_smiling.png",
+                    image: "/sparkvr_kid_smiling.webp",
                     icon: <WifiOff size={24} color="#16a34a" />,
                     title: "Fully offline content.\nNo internet during sessions.",
                     desc: "All experiences run locally on\nour devices. Learning never stops."
                   },
                   {
-                    image: "/backgroundimageschoolhub.png",
+                    image: "/backgroundimageschoolhub.webp",
                     icon: <UserCheck size={24} color="#16a34a" />,
                     title: "Teacher-friendly system\nwith simple controls.",
                     desc: "Intuitive dashboard, guided sessions\nand easy classroom management."
                   },
                   {
-                    image: "/backgroundimageschoolhub.png",
+                    image: "/backgroundimageschoolhub.webp",
                     icon: <ShieldCheck size={24} color="#16a34a" />,
                     title: "Predictable maintenance\nflow with local support.",
                     desc: "Durable devices, safe storage,\nregular checkups and local\nservice you can rely on."
@@ -293,7 +293,7 @@ export default function SchoolHubPage() {
                 ].map((item, idx) => (
                   <motion.div key={idx} whileHover={{ x: -5 }} style={{ display: "flex", alignItems: "center", gap: 20, flexDirection: "row-reverse" }}>
                     <div style={{ width: 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
-                      <img src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ display: "flex", gap: 16, flexDirection: "row-reverse", textAlign: "right" }}>
                       <div style={{ width: 48, height: 48, borderRadius: 24, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -351,7 +351,7 @@ export default function SchoolHubPage() {
                 topIcon: <Users size={32} color="#0052cc" />,
                 title: "Batch rotation system",
                 desc: "Students learn in small batches\nwith a fixed schedule so every\nchild gets equal access.",
-                image: "/sparkvr_kid_smiling.png",
+                image: "/sparkvr_kid_smiling.webp",
                 btmIcon: <Calendar size={20} color="#0052cc" />,
                 btmText: "Small batches.\nMaximum impact."
               },
@@ -360,7 +360,7 @@ export default function SchoolHubPage() {
                 topIcon: <LayoutDashboard size={32} color="#0052cc" />,
                 title: "Teacher control panel",
                 desc: "Teachers manage sessions,\ncontent and students from an\neasy-to-use dashboard.",
-                image: "/backgroundimageschoolhub.png",
+                image: "/backgroundimageschoolhub.webp",
                 btmIcon: <MousePointerClick size={20} color="#0052cc" />,
                 btmText: "Full control.\nZero complexity."
               },
@@ -369,7 +369,7 @@ export default function SchoolHubPage() {
                 topIcon: <BatteryCharging size={32} color="#0052cc" />,
                 title: "Safe storage & charging",
                 desc: "Devices are safely stored and\ncharged in a smart cart that's\nbuilt for schools.",
-                image: "/backgroundimageschoolhub.png",
+                image: "/backgroundimageschoolhub.webp",
                 btmIcon: <ShieldCheck size={20} color="#0052cc" />,
                 btmText: "Safe. Secured.\nAlways ready."
               },
@@ -378,7 +378,7 @@ export default function SchoolHubPage() {
                 topIcon: <ClipboardList size={32} color="#0052cc" />,
                 title: "Structured lab management",
                 desc: "Clear usage tracking, reporting\nand maintenance flow keeps\neverything running smoothly.",
-                image: "/sparkvr_classroom.png",
+                image: "/sparkvr_classroom.webp",
                 btmIcon: <BarChart size={20} color="#0052cc" />,
                 btmText: "Track. Monitor.\nImprove continuously."
               }
@@ -413,7 +413,7 @@ export default function SchoolHubPage() {
 
                   {/* Image */}
                   <div style={{ width: "100%", height: 160, position: "relative", background: "#f8f9fc" }}>
-                    <img src={step.image} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img loading="lazy" decoding="async" src={step.image} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
 
                   {/* Bottom Text Block */}
@@ -450,7 +450,7 @@ export default function SchoolHubPage() {
       <section style={{ position: "relative", padding: "20px 20px 40px", zIndex: 1, overflow: "hidden", background: "#f8f9fc" }}>
 
         {/* Background Gradient/Image for Top Half */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", backgroundImage: "url('/backgroundimageschoolhub.png')", backgroundSize: "cover", backgroundPosition: "center top", opacity: 0.1, zIndex: 0 }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", backgroundImage: "url('/backgroundimageschoolhub.webp')", backgroundSize: "cover", backgroundPosition: "center top", opacity: 0.1, zIndex: 0 }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", background: "linear-gradient(to right, #f8f9fc 30%, rgba(248,249,252,0.6) 60%, transparent)", zIndex: 0 }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", background: "linear-gradient(to bottom, transparent 60%, #f8f9fc)", zIndex: 0 }} />
 
@@ -459,7 +459,7 @@ export default function SchoolHubPage() {
           {/* Top Hero-ish Area */}
           <div style={{ display: "flex", gap: 60, alignItems: "center", marginBottom: 80 }}>
             {/* Left Content */}
-            <div style={{ flex: 1, minWidth: 400 }}>
+            <div style={{ flex: 1, minWidth: "min(100%, 400px)" }}>
 
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Simple infrastructure.<br />
@@ -485,7 +485,7 @@ export default function SchoolHubPage() {
 
             {/* Right Large Image (Simulated by crop of background image) */}
             <motion.div {...scaleUp(0.5)} style={{ flex: 1.2, height: 440, borderRadius: 24, overflow: "hidden", position: "relative", boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
-              <img src="/backgroundimageschoolhub.png" alt="SparkVR Cart" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center" }} />
+              <img loading="lazy" decoding="async" src="/backgroundimageschoolhub.webp" alt="SparkVR Cart" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center" }} />
             </motion.div>
           </div>
 
@@ -496,25 +496,25 @@ export default function SchoolHubPage() {
                 icon: <Package size={32} color="#0052cc" />,
                 title: "Plug-and-play setup",
                 desc: "Pre-configured devices and systems\nensure quick installation with\nminimal effort.",
-                image: "/backgroundimageschoolhub.png"
+                image: "/backgroundimageschoolhub.webp"
               },
               {
                 icon: <Maximize size={32} color="#0052cc" />,
                 title: "Minimal space requirement",
                 desc: "Works in standard classrooms\nor labs without the need for\nstructural modifications.",
-                image: "/classroom_stock.jpg"
+                image: "/classroom_stock.webp"
               },
               {
                 icon: <Zap size={32} color="#0052cc" />,
                 title: "No complex wiring",
                 desc: "Runs on standard power outlets\nwith optimized power usage\nfor safety and efficiency.",
-                image: "/power_socket_stock.jpg"
+                image: "/power_socket_stock.webp"
               },
               {
                 icon: <ShieldCheck size={32} color="#0052cc" />,
                 title: "Safe & durable design",
                 desc: "Built for everyday school use\nwith child-safe materials\nand sturdy construction.",
-                image: "/vr_headset_stock.jpg"
+                image: "/vr_headset_stock.webp"
               }
             ].map((card, idx) => (
               <motion.div
@@ -536,7 +536,7 @@ export default function SchoolHubPage() {
                 </div>
 
                 <div style={{ width: "100%", height: 130, position: "relative" }}>
-                  <img src={card.image} alt={card.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: idx === 0 ? "right center" : "center" }} />
+                  <img loading="lazy" decoding="async" src={card.image} alt={card.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: idx === 0 ? "right center" : "center" }} />
                 </div>
               </motion.div>
             ))}
@@ -571,7 +571,7 @@ export default function SchoolHubPage() {
           <div style={{ display: "flex", gap: 60, alignItems: "center", marginBottom: 80 }}>
 
             {/* Left Content */}
-            <div style={{ flex: 1, minWidth: 450 }}>
+            <div style={{ flex: 1, minWidth: "min(100%, 450px)" }}>
               <motion.div {...fadeLeft(0.1)} style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "8px 16px", background: "#eff6ff", borderRadius: 8 }}>
                 <User size={18} color="#0052cc" />
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em", textTransform: "uppercase" }}>
@@ -633,7 +633,7 @@ export default function SchoolHubPage() {
               style={{ flex: 1.2, height: 600, borderRadius: 24, position: "relative", perspective: 1000 }}
             >
               <div style={{ width: "100%", height: "100%", borderRadius: 24, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,82,204,0.15)" }}>
-                <img src="/teacher_tablet.png" alt="Teacher Dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Teacher Dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </div>
 
               {/* Floating Quote */}
@@ -748,7 +748,7 @@ export default function SchoolHubPage() {
               </div>
               <div style={{ flex: 1, padding: "0 16px 16px", display: "flex", alignItems: "flex-end" }}>
                 <div style={{ width: "100%", height: 200, borderRadius: 16, overflow: "hidden", position: "relative", background: "#0f172a" }}>
-                  <img src="/sparkvr_classroom.png" alt="Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
+                  <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
                   <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", textAlign: "center" }}>
                     <div style={{ fontSize: 10, fontWeight: 700, color: "#38bdf8", letterSpacing: "0.1em", marginBottom: 4 }}>SESSION IN PROGRESS</div>
                     <div style={{ fontSize: 32, fontWeight: 800, color: "#fff", lineHeight: 1 }}>40:00</div>
@@ -895,7 +895,7 @@ export default function SchoolHubPage() {
           transition={{ duration: 1.5, ease: EASE }}
           style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "700px", zIndex: 0 }}
         >
-          <img src="/section7.png" alt="Consistent Experience" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right" }} />
+          <img loading="lazy" decoding="async" src="/section7.webp" alt="Consistent Experience" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right" }} />
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "30%", background: "linear-gradient(to right, #ffffff 0%, transparent 100%)" }} />
           <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, #ffffff 0%, transparent 100%)" }} />
         </motion.div>
@@ -1003,7 +1003,7 @@ export default function SchoolHubPage() {
           transition={{ duration: 1.5, ease: EASE }}
           style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0 }}
         >
-          <img src="/teacher_tablet.png" alt="Setup Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "left" }} />
+          <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Setup Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "left" }} />
           {/* Gradients to fade it seamlessly into the page background */}
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, transparent 100%)" }} />
           <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, #f8f9fc 0%, transparent 100%)" }} />
@@ -1139,7 +1139,7 @@ export default function SchoolHubPage() {
           transition={{ duration: 1.5, ease: EASE }}
           style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0 }}
         >
-          <img src="/section7.png" alt="Students in VR" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+          <img loading="lazy" decoding="async" src="/section7.webp" alt="Students in VR" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
           {/* Gradients to fade it seamlessly into the page background */}
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, transparent 100%)" }} />
           <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, #f8f9fc 0%, transparent 100%)" }} />
@@ -1257,7 +1257,7 @@ export default function SchoolHubPage() {
         >
           {/* Big curved shape for the image */}
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden", borderTopLeftRadius: "40% 100%" }}>
-            <img src="/vr_girl_pointing.png" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+            <img loading="lazy" decoding="async" src="/vr_girl_pointing.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
           </div>
           {/* Faint overlay to ensure text/bubbles pop if overlapping */}
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 40%, transparent 100%)" }} />

@@ -39,7 +39,7 @@ const BLOG_POSTS: Record<string, any> = {
     date: "May 24, 2024",
     readTime: "5 min read",
     author: "By SparkVR Editorial Team",
-    image: "/blog_vr.png",
+    image: "/blog_vr.webp",
     tags: ["Experiential Learning", "Concept Retention", "Education Research", "Immersive Learning"],
     contentChunks: [
       { type: "p", content: "For decades, education has relied on explanation. Teachers explain brilliantly. The curriculum is structured. Examinations are rigorous. Yet many concepts remain abstract. Students are asked to imagine." },
@@ -55,7 +55,7 @@ const BLOG_POSTS: Record<string, any> = {
     ]
   },
   "vr-modern-classrooms": {
-     slug: "vr-modern-classrooms", category: "EDUCATION", title: "How VR is Transforming Modern Classrooms", subtitle: "Explore the shift from textbook learning to immersive 3D explorations.", date: "May 4, 2024", readTime: "8 min read", author: "By SparkVR Editorial Team", image: "/blog_vr.png", tags: ["VR", "Classroom", "Tech"],
+     slug: "vr-modern-classrooms", category: "EDUCATION", title: "How VR is Transforming Modern Classrooms", subtitle: "Explore the shift from textbook learning to immersive 3D explorations.", date: "May 4, 2024", readTime: "8 min read", author: "By SparkVR Editorial Team", image: "/blog_vr.webp", tags: ["VR", "Classroom", "Tech"],
      contentChunks: [
        { type: "p", content: "Virtual Reality (VR) is no longer a futuristic concept—it's here, and it's changing the way students learn. By stepping inside a cell or walking through ancient Rome, history and science come alive in ways books never could." },
        { type: "h3", content: "Beyond the Textbook" },
@@ -65,7 +65,7 @@ const BLOG_POSTS: Record<string, any> = {
      ]
   },
   "future-cognitive-learning": {
-     slug: "future-cognitive-learning", category: "RESEARCH", title: "The Future of Cognitive Learning & Tech", subtitle: "Understanding the neural impact of interactive virtual environments.", date: "April 28, 2024", readTime: "12 min read", author: "By Sanya Verma", image: "/blog_tech.png", tags: ["Cognitive", "AI", "Neuroscience"],
+     slug: "future-cognitive-learning", category: "RESEARCH", title: "The Future of Cognitive Learning & Tech", subtitle: "Understanding the neural impact of interactive virtual environments.", date: "April 28, 2024", readTime: "12 min read", author: "By Sanya Verma", image: "/blog_tech.webp", tags: ["Cognitive", "AI", "Neuroscience"],
      contentChunks: [
        { type: "p", content: "Cognitive learning is evolving at a rapid pace, driven by breakthroughs in neuroscience and immersive technology. Interactive virtual environments are proving to be powerful tools for cognitive development." },
        { type: "h3", content: "Neural Mapping in VR" },
@@ -77,11 +77,11 @@ const BLOG_POSTS: Record<string, any> = {
 
 /* ─── SIDEBAR RELATED ARTICLES DATA ─── */
 const RELATED_ARTICLES = [
-  { title: "NEP 2020 in Action: Why Experiential Learning Matters", date: "May 16, 2024", readTime: "6 min read", image: "/blog_vr.png" },
-  { title: "Designing Classrooms for the Future", date: "May 08, 2024", readTime: "4 min read", image: "/blog_tech.png" },
-  { title: "The Role of VR in STEM Education", date: "Apr 30, 2024", readTime: "5 min read", image: "/blog1.png" },
-  { title: "From Imagination to Understanding", date: "Apr 22, 2024", readTime: "5 min read", image: "/blog_vr.png" },
-  { title: "Empowering Teachers with the Right Tools", date: "Apr 15, 2024", readTime: "4 min read", image: "/blog_tech.png" },
+  { title: "NEP 2020 in Action: Why Experiential Learning Matters", date: "May 16, 2024", readTime: "6 min read", image: "/blog_vr.webp" },
+  { title: "Designing Classrooms for the Future", date: "May 08, 2024", readTime: "4 min read", image: "/blog_tech.webp" },
+  { title: "The Role of VR in STEM Education", date: "Apr 30, 2024", readTime: "5 min read", image: "/blog1.webp" },
+  { title: "From Imagination to Understanding", date: "Apr 22, 2024", readTime: "5 min read", image: "/blog_vr.webp" },
+  { title: "Empowering Teachers with the Right Tools", date: "Apr 15, 2024", readTime: "4 min read", image: "/blog_tech.webp" },
 ];
 
 export default function BlogDetailPage() {
@@ -134,7 +134,7 @@ export default function BlogDetailPage() {
               onMouseLeave={() => { x.set(0); y.set(0); }}
               style={{ perspective: 1200 }}
             >
-              <motion.img 
+              <motion.img loading="lazy" decoding="async" 
                 src={post.image} 
                 alt={post.title} 
                 className="blog-hero-image" 
@@ -223,7 +223,7 @@ export default function BlogDetailPage() {
                       whileHover={{ x: 8, scale: 1.02 }} 
                       transition={{ duration: 0.3, ease: EASE }}
                     >
-                      <img src={article.image} alt={article.title} className="related-img" />
+                      <img loading="lazy" decoding="async" src={article.image} alt={article.title} className="related-img" />
                       <div className="related-text">
                         <h4>{article.title}</h4>
                         <p>{article.date} • {article.readTime}</p>

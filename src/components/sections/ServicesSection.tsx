@@ -47,10 +47,10 @@ function MedalIcon() {
    THE PROBLEM  —  subject image floaters
 ───────────────────────────────────────────────────────── */
 const imgStyle: React.CSSProperties = { width:"100%", height:"100%", objectFit:"contain" };
-function ForcesSVG()    { return <img src="/forces.png"            alt="Forces"    style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(29,78,216,0.22))" }} />; }
-function AnatomySVG()   { return <img src="/human_anatomy.png"     alt="Anatomy"   style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(220,38,38,0.24))"  }} />; }
-function CellSVG()      { return <img src="/cell1.png"             alt="Cell"      style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(109,40,217,0.24))"  }} />; }
-function PlantCellSVG() { return <img src="/biological_systems.png" alt="Bio"      style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(21,128,61,0.24))"   }} />; }
+function ForcesSVG()    { return <img loading="lazy" decoding="async" src="/forces.webp"            alt="Forces"    style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(29,78,216,0.22))" }} />; }
+function AnatomySVG()   { return <img loading="lazy" decoding="async" src="/human_anatomy.webp"     alt="Anatomy"   style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(220,38,38,0.24))"  }} />; }
+function CellSVG()      { return <img loading="lazy" decoding="async" src="/cell1.webp"             alt="Cell"      style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(109,40,217,0.24))"  }} />; }
+function PlantCellSVG() { return <img loading="lazy" decoding="async" src="/biological_systems.webp" alt="Bio"      style={{ ...imgStyle, filter:"drop-shadow(0 4px 14px rgba(21,128,61,0.24))"   }} />; }
 
 function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
   label: string; children: React.ReactNode; pos: React.CSSProperties;
@@ -258,10 +258,10 @@ export default function ServicesSection() {
         </div>
 
         {/* RIGHT */}
-        <div style={{ flex:1, position:"relative", overflow:"hidden", minHeight:"100vh", backgroundImage:"url('/background.png')", backgroundSize:"cover", backgroundPosition:"center" }}>
-          <img src="/student.png" alt="Student" style={{ position:"absolute", bottom:0, left:"67.5%", transform:"translateX(-50%)", height:"48%", objectFit:"contain", objectPosition:"bottom center", zIndex:6, pointerEvents:"none", filter:"drop-shadow(0 30px 60px rgba(0,40,130,0.25))" }}/>
+        <div style={{ flex:1, position:"relative", overflow:"hidden", minHeight:"100vh", backgroundImage:"url('/background.webp')", backgroundSize:"cover", backgroundPosition:"center" }}>
+          <img loading="lazy" decoding="async" src="/student.webp" alt="Student" style={{ position:"absolute", bottom:0, left:"67.5%", transform:"translateX(-50%)", height:"48%", objectFit:"contain", objectPosition:"bottom center", zIndex:6, pointerEvents:"none", filter:"drop-shadow(0 30px 60px rgba(0,40,130,0.25))" }}/>
           <div style={{ position:"absolute", top:"28%", left:"67.5%", transform:"translate(-50%,-50%)", zIndex:7, pointerEvents:"none" }}>
-            <motion.img animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} src="/quastion.png" alt="Question cloud" style={{ width:260, height:"auto", filter:"drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}/>
+            <motion.img loading="lazy" decoding="async" animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} src="/quastion.webp" alt="Question cloud" style={{ width:260, height:"auto", filter:"drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}/>
           </div>
           <SubjectBubble label="FORCES"             pos={{ top:"14%",left:"28%" }}  delay={0.2} dir={-1} w={190}><ForcesSVG /></SubjectBubble>
           <SubjectBubble label="HUMAN ANATOMY"      pos={{ top:"12%",right:"4%" }}  delay={1.2} dir={-1} w={180}><AnatomySVG /></SubjectBubble>
@@ -334,7 +334,7 @@ export default function ServicesSection() {
             ref={canvasRef}
             style={{
               position:"relative",
-              width:760, height:760,
+              width: "min(100%, 760px)", height:760,
               flexShrink:0,
               overflow:"visible",
               transform:`scale(${scale})`,
@@ -431,7 +431,7 @@ export default function ServicesSection() {
                         whileHover={{ scale: 1.08 }}
                         style={{ width:152, height:152, borderRadius:"50%", background:"linear-gradient(160deg,#e8f4ff 0%,#d8eeff 100%)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 6px 28px rgba(59,130,246,0.28)" }}
                       >
-                        <img src="/logo.png" alt="SparkVR" style={{ width:112, height:"auto", objectFit:"contain" }}/>
+                        <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ width:112, height:"auto", objectFit:"contain" }}/>
                       </motion.div>
                     </div>
                   </div>

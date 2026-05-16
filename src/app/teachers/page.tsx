@@ -83,10 +83,10 @@ export default function TeachersPage() {
           style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "100%", zIndex: 0 }}
         >
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
-            <motion.img
+            <motion.img loading="lazy" decoding="async"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" as const }}
-              src="/teacher_1.png" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              src="/teacher_1.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 100%)" }} />
@@ -174,10 +174,10 @@ export default function TeachersPage() {
           style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "100%", zIndex: 0 }}
         >
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
-            <motion.img
+            <motion.img loading="lazy" decoding="async"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" as const }}
-              src="/teacher_2.png" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              src="/teacher_2.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.8) 30%, transparent 100%)" }} />
@@ -270,9 +270,9 @@ export default function TeachersPage() {
           style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "85%", zIndex: 0 }}
         >
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
-            <motion.img
+            <motion.img loading="lazy" decoding="async"
               whileHover={{ scale: 1.05 }}
-              src="/teacher_3.png" alt="VR Learning Flow" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              src="/teacher_3.webp" alt="VR Learning Flow" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "30%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)" }} />
@@ -429,9 +429,9 @@ export default function TeachersPage() {
           style={{ position: "absolute", top: 0, right: 0, width: "35%", height: "80%", zIndex: 0 }}
         >
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
-            <motion.img
+            <motion.img loading="lazy" decoding="async"
               whileHover={{ scale: 1.05 }}
-              src="/teacher_4.png" alt="VR Learning Effortless" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              src="/teacher_4.webp" alt="VR Learning Effortless" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.5) 50%, transparent 100%)" }} />
@@ -603,10 +603,10 @@ export default function TeachersPage() {
           style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "100%", zIndex: 0 }}
         >
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
-            <motion.img
+            <motion.img loading="lazy" decoding="async"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 11, repeat: Infinity, ease: "linear" as const }}
-              src="/teacher_5.png" alt="VR Curriculum Alignment" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              src="/teacher_5.webp" alt="VR Curriculum Alignment" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 100%)" }} />
@@ -807,7 +807,7 @@ export default function TeachersPage() {
             {/* Right Image Container */}
             <div style={{ flex: 1, position: "relative", minHeight: 500 }}>
               <motion.div {...fadeRight(0.4)} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, borderRadius: 24, overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.1)" }}>
-                <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_4.png" alt="SparkVR Training" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <motion.img loading="lazy" decoding="async" whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_4.webp" alt="SparkVR Training" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </motion.div>
               
               {/* Floating Card Right */}
@@ -940,7 +940,7 @@ export default function TeachersPage() {
             {/* Right Image Container */}
             <div style={{ flex: 1, position: "relative", minHeight: 500 }}>
               <motion.div {...fadeLeft(0.4)} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, borderRadius: 24, overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.1)" }}>
-                <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_2.png" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <motion.img loading="lazy" decoding="async" whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_2.webp" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </motion.div>
               
               {/* Floating Card Right - pushed to corner so center is free */}

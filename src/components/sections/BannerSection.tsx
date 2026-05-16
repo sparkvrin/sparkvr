@@ -212,7 +212,7 @@ export default function BannerSection() {
 
         {/* LEFT: Big 3D Atom Canvas — overflow so rings extend outside */}
         <div style={{
-          width: 420, height: 300, flexShrink: 0,
+          width: "min(100%, 420px)", height: 300, flexShrink: 0,
           position: "relative",
           marginLeft: -40,
           overflow: "visible",

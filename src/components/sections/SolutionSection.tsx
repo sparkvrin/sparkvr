@@ -208,7 +208,7 @@ function SubjectCard({
               </div>
             ) : (
               imgSrc && (
-                <motion.img 
+                <motion.img loading="lazy" decoding="async" 
                   src={imgSrc} 
                   alt={title} 
                   animate={{ y: [0, -12, 0], rotate: [0, 4, -4, 0] }}
@@ -270,7 +270,7 @@ export default function SolutionSection() {
         
         {/* Glowing Orbs */}
         <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 8, repeat: Infinity }} style={{ position: "absolute", top: "10%", left: "40%", width: 300, height: 300, background: "rgba(59, 130, 246, 0.15)", filter: "blur(80px)", borderRadius: "50%" }} />
-        <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 10, repeat: Infinity, delay: 2 }} style={{ position: "absolute", bottom: "10%", right: "20%", width: 400, height: 400, background: "rgba(139, 92, 246, 0.15)", filter: "blur(100px)", borderRadius: "50%" }} />
+        <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 10, repeat: Infinity, delay: 2 }} style={{ position: "absolute", bottom: "10%", right: "20%", width: "min(100%, 400px)", height: 400, background: "rgba(139, 92, 246, 0.15)", filter: "blur(100px)", borderRadius: "50%" }} />
 
         {/* Small floating particles */}
         {[...Array(12)].map((_, i) => (
@@ -302,7 +302,7 @@ export default function SolutionSection() {
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - CONTENT
         ───────────────────────────────────────────────────────── */}
-        <div style={{ flex: "1 1 45%", minWidth: 350, maxWidth: 600, paddingBottom: 60 }}>
+        <div style={{ flex: "1 1 45%", minWidth: "min(100%, 350px)", maxWidth: 600, paddingBottom: 60 }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
               <motion.div 
@@ -501,7 +501,7 @@ export default function SolutionSection() {
                     position: "relative", zIndex: 2
                   }}
                 >
-                  <img src="/logo.png" alt="SparkVR Logo" style={{ width: 120, objectFit: "contain" }} />
+                  <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR Logo" style={{ width: 120, objectFit: "contain" }} />
                 </motion.div>
                 
               </Floating3DWrapper>
@@ -530,7 +530,7 @@ export default function SolutionSection() {
               <SubjectCard 
                 title="MATHEMATICS" 
                 desc="Visualize.\nReason.\nSolve with clarity." 
-                imgSrc="/forces.png" 
+                imgSrc="/forces.webp" 
                 gradient="linear-gradient(135deg, #2e1065 0%, #5b21b6 50%, #8b5cf6 100%)" 
                 delay={0.4} icon={Calculator}
               />
@@ -541,7 +541,7 @@ export default function SolutionSection() {
               <SubjectCard 
                 title="SOCIAL STUDIES" 
                 desc="Walk through history.\nConnect with civilizations." 
-                imgSrc="/student.png" 
+                imgSrc="/student.webp" 
                 gradient="linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #14b8a6 100%)" 
                 delay={0.6} icon={Globe2}
               />

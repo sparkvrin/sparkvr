@@ -110,7 +110,7 @@ const BLOG_POSTS = [
     title: "How VR is Transforming Modern Classrooms",
     desc: "Explore the shift from textbook learning to immersive 3D explorations.",
     category: "EDUCATION",
-    image: "/blog_vr.png",
+    image: "/blog_vr.webp",
     date: "May 4, 2024"
   },
   {
@@ -118,7 +118,7 @@ const BLOG_POSTS = [
     title: "The Future of Cognitive Learning & Tech",
     desc: "Understanding the neural impact of interactive virtual environments.",
     category: "RESEARCH",
-    image: "/blog_tech.png",
+    image: "/blog_tech.webp",
     date: "April 28, 2024"
   },
   {
@@ -126,7 +126,7 @@ const BLOG_POSTS = [
     title: "Evolution of the Science Lab: From Bunsen to Bits",
     desc: "Why virtual labs are becoming the safer, more scalable alternative.",
     category: "INNOVATION",
-    image: "/blog1.png",
+    image: "/blog1.webp",
     date: "April 15, 2024"
   }
 ];
@@ -145,7 +145,7 @@ export default function BlogPage() {
           transition={{ duration: 1.6, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/blog1.png')",
+            backgroundImage: "url('/blog1.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center right",
             zIndex: 0,
@@ -322,7 +322,7 @@ export default function BlogPage() {
                        flexDirection: "column"
                      }}>
                        <div style={{ position: "relative", height: 260, overflow: "hidden" }}>
-                         <motion.img 
+                         <motion.img loading="lazy" decoding="async" 
                            whileHover={{ scale: 1.1 }}
                            transition={{ duration: 0.8 }}
                            src={post.image} 

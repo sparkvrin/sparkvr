@@ -54,8 +54,8 @@ export default function Navbar() {
         }}>
           {/* LOGO */}
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", height: "100%" }}>
-            <img
-              src="/logo.png"
+            <img loading="lazy" decoding="async"
+              src="/logo.webp"
               alt="SparkVR"
               style={{ height: 110, width: "auto", objectFit: "contain" }}
             />

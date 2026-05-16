@@ -121,7 +121,7 @@ export default function ContactPage() {
           transition={{ duration: 1.5 }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/backgroundcontact.png')",
+            backgroundImage: "url('/backgroundcontact.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center right",
             zIndex: 0,
@@ -302,7 +302,7 @@ export default function ContactPage() {
                     whileHover={{ scale: 1.03 }}
                     style={{ borderRadius: 28, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", border: "4px solid #fff" }}
                   >
-                     <img src="/backgroundcontact.png" alt="VR Experience" style={{ width: "100%", height: 200, objectFit: "cover" }} />
+                     <img loading="lazy" decoding="async" src="/backgroundcontact.webp" alt="VR Experience" style={{ width: "100%", height: 200, objectFit: "cover" }} />
                   </motion.div>
                </div>
             </motion.div>

@@ -45,7 +45,7 @@ export default function Footer() {
       fontFamily: "'Inter', sans-serif"
     }}>
       {/* ── Background Graphics (Arcs & Floating Orbs) ── */}
-      <div style={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: -100, right: -100, width: "min(100%, 600px)", height: 600, pointerEvents: "none" }}>
         {[400, 500, 600].map((size, i) => (
           <motion.div
             key={i}
@@ -85,15 +85,15 @@ export default function Footer() {
       <div
         style={{
           position: "absolute", top: "10%", right: "-12%",
-          width: 550, opacity: 0.7, pointerEvents: "none",
+          width: "min(100%, 550px)", opacity: 0.7, pointerEvents: "none",
           mixBlendMode: "multiply",
           zIndex: 0
         }}
       >
-        <motion.img 
+        <motion.img loading="lazy" decoding="async" 
           animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          src="/vr_wireframe.png" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }} 
+          src="/vr_wireframe.webp" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }} 
         />
       </div>
 
@@ -106,7 +106,7 @@ export default function Footer() {
           {/* Left Column: Brand & Socials */}
           <div style={{ maxWidth: 350, flexShrink: 0 }}>
             <Link href="/" style={{ display: "inline-block", marginBottom: -10 }}>
-              <img src="/logo.png" alt="SparkVR" style={{ height: 140, objectFit: "contain", transform: "translateX(-15px)" }} />
+              <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ height: 140, objectFit: "contain", transform: "translateX(-15px)" }} />
             </Link>
             <p style={{ fontSize: 19, color: "#334155", lineHeight: 1.6, marginBottom: 40, fontWeight: 500, transform: "translateX(-8px)" }}>
               Transforming abstract learning into observable understanding through immersive experiences.

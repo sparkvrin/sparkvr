@@ -43,31 +43,31 @@ const FEATURES_BANNER_1 = [
 
 const ECOSYSTEM_CARDS = [
   {
-    subject: "Science", icon: FlaskConical, color: COLORS.icons.science, image: "/science_card.png",
+    subject: "Science", icon: FlaskConical, color: COLORS.icons.science, image: "/science_card.webp",
     desc: "Explore the wonders of the natural world through immersive simulations and 3D visualizations.",
     modules: "120+ Modules", grades: "Grades 6 - 12", alignment: "Aligned to NCERT",
     btnBg: "#eff6ff"
   },
   {
-    subject: "Mathematics", icon: Calculator, color: COLORS.icons.math, image: "/math_card.png",
+    subject: "Mathematics", icon: Calculator, color: COLORS.icons.math, image: "/math_card.webp",
     desc: "Visualize abstract concepts, solve complex problems and strengthen conceptual clarity.",
     modules: "100+ Modules", grades: "Grades 6 - 12", alignment: "Aligned to NCERT",
     btnBg: "#ecfdf5"
   },
   {
-    subject: "History & Civics", icon: Landmark, color: COLORS.icons.history, image: "/history_card.png",
+    subject: "History & Civics", icon: Landmark, color: COLORS.icons.history, image: "/history_card.webp",
     desc: "Step into timelines, events and civilizations that shaped our world and our nation.",
     modules: "80+ Modules", grades: "Grades 6 - 12", alignment: "Aligned to NCERT",
     btnBg: "#f5f3ff"
   },
   {
-    subject: "Geography", icon: Globe, color: COLORS.icons.geo, image: "/geography_card.png",
+    subject: "Geography", icon: Globe, color: COLORS.icons.geo, image: "/geography_card.webp",
     desc: "Understand Earth's systems, landscapes and cultures through immersive visual journeys.",
     modules: "90+ Modules", grades: "Grades 6 - 12", alignment: "Aligned to NCERT",
     btnBg: "#fffbeb"
   },
   {
-    subject: "STEM Integration", icon: Settings, color: COLORS.icons.stem, image: "/stem_card.png",
+    subject: "STEM Integration", icon: Settings, color: COLORS.icons.stem, image: "/stem_card.webp",
     desc: "Bring science, technology, engineering and math together to build real-world skills and innovation.",
     modules: "110+ Modules", grades: "Grades 6 - 12", alignment: "Project & Problem Based",
     btnBg: "#fdf2f8"
@@ -84,27 +84,27 @@ const BOTTOM_FEATURES = [
 
 const EXAMPLES_CARDS = [
   {
-    subject: "SCIENCE", title: "Human Heart", color: "#1d4ed8", icon: FlaskConical, image: "/science_3d_card.png",
+    subject: "SCIENCE", title: "Human Heart", color: "#1d4ed8", icon: FlaskConical, image: "/science_3d_card.webp",
     desc: "Explore the structure and function of the human heart in 3D.",
     points: ["3D Structure Exploration", "Interactive Labels", "Process Simulation"]
   },
   {
-    subject: "MATHEMATICS", title: "Geometry in 3D", color: "#059669", icon: Calculator, image: "/math_3d_card.png",
+    subject: "MATHEMATICS", title: "Geometry in 3D", color: "#059669", icon: Calculator, image: "/math_3d_card.webp",
     desc: "Visualize angles, shapes and solids to understand complex concepts.",
     points: ["3D Shape Manipulation", "Formula Visualization", "Problem Solving"]
   },
   {
-    subject: "HISTORY & CIVICS", title: "Ancient Civilizations", color: "#7c3aed", icon: Landmark, image: "/history_3d_card.png",
+    subject: "HISTORY & CIVICS", title: "Ancient Civilizations", color: "#7c3aed", icon: Landmark, image: "/history_3d_card.webp",
     desc: "Walk through historical places and experience events that shaped history.",
     points: ["Virtual Walkthroughs", "Historical Timelines", "Event Reconstruction"]
   },
   {
-    subject: "GEOGRAPHY", title: "Layers of Earth", color: "#d97706", icon: Globe, image: "/geography_3d_card.png",
+    subject: "GEOGRAPHY", title: "Layers of Earth", color: "#d97706", icon: Globe, image: "/geography_3d_card.webp",
     desc: "Explore Earth's layers, landforms and natural phenomena interactively.",
     points: ["Interactive Models", "Geospatial Exploration", "Real-world Connections"]
   },
   {
-    subject: "STEM INTEGRATION", title: "Robotics Lab", color: "#db2777", icon: Settings, image: "/stem_3d_card.png",
+    subject: "STEM INTEGRATION", title: "Robotics Lab", color: "#db2777", icon: Settings, image: "/stem_3d_card.webp",
     desc: "Build, test and experiment with real-world STEM concepts in VR.",
     points: ["Design & Build", "Simulate & Test", "Innovate & Iterate"]
   }
@@ -212,7 +212,7 @@ export default function SubjectExpansionPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: "url('/backgroundsc.png')",
+            backgroundImage: "url('/backgroundsc.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -249,7 +249,7 @@ export default function SubjectExpansionPage() {
                     whileHover={{ scale: 1.04, x: 10, boxShadow: "0 15px 35px rgba(0,0,0,0.12)" }}
                     style={{
                       display: "flex", alignItems: "center", gap: 14, background: COLORS.cardBg,
-                      padding: "6px 20px 6px 6px", borderRadius: 100, width: "fit-content", minWidth: 230,
+                      padding: "6px 20px 6px 6px", borderRadius: 100, width: "fit-content", minWidth: "min(100%, 230px)",
                       boxShadow: "0 6px 16px rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.02)", cursor: "pointer",
                       transformOrigin: "left center"
                     }}
@@ -357,12 +357,12 @@ export default function SubjectExpansionPage() {
               <div style={{ position: "absolute", bottom: "0%", left: "50%", transform: "translateX(-50%)", width: "90%", height: "80%", background: "radial-gradient(circle at bottom, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0) 60%)", zIndex: 1, pointerEvents: "none" }} />
 
               {/* Boy Image */}
-              <motion.img
+              <motion.img loading="lazy" decoding="async"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: EASE }}
-                src="/student_proper.png"
+                src="/student_proper.webp"
                 alt="Student in VR"
                 style={{ position: "relative", zIndex: 2, maxHeight: "100%", objectFit: "contain", filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.15))" }}
               />
@@ -424,7 +424,7 @@ export default function SubjectExpansionPage() {
                       transition={{ duration: 0.4 }}
                       style={{ width: "100%", height: 160, borderRadius: 12, overflow: "hidden", background: "#f1f5f9" }}
                     >
-                      <img src={card.image} alt={card.subject} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <img loading="lazy" decoding="async" src={card.image} alt={card.subject} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </motion.div>
                   </div>
 
@@ -615,7 +615,7 @@ export default function SubjectExpansionPage() {
                 >
                   {/* Image Section */}
                   <div style={{ position: "relative", height: 220, overflow: "hidden", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
-                    <motion.img
+                    <motion.img loading="lazy" decoding="async"
                       variants={{ hover: { scale: 1.15 } }}
                       transition={{ duration: 0.8, ease: "easeOut" as const }}
                       src={card.image}
@@ -733,7 +733,7 @@ export default function SubjectExpansionPage() {
                   History & Civics (155, 565)  → bottom-left
                   STEM Integration (645, 565)  → bottom-right
               */}
-              <div style={{ position: "relative", width: 800, height: 740, flexShrink: 0, overflow: "visible" }}>
+              <div style={{ position: "relative", width: "min(100%, 800px)", height: 740, flexShrink: 0, overflow: "visible" }}>
 
                 {/* SVG: circles + spokes + dots */}
                 <svg width="800" height="740" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
@@ -806,12 +806,12 @@ export default function SubjectExpansionPage() {
                 </svg>
 
                 {/* Student image – centred at (400, 345) */}
-                <motion.img
+                <motion.img loading="lazy" decoding="async"
                   initial={{ opacity: 0, scale: 0.85, x: "-50%", y: "-48%" }}
                   whileInView={{ opacity: 1, scale: 1, x: "-50%", y: "-48%" }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.1, ease: EASE, delay: 0.3 }}
-                  src="/studenttap.png"
+                  src="/studenttap.webp"
                   alt="Student in VR"
                   style={{
                     position: "absolute",
@@ -844,11 +844,11 @@ export default function SubjectExpansionPage() {
 
                 {/* 5 Subject Nodes – positioned by absolute px */}
                 {[
-                  { subject: "SCIENCE", desc: "Discover how the\nworld works", icon: FlaskConical, color: "#1d4ed8", image: "/science_3d_card.png", nodeLeft: 400, nodeTop: 28 },
-                  { subject: "MATHEMATICS", desc: "Solve problems\nwith logic", icon: Calculator, color: "#059669", image: "/math_3d_card.png", nodeLeft: 60, nodeTop: 195 },
-                  { subject: "GEOGRAPHY", desc: "Understand\nplaces and patterns", icon: Globe, color: "#d97706", image: "/geography_3d_card.png", nodeLeft: 740, nodeTop: 195 },
-                  { subject: "HISTORY & CIVICS", desc: "Learn from the past,\nshape the future", icon: Landmark, color: "#7c3aed", image: "/history_3d_card.png", nodeLeft: 130, nodeTop: 500 },
-                  { subject: "STEM INTEGRATION", desc: "Design, build and\ninnovate solutions", icon: Settings, color: "#db2777", image: "/stem_3d_card.png", nodeLeft: 670, nodeTop: 500 },
+                  { subject: "SCIENCE", desc: "Discover how the\nworld works", icon: FlaskConical, color: "#1d4ed8", image: "/science_3d_card.webp", nodeLeft: 400, nodeTop: 28 },
+                  { subject: "MATHEMATICS", desc: "Solve problems\nwith logic", icon: Calculator, color: "#059669", image: "/math_3d_card.webp", nodeLeft: 60, nodeTop: 195 },
+                  { subject: "GEOGRAPHY", desc: "Understand\nplaces and patterns", icon: Globe, color: "#d97706", image: "/geography_3d_card.webp", nodeLeft: 740, nodeTop: 195 },
+                  { subject: "HISTORY & CIVICS", desc: "Learn from the past,\nshape the future", icon: Landmark, color: "#7c3aed", image: "/history_3d_card.webp", nodeLeft: 130, nodeTop: 500 },
+                  { subject: "STEM INTEGRATION", desc: "Design, build and\ninnovate solutions", icon: Settings, color: "#db2777", image: "/stem_3d_card.webp", nodeLeft: 670, nodeTop: 500 },
                 ].map((node, i) => (
                   <motion.div
                     key={i}
@@ -912,7 +912,7 @@ export default function SubjectExpansionPage() {
                         border: "3px solid rgba(255,255,255,0.78)",
                         boxShadow: `0 6px 18px rgba(0,0,0,0.12), inset 0 2px 4px rgba(0,0,0,0.06)`,
                       }}>
-                        <img src={node.image} alt={node.subject} style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.12)" }} />
+                        <img loading="lazy" decoding="async" src={node.image} alt={node.subject} style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.12)" }} />
                       </div>
                     </motion.div>
                   </motion.div>
@@ -930,7 +930,7 @@ export default function SubjectExpansionPage() {
               flexWrap: "wrap"
             }}
           >
-            <div style={{ flex: "1 1 240px", minWidth: 240 }}>
+            <div style={{ flex: "1 1 240px", minWidth: "min(100%, 240px)" }}>
               <h3 style={{ fontSize: 19, fontWeight: 800, color: COLORS.navy, marginBottom: 10 }}>Learning Without Boundaries</h3>
               <p style={{ fontSize: 13, color: COLORS.textGray, lineHeight: 1.65, fontWeight: 500, margin: 0 }}>
                 When subjects work together, students think deeper, explore more and understand the world as a whole.
@@ -969,7 +969,7 @@ export default function SubjectExpansionPage() {
         position: "relative",
         width: "100%",
         minHeight: "950px",
-        backgroundImage: "url('/5thsection.png')",
+        backgroundImage: "url('/5thsection.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center right",
         padding: "80px 0 160px 0",
@@ -1110,7 +1110,7 @@ export default function SubjectExpansionPage() {
                     borderRadius: 12,
                     border: "1.5px solid rgba(255,255,255,0.9)",
                     boxShadow: "0 8px 25px rgba(0,0,0,0.06)",
-                    minWidth: 150,
+                    minWidth: "min(100%, 150px)",
                     cursor: "pointer",
                     transformStyle: "preserve-3d"
                   }}
@@ -1214,13 +1214,13 @@ export default function SubjectExpansionPage() {
             </div>
 
             {/* Right Image & Orbiting Icons */}
-            <motion.div {...fadeUp(0.4)} style={{ position: "relative", width: 500, height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <motion.div {...fadeUp(0.4)} style={{ position: "relative", width: "min(100%, 500px)", height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
               {/* Dotted background arc */}
-              <div style={{ position: "absolute", top: 10, left: 10, width: 480, height: 480, borderRadius: "50%", border: "2px dashed #cbd5e1", zIndex: 0 }} />
+              <div style={{ position: "absolute", top: 10, left: 10, width: "min(100%, 480px)", height: 480, borderRadius: "50%", border: "2px dashed #cbd5e1", zIndex: 0 }} />
 
               {/* The Image Wrapper */}
               <div style={{ width: 360, height: 360, borderRadius: "50%", background: "#e2e8f0", overflow: "hidden", position: "relative", zIndex: 1, boxShadow: "0 30px 60px rgba(0,0,0,0.1)" }}>
-                <img src="/teacher_2.png" alt="Teacher and students using VR" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img loading="lazy" decoding="async" src="/teacher_2.webp" alt="Teacher and students using VR" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
 
               {/* Orbiting Icons */}
@@ -1443,10 +1443,10 @@ export default function SubjectExpansionPage() {
               </div>
 
               {/* Right Column: Image with Glowing Circle */}
-              <motion.div {...fadeUp(0.5)} style={{ position: "relative", width: 500, height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <motion.div {...fadeUp(0.5)} style={{ position: "relative", width: "min(100%, 500px)", height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
 
                 {/* Advanced Glowing Outer Ring */}
-                <div style={{ position: "absolute", width: 460, height: 460, zIndex: 0 }}>
+                <div style={{ position: "absolute", width: "min(100%, 460px)", height: 460, zIndex: 0 }}>
                   <motion.svg width="460" height="460" viewBox="0 0 460 460"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" as const }}
@@ -1463,7 +1463,7 @@ export default function SubjectExpansionPage() {
                 </div>
 
                 {/* Circular Image Wrapper */}
-                <div style={{ width: 420, height: 420, borderRadius: "50%", background: "#0a0f2d", position: "relative", zIndex: 1, overflow: "hidden", border: "4px solid rgba(255,255,255,0.1)", boxShadow: "0 0 50px rgba(124, 58, 237, 0.4), inset 0 0 80px rgba(124, 58, 237, 0.9)" }}>
+                <div style={{ width: "min(100%, 420px)", height: 420, borderRadius: "50%", background: "#0a0f2d", position: "relative", zIndex: 1, overflow: "hidden", border: "4px solid rgba(255,255,255,0.1)", boxShadow: "0 0 50px rgba(124, 58, 237, 0.4), inset 0 0 80px rgba(124, 58, 237, 0.9)" }}>
 
                   {/* Glowing Touch Point (Where boy points finger) */}
                   <motion.div
@@ -1515,7 +1515,7 @@ export default function SubjectExpansionPage() {
                   </svg>
 
                   {/* The Transparent Boy Image */}
-                  <img src="/student_proper.png" alt="Student experiencing VR" style={{ width: "100%", height: "100%", objectFit: "cover", position: "relative", zIndex: 2 }} />
+                  <img loading="lazy" decoding="async" src="/student_proper.webp" alt="Student experiencing VR" style={{ width: "100%", height: "100%", objectFit: "cover", position: "relative", zIndex: 2 }} />
                 </div>
 
                 {/* Floating Bottom Card */}

@@ -64,7 +64,7 @@ export default function TimetablePage() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        backgroundImage: "url('/section1.png')",
+        backgroundImage: "url('/section1.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         overflow: "hidden"
@@ -313,11 +313,11 @@ export default function TimetablePage() {
               style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 2 }}
             >
               {[
-                { time: "5 MIN", title: "1. Introduction", desc: "Teacher introduces the\ntopic and learning\nobjectives.", color: COLORS.blue, icon: FileText, img: "/section2/session_image_1.png" },
-                { time: "20 MIN", title: "2. VR Experience", desc: "Students explore the concept\nthrough immersive,\ninteractive content.", color: COLORS.purple, icon: null, isVR: true, img: "/section2/session_image_2.png" },
-                { time: "5 MIN", title: "3. Teacher Guidance", desc: "Teacher leads a guided\ndiscussion and checks\nunderstanding.", color: COLORS.green, icon: Users, img: "/section2/session_image_3.png" },
-                { time: "5 MIN", title: "4. Discussion", desc: "Students share observations,\nask questions and connect\nideas.", color: COLORS.orange, icon: MessageCircle, img: "/section2/session_image_4.png" },
-                { time: "5 MIN", title: "5. Concept Reinforcement", desc: "Key takeaways are\nreinforced with a quick\nrecap and reflection.", color: COLORS.blue, icon: CheckCircle, img: "/section2/session_image_5.png" },
+                { time: "5 MIN", title: "1. Introduction", desc: "Teacher introduces the\ntopic and learning\nobjectives.", color: COLORS.blue, icon: FileText, img: "/section2/session_image_1.webp" },
+                { time: "20 MIN", title: "2. VR Experience", desc: "Students explore the concept\nthrough immersive,\ninteractive content.", color: COLORS.purple, icon: null, isVR: true, img: "/section2/session_image_2.webp" },
+                { time: "5 MIN", title: "3. Teacher Guidance", desc: "Teacher leads a guided\ndiscussion and checks\nunderstanding.", color: COLORS.green, icon: Users, img: "/section2/session_image_3.webp" },
+                { time: "5 MIN", title: "4. Discussion", desc: "Students share observations,\nask questions and connect\nideas.", color: COLORS.orange, icon: MessageCircle, img: "/section2/session_image_4.webp" },
+                { time: "5 MIN", title: "5. Concept Reinforcement", desc: "Key takeaways are\nreinforced with a quick\nrecap and reflection.", color: COLORS.blue, icon: CheckCircle, img: "/section2/session_image_5.webp" },
               ].map((step, i) => (
                 <motion.div 
                   key={i} 
@@ -346,7 +346,7 @@ export default function TimetablePage() {
 
                   {/* Image */}
                   <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }} style={{ width: "100%", height: 160, borderRadius: 16, overflow: "hidden", marginTop: "auto", transition: "box-shadow 0.3s" }}>
-                    <img src={step.img} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img loading="lazy" decoding="async" src={step.img} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </motion.div>
 
                 </motion.div>
@@ -406,7 +406,7 @@ export default function TimetablePage() {
           <div style={{ display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
             
             {/* LEFT COLUMN */}
-            <div style={{ flex: "1 1 45%", minWidth: 500 }}>
+            <div style={{ flex: "1 1 45%", minWidth: "min(100%, 500px)" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 16 }}>
                 <span style={{ fontSize: 13, fontWeight: 800, color: COLORS.purple, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                   BATCH ROTATION SYSTEM
@@ -491,7 +491,7 @@ export default function TimetablePage() {
             </div>
 
             {/* RIGHT COLUMN */}
-            <div style={{ flex: "1 1 45%", minWidth: 500, display: "flex", flexDirection: "column", gap: 20 }}>
+            <div style={{ flex: "1 1 45%", minWidth: "min(100%, 500px)", display: "flex", flexDirection: "column", gap: 20 }}>
               
               <motion.div {...fadeUp(0.2)}>
                 <h3 style={{ fontSize: 24, fontWeight: 900, color: COLORS.navy, margin: "0 0 4px 0" }}>Divide. Rotate. Learn.</h3>
@@ -501,7 +501,7 @@ export default function TimetablePage() {
               <div style={{ display: "flex", gap: 20, alignItems: "stretch" }}>
                 {/* Main Classroom Image */}
                 <motion.div {...scaleIn(0.4)} style={{ flex: 1, borderRadius: 24, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}>
-                  <img src="/extracted_classroom_image.png" alt="Classroom Rotation" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <img loading="lazy" decoding="async" src="/extracted_classroom_image.webp" alt="Classroom Rotation" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </motion.div>
 
                 {/* Vertical Panel */}
@@ -634,11 +634,11 @@ export default function TimetablePage() {
             style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginBottom: 30 }}
           >
             {[
-              { icon: WifiOff, color: COLORS.purple, title: "No Internet\nDependency", desc: "Works offline once content is installed. Reliable learning, every time.", img: "/section5/operational_image_1.png" },
-              { icon: Archive, color: COLORS.green, title: "Safe Storage", desc: "Compact, durable and easy to store in classroom cabinets.", img: "/section5/operational_image_2.png" },
-              { icon: Zap, color: COLORS.orange, title: "Easy Charging", desc: "Quick charging with organized docks. Ready whenever you are.", img: "/section5/operational_image_3.png" },
-              { icon: Settings, color: COLORS.blue, title: "Predictable\nMaintenance", desc: "Designed for long-term use with minimal upkeep and maximum reliability.", img: "/section5/operational_image_4.png" },
-              { icon: Rocket, color: COLORS.purple, title: "Quick\nDeployment", desc: "Simple setup process. Get started in hours, not weeks.", img: "/section5/operational_image_5.png" },
+              { icon: WifiOff, color: COLORS.purple, title: "No Internet\nDependency", desc: "Works offline once content is installed. Reliable learning, every time.", img: "/section5/operational_image_1.webp" },
+              { icon: Archive, color: COLORS.green, title: "Safe Storage", desc: "Compact, durable and easy to store in classroom cabinets.", img: "/section5/operational_image_2.webp" },
+              { icon: Zap, color: COLORS.orange, title: "Easy Charging", desc: "Quick charging with organized docks. Ready whenever you are.", img: "/section5/operational_image_3.webp" },
+              { icon: Settings, color: COLORS.blue, title: "Predictable\nMaintenance", desc: "Designed for long-term use with minimal upkeep and maximum reliability.", img: "/section5/operational_image_4.webp" },
+              { icon: Rocket, color: COLORS.purple, title: "Quick\nDeployment", desc: "Simple setup process. Get started in hours, not weeks.", img: "/section5/operational_image_5.webp" },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -659,7 +659,7 @@ export default function TimetablePage() {
 
                 {/* Bottom: Image */}
                 <motion.div whileHover={{ scale: 1.02 }} style={{ padding: "0 16px 16px 16px", overflow: "hidden" }}>
-                  <img src={card.img} alt={card.title} style={{ width: "100%", height: 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
+                  <img loading="lazy" decoding="async" src={card.img} alt={card.title} style={{ width: "100%", height: 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
                 </motion.div>
               </motion.div>
             ))}

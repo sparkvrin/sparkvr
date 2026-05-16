@@ -7,10 +7,10 @@ import TiltCard from "@/components/TiltCard";
 import { BookOpen, Clock, Presentation, WifiOff, Box, Layers } from "lucide-react";
 
 const subjects = [
-  { name: "Life science",         img: "/cell.png",    accent: "#1fb3ff", grade: "Grades 6–10", modules: 12 },
-  { name: "Human anatomy",        img: "/anatomy.png", accent: "#0052cc", grade: "Grades 7–12", modules: 18 },
-  { name: "Ecology and fungi",    img: "/fungi.png",   accent: "#cc2fff", grade: "Grades 6–9",  modules: 8  },
-  { name: "Neural and cognitive", img: "/neural.png",  accent: "#ff8c00", grade: "Grades 9–12", modules: 14 },
+  { name: "Life science",         img: "/cell.webp",    accent: "#1fb3ff", grade: "Grades 6–10", modules: 12 },
+  { name: "Human anatomy",        img: "/anatomy.webp", accent: "#0052cc", grade: "Grades 7–12", modules: 18 },
+  { name: "Ecology and fungi",    img: "/fungi.webp",   accent: "#cc2fff", grade: "Grades 6–9",  modules: 8  },
+  { name: "Neural and cognitive", img: "/neural.webp",  accent: "#ff8c00", grade: "Grades 9–12", modules: 14 },
 ];
 
 const features = [
@@ -106,7 +106,7 @@ export default function ServicesPage() {
                       boxShadow: "0 12px 40px rgba(0,0,0,0.12)",
                     }}
                   >
-                    <img src={s.img} alt={s.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease" }}
+                    <img loading="lazy" decoding="async" src={s.img} alt={s.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease" }}
                       onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
                       onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
                     />

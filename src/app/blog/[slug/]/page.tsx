@@ -44,7 +44,7 @@ const BLOG_POSTS: Record<string, any> = {
     slug: "vr-modern-classrooms",
     title: "How VR is Transforming Modern Classrooms",
     category: "EDUCATION",
-    image: "/blog_vr.png",
+    image: "/blog_vr.webp",
     date: "May 4, 2024",
     author: "Dr. Aryan Sharma",
     readTime: "8 min read",
@@ -71,7 +71,7 @@ const BLOG_POSTS: Record<string, any> = {
     slug: "future-cognitive-learning",
     title: "The Future of Cognitive Learning & Tech",
     category: "RESEARCH",
-    image: "/blog_tech.png",
+    image: "/blog_tech.webp",
     date: "April 28, 2024",
     author: "Sanya Verma",
     readTime: "12 min read",
@@ -89,7 +89,7 @@ const BLOG_POSTS: Record<string, any> = {
     slug: "science-lab-evolution",
     title: "Evolution of the Science Lab: From Bunsen to Bits",
     category: "INNOVATION",
-    image: "/blog1.png",
+    image: "/blog1.webp",
     date: "April 15, 2024",
     author: "Prof. Vikram Singh",
     readTime: "10 min read",
@@ -254,7 +254,7 @@ export default function BlogDetailPage() {
                             transition: "all 0.3s ease"
                           }}>
                              <div style={{ height: 140, borderRadius: 16, overflow: "hidden", marginBottom: 20 }}>
-                                <img src={other.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                <img loading="lazy" decoding="async" src={other.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                              </div>
                              <span style={{ fontSize: 10, fontWeight: 900, color: "#0052cc", letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>
                                {other.category}
