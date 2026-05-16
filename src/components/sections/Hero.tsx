@@ -2,7 +2,7 @@
 import React, { useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Environment } from "@react-three/drei";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import * as THREE from "three";
 
 /* ═══════════════════════════════════════════════════════
@@ -137,47 +137,9 @@ const BG_ORBS = [
    MAIN HERO
 ═══════════════════════════════════════════════════════ */
 export default function Hero() {
-  /* ── MULTI-DEPTH MOUSE PARALLAX ── */
-  const mX = useMotionValue(0.5);
-  const mY = useMotionValue(0.5);
-
-  /* Depth 0 — background blobs (very subtle) */
-  const bgX  = useSpring(useTransform(mX, [0,1], [-8,   8]),  { stiffness: 35, damping: 20 });
-  const bgY  = useSpring(useTransform(mY, [0,1], [-5,   5]),  { stiffness: 35, damping: 20 });
-
-  /* Depth 1 — BG orbs (most movement) */
-  const orbX = useSpring(useTransform(mX, [0,1], [-52,  52]), { stiffness: 75, damping: 16 });
-  const orbY = useSpring(useTransform(mY, [0,1], [-34,  34]), { stiffness: 75, damping: 16 });
-
-  /* Depth 2 — student image */
-  const imgX = useSpring(useTransform(mX, [0,1], [-20,  20]), { stiffness: 55, damping: 18 });
-  const imgY = useSpring(useTransform(mY, [0,1], [-13,  13]), { stiffness: 55, damping: 18 });
-
-  /* Depth 3 — atom + cell bubbles */
-  const b1X  = useSpring(useTransform(mX, [0,1], [-34,  34]), { stiffness: 62, damping: 17 });
-  const b1Y  = useSpring(useTransform(mY, [0,1], [-22,  22]), { stiffness: 62, damping: 17 });
-
-  /* Depth 4 — anatomy + saturn bubbles (further, more parallax) */
-  const b2X  = useSpring(useTransform(mX, [0,1], [-44,  44]), { stiffness: 68, damping: 17 });
-  const b2Y  = useSpring(useTransform(mY, [0,1], [-28,  28]), { stiffness: 68, damping: 17 });
-
-  /* Depth -1 — text column (counter-parallax for depth illusion) */
-  const txtX = useSpring(useTransform(mX, [0,1], [15, -15]),  { stiffness: 30, damping: 22 });
-  const txtY = useSpring(useTransform(mY, [0,1], [8,  -8]),   { stiffness: 30, damping: 22 });
-  const txtRotX = useSpring(useTransform(mY, [0,1], [10, -10]), { stiffness: 40, damping: 20 });
-  const txtRotY = useSpring(useTransform(mX, [0,1], [-10, 10]), { stiffness: 40, damping: 20 });
-
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    mX.set(e.clientX / r.width);
-    mY.set(e.clientY / r.height);
-  };
-  const onMouseLeave = () => { mX.set(0.5); mY.set(0.5); };
-
   return (
     <div
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
+      id="vision"
       style={{
         position: "relative",
         width: "100%",
@@ -189,8 +151,8 @@ export default function Hero() {
         fontFamily: "'AR One Sans', sans-serif",
       }}
     >
-      {/* ── BACKGROUND (gradient + glow blobs) with subtle parallax ── */}
-      <motion.div style={{ x: bgX, y: bgY, position: "absolute", inset: "-3%", zIndex: 0, pointerEvents: "none" }}>
+      {/* ── BACKGROUND (gradient + glow blobs) ── */}
+      <div style={{ position: "absolute", inset: "-3%", zIndex: 0, pointerEvents: "none" }}>
         <div style={{
           position: "absolute", inset: "3%",
           background: "linear-gradient(180deg, rgba(246,248,255,0.1) 0%, rgba(240,244,255,0.3) 40%, rgba(220,232,255,0.2) 65%, rgba(199,184,245,0.3) 82%, rgba(176,200,248,0.4) 100%)",
@@ -208,7 +170,7 @@ export default function Hero() {
           filter: "blur(30px)",
           borderRadius: "50% 50% 0 0 / 30% 30% 0 0",
         }} />
-      </motion.div>
+      </div>
 
       {/* ── DEPTH RINGS (slow counter-rotating, adds premium depth) ── */}
       <motion.div
@@ -245,8 +207,8 @@ export default function Hero() {
         }}
       />
 
-      {/* ── BG ORBS GROUP with parallax ── */}
-      <motion.div style={{ x: orbX, y: orbY, position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
+      {/* ── BG ORBS GROUP ── */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
         {BG_ORBS.map((o, i) => (
           <motion.div
             key={i}
@@ -264,149 +226,128 @@ export default function Hero() {
             }}
           />
         ))}
-      </motion.div>
+      </div>
 
-      {/* ── STUDENT IMAGE with parallax wrapper ── */}
+      {/* ── STUDENT IMAGE with floating animation ── */}
       <div style={{
         position: "absolute",
         bottom: -28, left: "31.50%",
         transform: "translateX(+7%)",
         zIndex: 10, pointerEvents: "none",
       }}>
-        <motion.div style={{ x: imgX, y: imgY, perspective: 1000, transformStyle: "preserve-3d" }}>
+        <motion.div 
+          animate={{ 
+            y: [0, -25, 0],
+            rotateX: [0, 2, 0, -2, 0],
+            rotateY: [0, -2, 0, 2, 0]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          style={{ perspective: 1000, transformStyle: "preserve-3d" }}
+        >
           <motion.img loading="lazy" decoding="async"
             src="/student_proper.webp"
             alt="Student with VR headset"
-            animate={{ 
-              y: [0, -18, 0],
-              rotateX: [0, 3, 0, -3, 0],
-              rotateY: [0, -3, 0, 3, 0]
-            }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             style={{
               height: "88vh",
               objectFit: "contain",
               objectPosition: "top",
               display: "block",
               filter: "drop-shadow(0 30px 60px rgba(60,40,150,0.3))",
-              transform: "translateZ(50px)"
             }}
           />
         </motion.div>
       </div>
 
-      {/* ── ATOMS (Top-Left) with parallax ── */}
+      {/* ── ATOMS (Top-Left) with floating animation ── */}
       <div style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "none" }}>
-        <motion.div style={{ x: b1X, y: b1Y, perspective: 800 }}>
+        <motion.div
+          animate={{ y: [0, -20, 0], rotateX: [0, 8, 0], rotateY: [0, -8, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
           <motion.div
-            animate={{ y: [0, -18, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-            style={{ transformStyle: "preserve-3d" }}
+            whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(59,130,246,0.28), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+            transition={{ duration: 0.3 }}
+            style={{ ...GLASS_STYLE, width: 168, height: 168 }}
           >
-            <motion.div
-              whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(59,130,246,0.28), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ duration: 0.3 }}
-              style={{ ...GLASS_STYLE, width: 168, height: 168 }}
+            <Canvas
+              camera={{ position: [0, 0, 3.6], fov: 42 }}
+              gl={{ alpha: true, antialias: true }}
+              style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
             >
-              <Canvas
-                camera={{ position: [0, 0, 3.6], fov: 42 }}
-                gl={{ alpha: true, antialias: true }}
-                style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-              >
-                <ambientLight intensity={2.2} />
-                <directionalLight position={[5, 6, 5]} intensity={3.2} />
-                <Suspense fallback={null}><Atom3D /></Suspense>
-              </Canvas>
-            </motion.div>
-            <div style={{ ...LABEL_STYLE, bottom: -14 }}>ATOMS</div>
+              <ambientLight intensity={2.2} />
+              <directionalLight position={[5, 6, 5]} intensity={3.2} />
+              <Suspense fallback={null}><Atom3D /></Suspense>
+            </Canvas>
           </motion.div>
+          <div style={{ ...LABEL_STYLE, bottom: -14 }}>ATOMS</div>
         </motion.div>
       </div>
 
-      {/* ── HUMAN ANATOMY (Top-Right) with parallax ── */}
+      {/* ── HUMAN ANATOMY (Top-Right) with floating animation ── */}
       <div style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "none" }}>
-        <motion.div style={{ x: b2X, y: b2Y, perspective: 800 }}>
+        <motion.div
+          animate={{ y: [0, -18, 0], rotateX: [0, -6, 0], rotateY: [0, 6, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
           <motion.div
-            animate={{ y: [0, -14, 0], rotateX: [0, -4, 0], rotateY: [0, 4, 0] }}
-            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            style={{ transformStyle: "preserve-3d" }}
+            whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(220,50,50,0.22), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+            transition={{ duration: 0.3 }}
+            style={{ ...GLASS_STYLE, width: 148, height: 148 }}
           >
-            <motion.div
-              whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(220,50,50,0.22), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ duration: 0.3 }}
-              style={{ ...GLASS_STYLE, width: 148, height: 148 }}
-            >
-              <div style={{
-                position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
-                background: "rgba(255,255,255,0.6)",
-              }} />
-              <img loading="lazy" decoding="async"
-                src="/anatomy.webp"
-                alt="Human Anatomy"
-                style={{
-                  width: "78%", height: "78%",
-                  objectFit: "contain",
-                  position: "relative", zIndex: 1,
-                  filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)",
-                }}
-              />
-            </motion.div>
-            <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>HUMAN ANATOMY</div>
+            <div style={{
+              position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
+              background: "rgba(255,255,255,0.6)",
+            }} />
+            <img loading="lazy" decoding="async"
+              src="/anatomy.webp"
+              alt="Human Anatomy"
+              style={{
+                width: "78%", height: "78%",
+                objectFit: "contain",
+                position: "relative", zIndex: 1,
+                filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)",
+              }}
+            />
           </motion.div>
+          <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>HUMAN ANATOMY</div>
         </motion.div>
       </div>
 
-      {/* ── CELLS (Mid-Left) with parallax ── */}
+      {/* ── CELLS (Mid-Left) with floating animation ── */}
       <div style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "none" }}>
-        <motion.div style={{ x: b1X, y: b1Y, perspective: 800 }}>
+        <motion.div
+          animate={{ y: [0, 22, 0], rotateX: [0, 10, 0], rotateY: [0, -10, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
           <motion.div
-            animate={{ y: [0, 16, 0], rotateX: [0, 6, 0], rotateY: [0, -6, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            style={{ transformStyle: "preserve-3d" }}
+            whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(80,200,120,0.24), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+            transition={{ duration: 0.3 }}
+            style={{ ...GLASS_STYLE, width: 155, height: 155 }}
           >
-            <motion.div
-              whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(80,200,120,0.24), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ duration: 0.3 }}
-              style={{ ...GLASS_STYLE, width: 155, height: 155 }}
-            >
-              <div style={{
-                position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
-                background: "rgba(255,255,255,0.55)",
-              }} />
-              <img loading="lazy" decoding="async"
-                src="/cell_proper.webp"
-                alt="Cell Structure"
-                style={{
-                  width: "82%", height: "82%",
-                  objectFit: "contain",
-                  position: "relative", zIndex: 1,
-                  filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)",
-                }}
-              />
-            </motion.div>
-            <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
+            <div style={{
+              position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
+              background: "rgba(255,255,255,0.55)",
+            }} />
+            <img loading="lazy" decoding="async"
+              src="/cell_proper.webp"
+              alt="Cell Structure"
+              style={{
+                width: "82%", height: "82%",
+                objectFit: "contain",
+                position: "relative", zIndex: 1,
+                filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)",
+              }}
+            />
           </motion.div>
+          <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
         </motion.div>
       </div>
 
-      {/* ── SPACE / SATURN (Mid-Right) with parallax ── */}
+      {/* ── SPACE / SATURN (Mid-Right) with floating animation ── */}
       <div style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}>
-        <motion.div style={{ x: b2X, y: b2Y, perspective: 800 }}>
-          <motion.div
-            animate={{ y: [0, 14, 0], rotateX: [0, -5, 0], rotateY: [0, 5, 0] }}
-            transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.09, boxShadow: "0 28px 64px rgba(180,130,50,0.22), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ duration: 0.3 }}
-              style={{ ...GLASS_STYLE, width: 155, height: 155 }}
-            >
-              <Canvas
-                camera={{ position: [0, 0, 3.8], fov: 42 }}
-                gl={{ alpha: true, antialias: true }}
-                style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-              >
                 <ambientLight intensity={1.8} />
                 <directionalLight position={[-5, 6, 5]} intensity={3.5} />
                 <Suspense fallback={null}><Saturn3D /></Suspense>
@@ -428,7 +369,7 @@ export default function Hero() {
         paddingLeft: "clamp(24px, 5.5vw, 80px)",
         paddingBottom: "80px",
       }}>
-        <motion.div style={{ x: txtX, y: txtY, rotateX: txtRotX, rotateY: txtRotY, transformStyle: "preserve-3d" }}>
+        <motion.div style={{ transformStyle: "preserve-3d" }}>
           <div style={{ maxWidth: 600, transform: "translateZ(40px)" }}>
             <motion.h1
               initial={{ opacity: 0, y: 32, rotateX: 18 }}

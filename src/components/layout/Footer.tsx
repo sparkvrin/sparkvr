@@ -144,28 +144,25 @@ export default function Footer() {
               {
                 title: "Product", icon: Package,
                 links: [
-                  { label: "Why SparkVR", href: "/#vision" },
-                  { label: "How It Works", href: "/#how" },
-                  { label: "Curriculum", href: "/#curriculum" },
-                  { label: "Outcomes", href: "/#outcomes" }
+                  { label: "VISION", href: "/#vision" },
+                  { label: "FOR SCHOOLS", href: "/schools" },
+                  { label: "FOR TEACHERS", href: "/teachers" }
                 ]
               },
               {
                 title: "Solutions", icon: Building2,
                 links: [
-                  { label: "For Schools", href: "/schools" },
-                  { label: "For Teachers", href: "/teachers" },
-                  { label: "VR Labs", href: "/vr-labs" },
-                  { label: "Subjects & Grades", href: "/subjects" }
+                  { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
+                  { label: "TIMETABLE", href: "/timetable" },
+                  { label: "BLOG", href: "/blog" }
                 ]
               },
               {
                 title: "Resources", icon: BookOpen,
                 links: [
-                  { label: "Case Studies", href: "/case-studies" },
-                  { label: "Blog", href: "/blog" },
-                  { label: "Help Center", href: "/help" },
-                  { label: "Contact", href: "/contact" }
+                  { label: "ABOUT", href: "/about" },
+                  { label: "CONTACT", href: "/contact" },
+                  { label: "CASE STUDIES", href: "/case-studies" }
                 ]
               }
             ].map((col, idx) => (
