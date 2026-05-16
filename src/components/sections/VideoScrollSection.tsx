@@ -110,8 +110,7 @@ export default function VideoScrollSection() {
       video.removeEventListener("loadeddata", onReady);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
-      cancelAnimationFrame(rafId);
-      cancelAnimationFrame(frameLoopId);
+
     };
   }, []);
 
