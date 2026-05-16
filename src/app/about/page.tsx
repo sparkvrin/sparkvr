@@ -96,6 +96,17 @@ function TiltCard({ children, style }: any) {
   );
 }
 
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
+
 /* ─── GLOW ICON ─── */
 function GlowIcon({ icon: Icon, size = 36, radius = 10, color = "#0052cc", delay = 0 }: any) {
   return (
@@ -130,14 +141,18 @@ function GlowIcon({ icon: Icon, size = 36, radius = 10, color = "#0052cc", delay
 }
 
 export default function AboutPage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <>
       {/* ═══════════════════════════════════════════════════════
           SECTION 1: HERO / ABOUT
       ═══════════════════════════════════════════════════════ */}
       <main style={{
-        position: "relative", width: "100%", height: "100vh",
-        minHeight: "760px", overflow: "hidden", background: "#f8faff",
+        position: "relative", width: "100%", height: isMobile ? "auto" : "100vh",
+        minHeight: isMobile ? "auto" : "760px", overflow: "hidden", background: "#f8faff",
       }}>
         {/* Background */}
         <motion.div
@@ -183,7 +198,8 @@ export default function AboutPage() {
         <div style={{
           position: "relative", zIndex: 10, height: "100%",
           display: "flex", alignItems: "center",
-          paddingTop: 140, paddingLeft: "clamp(24px, 5vw, 80px)",
+          paddingTop: isMobile ? 88 : 140, paddingBottom: isMobile ? 40 : 0,
+          paddingLeft: "clamp(24px, 5vw, 80px)", paddingRight: "clamp(24px, 5vw, 80px)",
           maxWidth: 1200, margin: "0 auto",
         }}>
           <motion.div
@@ -521,11 +537,11 @@ export default function AboutPage() {
           </div>
 
           {/* Cards Grid: Forced 3-Column Layout for Symmetry */}
-          <div style={{ 
-            display: "grid", 
-            gridTemplateColumns: "repeat(3, 1fr)", 
-            gap: 40, 
-            marginBottom: 100,
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
+            gap: isMobile ? 24 : 40,
+            marginBottom: isMobile ? 60 : 100,
             width: "100%",
             justifyContent: "center"
           }}>
@@ -789,8 +805,8 @@ export default function AboutPage() {
         {/* Content */}
         <div style={{
           position: "relative", zIndex: 10, maxWidth: 1280, margin: "0 auto", width: "100%",
-          padding: "120px clamp(24px, 5vw, 80px)",
-          display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+          padding: isMobile ? "88px clamp(24px, 5vw, 40px) 48px" : "120px clamp(24px, 5vw, 80px)",
+          display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "flex-end", justifyContent: "space-between",
           gap: 40, flexWrap: "wrap",
         }}>
 
@@ -1152,7 +1168,7 @@ export default function AboutPage() {
             }}
           >
             {/* Icons row */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 44 }}>
+            <div style={{ display: "flex", flexWrap: isMobile ? "wrap" : "nowrap", alignItems: "center", justifyContent: "center", marginBottom: 44, gap: isMobile ? 16 : 0 }}>
               {[
                 { icon: Puzzle },
                 { icon: Users },
@@ -1201,7 +1217,7 @@ export default function AboutPage() {
             </div>
 
             {/* Labels + Descriptions */}
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12 }}>
               {[
                 { label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
                 { label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
@@ -1337,7 +1353,7 @@ export default function AboutPage() {
             </div>
 
             {/* MIDDLE ROW: FEATURES & CTA CARD (Pushed even lower) */}
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 80, marginTop: 60 }}>
+            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: isMobile ? 40 : 80, marginTop: 60 }}>
               
               {/* Features (Left) */}
               <div style={{ display: "flex", alignItems: "stretch", flex: "1 1 500px" }}>
@@ -1379,11 +1395,11 @@ export default function AboutPage() {
               </div>
 
               {/* CTA CARD (Compact & Bottom Right) */}
-              <div style={{ 
-                flex: "0 0 auto", 
-                width: "100%", 
-                maxWidth: 390, 
-                marginTop: 220, // Even lower on the right
+              <div style={{
+                flex: "0 0 auto",
+                width: "100%",
+                maxWidth: isMobile ? "100%" : 390,
+                marginTop: isMobile ? 0 : 220,
               }}>
                 <TiltCard style={{ width: "100%" }}>
                   <motion.div

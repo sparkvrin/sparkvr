@@ -5,6 +5,17 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Book, Users, FileText, Target, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
+
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -132,6 +143,10 @@ const BLOG_POSTS = [
 ];
 
 export default function BlogPage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <>
       <section style={{
@@ -164,7 +179,7 @@ export default function BlogPage() {
         <div style={{
           position: "relative", zIndex: 10,
           maxWidth: 1440, margin: "0 auto", width: "100%",
-          padding: "160px 60px 40px",
+          padding: isMobile ? "100px 20px 40px" : isTablet ? "120px 32px 40px" : "160px 60px 40px",
           flex: 1, display: "flex", flexDirection: "column",
         }}>
           
@@ -233,7 +248,7 @@ export default function BlogPage() {
         <div style={{
           position: "relative", zIndex: 20,
           maxWidth: 1440, margin: "0 auto", width: "100%",
-          padding: "0 60px", marginBottom: 50, marginTop: "auto"
+          padding: isMobile ? "0 20px" : "0 60px", marginBottom: 50, marginTop: "auto"
         }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -279,7 +294,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section id="articles" style={{ minHeight: "100vh", background: "#f8faff", padding: "120px 60px" }}>
+      <section id="articles" style={{ minHeight: "100vh", background: "#f8faff", padding: isMobile ? "60px 20px" : "120px 60px" }}>
         <div style={{ maxWidth: 1440, margin: "0 auto" }}>
            <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: 80 }}>
               <motion.span 
@@ -301,7 +316,7 @@ export default function BlogPage() {
 
            <div style={{
              display: "grid",
-             gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
+             gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(auto-fit, minmax(360px, 1fr))",
              gap: 40
            }}>
              {BLOG_POSTS.map((post, i) => (

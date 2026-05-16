@@ -193,7 +193,22 @@ const SmallDot = ({ left, top, color, delay = 0 }: any) => (
   </div>
 );
 
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
+
 export default function SubjectExpansionPage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <main style={{ fontFamily: "sans-serif", background: "#f8f9fc" }}>
 
@@ -221,7 +236,7 @@ export default function SubjectExpansionPage() {
         />
 
         {/* Content Container (Left Side) */}
-        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1600, margin: "0 auto", padding: "40px 60px", flex: 1, display: "flex", flexDirection: "column" }}>
+        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1600, margin: "0 auto", padding: isMobile ? "88px 20px 40px" : "40px 60px", flex: 1, display: "flex", flexDirection: "column" }}>
 
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: 480, marginTop: "20px" }}>
             <div>
@@ -305,13 +320,13 @@ export default function SubjectExpansionPage() {
           SECTION 2: SUBJECT ECOSYSTEM (New)
       ══════════════════════════════════════ */}
       <section style={{ padding: "80px 0", background: "#f8f9fc", position: "relative" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Top Hero of Ecosystem Section */}
-          <div style={{ display: "flex", gap: "60px", alignItems: "center", marginBottom: "80px" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
 
             {/* Left Content */}
-            <div style={{ flex: 1, maxWidth: "500px" }}>
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : "500px" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 16 }}>
                 <span style={{ fontSize: 13, fontWeight: 800, color: COLORS.blue, letterSpacing: "0.12em", textTransform: "uppercase" }}>
 
@@ -384,7 +399,7 @@ export default function SubjectExpansionPage() {
           </div>
 
           {/* Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginBottom: 60, perspective: 1000 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 60, perspective: 1000 }}>
             {ECOSYSTEM_CARDS.map((card, idx) => (
               <motion.div
                 key={idx}
@@ -489,9 +504,9 @@ export default function SubjectExpansionPage() {
               background: COLORS.cardBg,
               borderRadius: 20,
               border: "1px solid #f1f5f9",
-              padding: "30px 40px",
+              padding: isMobile ? "20px" : "30px 40px",
               display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
+              gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)",
               gap: 20,
               boxShadow: "0 10px 30px rgba(0,0,0,0.03)"
             }}
@@ -516,10 +531,10 @@ export default function SubjectExpansionPage() {
           SECTION 3: IMMERSIVE LEARNING EXAMPLES
       ══════════════════════════════════════ */}
       <section style={{ padding: "80px 0 20px 0", background: "#f8f9fc", position: "relative" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Header Row */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 50 }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "flex-end", gap: isMobile ? 24 : 0, marginBottom: 50 }}>
             <div style={{ maxWidth: 700 }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 12 }}>
                 <span style={{ fontSize: 13, fontWeight: 800, color: COLORS.blue, letterSpacing: "0.12em", textTransform: "uppercase" }}>
@@ -560,7 +575,7 @@ export default function SubjectExpansionPage() {
           </div>
 
           {/* 5 Examples Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginBottom: 60, perspective: 1200 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 60, perspective: 1200 }}>
             {EXAMPLES_CARDS.map((card, idx) => (
               <motion.div
                 key={idx}
@@ -683,12 +698,12 @@ export default function SubjectExpansionPage() {
           SECTION 4: CROSS-DISCIPLINARY LEARNING
       ══════════════════════════════════════ */}
       <section style={{ padding: "20px 0 100px 0", background: "#f8fafc", position: "relative", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
-          <div style={{ display: "flex", gap: "60px", alignItems: "center", marginBottom: "80px" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
 
             {/* ── Left Content ── */}
-            <div style={{ flex: "0 0 38%", maxWidth: "460px" }}>
+            <div style={{ flex: isMobile ? "1 1 100%" : "0 0 38%", maxWidth: isMobile ? "100%" : "460px" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 14 }}>
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#7c3aed", letterSpacing: "0.14em", textTransform: "uppercase" }}>
                   CROSS-DISCIPLINARY LEARNING

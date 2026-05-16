@@ -52,7 +52,22 @@ const float = (delay = 0, yOffset = -20) => ({
 });
 
 /* ─────────────────────────────────────────── */
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
+
 export default function SchoolHubPage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <main style={{ background: "#f8f9fc", overflow: "hidden" }}>
 
@@ -61,21 +76,22 @@ export default function SchoolHubPage() {
       ══════════════════════════════════════ */}
       <section style={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: isMobile ? "auto" : "100vh",
         display: "flex",
-        marginBottom: 80,
+        flexDirection: isMobile ? "column" : "row",
+        marginBottom: isMobile ? 40 : 80,
       }}>
         {/* ── LEFT PANEL (32%) ── */}
         <div style={{
           position: "relative",
-          width: "32%",
-          minWidth: "min(100%, 450px)",
-          minHeight: "100vh",
+          width: isMobile ? "100%" : "32%",
+          minWidth: isMobile ? "100%" : "min(100%, 450px)",
+          minHeight: isMobile ? "auto" : "100vh",
           background: "#f0f5ff",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "120px 40px 120px 60px",
+          padding: isMobile ? "88px 20px 40px" : "120px 40px 120px 60px",
           zIndex: 10,
           flexShrink: 0,
         }}>
@@ -137,7 +153,7 @@ export default function SchoolHubPage() {
         </div>
 
         {/* ── RIGHT PANEL (68%) ── */}
-        <div style={{ position: "relative", flex: 1, minHeight: "100vh" }}>
+        <div style={{ position: "relative", flex: 1, minHeight: isMobile ? "55vw" : "100vh", maxHeight: isMobile ? "320px" : undefined }}>
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -148,7 +164,7 @@ export default function SchoolHubPage() {
         </div>
 
         {/* ── BOTTOM STATS BAR ── */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 20, padding: "0 40px", transform: "translateY(50%)" }}>
+        <div style={{ position: isMobile ? "relative" : "absolute", bottom: 0, left: 0, right: 0, zIndex: 20, padding: isMobile ? "20px" : "0 40px", transform: isMobile ? "none" : "translateY(50%)" }}>
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -194,7 +210,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Comparison Cards */}
-          <div style={{ display: "flex", gap: 40, position: "relative" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 40, position: "relative" }}>
 
             {/* Left Column: Worry (Red Theme) */}
             <motion.div {...scaleUp(0.4)} style={{ flex: 1, background: "#fff", borderRadius: 24, border: "1px solid #fee2e2", boxShadow: "0 20px 40px rgba(220,38,38,0.05)", overflow: "hidden" }}>
@@ -340,7 +356,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Steps Flow */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, position: "relative" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 24, position: "relative" }}>
 
             {/* Connecting Dotted Line (Background) */}
             <div style={{ position: "absolute", top: 40, left: "12%", right: "12%", height: 2, background: "transparent", borderTop: "2px dashed #bfdbfe", zIndex: 0 }} />
@@ -457,7 +473,7 @@ export default function SchoolHubPage() {
         <div style={{ maxWidth: 1240, margin: "0 auto", position: "relative", zIndex: 2 }}>
 
           {/* Top Hero-ish Area */}
-          <div style={{ display: "flex", gap: 60, alignItems: "center", marginBottom: 80 }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 60, alignItems: "center", marginBottom: isMobile ? 40 : 80 }}>
             {/* Left Content */}
             <div style={{ flex: 1, minWidth: "min(100%, 400px)" }}>
 
@@ -490,7 +506,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Cards Row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, marginBottom: 80 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 24, marginBottom: isMobile ? 40 : 80 }}>
             {[
               {
                 icon: <Package size={32} color="#0052cc" />,
@@ -568,7 +584,7 @@ export default function SchoolHubPage() {
       <section style={{ padding: "20px 20px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
 
-          <div style={{ display: "flex", gap: 60, alignItems: "center", marginBottom: 80 }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 60, alignItems: "center", marginBottom: isMobile ? 40 : 80 }}>
 
             {/* Left Content */}
             <div style={{ flex: 1, minWidth: "min(100%, 450px)" }}>
@@ -656,7 +672,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Feature Columns Bar */}
-          <motion.div {...fadeUp(0.6)} style={{ background: "#f8f9fc", borderRadius: 20, padding: "40px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, marginBottom: 40, border: "1px solid #f1f5f9" }}>
+          <motion.div {...fadeUp(0.6)} style={{ background: "#f8f9fc", borderRadius: 20, padding: isMobile ? "24px 16px" : "40px", display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 24, marginBottom: 40, border: "1px solid #f1f5f9" }}>
             {[
               {
                 icon: <MousePointer2 size={24} color="#0052cc" />,
@@ -730,7 +746,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginBottom: 60 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 20, marginBottom: 60 }}>
 
             {/* Card 1: Fixed Session Duration */}
             <motion.div

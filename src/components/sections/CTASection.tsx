@@ -1,6 +1,17 @@
 "use client";
 
 import React, { useRef, useState, useEffect, Suspense, useMemo } from "react";
+
+function useScreenWidth() {
+  const [width, setWidth] = useState(1200);
+  useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { CheckCircle2, CalendarDays, ArrowRight, GraduationCap, BarChart3, Users, Building2, Lightbulb, ShieldCheck, UserCog, Headset, TrendingUp } from "lucide-react";
 
@@ -153,6 +164,9 @@ function FloatingLabel({
 
 export default function CTASection() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -184,20 +198,20 @@ export default function CTASection() {
     >
 
 
-      <div className="cta-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexWrap: "nowrap", gap: 30, alignItems: "center" }}>
-        
+      <div className="cta-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 30, alignItems: isMobile || isTablet ? "flex-start" : "center" }}>
+
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - TEXT & CTA
         ───────────────────────────────────────────────────────── */}
-        <div style={{ flex: "1 1 45%", minWidth: "min(100%, 350px)", maxWidth: 600, paddingBottom: 40 }}>
+        <div style={{ flex: "1 1 45%", minWidth: 0, width: isMobile || isTablet ? "100%" : undefined, maxWidth: isMobile ? "100%" : 600, paddingBottom: isMobile ? 0 : 40 }}>
          
 
-          <motion.h2 
-            initial={{ opacity: 0, y: 30, rotateX: 20 }} 
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }} 
-            viewport={{ once: true }} 
+          <motion.h2
+            initial={{ opacity: 0, y: 30, rotateX: 20 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.9, type: "spring" }}
-            style={{ fontSize: "clamp(42px, 5vw, 68px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.1, marginBottom: 40, transformPerspective: 800, letterSpacing: "-0.03em" }}
+            style={{ fontSize: isMobile ? "clamp(32px,8vw,44px)" : "clamp(42px, 5vw, 68px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.1, marginBottom: isMobile ? 24 : 40, transformPerspective: 800, letterSpacing: "-0.03em" }}
           >
             Experiential learning <br/>
             will become <br/>
@@ -264,89 +278,92 @@ export default function CTASection() {
         {/* ─────────────────────────────────────────────────────────
             RIGHT COLUMN - STUDENT & CARDS
         ───────────────────────────────────────────────────────── */}
-        <div className="cta-right-container" style={{ flex: "1 1 55%", minWidth: 0, position: "relative", height: 600, perspective: 1200 }}>
-          <style dangerouslySetInnerHTML={{__html: `
-            @media (max-width: 1600px) {
-              .cta-wrapper { transform: scale(0.85); transform-origin: center center; }
-              .cta-right-container { height: 510px !important; }
-            }
-            @media (max-width: 1400px) {
-              .cta-wrapper { transform: scale(0.75); }
-              .cta-right-container { height: 450px !important; }
-            }
-            @media (max-width: 1100px) {
-              .cta-wrapper { transform: scale(0.65); }
-              .cta-right-container { height: 390px !important; }
-            }
-            @media (max-width: 900px) {
-              .cta-wrapper { transform: scale(0.55); }
-              .cta-right-container { height: 330px !important; }
-            }
-            @media (max-width: 700px) {
-              .cta-wrapper { transform: scale(0.4); }
-              .cta-right-container { height: 240px !important; }
-              .cta-layout { gap: 10px !important; }
-            }
-          `}} />
-          
-          <div className="cta-wrapper" style={{ position: "relative", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <motion.div 
-              animate={{ rotateX: mousePos.y * 0.1, rotateY: mousePos.x * 0.1 }}
-              transition={{ type: "spring", stiffness: 40, damping: 20 }}
-              style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d" }}
-            >
-            {/* Student Image (Static so finger aligns with card) */}
-            <motion.div 
-              style={{ position: "absolute", bottom: "-25%", left: "0%", right: "10%", height: "170%", zIndex: 10, display: "flex", justifyContent: "center" }}
-            >
-               <img loading="lazy" decoding="async" src="/girl_vr_tapping.webp" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
-            </motion.div>
-
-            {/* Floating Cards (Properly Spaced) */}
-            <FloatingLabel 
-              title="Deeper Understanding" desc="Students learn by seeing, doing and experiencing."
-              icon={GraduationCap} color="#3b82f6" delay={0}
-              top="-30%" left="-12%" isTapped={true}
-            />
-
-            <FloatingLabel 
-              title="Stronger Outcomes" desc="Better engagement. Better retention. Better results."
-              icon={TrendingUp} color="#6366f1" delay={0.2}
-              top="-30%" right="-8%"
-            />
-
-            <FloatingLabel 
-              title="Future Ready" desc="Preparing students today for the world of tomorrow."
-              icon={Users} color="#10b981" delay={0.4}
-              top="50%" left="-18%"
-            />
-
-            <FloatingLabel 
-              title="Scalable Impact" desc="Designed for schools to adopt, scale and succeed."
-              icon={Building2} color="#f59e0b" delay={0.6}
-              top="50%" right="-18%"
-            />
-          </motion.div>
+        {isMobile ? (
+          /* Mobile: 2x2 feature card grid */
+          <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, paddingBottom: 8 }}>
+            {[
+              { title: "Deeper Understanding", desc: "Students learn by seeing, doing and experiencing.", icon: GraduationCap, color: "#3b82f6" },
+              { title: "Stronger Outcomes", desc: "Better engagement. Better retention. Better results.", icon: TrendingUp, color: "#6366f1" },
+              { title: "Future Ready", desc: "Preparing students today for tomorrow's world.", icon: Users, color: "#10b981" },
+              { title: "Scalable Impact", desc: "Designed for schools to adopt, scale and succeed.", icon: Building2, color: "#f59e0b" },
+            ].map((item, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.1, type: "spring" }}
+                style={{ background: "rgba(255,255,255,0.65)", backdropFilter: "blur(20px)", border: "1.5px solid rgba(255,255,255,0.8)", borderRadius: 20, padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10, boxShadow: "0 10px 30px rgba(0,30,80,0.08)" }}
+              >
+                <div style={{ width: 44, height: 44, borderRadius: "50%", background: `linear-gradient(135deg,${item.color} 0%,#1d4ed8 100%)`, display: "flex", alignItems: "center", justifyContent: "center", color: "white", boxShadow: `0 6px 18px ${item.color}55` }}>
+                  <item.icon size={22} strokeWidth={2.5} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: "#1e293b", marginBottom: 4, lineHeight: 1.2 }}>{item.title}</div>
+                  <div style={{ width: 32, height: 2.5, background: "#3b82f6", borderRadius: 4, marginBottom: 6 }} />
+                  <p style={{ fontSize: 11.5, color: "#475569", margin: 0, lineHeight: 1.45, fontWeight: 500 }}>{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="cta-right-container" style={{ flex: "1 1 55%", minWidth: 0, width: isTablet ? "100%" : undefined, position: "relative", height: isTablet ? 480 : 600, perspective: 1200 }}>
+            <style dangerouslySetInnerHTML={{__html: `
+              @media (max-width: 1600px) {
+                .cta-wrapper { transform: scale(0.85); transform-origin: center center; }
+                .cta-right-container { height: 510px !important; }
+              }
+              @media (max-width: 1400px) {
+                .cta-wrapper { transform: scale(0.75); }
+                .cta-right-container { height: 450px !important; }
+              }
+              @media (max-width: 1100px) {
+                .cta-wrapper { transform: scale(0.65); }
+                .cta-right-container { height: 390px !important; }
+              }
+              @media (max-width: 900px) {
+                .cta-wrapper { transform: scale(0.55); }
+                .cta-right-container { height: 330px !important; }
+              }
+            `}} />
+
+            <div className="cta-wrapper" style={{ position: "relative", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <motion.div
+                animate={{ rotateX: mousePos.y * 0.1, rotateY: mousePos.x * 0.1 }}
+                transition={{ type: "spring", stiffness: 40, damping: 20 }}
+                style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d" }}
+              >
+                <motion.div style={{ position: "absolute", bottom: "-25%", left: "0%", right: "10%", height: "170%", zIndex: 10, display: "flex", justifyContent: "center" }}>
+                  <img loading="lazy" decoding="async" src="/girl_vr_tapping.webp" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
+                </motion.div>
+                <FloatingLabel title="Deeper Understanding" desc="Students learn by seeing, doing and experiencing." icon={GraduationCap} color="#3b82f6" delay={0} top="-30%" left="-12%" isTapped={true} />
+                <FloatingLabel title="Stronger Outcomes" desc="Better engagement. Better retention. Better results." icon={TrendingUp} color="#6366f1" delay={0.2} top="-30%" right="-8%" />
+                <FloatingLabel title="Future Ready" desc="Preparing students today for the world of tomorrow." icon={Users} color="#10b981" delay={0.4} top="50%" left="-18%" />
+                <FloatingLabel title="Scalable Impact" desc="Designed for schools to adopt, scale and succeed." icon={Building2} color="#f59e0b" delay={0.6} top="50%" right="-18%" />
+              </motion.div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ─────────────────────────────────────────────────────────
           BOTTOM BAR (Glassmorphic 4-Items)
       ───────────────────────────────────────────────────────── */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50, scale: 0.95 }} 
-        whileInView={{ opacity: 1, y: 0, scale: 1 }} 
-        viewport={{ once: true }} 
+      <motion.div
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
         transition={{ delay: 0.8, type: "spring", stiffness: 100 }}
-        style={{ 
-          margin: "0 auto 0", maxWidth: 1150, width: "100%",
+        style={{
+          margin: isMobile ? "20px auto 0" : "0 auto 0",
+          maxWidth: 1150, width: "100%",
           background: "rgba(219, 234, 254, 0.35)", backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
-          border: "1.5px solid rgba(255,255,255,0.7)", borderRadius: 100,
-          padding: "14px 40px", display: "flex", flexWrap: "wrap", justifyContent: "space-between",
-          alignItems: "center", gap: 24, boxShadow: "0 10px 40px rgba(59,130,246,0.08), inset 0 2px 10px rgba(255,255,255,0.5)",
-          position: "relative", zIndex: 10, transformStyle: "preserve-3d"
+          border: "1.5px solid rgba(255,255,255,0.7)",
+          borderRadius: isMobile ? 20 : 100,
+          padding: isMobile ? "16px 16px" : "14px 40px",
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)",
+          gap: isMobile ? 14 : 24,
+          boxShadow: "0 10px 40px rgba(59,130,246,0.08), inset 0 2px 10px rgba(255,255,255,0.5)",
+          position: "relative", zIndex: 10,
         }}
       >
         <motion.div 
@@ -359,25 +376,20 @@ export default function CTASection() {
           { icon: Headset, title: "Student Inspired", desc: "Learning that connects\nand transforms.", color: "#8b5cf6" },
           { icon: BarChart3, title: "Future Focused", desc: "Building confident,\ncurious learners.", color: "#3b82f6" }
         ].map((item, i) => (
-          <React.Fragment key={i}>
-            <motion.div 
-              whileHover={{ scale: 1.1, y: -5 }} transition={{ type: "spring" }}
-              style={{ display: "flex", alignItems: "center", gap: 16, cursor: "default" }}
-            >
-              <Floating3DWrapper delay={i * 0.2} floatAmp={4} rotateAmp={0} duration={3}>
-                <div style={{ width: 52, height: 52, borderRadius: "50%", background: `linear-gradient(135deg, rgba(${i===0?'59,130,246':i===1?'99,102,241':i===2?'139,92,246':'59,130,246'}, 0.1) 0%, rgba(${i===0?'59,130,246':i===1?'99,102,241':i===2?'139,92,246':'59,130,246'}, 0.2) 100%)`, display: "flex", alignItems: "center", justifyContent: "center", color: item.color, boxShadow: `0 8px 20px rgba(37,99,235,0.1), inset 0 2px 4px rgba(255,255,255,0.8)` }}>
-                  <item.icon size={26} strokeWidth={2.5} />
-                </div>
-              </Floating3DWrapper>
-              <div>
-                <div style={{ fontSize: 14.5, fontWeight: 800, color: "#0f172a", marginBottom: 4 }}>{item.title}</div>
-                <div style={{ fontSize: 12.5, fontWeight: 500, color: "#64748b", lineHeight: 1.4 }}>
-                  {item.desc.split('\n').map((line, idx) => <React.Fragment key={idx}>{line}<br/></React.Fragment>)}
-                </div>
+          <motion.div key={i}
+            whileHover={{ scale: 1.08, y: -4 }} transition={{ type: "spring" }}
+            style={{ display: "flex", alignItems: "center", gap: isMobile ? 10 : 16, cursor: "default" }}
+          >
+            <div style={{ width: isMobile ? 38 : 52, height: isMobile ? 38 : 52, flexShrink: 0, borderRadius: "50%", background: `linear-gradient(135deg, rgba(${i===0?'59,130,246':i===1?'99,102,241':i===2?'139,92,246':'59,130,246'}, 0.1) 0%, rgba(${i===0?'59,130,246':i===1?'99,102,241':i===2?'139,92,246':'59,130,246'}, 0.2) 100%)`, display: "flex", alignItems: "center", justifyContent: "center", color: item.color, boxShadow: `0 8px 20px rgba(37,99,235,0.1), inset 0 2px 4px rgba(255,255,255,0.8)` }}>
+              <item.icon size={isMobile ? 18 : 26} strokeWidth={2.5} />
+            </div>
+            <div>
+              <div style={{ fontSize: isMobile ? 11.5 : 14.5, fontWeight: 800, color: "#0f172a", marginBottom: isMobile ? 2 : 4 }}>{item.title}</div>
+              <div style={{ fontSize: isMobile ? 10 : 12.5, fontWeight: 500, color: "#64748b", lineHeight: 1.35 }}>
+                {item.desc.split('\n').map((line, idx) => <React.Fragment key={idx}>{line}<br/></React.Fragment>)}
               </div>
-            </motion.div>
-            {i < 3 && <div style={{ width: 1.5, height: 44, background: "linear-gradient(180deg, transparent, rgba(37,99,235,0.15), transparent)" }} />}
-          </React.Fragment>
+            </div>
+          </motion.div>
         ))}
       </motion.div>
 

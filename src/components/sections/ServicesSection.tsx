@@ -3,6 +3,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
 
+function useScreenWidth() {
+  const [width, setWidth] = useState(1200);
+  useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
+
 /* ─────────────────────────────────────────────────────────
    THE PROBLEM  —  icons
 ───────────────────────────────────────────────────────── */
@@ -78,6 +89,52 @@ function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
           >
             <span style={{ fontSize:11, fontWeight:800, letterSpacing:"0.1em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}>{label}</span>
           </motion.div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE GRID BUBBLE — relative-positioned, 2×2 grid
+───────────────────────────────────────────────────────── */
+function GridBubble({ label, children, delay, dir = -1, w = 140 }: {
+  label: string; children: React.ReactNode;
+  delay: number; dir?: number; w?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7, y: 16 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
+    >
+      <motion.div
+        animate={{ y: [0, dir * 10, 0] }}
+        transition={{ duration: 5 + delay * 0.5, repeat: Infinity, ease: "easeInOut", delay: delay * 0.3 }}
+        style={{ position: "relative" }}
+      >
+        <div style={{ position: "absolute", inset: -8, borderRadius: "50%", background: "radial-gradient(circle,rgba(160,210,255,0.35) 0%,transparent 68%)", filter: "blur(12px)", pointerEvents: "none" }} />
+        <div style={{
+          position: "relative",
+          background: "rgba(255,255,255,0.18)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)",
+          borderRadius: 28, boxShadow: "0 16px 44px rgba(0,50,140,0.16),inset 0 2px 0 rgba(255,255,255,0.7)",
+          border: "2px solid rgba(255,255,255,0.5)", width: w, height: w * 0.8,
+          display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", padding: 4,
+        }}>
+          <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {children}
+          </div>
+        </div>
+        <div style={{ position: "absolute", top: -36, left: "50%", transform: "translateX(-50%)", zIndex: 20 }}>
+          <div style={{
+            background: "rgba(255,255,255,0.95)", borderRadius: 30, padding: "5px 14px",
+            boxShadow: "0 6px 20px rgba(0,60,160,0.14)", whiteSpace: "nowrap",
+            border: "1px solid rgba(255,255,255,0.9)",
+          }}>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", color: "#1d4ed8", textTransform: "uppercase", fontFamily: "'AR One Sans',sans-serif" }}>{label}</span>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -202,6 +259,11 @@ export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px" });
 
+  /* Responsive */
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   /* Responsive scale for the orbital canvas */
   const canvasRef = useRef<HTMLDivElement>(null);
   const [scale, setScale]   = useState(1);
@@ -222,20 +284,44 @@ export default function ServicesSection() {
       {/* ═══════════════════════════════════════════════════
           SECTION 1 — THE PROBLEM
       ═══════════════════════════════════════════════════ */}
-      <section style={{ position:"relative", width:"100%", minHeight:"100vh", display:"flex", flexDirection:"row", alignItems:"stretch", overflow:"hidden", background:"linear-gradient(135deg,#f0f4ff 0%,#d9e2ff 100%)" }}>
+      <section style={{
+        position: "relative", width: "100%",
+        minHeight: isMobile ? "auto" : "100vh",
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        alignItems: isMobile ? "flex-start" : "stretch",
+        overflow: "hidden",
+        background: "linear-gradient(135deg,#f0f4ff 0%,#d9e2ff 100%)",
+      }}>
 
         {/* LEFT */}
-        <div style={{ width:"38%", flexShrink:0, padding:"clamp(48px,7vh,88px) clamp(32px,5.5vw,72px)", display:"flex", flexDirection:"column", justifyContent:"center", position:"relative", zIndex:4 }}>
+        <div style={{
+          width: isMobile ? "100%" : isTablet ? "44%" : "38%",
+          flexShrink: 0,
+          padding: isMobile
+            ? "72px 24px 32px"
+            : isTablet
+            ? "clamp(48px,6vh,72px) clamp(24px,4vw,48px)"
+            : "clamp(48px,7vh,88px) clamp(32px,5.5vw,72px)",
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          position: "relative", zIndex: 4,
+        }}>
           <motion.div initial={{ opacity:0, x:-14 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }}
             style={{ display:"flex", alignItems:"center", gap:12, marginBottom:24 }}>
             <span style={{ fontSize:10, fontWeight:800, letterSpacing:"0.22em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}></span>
           </motion.div>
-          <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.08, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ fontSize:"clamp(34px,4.5vw,62px)", fontWeight:800, lineHeight:1.1, color:"#0b1a3b", margin:"0 0 40px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>
-            For decades, education has relied on <br/>
+          <motion.h2
+            initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }}
+            viewport={{ once:true }} transition={{ delay:0.08, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+            style={{
+              fontSize: isMobile ? "clamp(28px,7vw,40px)" : isTablet ? "clamp(28px,3.5vw,46px)" : "clamp(34px,4.5vw,62px)",
+              fontWeight: 800, lineHeight: 1.1, color: "#0b1a3b",
+              margin: "0 0 28px", fontFamily: "'AR One Sans',sans-serif", transformPerspective: 700,
+            }}>
+            For decades, education has relied on{isMobile ? " " : <br/>}
             <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#7c3aed 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>explanation.</span>
           </motion.h2>
-          <div style={{ display:"flex", flexDirection:"column", gap:18, marginBottom:36 }}>
+          <div style={{ display:"flex", flexDirection:"column", gap: isMobile ? 14 : 18, marginBottom: isMobile ? 28 : 36 }}>
             {([
               { Icon:TeacherIcon,   text:"Teachers explain brilliantly." },
               { Icon:BookListIcon,  text:"The curriculum is structured." },
@@ -244,38 +330,75 @@ export default function ServicesSection() {
             ] as { Icon:()=>React.ReactNode; text:string }[]).map(({ Icon, text }, i) => (
               <motion.div key={i} initial={{ opacity:0, x:-14 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ delay:0.12+i*0.1 }}
                 whileHover={{ scale: 1.05, x: 10, rotateX: 10 }}
-                style={{ display:"flex", alignItems:"center", gap:16, cursor: "default", perspective: 500, transformStyle: "preserve-3d" }}>
-                <motion.div 
+                style={{ display:"flex", alignItems:"center", gap: isMobile ? 12 : 16, cursor: "default", perspective: 500, transformStyle: "preserve-3d" }}>
+                <motion.div
                   animate={{ y: [0, -4, 0] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
-                  style={{ width:52, height:52, borderRadius:"50%", flexShrink:0, background:"linear-gradient(135deg,rgba(29,78,216,0.1) 0%,rgba(124,58,237,0.1) 100%)", border:"1.5px solid rgba(29,78,216,0.15)", display:"flex", alignItems:"center", justifyContent:"center", transform: "translateZ(20px)" }}
+                  style={{
+                    width: isMobile ? 42 : 52, height: isMobile ? 42 : 52,
+                    borderRadius:"50%", flexShrink:0,
+                    background:"linear-gradient(135deg,rgba(29,78,216,0.1) 0%,rgba(124,58,237,0.1) 100%)",
+                    border:"1.5px solid rgba(29,78,216,0.15)",
+                    display:"flex", alignItems:"center", justifyContent:"center", transform: "translateZ(20px)",
+                  }}
                 >
                   <Icon />
                 </motion.div>
-                <p style={{ fontSize:"clamp(17px,1.6vw,21px)", fontWeight:500, color:"#1a2a4a", margin:0, fontFamily:"'AR One Sans',sans-serif", lineHeight:1.45, transform: "translateZ(10px)" }}>{text}</p>
+                <p style={{
+                  fontSize: isMobile ? "clamp(14px,3.8vw,17px)" : isTablet ? "clamp(14px,1.6vw,18px)" : "clamp(17px,1.6vw,21px)",
+                  fontWeight:500, color:"#1a2a4a", margin:0, fontFamily:"'AR One Sans',sans-serif", lineHeight:1.45, transform: "translateZ(10px)",
+                }}>{text}</p>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* RIGHT */}
-        <div style={{ flex:1, position:"relative", overflow:"hidden", minHeight:"100vh", backgroundImage:"url('/background.webp')", backgroundSize:"cover", backgroundPosition:"center" }}>
-          <img loading="lazy" decoding="async" src="/student.webp" alt="Student" style={{ position:"absolute", bottom:0, left:"67.5%", transform:"translateX(-50%)", height:"48%", objectFit:"contain", objectPosition:"bottom center", zIndex:6, pointerEvents:"none", filter:"drop-shadow(0 30px 60px rgba(0,40,130,0.25))" }}/>
-          <div style={{ position:"absolute", top:"28%", left:"67.5%", transform:"translate(-50%,-50%)", zIndex:7, pointerEvents:"none" }}>
-            <motion.img loading="lazy" decoding="async" animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} src="/quastion.webp" alt="Question cloud" style={{ width:260, height:"auto", filter:"drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}/>
+        {/* RIGHT — desktop/tablet: absolute bubbles | mobile: 2×2 grid */}
+        {isMobile ? (
+          <div style={{
+            width: "100%",
+            backgroundImage: "url('/background.webp')", backgroundSize: "cover", backgroundPosition: "center",
+            padding: "48px 20px 40px",
+            display: "grid", gridTemplateColumns: "1fr 1fr",
+            gap: "44px 16px",
+            justifyItems: "center",
+          }}>
+            <GridBubble label="FORCES"             delay={0.2} dir={-1} w={140}><ForcesSVG /></GridBubble>
+            <GridBubble label="HUMAN ANATOMY"      delay={0.5} dir={-1} w={130}><AnatomySVG /></GridBubble>
+            <GridBubble label="CELL"               delay={0.8} dir={1}  w={150}><CellSVG /></GridBubble>
+            <GridBubble label="BIOLOGICAL SYSTEMS" delay={1.1} dir={1}  w={130}><PlantCellSVG /></GridBubble>
           </div>
-          <SubjectBubble label="FORCES"             pos={{ top:"14%",left:"28%" }}  delay={0.2} dir={-1} w={190}><ForcesSVG /></SubjectBubble>
-          <SubjectBubble label="HUMAN ANATOMY"      pos={{ top:"12%",right:"4%" }}  delay={1.2} dir={-1} w={180}><AnatomySVG /></SubjectBubble>
-          <SubjectBubble label="CELL"               pos={{ top:"54%",left:"26%" }}  delay={1.8} dir={1}  w={220}><CellSVG /></SubjectBubble>
-          <SubjectBubble label="BIOLOGICAL SYSTEMS" pos={{ top:"56%",right:"4%" }}  delay={0.6} dir={1}  w={190}><PlantCellSVG /></SubjectBubble>
-        </div>
+        ) : (
+          <div style={{
+            flex: 1, position: "relative", overflow: "hidden", minHeight: "100vh",
+            backgroundImage: "url('/background.webp')", backgroundSize: "cover", backgroundPosition: "center",
+          }}>
+            <img loading="lazy" decoding="async" src="/student.webp" alt="Student"
+              style={{ position:"absolute", bottom:0, left:"67.5%", transform:"translateX(-50%)",
+                height: isTablet ? "42%" : "48%",
+                objectFit:"contain", objectPosition:"bottom center", zIndex:6, pointerEvents:"none",
+                filter:"drop-shadow(0 30px 60px rgba(0,40,130,0.25))" }}
+            />
+            <div style={{ position:"absolute", top:"28%", left:"67.5%", transform:"translate(-50%,-50%)", zIndex:7, pointerEvents:"none" }}>
+              <motion.img loading="lazy" decoding="async"
+                animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                src="/quastion.webp" alt="Question cloud"
+                style={{ width: isTablet ? 200 : 260, height:"auto", filter:"drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}
+              />
+            </div>
+            <SubjectBubble label="FORCES"             pos={{ top:"14%",left:"28%" }}  delay={0.2} dir={-1} w={isTablet ? 150 : 190}><ForcesSVG /></SubjectBubble>
+            <SubjectBubble label="HUMAN ANATOMY"      pos={{ top:"12%",right:"4%" }}  delay={1.2} dir={-1} w={isTablet ? 140 : 180}><AnatomySVG /></SubjectBubble>
+            <SubjectBubble label="CELL"               pos={{ top:"54%",left:"26%" }}  delay={1.8} dir={1}  w={isTablet ? 165 : 220}><CellSVG /></SubjectBubble>
+            <SubjectBubble label="BIOLOGICAL SYSTEMS" pos={{ top:"56%",right:"4%" }}  delay={0.6} dir={1}  w={isTablet ? 150 : 190}><PlantCellSVG /></SubjectBubble>
+          </div>
+        )}
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          SECTION 2 — THE HOW  (pixel-perfect orbital diagram)
+          SECTION 2 — THE HOW
       ═══════════════════════════════════════════════════ */}
       <section
         ref={sectionRef}
-        style={{ position:"relative", width:"100%", minHeight:"100vh", display:"flex", flexDirection:"row", alignItems:"center", overflow:"hidden", background:"linear-gradient(140deg,#ffffff 0%,#f4f8ff 30%,#eaf1ff 60%,#d8eaff 100%)" }}
+        style={{ position:"relative", width:"100%", minHeight: isMobile ? "auto" : "100vh", display:"flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", overflow:"hidden", background:"linear-gradient(140deg,#ffffff 0%,#f4f8ff 30%,#eaf1ff 60%,#d8eaff 100%)" }}
       >
         {/* ── background wave shapes ── */}
         <div aria-hidden style={{ position:"absolute", bottom:0, left:0, right:0, height:"42%", pointerEvents:"none", zIndex:0 }}>
@@ -286,38 +409,61 @@ export default function ServicesSection() {
           </svg>
         </div>
 
-        {/* ── decorative floating dots ── */}
-        <motion.div animate={{ y:[0,-9,0] }} transition={{ duration:3.8, repeat:Infinity, ease:"easeInOut" }}
-          aria-hidden style={{ position:"absolute", top:"9%",  right:"7%",  width:15, height:15, borderRadius:"50%", background:"#00d4ff", boxShadow:"0 0 14px 4px rgba(0,212,255,0.5)", zIndex:1 }}/>
-        <motion.div animate={{ y:[0, 9,0] }} transition={{ duration:5.1, repeat:Infinity, ease:"easeInOut", delay:1 }}
-          aria-hidden style={{ position:"absolute", top:"37%", right:"4.5%",width:10, height:10, borderRadius:"50%", background:"#e91e9c", boxShadow:"0 0 10px 3px rgba(233,30,156,0.45)", zIndex:1 }}/>
-        <motion.div animate={{ y:[0,-6,0] }} transition={{ duration:6,   repeat:Infinity, ease:"easeInOut", delay:2 }}
-          aria-hidden style={{ position:"absolute", bottom:"30%", right:"11%", width:8, height:8, borderRadius:"50%", background:"#e91e9c", opacity:0.65, zIndex:1 }}/>
-        <motion.div animate={{ x:[0, 5,0] }} transition={{ duration:7,   repeat:Infinity, ease:"easeInOut", delay:0.5 }}
-          aria-hidden style={{ position:"absolute", top:"20%", right:"23%", width:6, height:6, borderRadius:"50%", background:"#7c3aed", opacity:0.45, zIndex:1 }}/>
-        <motion.div animate={{ y:[0, 7,0] }} transition={{ duration:5.5, repeat:Infinity, ease:"easeInOut", delay:3 }}
-          aria-hidden style={{ position:"absolute", bottom:"22%", left:"41%", width:8, height:8, borderRadius:"50%", background:"#ff9800", opacity:0.7, zIndex:1 }}/>
+        {/* ── decorative floating dots (desktop/tablet only) ── */}
+        {!isMobile && <>
+          <motion.div animate={{ y:[0,-9,0] }} transition={{ duration:3.8, repeat:Infinity, ease:"easeInOut" }}
+            aria-hidden style={{ position:"absolute", top:"9%", right:"7%", width:15, height:15, borderRadius:"50%", background:"#00d4ff", boxShadow:"0 0 14px 4px rgba(0,212,255,0.5)", zIndex:1 }}/>
+          <motion.div animate={{ y:[0,9,0] }} transition={{ duration:5.1, repeat:Infinity, ease:"easeInOut", delay:1 }}
+            aria-hidden style={{ position:"absolute", top:"37%", right:"4.5%", width:10, height:10, borderRadius:"50%", background:"#e91e9c", boxShadow:"0 0 10px 3px rgba(233,30,156,0.45)", zIndex:1 }}/>
+        </>}
 
         {/* ── LEFT TEXT COLUMN ── */}
-        <div style={{ width:"36%", flexShrink:0, padding:"clamp(40px,6vh,72px) clamp(8px,1vw,12px) clamp(24px,3vh,48px) clamp(20px,3.5vw,52px)", display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2 }}>
-
-         
-
+        <div style={{
+          width: isMobile ? "100%" : isTablet ? "42%" : "36%",
+          flexShrink: 0,
+          padding: isMobile
+            ? "56px 24px 32px"
+            : isTablet
+            ? "clamp(36px,5vh,56px) clamp(20px,3vw,36px)"
+            : "clamp(40px,6vh,72px) clamp(8px,1vw,12px) clamp(24px,3vh,48px) clamp(20px,3.5vw,52px)",
+          display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2,
+        }}>
           <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ fontSize:"clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 8px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>
+            style={{ fontSize: isMobile ? "clamp(24px,6.5vw,36px)" : "clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 12px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>
             We make concepts<br/>
             <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>observable</span>{" "}—<br/>
             without disrupting schools.
           </motion.h2>
 
           <motion.p initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:0.18 }}
-            style={{ fontSize:"clamp(15px,1.45vw,19px)", color:"#4a5f7a", lineHeight:1.55, fontFamily:"'AR One Sans',sans-serif", maxWidth:400, margin:0 }}>
+            style={{ fontSize: isMobile ? 14 : "clamp(15px,1.45vw,19px)", color:"#4a5f7a", lineHeight:1.55, fontFamily:"'AR One Sans',sans-serif", maxWidth:400, margin:0 }}>
             SparkVR integrates immersive learning into existing academic systems through:
           </motion.p>
+
+          {/* Mobile: show feature cards inline below text */}
+          {isMobile && (
+            <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              {CARDS.map((c, i) => (
+                <motion.div key={i}
+                  initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
+                  style={{ background:"rgba(255,255,255,0.92)", borderRadius:18, padding:"14px 12px", boxShadow:"0 6px 24px rgba(0,40,120,0.09)", border:"1px solid rgba(220,235,255,0.8)", display:"flex", flexDirection:"column", alignItems:"center", gap:8, textAlign:"center" }}>
+                  <div style={{ width:40, height:40, borderRadius:"50%", background:"rgba(219,234,254,0.7)", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                    {c.icon}
+                  </div>
+                  <div>
+                    {c.lines.map((line, j) => (
+                      <div key={j} style={{ fontSize:11.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.35, fontFamily:"'AR One Sans',sans-serif" }}>{line}</div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* ── RIGHT COLUMN — orbital canvas ── */}
-        <div
+        {/* ── RIGHT COLUMN — orbital canvas (hidden on mobile) ── */}
+        {!isMobile && <div
           ref={rightRef}
           onMouseMove={e => {
             if (!rightRef.current) return;
@@ -325,7 +471,7 @@ export default function ServicesSection() {
             setMouse({ x:((e.clientX-r.left)/r.width-0.5)*20, y:((e.clientY-r.top)/r.height-0.5)*14 });
           }}
           onMouseLeave={() => setMouse({ x:0, y:0 })}
-          style={{ flex:1, position:"relative", display:"flex", alignItems:"center", justifyContent:"center", minHeight:"100vh", overflow:"visible", zIndex:2 }}
+          style={{ flex:1, position:"relative", display:"flex", alignItems:"center", justifyContent:"center", minHeight: isTablet ? "70vh" : "100vh", overflow:"visible", zIndex:2 }}
         >
           {/* parallax wrapper */}
           <motion.div
@@ -500,7 +646,7 @@ export default function ServicesSection() {
             })}
 
           </motion.div>
-        </div>
+        </div>}
       </section>
     </div>
   );

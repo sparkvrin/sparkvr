@@ -24,6 +24,17 @@ const fadeUpRotate = (delay = 0) => ({
   transition: { delay, duration: 0.9, ease: EASE },
 });
 
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
+
 /* ─── HELPER COMPONENTS (POWER 3D) ─── */
 function InteractiveButton({ children, primary = false, icon: Icon }: any) {
   return (
@@ -110,6 +121,10 @@ function InfoItem({ icon: Icon, label, value }: any) {
 }
 
 export default function ContactPage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <main style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#fff" }}>
       
@@ -137,7 +152,7 @@ export default function ContactPage() {
         <div style={{
           position: "relative", zIndex: 10,
           maxWidth: 1440, margin: "0 auto", width: "100%",
-          padding: "160px 100px 40px",
+          padding: isMobile ? "100px 20px 40px" : isTablet ? "120px 40px 40px" : "160px 100px 40px",
           flex: 1,
           display: "flex", flexDirection: "column",
         }}>
@@ -173,7 +188,7 @@ export default function ContactPage() {
               Request a guided demonstration and experience curriculum-aligned immersive learning.
             </motion.p>
 
-            <motion.div {...fadeUp(0.5)} style={{ display: "flex", gap: 24 }}>
+            <motion.div {...fadeUp(0.5)} style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
                <InteractiveButton primary icon={Calendar}>Schedule a Demo</InteractiveButton>
                <InteractiveButton icon={Download}>Download Brochure</InteractiveButton>
             </motion.div>
@@ -219,8 +234,8 @@ export default function ContactPage() {
       <section style={{ background: "#ffffff", padding: "140px 0 160px", position: "relative" }}>
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
         
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 100px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 100, alignItems: "start" }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 40px" : "0 100px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr", gap: isMobile ? 40 : 100, alignItems: "start" }}>
             
             {/* LEFT SIDE: FORM */}
             <motion.div {...fadeUp(0.1)}>
@@ -233,11 +248,11 @@ export default function ContactPage() {
               </p>
 
               <form style={{ display: "grid", gap: 24 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 24 }}>
                    <FormInput label="School Name" placeholder="Enter school name" icon={School} />
                    <FormInput label="City" placeholder="Enter your city" icon={MapPin} />
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 24 }}>
                    <FormInput label="Contact Person" placeholder="Your full name" icon={User} />
                    <FormInput label="Phone Number" placeholder="Enter phone number" icon={Phone} />
                 </div>
@@ -258,7 +273,7 @@ export default function ContactPage() {
                   </div>
                 </motion.div>
 
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 32 }}>
+                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 0, marginTop: 32 }}>
                    <div style={{ display: "flex", alignItems: "center", gap: 14, maxWidth: 320 }}>
                       <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <Lock size={16} color="#94a3b8" strokeWidth={2.5} />
@@ -314,13 +329,13 @@ export default function ContactPage() {
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 1.2, ease: EASE }}
             style={{
-              marginTop: 120,
+              marginTop: isMobile ? 60 : 120,
               background: "#f8fafc",
               borderRadius: 36,
-              padding: "48px 80px",
+              padding: isMobile ? "32px 20px" : "48px 80px",
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 40,
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+              gap: isMobile ? 24 : 40,
               border: "1px solid rgba(0,82,204,0.04)",
               boxShadow: "inset 0 2px 10px rgba(0,0,0,0.01)"
             }}

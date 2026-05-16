@@ -2,6 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
 import {
   Clock, Users, UserCheck, GraduationCap, CalendarCheck, RefreshCw,
   FileText, Headset, MessageCircle, CheckCircle,
@@ -51,6 +62,9 @@ const scaleIn = (delay = 0) => ({
 });
 
 export default function TimetablePage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
 
   return (
     <main style={{ minHeight: "100vh", background: "#f8fafc", fontFamily: "system-ui, -apple-system, sans-serif" }}>
@@ -92,11 +106,10 @@ export default function TimetablePage() {
         }}>
 
           {/* TOP ROW: Left Panel & Right Panel */}
-          {/* 💡 YAHAN SE GAP CHANGE KAREIN: 'gap: 40' ko kam ya zyada karein Timetable box ko Left/Right adjust karne ke liye */}
-          <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start", gap: 40, flex: 1 }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "flex-start", alignItems: "flex-start", gap: 40, flex: 1 }}>
 
             {/* LEFT PANEL */}
-            <div style={{ flex: "0 0 35%", maxWidth: 450, display: "flex", flexDirection: "column" }}>
+            <div style={{ flex: isMobile ? "1 1 100%" : "0 0 35%", maxWidth: isMobile ? "100%" : 450, display: "flex", flexDirection: "column" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 20 }}>
                 <span style={{ fontSize: 12, fontWeight: 800, color: COLORS.darkBlue, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                   
@@ -235,7 +248,7 @@ export default function TimetablePage() {
               borderRadius: 20,
               padding: "24px",
               display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
+              gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
               gap: 20,
               boxShadow: "0 20px 50px rgba(0,0,0,0.08)",
               border: "1px solid rgba(255,255,255,0.8)",
@@ -276,8 +289,8 @@ export default function TimetablePage() {
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 40px" }}>
 
           {/* HEADER */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 60, flexWrap: "wrap", gap: 40 }}>
-            <div style={{ flex: "0 0 55%" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: "center", marginBottom: 60, flexWrap: "wrap", gap: 40 }}>
+            <div style={{ flex: isMobile ? "1 1 100%" : "0 0 55%" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 16 }}>
                 <span style={{ fontSize: 13, fontWeight: 800, color: COLORS.purple, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                   STRUCTURED SESSION FLOW
@@ -310,7 +323,7 @@ export default function TimetablePage() {
                 hidden: { opacity: 0 },
                 show: { opacity: 1, transition: { staggerChildren: 0.1 } }
               }}
-              style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 2 }}
+              style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 2 }}
             >
               {[
                 { time: "5 MIN", title: "1. Introduction", desc: "Teacher introduces the\ntopic and learning\nobjectives.", color: COLORS.blue, icon: FileText, img: "/section2/session_image_1.webp" },
@@ -360,7 +373,7 @@ export default function TimetablePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.3 }}
-            style={{ background: "#fff", borderRadius: 24, padding: "30px 40px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", display: "flex", alignItems: "center", gap: 40 }}
+            style={{ background: "#fff", borderRadius: 24, padding: isMobile ? "24px 20px" : "30px 40px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", gap: 40 }}
           >
             {/* Left Box */}
             <div style={{ display: "flex", gap: 20, alignItems: "flex-start", flex: "0 0 32%", borderRight: "1px solid #e2e8f0", paddingRight: 40 }}>
@@ -427,7 +440,7 @@ export default function TimetablePage() {
               <motion.div 
                 initial="hidden" whileInView="show" viewport={{ once: true }}
                 variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-                style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}
+                style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}
               >
                 {[
                   { icon: Users, color: COLORS.purple, title: "Optimized\nClassroom Flow", desc: "Smooth transitions,\nzero downtime." },
@@ -631,7 +644,7 @@ export default function TimetablePage() {
             whileInView="show"
             viewport={{ once: true, margin: "-50px" }}
             variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
-            style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginBottom: 30 }}
+            style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 30 }}
           >
             {[
               { icon: WifiOff, color: COLORS.purple, title: "No Internet\nDependency", desc: "Works offline once content is installed. Reliable learning, every time.", img: "/section5/operational_image_1.webp" },
@@ -671,7 +684,7 @@ export default function TimetablePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.3 }}
-            style={{ background: "#fff", borderRadius: 24, padding: "30px 40px", display: "flex", alignItems: "center", gap: 0, boxShadow: "0 10px 30px rgba(0,0,0,0.04)", border: "1px solid #f0f4f8" }}
+            style={{ background: "#fff", borderRadius: 24, padding: isMobile ? "24px 20px" : "30px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 20 : 0, boxShadow: "0 10px 30px rgba(0,0,0,0.04)", border: "1px solid #f0f4f8" }}
           >
             {/* Left: Fewer hassles */}
             <div style={{ display: "flex", gap: 20, alignItems: "center", flex: "0 0 28%", paddingRight: 40 }}>

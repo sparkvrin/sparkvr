@@ -2,6 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+
+function useScreenWidth() {
+  const [width, setWidth] = React.useState(1200);
+  React.useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
 import SparkButton from "@/components/SparkButton";
 import TiltCard from "@/components/TiltCard";
 import { BookOpen, Clock, Presentation, WifiOff, Box, Layers } from "lucide-react";
@@ -23,13 +34,17 @@ const features = [
 ];
 
 export default function ServicesPage() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <div>
       {/* ── Hero ── */}
       <section style={{
         background: "linear-gradient(180deg, rgba(0,26,77,0.92) 0%, rgba(0,45,122,0.90) 100%)",
         backdropFilter: "blur(12px)",
-        padding: "160px 24px 96px", position: "relative", overflow: "hidden",
+        padding: isMobile ? "100px 20px 60px" : "160px 24px 96px", position: "relative", overflow: "hidden",
       }}>
         <div style={{ position: "absolute", top: 0, right: 0, pointerEvents: "none" }}>
           <svg width="220" height="220" viewBox="0 0 220 220" style={{ opacity: 0.08 }}>
@@ -85,7 +100,7 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             className="section-label" style={{ textAlign: "center", marginBottom: 48 }}
           >Subject areas</motion.p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4,1fr)", gap: 20 }}>
             {subjects.map((s, i) => (
               <motion.div
                 key={i}
@@ -143,7 +158,7 @@ export default function ServicesPage() {
               Built for the <span className="text-gradient-primary">classroom.</span>
             </motion.h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(3,1fr)", gap: 20 }}>
             {features.map((f, i) => (
               <motion.div
                 key={i}

@@ -1,9 +1,19 @@
 "use client";
-// Force rebuild to sync Light Footer UI
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
+function useScreenWidth() {
+  const [width, setWidth] = useState(1200);
+  useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
 import { 
   Package, Building2, BookOpen, ChevronRight, ShieldCheck 
 } from "lucide-react";
@@ -35,13 +45,17 @@ const InstagramIcon = () => (
 );
 
 export default function Footer() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <footer style={{
       background: "linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #e0e7ff 100%)",
       position: "relative",
       overflow: "hidden",
-      paddingTop: 80,
-      paddingBottom: 40,
+      paddingTop: isMobile ? 48 : 80,
+      paddingBottom: isMobile ? 32 : 40,
       fontFamily: "'Inter', sans-serif"
     }}>
       {/* ── Background Graphics (Arcs & Floating Orbs) ── */}
@@ -98,29 +112,29 @@ export default function Footer() {
       </div>
 
 
-      <div style={{ maxWidth: 1300, margin: "0 auto", padding: "0 40px", position: "relative", zIndex: 10 }}>
-        
+      <div style={{ maxWidth: 1300, margin: "0 auto", padding: isMobile ? "0 20px" : "0 40px", position: "relative", zIndex: 10 }}>
+
         {/* ── Top Main Content ── */}
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 60, marginBottom: 60 }}>
-          
+        <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", flexWrap: isMobile ? "nowrap" : "wrap", justifyContent: "space-between", gap: isMobile ? 32 : 60, marginBottom: isMobile ? 36 : 60 }}>
+
           {/* Left Column: Brand & Socials */}
-          <div style={{ maxWidth: 350, flexShrink: 0 }}>
+          <div style={{ maxWidth: isMobile ? "100%" : 350, flexShrink: 0 }}>
             <Link href="/" style={{ display: "inline-block", marginBottom: -10 }}>
-              <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ height: 140, objectFit: "contain", transform: "translateX(-15px)" }} />
+              <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ height: isMobile ? 90 : 140, objectFit: "contain", transform: "translateX(-15px)" }} />
             </Link>
-            <p style={{ fontSize: 19, color: "#334155", lineHeight: 1.6, marginBottom: 40, fontWeight: 500, transform: "translateX(-8px)" }}>
+            <p style={{ fontSize: isMobile ? 15 : 19, color: "#334155", lineHeight: 1.6, marginBottom: isMobile ? 24 : 40, fontWeight: 500, transform: "translateX(-8px)" }}>
               Transforming abstract learning into observable understanding through immersive experiences.
             </p>
-            
+
             {/* Social Icons */}
-            <div style={{ display: "flex", gap: 16 }}>
+            <div style={{ display: "flex", gap: 12 }}>
               {[FacebookIcon, LinkedinIcon, YoutubeIcon, InstagramIcon].map((Icon, i) => (
                 <motion.a
                   key={i} href="#"
-                  whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 20px rgba(37,99,235,0.15)" }}
+                  whileHover={{ y: -4, scale: 1.08, boxShadow: "0 10px 20px rgba(37,99,235,0.15)" }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    width: 44, height: 44, borderRadius: "50%",
+                    width: isMobile ? 40 : 44, height: isMobile ? 40 : 44, borderRadius: "50%",
                     background: "white", border: "1px solid rgba(59,130,246,0.1)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     color: "#1e3a8a", boxShadow: "0 4px 10px rgba(0,0,0,0.03)",
@@ -136,9 +150,12 @@ export default function Footer() {
           </div>
 
           {/* Right Columns: Links Grid */}
-          <div style={{ 
-            display: "flex", flex: 1, justifyContent: "space-between", 
-            paddingTop: 10, gap: 20
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr 1fr" : "repeat(3,1fr)",
+            flex: isMobile ? undefined : 1,
+            gap: isMobile ? "24px 16px" : 20,
+            paddingTop: isMobile ? 0 : 10,
           }}>
             {[
               {
@@ -166,52 +183,38 @@ export default function Footer() {
                 ]
               }
             ].map((col, idx) => (
-              <div key={col.title} style={{ 
-                flex: 1, 
-                borderLeft: idx !== 0 ? "1px solid rgba(59,130,246,0.15)" : "none",
-                paddingLeft: idx !== 0 ? 40 : 0
-              }}>
-                
+              <div key={col.title}>
                 {/* Column Header */}
-                <motion.div 
-                  whileHover={{ scale: 1.05, x: 5 }}
-                  style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28, cursor: "default" }}
-                >
-                  <motion.div 
-                    whileHover={{ rotate: 180 }}
-                    transition={{ duration: 0.5 }}
-                    style={{
-                      width: 42, height: 42, borderRadius: "50%",
-                      background: "#eff6ff", border: "1px solid #dbeafe",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      color: "#2563eb", boxShadow: "0 4px 10px rgba(59,130,246,0.1), inset 0 2px 4px white"
-                    }}
-                  >
-                    <col.icon size={20} strokeWidth={2} />
-                  </motion.div>
-                  <h4 style={{ fontSize: 18, fontWeight: 700, color: "#0f172a", margin: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: isMobile ? 16 : 28 }}>
+                  <div style={{
+                    width: isMobile ? 34 : 42, height: isMobile ? 34 : 42, borderRadius: "50%",
+                    background: "#eff6ff", border: "1px solid #dbeafe",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#2563eb", flexShrink: 0,
+                  }}>
+                    <col.icon size={isMobile ? 16 : 20} strokeWidth={2} />
+                  </div>
+                  <h4 style={{ fontSize: isMobile ? 14 : 18, fontWeight: 700, color: "#0f172a", margin: 0 }}>
                     {col.title}
                   </h4>
-                </motion.div>
+                </div>
 
                 {/* Column Links */}
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 18 }}>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: isMobile ? 12 : 18 }}>
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <Link href={link.href} style={{ textDecoration: "none" }}>
                         <motion.div
-                          whileHover={{ x: 8, color: "#2563eb" }}
+                          whileHover={{ x: 6, color: "#2563eb" }}
                           style={{
                             display: "flex", justifyContent: "space-between", alignItems: "center",
-                            fontSize: 15, color: "#475569", fontWeight: 500,
-                            cursor: "pointer", borderBottom: "1px solid rgba(59,130,246,0.08)", paddingBottom: 10,
+                            fontSize: isMobile ? 12 : 15, color: "#475569", fontWeight: 500,
+                            cursor: "pointer", borderBottom: "1px solid rgba(59,130,246,0.08)", paddingBottom: isMobile ? 8 : 10,
                             transition: "color 0.2s"
                           }}
                         >
                           {link.label}
-                          <motion.div whileHover={{ x: 3 }}>
-                            <ChevronRight size={16} color="#94a3b8" />
-                          </motion.div>
+                          <ChevronRight size={14} color="#94a3b8" />
                         </motion.div>
                       </Link>
                     </li>
@@ -224,29 +227,30 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div style={{ 
-          borderTop: "1px solid rgba(59,130,246,0.15)", paddingTop: 28,
-          display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 20
+        <div style={{
+          borderTop: "1px solid rgba(59,130,246,0.15)", paddingTop: isMobile ? 20 : 28,
+          display: "flex", flexDirection: isMobile ? "column" : "row",
+          flexWrap: "wrap", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 16 : 20
         }}>
           {/* Copyright */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{
-              width: 36, height: 36, borderRadius: "50%",
+              width: 32, height: 32, borderRadius: "50%",
               background: "#eff6ff", border: "1px solid #dbeafe",
-              display: "flex", alignItems: "center", justifyContent: "center", color: "#2563eb"
+              display: "flex", alignItems: "center", justifyContent: "center", color: "#2563eb", flexShrink: 0,
             }}>
-              <ShieldCheck size={18} strokeWidth={2} />
+              <ShieldCheck size={16} strokeWidth={2} />
             </div>
-            <p style={{ fontSize: 14, color: "#475569", margin: 0, fontWeight: 500 }}>
+            <p style={{ fontSize: isMobile ? 12 : 14, color: "#475569", margin: 0, fontWeight: 500 }}>
               © {new Date().getFullYear()} SparkVR EdTech Pvt. Ltd. All rights reserved.
             </p>
           </div>
 
           {/* Legal Links */}
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 20, flexWrap: "wrap" }}>
             {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((item, i) => (
               <React.Fragment key={item}>
-                <a href="#" style={{ fontSize: 14, color: "#475569", textDecoration: "none", fontWeight: 500 }}>
+                <a href="#" style={{ fontSize: isMobile ? 11 : 14, color: "#475569", textDecoration: "none", fontWeight: 500 }}>
                   {item}
                 </a>
                 {i < 2 && <span style={{ color: "#cbd5e1" }}>|</span>}

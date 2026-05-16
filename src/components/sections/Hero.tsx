@@ -135,15 +135,15 @@ const BG_ORBS = [
 /* ═══════════════════════════════════════════════════════
    RESPONSIVE HOOK
 ═══════════════════════════════════════════════════════ */
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+function useScreenSize() {
+  const [width, setWidth] = useState(1200);
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
-  return isMobile;
+  return { isMobile: width < 768, isTablet: width >= 768 && width < 1024, width };
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -245,7 +245,7 @@ const STATS = [
    MAIN HERO
 ═══════════════════════════════════════════════════════ */
 export default function Hero() {
-  const isMobile = useIsMobile();
+  const { isMobile, isTablet } = useScreenSize();
 
   const containerBase: React.CSSProperties = {
     position: "relative",
@@ -445,6 +445,101 @@ export default function Hero() {
               <div key={i} style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center", textAlign: "center" }}>
                 <span style={{ fontSize: 17, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
                 <span style={{ fontSize: 9.5, fontWeight: 700, color: "#475569", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ── TABLET LAYOUT ── */
+  if (isTablet) {
+    const bubSz = 118;
+    return (
+      <div id="vision" style={{ ...containerBase, height: "100vh", minHeight: 600 }}>
+        <HeroBackground />
+
+        {/* Student image — smaller, shifted left */}
+        <div style={{ position: "absolute", bottom: -16, left: "28%", transform: "translateX(-10%)", zIndex: 10, pointerEvents: "none" }}>
+          <motion.img loading="lazy" decoding="async" src="/student_proper.webp" alt="Student with VR headset"
+            style={{ height: "78vh", objectFit: "contain", objectPosition: "top", display: "block", filter: "drop-shadow(0 20px 40px rgba(60,40,150,0.28))" }} />
+        </div>
+
+        {/* Bubbles — 2 top, 2 bottom */}
+        <div style={{ position: "absolute", top: "12%", left: "50%", zIndex: 12, pointerEvents: "none" }}>
+          <motion.div animate={{ y: [0,-16,0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} style={{ transformStyle: "preserve-3d" }}>
+            <div style={{ ...GLASS_STYLE, width: bubSz, height: bubSz }}>
+              <Canvas camera={{ position: [0,0,3.6], fov: 42 }} gl={{ alpha: true, antialias: true }} style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
+                <ambientLight intensity={2.2} /><directionalLight position={[5,6,5]} intensity={3.2} />
+                <Suspense fallback={null}><Atom3D /></Suspense>
+              </Canvas>
+            </div>
+            <div style={{ ...LABEL_STYLE, bottom: -14 }}>ATOMS</div>
+          </motion.div>
+        </div>
+        <div style={{ position: "absolute", top: "12%", left: "76%", zIndex: 12, pointerEvents: "none" }}>
+          <motion.div animate={{ y: [0,-14,0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }} style={{ transformStyle: "preserve-3d" }}>
+            <div style={{ ...GLASS_STYLE, width: bubSz-10, height: bubSz-10 }}>
+              <div style={{ position: "absolute", width: "76%", height: "76%", borderRadius: "50%", background: "rgba(255,255,255,0.6)" }} />
+              <img loading="lazy" decoding="async" src="/anatomy.webp" alt="Human Anatomy" style={{ width: "78%", height: "78%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22))" }} />
+            </div>
+            <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed", fontSize: 9 }}>HUMAN ANATOMY</div>
+          </motion.div>
+        </div>
+        <div style={{ position: "absolute", top: "54%", left: "48%", zIndex: 12, pointerEvents: "none" }}>
+          <motion.div animate={{ y: [0,16,0] }} transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }} style={{ transformStyle: "preserve-3d" }}>
+            <div style={{ ...GLASS_STYLE, width: bubSz, height: bubSz }}>
+              <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
+              <img loading="lazy" decoding="async" src="/cell_proper.webp" alt="Cell Structure" style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3))" }} />
+            </div>
+            <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
+          </motion.div>
+        </div>
+        <div style={{ position: "absolute", top: "54%", left: "78%", zIndex: 12, pointerEvents: "none" }}>
+          <motion.div animate={{ y: [0,14,0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} style={{ transformStyle: "preserve-3d" }}>
+            <div style={{ ...GLASS_STYLE, width: bubSz, height: bubSz }}>
+              <Canvas camera={{ position: [0,0,3.8], fov: 42 }} gl={{ alpha: true, antialias: true }} style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
+                <ambientLight intensity={1.8} /><directionalLight position={[-5,6,5]} intensity={3.5} />
+                <Suspense fallback={null}><Saturn3D /></Suspense>
+              </Canvas>
+            </div>
+            <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>SPACE</div>
+          </motion.div>
+        </div>
+
+        {/* Text — left column, narrower on tablet */}
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, display: "flex", alignItems: "center", zIndex: 30, paddingLeft: "clamp(20px,4vw,40px)", paddingBottom: "80px", maxWidth: "46%" }}>
+          <div>
+            <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.215,0.61,0.355,1] }}
+              style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 800, lineHeight: 1.18, color: "#0f172a", margin: "0 0 18px", letterSpacing: "-0.02em" }}>
+              What if students didn&#39;t have to{" "}
+              <span style={{ background: "linear-gradient(90deg,#e040fb 0%,#7c3aed 55%,#38bdf8 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>imagine</span>{" "}anymore?
+            </motion.h1>
+            <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.18 }}
+              style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.6, color: "#475569", margin: "0 0 28px" }}>
+              We believe clarity begins with experience. SparkVR transforms abstract concepts into observable understanding.
+            </motion.p>
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+              style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <motion.a href="/services" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#38bdf8 100%)", color: "#fff", padding: "13px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", boxShadow: "0 10px 28px rgba(29,78,216,0.3)" }}>
+                SEE IT DIFFERENTLY
+              </motion.a>
+              <motion.a href="/contact" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.5)", border: "2px solid #fff", color: "#1e293b", padding: "11px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", backdropFilter: "blur(12px)", boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}>
+                ✨ BOOK FREE WORKSHOP
+              </motion.a>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Stats bar — centered at bottom */}
+        <div style={{ position: "absolute", bottom: 12, left: "50%", transform: "translateX(-28%)", width: "60%", maxWidth: 680, zIndex: 40 }}>
+          <motion.div initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
+            style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px 4px", padding: "12px 16px", background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 20, boxShadow: "0 8px 24px rgba(0,0,0,0.05)" }}>
+            {STATS.map((s, i) => (
+              <div key={i} style={{ display: "flex", flexDirection: "column", gap: 2, alignItems: "center", textAlign: "center" }}>
+                <span style={{ fontSize: 14, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
+                <span style={{ fontSize: 8.5, fontWeight: 700, color: "#475569", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
               </div>
             ))}
           </motion.div>

@@ -1,6 +1,17 @@
 "use client";
 
 import React, { useRef, useState, useEffect, Suspense } from "react";
+
+function useScreenWidth() {
+  const [width, setWidth] = useState(1200);
+  useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { CheckCircle2, GraduationCap, ArrowRight, BookOpen, Users, BarChart3, Calendar, Microscope, Calculator, Globe2, Rocket } from "lucide-react";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -231,6 +242,9 @@ function SubjectCard({
 export default function SolutionSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -297,12 +311,12 @@ export default function SolutionSection() {
         ))}
       </div>
 
-      <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexWrap: "nowrap", gap: 40, alignItems: "center" }}>
-        
+      <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 40, alignItems: isMobile || isTablet ? "flex-start" : "center" }}>
+
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - CONTENT
         ───────────────────────────────────────────────────────── */}
-        <div style={{ flex: "1 1 45%", minWidth: "min(100%, 350px)", maxWidth: 600, paddingBottom: 60 }}>
+        <div style={{ flex: "1 1 45%", minWidth: 0, maxWidth: isMobile ? "100%" : 600, width: isMobile || isTablet ? "100%" : undefined, paddingBottom: isMobile ? 20 : 60 }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
               <motion.div 
@@ -312,15 +326,15 @@ export default function SolutionSection() {
             </div>
           </motion.div>
 
-          <motion.h2 
-            initial={{ opacity: 0, y: 30, rotateX: 20 }} 
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }} 
-            viewport={{ once: true }} 
+          <motion.h2
+            initial={{ opacity: 0, y: 30, rotateX: 20 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.9, type: "spring" }}
-            style={{ fontSize: "clamp(34px, 4.5vw, 56px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, marginBottom: 32, transformPerspective: 800 }}
+            style={{ fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(34px, 4.5vw, 56px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, marginBottom: isMobile ? 20 : 32, transformPerspective: 800 }}
           >
-            A structured immersive curriculum <br/>
-            <motion.span 
+            A structured immersive curriculum{isMobile ? " " : <br/>}
+            <motion.span
               animate={{ color: ["#2563eb", "#3b82f6", "#2563eb"] }} transition={{ duration: 4, repeat: Infinity }}
               style={{ color: "#2563eb" }}
             >
@@ -328,23 +342,23 @@ export default function SolutionSection() {
             </motion.span>
           </motion.h2>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 40 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 12 : 16, marginBottom: isMobile ? 24 : 40 }}>
             {["Built chapter by chapter.", "Aligned lesson by lesson.", "Integrated period by period."].map((text, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, x: -30 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                viewport={{ once: true }} 
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.2 + i * 0.15, type: "spring", stiffness: 100 }}
-                style={{ display: "flex", alignItems: "center", gap: 16 }}
+                style={{ display: "flex", alignItems: "center", gap: 12 }}
               >
-                <motion.div 
+                <motion.div
                   whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.5 }}
-                  style={{ width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", boxShadow: "0 6px 16px rgba(37,99,235,0.4)" }}
+                  style={{ width: isMobile ? 26 : 30, height: isMobile ? 26 : 30, borderRadius: "50%", background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", boxShadow: "0 6px 16px rgba(37,99,235,0.4)", flexShrink: 0 }}
                 >
-                  <CheckCircle2 size={18} strokeWidth={3} />
+                  <CheckCircle2 size={isMobile ? 14 : 18} strokeWidth={3} />
                 </motion.div>
-                <span style={{ fontSize: 20, fontWeight: 600, color: "#1e3a8a" }}>{text}</span>
+                <span style={{ fontSize: isMobile ? 16 : 20, fontWeight: 600, color: "#1e3a8a" }}>{text}</span>
               </motion.div>
             ))}
           </div>
@@ -384,8 +398,11 @@ export default function SolutionSection() {
               style={{
                 position: "relative", overflow: "hidden",
                 background: "linear-gradient(90deg, #3b82f6 0%, #6366f1 100%)",
-                color: "white", border: "none", padding: "20px 40px",
-                borderRadius: 100, fontSize: 18, fontWeight: 700,
+                color: "white", border: "none",
+                padding: isMobile ? "14px 28px" : "20px 40px",
+                borderRadius: 100,
+                fontSize: isMobile ? 15 : 18,
+                fontWeight: 700,
                 display: "inline-flex", alignItems: "center", gap: 14,
                 cursor: "pointer", boxShadow: "0 15px 35px rgba(37,99,235,0.3)"
               }}
@@ -404,9 +421,9 @@ export default function SolutionSection() {
         </div>
 
         {/* ─────────────────────────────────────────────────────────
-            RIGHT COLUMN - 3D INTERACTIVE ORBITAL GRID
+            RIGHT COLUMN - 3D INTERACTIVE ORBITAL GRID (hidden on mobile)
         ───────────────────────────────────────────────────────── */}
-        <div className="orbital-container" style={{ flex: "1 1 55%", minWidth: 0, position: "relative", height: 800, display: "flex", alignItems: "center", justifyContent: "center", perspective: 1500 }}>
+        {!isMobile && <div className="orbital-container" style={{ flex: "1 1 55%", minWidth: 0, width: isTablet ? "100%" : undefined, position: "relative", height: isTablet ? 560 : 800, display: "flex", alignItems: "center", justifyContent: "center", perspective: 1500 }}>
           <style dangerouslySetInnerHTML={{__html: `
             @media (max-width: 1600px) {
               .orbital-wrapper { transform: scale(0.85); transform-origin: center center; }
@@ -421,13 +438,8 @@ export default function SolutionSection() {
               .orbital-container { height: 520px !important; }
             }
             @media (max-width: 900px) {
-              .orbital-wrapper { transform: scale(0.55); }
-              .orbital-container { height: 440px !important; }
-            }
-            @media (max-width: 700px) {
-              .orbital-wrapper { transform: scale(0.4); }
-              .orbital-container { height: 320px !important; }
-              .solution-layout { gap: 10px !important; }
+              .orbital-wrapper { transform: scale(0.5); }
+              .orbital-container { height: 400px !important; }
             }
           `}} />
           
@@ -565,29 +577,34 @@ export default function SolutionSection() {
             </div>
           </motion.div>
           </div>
-        </div>
+        </div>}
       </div>
 
       {/* ─────────────────────────────────────────────────────────
           BOTTOM FEATURES BAR
       ───────────────────────────────────────────────────────── */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50, scale: 0.95 }} 
-        whileInView={{ opacity: 1, y: 0, scale: 1 }} 
-        viewport={{ once: true }} 
+      <motion.div
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
         transition={{ delay: 1, type: "spring", stiffness: 100 }}
-        style={{ 
-          margin: "80px auto 0", maxWidth: 1050, width: "100%",
+        style={{
+          margin: isMobile ? "24px auto 0" : "80px auto 0",
+          maxWidth: 1050, width: "100%",
           background: "rgba(255,255,255,0.75)", backdropFilter: "blur(25px)",
-          border: "1.5px solid rgba(255,255,255,1)", borderRadius: 32,
-          padding: "28px 48px", display: "flex", flexWrap: "wrap", justifyContent: "space-between",
-          alignItems: "center", gap: 24, boxShadow: "0 30px 60px rgba(0,30,100,0.08), inset 0 2px 10px rgba(255,255,255,0.8)",
-          position: "relative", zIndex: 10, transformStyle: "preserve-3d"
+          border: "1.5px solid rgba(255,255,255,1)",
+          borderRadius: isMobile ? 20 : 32,
+          padding: isMobile ? "20px 16px" : "28px 48px",
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)",
+          gap: isMobile ? 16 : 24,
+          boxShadow: "0 30px 60px rgba(0,30,100,0.08), inset 0 2px 10px rgba(255,255,255,0.8)",
+          position: "relative", zIndex: 10,
         }}
       >
-        <motion.div 
+        <motion.div
           animate={{ x: ["0%", "100%", "0%"] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          style={{ position: "absolute", top: 0, left: 0, height: 2, width: "30%", background: "linear-gradient(90deg, transparent, #3b82f6, transparent)" }} 
+          style={{ position: "absolute", top: 0, left: 0, height: 2, width: "30%", background: "linear-gradient(90deg, transparent, #3b82f6, transparent)" }}
         />
         {[
           { icon: BookOpen, text: "Curriculum\nAligned" },
@@ -595,20 +612,15 @@ export default function SolutionSection() {
           { icon: BarChart3, text: "Across\nGrades" },
           { icon: Calendar, text: "Integrated\nPeriod by Period" }
         ].map((item, i) => (
-          <React.Fragment key={i}>
-            <motion.div 
-              whileHover={{ scale: 1.1, y: -5 }} transition={{ type: "spring" }}
-              style={{ display: "flex", alignItems: "center", gap: 18, cursor: "default" }}
-            >
-              <Floating3DWrapper delay={i * 0.2} floatAmp={4} rotateAmp={0} duration={3}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(37,99,235,0.2) 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#1d4ed8", boxShadow: "0 8px 20px rgba(37,99,235,0.15), inset 0 2px 4px rgba(255,255,255,0.8)" }}>
-                  <item.icon size={28} strokeWidth={2.5} />
-                </div>
-              </Floating3DWrapper>
-              <span style={{ fontSize: 16, fontWeight: 800, color: "#0f172a", lineHeight: 1.3, whiteSpace: "pre-line", letterSpacing: "0.02em" }}>{item.text}</span>
-            </motion.div>
-            {i < 3 && <div style={{ width: 2, height: 48, background: "linear-gradient(180deg, transparent, rgba(37,99,235,0.15), transparent)" }} />}
-          </React.Fragment>
+          <motion.div key={i}
+            whileHover={{ scale: 1.08, y: -4 }} transition={{ type: "spring" }}
+            style={{ display: "flex", alignItems: "center", gap: isMobile ? 10 : 18, cursor: "default" }}
+          >
+            <div style={{ width: isMobile ? 40 : 56, height: isMobile ? 40 : 56, flexShrink: 0, borderRadius: "50%", background: "linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(37,99,235,0.2) 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#1d4ed8", boxShadow: "0 8px 20px rgba(37,99,235,0.15), inset 0 2px 4px rgba(255,255,255,0.8)" }}>
+              <item.icon size={isMobile ? 20 : 28} strokeWidth={2.5} />
+            </div>
+            <span style={{ fontSize: isMobile ? 12 : 16, fontWeight: 800, color: "#0f172a", lineHeight: 1.3, whiteSpace: "pre-line", letterSpacing: "0.02em" }}>{item.text}</span>
+          </motion.div>
         ))}
       </motion.div>
 

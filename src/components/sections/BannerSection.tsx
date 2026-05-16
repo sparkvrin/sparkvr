@@ -1,6 +1,17 @@
 "use client";
 
-import React, { useRef, Suspense } from "react";
+import React, { useRef, Suspense, useState, useEffect } from "react";
+
+function useScreenWidth() {
+  const [width, setWidth] = useState(1200);
+  useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return width;
+}
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -113,6 +124,10 @@ function FloatingOrb({ pos, color, size, seed }: { pos: [number,number,number]; 
    BANNER SECTION
 ═══════════════════════════════════════════ */
 export default function BannerSection() {
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
+
   return (
     <section
       style={{
@@ -205,16 +220,20 @@ export default function BannerSection() {
         maxWidth: 1400, margin: "0 auto",
         width: "100%",
         display: "flex",
-        alignItems: "center",
-        paddingRight: 60,
-        gap: 0,
+        flexDirection: isMobile ? "column" : "row",
+        alignItems: isMobile ? "center" : "center",
+        padding: isMobile ? "32px 20px" : `0 60px 0 0`,
+        gap: isMobile ? 20 : 0,
+        textAlign: isMobile ? "center" : "left",
       }}>
 
-        {/* LEFT: Big 3D Atom Canvas — overflow so rings extend outside */}
+        {/* 3D Atom Canvas */}
         <div style={{
-          width: "min(100%, 420px)", height: 300, flexShrink: 0,
+          width: isMobile ? 200 : isTablet ? 280 : "min(100%, 420px)",
+          height: isMobile ? 200 : 300,
+          flexShrink: 0,
           position: "relative",
-          marginLeft: -40,
+          marginLeft: isMobile ? 0 : -40,
           overflow: "visible",
         }}>
           <Canvas
@@ -232,15 +251,15 @@ export default function BannerSection() {
           </Canvas>
         </div>
 
-        {/* CENTER: Text block */}
-        <div style={{ flex: 1, paddingLeft: 20, paddingRight: 40 }}>
+        {/* Text block */}
+        <div style={{ flex: 1, paddingLeft: isMobile ? 0 : 20, paddingRight: isMobile ? 0 : 40 }}>
           <motion.h2
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             style={{
-              fontSize: "clamp(24px, 2.8vw, 40px)",
+              fontSize: isMobile ? "clamp(22px,6vw,30px)" : "clamp(24px, 2.8vw, 40px)",
               fontWeight: 900, color: "#0f172a",
               lineHeight: 1.2, margin: 0, marginBottom: 8,
             }}
@@ -255,18 +274,12 @@ export default function BannerSection() {
             </motion.span>
           </motion.h2>
 
-          {/* Animated blue underline */}
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 70 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.9, ease: "easeOut" }}
-            style={{
-              height: 4,
-              background: "linear-gradient(90deg, #2563eb, #6366f1)",
-              borderRadius: 99,
-              marginBottom: 14,
-            }}
+            style={{ height: 4, background: "linear-gradient(90deg, #2563eb, #6366f1)", borderRadius: 99, marginBottom: 14, marginLeft: isMobile ? "auto" : 0, marginRight: isMobile ? "auto" : 0 }}
           />
 
           <motion.p
@@ -274,38 +287,37 @@ export default function BannerSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            style={{ fontSize: 16, color: "#475569", margin: 0, fontWeight: 500 }}
+            style={{ fontSize: isMobile ? 14 : 16, color: "#475569", margin: 0, fontWeight: 500 }}
           >
             The only question is — who adopts first?
           </motion.p>
         </div>
 
-        {/* Vertical divider */}
-        <motion.div
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          style={{
-            width: 1.5, height: 90, flexShrink: 0, marginRight: 40,
-            background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.35), transparent)",
-          }}
-        />
+        {/* Vertical divider — desktop only */}
+        {!isMobile && (
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            style={{ width: 1.5, height: 90, flexShrink: 0, marginRight: 40, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.35), transparent)" }}
+          />
+        )}
 
-        {/* RIGHT: CTA Button */}
+        {/* CTA Button */}
         <motion.button
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 10 : 0 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.7, type: "spring" }}
           whileHover={{ scale: 1.06, boxShadow: "0 25px 60px rgba(37,99,235,0.5)" }}
           whileTap={{ scale: 0.97 }}
           style={{
-            display: "flex", alignItems: "center", gap: 14,
+            display: "flex", alignItems: "center", gap: isMobile ? 10 : 14,
             background: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
             color: "white", border: "none", borderRadius: 60,
-            padding: "18px 36px",
-            fontSize: 15, fontWeight: 700,
+            padding: isMobile ? "14px 24px" : "18px 36px",
+            fontSize: isMobile ? 13 : 15, fontWeight: 700,
             cursor: "pointer",
             boxShadow: "0 15px 40px rgba(37,99,235,0.4)",
             whiteSpace: "nowrap", flexShrink: 0,
@@ -313,24 +325,15 @@ export default function BannerSection() {
             letterSpacing: "0.01em",
           }}
         >
-          {/* Shimmer sweep */}
           <motion.div
             animate={{ x: ["-100%", "220%"] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
-            style={{
-              position: "absolute", top: 0, left: 0,
-              width: "40%", height: "100%",
-              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
-              pointerEvents: "none",
-            }}
+            style={{ position: "absolute", top: 0, left: 0, width: "40%", height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", pointerEvents: "none" }}
           />
-          <Calendar size={20} strokeWidth={2} />
-          Schedule a Guided Demonstration
-          <motion.div
-            animate={{ x: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowRight size={20} strokeWidth={2.5} />
+          <Calendar size={isMobile ? 16 : 20} strokeWidth={2} />
+          {isMobile ? "Schedule Demo" : "Schedule a Guided Demonstration"}
+          <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+            <ArrowRight size={isMobile ? 16 : 20} strokeWidth={2.5} />
           </motion.div>
         </motion.button>
 
