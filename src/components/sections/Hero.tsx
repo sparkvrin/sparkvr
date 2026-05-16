@@ -236,12 +236,6 @@ export default function Hero() {
         zIndex: 10, pointerEvents: "none",
       }}>
         <motion.div 
-          animate={{ 
-            y: [0, -25, 0],
-            rotateX: [0, 2, 0, -2, 0],
-            rotateY: [0, -2, 0, 2, 0]
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           style={{ perspective: 1000, transformStyle: "preserve-3d" }}
         >
           <motion.img loading="lazy" decoding="async"
