@@ -32,22 +32,22 @@ const COLORS = {
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-50px" },
-  transition: { duration: 0.8, delay, type: "spring", stiffness: 70, damping: 15 }
+  viewport: { once: true as const, margin: "-50px" },
+  transition: { duration: 0.8, delay, type: "spring" as const, stiffness: 70, damping: 15 }
 });
 
 const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true, margin: "-50px" },
-  transition: { duration: 0.8, delay, type: "spring", stiffness: 70, damping: 15 }
+  viewport: { once: true as const, margin: "-50px" },
+  transition: { duration: 0.8, delay, type: "spring" as const, stiffness: 70, damping: 15 }
 });
 
 const scaleIn = (delay = 0) => ({
   initial: { opacity: 0, scale: 0.9 },
   whileInView: { opacity: 1, scale: 1 },
-  viewport: { once: true, margin: "-50px" },
-  transition: { duration: 1, delay, type: "spring", stiffness: 60, damping: 20 }
+  viewport: { once: true as const, margin: "-50px" },
+  transition: { duration: 1, delay, type: "spring" as const, stiffness: 60, damping: 20 }
 });
 
 export default function TimetablePage() {
@@ -328,7 +328,11 @@ export default function TimetablePage() {
                   
                   {/* Icon */}
                   <motion.div whileHover={{ scale: 1.1, rotate: 5 }} style={{ width: 80, height: 80, borderRadius: "50%", background: "#fff", border: `2px solid ${step.color}20`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, boxShadow: `0 0 0 10px #fff`, zIndex: 2 }}>
-                    {step.isVR ? <VRIcon size={36} color={step.color} /> : <step.icon size={36} strokeWidth={1.5} color={step.color} />}
+                    {(() => {
+                      const StepIcon = step.icon;
+                      if (step.isVR) return <VRIcon size={36} color={step.color} />;
+                      return StepIcon ? <StepIcon size={36} strokeWidth={1.5} color={step.color} /> : null;
+                    })()}
                   </motion.div>
 
                   {/* Badge */}

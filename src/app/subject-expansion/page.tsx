@@ -137,8 +137,8 @@ const fadeLeft = (delay = 0) => ({
 
 const floatAnim = {
   animate: {
-    y: [0, -6, 0],
-    transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
+    y: [0, -6, 0] as any,
+    transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" as const }
   }
 };
 
@@ -148,11 +148,11 @@ const ArcIcon = ({ icon: Icon, title, color, top, left, delay }: any) => (
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.6, type: "spring", bounce: 0.4 }}
+      transition={{ delay, duration: 0.6, type: "spring" as const, bounce: 0.4 }}
     >
       <motion.div
         animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.5 }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" as const, delay: delay + 0.5 }}
         whileHover={{ scale: 1.08, y: -10 }}
         style={{
           display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
@@ -183,7 +183,7 @@ const SmallDot = ({ left, top, color, delay = 0 }: any) => (
     >
       <motion.div
         animate={{ opacity: [0.4, 1, 0.4], boxShadow: [`0 0 0px ${color}`, `0 0 12px ${color}`, `0 0 0px ${color}`] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" as const, delay }}
         style={{
           width: 12, height: 12, borderRadius: 6,
           border: `2px solid ${color}`, background: "#fff"
@@ -335,7 +335,7 @@ export default function SubjectExpansionPage() {
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1.8, ease: "easeInOut", delay: 0.1 }}
+                  transition={{ duration: 1.8, ease: "easeInOut" as const, delay: 0.1 }}
                   d="M 80 300 A 420 300 0 0 1 920 300"
                   fill="none"
                   stroke="url(#arc-gradient)"
@@ -610,14 +610,14 @@ export default function SubjectExpansionPage() {
                       boxShadow: `0 30px 60px ${card.color}30`
                     }
                   }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  transition={{ duration: 0.4, ease: "easeOut" as const }}
                   style={{ display: "flex", flexDirection: "column", flexGrow: 1, zIndex: 1 }}
                 >
                   {/* Image Section */}
                   <div style={{ position: "relative", height: 220, overflow: "hidden", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
                     <motion.img
                       variants={{ hover: { scale: 1.15 } }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      transition={{ duration: 0.8, ease: "easeOut" as const }}
                       src={card.image}
                       alt={card.title}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -753,7 +753,7 @@ export default function SubjectExpansionPage() {
 
                   {/* 3 concentric dashed rings (spinning) */}
                   {[130, 215, 300].map((r, i) => (
-                    <motion.g key={r} animate={{ rotate: i % 2 === 0 ? 360 : -360 }} transition={{ duration: 60 + i * 20, repeat: Infinity, ease: "linear" }} style={{ transformOrigin: "400px 365px" }}>
+                    <motion.g key={r} animate={{ rotate: i % 2 === 0 ? 360 : -360 }} transition={{ duration: 60 + i * 20, repeat: Infinity, ease: "linear" as const }} style={{ transformOrigin: "400px 365px" }}>
                       <motion.circle
                         cx="400" cy="365" r={r}
                         fill="none" stroke="#c7d2fe" strokeWidth="1.2" strokeDasharray="6 8"
@@ -778,9 +778,9 @@ export default function SubjectExpansionPage() {
                       whileInView={{ pathLength: 1, opacity: 1, strokeDashoffset: [0, -24] }}
                       viewport={{ once: true }}
                       transition={{
-                        pathLength: { duration: 1.6, delay: 0.7 + i * 0.1, ease: "easeInOut" },
+                        pathLength: { duration: 1.6, delay: 0.7 + i * 0.1, ease: "easeInOut" as const },
                         opacity: { duration: 1.6, delay: 0.7 + i * 0.1 },
-                        strokeDashoffset: { duration: 1.5, repeat: Infinity, ease: "linear" }
+                        strokeDashoffset: { duration: 1.5, repeat: Infinity, ease: "linear" as const }
                       }}
                     />
                   ))}
@@ -792,7 +792,7 @@ export default function SubjectExpansionPage() {
                       return { cx: 400 + r * Math.cos(a), cy: 345 + r * Math.sin(a) };
                     })
                   ).map((pt, i) => (
-                    <motion.g key={i} animate={{ opacity: [1, 0.4, 1], scale: [1, 1.25, 1] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.1 }} style={{ transformOrigin: `${pt.cx}px ${pt.cy}px` }}>
+                    <motion.g key={i} animate={{ opacity: [1, 0.4, 1] as any, scale: [1, 1.25, 1] as any }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.1 }} style={{ transformOrigin: `${pt.cx}px ${pt.cy}px` }}>
                       <motion.circle
                         cx={pt.cx} cy={pt.cy} r="4.5"
                         fill="#818cf8"
@@ -1041,7 +1041,7 @@ export default function SubjectExpansionPage() {
                     <div style={{ fontSize: 9, fontWeight: 800, color: "#fff", background: node.color, padding: "3px 10px", borderRadius: 10, marginBottom: 8, letterSpacing: "0.05em" }}>
                       {node.label}
                     </div>
-                    <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}>
+                    <motion.div animate={{ scale: [1, 1.1, 1] as any }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.5 }}>
                       <node.icon size={22} color={node.color} strokeWidth={1.5} style={{ marginBottom: 8 }} />
                     </motion.div>
                     <h5 style={{ fontSize: 11, fontWeight: 800, color: COLORS.navy, margin: "0 0 3px 0", textAlign: "center", lineHeight: 1.2 }}>{node.title}</h5>
@@ -1071,7 +1071,7 @@ export default function SubjectExpansionPage() {
               >
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.3 }}
                   style={{ width: 42, height: 42, borderRadius: 21, background: item.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
                 >
                   <item.icon size={20} color={item.color} strokeWidth={2} />
@@ -1100,7 +1100,7 @@ export default function SubjectExpansionPage() {
               >
                 <motion.div
                   animate={{ y: [0, -8, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.5 }}
                   whileHover={{ scale: 1.1, rotateX: 0, rotateY: 0, z: 50, boxShadow: "0 20px 50px rgba(124, 58, 237, 0.15)" }}
                   style={{
                     perspective: 1000,
@@ -1162,7 +1162,7 @@ export default function SubjectExpansionPage() {
                 >
                   <motion.div
                     animate={{ y: [0, -3, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.4 }}
                     style={{ width: 42, height: 42, borderRadius: 12, background: ft.bg, display: "flex", alignItems: "center", justifyContent: "center", color: ft.color, flexShrink: 0 }}
                   >
                     <ft.icon size={22} strokeWidth={1.5} />
@@ -1449,7 +1449,7 @@ export default function SubjectExpansionPage() {
                 <div style={{ position: "absolute", width: 460, height: 460, zIndex: 0 }}>
                   <motion.svg width="460" height="460" viewBox="0 0 460 460"
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" as const }}
                   >
                     <defs>
                       <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">

@@ -36,11 +36,11 @@ const fadeRight = (delay = 0) => ({
 
 const float = {
   animate: {
-    y: [0, -10, 0],
+    y: [0, -10, 0] as any,
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   }
 };
@@ -85,7 +85,7 @@ export default function TeachersPage() {
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
             <motion.img
               animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" as const }}
               src="/teacher_1.png" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
@@ -176,7 +176,7 @@ export default function TeachersPage() {
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
             <motion.img
               animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" as const }}
               src="/teacher_2.png" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
@@ -350,7 +350,7 @@ export default function TeachersPage() {
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <motion.div
                   animate={{ rotateZ: [0, 5, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" as const }}
                   style={{ width: 44, height: 44, borderRadius: 12, background: "linear-gradient(135deg, #f0f5ff 0%, #e0e7ff 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", flexShrink: 0, boxShadow: "0 5px 15px rgba(79, 70, 229, 0.1)" }}
                 >
                   <ShieldCheck size={24} strokeWidth={1.5} />
@@ -605,7 +605,7 @@ export default function TeachersPage() {
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
             <motion.img
               animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 11, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 11, repeat: Infinity, ease: "linear" as const }}
               src="/teacher_5.png" alt="VR Curriculum Alignment" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
