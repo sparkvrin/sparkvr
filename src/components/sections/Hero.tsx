@@ -1,7 +1,6 @@
 "use client";
-import React, { useRef, Suspense } from "react";
+import React, { useRef, Suspense, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Environment } from "@react-three/drei";
 import { motion } from "framer-motion";
 import * as THREE from "three";
 
@@ -134,24 +133,25 @@ const BG_ORBS = [
 ];
 
 /* ═══════════════════════════════════════════════════════
-   MAIN HERO
+   RESPONSIVE HOOK
 ═══════════════════════════════════════════════════════ */
-export default function Hero() {
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHARED BACKGROUND
+═══════════════════════════════════════════════════════ */
+function HeroBackground() {
   return (
-    <div
-      id="vision"
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100vh",
-        minHeight: 640,
-        overflow: "hidden",
-        background: "url('/hero-background.webp') center/cover no-repeat",
-        backgroundColor: "#f6f8ff",
-        fontFamily: "'AR One Sans', sans-serif",
-      }}
-    >
-      {/* ── BACKGROUND (gradient + glow blobs) ── */}
+    <>
       <div style={{ position: "absolute", inset: "-3%", zIndex: 0, pointerEvents: "none" }}>
         <div style={{
           position: "absolute", inset: "3%",
@@ -172,7 +172,6 @@ export default function Hero() {
         }} />
       </div>
 
-      {/* ── DEPTH RINGS (slow counter-rotating, adds premium depth) ── */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 160, repeat: Infinity, ease: "linear" }}
@@ -207,7 +206,6 @@ export default function Hero() {
         }}
       />
 
-      {/* ── BG ORBS GROUP ── */}
       <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
         {BG_ORBS.map((o, i) => (
           <motion.div
@@ -227,17 +225,254 @@ export default function Hero() {
           />
         ))}
       </div>
+    </>
+  );
+}
 
-      {/* ── STUDENT IMAGE with floating animation ── */}
+/* ═══════════════════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════════════════ */
+const STATS = [
+  { val: "500+",    label: "Curriculum-aligned\nmodules",  grad: "linear-gradient(90deg,#3b82f6,#8b5cf6)" },
+  { val: "40-min",  label: "Structured\nsessions",          grad: "linear-gradient(90deg,#ec4899,#8b5cf6)" },
+  { val: "8",       label: "Teacher-guided\ndelivery",       grad: "linear-gradient(90deg,#f59e0b,#ef4444)" },
+  { val: "10,000+", label: "Students Engaged",               grad: "linear-gradient(90deg,#10b981,#3b82f6)" },
+  { val: "260",     label: "Schools Partnered",              grad: "linear-gradient(90deg,#8b5cf6,#ec4899)" },
+  { val: "95%",     label: "Concept Clarity\nimprovement",   grad: "linear-gradient(90deg,#06b6d4,#3b82f6)" },
+];
+
+/* ═══════════════════════════════════════════════════════
+   MAIN HERO
+═══════════════════════════════════════════════════════ */
+export default function Hero() {
+  const isMobile = useIsMobile();
+
+  const containerBase: React.CSSProperties = {
+    position: "relative",
+    width: "100%",
+    overflow: "hidden",
+    background: "url('/hero-background.webp') center/cover no-repeat",
+    backgroundColor: "#f6f8ff",
+    fontFamily: "'AR One Sans', sans-serif",
+  };
+
+  /* ── MOBILE LAYOUT ── */
+  if (isMobile) {
+    return (
+      <div id="vision" style={{ ...containerBase, minHeight: "100vh" }}>
+        <HeroBackground />
+
+        <div style={{
+          position: "relative",
+          zIndex: 30,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "88px 24px 32px",
+          gap: 0,
+        }}>
+          {/* ── TEXT ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
+            style={{ width: "100%", textAlign: "left" }}
+          >
+            <h1 style={{
+              fontSize: "clamp(32px, 8.5vw, 48px)",
+              fontWeight: 800,
+              lineHeight: 1.15,
+              color: "#0f172a",
+              margin: "0 0 16px",
+              letterSpacing: "-0.02em",
+            }}>
+              What if students didn&#39;t have to{" "}
+              <span style={{
+                background: "linear-gradient(90deg, #e040fb 0%, #7c3aed 55%, #38bdf8 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                imagine
+              </span>{" "}anymore?
+            </h1>
+
+            <p style={{
+              fontSize: 15,
+              fontWeight: 500,
+              lineHeight: 1.6,
+              color: "#475569",
+              margin: "0 0 28px",
+            }}>
+              We believe clarity begins with experience.{" "}
+              SparkVR transforms abstract concepts into observable understanding.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-start", marginBottom: 40 }}>
+              <motion.a
+                href="/services"
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 12,
+                  background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+                  color: "#ffffff",
+                  padding: "14px 32px",
+                  borderRadius: 40,
+                  fontSize: 13, fontWeight: 700, letterSpacing: "0.14em",
+                  textDecoration: "none",
+                  boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
+                }}
+              >
+                SEE IT DIFFERENTLY
+              </motion.a>
+
+              <motion.a
+                href="/contact"
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 12,
+                  background: "rgba(255,255,255,0.5)",
+                  border: "2px solid #ffffff",
+                  color: "#1e293b",
+                  padding: "12px 32px",
+                  borderRadius: 40,
+                  fontSize: 13, fontWeight: 700, letterSpacing: "0.14em",
+                  textDecoration: "none",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
+                }}
+              >
+                <motion.span animate={{ rotateY: 360 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>✨</motion.span>
+                BOOK FREE WORKSHOP
+              </motion.a>
+            </div>
+          </motion.div>
+
+          {/* ── 2×2 MODULE GRID ── */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "40px 24px",
+            justifyItems: "center",
+            width: "100%",
+            marginBottom: 40,
+          }}>
+            {/* ATOMS */}
+            <motion.div
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
+            >
+              <div style={{ ...GLASS_STYLE, width: 130, height: 130 }}>
+                <Canvas camera={{ position: [0, 0, 3.6], fov: 42 }} gl={{ alpha: true, antialias: true }}
+                  style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
+                  <ambientLight intensity={2.2} />
+                  <directionalLight position={[5, 6, 5]} intensity={3.2} />
+                  <Suspense fallback={null}><Atom3D /></Suspense>
+                </Canvas>
+              </div>
+              <div style={{ ...LABEL_STYLE, position: "relative", left: "auto", transform: "none", marginTop: 10 }}>ATOMS</div>
+            </motion.div>
+
+            {/* HUMAN ANATOMY */}
+            <motion.div
+              animate={{ y: [0, -16, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
+            >
+              <div style={{ ...GLASS_STYLE, width: 120, height: 120 }}>
+                <div style={{ position: "absolute", width: "76%", height: "76%", borderRadius: "50%", background: "rgba(255,255,255,0.6)" }} />
+                <img loading="lazy" decoding="async" src="/anatomy.webp" alt="Human Anatomy"
+                  style={{ width: "78%", height: "78%", objectFit: "contain", position: "relative", zIndex: 1,
+                    filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)" }} />
+              </div>
+              <div style={{ ...LABEL_STYLE, position: "relative", left: "auto", transform: "none", marginTop: 10, color: "#7c3aed" }}>HUMAN ANATOMY</div>
+            </motion.div>
+
+            {/* CELLS */}
+            <motion.div
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
+            >
+              <div style={{ ...GLASS_STYLE, width: 120, height: 120 }}>
+                <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
+                <img loading="lazy" decoding="async" src="/cell_proper.webp" alt="Cell Structure"
+                  style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1,
+                    filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)" }} />
+              </div>
+              <div style={{ ...LABEL_STYLE, position: "relative", left: "auto", transform: "none", marginTop: 10 }}>CELLS</div>
+            </motion.div>
+
+            {/* SPACE / SATURN */}
+            <motion.div
+              animate={{ y: [0, 14, 0] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
+            >
+              <div style={{ ...GLASS_STYLE, width: 130, height: 130 }}>
+                <Canvas camera={{ position: [0, 0, 3.8], fov: 42 }} gl={{ alpha: true, antialias: true }}
+                  style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
+                  <ambientLight intensity={1.8} />
+                  <directionalLight position={[-5, 6, 5]} intensity={3.5} />
+                  <Suspense fallback={null}><Saturn3D /></Suspense>
+                </Canvas>
+              </div>
+              <div style={{ ...LABEL_STYLE, position: "relative", left: "auto", transform: "none", marginTop: 10, color: "#7c3aed" }}>SPACE</div>
+            </motion.div>
+          </div>
+
+          {/* ── STATS (3×2 grid on mobile) ── */}
+          <motion.div
+            initial={{ y: 24, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            style={{
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "12px 8px",
+              padding: "16px 16px",
+              background: "rgba(255,255,255,0.35)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.5)",
+              borderRadius: 20,
+              boxShadow: "0 8px 24px rgba(0,0,0,0.05)",
+            }}
+          >
+            {STATS.map((s, i) => (
+              <div key={i} style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center", textAlign: "center" }}>
+                <span style={{ fontSize: 17, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
+                <span style={{ fontSize: 9.5, fontWeight: 700, color: "#475569", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ── DESKTOP LAYOUT (unchanged) ── */
+  return (
+    <div
+      id="vision"
+      style={{
+        ...containerBase,
+        height: "100vh",
+        minHeight: 640,
+      }}
+    >
+      <HeroBackground />
+
+      {/* ── STUDENT IMAGE ── */}
       <div style={{
         position: "absolute",
         bottom: -28, left: "31.50%",
         transform: "translateX(+7%)",
         zIndex: 10, pointerEvents: "none",
       }}>
-        <motion.div 
-          style={{ perspective: 1000, transformStyle: "preserve-3d" }}
-        >
+        <motion.div style={{ perspective: 1000, transformStyle: "preserve-3d" }}>
           <motion.img loading="lazy" decoding="async"
             src="/student_proper.webp"
             alt="Student with VR headset"
@@ -252,7 +487,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── ATOMS (Top-Left) with floating animation ── */}
+      {/* ── ATOMS (Top-Left) ── */}
       <div style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div
           animate={{ y: [0, -20, 0], rotateX: [0, 8, 0], rotateY: [0, -8, 0] }}
@@ -278,7 +513,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── HUMAN ANATOMY (Top-Right) with floating animation ── */}
+      {/* ── HUMAN ANATOMY (Top-Right) ── */}
       <div style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div
           animate={{ y: [0, -18, 0], rotateX: [0, -6, 0], rotateY: [0, 6, 0] }}
@@ -309,7 +544,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── CELLS (Mid-Left) with floating animation ── */}
+      {/* ── CELLS (Mid-Left) ── */}
       <div style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div
           animate={{ y: [0, 22, 0], rotateX: [0, 10, 0], rotateY: [0, -10, 0] }}
@@ -340,7 +575,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── SPACE / SATURN (Mid-Right) with floating animation ── */}
+      {/* ── SPACE / SATURN (Mid-Right) ── */}
       <div style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div
           animate={{ y: [0, 18, 0], rotateX: [0, -8, 0], rotateY: [0, 8, 0] }}
@@ -366,9 +601,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ══════════════════════════════════════════════
-          LEFT TEXT COLUMN — counter-parallax
-      ══════════════════════════════════════════════ */}
+      {/* ── LEFT TEXT COLUMN ── */}
       <div style={{
         position: "absolute",
         left: 0, top: 0, bottom: 0,
@@ -475,6 +708,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* ── STATS BAR ── */}
       <div style={{
         position: "absolute",
         bottom: 15,
@@ -502,14 +736,7 @@ export default function Hero() {
             boxShadow: "0 20px 40px rgba(0,0,0,0.05), inset 0 2px 10px rgba(255,255,255,0.2)",
           }}
         >
-          {[
-            { val: "500+",   label: "Curriculum-aligned\nmodules",       grad: "linear-gradient(90deg,#3b82f6,#8b5cf6)" },
-            { val: "40-min", label: "Structured\nsessions",               grad: "linear-gradient(90deg,#ec4899,#8b5cf6)" },
-            { val: "8",      label: "Teacher-guided\ndelivery",            grad: "linear-gradient(90deg,#f59e0b,#ef4444)" },
-            { val: "10,000+",label: "Students Engaged",                   grad: "linear-gradient(90deg,#10b981,#3b82f6)" },
-            { val: "260",    label: "Schools Partnered",                   grad: "linear-gradient(90deg,#8b5cf6,#ec4899)" },
-            { val: "95%",    label: "Concept Clarity\nimprovement",        grad: "linear-gradient(90deg,#06b6d4,#3b82f6)" },
-          ].map((s, i) => (
+          {STATS.map((s, i) => (
             <React.Fragment key={i}>
               <motion.div
                 whileHover={{ y: -12, scale: 1.15, rotateX: 15, rotateY: -10, z: 20 }}

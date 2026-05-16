@@ -22,11 +22,19 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
   // Lock body scroll when menu is open
@@ -43,14 +51,14 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: 120,
+          height: isMobile ? 76 : 120,
           display: "flex", alignItems: "center",
           background: "transparent",
         }}
       >
         <div style={{
           maxWidth: 1440, margin: "0 auto", width: "100%", height: "100%",
-          padding: "0 60px",
+          padding: isMobile ? "0 16px" : "0 60px",
           display: "flex", alignItems: "center", justifyContent: "space-between",
         }}>
           {/* LOGO */}
@@ -58,30 +66,33 @@ export default function Navbar() {
             <img loading="lazy" decoding="async"
               src="/logo.webp"
               alt="SparkVR"
-              style={{ height: 110, width: "auto", objectFit: "contain" }}
+              style={{ height: isMobile ? 64 : 110, width: "auto", objectFit: "contain" }}
             />
           </Link>
 
-          {/* RIGHT SIDE: CTA + Hamburger (Desktop links hidden per request) */}
-          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <Link href="/contact" style={{ textDecoration: "none" }}>
-              <motion.div
-                whileHover={{ scale: 1.04, y: -2, boxShadow: "0 12px 28px rgba(0,102,255,0.3)" }}
-                whileTap={{ scale: 0.96 }}
-                style={{
-                  background: "#0052cc",
-                  borderRadius: 30, padding: "13px 28px",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  boxShadow: "0 8px 20px rgba(0,82,204,0.2)",
-                  cursor: "pointer",
-                }}
-              >
-                <span style={{
-                  color: "#fff", fontSize: 11, fontWeight: 800,
-                  letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap",
-                }}>BOOK FREE WORKSHOP</span>
-              </motion.div>
-            </Link>
+          {/* RIGHT SIDE: CTA + Hamburger */}
+          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 24 }}>
+            {/* Hide CTA button on mobile — it lives in the menu */}
+            {!isMobile && (
+              <Link href="/contact" style={{ textDecoration: "none" }}>
+                <motion.div
+                  whileHover={{ scale: 1.04, y: -2, boxShadow: "0 12px 28px rgba(0,102,255,0.3)" }}
+                  whileTap={{ scale: 0.96 }}
+                  style={{
+                    background: "#0052cc",
+                    borderRadius: 30, padding: "13px 28px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: "0 8px 20px rgba(0,82,204,0.2)",
+                    cursor: "pointer",
+                  }}
+                >
+                  <span style={{
+                    color: "#fff", fontSize: 11, fontWeight: 800,
+                    letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap",
+                  }}>BOOK FREE WORKSHOP</span>
+                </motion.div>
+              </Link>
+            )}
 
             {/* Hamburger button */}
             <button
@@ -140,12 +151,12 @@ export default function Navbar() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               style={{
                 position: "fixed", top: 0, right: 0, bottom: 0,
-                width: "clamp(320px, 40vw, 460px)",
+                width: isMobile ? "100vw" : "clamp(320px, 40vw, 460px)",
                 zIndex: 999,
                 background: "linear-gradient(195deg, rgba(0,26,77,0.97) 0%, rgba(0,40,110,0.98) 100%)",
                 backdropFilter: "blur(24px)",
                 display: "flex", flexDirection: "column",
-                padding: "120px 48px 48px",
+                padding: isMobile ? "80px 28px 40px" : "120px 48px 48px",
                 boxShadow: "-20px 0 60px rgba(0,0,0,0.25)",
               }}
             >
