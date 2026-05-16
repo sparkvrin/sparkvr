@@ -246,7 +246,7 @@ export default function Hero() {
       />
 
       {/* ── BG ORBS GROUP with parallax ── */}
-      <motion.div className="hero-bg-orbs" style={{ x: orbX, y: orbY, position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
+      <motion.div style={{ x: orbX, y: orbY, position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
         {BG_ORBS.map((o, i) => (
           <motion.div
             key={i}
@@ -267,17 +267,14 @@ export default function Hero() {
       </motion.div>
 
       {/* ── STUDENT IMAGE with parallax wrapper ── */}
-      <div className="hero-student-img" style={{
+      <div style={{
         position: "absolute",
         bottom: -28, left: "31.50%",
         transform: "translateX(+7%)",
         zIndex: 10, pointerEvents: "none",
       }}>
         <motion.div style={{ x: imgX, y: imgY, perspective: 1000, transformStyle: "preserve-3d" }}>
-          <motion.img
-            loading="eager"
-            decoding="async"
-            fetchPriority="low"
+          <motion.img loading="lazy" decoding="async"
             src="/student_proper.webp"
             alt="Student with VR headset"
             animate={{ 
@@ -299,7 +296,7 @@ export default function Hero() {
       </div>
 
       {/* ── ATOMS (Top-Left) with parallax ── */}
-      <div className="hero-bubble" style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div style={{ x: b1X, y: b1Y, perspective: 800 }}>
           <motion.div
             animate={{ y: [0, -18, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
@@ -327,7 +324,7 @@ export default function Hero() {
       </div>
 
       {/* ── HUMAN ANATOMY (Top-Right) with parallax ── */}
-      <div className="hero-bubble" style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div style={{ x: b2X, y: b2Y, perspective: 800 }}>
           <motion.div
             animate={{ y: [0, -14, 0], rotateX: [0, -4, 0], rotateY: [0, 4, 0] }}
@@ -360,7 +357,7 @@ export default function Hero() {
       </div>
 
       {/* ── CELLS (Mid-Left) with parallax ── */}
-      <div className="hero-bubble" style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div style={{ x: b1X, y: b1Y, perspective: 800 }}>
           <motion.div
             animate={{ y: [0, 16, 0], rotateX: [0, 6, 0], rotateY: [0, -6, 0] }}
@@ -393,7 +390,7 @@ export default function Hero() {
       </div>
 
       {/* ── SPACE / SATURN (Mid-Right) with parallax ── */}
-      <div className="hero-bubble" style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "none" }}>
         <motion.div style={{ x: b2X, y: b2Y, perspective: 800 }}>
           <motion.div
             animate={{ y: [0, 14, 0], rotateX: [0, -5, 0], rotateY: [0, 5, 0] }}
@@ -423,17 +420,14 @@ export default function Hero() {
       {/* ══════════════════════════════════════════════
           LEFT TEXT COLUMN — counter-parallax
       ══════════════════════════════════════════════ */}
-      <div
-        className="hero-text-column"
-        style={{
-          position: "absolute",
-          left: 0, top: 0, bottom: 0,
-          display: "flex", alignItems: "center",
-          zIndex: 30,
-          paddingLeft: "clamp(24px, 5.5vw, 80px)",
-          paddingBottom: "80px",
-        }}
-      >
+      <div style={{
+        position: "absolute",
+        left: 0, top: 0, bottom: 0,
+        display: "flex", alignItems: "center",
+        zIndex: 30,
+        paddingLeft: "clamp(24px, 5.5vw, 80px)",
+        paddingBottom: "80px",
+      }}>
         <motion.div style={{ x: txtX, y: txtY, rotateX: txtRotX, rotateY: txtRotY, transformStyle: "preserve-3d" }}>
           <div style={{ maxWidth: 600, transform: "translateZ(40px)" }}>
             <motion.h1
@@ -532,18 +526,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div
-        className="hero-stats-bar"
-        style={{
-          position: "absolute",
-          bottom: 15,
-          left: "62%",
-          transform: "translateX(-50%)",
-          width: "72%",
-          maxWidth: 880,
-          zIndex: 40,
-        }}
-      >
+      <div style={{
+        position: "absolute",
+        bottom: 15,
+        left: "62%",
+        transform: "translateX(-50%)",
+        width: "72%",
+        maxWidth: 880,
+        zIndex: 40,
+      }}>
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -587,14 +578,11 @@ export default function Hero() {
       </div>
 
       {/* ── PAGINATION DOTS ── */}
-      <div
-        className="hero-pagination-dots"
-        style={{
-          position: "absolute", right: 22, top: "50%",
-          transform: "translateY(-50%)", zIndex: 30,
-          display: "flex", flexDirection: "column", gap: 10,
-        }}
-      >
+      <div style={{
+        position: "absolute", right: 22, top: "50%",
+        transform: "translateY(-50%)", zIndex: 30,
+        display: "flex", flexDirection: "column", gap: 10,
+      }}>
         {[true, false, false, false].map((active, i) => (
           <motion.div
             key={i}

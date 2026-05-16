@@ -400,7 +400,7 @@ export default function TimetablePage() {
       {/* ══════════════════════════════════════
           SECTION 3: BATCH ROTATION SYSTEM
       ══════════════════════════════════════ */}
-      <section style={{ padding: "20px 0 100px 0", background: "#f8fafc", position: "relative" }}>
+      <section style={{ padding: "20px 0 0 0", background: "#f8fafc", position: "relative" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 40px" }}>
 
           <div style={{ display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
@@ -586,7 +586,7 @@ export default function TimetablePage() {
       {/* ══════════════════════════════════════
           SECTION 4: OPERATIONAL SIMPLICITY
       ══════════════════════════════════════ */}
-      <section style={{ padding: "10px 0 100px 0", background: "#f8fafc" }}>
+      <section style={{ padding: "0 0 100px 0", background: "#f8fafc" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 40px" }}>
 
           {/* HEADER: 2-column layout */}
