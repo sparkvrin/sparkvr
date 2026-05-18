@@ -77,7 +77,7 @@ export default function TeachersPage() {
       {/* ══════════════════════════════════════
           SECTION 1: Technology that respects teaching
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "0" : "100px 0 20px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
+      <section style={{ padding: isMobile ? "80px 0 0" : "100px 0 20px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
         {/* Right Side Image - absolute on desktop, hidden on mobile (content shown above) */}
         {!isMobile && (
           <motion.div

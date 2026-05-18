@@ -50,10 +50,17 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: isMobile ? 76 : 120,
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
+          height: isMobile ? 64 : 88,
           display: "flex", alignItems: "center",
-          background: "transparent",
+          background: scrolled
+            ? "rgba(255,255,255,0.92)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+          boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.08)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(0,82,204,0.08)" : "none",
+          transition: "background 0.35s ease, box-shadow 0.35s ease",
         }}
       >
         <div style={{
@@ -66,7 +73,7 @@ export default function Navbar() {
             <img loading="lazy" decoding="async"
               src="/logo.webp"
               alt="SparkVR"
-              style={{ height: isMobile ? 64 : 110, width: "auto", objectFit: "contain" }}
+              style={{ height: isMobile ? 52 : 72, width: "auto", objectFit: "contain" }}
             />
           </Link>
 
