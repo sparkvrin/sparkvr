@@ -171,7 +171,7 @@ export default function SchoolHubPage() {
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
             whileHover={{ y: -5, boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}
-            style={{ maxWidth: 1040, margin: "0 auto", background: "rgba(255,255,255,0.95)", backdropFilter: "blur(20px)", borderRadius: 24, padding: "26px 50px", display: "flex", justifyContent: "space-between", alignItems: "center", boxShadow: "0 16px 40px rgba(0,0,0,0.1)", border: "1px solid rgba(255,255,255,0.8)", flexWrap: "wrap", gap: 24 }}
+            style={{ maxWidth: 1040, margin: "0 auto", background: "rgba(255,255,255,0.95)", backdropFilter: "blur(20px)", borderRadius: 24, padding: isMobile ? "20px 16px" : isTablet ? "20px 24px" : "26px 50px", display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", alignItems: "center", boxShadow: "0 16px 40px rgba(0,0,0,0.1)", border: "1px solid rgba(255,255,255,0.8)", gap: isMobile ? 16 : 24 }}
           >
             {[
               { icon: ShieldCheck, top: "Trusted by", bottom: "250+ Schools", accent: false },
@@ -194,7 +194,7 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           REALITIES SECTION (What schools worry about vs How SparkVR solves it)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "80px 20px 40px", position: "relative", zIndex: 1 }}>
+      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "80px 32px 40px" : "120px 60px 40px", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
           {/* Header */}
@@ -246,8 +246,8 @@ export default function SchoolHubPage() {
                     desc: "We worry about breakdowns,\nrepairs and hidden costs."
                   }
                 ].map((item, idx) => (
-                  <motion.div key={idx} whileHover={{ scale: 1.02, x: 8, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", alignItems: "center", gap: 20, padding: 10, borderRadius: 16 }}>
-                    <div style={{ width: 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
+                  <motion.div key={idx} whileHover={{ scale: 1.02, x: 8, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", alignItems: "center", gap: 20, padding: 10, borderRadius: 16, flexWrap: isMobile ? "wrap" : "nowrap" }}>
+                    <div style={{ width: isMobile ? "100%" : 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
                       <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ display: "flex", gap: 16 }}>
@@ -264,7 +264,8 @@ export default function SchoolHubPage() {
               </div>
             </motion.div>
 
-            {/* Center Arrows */}
+            {/* Center Arrows - only on desktop */}
+            {!isMobile && (
             <div style={{ position: "absolute", left: "50%", top: "120px", bottom: "40px", display: "flex", flexDirection: "column", justifyContent: "space-between", transform: "translateX(-50%)", padding: "40px 0" }}>
               {[1, 2, 3, 4].map((i) => (
                 <motion.div key={i} animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }} style={{ width: 40, height: 40, borderRadius: 20, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", boxShadow: "0 4px 12px rgba(0,82,204,0.1)", zIndex: 10 }}>
@@ -272,6 +273,7 @@ export default function SchoolHubPage() {
                 </motion.div>
               ))}
             </div>
+            )}
 
             {/* Right Column: Solution (Green Theme) */}
             <motion.div {...scaleUp(0.6)} style={{ flex: 1, background: "#fff", borderRadius: 24, border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(34,197,94,0.05)", overflow: "hidden" }}>
@@ -341,11 +343,11 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           IMPLEMENTATION FLOW SECTION (How it works inside your school)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "20px 20px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
+      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "20px 60px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
 
           {/* Header */}
-          <div style={{ textAlign: "center", marginBottom: 80 }}>
+          <div style={{ textAlign: "center", marginBottom: isMobile ? 40 : 80 }}>
 
             <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20 }}>
               How it works <span style={{ color: "#0052cc" }}>inside your school</span>
@@ -448,13 +450,13 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner */}
-          <motion.div {...fadeUp(0.6)} style={{ marginTop: 80, background: "#f8fbff", borderRadius: 16, padding: "24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 24 }}>
+          <motion.div {...fadeUp(0.6)} style={{ marginTop: isMobile ? 40 : 80, background: "#f8fbff", borderRadius: 16, padding: isMobile ? "20px 16px" : "24px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "center", gap: 16 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <BadgeCheck size={32} color="#0052cc" />
-              <span style={{ fontSize: 18, fontWeight: 800, color: "#0052cc" }}>Clarity removes hesitation.</span>
+              <span style={{ fontSize: isMobile ? 16 : 18, fontWeight: 800, color: "#0052cc" }}>Clarity removes hesitation.</span>
             </div>
-            <div style={{ width: 1, height: 24, background: "#cbd5e1" }} />
-            <span style={{ fontSize: 18, fontWeight: 600, color: "#001a4d" }}>A proven process that fits perfectly into your school.</span>
+            {!isMobile && <div style={{ width: 1, height: 24, background: "#cbd5e1" }} />}
+            <span style={{ fontSize: isMobile ? 14 : 18, fontWeight: 600, color: "#001a4d" }}>A proven process that fits perfectly into your school.</span>
           </motion.div>
 
         </div>
@@ -463,7 +465,7 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           INFRASTRUCTURE SIMPLICITY SECTION
       ══════════════════════════════════════ */}
-      <section style={{ position: "relative", padding: "20px 20px 40px", zIndex: 1, overflow: "hidden", background: "#f8f9fc" }}>
+      <section style={{ position: "relative", padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "20px 60px 40px", zIndex: 1, overflow: "hidden", background: "#f8f9fc" }}>
 
         {/* Background Gradient/Image for Top Half */}
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", backgroundImage: "url('/backgroundimageschoolhub.webp')", backgroundSize: "cover", backgroundPosition: "center top", opacity: 0.1, zIndex: 0 }} />
@@ -475,7 +477,7 @@ export default function SchoolHubPage() {
           {/* Top Hero-ish Area */}
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 60, alignItems: "center", marginBottom: isMobile ? 40 : 80 }}>
             {/* Left Content */}
-            <div style={{ flex: 1, minWidth: "min(100%, 400px)" }}>
+            <div style={{ flex: 1, minWidth: isMobile ? 0 : "min(100%, 400px)", width: isMobile ? "100%" : undefined }}>
 
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Simple infrastructure.<br />
@@ -559,7 +561,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner */}
-          <motion.div {...fadeUp(0.6)} style={{ background: "#f0f5ff", borderRadius: 16, padding: "24px 32px", display: "flex", alignItems: "center", justifyContent: "center", gap: 24, border: "1px solid #e2e8f0" }}>
+          <motion.div {...fadeUp(0.6)} style={{ background: "#f0f5ff", borderRadius: 16, padding: isMobile ? "20px 16px" : "24px 32px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "center", gap: isMobile ? 16 : 24, border: "1px solid #e2e8f0" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <div style={{ width: 40, height: 40, borderRadius: 20, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.1)" }}>
                 <ShieldCheck size={24} color="#0052cc" />
@@ -567,7 +569,7 @@ export default function SchoolHubPage() {
               <span style={{ fontSize: 18, fontWeight: 800, color: "#001a4d" }}>Built to fit your school. Designed to last.</span>
             </div>
 
-            <div style={{ width: 2, height: 24, background: "#cbd5e1" }} />
+            {!isMobile && <div style={{ width: 2, height: 24, background: "#cbd5e1" }} />}
 
             <p style={{ fontSize: 16, fontWeight: 600, color: "#475569", margin: 0 }}>
               Reliable infrastructure that stays in the background,<br />
@@ -581,13 +583,13 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           TEACHER EXPERIENCE SECTION (Designed for teachers)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "20px 20px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
+      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "20px 60px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
 
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 60, alignItems: "center", marginBottom: isMobile ? 40 : 80 }}>
 
             {/* Left Content */}
-            <div style={{ flex: 1, minWidth: "min(100%, 450px)" }}>
+            <div style={{ flex: 1, minWidth: isMobile ? 0 : "min(100%, 450px)", width: isMobile ? "100%" : undefined }}>
               <motion.div {...fadeLeft(0.1)} style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "8px 16px", background: "#eff6ff", borderRadius: 8 }}>
                 <User size={18} color="#0052cc" />
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em", textTransform: "uppercase" }}>
@@ -713,7 +715,7 @@ export default function SchoolHubPage() {
           </motion.div>
 
           {/* Bottom Banner */}
-          <motion.div {...fadeUp(0.7)} style={{ background: "#f0f5ff", borderRadius: 100, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: 16, maxWidth: "fit-content", margin: "0 auto", border: "1px solid #dbeafe" }}>
+          <motion.div {...fadeUp(0.7)} style={{ background: "#f0f5ff", borderRadius: isMobile ? 20 : 100, padding: isMobile ? "16px 20px" : "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: 16, maxWidth: isMobile ? "100%" : "fit-content", margin: "0 auto", border: "1px solid #dbeafe" }}>
             <div style={{ width: 36, height: 36, borderRadius: 18, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.3)" }}>
               <Heart size={18} color="#fff" fill="#fff" />
             </div>
@@ -728,7 +730,7 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           OPERATIONAL CLARITY SECTION
       ══════════════════════════════════════ */}
-      <section style={{ padding: "40px 20px 40px", background: "#fdfdff", position: "relative", zIndex: 1 }}>
+      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "40px 60px 40px", background: "#fdfdff", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
 
           {/* Header */}

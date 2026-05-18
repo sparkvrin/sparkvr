@@ -258,10 +258,10 @@ export default function BlogPage() {
               background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(24px)",
               borderRadius: 30,
-              padding: "36px 54px",
+              padding: isMobile ? "20px 16px" : isTablet ? "24px 32px" : "36px 54px",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: 40,
+              gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: isMobile ? 20 : 40,
               boxShadow: "0 20px 60px rgba(0,26,77,0.05)",
               border: "1px solid #ffffff",
             }}

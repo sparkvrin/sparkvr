@@ -215,7 +215,7 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 1: HERO (Subject Expansion)
       ══════════════════════════════════════ */}
-      <section style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+      <section style={{ minHeight: isMobile ? "auto" : "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
         {/* Background Image Layer */}
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
@@ -236,9 +236,9 @@ export default function SubjectExpansionPage() {
         />
 
         {/* Content Container (Left Side) */}
-        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1600, margin: "0 auto", padding: isMobile ? "88px 20px 40px" : "40px 60px", flex: 1, display: "flex", flexDirection: "column" }}>
+        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1600, margin: "0 auto", padding: isMobile ? "88px 20px 40px" : isTablet ? "100px 32px 40px" : "120px 60px 40px", flex: 1, display: "flex", flexDirection: "column" }}>
 
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: 480, marginTop: "20px" }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: isMobile ? "100%" : 480, width: isMobile ? "100%" : undefined, marginTop: "20px" }}>
             <div>
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
                 <span style={{ fontSize: 12, fontWeight: 800, color: COLORS.blue, letterSpacing: "0.12em", textTransform: "uppercase" }}>
@@ -300,7 +300,7 @@ export default function SubjectExpansionPage() {
           <motion.div
             {...fadeUp(1.0)}
             style={{
-              background: COLORS.bottomBanner, borderRadius: 20, padding: "24px 40px",
+              background: COLORS.bottomBanner, borderRadius: 20, padding: isMobile ? "20px 16px" : isTablet ? "20px 24px" : "24px 40px",
               display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24,
               marginTop: 40, boxShadow: "0 25px 50px rgba(0,0,0,0.3)"
             }}
@@ -319,8 +319,8 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 2: SUBJECT ECOSYSTEM (New)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "80px 0", background: "#f8f9fc", position: "relative" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
+      <section style={{ padding: isMobile ? "48px 0" : "80px 0", background: "#f8f9fc", position: "relative" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
 
           {/* Top Hero of Ecosystem Section */}
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
@@ -341,8 +341,8 @@ export default function SubjectExpansionPage() {
               </motion.p>
             </div>
 
-            {/* Right Graphic area */}
-            <div style={{ flex: 1.5, position: "relative", height: "450px", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+            {/* Right Graphic area - hide on mobile to avoid clutter */}
+            {!isMobile && <div style={{ flex: 1.5, position: "relative", height: isTablet ? "380px" : "450px", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
 
               {/* SVG Dotted Arc */}
               <svg style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0, overflow: "visible" }} viewBox="0 0 1000 500" preserveAspectRatio="none">
@@ -395,7 +395,7 @@ export default function SubjectExpansionPage() {
               <SmallDot left="66%" top="6%" color="#f59e0b" delay={0.7} />
               <SmallDot left="87%" top="36%" color="#db2777" delay={0.9} />
 
-            </div>
+            </div>}
           </div>
 
           {/* Cards Grid */}
@@ -530,8 +530,8 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 3: IMMERSIVE LEARNING EXAMPLES
       ══════════════════════════════════════ */}
-      <section style={{ padding: "80px 0 20px 0", background: "#f8f9fc", position: "relative" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
+      <section style={{ padding: isMobile ? "48px 0 20px" : "80px 0 20px 0", background: "#f8f9fc", position: "relative" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
 
           {/* Header Row */}
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "flex-end", gap: isMobile ? 24 : 0, marginBottom: 50 }}>
@@ -671,9 +671,9 @@ export default function SubjectExpansionPage() {
               background: COLORS.cardBg,
               borderRadius: 20,
               border: "1px solid #e2e8f0",
-              padding: "30px 40px",
+              padding: isMobile ? "20px 16px" : isTablet ? "24px 24px" : "30px 40px",
               display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
+              gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)",
               gap: 20,
               boxShadow: "0 10px 30px rgba(0,0,0,0.02)"
             }}
@@ -697,8 +697,8 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 4: CROSS-DISCIPLINARY LEARNING
       ══════════════════════════════════════ */}
-      <section style={{ padding: "20px 0 100px 0", background: "#f8fafc", position: "relative", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
+      <section style={{ padding: isMobile ? "20px 0 60px" : "20px 0 100px 0", background: "#f8fafc", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
 
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
 
@@ -737,7 +737,7 @@ export default function SubjectExpansionPage() {
             </div>
 
             {/* ── Right Graphic – Fixed 800×700 canvas ── */}
-            <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 700 }}>
+            <div style={{ flex: 1, display: isMobile ? "none" : "flex", justifyContent: "center", alignItems: "center", minHeight: isMobile ? "auto" : isTablet ? 500 : 700 }}>
               {/*
                 All coordinates are in pixels relative to this 800×700 box.
                 Student centre: (400, 345)

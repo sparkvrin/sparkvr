@@ -151,8 +151,9 @@ export default function AboutPage() {
           SECTION 1: HERO / ABOUT
       ═══════════════════════════════════════════════════════ */}
       <main style={{
-        position: "relative", width: "100%", height: isMobile ? "auto" : "100vh",
-        minHeight: isMobile ? "auto" : "760px", overflow: "hidden", background: "#f8faff",
+        position: "relative", width: "100%",
+        minHeight: isMobile ? "auto" : "100vh",
+        overflow: "hidden", background: "#f8faff",
       }}>
         {/* Background */}
         <motion.div
@@ -171,13 +172,13 @@ export default function AboutPage() {
           zIndex: 1,
         }} />
 
-        {/* 3D Floating Icons */}
-        <FloatingIcon icon={School}    top="4%"  left="48%" delay={0}   size={56} />
-        <FloatingIcon icon={Handshake} top="14%" left="64%" delay={1.2} size={62} />
-        <FloatingIcon icon={Users}     top="34%" left="78%" delay={2.4} size={50} />
+        {/* 3D Floating Icons - hidden on mobile */}
+        {!isMobile && <FloatingIcon icon={School}    top="4%"  left="48%" delay={0}   size={56} />}
+        {!isMobile && <FloatingIcon icon={Handshake} top="14%" left="64%" delay={1.2} size={62} />}
+        {!isMobile && <FloatingIcon icon={Users}     top="34%" left="78%" delay={2.4} size={50} />}
 
-        {/* Floating Orbs */}
-        {[
+        {/* Floating Orbs - hidden on mobile */}
+        {!isMobile && [
           { top: "6%",  left: "58%",  size: 9,  color: "#1fb3ff", delay: 0 },
           { top: "20%", left: "55%",  size: 13, color: "#0052cc", delay: 1 },
           { top: "40%", left: "84%",  size: 11, color: "#cc2fff", delay: 2 },
@@ -196,11 +197,13 @@ export default function AboutPage() {
 
         {/* Content */}
         <div style={{
-          position: "relative", zIndex: 10, height: "100%",
+          position: "relative", zIndex: 10,
           display: "flex", alignItems: "center",
-          paddingTop: isMobile ? 88 : 140, paddingBottom: isMobile ? 40 : 0,
-          paddingLeft: "clamp(24px, 5vw, 80px)", paddingRight: "clamp(24px, 5vw, 80px)",
-          maxWidth: 1200, margin: "0 auto",
+          paddingTop: isMobile ? 88 : isTablet ? 100 : 120,
+          paddingBottom: isMobile ? 48 : 60,
+          paddingLeft: isMobile ? 20 : isTablet ? 32 : "clamp(24px, 5vw, 80px)",
+          paddingRight: isMobile ? 20 : isTablet ? 32 : "clamp(24px, 5vw, 80px)",
+          maxWidth: 1200, margin: "0 auto", width: "100%",
         }}>
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -331,9 +334,11 @@ export default function AboutPage() {
           SECTION 2: OUR PHILOSOPHY
       ═══════════════════════════════════════════════════════ */}
       <section style={{
-        position: "relative", width: "100%", minHeight: "100vh",
+        position: "relative", width: "100%",
         background: "#fdfeff", display: "flex", alignItems: "center",
-        justifyContent: "center", padding: "100px 24px", overflow: "hidden",
+        justifyContent: "center",
+        padding: isMobile ? "80px 20px 48px" : isTablet ? "80px 32px 60px" : "100px 60px 80px",
+        overflow: "hidden",
       }}>
         {/* BG arcs */}
         <motion.div
@@ -482,8 +487,10 @@ export default function AboutPage() {
           SECTION 3: WHAT MAKES SPARKVR DIFFERENT
       ═══════════════════════════════════════════════════════ */}
       <section style={{
-        position: "relative", width: "100%", minHeight: "100vh",
-        background: "#f9fbff", padding: "120px 24px", overflow: "hidden",
+        position: "relative", width: "100%",
+        background: "#f9fbff",
+        padding: isMobile ? "80px 20px 48px" : isTablet ? "80px 32px 60px" : "100px 60px 80px",
+        overflow: "hidden",
       }}>
         {/* Dot decoration */}
         <motion.div
@@ -674,7 +681,7 @@ export default function AboutPage() {
               boxShadow: "0 15px 40px rgba(0,0,0,0.02)", gap: 20, flexWrap: "wrap",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 20, flex: 1, minWidth: "min(100%, 280px)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 20, flex: 1, minWidth: isMobile ? 0 : "min(100%, 280px)", width: isMobile ? "100%" : undefined }}>
               <motion.div
                 animate={{
                   boxShadow: ["0 8px 20px rgba(0,82,204,0.2)", "0 14px 32px rgba(0,82,204,0.38)", "0 8px 20px rgba(0,82,204,0.2)"],
@@ -939,8 +946,8 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Right: IIT Partnership Card */}
-          <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 20 }}>
+          {/* Right: IIT Partnership Card - hide on mobile */}
+          {!isMobile && <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 20 }}>
             <TiltCard style={{}}>
               <motion.div
                 initial={{ opacity: 0, y: 40, scale: 0.92 }}
@@ -954,7 +961,7 @@ export default function AboutPage() {
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     style={{
                       background: "rgba(255,255,255,0.93)", backdropFilter: "blur(22px)",
-                      borderRadius: 26, padding: "28px 30px", width: 370,
+                      borderRadius: 26, padding: "28px 30px", width: isTablet ? 300 : 370,
                       border: "1.5px solid rgba(255,255,255,0.98)",
                       display: "flex", gap: 22, alignItems: "center",
                     }}
@@ -1000,7 +1007,7 @@ export default function AboutPage() {
                 </FloatLoop>
               </motion.div>
             </TiltCard>
-          </div>
+          </div>}
         </div>
       </section>
 
@@ -1008,11 +1015,11 @@ export default function AboutPage() {
           SECTION 5: OUR POSITIONING
       ═══════════════════════════════════════════════════════ */}
       <section style={{
-        position: "relative", width: "100%", minHeight: "100vh",
+        position: "relative", width: "100%",
         overflow: "hidden", display: "flex", alignItems: "center",
         justifyContent: "center",
         background: "linear-gradient(155deg, #d8e8ff 0%, #e4efff 30%, #edf4ff 58%, #d5e6ff 100%)",
-        padding: "100px 24px",
+        padding: isMobile ? "80px 20px 48px" : isTablet ? "80px 32px 60px" : "100px 60px 80px",
       }}>
         {/* Concentric arcs */}
         {[1100, 820, 560].map((size, i) => (
@@ -1161,14 +1168,14 @@ export default function AboutPage() {
             whileHover={{ boxShadow: "0 32px 80px rgba(0,82,204,0.1)" }}
             style={{
               background: "rgba(255,255,255,0.58)", backdropFilter: "blur(20px)",
-              borderRadius: 30, padding: "52px 44px 44px",
+              borderRadius: 30, padding: isMobile ? "24px 16px" : "52px 44px 44px",
               border: "1.5px solid rgba(255,255,255,0.88)",
               boxShadow: "0 24px 64px rgba(0,82,204,0.07)",
               marginBottom: 28,
             }}
           >
             {/* Icons row */}
-            <div style={{ display: "flex", flexWrap: isMobile ? "wrap" : "nowrap", alignItems: "center", justifyContent: "center", marginBottom: 44, gap: isMobile ? 16 : 0 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", marginBottom: 44, gap: isMobile ? 12 : 0 }}>
               {[
                 { icon: Puzzle },
                 { icon: Users },
@@ -1267,7 +1274,7 @@ export default function AboutPage() {
             >
               <GraduationCap size={22} strokeWidth={2} />
             </motion.div>
-            <p style={{ fontSize: 16, color: "#334155", fontWeight: 500, whiteSpace: "nowrap" }}>
+            <p style={{ fontSize: isMobile ? 14 : 16, color: "#334155", fontWeight: 500 }}>
               We don&apos;t add to the load. We strengthen what matters most —{" "}
               <motion.span
                 animate={{ opacity: [0.85, 1, 0.85] }}

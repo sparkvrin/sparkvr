@@ -65,20 +65,6 @@ const staggerContainer = {
   }
 };
 
-const MOBILE_STYLE = `
-  @media (max-width: 991px) {
-    .section-container { min-height: auto !important; padding: 60px 20px !important; flex-direction: column !important; }
-    .content-wrapper { max-width: 100% !important; flex: none !important; margin-bottom: 40px !important; }
-    .image-overlay { position: relative !important; width: 100% !important; height: 300px !important; border-radius: 12px !important; margin-top: 20px; }
-    .spacer-div { display: none !important; }
-    .bottom-banner { flex-direction: column !important; gap: 24px !important; padding: 24px !important; }
-    .icon-grid { grid-template-columns: 1fr 1fr !important; }
-  }
-  @media (max-width: 767px) {
-    .section-container { padding: 80px 20px 40px !important; }
-    .image-overlay { height: 260px !important; }
-  }
-`;
 
 export default function TeachersPage() {
   const screenWidth = useScreenWidth();
@@ -87,34 +73,50 @@ export default function TeachersPage() {
 
   return (
     <main style={{ minHeight: "100vh", background: "#f8f9fc" }}>
-      <style dangerouslySetInnerHTML={{ __html: MOBILE_STYLE }} />
 
       {/* ══════════════════════════════════════
           SECTION 1: Technology that respects teaching
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "80px 0 20px" : "100px 0 20px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
-        {/* Right Side Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.1 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: EASE }}
-          className="image-overlay"
-          style={{ position: isMobile ? "relative" : "absolute", top: 0, right: 0, width: isMobile ? "100%" : "60%", height: isMobile ? "240px" : "100%", zIndex: 0 }}
-        >
-          <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+      <section style={{ padding: isMobile ? "0" : "100px 0 20px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
+        {/* Right Side Image - absolute on desktop, hidden on mobile (content shown above) */}
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: EASE }}
+            style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "100%", zIndex: 0 }}
+          >
+            <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+              <motion.img loading="lazy" decoding="async"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" as const }}
+                src="/teacher_1.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+            </div>
+            <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 100%)" }} />
+          </motion.div>
+        )}
+
+        {/* Mobile Image - shown above content */}
+        {isMobile && (
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: EASE }}
+            style={{ width: "100%", height: 240, position: "relative", overflow: "hidden" }}
+          >
             <motion.img loading="lazy" decoding="async"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" as const }}
               src="/teacher_1.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
-          </div>
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 100%)" }} />
-        </motion.div>
+          </motion.div>
+        )}
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
-          <div className="section-container" style={{ display: "flex", alignItems: "center", minHeight: 280 }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: isMobile ? "20px 20px" : "0 20px", position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", alignItems: "center", minHeight: isMobile ? "auto" : 280, flexDirection: "column" }}>
             {/* Left Content */}
-            <div className="content-wrapper" style={{ flex: 1, maxWidth: "45%" }}>
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%", width: isMobile ? "100%" : undefined }}>
 
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(32px, 4vw, 40px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
                 Technology that<br />
@@ -154,8 +156,6 @@ export default function TeachersPage() {
                 </div>
               </motion.div>
             </div>
-            {/* Spacer */}
-            <div style={{ flex: 1 }}></div>
           </div>
 
           {/* Bottom Banner */}
@@ -165,13 +165,13 @@ export default function TeachersPage() {
                 <Users size={28} strokeWidth={1.5} />
               </div>
               <div>
-                <h4 style={{ fontSize: 18, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>Real teachers. Real classrooms. Real impact.</h4>
-                <p style={{ fontSize: 16, color: "#6366f1", margin: 0, fontWeight: 600 }}>SparkVR is built for educators, by people who understand education.</p>
+                <h4 style={{ fontSize: isMobile ? 16 : 18, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>Real teachers. Real classrooms. Real impact.</h4>
+                <p style={{ fontSize: isMobile ? 14 : 16, color: "#6366f1", margin: 0, fontWeight: 600 }}>SparkVR is built for educators, by people who understand education.</p>
               </div>
             </div>
 
-            {/* Divider */}
-            <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />
+            {/* Divider - hide on mobile */}
+            {!isMobile && <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />}
 
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <GraduationCap size={32} color="#4f46e5" strokeWidth={1.5} />
@@ -184,28 +184,39 @@ export default function TeachersPage() {
       {/* ══════════════════════════════════════
           SECTION 2: Teachers remain at the center
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "40px 0 20px" : "40px 0", background: "#f8f9fc", position: "relative", overflow: "hidden" }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 1.1 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: EASE }}
-          className="image-overlay"
-          style={{ position: isMobile ? "relative" : "absolute", top: 0, right: 0, width: isMobile ? "100%" : "60%", height: isMobile ? "220px" : "100%", zIndex: 0 }}
-        >
-          <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+      <section style={{ padding: isMobile ? "0" : "40px 0", background: "#f8f9fc", position: "relative", overflow: "hidden" }}>
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: EASE }}
+            style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "100%", zIndex: 0 }}
+          >
+            <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+              <motion.img loading="lazy" decoding="async"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 12, repeat: Infinity, ease: "linear" as const }}
+                src="/teacher_2.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+            </div>
+            <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.8) 30%, transparent 100%)" }} />
+          </motion.div>
+        )}
+
+        {isMobile && (
+          <div style={{ width: "100%", height: 220, overflow: "hidden" }}>
             <motion.img loading="lazy" decoding="async"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" as const }}
               src="/teacher_2.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.8) 30%, transparent 100%)" }} />
-        </motion.div>
+        )}
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
-          <div className="section-container" style={{ display: "flex", alignItems: "center", minHeight: 280 }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: isMobile ? "20px 20px" : "0 20px", position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", alignItems: "center", minHeight: isMobile ? "auto" : 280, flexDirection: "column" }}>
             {/* Left Content */}
-            <div className="content-wrapper" style={{ flex: 1, maxWidth: "45%" }}>
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%", width: isMobile ? "100%" : undefined }}>
               <motion.div {...fadeLeft(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                 <Users size={20} color="#0052cc" />
                 <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -243,13 +254,11 @@ export default function TeachersPage() {
                 ))}
               </div>
             </div>
-            {/* Spacer */}
-            <div style={{ flex: 1 }}></div>
           </div>
 
           {/* Bottom Banner */}
           <motion.div {...fadeUp(0.6)} whileHover={{ y: -5 }} style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 24, marginTop: 40 }}>
-            <div style={{ flex: 1, background: "linear-gradient(135deg, #818cf8 0%, #a855f7 100%)", borderRadius: 16, padding: "32px 40px", display: "flex", alignItems: "center", gap: 24, boxShadow: "0 15px 30px rgba(139,92,246,0.2)" }}>
+            <div style={{ flex: 1, background: "linear-gradient(135deg, #818cf8 0%, #a855f7 100%)", borderRadius: 16, padding: isMobile ? "24px 20px" : "32px 40px", display: "flex", alignItems: "center", gap: 24, boxShadow: "0 15px 30px rgba(139,92,246,0.2)" }}>
               <div style={{ width: 64, height: 64, borderRadius: 32, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#ffffff" }}>
                 <Users size={32} strokeWidth={1.5} />
               </div>
@@ -279,28 +288,37 @@ export default function TeachersPage() {
       {/* ══════════════════════════════════════
           SECTION 3: A structured flow (Same to Same as Image)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "60px 0", background: "#ffffff", position: "relative", overflow: "hidden" }}>
-        {/* Right Side Image - Larger to match design */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: EASE }}
-          className="image-overlay"
-          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "85%", zIndex: 0 }}
-        >
-          <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+      <section style={{ padding: isMobile ? "0" : "60px 0", background: "#ffffff", position: "relative", overflow: "hidden" }}>
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: EASE }}
+            style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "85%", zIndex: 0 }}
+          >
+            <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+              <motion.img loading="lazy" decoding="async"
+                whileHover={{ scale: 1.05 }}
+                src="/teacher_3.webp" alt="VR Learning Flow" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+            </div>
+            <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "30%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)" }} />
+          </motion.div>
+        )}
+
+        {isMobile && (
+          <div style={{ width: "100%", height: 220, overflow: "hidden" }}>
             <motion.img loading="lazy" decoding="async"
               whileHover={{ scale: 1.05 }}
               src="/teacher_3.webp" alt="VR Learning Flow" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "30%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)" }} />
-        </motion.div>
+        )}
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
-          <div className="section-container" style={{ display: "flex", alignItems: "flex-start", minHeight: 450, gap: 40 }}>
-            {/* Left Content (approx 40%) */}
-            <div className="content-wrapper" style={{ flex: 1.2, maxWidth: 500 }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: isMobile ? "20px 20px" : isTablet ? "0 32px" : "0 20px", position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", alignItems: "flex-start", minHeight: isMobile ? "auto" : 450, gap: 40, flexDirection: "column" }}>
+            {/* Left Content */}
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : isTablet ? "60%" : 500, width: isMobile ? "100%" : undefined }}>
               <motion.div {...fadeLeft(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <BookOpen size={20} color="#0052cc" />
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#4f46e5", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -337,13 +355,10 @@ export default function TeachersPage() {
                 ))}
               </div>
             </div>
-
-            {/* Right side area - Spacer for image visibility */}
-            <div style={{ flex: 1.8, position: "relative" }}></div>
           </div>
 
           {/* Pedagogy Card - 3D Animation & Bottom Flush Position */}
-          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: -2, position: "relative", zIndex: 10, perspective: 1000 }}>
+          <div style={{ display: "flex", justifyContent: isMobile ? "flex-start" : "flex-end", marginBottom: -2, position: "relative", zIndex: 10, perspective: 1000 }}>
             <motion.div
               initial={{ opacity: 0, y: 20, rotateX: 10 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -422,7 +437,7 @@ export default function TeachersPage() {
           </motion.div>
 
           {/* Thin Summary Bar at bottom */}
-          <motion.div {...fadeUp(0.7)} style={{ background: "#f8faff", borderRadius: 16, padding: "16px 32px", marginTop: 20, border: "1px solid #e0e7ff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <motion.div {...fadeUp(0.7)} style={{ background: "#f8faff", borderRadius: 16, padding: isMobile ? "16px" : "16px 32px", marginTop: 20, border: "1px solid #e0e7ff", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 12 : 0, flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <div style={{ width: 32, height: 32, borderRadius: 16, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><Award size={18} color="#fff" /></div>
               <p style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", margin: 0 }}>A clear flow for every lesson. Better engagement. Stronger outcomes.</p>
@@ -438,28 +453,37 @@ export default function TeachersPage() {
       {/* ══════════════════════════════════════
           SECTION 4: Powerful learning (Same to Same as Image)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "60px 0", background: "#f8f9fc", position: "relative", overflow: "hidden" }}>
-        {/* Right Side Image - 35% Width as requested */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: EASE }}
-          className="image-overlay"
-          style={{ position: "absolute", top: 0, right: 0, width: "35%", height: "80%", zIndex: 0 }}
-        >
-          <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+      <section style={{ padding: isMobile ? "0" : "60px 0", background: "#f8f9fc", position: "relative", overflow: "hidden" }}>
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: EASE }}
+            style={{ position: "absolute", top: 0, right: 0, width: "35%", height: "80%", zIndex: 0 }}
+          >
+            <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+              <motion.img loading="lazy" decoding="async"
+                whileHover={{ scale: 1.05 }}
+                src="/teacher_4.webp" alt="VR Learning Effortless" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+            </div>
+            <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.5) 50%, transparent 100%)" }} />
+          </motion.div>
+        )}
+
+        {isMobile && (
+          <div style={{ width: "100%", height: 200, overflow: "hidden" }}>
             <motion.img loading="lazy" decoding="async"
               whileHover={{ scale: 1.05 }}
               src="/teacher_4.webp" alt="VR Learning Effortless" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.5) 50%, transparent 100%)" }} />
-        </motion.div>
+        )}
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
-          <div className="section-container" style={{ display: "flex", alignItems: "flex-start", minHeight: 450, gap: 40 }}>
-            {/* Left Content (approx 60% since image is 35%) */}
-            <div className="content-wrapper" style={{ flex: 1.8, maxWidth: 800 }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: isMobile ? "20px 20px" : "0 20px", position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", alignItems: "flex-start", minHeight: isMobile ? "auto" : 450, gap: 40, flexDirection: "column" }}>
+            {/* Left Content */}
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : 800, width: isMobile ? "100%" : undefined }}>
               <motion.div {...fadeLeft(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <Rocket size={18} color="#4f46e5" />
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#4f46e5", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -518,9 +542,36 @@ export default function TeachersPage() {
               </div>
             </div>
 
-            {/* Right side area */}
+            {/* Info card on mobile */}
+            {isMobile && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                style={{
+                  background: "rgba(255,255,255,0.95)",
+                  padding: "12px 20px",
+                  borderRadius: 20,
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                  border: "1px solid rgba(79, 70, 229, 0.1)",
+                  width: "100%",
+                  marginTop: 16,
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 18, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", flexShrink: 0 }}>
+                    <CheckCircle2 size={22} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a4d", margin: "0 0 2px 0", lineHeight: 1.2 }}>Less setup.<br /><span style={{ color: "#4f46e5" }}>More teaching.</span></h3>
+                    <p style={{ fontSize: 11, color: "#475569", margin: 0, fontWeight: 500, lineHeight: 1.3 }}>SparkVR makes learning simple and stress-free.</p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Desktop floating pedagogy box */}
+            {!isMobile && (
             <div style={{ flex: 1.2, position: "relative", minHeight: 450, perspective: 1000 }}>
-              {/* Floating Pedagogy Box with 3D Effect - Smaller and Lower */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -551,10 +602,11 @@ export default function TeachersPage() {
                 </div>
               </motion.div>
             </div>
+            )}
           </div>
 
           {/* Bottom Step Flow - Ultra Compact Height */}
-          <motion.div {...fadeUp(0.6)} style={{ background: "#ffffff", borderRadius: 24, padding: "12px 40px", marginTop: 20, border: "1px solid #e2e8f0", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
+          <motion.div {...fadeUp(0.6)} style={{ background: "#ffffff", borderRadius: 24, padding: isMobile ? "12px 16px" : isTablet ? "12px 24px" : "12px 40px", marginTop: 20, border: "1px solid #e2e8f0", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
             <h3 style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", textAlign: "center", marginBottom: 16 }}>Get started in 4 easy steps</h3>
 
             <div style={{ display: "flex", justifyContent: "space-between", position: "relative", maxWidth: 1000, margin: "0 auto" }}>
@@ -585,13 +637,13 @@ export default function TeachersPage() {
           </motion.div>
 
           {/* Thin Summary Bar at bottom */}
-          <motion.div {...fadeUp(0.7)} style={{ background: "#f8faff", borderRadius: 16, padding: "16px 32px", marginTop: 20, border: "1px solid #e0e7ff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <motion.div {...fadeUp(0.7)} style={{ background: "#f8faff", borderRadius: 16, padding: isMobile ? "16px" : "16px 32px", marginTop: 20, border: "1px solid #e0e7ff", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 16 : 0, flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <div style={{ width: 32, height: 32, borderRadius: 16, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center" }}><Award size={18} color="#fff" /></div>
               <p style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", margin: 0 }}>Simple for you. Powerful for your students. <span style={{ fontWeight: 500, color: "#475569" }}>SparkVR fits seamlessly into your teaching.</span></p>
             </div>
 
-            <div style={{ display: "flex", gap: 40 }}>
+            <div style={{ display: "flex", gap: isMobile ? 16 : 40, flexWrap: "wrap" }}>
               {[
                 { icon: Rocket, label: "Easy to learn", desc: "No complex training." },
                 { icon: Clock, label: "Saves time", desc: "Streamlined tools." },
@@ -613,28 +665,39 @@ export default function TeachersPage() {
       {/* ══════════════════════════════════════
           SECTION 5: Aligned with curriculum
       ══════════════════════════════════════ */}
-      <section style={{ padding: "40px 0 60px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 1.1 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: EASE }}
-          className="image-overlay"
-          style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "100%", zIndex: 0 }}
-        >
-          <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+      <section style={{ padding: isMobile ? "0" : "40px 0 60px", background: "#ffffff", position: "relative", overflow: "hidden" }}>
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: EASE }}
+            style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "100%", zIndex: 0 }}
+          >
+            <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden" }}>
+              <motion.img loading="lazy" decoding="async"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 11, repeat: Infinity, ease: "linear" as const }}
+                src="/teacher_5.webp" alt="VR Curriculum Alignment" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+            </div>
+            <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 100%)" }} />
+          </motion.div>
+        )}
+
+        {isMobile && (
+          <div style={{ width: "100%", height: 220, overflow: "hidden" }}>
             <motion.img loading="lazy" decoding="async"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 11, repeat: Infinity, ease: "linear" as const }}
               src="/teacher_5.webp" alt="VR Curriculum Alignment" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
           </div>
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 100%)" }} />
-        </motion.div>
+        )}
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
-          <div className="section-container" style={{ display: "flex", alignItems: "center", minHeight: 280 }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: isMobile ? "20px 20px" : "0 20px", position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", alignItems: "center", minHeight: isMobile ? "auto" : 280, flexDirection: "column" }}>
             {/* Left Content */}
-            <div className="content-wrapper" style={{ flex: 1, maxWidth: "45%" }}>
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%", width: isMobile ? "100%" : undefined }}>
               <motion.div {...fadeLeft(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                 <GraduationCap size={20} color="#0052cc" />
                 <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -693,35 +756,6 @@ export default function TeachersPage() {
                 ))}
               </div>
             </div>
-            {/* Spacer for Right side */}
-            <div style={{ flex: 1, position: "relative", minHeight: 350, perspective: 1000 }}>
-              {/* Floating overlay box on image - Shrunk and Moved to Bottom */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ rotateX: -5, rotateY: 5, scale: 1.05 }}
-                style={{
-                  position: "absolute",
-                  bottom: "-15%",
-                  left: "-15%",
-                  background: "rgba(255,255,255,0.95)",
-                  backdropFilter: "blur(10px)",
-                  padding: "12px 20px",
-                  borderRadius: 20,
-                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
-                  maxWidth: 260,
-                  zIndex: 10,
-                  border: "1px solid rgba(79, 70, 229, 0.1)",
-                  transformStyle: "preserve-3d" as const
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                  <GraduationCap size={24} color="#4f46e5" strokeWidth={1.5} />
-                  <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a4d", margin: 0, lineHeight: 1.2 }}>Built for classrooms.<br /><span style={{ color: "#4f46e5" }}>Backed by pedagogy.</span></h3>
-                </div>
-                <p style={{ fontSize: 11, color: "#475569", margin: 0, fontWeight: 500, lineHeight: 1.3 }}>SparkVR aligns with educational standards and supports student learning.</p>
-              </motion.div>
-            </div>
           </div>
 
 
@@ -732,10 +766,10 @@ export default function TeachersPage() {
           BOTTOM ALIGNMENT BANNER
       ══════════════════════════════════════ */}
       <div style={{ maxWidth: 1240, margin: "0 auto 60px", padding: "0 20px", position: "relative", zIndex: 2 }}>
-        <motion.div {...fadeUp(0.2)} className="bottom-banner" style={{ background: "#ffffff", borderRadius: 24, padding: "20px 40px", border: "1px solid #e2e8f0", boxShadow: "0 20px 50px rgba(0,0,0,0.04)" }}>
+        <motion.div {...fadeUp(0.2)} style={{ background: "#ffffff", borderRadius: 24, padding: isMobile ? "20px 16px" : isTablet ? "20px 24px" : "20px 40px", border: "1px solid #e2e8f0", boxShadow: "0 20px 50px rgba(0,0,0,0.04)" }}>
           <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a4d", textAlign: "center", marginBottom: 20, letterSpacing: "-0.01em" }}>Aligned where it matters</h3>
 
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 24, marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 24, marginBottom: 24 }}>
             {[
               { icon: BookOpen, title: "Subject coverage", desc: "Science, maths, & more." },
               { icon: ClipboardList, title: "Grade appropriate", desc: "Designed for all stages." },
@@ -743,7 +777,7 @@ export default function TeachersPage() {
               { icon: CheckCircle2, title: "Teacher confidence", desc: "Teach with certainty." },
               { icon: TrendingUp, title: "Measurable impact", desc: "Improve outcomes." }
             ].map((step, idx) => (
-              <motion.div key={idx} whileHover={{ y: -5 }} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+              <motion.div key={idx} whileHover={{ y: -5 }} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", marginBottom: 4 }}>
                   <step.icon size={22} strokeWidth={1.5} />
                 </div>
@@ -753,7 +787,7 @@ export default function TeachersPage() {
             ))}
           </div>
 
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 32px", background: "linear-gradient(90deg, #f0f5ff 0%, #ffffff 100%)", borderRadius: 20, border: "1px solid #e0e7ff" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", padding: isMobile ? "16px" : "16px 32px", background: "linear-gradient(90deg, #f0f5ff 0%, #ffffff 100%)", borderRadius: 20, border: "1px solid #e0e7ff", gap: isMobile ? 16 : 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <div style={{ width: 44, height: 44, borderRadius: 22, background: "#4f46e5", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 5px 15px rgba(79, 70, 229, 0.2)" }}><ShieldCheck size={22} color="#fff" /></div>
               <div>
@@ -762,7 +796,7 @@ export default function TeachersPage() {
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: 32 }}>
+            <div style={{ display: "flex", gap: isMobile ? 16 : 32, flexWrap: "wrap" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <Target size={20} color="#4f46e5" />
                 <h5 style={{ fontSize: 13, fontWeight: 800, color: "#001a4d", margin: 0 }}>Teach with purpose</h5>
@@ -823,19 +857,20 @@ export default function TeachersPage() {
               </div>
             </div>
 
-            {/* Right Image Container */}
+            {/* Right Image Container - only on non-mobile */}
+            {!isMobile && (
             <div style={{ flex: 1, position: "relative", minHeight: 500 }}>
               <motion.div {...fadeRight(0.4)} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, borderRadius: 24, overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.1)" }}>
                 <motion.img loading="lazy" decoding="async" whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_4.webp" alt="SparkVR Training" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </motion.div>
-              
+
               {/* Floating Card Right */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 30, y: 10 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6, ease: EASE }}
                 whileHover={{ y: -5, boxShadow: "0 25px 50px rgba(0,0,0,0.12)" }}
-                style={{ position: "absolute", top: 40, right: -30, background: "#ffffff", borderRadius: 16, padding: "20px", boxShadow: "0 20px 40px rgba(0,0,0,0.08)", border: "1px solid #e0e7ff", width: 240, zIndex: 10 }}
+                style={{ position: "absolute", top: 40, right: isTablet ? -10 : -30, background: "#ffffff", borderRadius: 16, padding: "20px", boxShadow: "0 20px 40px rgba(0,0,0,0.08)", border: "1px solid #e0e7ff", width: 240, zIndex: 10 }}
               >
                 <div style={{ background: "linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)", margin: "-20px -20px 20px -20px", padding: "16px 20px", borderTopLeftRadius: 16, borderTopRightRadius: 16, display: "flex", alignItems: "center", gap: 10 }}>
                   <Headphones size={18} color="#ffffff" />
@@ -858,13 +893,13 @@ export default function TeachersPage() {
                 </div>
               </motion.div>
 
-              {/* Floating Card Bottom - Pushed to corner so center is free */}
-              <motion.div 
+              {/* Floating Card Bottom */}
+              <motion.div
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
                 whileHover={{ y: -5, scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
-                style={{ position: "absolute", bottom: -20, left: -20, maxWidth: 360, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", padding: "16px 24px", borderRadius: 16, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(79, 70, 229, 0.1)", display: "flex", gap: 16, alignItems: "center", zIndex: 10 }}
+                style={{ position: "absolute", bottom: -20, left: isTablet ? 0 : -20, maxWidth: 360, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", padding: "16px 24px", borderRadius: 16, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(79, 70, 229, 0.1)", display: "flex", gap: 16, alignItems: "center", zIndex: 10 }}
               >
                 <div style={{ width: 48, height: 48, borderRadius: 24, background: "linear-gradient(135deg, #f0f5ff 0%, #e0e7ff 100%)", border: "1px solid #c7d2fe", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <ShieldCheck size={24} color="#4f46e5" />
@@ -876,12 +911,13 @@ export default function TeachersPage() {
                 </div>
               </motion.div>
             </div>
+            )}
           </div>
 
           {/* Bottom Banner */}
           <motion.div {...fadeUp(0.6)} style={{ background: "#f0f5ff", borderRadius: 24, padding: "30px", border: "1px solid #e0e7ff" }}>
             <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", textAlign: "center", marginBottom: 24 }}>Support that empowers educators</h3>
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 20, marginBottom: 24 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 24 }}>
               {[
                 { icon: Users, title: "Onboarding & Training", desc: "Get up to speed with guided sessions and hands-on practice." },
                 { icon: Headphones, title: "Help & Troubleshooting", desc: "Fast, friendly support whenever you need it." },
@@ -889,7 +925,7 @@ export default function TeachersPage() {
                 { icon: Calendar, title: "Webinars & Workshops", desc: "Stay updated with expert sessions and peer learning." },
                 { icon: RefreshCcw, title: "Updates & Innovations", desc: "Regular feature updates to enhance your teaching." }
               ].map((step, idx) => (
-                <motion.div key={idx} whileHover={{ y: -5 }} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, cursor: "pointer" }}>
+                <motion.div key={idx} whileHover={{ y: -5 }} style={{ display: "flex", flexDirection: "column", gap: 8, cursor: "pointer" }}>
                   <motion.div whileHover={{ scale: 1.1, backgroundColor: "#6366f1", color: "#ffffff" }} transition={{ duration: 0.2 }} style={{ width: 44, height: 44, borderRadius: 22, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", color: "#6366f1", marginBottom: 4, boxShadow: "0 8px 15px rgba(0,0,0,0.05)" }}>
                     <step.icon size={22} strokeWidth={1.5} />
                   </motion.div>
@@ -899,7 +935,7 @@ export default function TeachersPage() {
               ))}
             </div>
             
-            <div style={{ background: "#ffffff", borderRadius: 16, padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", border: "1px solid #e2e8f0" }}>
+            <div style={{ background: "#ffffff", borderRadius: 16, padding: isMobile ? "16px" : "16px 24px", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 12 : 0, border: "1px solid #e2e8f0" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <Heart size={20} color="#6366f1" />
                 <h4 style={{ fontSize: 16, fontWeight: 800, color: "#0f172a", margin: 0 }}>We're more than a platform. We're your teaching partner.</h4>
@@ -956,22 +992,23 @@ export default function TeachersPage() {
               </motion.div>
             </div>
 
-            {/* Right Image Container */}
+            {/* Right Image Container - only on non-mobile */}
+            {!isMobile && (
             <div style={{ flex: 1, position: "relative", minHeight: 500 }}>
               <motion.div {...fadeLeft(0.4)} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, borderRadius: 24, overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.1)" }}>
                 <motion.img loading="lazy" decoding="async" whileHover={{ scale: 1.05 }} transition={{ duration: 1.5, ease: "easeOut" }} src="/teacher_2.webp" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </motion.div>
               
-              {/* Floating Card Right - pushed to corner so center is free */}
-              <motion.div 
-                initial="initial" 
-                whileInView="whileInView" 
-                viewport={{ once: true }} 
+              {/* Floating Card Right - hidden on mobile */}
+              {!isMobile && <motion.div
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
                 variants={{
                   initial: {},
                   whileInView: { transition: { staggerChildren: 0.15, delayChildren: 0.6 } }
                 }}
-                style={{ position: "absolute", top: 40, right: -40, display: "flex", flexDirection: "column", gap: 10, zIndex: 10 }}
+                style={{ position: "absolute", top: 40, right: isTablet ? -10 : -40, display: "flex", flexDirection: "column", gap: 10, zIndex: 10 }}
               >
                 {[
                   { icon: Users, text: "Engage", color: "#8b5cf6" },
@@ -993,8 +1030,9 @@ export default function TeachersPage() {
                     <span style={{ fontSize: 16, fontWeight: 800, color: "#0f172a", letterSpacing: "0.02em" }}>{it.text}</span>
                   </motion.div>
                 ))}
-              </motion.div>
+              </motion.div>}
             </div>
+            )}
           </div>
 
           {/* Bottom Banner */}
@@ -1005,7 +1043,7 @@ export default function TeachersPage() {
               <div style={{ height: 2, width: 40, background: "#cbd5e1" }}></div>
             </div>
             
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 16, marginBottom: 30 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 16, marginBottom: 30 }}>
               {[
                 { icon: ShieldCheck, title: "Teacher-guided", desc: "and in control" },
                 { icon: Target, title: "Aligned with", desc: "curriculum" },
@@ -1013,7 +1051,7 @@ export default function TeachersPage() {
                 { icon: Settings, title: "Simple, reliable,", desc: "and easy to use" },
                 { icon: Headphones, title: "Support that", desc: "empowers you" }
               ].map((step, idx) => (
-                <motion.div key={idx} whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.05)", borderColor: "#c7d2fe" }} style={{ flex: 1, display: "flex", alignItems: "center", gap: 12, background: "#ffffff", padding: "14px", borderRadius: 16, border: "1px solid #e2e8f0", cursor: "pointer", transition: "all 0.3s ease" }}>
+                <motion.div key={idx} whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.05)", borderColor: "#c7d2fe" }} style={{ display: "flex", alignItems: "center", gap: 12, background: "#ffffff", padding: "14px", borderRadius: 16, border: "1px solid #e2e8f0", cursor: "pointer", transition: "all 0.3s ease" }}>
                   <motion.div whileHover={{ rotate: 15 }} style={{ width: 40, height: 40, borderRadius: 12, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#4f46e5", flexShrink: 0 }}>
                     <step.icon size={20} strokeWidth={2} />
                   </motion.div>
@@ -1025,8 +1063,8 @@ export default function TeachersPage() {
               ))}
             </div>
             
-            <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.05)", borderColor: "#c7d2fe" }} style={{ background: "#ffffff", borderRadius: 20, padding: "24px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", border: "1px solid #e2e8f0", transition: "all 0.3s ease" }}>
-              <div style={{ flex: 1, display: "flex", gap: 16, borderRight: "1px solid #e2e8f0", paddingRight: 32 }}>
+            <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.05)", borderColor: "#c7d2fe" }} style={{ background: "#ffffff", borderRadius: 20, padding: isMobile ? "20px 16px" : "24px 32px", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 20 : 0, border: "1px solid #e2e8f0", transition: "all 0.3s ease" }}>
+              <div style={{ flex: 1, display: "flex", gap: 16, borderRight: isMobile ? "none" : "1px solid #e2e8f0", borderBottom: isMobile ? "1px solid #e2e8f0" : "none", paddingRight: isMobile ? 0 : 32, paddingBottom: isMobile ? 20 : 0 }}>
                 <Quote size={40} color="#8b5cf6" style={{ opacity: 0.3, flexShrink: 0, marginTop: -8 }} />
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", margin: "0 0 12px 0", lineHeight: 1.5, fontStyle: "italic" }}>"SparkVR empowers me to teach better and helps my students learn deeper."</p>
@@ -1037,7 +1075,7 @@ export default function TeachersPage() {
                 </div>
               </div>
 
-              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 20, paddingLeft: 32 }}>
+              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 20, paddingLeft: isMobile ? 0 : 32 }}>
                 <motion.div whileHover={{ rotate: 10, scale: 1.1 }} style={{ width: 56, height: 56, borderRadius: 16, background: "linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(79, 70, 229, 0.3)" }}><ShieldCheck size={28} color="#fff" /></motion.div>
                 <div>
                   <h4 style={{ fontSize: 20, fontWeight: 900, color: "#0f172a", margin: "0 0 4px 0", letterSpacing: "-0.01em" }}>You teach. We support.</h4>
@@ -1045,7 +1083,7 @@ export default function TeachersPage() {
                 </div>
               </div>
 
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", paddingLeft: 32 }}>
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: isMobile ? "flex-start" : "flex-end", paddingLeft: isMobile ? 0 : 32 }}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ padding: "16px 28px", background: "#0f172a", color: "#ffffff", border: "none", borderRadius: 14, fontSize: 16, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", gap: 10, boxShadow: "0 10px 20px rgba(15, 23, 42, 0.2)", marginBottom: 12 }}>
                   Start Your Journey <ArrowRight size={18} strokeWidth={2.5} />
                 </motion.div>

@@ -205,7 +205,7 @@ export default function ContactPage() {
               background: "rgba(255,255,255,0.92)",
               backdropFilter: "blur(24px)",
               borderRadius: 28,
-              padding: "28px 56px",
+              padding: isMobile ? "20px 16px" : isTablet ? "24px 32px" : "28px 56px",
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: 20,
@@ -219,7 +219,7 @@ export default function ContactPage() {
               { icon: Users, text: "Teacher Guided" },
               { icon: School, text: "Incubated at IIT Indore" },
             ].map((item, i) => (
-              <motion.div key={i} whileHover={{ y: -3 }} style={{ display: "flex", alignItems: "center", gap: 18, borderRight: i < 3 ? "1px solid rgba(0,26,77,0.06)" : "none" }}>
+              <motion.div key={i} whileHover={{ y: -3 }} style={{ display: "flex", alignItems: "center", gap: 18, borderRight: (!isMobile && i < 3) ? "1px solid rgba(0,26,77,0.06)" : "none" }}>
                 <div style={{ width: 42, height: 42, borderRadius: 12, background: "rgba(0,82,204,0.05)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc" }}>
                   <item.icon size={22} strokeWidth={2} />
                 </div>
@@ -231,15 +231,15 @@ export default function ContactPage() {
       </section>
 
       {/* ─── SECTION 2: CONVERSATION & FORM (POWER 3D) ─── */}
-      <section style={{ background: "#ffffff", padding: "140px 0 160px", position: "relative" }}>
+      <section style={{ background: "#ffffff", padding: isMobile ? "60px 0 80px" : isTablet ? "80px 0 100px" : "140px 0 160px", position: "relative" }}>
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
         
         <div style={{ maxWidth: 1440, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 40px" : "0 100px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr", gap: isMobile ? 40 : 100, alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr", gap: isMobile ? 24 : isTablet ? 48 : 100, alignItems: "start" }}>
             
             {/* LEFT SIDE: FORM */}
             <motion.div {...fadeUp(0.1)}>
-              <h2 style={{ fontSize: 46, fontWeight: 900, color: "#001a4d", marginBottom: 28, letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: isMobile ? "clamp(26px,6vw,36px)" : "clamp(32px,4vw,46px)", fontWeight: 900, color: "#001a4d", marginBottom: 28, letterSpacing: "-0.02em" }}>
                 Let's start a conversation.
               </h2>
               <div style={{ width: 48, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 32 }} />
@@ -268,7 +268,7 @@ export default function ContactPage() {
                      <MessageSquare size={20} color="#0052cc" style={{ marginTop: 4 }} strokeWidth={2.2} />
                      <div style={{ flex: 1 }}>
                         <p style={{ fontSize: 11, fontWeight: 900, color: "#001a4d", marginBottom: 6, opacity: 0.8 }}>Message (Optional)</p>
-                        <textarea placeholder="Tell us about your requirements or any specific questions." style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500, resize: "none", height: 100 }} />
+                        <textarea placeholder="Tell us about your requirements or any specific questions." style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500, resize: "none", height: isMobile ? 80 : 100 }} />
                      </div>
                   </div>
                 </motion.div>
@@ -294,11 +294,11 @@ export default function ContactPage() {
               transition={{ duration: 0.4 }}
               style={{ perspective: 1500 }}
             >
-               <div style={{ 
-                 background: "rgba(248,250,252,0.7)", 
+               <div style={{
+                 background: "rgba(248,250,252,0.7)",
                  backdropFilter: "blur(30px)",
-                 borderRadius: 40, 
-                 padding: "56px 48px",
+                 borderRadius: 40,
+                 padding: isMobile ? "32px 20px" : isTablet ? "40px 32px" : "56px 48px",
                  border: "1.5px solid #fff",
                  boxShadow: "0 30px 70px rgba(0,26,77,0.05)",
                  position: "relative", overflow: "hidden"
@@ -348,7 +348,7 @@ export default function ContactPage() {
               <motion.div 
                 key={i} 
                 whileHover={{ scale: 1.02 }}
-                style={{ display: "flex", alignItems: "center", gap: 24, borderRight: i < 2 ? "1px solid rgba(0,0,0,0.06)" : "none" }}
+                style={{ display: "flex", alignItems: "center", gap: 24, borderRight: (!isMobile && i < 2) ? "1px solid rgba(0,0,0,0.06)" : "none" }}
               >
                  <div style={{ 
                    width: 56, height: 56, borderRadius: 16, 
