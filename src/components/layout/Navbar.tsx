@@ -51,7 +51,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: isMobile ? 64 : 88,
+          height: isMobile ? 72 : 100,
           display: "flex", alignItems: "center",
           background: scrolled
             ? "rgba(255,255,255,0.92)"
@@ -73,7 +73,7 @@ export default function Navbar() {
             <img loading="lazy" decoding="async"
               src="/logo.webp"
               alt="SparkVR"
-              style={{ height: isMobile ? 52 : 72, width: "auto", objectFit: "contain" }}
+              style={{ height: isMobile ? 62 : 90, width: "auto", objectFit: "contain" }}
             />
           </Link>
 
@@ -101,31 +101,32 @@ export default function Navbar() {
               </Link>
             )}
 
-            {/* Hamburger button */}
+            {/* Hamburger button — chhota size */}
             <button
               onClick={() => setMenuOpen(o => !o)}
               aria-label="Toggle menu"
               style={{
-                width: 48, height: 48, borderRadius: "50%",
-                background: menuOpen ? "#0052cc" : "rgba(255,255,255,0.8)",
-                border: "1px solid rgba(0,0,0,0.05)",
+                width: 38, height: 38, borderRadius: "50%",
+                background: menuOpen ? "#0052cc" : "rgba(255,255,255,0.85)",
+                border: "1px solid rgba(0,0,0,0.06)",
                 display: "flex", flexDirection: "column",
-                alignItems: "center", justifyContent: "center", gap: menuOpen ? 0 : 6,
+                alignItems: "center", justifyContent: "center", gap: menuOpen ? 0 : 5,
                 cursor: "pointer",
-                boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
                 position: "relative",
                 zIndex: 1002,
                 transition: "all 0.3s ease",
+                flexShrink: 0,
               }}
             >
               <motion.div
                 animate={menuOpen ? { rotate: 45, y: 1 } : { rotate: 0, y: 0 }}
-                style={{ width: 18, height: 2, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
+                style={{ width: 14, height: 1.8, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
               />
-              {!menuOpen && <div style={{ width: 18, height: 2, background: "#001a4d", borderRadius: 2 }} />}
+              {!menuOpen && <div style={{ width: 14, height: 1.8, background: "#001a4d", borderRadius: 2 }} />}
               <motion.div
                 animate={menuOpen ? { rotate: -45, y: -1 } : { rotate: 0, y: 0 }}
-                style={{ width: 18, height: 2, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
+                style={{ width: 14, height: 1.8, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
               />
             </button>
           </div>
@@ -174,8 +175,8 @@ export default function Navbar() {
                 style={{ position: "absolute", top: "15%", left: "10%", width: 100, height: 100, borderRadius: "50%", background: "rgba(31,179,255,0.1)", filter: "blur(40px)", pointerEvents: "none" }}
               />
 
-              {/* Nav links */}
-              <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+              {/* Nav links — scrollable so all items visible */}
+              <nav style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 4, paddingRight: 4 }}>
                 {NAV_LINKS.map((link, i) => (
                   <motion.div
                     key={link.label}
@@ -189,12 +190,12 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
                         style={{
-                          display: "flex", alignItems: "center", gap: 16,
-                          padding: "18px 20px",
-                          borderRadius: 16,
+                          display: "flex", alignItems: "center", gap: 14,
+                          padding: "13px 16px",
+                          borderRadius: 12,
                           textDecoration: "none",
-                          fontSize: 15, fontWeight: 600, letterSpacing: "0.08em",
-                          color: "rgba(255,255,255,0.7)",
+                          fontSize: 14, fontWeight: 600, letterSpacing: "0.07em",
+                          color: "rgba(255,255,255,0.75)",
                           transition: "all 0.25s ease",
                         }}
                       >
