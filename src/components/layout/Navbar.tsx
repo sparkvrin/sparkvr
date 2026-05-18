@@ -50,17 +50,10 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
+          position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
           height: isMobile ? 72 : 100,
           display: "flex", alignItems: "center",
-          background: scrolled
-            ? "rgba(255,255,255,0.92)"
-            : "transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-          boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.08)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(0,82,204,0.08)" : "none",
-          transition: "background 0.35s ease, box-shadow 0.35s ease",
+          background: "transparent",
         }}
       >
         <div style={{
