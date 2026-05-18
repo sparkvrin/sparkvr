@@ -921,7 +921,7 @@ export default function SchoolHubPage() {
         <div style={{ maxWidth: 1240, margin: "0 auto", position: "relative", zIndex: 2 }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 180, maxWidth: 650 }}>
+          <div style={{ marginBottom: isMobile ? 40 : 180, maxWidth: 650 }}>
             <motion.div {...fadeUp(0.1)} style={{ display: "inline-flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
 
               <div style={{ width: 40, height: 2, background: "#0052cc", borderRadius: 2 }} />
@@ -938,7 +938,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 5 Vertical Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 20, marginBottom: 24 }}>
 
             {[
               { icon: ShieldCheck, title: "Standardized Quality", desc: "Every session follows proven standards for the best learning experience." },
@@ -971,36 +971,25 @@ export default function SchoolHubPage() {
           {/* Bottom Banner (Split) */}
           <motion.div
             {...fadeUp(0.9)}
-            style={{ background: "#f8f9fc", borderRadius: 16, border: "1px solid #f1f5f9", padding: "24px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40 }}
+            style={{ background: "#f8f9fc", borderRadius: 16, border: "1px solid #f1f5f9", padding: isMobile ? "20px 16px" : "24px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 16 : 40 }}
           >
-            {/* Left Side */}
-            <div style={{ display: "flex", alignItems: "center", gap: 20, flex: 1 }}>
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6, type: "spring" }}
-                style={{ width: 48, height: 48, borderRadius: 24, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
-              >
+            <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
+              <motion.div whileHover={{ rotate: 360, scale: 1.1 }} transition={{ duration: 0.6, type: "spring" }}
+                style={{ width: 48, height: 48, borderRadius: 24, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <BadgeCheck size={24} color="#0052cc" strokeWidth={1.5} />
               </motion.div>
               <div>
-                <p style={{ fontSize: 16, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>Consistency builds confidence.</p>
-                <p style={{ fontSize: 16, fontWeight: 800, color: "#0052cc", margin: 0 }}>Confidence drives better learning outcomes.</p>
+                <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>Consistency builds confidence.</p>
+                <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#0052cc", margin: 0 }}>Confidence drives better learning outcomes.</p>
               </div>
             </div>
-
-            {/* Divider */}
-            <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />
-
-            {/* Right Side */}
-            <div style={{ display: "flex", alignItems: "center", gap: 20, flex: 1 }}>
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6, type: "spring" }}
-                style={{ width: 48, height: 48, borderRadius: 24, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
-              >
+            {!isMobile && <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />}
+            <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
+              <motion.div whileHover={{ rotate: 360, scale: 1.1 }} transition={{ duration: 0.6, type: "spring" }}
+                style={{ width: 48, height: 48, borderRadius: 24, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <GraduationCap size={24} color="#0052cc" strokeWidth={1.5} />
               </motion.div>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "#475569", margin: 0 }}>
+              <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 700, color: "#475569", margin: 0 }}>
                 Same experience. Every student. Every session.
               </p>
             </div>
@@ -1030,7 +1019,7 @@ export default function SchoolHubPage() {
         <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
 
           {/* Header Layout */}
-          <div style={{ marginBottom: 120, paddingTop: 40 }}>
+          <div style={{ marginBottom: isMobile ? 40 : 120, paddingTop: 40 }}>
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
@@ -1056,7 +1045,7 @@ export default function SchoolHubPage() {
             <div style={{ position: "absolute", top: 80, left: 100, right: 100, height: 2, borderTop: "2px dashed #cbd5e1", zIndex: 0 }} />
 
             {/* 5 Process Cards */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 1 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 20, position: "relative", zIndex: 1 }}>
 
               {[
                 { num: "1", icon: MessageSquare, title: "Consult", desc: "We understand your goals and recommend the right solution." },
@@ -1102,43 +1091,28 @@ export default function SchoolHubPage() {
           {/* Bottom Banner */}
           <motion.div
             {...fadeUp(0.8)}
-            style={{ background: "#ffffff", borderRadius: 16, border: "1px solid #f1f5f9", padding: "24px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}
+            style={{ background: "#ffffff", borderRadius: 16, border: "1px solid #f1f5f9", padding: isMobile ? "20px 16px" : "24px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 40, boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}
           >
-            {/* Left Side: Rocket & Main Text */}
-            <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-              <motion.div
-                whileHover={{ y: -10, scale: 1.1, rotate: 15 }}
-                transition={{ type: "spring", stiffness: 400 }}
-                style={{ width: 64, height: 64, borderRadius: 32, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 10px 20px rgba(0,82,204,0.2)" }}
-              >
-                <Rocket size={32} color="#ffffff" strokeWidth={1.5} />
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <motion.div whileHover={{ y: -10, scale: 1.1, rotate: 15 }} transition={{ type: "spring", stiffness: 400 }}
+                style={{ width: 56, height: 56, borderRadius: 28, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 10px 20px rgba(0,82,204,0.2)" }}>
+                <Rocket size={28} color="#ffffff" strokeWidth={1.5} />
               </motion.div>
               <div>
-                <p style={{ fontSize: 20, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>
-                  From day one to every day after — we've got you.
-                </p>
-                <p style={{ fontSize: 16, fontWeight: 700, color: "#0052cc", margin: 0 }}>
-                  You focus on teaching. We take care of everything else.
-                </p>
+                <p style={{ fontSize: isMobile ? 15 : 20, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>From day one to every day after — we've got you.</p>
+                <p style={{ fontSize: isMobile ? 13 : 16, fontWeight: 700, color: "#0052cc", margin: 0 }}>You focus on teaching. We take care of everything else.</p>
               </div>
             </div>
-
-            {/* Right Side: Features */}
-            <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-              <motion.div whileHover={{ scale: 1.05 }} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <ShieldCheck size={28} color="#0052cc" strokeWidth={1.5} />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.2 }}>Hassle-free<br />experience</p>
-              </motion.div>
-              <div style={{ width: 1, height: 32, background: "#cbd5e1" }} />
-              <motion.div whileHover={{ scale: 1.05 }} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <Users size={28} color="#0052cc" strokeWidth={1.5} />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.2 }}>Dedicated<br />support</p>
-              </motion.div>
-              <div style={{ width: 1, height: 32, background: "#cbd5e1" }} />
-              <motion.div whileHover={{ scale: 1.05 }} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <TrendingUp size={28} color="#0052cc" strokeWidth={1.5} />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.2 }}>Long-term<br />partnership</p>
-              </motion.div>
+            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 16 : 32, flexWrap: "wrap" }}>
+              {[{ Icon: ShieldCheck, label: "Hassle-free\nexperience" }, { Icon: Users, label: "Dedicated\nsupport" }, { Icon: TrendingUp, label: "Long-term\npartnership" }].map(({ Icon, label }, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && !isMobile && <div style={{ width: 1, height: 32, background: "#cbd5e1" }} />}
+                  <motion.div whileHover={{ scale: 1.05 }} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <Icon size={24} color="#0052cc" strokeWidth={1.5} />
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.2, whiteSpace: "pre-line" }}>{label}</p>
+                  </motion.div>
+                </React.Fragment>
+              ))}
             </div>
           </motion.div>
 
@@ -1166,7 +1140,7 @@ export default function SchoolHubPage() {
         <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
 
           {/* Header Layout */}
-          <div style={{ marginBottom: 120, paddingTop: 40 }}>
+          <div style={{ marginBottom: isMobile ? 40 : 120, paddingTop: 40 }}>
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
@@ -1188,7 +1162,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 5 Process Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 1, marginBottom: 60 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 20, position: "relative", zIndex: 1, marginBottom: 60 }}>
 
             {[
               { icon: ShieldCheck, title: "Safe & Secure", desc: "Student safety and data privacy are always our priority." },
@@ -1222,39 +1196,27 @@ export default function SchoolHubPage() {
           {/* Bottom Banner */}
           <motion.div
             {...fadeUp(0.8)}
-            style={{ background: "#eff6ff", borderRadius: 16, border: "1px solid #e0e7ff", padding: "24px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}
+            style={{ background: "#eff6ff", borderRadius: 16, border: "1px solid #e0e7ff", padding: isMobile ? "20px 16px" : "24px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 40, boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}
           >
-            {/* Left Side: Cap & Main Text */}
-            <div style={{ display: "flex", alignItems: "center", gap: 24, flex: 1 }}>
-              <motion.div
-                whileHover={{ rotate: 15, scale: 1.1 }}
-                transition={{ type: "spring" }}
-                style={{ width: 64, height: 64, borderRadius: 32, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 10px 20px rgba(0,82,204,0.2)" }}
-              >
-                <GraduationCap size={32} color="#ffffff" strokeWidth={1.5} />
+            <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
+              <motion.div whileHover={{ rotate: 15, scale: 1.1 }} transition={{ type: "spring" }}
+                style={{ width: 56, height: 56, borderRadius: 28, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 10px 20px rgba(0,82,204,0.2)" }}>
+                <GraduationCap size={28} color="#ffffff" strokeWidth={1.5} />
               </motion.div>
-              <p style={{ fontSize: 18, fontWeight: 700, color: "#001a4d", margin: 0, lineHeight: 1.4 }}>
-                Empowering schools to deliver unforgettable learning experiences<br />
-                that <span style={{ color: "#0052cc" }}>prepare students for the future.</span>
+              <p style={{ fontSize: isMobile ? 14 : 18, fontWeight: 700, color: "#001a4d", margin: 0, lineHeight: 1.4 }}>
+                Empowering schools to deliver unforgettable learning experiences that <span style={{ color: "#0052cc" }}>prepare students for the future.</span>
               </p>
             </div>
-
-            {/* Right Side: Features */}
-            <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
-              <motion.div whileHover={{ y: -5, scale: 1.1 }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                <Lightbulb size={28} color="#0052cc" strokeWidth={1.5} />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#475569", margin: 0 }}>Engage</p>
-              </motion.div>
-              <div style={{ width: 1, height: 48, background: "#cbd5e1" }} />
-              <motion.div whileHover={{ y: -5, scale: 1.1 }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                <Heart size={28} color="#0052cc" strokeWidth={1.5} />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#475569", margin: 0 }}>Inspire</p>
-              </motion.div>
-              <div style={{ width: 1, height: 48, background: "#cbd5e1" }} />
-              <motion.div whileHover={{ y: -5, scale: 1.1 }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                <Rocket size={28} color="#0052cc" strokeWidth={1.5} />
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#475569", margin: 0 }}>Empower</p>
-              </motion.div>
+            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 24 : 40 }}>
+              {[{ Icon: Lightbulb, label: "Engage" }, { Icon: Heart, label: "Inspire" }, { Icon: Rocket, label: "Empower" }].map(({ Icon, label }, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />}
+                  <motion.div whileHover={{ y: -5, scale: 1.1 }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+                    <Icon size={24} color="#0052cc" strokeWidth={1.5} />
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#475569", margin: 0 }}>{label}</p>
+                  </motion.div>
+                </React.Fragment>
+              ))}
             </div>
           </motion.div>
 
@@ -1283,9 +1245,9 @@ export default function SchoolHubPage() {
 
         <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
 
-          <div style={{ display: "flex", alignItems: "center", minHeight: 600 }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", minHeight: isMobile ? "auto" : 600 }}>
             {/* Left Content */}
-            <div style={{ flex: 1, maxWidth: 500 }}>
+            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : 500 }}>
               {/* READY TO GET STARTED */}
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
                 <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -1321,8 +1283,8 @@ export default function SchoolHubPage() {
               </motion.div>
             </div>
 
-            {/* Spacer for Right side */}
-            <div style={{ flex: 1.2, position: "relative" }}>
+            {/* Spacer for Right side — hidden on mobile */}
+            {!isMobile && <div style={{ flex: 1.2, position: "relative" }}>
                 {/* Floating Bubbles on the right image */}
               <div style={{ position: "absolute", top: -200, left: -50, width: "110%", height: 500, zIndex: 2, pointerEvents: "none" }}>
                 {/* SVG Dotted Arc connecting the bubbles */}
@@ -1362,13 +1324,13 @@ export default function SchoolHubPage() {
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", textAlign: "center", background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>Limitless<br />Possibilities</span>
                 </motion.div>
               </div>
-            </div>
+            </div>}
           </div>
 
           {/* Bottom Banner */}
           <motion.div
             {...fadeUp(0.6)}
-            style={{ background: "#f8f9fc", borderRadius: 12, padding: "20px 24px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginTop: 100, position: "relative", zIndex: 10 }}
+            style={{ background: "#f8f9fc", borderRadius: 12, padding: isMobile ? "16px" : "20px 24px", display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 16, marginTop: isMobile ? 40 : 100, position: "relative", zIndex: 10 }}
           >
             {/* 4 Items */}
             {[
