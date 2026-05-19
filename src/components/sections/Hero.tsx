@@ -932,10 +932,10 @@ export default function Hero() {
         {/* ── STATS BAR ── */}
         <div style={{
           position: "absolute",
-          bottom: 24,
-          right: 40,
-          width: "65%",
-          maxWidth: 840,
+          bottom: 10,
+          right: 24,
+          width: "70%",
+          maxWidth: 920,
           zIndex: 40,
         }}>
           <motion.div
@@ -946,7 +946,7 @@ export default function Hero() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              padding: "14px 28px",
+              padding: "16px 32px",
               background: "linear-gradient(135deg, rgba(255,255,255,0.65), rgba(220,230,255,0.35))",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
@@ -961,10 +961,10 @@ export default function Hero() {
                   whileHover={{ y: -4, scale: 1.04 }}
                   style={{ display: "flex", flexDirection: "column", gap: 3, cursor: "pointer", padding: "4px 8px" }}
                 >
-                  <h3 style={{ fontSize: 21, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
-                  <p style={{ fontSize: 11.5, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 130, whiteSpace: "pre-line" }}>{s.label}</p>
+                  <h3 style={{ fontSize: 23, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
+                  <p style={{ fontSize: 12.5, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 140, whiteSpace: "pre-line" }}>{s.label}</p>
                 </motion.div>
-                {i < 5 && <div style={{ width: 1, height: 30, background: "rgba(0,0,0,0.12)" }} />}
+                {i < 5 && <div style={{ width: 1, height: 34, background: "rgba(0,0,0,0.12)" }} />}
               </React.Fragment>
             ))}
           </motion.div>
