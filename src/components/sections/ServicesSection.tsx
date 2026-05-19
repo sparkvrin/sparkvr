@@ -294,6 +294,23 @@ export default function ServicesSection() {
         background: "linear-gradient(135deg,#f0f4ff 0%,#d9e2ff 100%)",
       }}>
 
+        {/* Bleeding background image that spans to the right screen edge */}
+        {!isMobile && (
+          <div style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: isTablet
+              ? "max(44vw, calc(50vw - 62px))"
+              : "max(38vw, calc(50vw - 168px))",
+            backgroundImage: "url('/background.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "left center",
+            zIndex: 1,
+          }} />
+        )}
+
         <div style={{
           position: "relative",
           maxWidth: 1400,
@@ -381,7 +398,7 @@ export default function ServicesSection() {
         ) : (
           <div style={{
             flex: 1, position: "relative", overflow: "hidden", minHeight: "100vh",
-            backgroundImage: "url('/background.webp')", backgroundSize: "cover", backgroundPosition: "center",
+            zIndex: 2,
           }}>
             <img loading="lazy" decoding="async" src="/student.webp" alt="Student"
               style={{ position:"absolute", bottom:0, left:"67.5%", transform:"translateX(-50%)",
