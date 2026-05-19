@@ -932,8 +932,8 @@ export default function Hero() {
         {/* ── STATS BAR ── */}
         <div style={{
           position: "absolute",
-          bottom: 10,
-          right: 24,
+          bottom: 0,
+          right: 0,
           width: "70%",
           maxWidth: 920,
           zIndex: 40,
