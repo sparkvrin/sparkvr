@@ -294,18 +294,29 @@ export default function ServicesSection() {
         background: "linear-gradient(135deg,#f0f4ff 0%,#d9e2ff 100%)",
       }}>
 
-        {/* LEFT */}
         <div style={{
-          width: isMobile ? "100%" : isTablet ? "44%" : "38%",
-          flexShrink: 0,
-          padding: isMobile
-            ? "72px 24px 32px"
-            : isTablet
-            ? "clamp(48px,6vh,72px) clamp(24px,4vw,48px)"
-            : "clamp(48px,7vh,88px) clamp(32px,5.5vw,72px)",
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          position: "relative", zIndex: 4,
+          position: "relative",
+          maxWidth: 1400,
+          margin: "0 auto",
+          width: "100%",
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: isMobile ? "flex-start" : "stretch",
+          minHeight: isMobile ? "auto" : "100vh",
         }}>
+
+          {/* LEFT */}
+          <div style={{
+            width: isMobile ? "100%" : isTablet ? "44%" : "38%",
+            flexShrink: 0,
+            padding: isMobile
+              ? "72px 24px 32px"
+              : isTablet
+              ? "48px 24px"
+              : "60px 40px",
+            display: "flex", flexDirection: "column", justifyContent: "center",
+            position: "relative", zIndex: 4,
+          }}>
           <motion.div initial={{ opacity:0, x:-14 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }}
             style={{ display:"flex", alignItems:"center", gap:12, marginBottom:24 }}>
             <span style={{ fontSize:10, fontWeight:800, letterSpacing:"0.22em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'VAG Rounded',sans-serif" }}></span>
@@ -391,6 +402,7 @@ export default function ServicesSection() {
             <SubjectBubble label="BIOLOGICAL SYSTEMS" pos={{ top:"56%",right:"4%" }}  delay={0.6} dir={1}  w={isTablet ? 150 : 190}><PlantCellSVG /></SubjectBubble>
           </div>
         )}
+      </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════
@@ -419,19 +431,31 @@ export default function ServicesSection() {
 
         {/* ── LEFT TEXT COLUMN ── */}
         <div style={{
-          width: isMobile ? "100%" : isTablet ? "42%" : "36%",
-          flexShrink: 0,
-          padding: isMobile
-            ? "56px 24px 32px"
-            : isTablet
-            ? "clamp(36px,5vh,56px) clamp(20px,3vw,36px)"
-            : "clamp(40px,6vh,72px) clamp(8px,1vw,12px) clamp(24px,3vh,48px) clamp(20px,3.5vw,52px)",
-          display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2,
+          position: "relative",
+          maxWidth: 1400,
+          margin: "0 auto",
+          width: "100%",
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: isMobile ? "flex-start" : "center",
+          minHeight: isMobile ? "auto" : "100vh",
         }}>
+
+          {/* ── LEFT TEXT COLUMN ── */}
+          <div style={{
+            width: isMobile ? "100%" : isTablet ? "42%" : "36%",
+            flexShrink: 0,
+            padding: isMobile
+              ? "56px 24px 32px"
+              : isTablet
+              ? "40px 24px"
+              : "60px 40px",
+            display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2,
+          }}>
           <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
             style={{ fontSize: isMobile ? "clamp(24px,6.5vw,36px)" : "clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 12px", fontFamily:"'VAG Rounded',sans-serif", transformPerspective: 700 }}>
             We make concepts<br/>
-            <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>observable</span>{" "}—<br/>
+            <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>observable</span>{" —"}<br/>
             without disrupting schools.
           </motion.h2>
 
@@ -647,6 +671,7 @@ export default function ServicesSection() {
 
           </motion.div>
         </div>}
+      </div>
       </section>
     </div>
   );

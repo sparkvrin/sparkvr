@@ -932,10 +932,10 @@ export default function Hero() {
         {/* ── STATS BAR ── */}
         <div style={{
           position: "absolute",
-          bottom: 15,
+          bottom: 24,
           right: 40,
-          width: "55%",
-          maxWidth: 680,
+          width: "65%",
+          maxWidth: 840,
           zIndex: 40,
         }}>
           <motion.div
@@ -946,25 +946,25 @@ export default function Hero() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              padding: "8px 16px",
-              background: "linear-gradient(135deg, rgba(255,255,255,0.5), rgba(220,230,255,0.2))",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.6)",
-              borderRadius: 20,
-              boxShadow: "0 14px 40px rgba(60,40,150,0.06)",
+              padding: "14px 28px",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.65), rgba(220,230,255,0.35))",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1.5px solid rgba(255,255,255,0.75)",
+              borderRadius: 24,
+              boxShadow: "0 20px 50px rgba(60,40,150,0.08)",
             }}
           >
             {STATS.map((s, i) => (
               <React.Fragment key={i}>
                 <motion.div
                   whileHover={{ y: -4, scale: 1.04 }}
-                  style={{ display: "flex", flexDirection: "column", gap: 1, cursor: "pointer", padding: "6px 8px" }}
+                  style={{ display: "flex", flexDirection: "column", gap: 3, cursor: "pointer", padding: "4px 8px" }}
                 >
-                  <h3 style={{ fontSize: 16, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
-                  <p style={{ fontSize: 10, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 110, whiteSpace: "pre-line" }}>{s.label}</p>
+                  <h3 style={{ fontSize: 21, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
+                  <p style={{ fontSize: 11.5, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 130, whiteSpace: "pre-line" }}>{s.label}</p>
                 </motion.div>
-                {i < 5 && <div style={{ width: 1, height: 22, background: "rgba(0,0,0,0.1)" }} />}
+                {i < 5 && <div style={{ width: 1, height: 30, background: "rgba(0,0,0,0.12)" }} />}
               </React.Fragment>
             ))}
           </motion.div>

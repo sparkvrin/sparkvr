@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
+const jetbrainsMono = {
+  variable: "font-jetbrains",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sparkvr.com"),

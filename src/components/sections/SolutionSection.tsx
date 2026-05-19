@@ -311,7 +311,7 @@ export default function SolutionSection() {
         ))}
       </div>
 
-      <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 40, alignItems: isMobile || isTablet ? "flex-start" : "center" }}>
+      <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 40, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 24 : 40, paddingRight: isMobile ? 24 : 40 }}>
 
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - CONTENT
@@ -385,7 +385,7 @@ export default function SolutionSection() {
                 <GraduationCap size={24} />
               </motion.div>
               <p style={{ margin: 0, fontSize: 16.5, color: "#1e3a8a", fontWeight: 500, lineHeight: 1.4 }}>
-                This is academic infrastructure — <br/>
+                This is academic infrastructure{" — "}<br/>
                 <strong style={{ fontWeight: 800 }}>not entertainment.</strong>
               </p>
             </motion.div>

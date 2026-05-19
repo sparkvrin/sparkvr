@@ -222,7 +222,7 @@ export default function BannerSection() {
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
         alignItems: isMobile ? "center" : "center",
-        padding: isMobile ? "32px 20px" : `0 60px 0 0`,
+        padding: isMobile ? "32px 24px" : "0 40px",
         gap: isMobile ? 20 : 0,
         textAlign: isMobile ? "center" : "left",
       }}>
@@ -289,7 +289,7 @@ export default function BannerSection() {
             transition={{ delay: 0.5, duration: 0.6 }}
             style={{ fontSize: isMobile ? 14 : 16, color: "#475569", margin: 0, fontWeight: 500 }}
           >
-            The only question is — who adopts first?
+            The only question is{" — "}who adopts first?
           </motion.p>
         </div>
 

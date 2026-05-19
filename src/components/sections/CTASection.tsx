@@ -178,7 +178,7 @@ export default function CTASection() {
     >
 
 
-      <div className="cta-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 30, alignItems: isMobile || isTablet ? "flex-start" : "center" }}>
+      <div className="cta-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 30, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 24 : 40, paddingRight: isMobile ? 24 : 40 }}>
 
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - TEXT & CTA
@@ -211,7 +211,7 @@ export default function CTASection() {
             style={{ marginBottom: 40 }}
           >
             <p style={{ fontSize: 26, color: "#1e293b", fontWeight: 500, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
-              The only question is — <br/>
+              The only question is{" — "}<br/>
               <span style={{ color: "#2563eb", fontWeight: 700 }}>who adopts first?</span>
             </p>
           </motion.div>
