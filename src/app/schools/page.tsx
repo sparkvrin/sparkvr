@@ -246,17 +246,21 @@ export default function SchoolHubPage() {
                     desc: "We worry about breakdowns,\nrepairs and hidden costs."
                   }
                 ].map((item, idx) => (
-                  <motion.div key={idx} whileHover={{ scale: 1.02, x: 8, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }} transition={{ type: "spring", stiffness: 300 }} style={{ display: "flex", alignItems: "center", gap: 20, padding: 10, borderRadius: 16, flexWrap: isMobile ? "wrap" : "nowrap" }}>
-                    <div style={{ width: isMobile ? "100%" : 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
+                  <motion.div key={idx} whileHover={{ scale: 1.02, x: isMobile ? 0 : 8, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "flex-start", gap: 14, padding: 10, borderRadius: 16 }}>
+                    {/* Image */}
+                    <div style={{ width: isMobile ? "100%" : 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0 }}>
                       <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
-                    <div style={{ display: "flex", gap: 16 }}>
-                      <div style={{ width: 48, height: 48, borderRadius: 24, background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    {/* Icon + Text */}
+                    <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                      <div style={{ width: 44, height: 44, borderRadius: 22, background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         {item.icon}
                       </div>
                       <div>
-                        <h4 style={{ fontSize: 16, fontWeight: 800, color: "#001a4d", lineHeight: 1.3, marginBottom: 6, whiteSpace: "pre-line" }}>{item.title}</h4>
-                        <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.5, whiteSpace: "pre-line" }}>{item.desc}</p>
+                        <h4 style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", lineHeight: 1.35, marginBottom: 6, whiteSpace: "pre-line" }}>{item.title}</h4>
+                        <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.55, whiteSpace: "pre-line", margin: 0 }}>{item.desc}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -309,17 +313,20 @@ export default function SchoolHubPage() {
                     desc: "Durable devices, safe storage,\nregular checkups and local\nservice you can rely on."
                   }
                 ].map((item, idx) => (
-                  <motion.div key={idx} whileHover={{ x: -5 }} style={{ display: "flex", alignItems: "center", gap: 20, flexDirection: "row-reverse" }}>
-                    <div style={{ width: 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0, position: "relative" }}>
+                  <motion.div key={idx} whileHover={{ x: isMobile ? 0 : -5 }}
+                    style={{ display: "flex", alignItems: "flex-start", gap: 16, flexDirection: isMobile ? "column" : "row-reverse" }}>
+                    {/* Image */}
+                    <div style={{ width: isMobile ? "100%" : 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0 }}>
                       <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
-                    <div style={{ display: "flex", gap: 16, flexDirection: "row-reverse", textAlign: "right" }}>
-                      <div style={{ width: 48, height: 48, borderRadius: 24, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    {/* Icon + Text */}
+                    <div style={{ display: "flex", gap: 14, flexDirection: "row", textAlign: "left", flex: 1 }}>
+                      <div style={{ width: 44, height: 44, borderRadius: 22, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         {item.icon}
                       </div>
                       <div>
-                        <h4 style={{ fontSize: 16, fontWeight: 800, color: "#001a4d", lineHeight: 1.3, marginBottom: 6, whiteSpace: "pre-line" }}>{item.title}</h4>
-                        <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.5, whiteSpace: "pre-line" }}>{item.desc}</p>
+                        <h4 style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", lineHeight: 1.35, marginBottom: 6, whiteSpace: "pre-line" }}>{item.title}</h4>
+                        <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.55, whiteSpace: "pre-line", margin: 0 }}>{item.desc}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -330,9 +337,9 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Summary Banner */}
-          <motion.div {...fadeUp(0.8)} style={{ marginTop: 60, background: "#f0f5ff", borderRadius: 16, padding: "24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-            <ShieldCheck size={28} color="#0052cc" />
-            <p style={{ fontSize: 18, fontWeight: 600, color: "#001a4d", margin: 0 }}>
+          <motion.div {...fadeUp(0.8)} style={{ marginTop: isMobile ? 32 : 60, background: "#f0f5ff", borderRadius: 16, padding: isMobile ? "20px 16px" : "24px", display: "flex", alignItems: isMobile ? "flex-start" : "center", justifyContent: "center", gap: 14, flexDirection: isMobile ? "column" : "row" }}>
+            <ShieldCheck size={28} color="#0052cc" style={{ flexShrink: 0 }} />
+            <p style={{ fontSize: isMobile ? 15 : 18, fontWeight: 600, color: "#001a4d", margin: 0, lineHeight: 1.5 }}>
               SparkVR is designed around what schools truly need — <span style={{ color: "#0052cc" }}>practical, reliable and easy to implement.</span>
             </p>
           </motion.div>
@@ -502,7 +509,7 @@ export default function SchoolHubPage() {
             </div>
 
             {/* Right Large Image (Simulated by crop of background image) */}
-            <motion.div {...scaleUp(0.5)} style={{ flex: 1.2, height: 440, borderRadius: 24, overflow: "hidden", position: "relative", boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
+            <motion.div {...scaleUp(0.5)} style={{ flex: 1.2, height: isMobile ? 220 : 440, borderRadius: 24, overflow: "hidden", position: "relative", boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
               <img loading="lazy" decoding="async" src="/backgroundimageschoolhub.webp" alt="SparkVR Cart" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center" }} />
             </motion.div>
           </div>
@@ -648,7 +655,7 @@ export default function SchoolHubPage() {
               {...scaleUp(0.5)}
               whileHover={{ rotateY: -3, rotateX: 2, scale: 1.02, zIndex: 10 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              style={{ flex: 1.2, height: 600, borderRadius: 24, position: "relative", perspective: 1000 }}
+              style={{ flex: 1.2, height: isMobile ? 260 : 600, borderRadius: 24, position: "relative", perspective: 1000 }}
             >
               <div style={{ width: "100%", height: "100%", borderRadius: 24, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,82,204,0.15)" }}>
                 <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Teacher Dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
@@ -661,7 +668,7 @@ export default function SchoolHubPage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, duration: 0.6 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                style={{ position: "absolute", bottom: -20, right: 40, background: "#fff", borderRadius: 16, padding: "24px 32px", boxShadow: "0 20px 40px rgba(0,0,0,0.15)", maxWidth: 380, border: "1px solid #f1f5f9" }}
+                style={{ position: "absolute", bottom: -20, right: 40, background: "#fff", borderRadius: 16, padding: "24px 32px", boxShadow: "0 20px 40px rgba(0,0,0,0.15)", maxWidth: 380, border: "1px solid #f1f5f9", display: isMobile ? "none" : "block" }}
               >
                 <p style={{ fontSize: 16, fontWeight: 800, color: "#001a4d", margin: "0 0 12px 0", lineHeight: 1.4 }}>
                   <span style={{ color: "#0052cc", fontSize: 24, lineHeight: 0.5, verticalAlign: "bottom" }}>"</span>
@@ -911,7 +918,7 @@ export default function SchoolHubPage() {
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "700px", zIndex: 0 }}
+          style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "700px", zIndex: 0, display: isMobile ? "none" : "block" }}
         >
           <img loading="lazy" decoding="async" src="/section7.webp" alt="Consistent Experience" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right" }} />
           <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "30%", background: "linear-gradient(to right, #ffffff 0%, transparent 100%)" }} />
@@ -1008,7 +1015,7 @@ export default function SchoolHubPage() {
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0 }}
+          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0, display: isMobile ? "none" : "block" }}
         >
           <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Setup Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "left" }} />
           {/* Gradients to fade it seamlessly into the page background */}
@@ -1129,7 +1136,7 @@ export default function SchoolHubPage() {
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0 }}
+          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0, display: isMobile ? "none" : "block" }}
         >
           <img loading="lazy" decoding="async" src="/section7.webp" alt="Students in VR" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
           {/* Gradients to fade it seamlessly into the page background */}
@@ -1233,7 +1240,7 @@ export default function SchoolHubPage() {
           initial={{ scale: 1.05, opacity: 0, x: 100 }}
           whileInView={{ scale: 1, opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "65%", height: "100%", zIndex: 0 }}
+          style={{ position: "absolute", top: 0, right: 0, width: "65%", height: "100%", zIndex: 0, display: isMobile ? "none" : "block" }}
         >
           {/* Big curved shape for the image */}
           <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden", borderTopLeftRadius: "40% 100%" }}>

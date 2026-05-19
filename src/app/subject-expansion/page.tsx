@@ -210,7 +210,7 @@ export default function SubjectExpansionPage() {
   const isTablet = screenWidth >= 768 && screenWidth < 1024;
 
   return (
-    <main style={{ fontFamily: "sans-serif", background: "#f8f9fc" }}>
+    <main style={{ fontFamily: "'VAG Rounded', sans-serif", background: "#f8f9fc" }}>
 
       {/* ══════════════════════════════════════
           SECTION 1: HERO (Subject Expansion)
@@ -703,7 +703,7 @@ export default function SubjectExpansionPage() {
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
 
             {/* ── Left Content ── */}
-            <div style={{ flex: isMobile ? "1 1 100%" : "0 0 38%", maxWidth: isMobile ? "100%" : "460px" }}>
+            <div style={{ flex: (isMobile || isTablet) ? "1 1 100%" : "0 0 38%", maxWidth: (isMobile || isTablet) ? "100%" : "460px" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 14 }}>
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#7c3aed", letterSpacing: "0.14em", textTransform: "uppercase" }}>
                   CROSS-DISCIPLINARY LEARNING
@@ -737,7 +737,7 @@ export default function SubjectExpansionPage() {
             </div>
 
             {/* ── Right Graphic – Fixed 800×700 canvas ── */}
-            <div style={{ flex: 1, display: isMobile ? "none" : "flex", justifyContent: "center", alignItems: "center", minHeight: isMobile ? "auto" : isTablet ? 500 : 700 }}>
+            <div style={{ flex: 1, display: (isMobile || isTablet) ? "none" : "flex", justifyContent: "center", alignItems: "center", minHeight: 700 }}>
               {/*
                 All coordinates are in pixels relative to this 800×700 box.
                 Student centre: (400, 345)
@@ -940,7 +940,7 @@ export default function SubjectExpansionPage() {
           <motion.div
             {...fadeUp(0.8)}
             style={{
-              background: "#fff", borderRadius: 24, border: "1px solid #e2e8f0", padding: "36px 48px",
+              background: "#fff", borderRadius: 24, border: "1px solid #e2e8f0", padding: isMobile ? "20px" : "36px 48px",
               display: "flex", gap: 40, alignItems: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
               flexWrap: "wrap"
             }}
@@ -968,7 +968,7 @@ export default function SubjectExpansionPage() {
                       <p style={{ fontSize: 11, color: COLORS.textGray, lineHeight: 1.4, margin: 0, whiteSpace: "pre-line" }}>{step.desc}</p>
                     </div>
                   </motion.div>
-                  {idx < 3 && <ArrowRight size={18} color="#cbd5e1" />}
+                  {!isMobile && idx < 3 && <ArrowRight size={18} color="#cbd5e1" />}
                 </React.Fragment>
               ))}
             </div>
@@ -983,16 +983,16 @@ export default function SubjectExpansionPage() {
       <section style={{
         position: "relative",
         width: "100%",
-        minHeight: "950px",
+        minHeight: (isMobile || isTablet) ? "auto" : "950px",
         backgroundImage: "url('/5thsection.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center right",
-        padding: "80px 0 160px 0",
+        padding: isMobile ? "60px 0 60px" : isTablet ? "60px 0 80px" : "80px 0 160px 0",
       }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "0 60px", position: "relative", height: "100%", minHeight: 750 }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px", position: "relative", height: "100%", minHeight: (isMobile || isTablet) ? "auto" : 750 }}>
 
           {/* Top Area: Left Text and Right Timeline */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "50px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "50px", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 32 : 0 }}>
 
             {/* Top Left Title */}
             <div style={{ maxWidth: 480 }}>
@@ -1028,8 +1028,8 @@ export default function SubjectExpansionPage() {
               </motion.p>
             </div>
 
-            {/* Top Right Timeline */}
-            <motion.div {...fadeUp(0.4)} style={{ flex: 1, marginLeft: "60px", maxWidth: 850, paddingTop: 20 }}>
+            {/* Top Right Timeline — hidden on mobile */}
+            {!isMobile && <motion.div {...fadeUp(0.4)} style={{ flex: 1, marginLeft: isTablet ? "24px" : "60px", maxWidth: 850, paddingTop: 20 }}>
               <h4 style={{ textAlign: "left", fontSize: 13, fontWeight: 800, color: COLORS.navy, marginBottom: 24, textTransform: "uppercase", letterSpacing: "0.06em", paddingLeft: 10 }}>
                 A Curriculum That Grows With Tomorrow
               </h4>
@@ -1064,11 +1064,11 @@ export default function SubjectExpansionPage() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </motion.div>}
           </div>
 
           {/* Left Stacked Features */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 360, marginTop: "20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: (isMobile || isTablet) ? "100%" : 360, marginTop: "20px" }}>
             {[
               { title: "Expanding Curriculum Library", desc: "New subjects, chapters and concepts\nadded continuously.", icon: BookOpen, color: "#8b5cf6", bg: "#f5f3ff" },
               { title: "Continuous Module Additions", desc: "Keeping content fresh, relevant\nand future-ready.", icon: PlusCircle, color: "#3b82f6", bg: "#eff6ff" },
@@ -1099,14 +1099,14 @@ export default function SubjectExpansionPage() {
             ))}
           </div>
 
-          {/* 4 Floating Glass Cards placed perfectly over the 3D Image Platforms */}
-          {[
-            { title: "Current Curriculum", desc: "Building strong\nconceptual foundations", bottom: 60, right: "52%" },
+          {/* 4 Floating Glass Cards — desktop only */}
+          {!isMobile && !isTablet && [{title: "Current Curriculum", desc: "Building strong\nconceptual foundations", bottom: 60, right: "52%" },
             { title: "Growing Content", desc: "Adding more immersive\nmodules and resources", bottom: 130, right: "36%" },
             { title: "Evolving Learning", desc: "Smarter, adaptive and\nmore personalized", bottom: 230, right: "20%" },
             { title: "Future Ready", desc: "Preparing students for\ntomorrow's challenges", bottom: 340, right: "5%" }
           ].map((card, i) => (
             <div key={i} style={{ position: "absolute", bottom: card.bottom, right: card.right, zIndex: 3 }}>
+
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -1141,16 +1141,21 @@ export default function SubjectExpansionPage() {
           <motion.div
             {...fadeUp(1)}
             style={{
-              position: "absolute", bottom: -150, left: 60, right: 60,
+              position: (isMobile || isTablet) ? "relative" : "absolute",
+              bottom: (isMobile || isTablet) ? "auto" : -150,
+              left: (isMobile || isTablet) ? "auto" : 60,
+              right: (isMobile || isTablet) ? "auto" : 60,
+              marginTop: (isMobile || isTablet) ? 40 : 0,
               background: "rgba(255, 255, 255, 0.96)", backdropFilter: "blur(20px)",
-              borderRadius: 20, padding: "32px 40px",
-              display: "flex", gap: 30, alignItems: "center",
+              borderRadius: 20, padding: isMobile ? "20px" : "32px 40px",
+              display: "flex", gap: isMobile ? 20 : 30,
+              alignItems: isMobile ? "flex-start" : "center",
+              flexDirection: isMobile ? "column" : "row",
               boxShadow: "0 15px 40px rgba(0,0,0,0.05)", border: "1px solid rgba(255,255,255,1)"
             }}
           >
             {/* Left Title */}
-            <div style={{ flex: "0 0 190px", borderRight: "2px solid #e2e8f0", paddingRight: 30, position: "relative" }}>
-              <div style={{ width: 4, height: 46, background: "#7c3aed", position: "absolute", left: -40, top: "50%", transform: "translateY(-50%)", borderRadius: "0 4px 4px 0" }} />
+            <div style={{ flex: isMobile ? "none" : "0 0 190px", borderRight: isMobile ? "none" : "2px solid #e2e8f0", borderBottom: isMobile ? "1px solid #e2e8f0" : "none", paddingRight: isMobile ? 0 : 30, paddingBottom: isMobile ? 16 : 0, position: "relative" }}>
               <h3 style={{ fontSize: 17, fontWeight: 900, color: COLORS.navy, marginBottom: 6, lineHeight: 1.25 }}>Future-focused.<br />Impact-driven.</h3>
               <p style={{ fontSize: 11, color: COLORS.textGray, lineHeight: 1.5, margin: 0, fontWeight: 600 }}>
                 Empowering learners today for the opportunities of tomorrow.
@@ -1158,7 +1163,7 @@ export default function SubjectExpansionPage() {
             </div>
 
             {/* 5 Features Grid */}
-            <div style={{ flex: 1, display: "flex", justifyContent: "space-between", gap: 16 }}>
+            <div style={{ flex: 1, display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 16 }}>
               {[
                 { title: "Curriculum\nAligned", desc: "Always mapped to\nstandards", icon: GraduationCap, color: "#8b5cf6", bg: "#f5f3ff" },
                 { title: "Quality\nAssured", desc: "Expert-reviewed\nand classroom-\ntested", icon: Award, color: "#3b82f6", bg: "#eff6ff" },
@@ -1201,17 +1206,17 @@ export default function SubjectExpansionPage() {
         position: "relative",
         width: "100%",
         background: "linear-gradient(135deg, #eef2f6 0%, #ffffff 100%)",
-        padding: "0px 0 120px 0",
-        marginTop: "-10px",
+        padding: isMobile ? "60px 0" : isTablet ? "60px 0 80px" : "0px 0 120px 0",
+        marginTop: (isMobile || isTablet) ? 0 : "-10px",
         overflow: "hidden"
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
 
           {/* Top Half: Text Left, Image Right */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 80 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 40 : 80, flexDirection: isMobile ? "column" : "row", gap: isMobile ? 40 : 0 }}>
 
             {/* Left Text */}
-            <div style={{ maxWidth: 500 }}>
+            <div style={{ maxWidth: isMobile ? "100%" : 500 }}>
               <motion.div {...fadeUp(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 40, height: 2, background: COLORS.blue }} />
                 <span style={{ fontSize: 13, fontWeight: 800, color: COLORS.blue, letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -1229,17 +1234,17 @@ export default function SubjectExpansionPage() {
             </div>
 
             {/* Right Image & Orbiting Icons */}
-            <motion.div {...fadeUp(0.4)} style={{ position: "relative", width: "min(100%, 500px)", height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              {/* Dotted background arc */}
-              <div style={{ position: "absolute", top: 10, left: 10, width: "min(100%, 480px)", height: 480, borderRadius: "50%", border: "2px dashed #cbd5e1", zIndex: 0 }} />
+            <motion.div {...fadeUp(0.4)} style={{ position: "relative", width: isMobile ? "100%" : "min(100%, 500px)", height: isMobile ? 280 : 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {/* Dotted background arc — desktop only */}
+              {!isMobile && <div style={{ position: "absolute", top: 10, left: 10, width: "min(100%, 480px)", height: 480, borderRadius: "50%", border: "2px dashed #cbd5e1", zIndex: 0 }} />}
 
               {/* The Image Wrapper */}
-              <div style={{ width: 360, height: 360, borderRadius: "50%", background: "#e2e8f0", overflow: "hidden", position: "relative", zIndex: 1, boxShadow: "0 30px 60px rgba(0,0,0,0.1)" }}>
+              <div style={{ width: isMobile ? 240 : 360, height: isMobile ? 240 : 360, borderRadius: "50%", background: "#e2e8f0", overflow: "hidden", position: "relative", zIndex: 1, boxShadow: "0 30px 60px rgba(0,0,0,0.1)" }}>
                 <img loading="lazy" decoding="async" src="/teacher_2.webp" alt="Teacher and students using VR" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
 
-              {/* Orbiting Icons */}
-              {[
+              {/* Orbiting Icons — desktop only */}
+              {!isMobile && [
                 { title: "Curriculum\nAligned", icon: BookOpen, color: COLORS.blue, top: 31, left: 60 },
                 { title: "Secure &\nReliable", icon: ShieldCheck, color: "#8b5cf6", top: 31, left: 368 },
                 { title: "Teacher\nGuided", icon: Settings, color: "#10b981", top: 368, left: 31 },
@@ -1267,7 +1272,7 @@ export default function SubjectExpansionPage() {
           </div>
 
           {/* Middle Row: Process Cards */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 60, gap: 12 }}>
+          <div style={{ display: (isMobile || isTablet) ? "grid" : "flex", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : undefined, alignItems: (isMobile || isTablet) ? "stretch" : "center", justifyContent: "space-between", marginBottom: isMobile ? 40 : 60, gap: 12 }}>
             {[
               { num: "1", title: "Plan", desc: "We understand your goals,\ncurriculum and\ninfrastructure.", icon: ClipboardList, color: "#3b82f6" },
               { num: "2", title: "Train", desc: "Hands-on training for\nteachers and smooth\norientation.", icon: Users, color: "#10b981" },
@@ -1296,7 +1301,7 @@ export default function SubjectExpansionPage() {
                     <p style={{ fontSize: 12, color: COLORS.textGray, lineHeight: 1.5, margin: 0, whiteSpace: "pre-line", fontWeight: 600 }}>{step.desc}</p>
                   </div>
                 </motion.div>
-                {i < arr.length - 1 && (
+                {!isMobile && !isTablet && i < arr.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -1317,17 +1322,16 @@ export default function SubjectExpansionPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 20, padding: "24px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 30 }}
+            style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 20, padding: isMobile ? "20px" : "24px 40px", display: "flex", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 30, flexDirection: isMobile ? "column" : "row" }}
           >
             {/* Left Header */}
-            <div style={{ borderRight: "2px solid #e2e8f0", paddingRight: 30, flexShrink: 0, position: "relative" }}>
-              <div style={{ width: 4, height: 30, background: COLORS.blue, position: "absolute", left: -40, top: "50%", transform: "translateY(-50%)", borderRadius: "0 4px 4px 0" }} />
+            <div style={{ borderRight: isMobile ? "none" : "2px solid #e2e8f0", borderBottom: isMobile ? "1px solid #e2e8f0" : "none", paddingRight: isMobile ? 0 : 30, paddingBottom: isMobile ? 16 : 0, flexShrink: 0 }}>
               <h3 style={{ fontSize: 18, fontWeight: 900, color: COLORS.navy, marginBottom: 4 }}>Built on trust.</h3>
               <p style={{ fontSize: 13, color: COLORS.textGray, margin: 0, fontWeight: 600 }}>Every school. Every student.</p>
             </div>
 
             {/* Stats */}
-            <div style={{ display: "flex", justifyContent: "space-between", flex: 1 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 0, justifyContent: "space-between", flex: 1 }}>
               {[
                 { val: "500+", text: "Schools\nOnboarded", icon: School, color: "#3b82f6" },
                 { val: "1M+", text: "Students\nImpacted", icon: Users, color: "#10b981" },
@@ -1370,10 +1374,10 @@ export default function SubjectExpansionPage() {
         position: "relative",
         width: "100%",
         background: "#f8fafc",
-        padding: "80px 0 120px 0",
+        padding: isMobile ? "60px 0" : "80px 0 120px 0",
         overflow: "hidden"
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1384,17 +1388,17 @@ export default function SubjectExpansionPage() {
               background: "#ffffff",
               borderRadius: 32,
               boxShadow: "0 25px 60px rgba(0,0,0,0.05)",
-              padding: "70px",
+              padding: isMobile ? "24px" : isTablet ? "40px" : "70px",
               position: "relative",
               overflow: "hidden",
               border: "1px solid #f1f5f9"
             }}
           >
             {/* Top Half: Left Text & Right Image */}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 60 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", marginBottom: isMobile ? 40 : 60, flexDirection: isMobile ? "column" : "row", gap: isMobile ? 40 : 0 }}>
 
               {/* Left Column */}
-              <div style={{ maxWidth: 500, zIndex: 10 }}>
+              <div style={{ maxWidth: isMobile ? "100%" : 500, zIndex: 10 }}>
                 <motion.div {...fadeUp(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 30, height: 2, background: COLORS.blue }} />
                   <span style={{ fontSize: 13, fontWeight: 800, color: COLORS.blue, letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -1410,7 +1414,7 @@ export default function SubjectExpansionPage() {
                   Bring immersive, engaging and effective learning to your school with SparkVR.
                 </motion.p>
 
-                <motion.div {...fadeUp(0.4)} style={{ display: "flex", gap: 16, marginBottom: 40 }}>
+                <motion.div {...fadeUp(0.4)} style={{ display: "flex", gap: 16, marginBottom: 40, flexDirection: isMobile ? "column" : "row" }}>
                   <motion.button
                     whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(124, 58, 237, 0.3)" }}
                     whileTap={{ scale: 0.95 }}
@@ -1458,7 +1462,7 @@ export default function SubjectExpansionPage() {
               </div>
 
               {/* Right Column: Image with Glowing Circle */}
-              <motion.div {...fadeUp(0.5)} style={{ position: "relative", width: "min(100%, 500px)", height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <motion.div {...fadeUp(0.5)} style={{ position: "relative", width: isMobile ? "100%" : "min(100%, 500px)", height: isMobile ? 280 : 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
 
                 {/* Advanced Glowing Outer Ring */}
                 <div style={{ position: "absolute", width: "min(100%, 460px)", height: 460, zIndex: 0 }}>
@@ -1538,7 +1542,7 @@ export default function SubjectExpansionPage() {
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   whileHover={{ scale: 1.05 }}
-                  style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "rgba(255, 255, 255, 0.95)", backdropFilter: "blur(20px)", borderRadius: 20, padding: "20px 30px", display: "flex", alignItems: "center", gap: 16, width: 380, zIndex: 2, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(255,255,255,1)", cursor: "default" }}
+                  style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "rgba(255, 255, 255, 0.95)", backdropFilter: "blur(20px)", borderRadius: 20, padding: isMobile ? "14px 16px" : "20px 30px", display: "flex", alignItems: "center", gap: 16, width: isMobile ? "calc(100% - 32px)" : 380, zIndex: 2, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(255,255,255,1)", cursor: "default" }}
                 >
                   <div style={{ width: 50, height: 50, borderRadius: 25, background: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 8px 20px rgba(124, 58, 237, 0.3)" }}>
                     <Rocket size={24} color="#fff" strokeWidth={2} />
@@ -1554,9 +1558,9 @@ export default function SubjectExpansionPage() {
             {/* Bottom Banner Inside Card */}
             <motion.div
               {...fadeUp(0.6)}
-              style={{ background: "#f8fafc", borderRadius: 24, padding: "40px", display: "flex", flexDirection: "column", gap: 30, border: "1px solid #e2e8f0" }}
+              style={{ background: "#f8fafc", borderRadius: 24, padding: isMobile ? "20px" : "40px", display: "flex", flexDirection: "column", gap: 30, border: "1px solid #e2e8f0" }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 20 : isTablet ? 20 : 0 }}>
                 {[
                   { title: "Immersive", desc: "Engaging experiences\nthat bring concepts to life.", icon: Headset, color: "#8b5cf6" },
                   { title: "Effective", desc: "Better understanding.\nStronger outcomes.", icon: GraduationCap, color: "#10b981" },
@@ -1564,7 +1568,7 @@ export default function SubjectExpansionPage() {
                   { title: "Future-Ready", desc: "Preparing students for\ntomorrow's world.", icon: Users, color: "#ec4899" }
                 ].map((ft, i, arr) => (
                   <React.Fragment key={i}>
-                    <motion.div whileHover={{ y: -5, scale: 1.05 }} style={{ display: "flex", alignItems: "flex-start", gap: 16, flex: 1, padding: "0 10px" }}>
+                    <motion.div whileHover={{ y: -5, scale: 1.05 }} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: isMobile ? 0 : "0 10px" }}>
                       <div style={{ width: 44, height: 44, borderRadius: 22, background: `${ft.color}15`, display: "flex", alignItems: "center", justifyContent: "center", color: ft.color, flexShrink: 0 }}>
                         <ft.icon size={22} strokeWidth={2} />
                       </div>
@@ -1573,7 +1577,7 @@ export default function SubjectExpansionPage() {
                         <p style={{ fontSize: 12, color: COLORS.textGray, lineHeight: 1.4, margin: 0, fontWeight: 600, whiteSpace: "pre-line" }}>{ft.desc}</p>
                       </div>
                     </motion.div>
-                    {i < arr.length - 1 && (
+                    {!isMobile && i < arr.length - 1 && (
                       <div style={{ width: 1, height: 50, background: "#e2e8f0", margin: "0 10px" }} />
                     )}
                   </React.Fragment>
@@ -1581,7 +1585,7 @@ export default function SubjectExpansionPage() {
               </div>
 
               <div style={{ textAlign: "center", paddingTop: 24, borderTop: "1px solid #e2e8f0" }}>
-                <span style={{ fontSize: 18, fontWeight: 900, color: COLORS.navy }}>
+                <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: COLORS.navy }}>
                   Ready to make a real impact? <span style={{ color: "#7c3aed" }}>We're ready when you are.</span>
                 </span>
               </div>

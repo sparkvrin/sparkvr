@@ -17,7 +17,9 @@ export default function Home() {
     <div>
       <Hero />
       <ServicesSection />
-      <VideoScrollSection />
+      <div style={{ display: "none" }}>
+        <VideoScrollSection />
+      </div>
       <SolutionSection />
 
 

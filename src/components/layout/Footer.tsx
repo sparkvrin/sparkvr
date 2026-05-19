@@ -14,33 +14,33 @@ function useScreenWidth() {
   }, []);
   return width;
 }
-import { 
-  Package, Building2, BookOpen, ChevronRight, ShieldCheck 
+import {
+  Package, Building2, BookOpen, ChevronRight, ShieldCheck
 } from "lucide-react";
 
 const FacebookIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 const LinkedinIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/>
-    <circle cx="4" cy="4" r="2"/>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
   </svg>
 );
 const YoutubeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
   </svg>
 );
 const InstagramIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 
@@ -56,7 +56,7 @@ export default function Footer() {
       overflow: "hidden",
       paddingTop: isMobile ? 48 : 80,
       paddingBottom: isMobile ? 32 : 40,
-      fontFamily: "'Inter', sans-serif"
+      fontFamily: "'VAG Rounded', sans-serif"
     }}>
       {/* ── Background Graphics (Arcs & Floating Orbs) ── */}
       <div style={{ position: "absolute", top: -100, right: -100, width: "min(100%, 600px)", height: 600, pointerEvents: "none" }}>
@@ -78,8 +78,8 @@ export default function Footer() {
       {[
         { size: 10, color: "#3b82f6", top: "10%", right: "20%", delay: 0 },
         { size: 12, color: "#a855f7", top: "25%", right: "12%", delay: 0.5 },
-        { size: 8,  color: "#ef4444", top: "22%", right: "5%",  delay: 1 },
-        { size: 14, color: "#3b82f6", top: "45%", right: "3%",  delay: 0.2 },
+        { size: 8, color: "#ef4444", top: "22%", right: "5%", delay: 1 },
+        { size: 14, color: "#3b82f6", top: "45%", right: "3%", delay: 0.2 },
       ].map((orb, i) => (
         <motion.div
           key={i}
@@ -104,23 +104,23 @@ export default function Footer() {
           zIndex: 0
         }}
       >
-        <motion.img loading="lazy" decoding="async" 
+        <motion.img loading="lazy" decoding="async"
           animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          src="/vr_wireframe.webp" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }} 
+          src="/vr_wireframe.webp" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }}
         />
       </div>
 
 
-      <div style={{ maxWidth: 1300, margin: "0 auto", padding: isMobile ? "0 20px" : "0 40px", position: "relative", zIndex: 10 }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 24px" : "0 40px", position: "relative", zIndex: 10 }}>
 
         {/* ── Top Main Content ── */}
         <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", flexWrap: isMobile ? "nowrap" : "wrap", justifyContent: "space-between", gap: isMobile ? 32 : 60, marginBottom: isMobile ? 36 : 60 }}>
 
           {/* Left Column: Brand & Socials */}
           <div style={{ maxWidth: isMobile ? "100%" : 350, flexShrink: 0 }}>
-            <Link href="/" style={{ display: "inline-block", marginBottom: -10 }}>
-              <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ height: isMobile ? 90 : 140, objectFit: "contain", transform: "translateX(-15px)" }} />
+            <Link href="/" style={{ display: "inline-block", marginBottom: 12 }}>
+              <img loading="lazy" decoding="async" src="/logo1.png" alt="SparkVR" style={{ height: isMobile ? 50 : 75, objectFit: "contain", transform: "translateX(-10px)" }} />
             </Link>
             <p style={{ fontSize: isMobile ? 15 : 19, color: "#334155", lineHeight: 1.6, marginBottom: isMobile ? 24 : 40, fontWeight: 500, transform: "translateX(-8px)" }}>
               Transforming abstract learning into observable understanding through immersive experiences.

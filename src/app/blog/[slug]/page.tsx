@@ -279,7 +279,7 @@ export default function BlogDetailPage() {
         .blog-content h3 { font-size: 28px; font-weight: 900; color: #001a4d; margin: 56px 0 28px; letter-spacing: -0.01em; }
         
         .custom-blockquote { display: flex; background: #f8fafc; border-radius: 24px; padding: 40px 48px; margin: 56px 0; gap: 28px; border-left: 8px solid #0052cc; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .quote-icon { font-family: Georgia, serif; font-size: 90px; color: #0052cc; line-height: 1; opacity: 0.15; margin-top: -24px; }
+        .quote-icon { font-family: "VAG Rounded", sans-serif; font-size: 90px; color: #0052cc; line-height: 1; opacity: 0.15; margin-top: -24px; }
         .quote-text { font-size: 22px; color: #001a4d; font-weight: 700; line-height: 1.5; font-style: italic; margin-bottom: 16px !important; }
         .quote-author { font-size: 14px; color: #0052cc; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0 !important; }
 

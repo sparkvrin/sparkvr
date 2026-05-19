@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sparkvr-ten.vercel.app"),
   title: "SparkVR for Teachers | Teach Smarter with Immersive VR",
   description: "SparkVR empowers teachers with simple VR tools, guided session flows, and complete curriculum alignment. No technical expertise required.",
-  keywords: ["VR for Teachers","Teacher VR Tools","Immersive Teaching","Classroom Technology","SparkVR Teachers"],
+  keywords: ["VR for Teachers", "Teacher VR Tools", "Immersive Teaching", "Classroom Technology", "SparkVR Teachers"],
   openGraph: {
     title: "SparkVR for Teachers | Teach Smarter with Immersive VR",
     description: "SparkVR empowers teachers with simple VR tools, guided session flows, and complete curriculum alignment. No technical expertise required.",

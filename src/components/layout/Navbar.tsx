@@ -51,22 +51,23 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: isMobile ? 72 : 100,
+          height: isMobile ? 76 : 120,
           display: "flex", alignItems: "center",
           background: "transparent",
         }}
       >
         <div style={{
-          maxWidth: 1440, margin: "0 auto", width: "100%", height: "100%",
-          padding: isMobile ? "0 16px" : "0 60px",
+          maxWidth: 1400, margin: "0 auto", width: "100%", height: "100%",
+          paddingLeft: isMobile ? 24 : 40,
+          paddingRight: isMobile ? 24 : 40,
           display: "flex", alignItems: "center", justifyContent: "space-between",
         }}>
           {/* LOGO */}
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", height: "100%" }}>
             <img loading="lazy" decoding="async"
-              src="/logo.webp"
+              src="/logo1.png"
               alt="SparkVR"
-              style={{ height: isMobile ? 62 : 90, width: "auto", objectFit: "contain" }}
+              style={{ height: isMobile ? 45 : 62, width: "auto", objectFit: "contain" }}
             />
           </Link>
 
@@ -94,32 +95,31 @@ export default function Navbar() {
               </Link>
             )}
 
-            {/* Hamburger button — chhota size */}
+            {/* Hamburger button */}
             <button
               onClick={() => setMenuOpen(o => !o)}
               aria-label="Toggle menu"
               style={{
-                width: 38, height: 38, borderRadius: "50%",
-                background: menuOpen ? "#0052cc" : "rgba(255,255,255,0.85)",
-                border: "1px solid rgba(0,0,0,0.06)",
+                width: 48, height: 48, borderRadius: "50%",
+                background: menuOpen ? "#0052cc" : "rgba(255,255,255,0.8)",
+                border: "1px solid rgba(0,0,0,0.05)",
                 display: "flex", flexDirection: "column",
-                alignItems: "center", justifyContent: "center", gap: menuOpen ? 0 : 5,
+                alignItems: "center", justifyContent: "center", gap: menuOpen ? 0 : 6,
                 cursor: "pointer",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
                 position: "relative",
                 zIndex: 1002,
                 transition: "all 0.3s ease",
-                flexShrink: 0,
               }}
             >
               <motion.div
                 animate={menuOpen ? { rotate: 45, y: 1 } : { rotate: 0, y: 0 }}
-                style={{ width: 14, height: 1.8, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
+                style={{ width: 16, height: 2, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
               />
-              {!menuOpen && <div style={{ width: 14, height: 1.8, background: "#001a4d", borderRadius: 2 }} />}
+              {!menuOpen && <div style={{ width: 16, height: 2, background: "#001a4d", borderRadius: 2 }} />}
               <motion.div
                 animate={menuOpen ? { rotate: -45, y: -1 } : { rotate: 0, y: 0 }}
-                style={{ width: 14, height: 1.8, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
+                style={{ width: 16, height: 2, background: menuOpen ? "#fff" : "#001a4d", borderRadius: 2, position: menuOpen ? "absolute" : "relative" }}
               />
             </button>
           </div>
@@ -168,8 +168,8 @@ export default function Navbar() {
                 style={{ position: "absolute", top: "15%", left: "10%", width: 100, height: 100, borderRadius: "50%", background: "rgba(31,179,255,0.1)", filter: "blur(40px)", pointerEvents: "none" }}
               />
 
-              {/* Nav links — scrollable so all items visible */}
-              <nav style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 4, paddingRight: 4 }}>
+              {/* Nav links */}
+              <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
                 {NAV_LINKS.map((link, i) => (
                   <motion.div
                     key={link.label}
@@ -183,12 +183,12 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
                         style={{
-                          display: "flex", alignItems: "center", gap: 14,
-                          padding: "13px 16px",
-                          borderRadius: 12,
+                          display: "flex", alignItems: "center", gap: 16,
+                          padding: "18px 20px",
+                          borderRadius: 16,
                           textDecoration: "none",
-                          fontSize: 14, fontWeight: 600, letterSpacing: "0.07em",
-                          color: "rgba(255,255,255,0.75)",
+                          fontSize: 15, fontWeight: 600, letterSpacing: "0.08em",
+                          color: "rgba(255,255,255,0.7)",
                           transition: "all 0.25s ease",
                         }}
                       >

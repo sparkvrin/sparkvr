@@ -87,7 +87,7 @@ function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
             animate={{ y: [0, -4, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay * 0.5 }}
             style={{ background:"rgba(255,255,255,0.95)", borderRadius:30, padding:"6px 20px", boxShadow:"0 8px 24px rgba(0,60,160,0.14)", whiteSpace:"nowrap", border:"1px solid rgba(255,255,255,0.9)", transformStyle: "preserve-3d" }}
           >
-            <span style={{ fontSize:11, fontWeight:800, letterSpacing:"0.1em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}>{label}</span>
+            <span style={{ fontSize:11, fontWeight:800, letterSpacing:"0.1em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'VAG Rounded',sans-serif" }}>{label}</span>
           </motion.div>
         </div>
       </motion.div>
@@ -133,7 +133,7 @@ function GridBubble({ label, children, delay, dir = -1, w = 140 }: {
             boxShadow: "0 6px 20px rgba(0,60,160,0.14)", whiteSpace: "nowrap",
             border: "1px solid rgba(255,255,255,0.9)",
           }}>
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", color: "#1d4ed8", textTransform: "uppercase", fontFamily: "'AR One Sans',sans-serif" }}>{label}</span>
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", color: "#1d4ed8", textTransform: "uppercase", fontFamily: "'VAG Rounded',sans-serif" }}>{label}</span>
           </div>
         </div>
       </motion.div>
@@ -308,7 +308,7 @@ export default function ServicesSection() {
         }}>
           <motion.div initial={{ opacity:0, x:-14 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }}
             style={{ display:"flex", alignItems:"center", gap:12, marginBottom:24 }}>
-            <span style={{ fontSize:10, fontWeight:800, letterSpacing:"0.22em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'AR One Sans',sans-serif" }}></span>
+            <span style={{ fontSize:10, fontWeight:800, letterSpacing:"0.22em", color:"#1d4ed8", textTransform:"uppercase", fontFamily:"'VAG Rounded',sans-serif" }}></span>
           </motion.div>
           <motion.h2
             initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }}
@@ -316,7 +316,7 @@ export default function ServicesSection() {
             style={{
               fontSize: isMobile ? "clamp(28px,7vw,40px)" : isTablet ? "clamp(28px,3.5vw,46px)" : "clamp(34px,4.5vw,62px)",
               fontWeight: 800, lineHeight: 1.1, color: "#0b1a3b",
-              margin: "0 0 28px", fontFamily: "'AR One Sans',sans-serif", transformPerspective: 700,
+              margin: "0 0 28px", fontFamily: "'VAG Rounded',sans-serif", transformPerspective: 700,
             }}>
             For decades, education has relied on{isMobile ? " " : <br/>}
             <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#7c3aed 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>explanation.</span>
@@ -345,7 +345,7 @@ export default function ServicesSection() {
                 </motion.div>
                 <p style={{
                   fontSize: isMobile ? "clamp(14px,3.8vw,17px)" : isTablet ? "clamp(14px,1.6vw,18px)" : "clamp(17px,1.6vw,21px)",
-                  fontWeight:500, color:"#1a2a4a", margin:0, fontFamily:"'AR One Sans',sans-serif", lineHeight:1.45, transform: "translateZ(10px)",
+                  fontWeight:500, color:"#1a2a4a", margin:0, fontFamily:"'VAG Rounded',sans-serif", lineHeight:1.45, transform: "translateZ(10px)",
                 }}>{text}</p>
               </motion.div>
             ))}
@@ -429,14 +429,14 @@ export default function ServicesSection() {
           display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2,
         }}>
           <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ fontSize: isMobile ? "clamp(24px,6.5vw,36px)" : "clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 12px", fontFamily:"'AR One Sans',sans-serif", transformPerspective: 700 }}>
+            style={{ fontSize: isMobile ? "clamp(24px,6.5vw,36px)" : "clamp(26px,2.9vw,44px)", fontWeight:800, lineHeight:1.18, color:"#0b1a3b", margin:"0 0 12px", fontFamily:"'VAG Rounded',sans-serif", transformPerspective: 700 }}>
             We make concepts<br/>
             <span style={{ background:"linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>observable</span>{" "}—<br/>
             without disrupting schools.
           </motion.h2>
 
           <motion.p initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:0.18 }}
-            style={{ fontSize: isMobile ? 14 : "clamp(15px,1.45vw,19px)", color:"#4a5f7a", lineHeight:1.55, fontFamily:"'AR One Sans',sans-serif", maxWidth:400, margin:0 }}>
+            style={{ fontSize: isMobile ? 14 : "clamp(15px,1.45vw,19px)", color:"#4a5f7a", lineHeight:1.55, fontFamily:"'VAG Rounded',sans-serif", maxWidth:400, margin:0 }}>
             SparkVR integrates immersive learning into existing academic systems through:
           </motion.p>
 
@@ -453,7 +453,7 @@ export default function ServicesSection() {
                   </div>
                   <div>
                     {c.lines.map((line, j) => (
-                      <div key={j} style={{ fontSize:11.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.35, fontFamily:"'AR One Sans',sans-serif" }}>{line}</div>
+                      <div key={j} style={{ fontSize:11.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.35, fontFamily:"'VAG Rounded',sans-serif" }}>{line}</div>
                     ))}
                   </div>
                 </motion.div>
@@ -632,7 +632,7 @@ export default function ServicesSection() {
                         {/* text */}
                         <div>
                           {c.lines.map((line, j) => (
-                            <div key={j} style={{ fontSize:13.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.32, fontFamily:"'AR One Sans',sans-serif" }}>
+                            <div key={j} style={{ fontSize:13.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.32, fontFamily:"'VAG Rounded',sans-serif" }}>
                               {line}
                             </div>
                           ))}
