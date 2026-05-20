@@ -646,7 +646,7 @@ export default function Hero() {
     );
   }
 
-  /* ── DESKTOP LAYOUT (unchanged) ── */
+  /* ── DESKTOP LAYOUT ── */
   return (
     <div
       id="vision"
@@ -658,8 +658,10 @@ export default function Hero() {
     >
       <HeroBackground />
 
+      {/* ── Visual stage: student + bubbles + stats bar (1400px reference frame) ── */}
       <div style={{
-        position: "relative",
+        position: "absolute",
+        inset: 0,
         maxWidth: 1400,
         margin: "0 auto",
         width: "100%",
@@ -673,269 +675,98 @@ export default function Hero() {
           transform: "translateX(+8%)",
           zIndex: 10, pointerEvents: "none",
         }}>
-          <motion.div style={{ perspective: 1000, transformStyle: "preserve-3d" }}>
-            <motion.img loading="lazy" decoding="async"
-              src="/student_proper.webp"
-              alt="Student with VR headset"
-              style={{
-                height: "100vh",
-                objectFit: "contain",
-                objectPosition: "top",
-                display: "block",
-                filter: "drop-shadow(0 30px 60px rgba(60,40,150,0.3))",
-              }}
-            />
-          </motion.div>
+          <motion.img loading="lazy" decoding="async"
+            src="/student_proper.webp"
+            alt="Student with VR headset"
+            style={{
+              height: "100vh",
+              objectFit: "contain",
+              objectPosition: "top",
+              display: "block",
+              filter: "drop-shadow(0 30px 60px rgba(60,40,150,0.3))",
+            }}
+          />
         </div>
 
-        {/* ── ATOMS (Top-Left) ── */}
+        {/* ── ATOMS bubble ── */}
         <div style={{ position: "absolute", top: "14%", left: "48%", zIndex: 12, pointerEvents: "auto" }}>
-          <motion.div
-            style={{ transformStyle: "preserve-3d" }}
-          >
+          <div>
             <motion.div
-              whileHover={{ scale: 1.15, y: -10, boxShadow: "0 28px 64px rgba(59,130,246,0.45), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ ...GLASS_STYLE, width: 168, height: 168, cursor: "pointer" }}
+              whileHover={{ scale: 1.07, y: -7, boxShadow: "0 22px 50px rgba(59,130,246,0.35), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              style={{ ...GLASS_STYLE, width: 162, height: 162, cursor: "pointer" }}
             >
-              <Canvas
-                camera={{ position: [0, 0, 3.6], fov: 42 }}
-                gl={{ alpha: true, antialias: true }}
-                style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-              >
+              <Canvas camera={{ position: [0, 0, 3.6], fov: 42 }} gl={{ alpha: true, antialias: true }}
+                style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
                 <ambientLight intensity={2.2} />
                 <directionalLight position={[5, 6, 5]} intensity={3.2} />
                 <Suspense fallback={null}><Atom3D /></Suspense>
               </Canvas>
             </motion.div>
             <div style={{ ...LABEL_STYLE, bottom: -14 }}>ATOMS</div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* ── HUMAN ANATOMY (Top-Right) ── */}
+        {/* ── HUMAN ANATOMY bubble ── */}
         <div style={{ position: "absolute", top: "14%", left: "80%", zIndex: 12, pointerEvents: "auto" }}>
-          <motion.div
-            style={{ transformStyle: "preserve-3d" }}
-          >
+          <div>
             <motion.div
-              whileHover={{ scale: 1.15, y: -10, boxShadow: "0 28px 64px rgba(220,50,50,0.35), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ ...GLASS_STYLE, width: 148, height: 148, cursor: "pointer" }}
+              whileHover={{ scale: 1.07, y: -7, boxShadow: "0 22px 50px rgba(220,50,50,0.28), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              style={{ ...GLASS_STYLE, width: 142, height: 142, cursor: "pointer" }}
             >
-              <div style={{
-                position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
-                background: "rgba(255,255,255,0.6)",
-              }} />
-              <img loading="lazy" decoding="async"
-                src="/anatomy.webp"
-                alt="Human Anatomy"
-                style={{
-                  width: "78%", height: "78%",
-                  objectFit: "contain",
-                  position: "relative", zIndex: 1,
-                  filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)",
-                }}
-              />
+              <div style={{ position: "absolute", width: "76%", height: "76%", borderRadius: "50%", background: "rgba(255,255,255,0.6)" }} />
+              <img loading="lazy" decoding="async" src="/anatomy.webp" alt="Human Anatomy"
+                style={{ width: "78%", height: "78%", objectFit: "contain", position: "relative", zIndex: 1,
+                  filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)" }} />
             </motion.div>
             <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>HUMAN ANATOMY</div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* ── CELLS (Mid-Left) ── */}
+        {/* ── CELLS bubble ── */}
         <div style={{ position: "absolute", top: "50%", left: "47%", zIndex: 12, pointerEvents: "auto" }}>
-          <motion.div
-            style={{ transformStyle: "preserve-3d" }}
-          >
+          <div>
             <motion.div
-              whileHover={{ scale: 1.15, y: -10, boxShadow: "0 28px 64px rgba(80,200,120,0.35), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ ...GLASS_STYLE, width: 155, height: 155, cursor: "pointer" }}
+              whileHover={{ scale: 1.07, y: -7, boxShadow: "0 22px 50px rgba(80,200,120,0.28), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              style={{ ...GLASS_STYLE, width: 150, height: 150, cursor: "pointer" }}
             >
-              <div style={{
-                position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
-                background: "rgba(255,255,255,0.55)",
-              }} />
-              <img loading="lazy" decoding="async"
-                src="/cell_proper.webp"
-                alt="Cell Structure"
-                style={{
-                  width: "82%", height: "82%",
-                  objectFit: "contain",
-                  position: "relative", zIndex: 1,
-                  filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)",
-                }}
-              />
+              <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
+              <img loading="lazy" decoding="async" src="/cell_proper.webp" alt="Cell Structure"
+                style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1,
+                  filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)" }} />
             </motion.div>
             <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* ── SPACE / SATURN (Mid-Right) ── */}
+        {/* ── SPACE / SATURN bubble ── */}
         <div style={{ position: "absolute", top: "50%", left: "84%", zIndex: 12, pointerEvents: "auto" }}>
-          <motion.div
-            style={{ transformStyle: "preserve-3d" }}
-          >
+          <div>
             <motion.div
-              whileHover={{ scale: 1.15, y: -10, boxShadow: "0 28px 64px rgba(180,130,50,0.35), inset 0 2px 24px rgba(255,255,255,0.95)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ ...GLASS_STYLE, width: 155, height: 155, cursor: "pointer" }}
+              whileHover={{ scale: 1.07, y: -7, boxShadow: "0 22px 50px rgba(180,130,50,0.28), inset 0 2px 24px rgba(255,255,255,0.95)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              style={{ ...GLASS_STYLE, width: 150, height: 150, cursor: "pointer" }}
             >
-              <Canvas
-                camera={{ position: [0, 0, 3.8], fov: 42 }}
-                gl={{ alpha: true, antialias: true }}
-                style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-              >
+              <Canvas camera={{ position: [0, 0, 3.8], fov: 42 }} gl={{ alpha: true, antialias: true }}
+                style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
                 <ambientLight intensity={1.8} />
                 <directionalLight position={[-5, 6, 5]} intensity={3.5} />
                 <Suspense fallback={null}><Saturn3D /></Suspense>
               </Canvas>
             </motion.div>
             <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed" }}>SPACE</div>
-          </motion.div>
-        </div>
-
-        {/* ── LEFT TEXT COLUMN ── */}
-        <div style={{
-          position: "absolute",
-          left: 0, top: 0, bottom: 0,
-          display: "flex", alignItems: "flex-start",
-          justifyContent: "center",
-          flexDirection: "column",
-          zIndex: 30,
-          paddingLeft: 40,
-          paddingTop: "clamp(120px, 16vh, 180px)",
-          paddingBottom: "80px",
-        }}>
-          <div>
-            <div style={{ maxWidth: 600 }}>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}
-              >
-
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-                style={{
-                  fontSize: "clamp(42px, 4.5vw, 64px)",
-                  fontWeight: 800,
-                  lineHeight: 1.15,
-                  color: "#0f172a",
-                  margin: "0 0 24px",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                What if students<br />
-                didn&#39;t have to{" "}
-                <span style={{
-                  background: "linear-gradient(90deg, #e040fb 0%, #7c3aed 55%, #38bdf8 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}>
-                  imagine
-                </span><br />
-                anymore?
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
-                style={{
-                  fontSize: 18,
-                  fontWeight: 500,
-                  lineHeight: 1.6,
-                  color: "#475569",
-                  margin: "0 0 40px",
-                  maxWidth: 500,
-                }}
-              >
-                We believe clarity begins with experience.<br />
-                SparkVR transforms abstract concepts into observable understanding.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.85, delay: 0.32, ease: [0.215, 0.61, 0.355, 1] }}
-                style={{ display: "flex", alignItems: "center", gap: 20 }}
-              >
-                <motion.a
-                  href="/services"
-                  whileHover={{ scale: 1.07, y: -4, boxShadow: "0 24px 50px rgba(29,78,216,0.42)" }}
-                  whileTap={{ scale: 0.97 }}
-                  style={{
-                    display: "inline-flex", alignItems: "center", gap: 12,
-                    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
-                    color: "#ffffff",
-                    padding: "16px 36px",
-                    borderRadius: 40,
-                    fontSize: 13, fontWeight: 700, letterSpacing: "0.14em",
-                    textDecoration: "none",
-                    boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
-                    cursor: "pointer",
-                  }}
-                >
-                  SEE IT DIFFERENTLY
-                </motion.a>
-
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.07, backgroundColor: "#ffffff", y: -4 }}
-                  whileTap={{ scale: 0.97 }}
-                  style={{
-                    display: "inline-flex", alignItems: "center", gap: 12,
-                    background: "rgba(255,255,255,0.5)",
-                    border: "2px solid #ffffff",
-                    color: "#1e293b",
-                    padding: "14px 36px",
-                    borderRadius: 40,
-                    fontSize: 13, fontWeight: 700, letterSpacing: "0.14em",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    backdropFilter: "blur(12px)",
-                    boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
-                  }}
-                >
-                  <motion.div animate={{ rotateY: 360 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>✨</motion.div>
-                  BOOK FREE WORKSHOP
-                </motion.a>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.45 }}
-                style={{ display: "flex", alignItems: "center", gap: 24, marginTop: 32 }}
-              >
-                {[
-                  { label: "Curriculum-aligned\nmodules", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>) },
-                  { label: "40-minute\nstructured sessions", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>) },
-                  { label: "Teacher-guided\ndelivery", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>) },
-                ].map((f, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(255,255,255,0.7)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.08)" }}>{f.icon}</div>
-                    <span style={{ fontSize: 11.5, fontWeight: 600, color: "#334155", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
           </div>
         </div>
 
         {/* ── STATS BAR ── */}
         <div style={{
           position: "absolute",
-          bottom: 0,
+          bottom: 16,
           right: 0,
-          width: "70%",
-          maxWidth: 920,
+          width: "65%",
+          maxWidth: 860,
           zIndex: 40,
         }}>
           <motion.div
@@ -946,50 +777,168 @@ export default function Hero() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              padding: "16px 32px",
-              background: "linear-gradient(135deg, rgba(255,255,255,0.65), rgba(220,230,255,0.35))",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              border: "1.5px solid rgba(255,255,255,0.75)",
-              borderRadius: 24,
-              boxShadow: "0 20px 50px rgba(60,40,150,0.08)",
+              padding: "12px 24px",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.6), rgba(220,230,255,0.3))",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.7)",
+              borderRadius: 20,
+              boxShadow: "0 14px 40px rgba(60,40,150,0.07)",
             }}
           >
             {STATS.map((s, i) => (
               <React.Fragment key={i}>
                 <motion.div
-                  whileHover={{ y: -4, scale: 1.04 }}
-                  style={{ display: "flex", flexDirection: "column", gap: 3, cursor: "pointer", padding: "4px 8px" }}
+                  whileHover={{ y: -3, scale: 1.04 }}
+                  style={{ display: "flex", flexDirection: "column", gap: 2, cursor: "default", padding: "2px 6px" }}
                 >
-                  <h3 style={{ fontSize: 23, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
-                  <p style={{ fontSize: 12.5, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 140, whiteSpace: "pre-line" }}>{s.label}</p>
+                  <h3 style={{ fontSize: 18, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
+                  <p style={{ fontSize: 10.5, fontWeight: 600, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 120, whiteSpace: "pre-line" }}>{s.label}</p>
                 </motion.div>
-                {i < 5 && <div style={{ width: 1, height: 34, background: "rgba(0,0,0,0.12)" }} />}
+                {i < 5 && <div style={{ width: 1, height: 26, background: "rgba(0,0,0,0.09)" }} />}
               </React.Fragment>
             ))}
           </motion.div>
         </div>
 
-        {/* ── PAGINATION DOTS ── */}
+      </div>
+
+      {/* ── LEFT TEXT COLUMN — aligned to 1300px container (matches header) ── */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        alignItems: "center",
+        zIndex: 30,
+        pointerEvents: "none",
+      }}>
         <div style={{
-          position: "absolute", right: 22, top: "50%",
-          transform: "translateY(-50%)", zIndex: 30,
-          display: "flex", flexDirection: "column", gap: 10,
+          width: "100%",
+          maxWidth: 1300,
+          margin: "0 auto",
+          paddingLeft: 60,
+          paddingRight: 60,
+          paddingTop: "clamp(100px, 14vh, 160px)",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          pointerEvents: "none",
         }}>
-          {[true, false, false, false].map((active, i) => (
-            <motion.div
-              key={i}
-              animate={active ? { scale: [1, 1.4, 1], boxShadow: ["0 0 0px rgba(29,78,216,0)", "0 0 14px rgba(29,78,216,0.6)", "0 0 0px rgba(29,78,216,0)"] } : {}}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+          <div style={{ maxWidth: 530, pointerEvents: "auto" }}>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
               style={{
-                width: active ? 9 : 7, height: active ? 9 : 7,
-                borderRadius: "50%",
-                background: active ? "#1d4ed8" : "rgba(100,116,139,0.3)",
+                fontSize: "clamp(38px, 4vw, 58px)",
+                fontWeight: 800,
+                lineHeight: 1.15,
+                color: "#0f172a",
+                margin: "0 0 20px",
+                letterSpacing: "-0.02em",
               }}
-            />
-          ))}
+            >
+              What if students<br />
+              didn&#39;t have to{" "}
+              <span style={{
+                background: "linear-gradient(90deg, #e040fb 0%, #7c3aed 55%, #38bdf8 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                imagine
+              </span><br />
+              anymore?
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
+              style={{
+                fontSize: 17,
+                fontWeight: 500,
+                lineHeight: 1.65,
+                color: "#475569",
+                margin: "0 0 36px",
+                maxWidth: 460,
+              }}
+            >
+              We believe clarity begins with experience.<br />
+              SparkVR transforms abstract concepts into observable understanding.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.3, ease: [0.215, 0.61, 0.355, 1] }}
+              style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}
+            >
+              <motion.a
+                href="/services"
+                whileHover={{ scale: 1.05, boxShadow: "0 18px 38px rgba(29,78,216,0.4)" }}
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 10,
+                  background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+                  color: "#ffffff",
+                  padding: "14px 32px",
+                  borderRadius: 40,
+                  fontSize: 13, fontWeight: 700, letterSpacing: "0.13em",
+                  textDecoration: "none",
+                  boxShadow: "0 8px 24px rgba(29,78,216,0.28)",
+                  cursor: "pointer",
+                }}
+              >
+                SEE IT DIFFERENTLY
+              </motion.a>
+
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.82)" }}
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 10,
+                  background: "rgba(255,255,255,0.5)",
+                  border: "2px solid rgba(255,255,255,0.9)",
+                  color: "#1e293b",
+                  padding: "12px 32px",
+                  borderRadius: 40,
+                  fontSize: 13, fontWeight: 700, letterSpacing: "0.13em",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.06)",
+                }}
+              >
+                ✨ BOOK FREE WORKSHOP
+              </motion.a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.44 }}
+              style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 28, flexWrap: "wrap" }}
+            >
+              {[
+                { label: "Curriculum-aligned\nmodules", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>) },
+                { label: "40-minute\nstructured sessions", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>) },
+                { label: "Teacher-guided\ndelivery", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>) },
+              ].map((f, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 34, height: 34, borderRadius: 8, background: "rgba(255,255,255,0.75)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 3px 10px rgba(0,82,204,0.08)" }}>{f.icon}</div>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: "#334155", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
+                </div>
+              ))}
+            </motion.div>
+
+          </div>
         </div>
       </div>
+
     </div>
   );
 }

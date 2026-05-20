@@ -12,9 +12,12 @@ import SolutionSection from "@/components/sections/SolutionSection";
 import CTASection from "@/components/sections/CTASection";
 import BannerSection from "@/components/sections/BannerSection";
 import VideoScrollSection from "@/components/sections/VideoScrollSection";
+import GlobalParticles from "@/components/GlobalParticles";
+
 export default function Home() {
   return (
-    <div>
+    <div style={{ position: "relative" }}>
+      <GlobalParticles />
       <Hero />
       <ServicesSection />
       <div style={{ display: "none" }}>
