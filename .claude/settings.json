@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch *)",
+      "Bash(npx next *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git config *)",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\sparkvr\\\\public\\\\fonts\")",
+      "Bash(Out-Null)",
+      "Bash(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Black_0.ttf\"    \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Black.ttf\")",
+      "Bash(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Bold_0.ttf\"     \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Bold.ttf\")",
+      "Bash(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Light \\(1\\)_0.ttf\" \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Light.ttf\")",
+      "Bash(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Thin.ttf\"        \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Thin.ttf\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\sparkvr\\\\public\\\\fonts\")",
+      "PowerShell(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Black_0.ttf\"    \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Black.ttf\")",
+      "PowerShell(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Bold_0.ttf\"     \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Bold.ttf\")",
+      "PowerShell(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Light \\(1\\)_0.ttf\" \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Light.ttf\")",
+      "PowerShell(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Thin.ttf\"        \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Thin.ttf\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(gh auth *)",
+      "PowerShell(git push origin main 2>&1)"
+    ]
+  }
+}

@@ -12,7 +12,7 @@ import {
   MessageSquare, Truck, Presentation, Rocket, TrendingUp, Puzzle, TabletSmartphone, Lightbulb, Handshake
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import "./schools.css";
 
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -38,66 +38,18 @@ const scaleUp = (delay = 0) => ({
   transition: { delay, duration: 0.8, ease: EASE },
 });
 
-const float = (delay = 0, yOffset = -20) => ({
-  animate: {
-    y: [0, yOffset, 0],
-    rotateZ: [0, 5, -5, 0],
-  },
-  transition: {
-    duration: 6,
-    repeat: Infinity,
-    delay,
-    ease: "easeInOut",
-  },
-});
-
-/* ─────────────────────────────────────────── */
-function useScreenWidth() {
-  const [width, setWidth] = React.useState(1200);
-  React.useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  return width;
-}
-
 export default function SchoolHubPage() {
-  const screenWidth = useScreenWidth();
-  const isMobile = screenWidth < 768;
-  const isTablet = screenWidth >= 768 && screenWidth < 1024;
-
   return (
-    <main style={{ background: "#f8f9fc", overflow: "hidden" }}>
+    <main className="schools-main">
 
       {/* ══════════════════════════════════════
           HERO SECTION  —  32% text | 68% image
       ══════════════════════════════════════ */}
-      <section style={{
-        position: "relative",
-        minHeight: isMobile ? "auto" : "100vh",
-        display: "flex",
-        flexDirection: isMobile ? "column" : "row",
-        marginBottom: isMobile ? 40 : 80,
-      }}>
+      <section className="schools-hero">
         {/* ── LEFT PANEL (32%) ── */}
-        <div style={{
-          position: "relative",
-          width: isMobile ? "100%" : "32%",
-          minWidth: isMobile ? "100%" : "min(100%, 450px)",
-          minHeight: isMobile ? "auto" : "100vh",
-          background: "#f0f5ff",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: isMobile ? "88px 20px 40px" : "120px 40px 120px 60px",
-          zIndex: 10,
-          flexShrink: 0,
-        }}>
+        <div className="schools-hero-left">
 
           <div style={{ position: "relative" }}>
-
 
             <motion.h1 {...fadeLeft(0.1)} style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 20, margin: "0 0 20px 0" }}>
               A VR Lab designed <br />
@@ -153,7 +105,7 @@ export default function SchoolHubPage() {
         </div>
 
         {/* ── RIGHT PANEL (68%) ── */}
-        <div style={{ position: "relative", flex: 1, minHeight: isMobile ? "55vw" : "100vh", maxHeight: isMobile ? "320px" : undefined }}>
+        <div className="schools-hero-right">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -164,14 +116,14 @@ export default function SchoolHubPage() {
         </div>
 
         {/* ── BOTTOM STATS BAR ── */}
-        <div style={{ position: isMobile ? "relative" : "absolute", bottom: 0, left: 0, right: 0, zIndex: 20, padding: isMobile ? "20px" : "0 40px", transform: isMobile ? "none" : "translateY(50%)" }}>
+        <div className="schools-hero-stats-container">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
             whileHover={{ y: -5, boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}
-            style={{ maxWidth: 1040, margin: "0 auto", background: "rgba(255,255,255,0.95)", backdropFilter: "blur(20px)", borderRadius: 24, padding: isMobile ? "20px 16px" : isTablet ? "20px 24px" : "26px 50px", display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", alignItems: "center", boxShadow: "0 16px 40px rgba(0,0,0,0.1)", border: "1px solid rgba(255,255,255,0.8)", gap: isMobile ? 16 : 24 }}
+            className="schools-hero-stats-bar"
           >
             {[
               { icon: ShieldCheck, top: "Trusted by", bottom: "250+ Schools", accent: false },
@@ -194,7 +146,7 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           REALITIES SECTION (What schools worry about vs How SparkVR solves it)
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "80px 32px 40px" : "120px 60px 40px", position: "relative", zIndex: 1 }}>
+      <section className="schools-section">
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
           {/* Header */}
@@ -210,16 +162,16 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Comparison Cards */}
-          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 40, position: "relative" }}>
+          <div className="schools-realities-comparison">
 
             {/* Left Column: Worry (Red Theme) */}
-            <motion.div {...scaleUp(0.4)} style={{ flex: 1, background: "#fff", borderRadius: 24, border: "1px solid #fee2e2", boxShadow: "0 20px 40px rgba(220,38,38,0.05)", overflow: "hidden" }}>
+            <motion.div {...scaleUp(0.4)} className="schools-realities-column schools-realities-column-worry">
               <div style={{ background: "#fef2f2", padding: "24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12, borderBottom: "1px solid #fee2e2" }}>
                 <AlertCircle size={28} color="#dc2626" />
                 <h3 style={{ fontSize: 20, fontWeight: 800, color: "#b91c1c" }}>What schools worry about</h3>
               </div>
 
-              <div style={{ padding: "32px 24px", display: "flex", flexDirection: "column", gap: 32 }}>
+              <div className="schools-realities-list">
                 {[
                   {
                     image: "/school_empty_room.webp",
@@ -246,16 +198,16 @@ export default function SchoolHubPage() {
                     desc: "We worry about breakdowns,\nrepairs and hidden costs."
                   }
                 ].map((item, idx) => (
-                  <motion.div key={idx} whileHover={{ scale: 1.02, x: isMobile ? 0 : 8, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }}
+                  <motion.div key={idx} whileHover={{ scale: 1.02, y: -4, boxShadow: "0 15px 30px rgba(220,38,38,0.1)" }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "flex-start", gap: 14, padding: 10, borderRadius: 16 }}>
+                    className="schools-realities-item">
                     {/* Image */}
-                    <div style={{ width: isMobile ? "100%" : 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0 }}>
+                    <div className="schools-realities-item-img">
                       <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     {/* Icon + Text */}
-                    <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                      <div style={{ width: 44, height: 44, borderRadius: 22, background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <div className="schools-realities-item-body">
+                      <div className="schools-realities-item-icon">
                         {item.icon}
                       </div>
                       <div>
@@ -268,25 +220,23 @@ export default function SchoolHubPage() {
               </div>
             </motion.div>
 
-            {/* Center Arrows - only on desktop */}
-            {!isMobile && (
-            <div style={{ position: "absolute", left: "50%", top: "120px", bottom: "40px", display: "flex", flexDirection: "column", justifyContent: "space-between", transform: "translateX(-50%)", padding: "40px 0" }}>
+            {/* Center Arrows */}
+            <div className="schools-realities-arrows">
               {[1, 2, 3, 4].map((i) => (
-                <motion.div key={i} animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }} style={{ width: 40, height: 40, borderRadius: 20, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", boxShadow: "0 4px 12px rgba(0,82,204,0.1)", zIndex: 10 }}>
+                <motion.div key={i} animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }} className="schools-realities-arrows-item">
                   <ArrowRight size={20} />
                 </motion.div>
               ))}
             </div>
-            )}
 
             {/* Right Column: Solution (Green Theme) */}
-            <motion.div {...scaleUp(0.6)} style={{ flex: 1, background: "#fff", borderRadius: 24, border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(34,197,94,0.05)", overflow: "hidden" }}>
+            <motion.div {...scaleUp(0.6)} className="schools-realities-column schools-realities-column-solve">
               <div style={{ background: "#f0fdf4", padding: "24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12, borderBottom: "1px solid #dcfce7" }}>
                 <CheckCircle2 size={28} color="#16a34a" />
                 <h3 style={{ fontSize: 20, fontWeight: 800, color: "#15803d" }}>How SparkVR solves it</h3>
               </div>
 
-              <div style={{ padding: "32px 24px", display: "flex", flexDirection: "column", gap: 32 }}>
+              <div className="schools-realities-list">
                 {[
                   {
                     image: "/sparkvr_classroom.webp",
@@ -313,15 +263,16 @@ export default function SchoolHubPage() {
                     desc: "Durable devices, safe storage,\nregular checkups and local\nservice you can rely on."
                   }
                 ].map((item, idx) => (
-                  <motion.div key={idx} whileHover={{ x: isMobile ? 0 : -5 }}
-                    style={{ display: "flex", alignItems: "flex-start", gap: 16, flexDirection: isMobile ? "column" : "row-reverse" }}>
+                  <motion.div key={idx} whileHover={{ scale: 1.02, y: -4, boxShadow: "0 15px 30px rgba(34,197,94,0.1)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="schools-realities-item schools-realities-item-solve">
                     {/* Image */}
-                    <div style={{ width: isMobile ? "100%" : 140, height: 90, borderRadius: 12, overflow: "hidden", flexShrink: 0 }}>
+                    <div className="schools-realities-item-img">
                       <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     {/* Icon + Text */}
-                    <div style={{ display: "flex", gap: 14, flexDirection: "row", textAlign: "left", flex: 1 }}>
-                      <div style={{ width: 44, height: 44, borderRadius: 22, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <div className="schools-realities-item-body">
+                      <div className="schools-realities-item-icon">
                         {item.icon}
                       </div>
                       <div>
@@ -337,9 +288,9 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Summary Banner */}
-          <motion.div {...fadeUp(0.8)} style={{ marginTop: isMobile ? 32 : 60, background: "#f0f5ff", borderRadius: 16, padding: isMobile ? "20px 16px" : "24px", display: "flex", alignItems: isMobile ? "flex-start" : "center", justifyContent: "center", gap: 14, flexDirection: isMobile ? "column" : "row" }}>
+          <motion.div {...fadeUp(0.8)} className="schools-realities-banner">
             <ShieldCheck size={28} color="#0052cc" style={{ flexShrink: 0 }} />
-            <p style={{ fontSize: isMobile ? 15 : 18, fontWeight: 600, color: "#001a4d", margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontSize: 18, fontWeight: 600, color: "#001a4d", margin: 0, lineHeight: 1.5 }}>
               SparkVR is designed around what schools truly need — <span style={{ color: "#0052cc" }}>practical, reliable and easy to implement.</span>
             </p>
           </motion.div>
@@ -350,11 +301,11 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           IMPLEMENTATION FLOW SECTION (How it works inside your school)
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "20px 60px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+      <section className="schools-section" style={{ background: "#ffffff" }}>
+        <div className="schools-container">
 
           {/* Header */}
-          <div style={{ textAlign: "center", marginBottom: isMobile ? 40 : 80 }}>
+          <div style={{ textAlign: "center", marginBottom: 60 }}>
 
             <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20 }}>
               How it works <span style={{ color: "#0052cc" }}>inside your school</span>
@@ -365,10 +316,10 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Steps Flow */}
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 24, position: "relative" }}>
+          <div className="schools-flow-grid">
 
             {/* Connecting Dotted Line (Background) */}
-            <div style={{ position: "absolute", top: 40, left: "12%", right: "12%", height: 2, background: "transparent", borderTop: "2px dashed #bfdbfe", zIndex: 0 }} />
+            <div className="schools-flow-line" />
 
             {[
               {
@@ -413,36 +364,36 @@ export default function SchoolHubPage() {
                 {...fadeUp(0.2 + idx * 0.1)}
                 whileHover={{ y: -15, scale: 1.04, rotateY: 5, rotateX: 5, zIndex: 10 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1 }}
+                className="schools-flow-step"
               >
 
                 {/* Top Icon Circle */}
-                <div style={{ width: 80, height: 80, borderRadius: 40, background: "#fff", border: "2px solid #eff6ff", boxShadow: "0 10px 30px rgba(0,82,204,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, position: "relative", zIndex: 2 }}>
+                <div className="schools-flow-icon-circle">
                   {step.topIcon}
                 </div>
 
-                {/* Number Badge (Placed outside to prevent clipping) */}
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: -14, position: "relative", zIndex: 10 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 14, background: "#0052cc", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, border: "2px solid #fff", boxShadow: "0 4px 10px rgba(0,82,204,0.2)" }}>
+                {/* Number Badge */}
+                <div className="schools-flow-badge-container">
+                  <div className="schools-flow-badge">
                     {step.num}
                   </div>
                 </div>
 
                 {/* Card */}
-                <div style={{ background: "#fff", borderRadius: 16, border: "1px solid #f1f5f9", boxShadow: "0 10px 40px rgba(0,0,0,0.06)", overflow: "hidden", display: "flex", flexDirection: "column", width: "100%", height: "100%", paddingTop: 14 }}>
+                <div className="schools-flow-card">
 
-                  <div style={{ padding: "20px 20px 0", textAlign: "center", flex: 1 }}>
+                  <div className="schools-flow-card-body">
                     <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a4d", marginBottom: 16 }}>{step.title}</h3>
                     <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.6, whiteSpace: "pre-line", marginBottom: 24 }}>{step.desc}</p>
                   </div>
 
                   {/* Image */}
-                  <div style={{ width: "100%", height: 160, position: "relative", background: "#f8f9fc" }}>
+                  <div className="schools-flow-card-img">
                     <img loading="lazy" decoding="async" src={step.image} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
 
                   {/* Bottom Text Block */}
-                  <div style={{ background: "#f8fbff", padding: "20px", display: "flex", alignItems: "flex-start", gap: 12, borderTop: "1px solid #eff6ff" }}>
+                  <div className="schools-flow-card-footer">
                     <div style={{ background: "#fff", borderRadius: 8, padding: 8, boxShadow: "0 4px 12px rgba(0,82,204,0.05)" }}>
                       {step.btmIcon}
                     </div>
@@ -457,13 +408,13 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner */}
-          <motion.div {...fadeUp(0.6)} style={{ marginTop: isMobile ? 40 : 80, background: "#f8fbff", borderRadius: 16, padding: isMobile ? "20px 16px" : "24px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "center", gap: 16 }}>
+          <motion.div {...fadeUp(0.6)} className="schools-flow-banner">
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <BadgeCheck size={32} color="#0052cc" />
-              <span style={{ fontSize: isMobile ? 16 : 18, fontWeight: 800, color: "#0052cc" }}>Clarity removes hesitation.</span>
+              <span style={{ fontSize: 18, fontWeight: 800, color: "#0052cc" }}>Clarity removes hesitation.</span>
             </div>
-            {!isMobile && <div style={{ width: 1, height: 24, background: "#cbd5e1" }} />}
-            <span style={{ fontSize: isMobile ? 14 : 18, fontWeight: 600, color: "#001a4d" }}>A proven process that fits perfectly into your school.</span>
+            <div className="schools-flow-banner-divider" />
+            <span style={{ fontSize: 18, fontWeight: 600, color: "#001a4d" }}>A proven process that fits perfectly into your school.</span>
           </motion.div>
 
         </div>
@@ -472,19 +423,19 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           INFRASTRUCTURE SIMPLICITY SECTION
       ══════════════════════════════════════ */}
-      <section style={{ position: "relative", padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "20px 60px 40px", zIndex: 1, overflow: "hidden", background: "#f8f9fc" }}>
+      <section className="schools-section" style={{ overflow: "hidden", background: "#f8f9fc" }}>
 
         {/* Background Gradient/Image for Top Half */}
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", backgroundImage: "url('/backgroundimageschoolhub.webp')", backgroundSize: "cover", backgroundPosition: "center top", opacity: 0.1, zIndex: 0 }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", background: "linear-gradient(to right, #f8f9fc 30%, rgba(248,249,252,0.6) 60%, transparent)", zIndex: 0 }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "60vh", background: "linear-gradient(to bottom, transparent 60%, #f8f9fc)", zIndex: 0 }} />
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", position: "relative", zIndex: 2 }}>
+        <div className="schools-container" style={{ position: "relative", zIndex: 2 }}>
 
           {/* Top Hero-ish Area */}
-          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 60, alignItems: "center", marginBottom: isMobile ? 40 : 80 }}>
+          <div className="schools-infra-hero">
             {/* Left Content */}
-            <div style={{ flex: 1, minWidth: isMobile ? 0 : "min(100%, 400px)", width: isMobile ? "100%" : undefined }}>
+            <div className="schools-infra-content">
 
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Simple infrastructure.<br />
@@ -497,7 +448,7 @@ export default function SchoolHubPage() {
                 requirements.
               </motion.p>
 
-              <motion.div {...fadeLeft(0.4)} style={{ display: "flex", alignItems: "center", gap: 20, background: "#eff6ff", padding: "20px 24px", borderRadius: 16, border: "1px solid #dbeafe" }}>
+              <motion.div {...fadeLeft(0.4)} className="schools-infra-banner">
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc" }}>
                   <Plug size={32} />
                 </div>
@@ -508,14 +459,14 @@ export default function SchoolHubPage() {
               </motion.div>
             </div>
 
-            {/* Right Large Image (Simulated by crop of background image) */}
-            <motion.div {...scaleUp(0.5)} style={{ flex: 1.2, height: isMobile ? 220 : 440, borderRadius: 24, overflow: "hidden", position: "relative", boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
+            {/* Right Large Image */}
+            <motion.div {...scaleUp(0.5)} className="schools-infra-image">
               <img loading="lazy" decoding="async" src="/backgroundimageschoolhub.webp" alt="SparkVR Cart" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center" }} />
             </motion.div>
           </div>
 
           {/* 4 Cards Row */}
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 24, marginBottom: isMobile ? 40 : 80 }}>
+          <div className="schools-infra-grid">
             {[
               {
                 icon: <Package size={32} color="#0052cc" />,
@@ -547,12 +498,12 @@ export default function SchoolHubPage() {
                 {...fadeUp(0.3 + idx * 0.1)}
                 whileHover={{ y: -15, scale: 1.04, rotateY: -5, rotateX: 5, zIndex: 10 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ background: "#fff", borderRadius: 20, border: "1px solid #f1f5f9", boxShadow: "0 10px 40px rgba(0,0,0,0.06)", overflow: "hidden", display: "flex", flexDirection: "column", height: "100%" }}
+                className="schools-infra-card"
               >
-                <div style={{ padding: "24px 20px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", flex: 1 }}>
+                <div className="schools-infra-card-body">
 
                   {/* Icon Square/Circle */}
-                  <div style={{ width: 56, height: 56, borderRadius: 14, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                  <div className="schools-infra-card-icon">
                     {card.icon}
                   </div>
 
@@ -560,7 +511,7 @@ export default function SchoolHubPage() {
                   <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.5, whiteSpace: "pre-line", margin: 0 }}>{card.desc}</p>
                 </div>
 
-                <div style={{ width: "100%", height: 130, position: "relative" }}>
+                <div className="schools-infra-card-img">
                   <img loading="lazy" decoding="async" src={card.image} alt={card.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: idx === 0 ? "right center" : "center" }} />
                 </div>
               </motion.div>
@@ -568,7 +519,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner */}
-          <motion.div {...fadeUp(0.6)} style={{ background: "#f0f5ff", borderRadius: 16, padding: isMobile ? "20px 16px" : "24px 32px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "center", gap: isMobile ? 16 : 24, border: "1px solid #e2e8f0" }}>
+          <motion.div {...fadeUp(0.6)} className="schools-infra-bottom-banner">
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <div style={{ width: 40, height: 40, borderRadius: 20, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.1)" }}>
                 <ShieldCheck size={24} color="#0052cc" />
@@ -576,7 +527,7 @@ export default function SchoolHubPage() {
               <span style={{ fontSize: 18, fontWeight: 800, color: "#001a4d" }}>Built to fit your school. Designed to last.</span>
             </div>
 
-            {!isMobile && <div style={{ width: 2, height: 24, background: "#cbd5e1" }} />}
+            <div className="schools-infra-bottom-banner-divider" />
 
             <p style={{ fontSize: 16, fontWeight: 600, color: "#475569", margin: 0 }}>
               Reliable infrastructure that stays in the background,<br />
@@ -590,13 +541,13 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           TEACHER EXPERIENCE SECTION (Designed for teachers)
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "20px 60px 40px", background: "#ffffff", position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+      <section className="schools-section" style={{ background: "#ffffff" }}>
+        <div className="schools-container">
 
-          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 60, alignItems: "center", marginBottom: isMobile ? 40 : 80 }}>
+          <div className="schools-teacher-hero">
 
             {/* Left Content */}
-            <div style={{ flex: 1, minWidth: isMobile ? 0 : "min(100%, 450px)", width: isMobile ? "100%" : undefined }}>
+            <div className="schools-teacher-content">
               <motion.div {...fadeLeft(0.1)} style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "8px 16px", background: "#eff6ff", borderRadius: 8 }}>
                 <User size={18} color="#0052cc" />
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em", textTransform: "uppercase" }}>
@@ -614,7 +565,7 @@ export default function SchoolHubPage() {
                 guided workflows, and complete academic alignment.
               </motion.p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+              <div className="schools-teacher-features">
                 {[
                   {
                     icon: <MonitorPlay size={24} color="#0052cc" />,
@@ -637,8 +588,8 @@ export default function SchoolHubPage() {
                     desc: "All content is curriculum-aligned and designed to\nsupport your learning objectives."
                   }
                 ].map((item, idx) => (
-                  <motion.div key={idx} {...fadeLeft(0.4 + idx * 0.1)} style={{ display: "flex", gap: 20 }}>
-                    <div style={{ width: 48, height: 48, borderRadius: 24, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid #dbeafe" }}>
+                  <motion.div key={idx} {...fadeLeft(0.4 + idx * 0.1)} className="schools-teacher-feature-item">
+                    <div className="schools-teacher-feature-icon">
                       {item.icon}
                     </div>
                     <div>
@@ -655,10 +606,10 @@ export default function SchoolHubPage() {
               {...scaleUp(0.5)}
               whileHover={{ rotateY: -3, rotateX: 2, scale: 1.02, zIndex: 10 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              style={{ flex: 1.2, height: isMobile ? 260 : 600, borderRadius: 24, position: "relative", perspective: 1000 }}
+              className="schools-teacher-image-container"
             >
-              <div style={{ width: "100%", height: "100%", borderRadius: 24, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,82,204,0.15)" }}>
-                <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Teacher Dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+              <div className="schools-teacher-image">
+                <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Teacher Dashboard" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
 
               {/* Floating Quote */}
@@ -668,7 +619,7 @@ export default function SchoolHubPage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, duration: 0.6 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                style={{ position: "absolute", bottom: -20, right: 40, background: "#fff", borderRadius: 16, padding: "24px 32px", boxShadow: "0 20px 40px rgba(0,0,0,0.15)", maxWidth: 380, border: "1px solid #f1f5f9", display: isMobile ? "none" : "block" }}
+                className="schools-teacher-quote"
               >
                 <p style={{ fontSize: 16, fontWeight: 800, color: "#001a4d", margin: "0 0 12px 0", lineHeight: 1.4 }}>
                   <span style={{ color: "#0052cc", fontSize: 24, lineHeight: 0.5, verticalAlign: "bottom" }}>"</span>
@@ -681,7 +632,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Feature Columns Bar */}
-          <motion.div {...fadeUp(0.6)} style={{ background: "#f8f9fc", borderRadius: 20, padding: isMobile ? "24px 16px" : "40px", display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 24, marginBottom: 40, border: "1px solid #f1f5f9" }}>
+          <motion.div {...fadeUp(0.6)} className="schools-teacher-grid">
             {[
               {
                 icon: <MousePointer2 size={24} color="#0052cc" />,
@@ -708,9 +659,10 @@ export default function SchoolHubPage() {
                 key={idx}
                 whileHover={{ y: -8, scale: 1.05, rotateX: 5, rotateY: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                style={{ display: "flex", gap: 16, cursor: "default", perspective: 1000 }}
+                className="schools-teacher-grid-item"
+                style={{ perspective: 1000 }}
               >
-                <div style={{ width: 48, height: 48, borderRadius: 24, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 12px rgba(0,82,204,0.05)" }}>
+                <div className="schools-teacher-grid-icon">
                   {feat.icon}
                 </div>
                 <div>
@@ -722,7 +674,7 @@ export default function SchoolHubPage() {
           </motion.div>
 
           {/* Bottom Banner */}
-          <motion.div {...fadeUp(0.7)} style={{ background: "#f0f5ff", borderRadius: isMobile ? 20 : 100, padding: isMobile ? "16px 20px" : "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: 16, maxWidth: isMobile ? "100%" : "fit-content", margin: "0 auto", border: "1px solid #dbeafe" }}>
+          <motion.div {...fadeUp(0.7)} className="schools-teacher-bottom-banner">
             <div style={{ width: 36, height: 36, borderRadius: 18, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.3)" }}>
               <Heart size={18} color="#fff" fill="#fff" />
             </div>
@@ -737,8 +689,8 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           OPERATIONAL CLARITY SECTION
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "40px 20px 40px" : isTablet ? "40px 32px 40px" : "40px 60px 40px", background: "#fdfdff", position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+      <section className="schools-section" style={{ background: "#fdfdff" }}>
+        <div className="schools-container">
 
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 0 }}>
@@ -755,23 +707,24 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 4 Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 20, marginBottom: 60 }}>
+          <div className="schools-ops-grid">
 
             {/* Card 1: Fixed Session Duration */}
             <motion.div
               {...fadeUp(0.4)}
               whileHover={{ y: -12, scale: 1.02, rotateX: 2, rotateY: 2, boxShadow: "0 25px 50px rgba(0,82,204,0.12)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ background: "#fff", borderRadius: 24, border: "1px solid #f1f5f9", overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.04)", perspective: 1000 }}
+              className="schools-ops-card"
+              style={{ perspective: 1000 }}
             >
-              <div style={{ padding: "40px 24px 24px", textAlign: "center" }}>
+              <div className="schools-ops-card-body">
                 <div style={{ width: 64, height: 64, borderRadius: 32, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
                   <Clock size={28} color="#0052cc" />
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a4d", marginBottom: 12 }}>Fixed Session Duration</h3>
                 <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.6, margin: 0 }}>Optimized time slots for<br />focused and effective learning.</p>
               </div>
-              <div style={{ flex: 1, padding: "0 16px 16px", display: "flex", alignItems: "flex-end" }}>
+              <div className="schools-ops-card-visual">
                 <div style={{ width: "100%", height: 200, borderRadius: 16, overflow: "hidden", position: "relative", background: "#0f172a" }}>
                   <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
                   <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", textAlign: "center" }}>
@@ -788,16 +741,17 @@ export default function SchoolHubPage() {
               {...fadeUp(0.5)}
               whileHover={{ y: -12, scale: 1.02, rotateX: 2, rotateY: 2, boxShadow: "0 25px 50px rgba(0,82,204,0.12)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ background: "#fff", borderRadius: 24, border: "1px solid #f1f5f9", overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.04)", perspective: 1000 }}
+              className="schools-ops-card"
+              style={{ perspective: 1000 }}
             >
-              <div style={{ padding: "40px 24px 24px", textAlign: "center" }}>
+              <div className="schools-ops-card-body">
                 <div style={{ width: 64, height: 64, borderRadius: 32, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
                   <Users size={28} color="#0052cc" />
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a4d", marginBottom: 12 }}>Planned Rotations</h3>
                 <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.6, margin: 0 }}>Structured batches ensure every<br />student gets equal access.</p>
               </div>
-              <div style={{ flex: 1, padding: "0 16px 16px", display: "flex", alignItems: "flex-end" }}>
+              <div className="schools-ops-card-visual">
                 <div style={{ width: "100%", height: 200, borderRadius: 16, background: "#f8fafc", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <div style={{ position: "relative", width: 220, height: 160 }}>
                     {/* Batch A */}
@@ -834,16 +788,17 @@ export default function SchoolHubPage() {
               {...fadeUp(0.6)}
               whileHover={{ y: -12, scale: 1.02, rotateX: 2, rotateY: 2, boxShadow: "0 25px 50px rgba(0,82,204,0.12)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ background: "#fff", borderRadius: 24, border: "1px solid #f1f5f9", overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.04)", perspective: 1000 }}
+              className="schools-ops-card"
+              style={{ perspective: 1000 }}
             >
-              <div style={{ padding: "40px 24px 24px", textAlign: "center" }}>
+              <div className="schools-ops-card-body">
                 <div style={{ width: 64, height: 64, borderRadius: 32, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
                   <Calendar size={28} color="#0052cc" />
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a4d", marginBottom: 12 }}>Clear Scheduling</h3>
                 <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.6, margin: 0 }}>Easy-to-manage timetable that<br />fits your school day.</p>
               </div>
-              <div style={{ flex: 1, padding: "0 16px 16px", display: "flex", alignItems: "flex-end" }}>
+              <div className="schools-ops-card-visual">
                 <div style={{ width: "100%", height: 200, borderRadius: 16, border: "1px solid #e2e8f0", overflow: "hidden", display: "flex", flexDirection: "column", background: "#fff" }}>
                   {[
                     { time: "09:00 - 09:40", batch: "Batch A", class: "Grade 6 - Science", color: "#2563eb", bg: "#eff6ff" },
@@ -867,16 +822,17 @@ export default function SchoolHubPage() {
               {...fadeUp(0.7)}
               whileHover={{ y: -12, scale: 1.02, rotateX: 2, rotateY: 2, boxShadow: "0 25px 50px rgba(0,82,204,0.12)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ background: "#fff", borderRadius: 24, border: "1px solid #f1f5f9", overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 10px 30px rgba(0,0,0,0.04)", perspective: 1000 }}
+              className="schools-ops-card"
+              style={{ perspective: 1000 }}
             >
-              <div style={{ padding: "40px 24px 24px", textAlign: "center" }}>
+              <div className="schools-ops-card-body">
                 <div style={{ width: 64, height: 64, borderRadius: 32, background: "#f0f5ff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
                   <UserCheck size={28} color="#0052cc" />
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a4d", marginBottom: 12 }}>Defined Roles</h3>
                 <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.6, margin: 0 }}>Clear responsibilities make<br />implementation simple.</p>
               </div>
-              <div style={{ flex: 1, padding: "0 16px 16px", display: "flex", alignItems: "flex-end" }}>
+              <div className="schools-ops-card-visual">
                 <div style={{ width: "100%", height: 200, display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f8fafc", borderRadius: 16, padding: "16px 12px", border: "1px solid #f1f5f9" }}>
                   {[
                     { icon: User, title: "Teacher", desc: "Conducts sessions\nand manages students" },
@@ -911,26 +867,25 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           CONSISTENT EXCELLENCE SECTION (7th)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "20px 20px 40px", background: "#ffffff", position: "relative", zIndex: 1, overflow: "hidden" }}>
+      <section className="schools-section" style={{ background: "#ffffff" }}>
 
         {/* Background Image with Fade */}
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "700px", zIndex: 0, display: isMobile ? "none" : "block" }}
+          className="schools-excellence-bg-image"
         >
-          <img loading="lazy" decoding="async" src="/section7.webp" alt="Consistent Experience" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top right" }} />
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "30%", background: "linear-gradient(to right, #ffffff 0%, transparent 100%)" }} />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, #ffffff 0%, transparent 100%)" }} />
+          <img loading="lazy" decoding="async" src="/section7.webp" alt="Consistent Experience" />
+          <div className="schools-excellence-bg-image-fade-left" />
+          <div className="schools-excellence-bg-image-fade-bottom" />
         </motion.div>
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", position: "relative", zIndex: 2 }}>
+        <div className="schools-container" style={{ position: "relative", zIndex: 2 }}>
 
           {/* Header */}
-          <div style={{ marginBottom: isMobile ? 40 : 180, maxWidth: 650 }}>
+          <div className="schools-excellence-header">
             <motion.div {...fadeUp(0.1)} style={{ display: "inline-flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
-
               <div style={{ width: 40, height: 2, background: "#0052cc", borderRadius: 2 }} />
             </motion.div>
 
@@ -945,7 +900,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 5 Vertical Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 20, marginBottom: 24 }}>
+          <div className="schools-excellence-grid">
 
             {[
               { icon: ShieldCheck, title: "Standardized Quality", desc: "Every session follows proven standards for the best learning experience." },
@@ -959,7 +914,7 @@ export default function SchoolHubPage() {
                 {...fadeUp(0.4 + idx * 0.1)}
                 whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 40px rgba(0,82,204,0.08)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ background: "#fff", borderRadius: 24, border: "1px solid #f1f5f9", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}
+                className="schools-excellence-card"
               >
                 <motion.div
                   whileHover={{ rotate: [0, -10, 10, -5, 5, 0], scale: 1.1 }}
@@ -976,27 +931,24 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner (Split) */}
-          <motion.div
-            {...fadeUp(0.9)}
-            style={{ background: "#f8f9fc", borderRadius: 16, border: "1px solid #f1f5f9", padding: isMobile ? "20px 16px" : "24px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 16 : 40 }}
-          >
+          <motion.div {...fadeUp(0.9)} className="schools-excellence-banner">
             <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
               <motion.div whileHover={{ rotate: 360, scale: 1.1 }} transition={{ duration: 0.6, type: "spring" }}
                 style={{ width: 48, height: 48, borderRadius: 24, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <BadgeCheck size={24} color="#0052cc" strokeWidth={1.5} />
               </motion.div>
               <div>
-                <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>Consistency builds confidence.</p>
-                <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#0052cc", margin: 0 }}>Confidence drives better learning outcomes.</p>
+                <p style={{ fontSize: 16, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>Consistency builds confidence.</p>
+                <p style={{ fontSize: 16, fontWeight: 800, color: "#0052cc", margin: 0 }}>Confidence drives better learning outcomes.</p>
               </div>
             </div>
-            {!isMobile && <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />}
+            <div className="schools-excellence-banner-divider" />
             <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
               <motion.div whileHover={{ rotate: 360, scale: 1.1 }} transition={{ duration: 0.6, type: "spring" }}
                 style={{ width: 48, height: 48, borderRadius: 24, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <GraduationCap size={24} color="#0052cc" strokeWidth={1.5} />
               </motion.div>
-              <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 700, color: "#475569", margin: 0 }}>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "#475569", margin: 0 }}>
                 Same experience. Every student. Every session.
               </p>
             </div>
@@ -1008,25 +960,25 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           EASY SETUP SECTION (8th)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "40px 0 40px", background: "#f8f9fc", position: "relative", zIndex: 1, overflow: "hidden" }}>
+      <section className="schools-section" style={{ background: "#f8f9fc" }}>
 
         {/* Full-bleed background image for the top half */}
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0, display: isMobile ? "none" : "block" }}
+          className="schools-setup-bg-image"
         >
-          <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Setup Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "left" }} />
+          <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Setup Classroom" />
           {/* Gradients to fade it seamlessly into the page background */}
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, transparent 100%)" }} />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, #f8f9fc 0%, transparent 100%)" }} />
+          <div className="schools-setup-bg-image-fade-left" />
+          <div className="schools-setup-bg-image-fade-bottom" />
         </motion.div>
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
+        <div className="schools-container" style={{ position: "relative", zIndex: 2 }}>
 
           {/* Header Layout */}
-          <div style={{ marginBottom: isMobile ? 40 : 120, paddingTop: 40 }}>
+          <div className="schools-setup-header">
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
@@ -1046,13 +998,13 @@ export default function SchoolHubPage() {
             </div>
           </div>
 
-          {/* Steps Timeline Container (Below the Image) */}
-          <div style={{ position: "relative", marginBottom: 60 }}>
+          {/* Steps Timeline Container */}
+          <div className="schools-setup-timeline">
             {/* Connecting Dotted Line */}
-            <div style={{ position: "absolute", top: 80, left: 100, right: 100, height: 2, borderTop: "2px dashed #cbd5e1", zIndex: 0 }} />
+            <div className="schools-setup-timeline-line" />
 
             {/* 5 Process Cards */}
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 20, position: "relative", zIndex: 1 }}>
+            <div className="schools-setup-grid">
 
               {[
                 { num: "1", icon: MessageSquare, title: "Consult", desc: "We understand your goals and recommend the right solution." },
@@ -1066,7 +1018,7 @@ export default function SchoolHubPage() {
                   {...fadeUp(0.2 + idx * 0.1)}
                   whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 40px rgba(0,82,204,0.08)" }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  style={{ background: "#fff", borderRadius: 24, padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.03)", position: "relative" }}
+                  className="schools-setup-card"
                 >
                   {/* Step Number Badge */}
                   <motion.div
@@ -1074,7 +1026,7 @@ export default function SchoolHubPage() {
                     whileInView={{ scale: 1 }}
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.3 + idx * 0.1 }}
-                    style={{ position: "absolute", top: 24, left: 24, width: 28, height: 28, borderRadius: 14, background: "#0052cc", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, zIndex: 2 }}
+                    className="schools-setup-badge"
                   >
                     {step.num}
                   </motion.div>
@@ -1082,7 +1034,7 @@ export default function SchoolHubPage() {
                   <motion.div
                     whileHover={{ y: -5, scale: 1.1, rotateY: 180 }}
                     transition={{ duration: 0.6 }}
-                    style={{ width: 80, height: 80, borderRadius: 40, background: "#fff", border: "2px solid #eff6ff", boxShadow: "0 10px 20px rgba(0,82,204,0.05)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 32, marginTop: 10, position: "relative", zIndex: 2 }}
+                    className="schools-setup-icon-circle"
                   >
                     <step.icon size={36} color="#0052cc" strokeWidth={1.5} />
                   </motion.div>
@@ -1096,24 +1048,21 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner */}
-          <motion.div
-            {...fadeUp(0.8)}
-            style={{ background: "#ffffff", borderRadius: 16, border: "1px solid #f1f5f9", padding: isMobile ? "20px 16px" : "24px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 40, boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}
-          >
+          <motion.div {...fadeUp(0.8)} className="schools-setup-bottom-banner">
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <motion.div whileHover={{ y: -10, scale: 1.1, rotate: 15 }} transition={{ type: "spring", stiffness: 400 }}
                 style={{ width: 56, height: 56, borderRadius: 28, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 10px 20px rgba(0,82,204,0.2)" }}>
                 <Rocket size={28} color="#ffffff" strokeWidth={1.5} />
               </motion.div>
               <div>
-                <p style={{ fontSize: isMobile ? 15 : 20, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>From day one to every day after — we've got you.</p>
-                <p style={{ fontSize: isMobile ? 13 : 16, fontWeight: 700, color: "#0052cc", margin: 0 }}>You focus on teaching. We take care of everything else.</p>
+                <p style={{ fontSize: 20, fontWeight: 800, color: "#001a4d", margin: "0 0 4px 0" }}>From day one to every day after — we've got you.</p>
+                <p style={{ fontSize: 16, fontWeight: 700, color: "#0052cc", margin: 0 }}>You focus on teaching. We take care of everything else.</p>
               </div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 16 : 32, flexWrap: "wrap" }}>
+            <div className="schools-setup-banner-features">
               {[{ Icon: ShieldCheck, label: "Hassle-free\nexperience" }, { Icon: Users, label: "Dedicated\nsupport" }, { Icon: TrendingUp, label: "Long-term\npartnership" }].map(({ Icon, label }, i) => (
                 <React.Fragment key={i}>
-                  {i > 0 && !isMobile && <div style={{ width: 1, height: 32, background: "#cbd5e1" }} />}
+                  {i > 0 && <div className="schools-setup-banner-divider" />}
                   <motion.div whileHover={{ scale: 1.05 }} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <Icon size={24} color="#0052cc" strokeWidth={1.5} />
                     <p style={{ fontSize: 13, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.2, whiteSpace: "pre-line" }}>{label}</p>
@@ -1129,25 +1078,25 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           BUILT FOR SCHOOLS SECTION (9th)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "40px 0 40px", background: "#f8f9fc", position: "relative", zIndex: 1, overflow: "hidden" }}>
+      <section className="schools-section" style={{ background: "#f8f9fc" }}>
 
         {/* Full-bleed background image for the top half */}
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "60%", height: "500px", zIndex: 0, display: isMobile ? "none" : "block" }}
+          className="schools-built-bg-image"
         >
-          <img loading="lazy" decoding="async" src="/section7.webp" alt="Students in VR" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+          <img loading="lazy" decoding="async" src="/section7.webp" alt="Students in VR" />
           {/* Gradients to fade it seamlessly into the page background */}
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #f8f9fc 0%, transparent 100%)" }} />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, #f8f9fc 0%, transparent 100%)" }} />
+          <div className="schools-setup-bg-image-fade-left" />
+          <div className="schools-setup-bg-image-fade-bottom" />
         </motion.div>
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
+        <div className="schools-container" style={{ position: "relative", zIndex: 2 }}>
 
           {/* Header Layout */}
-          <div style={{ marginBottom: isMobile ? 40 : 120, paddingTop: 40 }}>
+          <div className="schools-built-header">
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
@@ -1169,7 +1118,7 @@ export default function SchoolHubPage() {
           </div>
 
           {/* 5 Process Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 20, position: "relative", zIndex: 1, marginBottom: 60 }}>
+          <div className="schools-built-grid">
 
             {[
               { icon: ShieldCheck, title: "Safe & Secure", desc: "Student safety and data privacy are always our priority." },
@@ -1183,12 +1132,12 @@ export default function SchoolHubPage() {
                 {...fadeUp(0.2 + idx * 0.1)}
                 whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 40px rgba(0,82,204,0.08)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ background: "#fff", borderRadius: 24, padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}
+                className="schools-setup-card"
               >
                 <motion.div
                   whileHover={{ rotate: [0, -10, 10, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
-                  style={{ width: 80, height: 80, borderRadius: 40, background: "#fff", border: "2px solid #eff6ff", boxShadow: "0 10px 20px rgba(0,82,204,0.05)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 32 }}
+                  className="schools-setup-icon-circle"
                 >
                   <step.icon size={36} color="#0052cc" strokeWidth={1.5} />
                 </motion.div>
@@ -1201,23 +1150,20 @@ export default function SchoolHubPage() {
           </div>
 
           {/* Bottom Banner */}
-          <motion.div
-            {...fadeUp(0.8)}
-            style={{ background: "#eff6ff", borderRadius: 16, border: "1px solid #e0e7ff", padding: isMobile ? "20px 16px" : "24px 40px", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 40, boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}
-          >
+          <motion.div {...fadeUp(0.8)} className="schools-built-bottom-banner">
             <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
               <motion.div whileHover={{ rotate: 15, scale: 1.1 }} transition={{ type: "spring" }}
                 style={{ width: 56, height: 56, borderRadius: 28, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 10px 20px rgba(0,82,204,0.2)" }}>
                 <GraduationCap size={28} color="#ffffff" strokeWidth={1.5} />
               </motion.div>
-              <p style={{ fontSize: isMobile ? 14 : 18, fontWeight: 700, color: "#001a4d", margin: 0, lineHeight: 1.4 }}>
+              <p style={{ fontSize: 18, fontWeight: 700, color: "#001a4d", margin: 0, lineHeight: 1.4 }}>
                 Empowering schools to deliver unforgettable learning experiences that <span style={{ color: "#0052cc" }}>prepare students for the future.</span>
               </p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 24 : 40 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
               {[{ Icon: Lightbulb, label: "Engage" }, { Icon: Heart, label: "Inspire" }, { Icon: Rocket, label: "Empower" }].map(({ Icon, label }, i) => (
                 <React.Fragment key={i}>
-                  {i > 0 && <div style={{ width: 1, height: 40, background: "#cbd5e1" }} />}
+                  {i > 0 && <div className="schools-built-banner-divider" />}
                   <motion.div whileHover={{ y: -5, scale: 1.1 }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
                     <Icon size={24} color="#0052cc" strokeWidth={1.5} />
                     <p style={{ fontSize: 13, fontWeight: 700, color: "#475569", margin: 0 }}>{label}</p>
@@ -1233,28 +1179,12 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           READY TO GET STARTED SECTION (10th)
       ══════════════════════════════════════ */}
-      <section style={{ padding: "40px 0 120px", background: "#ffffff", position: "relative", zIndex: 1, overflow: "hidden" }}>
+      <section className="schools-section" style={{ background: "#ffffff", paddingBottom: 120 }}>
+        <div className="schools-container">
 
-        {/* Right Side Large Arc/Circle Image */}
-        <motion.div
-          initial={{ scale: 1.05, opacity: 0, x: 100 }}
-          whileInView={{ scale: 1, opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: EASE }}
-          style={{ position: "absolute", top: 0, right: 0, width: "65%", height: "100%", zIndex: 0, display: isMobile ? "none" : "block" }}
-        >
-          {/* Big curved shape for the image */}
-          <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: "100%", overflow: "hidden", borderTopLeftRadius: "40% 100%" }}>
-            <img loading="lazy" decoding="async" src="/vr_girl_pointing.webp" alt="VR Learning" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-          </div>
-          {/* Faint overlay to ensure text/bubbles pop if overlapping */}
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "40%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.8) 40%, transparent 100%)" }} />
-        </motion.div>
-
-        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 20px", position: "relative", zIndex: 2 }}>
-
-          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", minHeight: isMobile ? "auto" : 600 }}>
+          <div className="schools-ready-hero">
             {/* Left Content */}
-            <div style={{ flex: 1, maxWidth: isMobile ? "100%" : 500 }}>
+            <div className="schools-ready-content">
               {/* READY TO GET STARTED */}
               <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
                 <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -1290,64 +1220,65 @@ export default function SchoolHubPage() {
               </motion.div>
             </div>
 
-            {/* Spacer for Right side — hidden on mobile */}
-            {!isMobile && <div style={{ flex: 1.2, position: "relative" }}>
-                {/* Floating Bubbles on the right image */}
-              <div style={{ position: "absolute", top: -200, left: -50, width: "110%", height: 500, zIndex: 2, pointerEvents: "none" }}>
-                {/* SVG Dotted Arc connecting the bubbles */}
+            {/* Spacer for Right side */}
+            <div className="schools-ready-image-container">
+              <div className="schools-ready-image-arc">
+                <img loading="lazy" decoding="async" src="/vr_girl_pointing.webp" alt="VR Learning" />
+              </div>
+              <div className="schools-ready-image-fade" />
+
+              {/* Floating Bubbles */}
+              <div className="schools-ready-bubbles">
+                {/* SVG Dotted Arc */}
                 <svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }} viewBox="0 0 600 500">
                   <path d="M 100 200 Q 300 -50 550 120" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="6 6" />
                 </svg>
 
                 {/* Bubble 1: Engaged Students */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} style={{ position: "absolute", top: 160, left: "12%", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, pointerEvents: "auto" }}>
-                  <motion.div whileHover={{ scale: 1.2, rotate: 15 }} style={{ width: 64, height: 64, borderRadius: 32, background: "#fff", border: "1px solid #eff6ff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(0,0,0,0.06)" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="schools-ready-bubble-item" style={{ top: 160, left: "12%" }}>
+                  <motion.div whileHover={{ scale: 1.2, rotate: 15 }} className="schools-ready-bubble-icon">
                     <Rocket size={28} color="#0052cc" />
                   </motion.div>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", textAlign: "center", background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>Engaged<br />Students</span>
+                  <span className="schools-ready-bubble-text">Engaged<br />Students</span>
                 </motion.div>
 
                 {/* Bubble 2: Better Results */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} style={{ position: "absolute", top: 10, left: "38%", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, pointerEvents: "auto" }}>
-                  <motion.div whileHover={{ scale: 1.2, y: -10 }} style={{ width: 64, height: 64, borderRadius: 32, background: "#fff", border: "1px solid #eff6ff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(0,0,0,0.06)" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="schools-ready-bubble-item" style={{ top: 10, left: "38%" }}>
+                  <motion.div whileHover={{ scale: 1.2, y: -10 }} className="schools-ready-bubble-icon">
                     <TrendingUp size={28} color="#0052cc" />
                   </motion.div>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", textAlign: "center", background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>Better<br />Results</span>
+                  <span className="schools-ready-bubble-text">Better<br />Results</span>
                 </motion.div>
 
                 {/* Bubble 3: Future Ready */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.9 }} style={{ position: "absolute", top: 0, left: "64%", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, pointerEvents: "auto" }}>
-                  <motion.div whileHover={{ scale: 1.2, rotate: -15 }} style={{ width: 64, height: 64, borderRadius: 32, background: "#fff", border: "1px solid #eff6ff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(0,0,0,0.06)" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.9 }} className="schools-ready-bubble-item" style={{ top: 0, left: "64%" }}>
+                  <motion.div whileHover={{ scale: 1.2, rotate: -15 }} className="schools-ready-bubble-icon">
                     <GraduationCap size={28} color="#0052cc" />
                   </motion.div>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", textAlign: "center", background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>Future<br />Ready</span>
+                  <span className="schools-ready-bubble-text">Future<br />Ready</span>
                 </motion.div>
 
                 {/* Bubble 4: Limitless Possibilities */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 1.1 }} style={{ position: "absolute", top: 80, left: "88%", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, pointerEvents: "auto" }}>
-                  <motion.div whileHover={{ scale: 1.2, rotate: 180 }} transition={{ duration: 0.6 }} style={{ width: 64, height: 64, borderRadius: 32, background: "#fff", border: "1px solid #eff6ff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 20px rgba(0,0,0,0.06)" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 1.1 }} className="schools-ready-bubble-item" style={{ top: 80, left: "88%" }}>
+                  <motion.div whileHover={{ scale: 1.2, rotate: 180 }} transition={{ duration: 0.6 }} className="schools-ready-bubble-icon">
                     <Globe size={28} color="#0052cc" />
                   </motion.div>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d", textAlign: "center", background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>Limitless<br />Possibilities</span>
+                  <span className="schools-ready-bubble-text">Limitless<br />Possibilities</span>
                 </motion.div>
               </div>
-            </div>}
+            </div>
           </div>
 
           {/* Bottom Banner */}
-          <motion.div
-            {...fadeUp(0.6)}
-            style={{ background: "#f8f9fc", borderRadius: 12, padding: isMobile ? "16px" : "20px 24px", display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 16, marginTop: isMobile ? 40 : 100, position: "relative", zIndex: 10 }}
-          >
-            {/* 4 Items */}
+          <motion.div {...fadeUp(0.6)} className="schools-ready-bottom-banner">
             {[
               { icon: MessageSquare, title: "Talk to an Expert", desc: "Get answers to your\nquestions." },
               { icon: School, title: "See It in Action", desc: "Experience VR learning\nfirsthand." },
               { icon: ClipboardList, title: "Customized for You", desc: "Solutions tailored to\nyour school's needs." },
               { icon: Handshake, title: "Partner for Success", desc: "We're with you every\nstep of the way." }
             ].map((item, idx) => (
-              <motion.div key={idx} whileHover={{ y: -5, scale: 1.02 }} style={{ display: "flex", gap: 16, alignItems: "flex-start", position: "relative" }}>
-                <motion.div whileHover={{ rotate: 15 }} style={{ width: 40, height: 40, borderRadius: 20, background: "#fff", border: "2px solid #eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 10px rgba(0,82,204,0.05)" }}>
+              <motion.div key={idx} whileHover={{ y: -5, scale: 1.02 }} className="schools-ready-banner-item">
+                <motion.div whileHover={{ rotate: 15 }} className="schools-ready-banner-icon">
                   <item.icon size={20} color="#0052cc" strokeWidth={1.5} />
                 </motion.div>
                 <div>
@@ -1355,7 +1286,7 @@ export default function SchoolHubPage() {
                   <p style={{ fontSize: 12, color: "#64748b", margin: 0, whiteSpace: "pre-line", lineHeight: 1.5 }}>{item.desc}</p>
                 </div>
                 {/* Divider for first 3 */}
-                {idx < 3 && <div style={{ position: "absolute", right: -8, top: "10%", bottom: "10%", width: 1, background: "#cbd5e1" }} />}
+                {idx < 3 && <div className="schools-ready-banner-divider" />}
               </motion.div>
             ))}
           </motion.div>
