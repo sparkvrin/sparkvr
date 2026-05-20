@@ -149,54 +149,6 @@ function useScreenSize() {
 /* ═══════════════════════════════════════════════════════
    3D BACKGROUND PARTICLES
 ═══════════════════════════════════════════════════════ */
-function BackgroundParticles3D() {
-  const groupRef = useRef<THREE.Group>(null);
-
-  const count = 400;
-  const positions1 = React.useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 30;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 30;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 20 - 5;
-    }
-    return pos;
-  }, [count]);
-
-  const positions2 = React.useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 30;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 30;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 20 - 5;
-    }
-    return pos;
-  }, [count]);
-
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return;
-    const time = clock.getElapsedTime();
-    groupRef.current.rotation.y = time * 0.05;
-    groupRef.current.rotation.x = Math.sin(time * 0.05) * 0.15;
-  });
-
-  return (
-    <group ref={groupRef}>
-      <points>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[positions1, 3]} />
-        </bufferGeometry>
-        <pointsMaterial size={0.06} color="#3b82f6" transparent opacity={0.7} sizeAttenuation={true} />
-      </points>
-      <points>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[positions2, 3]} />
-        </bufferGeometry>
-        <pointsMaterial size={0.08} color="#e040fb" transparent opacity={0.6} sizeAttenuation={true} />
-      </points>
-    </group>
-  );
-}
 
 /* ═══════════════════════════════════════════════════════
    SHARED BACKGROUND
@@ -222,15 +174,6 @@ function HeroBackground() {
           filter: "blur(30px)",
           borderRadius: "50% 50% 0 0 / 30% 30% 0 0",
         }} />
-      </div>
-
-      {/* 3D PARTICLE FIELD */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
-        <Canvas camera={{ position: [0, 0, 10], fov: 60 }} gl={{ alpha: true, antialias: false }}>
-          <Suspense fallback={null}>
-            <BackgroundParticles3D />
-          </Suspense>
-        </Canvas>
       </div>
 
       <motion.div
