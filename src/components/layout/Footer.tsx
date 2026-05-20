@@ -161,7 +161,6 @@ export default function Footer() {
               {
                 title: "Product", icon: Package,
                 links: [
-                  { label: "VISION", href: "/#vision" },
                   { label: "FOR SCHOOLS", href: "/schools" },
                   { label: "FOR TEACHERS", href: "/teachers" }
                 ]
