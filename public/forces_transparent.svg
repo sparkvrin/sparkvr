@@ -5,6 +5,11 @@
       <stop offset="45%" stop-color="#2563eb"/>
       <stop offset="100%" stop-color="#1e3a8a"/>
     </radialGradient>
+    <radialGradient id="ballCyan" cx="33%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="45%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </radialGradient>
     <radialGradient id="ballSilver" cx="33%" cy="28%" r="65%">
       <stop offset="0%" stop-color="#f1f5f9"/>
       <stop offset="45%" stop-color="#94a3b8"/>
@@ -22,49 +27,68 @@
     </linearGradient>
   </defs>
 
-  <!-- Frame -->
+  <!-- Frame top bar -->
   <rect x="428" y="148" width="680" height="22" rx="11" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+  <!-- Left vertical leg -->
   <rect x="438" y="148" width="20" height="120" rx="10" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+  <!-- Right vertical leg -->
   <rect x="1078" y="148" width="20" height="120" rx="10" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+  <!-- Frame bottom bar (pivot bar) -->
   <rect x="428" y="248" width="680" height="22" rx="11" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
 
-  <!-- Ball 1 — swings left, pivot (468, 259) -->
+  <!-- BALL 1 — outer left, swings left, pivot (468, 259) -->
   <g>
     <animateTransform attributeName="transform" type="rotate"
       values="-45 468 259; 0 468 259; 0 468 259; 0 468 259; -45 468 259"
-      keyTimes="0; 0.23; 0.27; 0.73; 1"
+      keyTimes="0; 0.25; 0.5; 0.75; 1"
       dur="2s" repeatCount="indefinite"
       calcMode="spline"
       keySplines="0.42 0 0.58 1; 0 0 1 1; 0 0 1 1; 0.42 0 0.58 1"/>
-    <line x1="468" y1="259" x2="468" y2="779" stroke="#111111" stroke-width="4"/>
+    <line x1="468" y1="259" x2="468" y2="779" stroke="#111111" stroke-width="5"/>
     <circle cx="468" cy="779" r="75" fill="url(#ballBlue)" filter="url(#ballShadow)"/>
     <ellipse cx="448" cy="752" rx="22" ry="14" fill="white" opacity="0.28"/>
   </g>
 
-  <!-- Ball 2 — stationary, pivot (612, 259) -->
-  <line x1="612" y1="259" x2="612" y2="779" stroke="#111111" stroke-width="4"/>
-  <circle cx="612" cy="779" r="75" fill="url(#ballSilver)" filter="url(#ballShadow)"/>
-  <ellipse cx="592" cy="752" rx="22" ry="14" fill="white" opacity="0.22"/>
+  <!-- BALL 2 — inner left, swings left with ball 1, pivot (612, 259) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      values="-45 612 259; 0 612 259; 0 612 259; 0 612 259; -45 612 259"
+      keyTimes="0; 0.25; 0.5; 0.75; 1"
+      dur="2s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0.42 0 0.58 1; 0 0 1 1; 0 0 1 1; 0.42 0 0.58 1"/>
+    <line x1="612" y1="259" x2="612" y2="779" stroke="#111111" stroke-width="5"/>
+    <circle cx="612" cy="779" r="75" fill="url(#ballCyan)" filter="url(#ballShadow)"/>
+    <ellipse cx="592" cy="752" rx="22" ry="14" fill="white" opacity="0.25"/>
+  </g>
 
-  <!-- Ball 3 — stationary, pivot (756, 259) -->
-  <line x1="756" y1="259" x2="756" y2="779" stroke="#111111" stroke-width="4"/>
+  <!-- BALL 3 — center, stationary, pivot (756, 259) -->
+  <line x1="756" y1="259" x2="756" y2="779" stroke="#111111" stroke-width="5"/>
   <circle cx="756" cy="779" r="75" fill="url(#ballSilver)" filter="url(#ballShadow)"/>
   <ellipse cx="736" cy="752" rx="22" ry="14" fill="white" opacity="0.22"/>
 
-  <!-- Ball 4 — stationary, pivot (900, 259) -->
-  <line x1="900" y1="259" x2="900" y2="779" stroke="#111111" stroke-width="4"/>
-  <circle cx="900" cy="779" r="75" fill="url(#ballSilver)" filter="url(#ballShadow)"/>
-  <ellipse cx="880" cy="752" rx="22" ry="14" fill="white" opacity="0.22"/>
-
-  <!-- Ball 5 — swings right, pivot (1044, 259) -->
+  <!-- BALL 4 — inner right, swings right with ball 5, pivot (900, 259) -->
   <g>
     <animateTransform attributeName="transform" type="rotate"
-      values="0 1044 259; 0 1044 259; 0 1044 259; 45 1044 259; 0 1044 259"
-      keyTimes="0; 0.23; 0.27; 0.73; 1"
+      values="0 900 259; 0 900 259; 45 900 259; 0 900 259; 0 900 259"
+      keyTimes="0; 0.25; 0.5; 0.75; 1"
       dur="2s" repeatCount="indefinite"
       calcMode="spline"
-      keySplines="0 0 1 1; 0 0 1 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
-    <line x1="1044" y1="259" x2="1044" y2="779" stroke="#111111" stroke-width="4"/>
+      keySplines="0 0 1 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0 0 1 1"/>
+    <line x1="900" y1="259" x2="900" y2="779" stroke="#111111" stroke-width="5"/>
+    <circle cx="900" cy="779" r="75" fill="url(#ballCyan)" filter="url(#ballShadow)"/>
+    <ellipse cx="880" cy="752" rx="22" ry="14" fill="white" opacity="0.25"/>
+  </g>
+
+  <!-- BALL 5 — outer right, swings right, pivot (1044, 259) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      values="0 1044 259; 0 1044 259; 45 1044 259; 0 1044 259; 0 1044 259"
+      keyTimes="0; 0.25; 0.5; 0.75; 1"
+      dur="2s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0 0 1 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0 0 1 1"/>
+    <line x1="1044" y1="259" x2="1044" y2="779" stroke="#111111" stroke-width="5"/>
     <circle cx="1044" cy="779" r="75" fill="url(#ballBlue)" filter="url(#ballShadow)"/>
     <ellipse cx="1024" cy="752" rx="22" ry="14" fill="white" opacity="0.28"/>
   </g>

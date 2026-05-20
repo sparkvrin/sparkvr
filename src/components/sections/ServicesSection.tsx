@@ -58,7 +58,7 @@ function MedalIcon() {
    THE PROBLEM  —  subject image floaters
 ───────────────────────────────────────────────────────── */
 const imgStyle: React.CSSProperties = { width: "100%", height: "100%", objectFit: "contain" };
-function ForcesSVG() { return <img loading="lazy" decoding="async" src="/forces_transparent.svg" alt="Forces" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(29,78,216,0.22))" }} />; }
+function ForcesSVG() { return <img loading="lazy" decoding="async" src="/forces.webp" alt="Forces" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(29,78,216,0.22))" }} />; }
 function AnatomySVG() { return <img loading="lazy" decoding="async" src="/human_anatomy.webp" alt="Anatomy" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(220,38,38,0.24))" }} />; }
 function CellSVG() { return <img loading="lazy" decoding="async" src="/cell1.webp" alt="Cell" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(109,40,217,0.24))" }} />; }
 function PlantCellSVG() { return <img loading="lazy" decoding="async" src="/biological_systems.webp" alt="Bio" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(21,128,61,0.24))" }} />; }
