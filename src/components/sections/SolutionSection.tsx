@@ -525,7 +525,7 @@ export default function SolutionSection() {
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% - 235px), calc(-50% - 240px))" }}>
                 <SubjectCard
                   title="SCIENCE"
-                  desc="Explore the unseen.\nUnderstand the real."
+                  desc="Explore the unseen. Understand the real."
                   gradient="linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%)"
                   delay={0.2} icon={Microscope}
                   threeDNode={
@@ -542,7 +542,7 @@ export default function SolutionSection() {
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% + 235px), calc(-50% - 240px))" }}>
                 <SubjectCard
                   title="MATHEMATICS"
-                  desc="Visualize.\nReason.\nSolve with clarity."
+                  desc="Visualize. Reason. Solve with clarity."
                   imgSrc="/forces_transparent.svg"
                   gradient="linear-gradient(135deg, #2e1065 0%, #5b21b6 50%, #8b5cf6 100%)"
                   delay={0.4} icon={Calculator}
@@ -553,7 +553,7 @@ export default function SolutionSection() {
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% - 260px), calc(-50% + 290px))" }}>
                 <SubjectCard
                   title="SOCIAL STUDIES"
-                  desc="Walk through history.\nConnect with civilizations."
+                  desc="Walk through history. Connect with civilizations."
                   imgSrc="/student.webp"
                   gradient="linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #14b8a6 100%)"
                   delay={0.6} icon={Globe2}

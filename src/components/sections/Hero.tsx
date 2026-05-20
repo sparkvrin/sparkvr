@@ -612,7 +612,7 @@ export default function Hero() {
         {/* ── STUDENT IMAGE ── */}
         <div style={{
           position: "absolute",
-          bottom: -185, left: "32%",
+          bottom: 0, left: "32%",
           transform: "translateX(+8%)",
           zIndex: 10, pointerEvents: "none",
         }}>
@@ -621,9 +621,9 @@ export default function Hero() {
               src="/student_proper.webp"
               alt="Student with VR headset"
               style={{
-                height: "100vh",
+                height: "92vh",
                 objectFit: "contain",
-                objectPosition: "top",
+                objectPosition: "bottom",
                 display: "block",
                 filter: "drop-shadow(0 30px 60px rgba(60,40,150,0.3))",
               }}
