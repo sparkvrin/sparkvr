@@ -147,7 +147,7 @@ export default function SchoolHubPage() {
           REALITIES SECTION (What schools worry about vs How SparkVR solves it)
       ══════════════════════════════════════ */}
       <section className="schools-section">
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div className="schools-container">
 
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 60 }}>
