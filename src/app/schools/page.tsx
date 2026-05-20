@@ -53,7 +53,7 @@ export default function SchoolHubPage() {
 
             <motion.h1 {...fadeLeft(0.1)} style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 20, margin: "0 0 20px 0" }}>
               A VR Lab designed <br />
-              for <span style={{ color: "#0052cc" }}>real schools</span> —<br />
+              for real schools<br />
               not future fantasies.
             </motion.h1>
 
