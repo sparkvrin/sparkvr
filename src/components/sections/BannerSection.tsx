@@ -222,7 +222,7 @@ export default function BannerSection() {
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
         alignItems: isMobile ? "center" : "center",
-        padding: isMobile ? "32px 24px" : "0 40px",
+        padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px",
         gap: isMobile ? 20 : 0,
         textAlign: isMobile ? "center" : "left",
       }}>

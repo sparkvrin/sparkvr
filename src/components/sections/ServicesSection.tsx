@@ -327,10 +327,10 @@ export default function ServicesSection() {
             width: isMobile ? "100%" : isTablet ? "44%" : "38%",
             flexShrink: 0,
             padding: isMobile
-              ? "72px 24px 32px"
+              ? "60px 20px 40px"
               : isTablet
-              ? "48px 24px"
-              : "60px 40px",
+              ? "60px 32px"
+              : "60px 60px",
             display: "flex", flexDirection: "column", justifyContent: "center",
             position: "relative", zIndex: 4,
           }}>
@@ -463,10 +463,10 @@ export default function ServicesSection() {
             width: isMobile ? "100%" : isTablet ? "42%" : "36%",
             flexShrink: 0,
             padding: isMobile
-              ? "56px 24px 32px"
+              ? "60px 20px 40px"
               : isTablet
-              ? "40px 24px"
-              : "60px 40px",
+              ? "60px 32px"
+              : "60px 60px",
             display:"flex", flexDirection:"column", justifyContent:"flex-start", position:"relative", zIndex:2,
           }}>
           <motion.h2 initial={{ opacity:0, y:20, rotateX: 16 }} whileInView={{ opacity:1, y:0, rotateX: 0 }} viewport={{ once:true }} transition={{ delay:0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}

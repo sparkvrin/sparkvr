@@ -329,7 +329,7 @@ export default function Hero() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: "140px 24px 32px",
+          padding: "100px 20px 32px",
           gap: 0,
         }}>
           {/* ── TEXT ── */}
@@ -625,7 +625,7 @@ export default function Hero() {
         </div>
 
         {/* Stats bar — aligned right at bottom, on top of student */}
-        <div style={{ position: "absolute", bottom: 5, left: "48%", right: "2%", zIndex: 40 }}>
+        <div style={{ position: "absolute", bottom: 5, left: "52%", right: "2%", zIndex: 40 }}>
           <motion.div initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
             style={{
               display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px 4px", padding: "10px",
@@ -802,12 +802,13 @@ export default function Hero() {
           justifyContent: "center",
           flexDirection: "column",
           zIndex: 30,
-          paddingLeft: 40,
-          paddingTop: "clamp(120px, 16vh, 180px)",
-          paddingBottom: "80px",
+          paddingLeft: "clamp(20px, 4vw, 60px)",
+          paddingTop: "clamp(100px, 14vh, 160px)",
+          paddingBottom: "60px",
+          maxWidth: "50%",
         }}>
           <div>
-            <div style={{ maxWidth: 600 }}>
+            <div style={{ maxWidth: "min(560px, 100%)" }}>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -933,7 +934,7 @@ export default function Hero() {
         <div style={{
           position: "absolute",
           bottom: 0,
-          left: "48%",
+          left: "50%",
           right: 0,
           zIndex: 40,
         }}>

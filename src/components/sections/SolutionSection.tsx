@@ -311,7 +311,7 @@ export default function SolutionSection() {
         ))}
       </div>
 
-      <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 40, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 24 : 40, paddingRight: isMobile ? 24 : 40 }}>
+      <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 40, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 20 : isTablet ? 32 : 60, paddingRight: isMobile ? 20 : isTablet ? 32 : 60 }}>
 
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - CONTENT
@@ -583,6 +583,7 @@ export default function SolutionSection() {
       {/* ─────────────────────────────────────────────────────────
           BOTTOM FEATURES BAR
       ───────────────────────────────────────────────────────── */}
+      <div style={{ paddingLeft: isMobile ? 20 : isTablet ? 32 : 60, paddingRight: isMobile ? 20 : isTablet ? 32 : 60, width: "100%", maxWidth: 1400, margin: "0 auto" }}>
       <motion.div
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -623,6 +624,7 @@ export default function SolutionSection() {
           </motion.div>
         ))}
       </motion.div>
+      </div>
 
     </section>
   );

@@ -178,7 +178,7 @@ export default function CTASection() {
     >
 
 
-      <div className="cta-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 30, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 24 : 40, paddingRight: isMobile ? 24 : 40 }}>
+      <div className="cta-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 30, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 20 : isTablet ? 32 : 60, paddingRight: isMobile ? 20 : isTablet ? 32 : 60 }}>
 
         {/* ─────────────────────────────────────────────────────────
             LEFT COLUMN - TEXT & CTA
