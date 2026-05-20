@@ -413,7 +413,7 @@ export default function Hero() {
             >
               <div style={{ ...GLASS_STYLE, width: 120, height: 120 }}>
                 <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
-                <img loading="lazy" decoding="async" src="/cell_proper.webp" alt="Cell Structure"
+                <img loading="lazy" decoding="async" src="cell1.webp" alt="Cell Structure"
                   style={{
                     width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1,
                     filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)"
@@ -510,7 +510,7 @@ export default function Hero() {
           <motion.div style={{ transformStyle: "preserve-3d" }}>
             <div style={{ ...GLASS_STYLE, width: bubSz, height: bubSz }}>
               <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
-              <img loading="lazy" decoding="async" src="/cell_proper.webp" alt="Cell Structure" style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3))" }} />
+              <img loading="lazy" decoding="async" src="/cell1.webp" alt="Cell Structure" style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3))" }} />
             </div>
             <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
           </motion.div>
@@ -673,7 +673,7 @@ export default function Hero() {
                 src="/anatomy.webp"
                 alt="Human Anatomy"
                 style={{
-                  width: "78%", height: "78%",
+                  width: "90%", height: "90%",
                   objectFit: "contain",
                   position: "relative", zIndex: 1,
                   filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)",
@@ -699,7 +699,7 @@ export default function Hero() {
                 background: "rgba(255,255,255,0.55)",
               }} />
               <img loading="lazy" decoding="async"
-                src="/cell_proper.webp"
+                src="/cell1.webp"
                 alt="Cell Structure"
                 style={{
                   width: "82%", height: "82%",

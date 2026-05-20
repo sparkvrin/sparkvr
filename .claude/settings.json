@@ -19,7 +19,10 @@
       "PowerShell(Copy-Item \"D:\\\\sparkvr\\\\VAG Rounded\\\\VAG Rounded Thin.ttf\"        \"D:\\\\sparkvr\\\\public\\\\fonts\\\\VAGRounded-Thin.ttf\")",
       "Bash(curl -s http://localhost:3000)",
       "Bash(gh auth *)",
-      "PowerShell(git push origin main 2>&1)"
+      "PowerShell(git push origin main 2>&1)",
+      "Bash(Get-Content \"D:\\\\sparkvr\\\\public\\\\forces_transparent.svg\" -TotalCount 3)",
+      "Bash(Get-Content \"D:\\\\sparkvr\\\\public\\\\forces_transparent.svg\" -TotalCount 5)",
+      "PowerShell($f = \"D:\\\\sparkvr\\\\public\\\\forces_transparent.svg\"; $bytes = [System.IO.File]::ReadAllBytes\\($f\\); $tail = [System.Text.Encoding]::UTF8.GetString\\($bytes, [Math]::Max\\(0,$bytes.Length-3000\\), 3000\\); Write-Output $tail)"
     ]
   }
 }

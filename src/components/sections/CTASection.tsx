@@ -19,12 +19,12 @@ import { CheckCircle2, CalendarDays, ArrowRight, GraduationCap, BarChart3, Users
 /* ─────────────────────────────────────────────────────────
    Continuous 3D Floating Wrapper
 ───────────────────────────────────────────────────────── */
-function Floating3DWrapper({ children, delay = 0, floatAmp = 15, rotateAmp = 5, duration = 6, className = "" }: { 
+function Floating3DWrapper({ children, delay = 0, floatAmp = 15, rotateAmp = 5, duration = 6, className = "" }: {
   children: React.ReactNode; delay?: number; floatAmp?: number; rotateAmp?: number; duration?: number; className?: string;
 }) {
   return (
     <motion.div
-      animate={{ 
+      animate={{
         y: [0, -floatAmp, 0],
         rotateX: [0, rotateAmp, 0, -rotateAmp, 0],
         rotateY: [0, -rotateAmp, 0, rotateAmp, 0],
@@ -66,10 +66,10 @@ function TiltCard({ children, style, className = "" }: { children: React.ReactNo
   );
 }
 
-function FloatingLabel({ 
-  title, desc, icon: Icon, color, delay, top, left, right, bottom, isTapped 
-}: { 
-  title: string, desc: string, icon: any, color: string, delay: number, top?: string|number, left?: string|number, right?: string|number, bottom?: string|number, isTapped?: boolean 
+function FloatingLabel({
+  title, desc, icon: Icon, color, delay, top, left, right, bottom, isTapped
+}: {
+  title: string, desc: string, icon: any, color: string, delay: number, top?: string | number, left?: string | number, right?: string | number, bottom?: string | number, isTapped?: boolean
 }) {
   return (
     <div style={{ position: "absolute", top, left, right, bottom, zIndex: 20 }}>
@@ -105,11 +105,11 @@ function FloatingLabel({
         {/* Header: Icon Bubble + Title */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div style={{ position: "relative", flexShrink: 0 }}>
-            <div style={{ 
-              width: 52, height: 52, borderRadius: "50%", 
-              background: `linear-gradient(135deg, ${color} 0%, #1d4ed8 100%)`, 
-              display: "flex", alignItems: "center", justifyContent: "center", 
-              color: "white", 
+            <div style={{
+              width: 52, height: 52, borderRadius: "50%",
+              background: `linear-gradient(135deg, ${color} 0%, #1d4ed8 100%)`,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "white",
               boxShadow: `0 8px 20px ${color}35`,
               position: "relative",
               zIndex: 2
@@ -119,20 +119,20 @@ function FloatingLabel({
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <h4 style={{ 
-              fontSize: 17, fontWeight: 800, color: "#1e293b", 
+            <h4 style={{
+              fontSize: 17, fontWeight: 800, color: "#1e293b",
               lineHeight: 1.1, margin: 0, textTransform: "none",
               letterSpacing: "-0.02em"
             }}>
-              {title.split('\n').map((t, i) => <React.Fragment key={i}>{t}<br/></React.Fragment>)}
+              {title.split('\n').map((t, i) => <React.Fragment key={i}>{t}<br /></React.Fragment>)}
             </h4>
             <div style={{ width: 45, height: 3, background: "#3b82f6", borderRadius: 4 }} />
           </div>
         </div>
 
         {/* Description */}
-        <p style={{ 
-          fontSize: 13.5, color: "#475569", margin: 0, 
+        <p style={{
+          fontSize: 13.5, color: "#475569", margin: 0,
           lineHeight: 1.5, fontWeight: 500,
         }}>
           {desc}
@@ -150,7 +150,7 @@ export default function CTASection() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ 
+      setMousePos({
         x: (e.clientX / window.innerWidth - 0.5) * 40,
         y: (e.clientY / window.innerHeight - 0.5) * 40
       });
@@ -160,11 +160,11 @@ export default function CTASection() {
   }, []);
 
   return (
-    <section 
-      style={{ 
-        position: "relative", 
-        width: "100%", 
-        minHeight: "100vh", 
+    <section
+      style={{
+        position: "relative",
+        width: "100%",
+        minHeight: "100vh",
         padding: "100px 0 80px",
         backgroundImage: "url('/backgroundimagesecsion5.webp')",
         backgroundSize: "cover",
@@ -184,7 +184,7 @@ export default function CTASection() {
             LEFT COLUMN - TEXT & CTA
         ───────────────────────────────────────────────────────── */}
         <div style={{ flex: "1 1 45%", minWidth: 0, width: isMobile || isTablet ? "100%" : undefined, maxWidth: isMobile ? "100%" : 600, paddingBottom: isMobile ? 0 : 40 }}>
-         
+
 
           <motion.h2
             initial={{ opacity: 0, y: 30, rotateX: 20 }}
@@ -193,9 +193,9 @@ export default function CTASection() {
             transition={{ delay: 0.1, duration: 0.9, type: "spring" }}
             style={{ fontSize: isMobile ? "clamp(32px,8vw,44px)" : "clamp(42px, 5vw, 68px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.1, marginBottom: isMobile ? 24 : 40, transformPerspective: 800, letterSpacing: "-0.03em" }}
           >
-            Experiential learning <br/>
-            will become <br/>
-            <motion.span 
+            Experiential learning <br />
+            will become <br />
+            <motion.span
               animate={{ color: ["#2563eb", "#3b82f6", "#2563eb"] }} transition={{ duration: 4, repeat: Infinity }}
               style={{ color: "#2563eb" }}
             >
@@ -203,15 +203,15 @@ export default function CTASection() {
             </motion.span>
           </motion.h2>
 
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true }} 
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2, type: "spring" }}
             style={{ marginBottom: 40 }}
           >
             <p style={{ fontSize: 26, color: "#1e293b", fontWeight: 500, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
-              The only question is{" — "}<br/>
+              The only question is{" — "}<br />
               <span style={{ color: "#2563eb", fontWeight: 700 }}>who adopts first?</span>
             </p>
           </motion.div>
@@ -230,8 +230,8 @@ export default function CTASection() {
                 marginBottom: 28, transformStyle: "preserve-3d"
               }}
             >
-              <motion.div 
-                animate={{ x: ["-100%", "200%"] }} 
+              <motion.div
+                animate={{ x: ["-100%", "200%"] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
                 style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", transform: "skewX(-20deg)" }}
               />
@@ -244,14 +244,14 @@ export default function CTASection() {
             </motion.button>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
             style={{ display: "flex", alignItems: "center", gap: 12 }}
           >
-             <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#3b82f6", display: "flex", alignItems: "center", justifyContent: "center", color: "white" }}>
-                <CheckCircle2 size={14} strokeWidth={3} />
-             </div>
-             <span style={{ fontSize: 14, fontWeight: 700, color: "#475569" }}>Trusted by schools. Proven in classrooms. Built for learning.</span>
+            <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#3b82f6", display: "flex", alignItems: "center", justifyContent: "center", color: "white" }}>
+              <CheckCircle2 size={14} strokeWidth={3} />
+            </div>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#475569" }}>Trusted by schools. Proven in classrooms. Built for learning.</span>
           </motion.div>
         </div>
 
@@ -285,7 +285,8 @@ export default function CTASection() {
           </div>
         ) : (
           <div className="cta-right-container" style={{ flex: "1 1 55%", minWidth: 0, width: isTablet ? "100%" : undefined, position: "relative", height: isTablet ? 480 : 600, perspective: 1200 }}>
-            <style dangerouslySetInnerHTML={{__html: `
+            <style dangerouslySetInnerHTML={{
+              __html: `
               @media (max-width: 1600px) {
                 .cta-wrapper { transform: scale(0.85); transform-origin: center center; }
                 .cta-right-container { height: 510px !important; }
@@ -308,8 +309,8 @@ export default function CTASection() {
               <div
                 style={{ width: "100%", height: "100%", position: "relative" }}
               >
-                <motion.div style={{ position: "absolute", bottom: "-25%", left: "0%", right: "10%", height: "170%", zIndex: 10, display: "flex", justifyContent: "center" }}>
-                  <img loading="lazy" decoding="async" src="/girl_vr_tapping.webp" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
+                <motion.div style={{ position: "absolute", bottom: "-8%", left: "0%", right: "10%", height: "170%", zIndex: 10, display: "flex", justifyContent: "center" }}>
+                  <img loading="lazy" decoding="async" src="/613b5178-f8eb-4d14-9f65-6d70c957a41c.png" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
                 </motion.div>
                 <FloatingLabel title="Deeper Understanding" desc="Students learn by seeing, doing and experiencing." icon={GraduationCap} color="#3b82f6" delay={0} top="-10%" left="-16%" isTapped={true} />
                 <FloatingLabel title="Stronger Outcomes" desc="Better engagement. Better retention. Better results." icon={TrendingUp} color="#6366f1" delay={0.2} top="-10%" right="-16%" />
@@ -344,9 +345,9 @@ export default function CTASection() {
           position: "relative", zIndex: 10,
         }}
       >
-        <motion.div 
+        <motion.div
           animate={{ x: ["0%", "100%", "0%"] }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          style={{ position: "absolute", top: 0, left: 0, height: 2, width: "15%", background: "linear-gradient(90deg, transparent, #3b82f6, transparent)" }} 
+          style={{ position: "absolute", top: 0, left: 0, height: 2, width: "15%", background: "linear-gradient(90deg, transparent, #3b82f6, transparent)" }}
         />
         {[
           { icon: ShieldCheck, title: "Curriculum Aligned", desc: "Built for academic goals", color: "#3b82f6" },
@@ -358,13 +359,13 @@ export default function CTASection() {
             whileHover={{ scale: 1.08, y: -4 }} transition={{ type: "spring" }}
             style={{ display: "flex", alignItems: "center", gap: isMobile ? 10 : 16, cursor: "default" }}
           >
-            <div style={{ width: isMobile ? 38 : 52, height: isMobile ? 38 : 52, flexShrink: 0, borderRadius: "50%", background: `linear-gradient(135deg, rgba(${i===0?'59,130,246':i===1?'99,102,241':i===2?'139,92,246':'59,130,246'}, 0.1) 0%, rgba(${i===0?'59,130,246':i===1?'99,102,241':i===2?'139,92,246':'59,130,246'}, 0.2) 100%)`, display: "flex", alignItems: "center", justifyContent: "center", color: item.color, boxShadow: `0 8px 20px rgba(37,99,235,0.1), inset 0 2px 4px rgba(255,255,255,0.8)` }}>
+            <div style={{ width: isMobile ? 38 : 52, height: isMobile ? 38 : 52, flexShrink: 0, borderRadius: "50%", background: `linear-gradient(135deg, rgba(${i === 0 ? '59,130,246' : i === 1 ? '99,102,241' : i === 2 ? '139,92,246' : '59,130,246'}, 0.1) 0%, rgba(${i === 0 ? '59,130,246' : i === 1 ? '99,102,241' : i === 2 ? '139,92,246' : '59,130,246'}, 0.2) 100%)`, display: "flex", alignItems: "center", justifyContent: "center", color: item.color, boxShadow: `0 8px 20px rgba(37,99,235,0.1), inset 0 2px 4px rgba(255,255,255,0.8)` }}>
               <item.icon size={isMobile ? 18 : 26} strokeWidth={2.5} />
             </div>
             <div>
               <div style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#0f172a", marginBottom: isMobile ? 3 : 4 }}>{item.title}</div>
               <div style={{ fontSize: isMobile ? 12 : 13, fontWeight: 500, color: "#475569", lineHeight: 1.4 }}>
-                {item.desc.split('\n').map((line, idx) => <React.Fragment key={idx}>{line}<br/></React.Fragment>)}
+                {item.desc.split('\n').map((line, idx) => <React.Fragment key={idx}>{line}<br /></React.Fragment>)}
               </div>
             </div>
           </motion.div>

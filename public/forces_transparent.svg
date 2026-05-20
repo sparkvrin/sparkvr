@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+  <defs>
+    <radialGradient id="ballBlue" cx="33%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#bfdbfe"/>
+      <stop offset="45%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </radialGradient>
+    <radialGradient id="ballSilver" cx="33%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="45%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </radialGradient>
+    <filter id="ballShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="rgba(29,78,216,0.55)"/>
+    </filter>
+    <filter id="frameShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(15,23,64,0.4)"/>
+    </filter>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Frame -->
+  <rect x="428" y="148" width="680" height="22" rx="11" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+  <rect x="438" y="148" width="20" height="120" rx="10" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+  <rect x="1078" y="148" width="20" height="120" rx="10" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+  <rect x="428" y="248" width="680" height="22" rx="11" fill="url(#frameGrad)" filter="url(#frameShadow)"/>
+
+  <!-- Ball 1 — swings left, pivot (468, 259) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      values="-45 468 259; 0 468 259; 0 468 259; 0 468 259; -45 468 259"
+      keyTimes="0; 0.23; 0.27; 0.73; 1"
+      dur="2s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0.42 0 0.58 1; 0 0 1 1; 0 0 1 1; 0.42 0 0.58 1"/>
+    <line x1="468" y1="259" x2="468" y2="779" stroke="#111111" stroke-width="4"/>
+    <circle cx="468" cy="779" r="75" fill="url(#ballBlue)" filter="url(#ballShadow)"/>
+    <ellipse cx="448" cy="752" rx="22" ry="14" fill="white" opacity="0.28"/>
+  </g>
+
+  <!-- Ball 2 — stationary, pivot (612, 259) -->
+  <line x1="612" y1="259" x2="612" y2="779" stroke="#111111" stroke-width="4"/>
+  <circle cx="612" cy="779" r="75" fill="url(#ballSilver)" filter="url(#ballShadow)"/>
+  <ellipse cx="592" cy="752" rx="22" ry="14" fill="white" opacity="0.22"/>
+
+  <!-- Ball 3 — stationary, pivot (756, 259) -->
+  <line x1="756" y1="259" x2="756" y2="779" stroke="#111111" stroke-width="4"/>
+  <circle cx="756" cy="779" r="75" fill="url(#ballSilver)" filter="url(#ballShadow)"/>
+  <ellipse cx="736" cy="752" rx="22" ry="14" fill="white" opacity="0.22"/>
+
+  <!-- Ball 4 — stationary, pivot (900, 259) -->
+  <line x1="900" y1="259" x2="900" y2="779" stroke="#111111" stroke-width="4"/>
+  <circle cx="900" cy="779" r="75" fill="url(#ballSilver)" filter="url(#ballShadow)"/>
+  <ellipse cx="880" cy="752" rx="22" ry="14" fill="white" opacity="0.22"/>
+
+  <!-- Ball 5 — swings right, pivot (1044, 259) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      values="0 1044 259; 0 1044 259; 0 1044 259; 45 1044 259; 0 1044 259"
+      keyTimes="0; 0.23; 0.27; 0.73; 1"
+      dur="2s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0 0 1 1; 0 0 1 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+    <line x1="1044" y1="259" x2="1044" y2="779" stroke="#111111" stroke-width="4"/>
+    <circle cx="1044" cy="779" r="75" fill="url(#ballBlue)" filter="url(#ballShadow)"/>
+    <ellipse cx="1024" cy="752" rx="22" ry="14" fill="white" opacity="0.28"/>
+  </g>
+
+</svg>
