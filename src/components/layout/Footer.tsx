@@ -112,7 +112,7 @@ export default function Footer() {
       </div>
 
 
-      <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 24px" : "0 40px", position: "relative", zIndex: 10 }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px", position: "relative", zIndex: 10 }}>
 
         {/* ── Top Main Content ── */}
         <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", flexWrap: isMobile ? "nowrap" : "wrap", justifyContent: "space-between", gap: isMobile ? 32 : 60, marginBottom: isMobile ? 36 : 60 }}>
@@ -120,9 +120,9 @@ export default function Footer() {
           {/* Left Column: Brand & Socials */}
           <div style={{ maxWidth: isMobile ? "100%" : 350, flexShrink: 0 }}>
             <Link href="/" style={{ display: "inline-block", marginBottom: 12 }}>
-              <img loading="lazy" decoding="async" src="/logo1.png" alt="SparkVR" style={{ height: isMobile ? 50 : 75, objectFit: "contain", transform: "translateX(-10px)" }} />
+              <img loading="lazy" decoding="async" src="/logo1.png" alt="SparkVR" style={{ height: isMobile ? 50 : 75, objectFit: "contain" }} />
             </Link>
-            <p style={{ fontSize: isMobile ? 15 : 19, color: "#334155", lineHeight: 1.6, marginBottom: isMobile ? 24 : 40, fontWeight: 500, transform: "translateX(-8px)" }}>
+            <p style={{ fontSize: isMobile ? 15 : 19, color: "#334155", lineHeight: 1.6, marginBottom: isMobile ? 24 : 40, fontWeight: 500 }}>
               Transforming abstract learning into observable understanding through immersive experiences.
             </p>
 
