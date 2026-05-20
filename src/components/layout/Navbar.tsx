@@ -52,18 +52,19 @@ export default function Navbar() {
         style={{
           position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
           height: isMobile ? 76 : 120,
-          display: "flex", alignItems: "center",
+          display: "flex", alignItems: "flex-end",
           background: "transparent",
         }}
       >
         <div style={{
           maxWidth: 1400, margin: "0 auto", width: "100%", height: "100%",
-          paddingLeft: isMobile ? 24 : 40,
-          paddingRight: isMobile ? 24 : 40,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
+          paddingLeft: isMobile ? 20 : 60,
+          paddingRight: isMobile ? 20 : 60,
+          paddingBottom: isMobile ? 14 : 20,
+          display: "flex", alignItems: "flex-end", justifyContent: "space-between",
         }}>
           {/* LOGO */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", height: "100%" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "flex-end", textDecoration: "none" }}>
             <img loading="lazy" decoding="async"
               src="/logo1.png"
               alt="SparkVR"
@@ -72,7 +73,7 @@ export default function Navbar() {
           </Link>
 
           {/* RIGHT SIDE: CTA + Hamburger */}
-          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 24 }}>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: isMobile ? 12 : 24 }}>
             {/* Hide CTA button on mobile — it lives in the menu */}
             {!isMobile && (
               <Link href="/contact" style={{ textDecoration: "none" }}>
