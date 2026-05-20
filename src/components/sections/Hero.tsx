@@ -362,7 +362,7 @@ export default function Hero() {
               ].map((f, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,82,204,0.08)" }}>{f.icon}</div>
-                  <span style={{ fontSize: 10.5, fontWeight: 600, color: "#334155", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: "#1e293b", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
                 </div>
               ))}
             </div>
@@ -460,7 +460,7 @@ export default function Hero() {
             {STATS.map((s, i) => (
               <div key={i} style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center", textAlign: "center" }}>
                 <span style={{ fontSize: 17, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
-                <span style={{ fontSize: 9.5, fontWeight: 700, color: "#475569", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
               </div>
             ))}
           </motion.div>
@@ -560,7 +560,7 @@ export default function Hero() {
               ].map((f, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,82,204,0.08)" }}>{f.icon}</div>
-                  <span style={{ fontSize: 10.5, fontWeight: 600, color: "#334155", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: "#1e293b", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
                 </div>
               ))}
             </div>
@@ -579,8 +579,8 @@ export default function Hero() {
             }}>
             {STATS.map((s, i) => (
               <div key={i} style={{ display: "flex", flexDirection: "column", gap: 1, alignItems: "center", textAlign: "center" }}>
-                <span style={{ fontSize: 13, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
-                <span style={{ fontSize: 8, fontWeight: 700, color: "#475569", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
+                <span style={{ fontSize: 15, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: "#334155", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
               </div>
             ))}
           </motion.div>
@@ -865,7 +865,7 @@ export default function Hero() {
                 ].map((f, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <div style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(255,255,255,0.7)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.08)" }}>{f.icon}</div>
-                    <span style={{ fontSize: 11.5, fontWeight: 600, color: "#334155", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#1e293b", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
                   </div>
                 ))}
               </motion.div>
@@ -905,7 +905,7 @@ export default function Hero() {
                   style={{ display: "flex", flexDirection: "column", gap: 3, cursor: "pointer", padding: "4px 8px" }}
                 >
                   <h3 style={{ fontSize: 23, fontWeight: 800, margin: 0, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</h3>
-                  <p style={{ fontSize: 12.5, fontWeight: 700, color: "#475569", margin: 0, lineHeight: 1.3, maxWidth: 140, whiteSpace: "pre-line" }}>{s.label}</p>
+                  <p style={{ fontSize: 12.5, fontWeight: 700, color: "#334155", margin: 0, lineHeight: 1.3, maxWidth: 140, whiteSpace: "pre-line" }}>{s.label}</p>
                 </motion.div>
                 {i < 5 && <div style={{ width: 1, height: 34, background: "rgba(0,0,0,0.12)" }} />}
               </React.Fragment>

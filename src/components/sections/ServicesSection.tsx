@@ -133,7 +133,7 @@ function GridBubble({ label, children, delay, dir = -1, w = 140 }: {
             boxShadow: "0 6px 20px rgba(0,60,160,0.14)", whiteSpace: "nowrap",
             border: "1px solid rgba(255,255,255,0.9)",
           }}>
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", color: "#1d4ed8", textTransform: "uppercase", fontFamily: "'VAG Rounded',sans-serif" }}>{label}</span>
+            <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", color: "#1d4ed8", textTransform: "uppercase", fontFamily: "'VAG Rounded',sans-serif" }}>{label}</span>
           </div>
         </div>
       </motion.div>
@@ -494,7 +494,7 @@ export default function ServicesSection() {
                   </div>
                   <div>
                     {c.lines.map((line, j) => (
-                      <div key={j} style={{ fontSize:11.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.35, fontFamily:"'VAG Rounded',sans-serif" }}>{line}</div>
+                      <div key={j} style={{ fontSize:13, fontWeight:700, color:"#0b1a3b", lineHeight:1.35, fontFamily:"'VAG Rounded',sans-serif" }}>{line}</div>
                     ))}
                   </div>
                 </motion.div>
@@ -673,7 +673,7 @@ export default function ServicesSection() {
                         {/* text */}
                         <div>
                           {c.lines.map((line, j) => (
-                            <div key={j} style={{ fontSize:13.5, fontWeight:700, color:"#0b1a3b", lineHeight:1.32, fontFamily:"'VAG Rounded',sans-serif" }}>
+                            <div key={j} style={{ fontSize:14, fontWeight:700, color:"#0b1a3b", lineHeight:1.35, fontFamily:"'VAG Rounded',sans-serif" }}>
                               {line}
                             </div>
                           ))}

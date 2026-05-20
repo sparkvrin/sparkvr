@@ -204,7 +204,7 @@ function SubjectCard({
 
             <div style={{ position: "relative", zIndex: 2, maxWidth: "70%", transform: "translateZ(40px)" }}>
               <h3 style={{ fontSize: 18, fontWeight: 800, color: "#fff", letterSpacing: "0.05em", marginBottom: 10, textTransform: "uppercase" }}>{title}</h3>
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.9)", lineHeight: 1.4, fontWeight: 500 }}>
+              <p style={{ fontSize: 14, color: "#ffffff", lineHeight: 1.45, fontWeight: 600 }}>
                 {desc.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br/></React.Fragment>)}
               </p>
             </div>
@@ -620,7 +620,7 @@ export default function SolutionSection() {
             <div style={{ width: isMobile ? 40 : 56, height: isMobile ? 40 : 56, flexShrink: 0, borderRadius: "50%", background: "linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(37,99,235,0.2) 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#1d4ed8", boxShadow: "0 8px 20px rgba(37,99,235,0.15), inset 0 2px 4px rgba(255,255,255,0.8)" }}>
               <item.icon size={isMobile ? 20 : 28} strokeWidth={2.5} />
             </div>
-            <span style={{ fontSize: isMobile ? 12 : 16, fontWeight: 800, color: "#0f172a", lineHeight: 1.3, whiteSpace: "pre-line", letterSpacing: "0.02em" }}>{item.text}</span>
+            <span style={{ fontSize: isMobile ? 13 : 16, fontWeight: 800, color: "#0f172a", lineHeight: 1.35, whiteSpace: "pre-line", letterSpacing: "0.02em" }}>{item.text}</span>
           </motion.div>
         ))}
       </motion.div>

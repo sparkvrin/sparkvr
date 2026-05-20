@@ -276,9 +276,9 @@ export default function CTASection() {
                   <item.icon size={22} strokeWidth={2.5} />
                 </div>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: "#1e293b", marginBottom: 4, lineHeight: 1.2 }}>{item.title}</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", marginBottom: 4, lineHeight: 1.2 }}>{item.title}</div>
                   <div style={{ width: 32, height: 2.5, background: "#3b82f6", borderRadius: 4, marginBottom: 6 }} />
-                  <p style={{ fontSize: 11.5, color: "#475569", margin: 0, lineHeight: 1.45, fontWeight: 500 }}>{item.desc}</p>
+                  <p style={{ fontSize: 13, color: "#334155", margin: 0, lineHeight: 1.5, fontWeight: 500 }}>{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -362,8 +362,8 @@ export default function CTASection() {
               <item.icon size={isMobile ? 18 : 26} strokeWidth={2.5} />
             </div>
             <div>
-              <div style={{ fontSize: isMobile ? 11.5 : 14.5, fontWeight: 800, color: "#0f172a", marginBottom: isMobile ? 2 : 4 }}>{item.title}</div>
-              <div style={{ fontSize: isMobile ? 10 : 12.5, fontWeight: 500, color: "#64748b", lineHeight: 1.35 }}>
+              <div style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#0f172a", marginBottom: isMobile ? 3 : 4 }}>{item.title}</div>
+              <div style={{ fontSize: isMobile ? 12 : 13, fontWeight: 500, color: "#475569", lineHeight: 1.4 }}>
                 {item.desc.split('\n').map((line, idx) => <React.Fragment key={idx}>{line}<br/></React.Fragment>)}
               </div>
             </div>
