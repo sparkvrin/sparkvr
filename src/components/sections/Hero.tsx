@@ -625,11 +625,10 @@ export default function Hero() {
         </div>
 
         {/* Stats bar — aligned right at bottom, on top of student */}
-        <div style={{ position: "absolute", bottom: 5, left: 0, right: "4%", zIndex: 40, display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ position: "absolute", bottom: 5, left: "48%", right: "2%", zIndex: 40 }}>
           <motion.div initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
             style={{
               display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px 4px", padding: "10px",
-              width: "min(80%, 640px)",
               background: "linear-gradient(135deg, rgba(255,255,255,0.5), rgba(220,230,255,0.2))",
               backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255,255,255,0.6)", borderRadius: 18,
@@ -934,11 +933,9 @@ export default function Hero() {
         <div style={{
           position: "absolute",
           bottom: 0,
-          left: 0,
+          left: "48%",
           right: 0,
           zIndex: 40,
-          display: "flex",
-          justifyContent: "flex-end",
         }}>
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -949,7 +946,6 @@ export default function Hero() {
               justifyContent: "space-between",
               alignItems: "center",
               padding: "16px 32px",
-              width: "min(70%, 920px)",
               background: "linear-gradient(135deg, rgba(255,255,255,0.65), rgba(220,230,255,0.35))",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
