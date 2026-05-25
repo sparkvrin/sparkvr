@@ -36,8 +36,8 @@ function useScreenWidth() {
 }
 
 /* ─── HELPER COMPONENTS (POWER 3D) ─── */
-function InteractiveButton({ children, primary = false, icon: Icon }: any) {
-  return (
+function InteractiveButton({ children, primary = false, icon: Icon, href }: any) {
+  const btn = (
     <motion.div
       whileHover={{ scale: 1.05, y: -5, boxShadow: primary ? "0 15px 35px rgba(0,82,204,0.3)" : "none" }}
       whileTap={{ scale: 0.96 }}
@@ -55,6 +55,7 @@ function InteractiveButton({ children, primary = false, icon: Icon }: any) {
       {children}
     </motion.div>
   );
+  return href ? <a href={href} style={{ textDecoration: "none" }}>{btn}</a> : btn;
 }
 
 function FormInput({ label, placeholder, icon: Icon }: any) {
@@ -135,7 +136,7 @@ export default function ContactPage() {
           transition={{ duration: 1.5 }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/backgroundcontact.webp')",
+            backgroundImage: isMobile ? undefined : "url('/backgroundcontact.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center right",
             zIndex: 0,
@@ -144,7 +145,7 @@ export default function ContactPage() {
 
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, #ffffff 0%, #ffffff 35%, rgba(255,255,255,0.8) 55%, rgba(255,255,255,0) 90%)",
+          background: isMobile ? "transparent" : "linear-gradient(to right, #ffffff 0%, #ffffff 35%, rgba(255,255,255,0.8) 55%, rgba(255,255,255,0) 90%)",
           zIndex: 1,
         }} />
 
@@ -188,8 +189,8 @@ export default function ContactPage() {
             </motion.p>
 
             <motion.div {...fadeUp(0.5)} style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
-               <InteractiveButton primary icon={Calendar}>Schedule a Demo</InteractiveButton>
-               <InteractiveButton icon={Download}>Download Brochure</InteractiveButton>
+               <InteractiveButton primary icon={Calendar} href="#contact-form">Schedule a Demo</InteractiveButton>
+               <InteractiveButton icon={Download} href="/contact#contact-form">Download Brochure</InteractiveButton>
             </motion.div>
           </div>
 
@@ -230,7 +231,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── SECTION 2: CONVERSATION & FORM (POWER 3D) ─── */}
-      <section style={{ background: "#ffffff", padding: "60px 0", position: "relative" }}>
+      <section id="contact-form" style={{ background: "#ffffff", padding: "60px 0", position: "relative" }}>
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
         
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>

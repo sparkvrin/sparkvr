@@ -160,19 +160,19 @@ export default function BlogPage() {
           transition={{ duration: 1.6, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/blog1.webp')",
+            backgroundImage: isMobile ? undefined : "url('/blog1.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center right",
             zIndex: 0,
           }}
         />
 
-        <FloatingAsset icon={Book} top="20%" right="15%" delay={0} />
-        <FloatingAsset icon={Target} top="45%" right="25%" delay={1} />
+        {!isMobile && <FloatingAsset icon={Book} top="20%" right="15%" delay={0} />}
+        {!isMobile && <FloatingAsset icon={Target} top="45%" right="25%" delay={1} />}
 
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, #ffffff 0%, #ffffff 35%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,0) 85%)",
+          background: isMobile ? "transparent" : "linear-gradient(to right, #ffffff 0%, #ffffff 35%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,0) 85%)",
           zIndex: 1,
         }} />
 

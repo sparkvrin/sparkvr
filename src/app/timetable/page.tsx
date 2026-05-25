@@ -78,7 +78,7 @@ export default function TimetablePage() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        backgroundImage: "url('/section1.webp')",
+        backgroundImage: isMobile ? undefined : "url('/section1.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         overflow: "hidden"
@@ -87,7 +87,7 @@ export default function TimetablePage() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 35%, transparent 70%)",
+          background: isMobile ? "#ffffff" : "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 35%, transparent 70%)",
           zIndex: 1
         }} />
 
@@ -112,25 +112,25 @@ export default function TimetablePage() {
             <div style={{ flex: isMobile ? "1 1 100%" : "0 0 35%", maxWidth: isMobile ? "100%" : 450, display: "flex", flexDirection: "column" }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 20 }}>
                 <span style={{ fontSize: 12, fontWeight: 800, color: COLORS.darkBlue, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                  
+
                 </span>
                 <div style={{ width: 30, height: 2, background: COLORS.darkBlue, marginTop: 6 }} />
               </motion.div>
 
               <motion.h1 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 3vw, 44px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 30, letterSpacing: "-0.02em" }}>
-                Designed to fit<br />into the school day —<br />
+                Designed to fit<br />into the school day <br />
                 <span style={{ color: "#4f46e5" }}>seamlessly.</span>
               </motion.h1>
 
-              <motion.div 
-                initial="hidden" 
-                whileInView="show" 
+              <motion.div
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={{
                   hidden: { opacity: 0 },
                   show: { opacity: 1, transition: { staggerChildren: 0.1 } }
                 }}
-                style={{ display: "flex", flexDirection: "column", marginBottom: 30 }}
+                style={{ display: "flex", flexDirection: "column", marginBottom: 30, background: isMobile ? "#fff" : "transparent", borderRadius: isMobile ? 16 : 0, border: isMobile ? "1px solid #e2e8f0" : "none", padding: isMobile ? "4px 0" : 0, boxShadow: isMobile ? "0 4px 16px rgba(0,0,0,0.05)" : "none" }}
               >
                 {[
                   { icon: Clock, color: COLORS.blue, text: "40-minute", sub: "structured sessions" },
@@ -139,10 +139,10 @@ export default function TimetablePage() {
                   { icon: GraduationCap, color: COLORS.orange, text: "No extra", sub: "academic load" },
                 ].map((item, i, arr) => (
                   <React.Fragment key={i}>
-                    <motion.div 
+                    <motion.div
                       variants={{ hidden: { opacity: 0, x: -20 }, show: { opacity: 1, x: 0 } }}
                       transition={{ type: "spring", stiffness: 70, damping: 15 }}
-                      whileHover={{ x: 8, backgroundColor: "rgba(255,255,255,0.4)" }} 
+                      whileHover={{ x: 8, backgroundColor: "rgba(255,255,255,0.4)" }}
                       style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 10px", borderRadius: 12, cursor: "default", transition: "background-color 0.3s" }}
                     >
                       <div style={{ width: 40, height: 40, borderRadius: "50%", border: `2px solid ${item.color}30`, display: "flex", alignItems: "center", justifyContent: "center", color: item.color, background: "#fff", boxShadow: `0 4px 10px ${item.color}15` }}>
@@ -158,10 +158,10 @@ export default function TimetablePage() {
                 ))}
               </motion.div>
 
-              <motion.div 
-                {...fadeUp(0.6)} 
+              <motion.div
+                {...fadeUp(0.6)}
                 whileHover={{ scale: 1.05, y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
-                style={{ background: "#fff", padding: "20px 24px", borderRadius: 16, display: "inline-block", alignSelf: "flex-start", boxShadow: "0 10px 30px rgba(0,0,0,0.08)", border: "1px solid rgba(255,255,255,0.8)", cursor: "default", transition: "all 0.3s" }}
+                style={{ background: "#fff", padding: "20px 24px", borderRadius: 16, display: "block", alignSelf: isMobile ? "stretch" : "flex-start", textAlign: isMobile ? "center" : "left", boxShadow: "0 10px 30px rgba(0,0,0,0.08)", border: "1px solid rgba(255,255,255,0.8)", cursor: "default", transition: "all 0.3s" }}
               >
                 <span style={{ display: "block", fontSize: 22, fontWeight: 900, color: COLORS.blue, lineHeight: 1.2 }}>No disruption.</span>
                 <span style={{ display: "block", fontSize: 22, fontWeight: 900, color: "#7c3aed", lineHeight: 1.2 }}>No compromise.</span>
@@ -170,13 +170,13 @@ export default function TimetablePage() {
 
             {/* RIGHT PANEL: TIMETABLE */}
             {/* 💡 MARGIN ADJUSTMENT: Yahan se marginLeft="auto" hata diya gaya hai taaki box Left mein shift ho sake */}
-            <motion.div 
-              {...scaleIn(0.4)} 
+            <motion.div
+              {...scaleIn(0.4)}
               whileHover={{ y: -5, boxShadow: "0 30px 60px rgba(0,0,0,0.15)" }}
               style={{ flex: isMobile ? "1 1 100%" : "0 0 45%", maxWidth: isMobile ? "100%" : 580, background: "rgba(255,255,255,0.98)", backdropFilter: "blur(20px)", borderRadius: 20, padding: isMobile ? "16px" : "24px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", border: "1px solid rgba(255,255,255,0.8)", transition: "box-shadow 0.3s", overflowX: "auto", WebkitOverflowScrolling: "touch" }}
             >
               <h3 style={{ textAlign: "center", fontSize: 13, fontWeight: 800, color: COLORS.navy, letterSpacing: "0.05em", marginBottom: 16 }}>SCHOOL TIMETABLE</h3>
-              
+
               <div style={{ display: "grid", gridTemplateColumns: "1.2fr repeat(5, 1fr)", gap: 4, minWidth: isMobile ? 320 : "auto" }}>
                 {/* Header Row */}
                 <div />
@@ -233,9 +233,9 @@ export default function TimetablePage() {
           </div>
 
           {/* BOTTOM BANNER */}
-          <motion.div 
-            initial="hidden" 
-            whileInView="show" 
+          <motion.div
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, margin: "-50px" }}
             variants={{
               hidden: { opacity: 0, y: 40 },
@@ -261,11 +261,11 @@ export default function TimetablePage() {
               { icon: ShieldCheck, color: COLORS.green, title: "Maintains academic\ncontinuity", desc: "Learning continues without\ninterruptions." },
               { icon: TrendingUp, color: COLORS.orange, title: "Enhances learning\nwithout overload", desc: "Deep engagement,\nzero extra burden." }
             ].map((item, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
                 transition={{ type: "spring", stiffness: 70, damping: 15 }}
-                whileHover={{ y: -6, scale: 1.02 }} 
+                whileHover={{ y: -6, scale: 1.02 }}
                 style={{ display: "flex", gap: 12, alignItems: "center", cursor: "default" }}
               >
                 <div style={{ width: 48, height: 48, borderRadius: "50%", background: `${item.color}10`, border: `1px solid ${item.color}30`, display: "flex", alignItems: "center", justifyContent: "center", color: item.color, flexShrink: 0, boxShadow: `0 4px 12px ${item.color}15` }}>
@@ -308,22 +308,22 @@ export default function TimetablePage() {
           </div>
 
           {/* 5-STEP PROCESS CARD */}
-          <motion.div 
+          <motion.div
             {...fadeUp(0.4)}
             style={{ background: "#fff", borderRadius: isMobile ? 20 : 32, padding: isMobile ? "20px 16px" : "40px", boxShadow: "0 20px 40px rgba(0,0,0,0.05)", position: "relative", marginBottom: 30, overflowX: "hidden" }}
           >
             {/* Dashed Line */}
             {!isMobile && <div style={{ position: "absolute", top: 80, left: "10%", right: "10%", height: 1, borderTop: "2px dashed #cbd5e1", zIndex: 1 }} />}
 
-            <motion.div 
-              initial="hidden" 
-              whileInView="show" 
+            <motion.div
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true, margin: "-50px" }}
               variants={{
                 hidden: { opacity: 0 },
                 show: { opacity: 1, transition: { staggerChildren: 0.1 } }
               }}
-              style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 2 }}
+              style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 2 }}
             >
               {[
                 { time: "5 MIN", title: "1. Introduction", desc: "Teacher introduces the\ntopic and learning\nobjectives.", color: COLORS.blue, icon: FileText, img: "/section2/session_image_1.webp" },
@@ -332,13 +332,13 @@ export default function TimetablePage() {
                 { time: "5 MIN", title: "4. Discussion", desc: "Students share observations,\nask questions and connect\nideas.", color: COLORS.orange, icon: MessageCircle, img: "/section2/session_image_4.webp" },
                 { time: "5 MIN", title: "5. Concept Reinforcement", desc: "Key takeaways are\nreinforced with a quick\nrecap and reflection.", color: COLORS.blue, icon: CheckCircle, img: "/section2/session_image_5.webp" },
               ].map((step, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
                   transition={{ type: "spring", stiffness: 70, damping: 15 }}
                   style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", height: "100%" }}
                 >
-                  
+
                   {/* Icon */}
                   <motion.div whileHover={{ scale: 1.1, rotate: 5 }} style={{ width: 80, height: 80, borderRadius: "50%", background: "#fff", border: `2px solid ${step.color}20`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, boxShadow: `0 0 0 10px #fff`, zIndex: 2 }}>
                     {(() => {
@@ -354,11 +354,11 @@ export default function TimetablePage() {
                   </div>
 
                   {/* Text */}
-                  <h4 style={{ fontSize: 16, fontWeight: 800, color: COLORS.navy, marginBottom: 12, height: 44 }}>{step.title}</h4>
+                  <h4 style={{ fontSize: 16, fontWeight: 800, color: COLORS.navy, marginBottom: 12 }}>{step.title}</h4>
                   <p style={{ fontSize: 13, color: COLORS.textGray, lineHeight: 1.5, marginBottom: 30, padding: "0 10px", flexGrow: 1, whiteSpace: "pre-line" }}>{step.desc}</p>
 
                   {/* Image */}
-                  <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }} style={{ width: "100%", height: 160, borderRadius: 16, overflow: "hidden", marginTop: "auto", transition: "box-shadow 0.3s" }}>
+                  <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }} style={{ width: "100%", height: isMobile ? 120 : 160, borderRadius: 16, overflow: "hidden", marginTop: "auto", transition: "box-shadow 0.3s" }}>
                     <img loading="lazy" decoding="async" src={step.img} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </motion.div>
 
@@ -368,7 +368,7 @@ export default function TimetablePage() {
           </motion.div>
 
           {/* BOTTOM BANNER */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -417,7 +417,7 @@ export default function TimetablePage() {
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           <div style={{ display: "flex", gap: isMobile ? 24 : 60, alignItems: "flex-start", flexWrap: "wrap", flexDirection: isMobile ? "column" : "row" }}>
-            
+
             {/* LEFT COLUMN */}
             <div style={{ flex: isMobile ? "1 1 100%" : "1 1 45%", width: "100%", minWidth: 0 }}>
               <motion.div {...fadeUp(0.1)} style={{ marginBottom: 16 }}>
@@ -426,18 +426,18 @@ export default function TimetablePage() {
                 </span>
                 <div style={{ width: 40, height: 3, background: COLORS.purple, marginTop: 8 }} />
               </motion.div>
-              
+
               <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 3.5vw, 48px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
                 Normal classes.<br />
                 <span style={{ color: COLORS.purple }}>Smarter rotation.</span>
               </motion.h2>
-              
+
               <motion.p {...fadeUp(0.3)} style={{ fontSize: 18, color: COLORS.navy, fontWeight: 500, lineHeight: 1.5, marginBottom: 40, maxWidth: 450 }}>
                 SparkVR fits into your existing classroom structure with simple batch rotation.
               </motion.p>
 
               {/* 4 Cards Grid */}
-              <motion.div 
+              <motion.div
                 initial="hidden" whileInView="show" viewport={{ once: true }}
                 variants={{ show: { transition: { staggerChildren: 0.1 } } }}
                 style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}
@@ -452,7 +452,7 @@ export default function TimetablePage() {
                     <div style={{ width: 44, height: 44, borderRadius: "50%", background: `${item.color}10`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px auto" }}>
                       <item.icon size={22} color={item.color} strokeWidth={2} />
                     </div>
-                    <h5 style={{ fontSize: 13, fontWeight: 800, color: COLORS.navy, marginBottom: 8, whiteSpace: "pre-line", height: 32 }}>{item.title}</h5>
+                    <h5 style={{ fontSize: 13, fontWeight: 800, color: COLORS.navy, marginBottom: 8, whiteSpace: "pre-line" }}>{item.title}</h5>
                     <p style={{ fontSize: 11, color: COLORS.textGray, lineHeight: 1.4, margin: 0, whiteSpace: "pre-line" }}>{item.desc}</p>
                   </motion.div>
                 ))}
@@ -468,11 +468,11 @@ export default function TimetablePage() {
 
                 <div style={{ background: "#fff", borderRadius: 24, padding: isMobile ? "16px 12px" : "30px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", border: "1px solid rgba(0,0,0,0.02)", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", minWidth: isMobile ? 340 : "auto", gap: isMobile ? 8 : 0 }}>
-                    
+
                     {[
-                      { title: "First 40-Minute Period", rows: [ { g: "Group A", a: "VR Session", c: COLORS.purple }, { g: "Group B", a: "Guided Activity", c: COLORS.green }, { g: "Group C", a: "Independent Learning", c: COLORS.orange } ] },
-                      { title: "Next 40-Minute Period", rows: [ { g: "Group B", a: "VR Session", c: COLORS.green }, { g: "Group C", a: "Guided Activity", c: COLORS.orange }, { g: "Group A", a: "Independent Learning", c: COLORS.purple } ] },
-                      { title: "Next 40-Minute Period", rows: [ { g: "Group C", a: "VR Session", c: COLORS.orange }, { g: "Group A", a: "Guided Activity", c: COLORS.purple }, { g: "Group B", a: "Independent Learning", c: COLORS.green } ] },
+                      { title: "First 40-Minute Period", rows: [{ g: "Group A", a: "VR Session", c: COLORS.purple }, { g: "Group B", a: "Guided Activity", c: COLORS.green }, { g: "Group C", a: "Independent Learning", c: COLORS.orange }] },
+                      { title: "Next 40-Minute Period", rows: [{ g: "Group B", a: "VR Session", c: COLORS.green }, { g: "Group C", a: "Guided Activity", c: COLORS.orange }, { g: "Group A", a: "Independent Learning", c: COLORS.purple }] },
+                      { title: "Next 40-Minute Period", rows: [{ g: "Group C", a: "VR Session", c: COLORS.orange }, { g: "Group A", a: "Guided Activity", c: COLORS.purple }, { g: "Group B", a: "Independent Learning", c: COLORS.green }] },
                     ].map((col, i) => (
                       <React.Fragment key={i}>
                         <div style={{ display: "flex", flexDirection: "column", gap: 16, flex: 1 }}>
@@ -505,7 +505,7 @@ export default function TimetablePage() {
 
             {/* RIGHT COLUMN */}
             <div style={{ flex: isMobile ? "1 1 100%" : "1 1 45%", width: "100%", minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
-              
+
               <motion.div {...fadeUp(0.2)}>
                 <h3 style={{ fontSize: 24, fontWeight: 900, color: COLORS.navy, margin: "0 0 4px 0" }}>Divide. Rotate. Learn.</h3>
                 <p style={{ fontSize: 16, color: COLORS.textGray, margin: 0, fontWeight: 500 }}>All within the same class period.</p>
@@ -519,13 +519,13 @@ export default function TimetablePage() {
 
                 {/* Vertical Panel */}
                 <motion.div {...fadeLeft(0.5)} style={{ width: isMobile ? "100%" : 220, background: "#fff", borderRadius: 24, padding: "24px 20px", display: "flex", flexDirection: "column", gap: 20, boxShadow: "0 10px 30px rgba(0,0,0,0.05)", border: "1px solid rgba(0,0,0,0.02)" }}>
-                  
+
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <div style={{ width: 36, height: 36, borderRadius: "50%", background: `${COLORS.purple}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       <Clock size={18} color={COLORS.purple} strokeWidth={2.5} />
                     </div>
                     <div>
-                      <h5 style={{ fontSize: 12, fontWeight: 800, color: COLORS.navy, margin: 0, lineHeight: 1.2 }}>One class.<br/>Three activities.</h5>
+                      <h5 style={{ fontSize: 12, fontWeight: 800, color: COLORS.navy, margin: 0, lineHeight: 1.2 }}>One class.<br />Three activities.</h5>
                       <p style={{ fontSize: 9, color: COLORS.textGray, margin: "2px 0 0 0", fontWeight: 600 }}>Maximum engagement.</p>
                     </div>
                   </div>
@@ -571,7 +571,7 @@ export default function TimetablePage() {
           </div>
 
           {/* BOTTOM FULL WIDTH BANNER */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -644,7 +644,7 @@ export default function TimetablePage() {
             whileInView="show"
             viewport={{ once: true, margin: "-50px" }}
             variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
-            style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 30 }}
+            style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 30 }}
           >
             {[
               { icon: WifiOff, color: COLORS.purple, title: "No Internet\nDependency", desc: "Works offline once content is installed. Reliable learning, every time.", img: "/section5/operational_image_1.webp" },
@@ -672,7 +672,7 @@ export default function TimetablePage() {
 
                 {/* Bottom: Image */}
                 <motion.div whileHover={{ scale: 1.02 }} style={{ padding: "0 16px 16px 16px", overflow: "hidden" }}>
-                  <img loading="lazy" decoding="async" src={card.img} alt={card.title} style={{ width: "100%", height: 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
+                  <img loading="lazy" decoding="async" src={card.img} alt={card.title} style={{ width: "100%", height: isMobile ? 100 : 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
                 </motion.div>
               </motion.div>
             ))}

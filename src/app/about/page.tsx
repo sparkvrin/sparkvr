@@ -162,13 +162,13 @@ export default function AboutPage() {
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/backgroundabout.webp')",
+            backgroundImage: isMobile ? undefined : "url('/backgroundabout.webp')",
             backgroundSize: "cover", backgroundPosition: "center", zIndex: 0,
           }}
         />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 38%, rgba(255,255,255,0.45) 62%, rgba(255,255,255,0) 100%)",
+          background: isMobile ? "transparent" : "linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 38%, rgba(255,255,255,0.45) 62%, rgba(255,255,255,0) 100%)",
           zIndex: 1,
         }} />
 
@@ -489,7 +489,7 @@ export default function AboutPage() {
 
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px", position: "relative", zIndex: 10 }}>
           {/* Header */}
-          <div style={{ textAlign: "center", marginBottom: 80 }}>
+          <div style={{ textAlign: "center", marginBottom: isMobile ? 40 : 64 }}>
             <motion.div {...fadeUp(0)} style={{ marginBottom: 20 }}>
               <motion.p
                 animate={{ opacity: [0.7, 1, 0.7] }}
@@ -527,8 +527,8 @@ export default function AboutPage() {
           <div style={{
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
-            gap: isMobile ? 24 : 40,
-            marginBottom: isMobile ? 60 : 100,
+            gap: isMobile ? 16 : 24,
+            marginBottom: isMobile ? 36 : 60,
             width: "100%",
             justifyContent: "center"
           }}>
@@ -559,91 +559,53 @@ export default function AboutPage() {
                 transition={{ delay: i * 0.2, duration: 0.8, ease: EASE }}
                 style={{ height: "100%" }}
               >
-                <TiltCard style={{ height: "100%" }}>
-                  <motion.div
-                    whileHover={{ y: -10, boxShadow: "0 40px 90px rgba(0,82,204,0.12)" }}
-                    transition={{ duration: 0.4, ease: EASE }}
-                    style={{
-                      background: "#ffffff",
-                      borderRadius: 32,
-                      padding: "60px 40px",
-                      height: "100%",
-                      border: "1px solid rgba(0,82,204,0.06)",
-                      boxShadow: "0 20px 50px rgba(0,82,204,0.02)",
-                      position: "relative",
-                      display: "flex",
-                      flexDirection: "column",
-                      overflow: "hidden"
-                    }}
-                  >
-                    {/* Big Decorative Number Backdrop */}
-                    <span style={{
-                      position: "absolute",
-                      top: -10,
-                      right: -10,
-                      fontSize: 140,
-                      fontWeight: 900,
-                      color: "rgba(0,82,204,0.03)",
-                      lineHeight: 1,
-                      pointerEvents: "none",
-                      userSelect: "none"
+                <motion.div
+                  whileHover={{ y: -4, boxShadow: "0 16px 36px rgba(0,82,204,0.09)" }}
+                  transition={{ duration: 0.25 }}
+                  style={{
+                    background: "#ffffff",
+                    borderRadius: 20,
+                    padding: isMobile ? "24px 20px" : "36px 32px",
+                    height: "100%",
+                    border: "1px solid rgba(0,82,204,0.07)",
+                    boxShadow: "0 4px 16px rgba(0,82,204,0.04)",
+                    position: "relative",
+                    display: "flex",
+                    flexDirection: "column",
+                    overflow: "hidden"
+                  }}
+                >
+                  {/* Icon */}
+                  <div style={{ marginBottom: isMobile ? 16 : 24 }}>
+                    <div style={{
+                      width: isMobile ? 50 : 64, height: isMobile ? 50 : 64, borderRadius: 16,
+                      background: `linear-gradient(135deg, ${card.accent} 0%, ${card.accent}dd 100%)`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#fff", boxShadow: `0 6px 16px ${card.accent}30`,
                     }}>
-                      {card.id}
-                    </span>
-
-                    {/* Icon Circle */}
-                    <div style={{ marginBottom: 40, position: "relative", zIndex: 2 }}>
-                      <FloatLoop y={8} duration={4 + i} delay={i * 0.5}>
-                        <div style={{
-                          width: 72, height: 72, borderRadius: 20,
-                          background: `linear-gradient(135deg, ${card.accent} 0%, ${card.accent}dd 100%)`,
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          color: "#fff",
-                          boxShadow: `0 12px 24px ${card.accent}33`,
-                        }}>
-                          <card.icon size={32} strokeWidth={2.2} />
-                        </div>
-                      </FloatLoop>
+                      <card.icon size={isMobile ? 22 : 28} strokeWidth={2.2} />
                     </div>
+                  </div>
 
-                    {/* Content */}
-                    <div style={{ position: "relative", zIndex: 2 }}>
-                      <p style={{ 
-                        fontSize: 13, fontWeight: 800, color: card.accent, 
-                        letterSpacing: "0.2em", marginBottom: 12 
-                      }}>
-                        STEP {card.id}
-                      </p>
-                      <h3 style={{ 
-                        fontSize: 26, fontWeight: 900, color: "#001a4d", 
-                        marginBottom: 18, lineHeight: 1.2 
-                      }}>
-                        {card.title}
-                      </h3>
-                      <p style={{ 
-                        fontSize: 16, color: "#64748b", lineHeight: 1.6, 
-                        fontWeight: 500, margin: 0 
-                      }}>
-                        {card.desc}
-                      </p>
-                    </div>
+                  {/* Content */}
+                  <div>
+                    <p style={{ fontSize: 11, fontWeight: 800, color: card.accent, letterSpacing: "0.18em", marginBottom: 8 }}>
+                      STEP {card.id}
+                    </p>
+                    <h3 style={{ fontSize: isMobile ? 18 : 22, fontWeight: 800, color: "#001a4d", marginBottom: 12, lineHeight: 1.25 }}>
+                      {card.title}
+                    </h3>
+                    <p style={{ fontSize: isMobile ? 13 : 15, color: "#64748b", lineHeight: 1.6, fontWeight: 500, margin: 0 }}>
+                      {card.desc}
+                    </p>
+                  </div>
 
-                    {/* Bottom Interactive Bar */}
-                    <div style={{ 
-                      marginTop: "auto", paddingTop: 40, 
-                      display: "flex", alignItems: "center", justifyContent: "space-between" 
-                    }}>
-                      <div style={{ height: 2, flex: 1, background: "#f1f5f9", borderRadius: 2, marginRight: 20, position: "relative", overflow: "hidden" }}>
-                        <motion.div 
-                          whileHover={{ x: "0%" }}
-                          initial={{ x: "-100%" }}
-                          style={{ position: "absolute", inset: 0, background: card.accent }}
-                        />
-                      </div>
-                      <ChevronRight size={20} color={card.accent} strokeWidth={3} />
-                    </div>
-                  </motion.div>
-                </TiltCard>
+                  {/* Bottom Bar */}
+                  <div style={{ marginTop: "auto", paddingTop: isMobile ? 16 : 24, display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ height: 2, flex: 1, background: card.accent, opacity: 0.12, borderRadius: 2 }} />
+                    <ChevronRight size={15} color={card.accent} strokeWidth={2.5} />
+                  </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -721,7 +683,7 @@ export default function AboutPage() {
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/aboutbackground4thsection.webp')",
+            backgroundImage: isMobile ? undefined : "url('/aboutbackground4thsection.webp')",
             backgroundSize: "cover", backgroundPosition: "center right", zIndex: 0,
           }}
         />
@@ -729,7 +691,7 @@ export default function AboutPage() {
         {/* Left white fade */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.97) 28%, rgba(255,255,255,0.88) 46%, rgba(255,255,255,0.35) 66%, rgba(255,255,255,0) 84%)",
+          background: isMobile ? "transparent" : "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.97) 28%, rgba(255,255,255,0.88) 46%, rgba(255,255,255,0.35) 66%, rgba(255,255,255,0) 84%)",
           zIndex: 1,
         }} />
 
@@ -1147,77 +1109,100 @@ export default function AboutPage() {
               marginBottom: 28,
             }}
           >
-            {/* Icons row */}
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", marginBottom: 44, gap: isMobile ? 12 : 0 }}>
-              {[
-                { icon: Puzzle },
-                { icon: Users },
-                { icon: ShieldCheck },
-                { icon: BarChart3 },
-                { icon: School },
-              ].map((item, i) => (
-                <React.Fragment key={i}>
-                  {i > 0 && (
-                    <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 0 }}>
-                      <div style={{ flex: 1, height: 0, borderTop: "2px dashed rgba(0,82,204,0.22)" }} />
-                      <motion.div
-                        animate={{ scale: [1, 1.6, 1], opacity: [0.55, 1, 0.55] }}
-                        transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                        style={{ width: 8, height: 8, borderRadius: "50%", background: "#0052cc", flexShrink: 0 }}
-                      />
-                      <div style={{ flex: 1, height: 0, borderTop: "2px dashed rgba(0,82,204,0.22)" }} />
-                    </div>
-                  )}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0, rotateY: -90, y: 24 }}
-                    whileInView={{ opacity: 1, scale: 1, rotateY: 0, y: 0 }}
+            {/* Mobile: 2-col icon+label+desc cards */}
+            {isMobile ? (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+                {[
+                  { icon: Puzzle,      label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
+                  { icon: Users,       label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
+                  { icon: ShieldCheck, label: "Ensure",     desc: "Safe, reliable and built for real school environments."      },
+                  { icon: BarChart3,   label: "Strengthen", desc: "Conceptual clarity today, stronger learning tomorrow."       },
+                  { icon: School,      label: "Scale",      desc: "Built for long-term impact across schools and institutions." },
+                ].map((item, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.72 + i * 0.14, duration: 0.75, type: "spring", bounce: 0.5 }}
-                    whileHover={{ scale: 1.18, rotateY: 20, rotateX: -10, y: -6 }}
-                    style={{
-                      width: 82, height: 82, borderRadius: "50%", flexShrink: 0,
-                      background: "rgba(232,243,255,1)",
-                      border: "1.5px solid rgba(0,82,204,0.14)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      color: "#0052cc", transformStyle: "preserve-3d", cursor: "default",
-                    }}
+                    transition={{ delay: 0.72 + i * 0.1, duration: 0.6 }}
+                    style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "16px 10px", background: "rgba(232,243,255,0.7)", borderRadius: 16, border: "1px solid rgba(0,82,204,0.08)" }}
                   >
-                    <FloatLoop y={6} duration={4 + i * 0.5} delay={i * 0.35}>
-                      <motion.div
-                        animate={{ boxShadow: ["0 10px 28px rgba(0,82,204,0.1)", "0 16px 40px rgba(0,82,204,0.22)", "0 10px 28px rgba(0,82,204,0.1)"] }}
-                        transition={{ duration: 3 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                        style={{ display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
-                      >
-                        <item.icon size={34} strokeWidth={1.55} />
-                      </motion.div>
-                    </FloatLoop>
+                    <div style={{ width: 54, height: 54, borderRadius: "50%", background: "rgba(232,243,255,1)", border: "1.5px solid rgba(0,82,204,0.14)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", marginBottom: 10 }}>
+                      <item.icon size={26} strokeWidth={1.55} />
+                    </div>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#001a4d", marginBottom: 5 }}>{item.label}</p>
+                    <p style={{ fontSize: 11, color: "#64748b", lineHeight: 1.5, fontWeight: 500 }}>{item.desc}</p>
                   </motion.div>
-                </React.Fragment>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <>
+                {/* Desktop/Tablet: Icons row */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 44, gap: 0 }}>
+                  {[
+                    { icon: Puzzle },
+                    { icon: Users },
+                    { icon: ShieldCheck },
+                    { icon: BarChart3 },
+                    { icon: School },
+                  ].map((item, i) => (
+                    <React.Fragment key={i}>
+                      {i > 0 && (
+                        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 0 }}>
+                          <div style={{ flex: 1, height: 0, borderTop: "2px dashed rgba(0,82,204,0.22)" }} />
+                          <motion.div
+                            animate={{ scale: [1, 1.6, 1], opacity: [0.55, 1, 0.55] }}
+                            transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                            style={{ width: 8, height: 8, borderRadius: "50%", background: "#0052cc", flexShrink: 0 }}
+                          />
+                          <div style={{ flex: 1, height: 0, borderTop: "2px dashed rgba(0,82,204,0.22)" }} />
+                        </div>
+                      )}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0, rotateY: -90, y: 24 }}
+                        whileInView={{ opacity: 1, scale: 1, rotateY: 0, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.72 + i * 0.14, duration: 0.75, type: "spring", bounce: 0.5 }}
+                        whileHover={{ scale: 1.18, rotateY: 20, rotateX: -10, y: -6 }}
+                        style={{ width: 82, height: 82, borderRadius: "50%", flexShrink: 0, background: "rgba(232,243,255,1)", border: "1.5px solid rgba(0,82,204,0.14)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", transformStyle: "preserve-3d", cursor: "default" }}
+                      >
+                        <FloatLoop y={6} duration={4 + i * 0.5} delay={i * 0.35}>
+                          <motion.div
+                            animate={{ boxShadow: ["0 10px 28px rgba(0,82,204,0.1)", "0 16px 40px rgba(0,82,204,0.22)", "0 10px 28px rgba(0,82,204,0.1)"] }}
+                            transition={{ duration: 3 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                            style={{ display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
+                          >
+                            <item.icon size={34} strokeWidth={1.55} />
+                          </motion.div>
+                        </FloatLoop>
+                      </motion.div>
+                    </React.Fragment>
+                  ))}
+                </div>
 
-            {/* Labels + Descriptions */}
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12 }}>
-              {[
-                { label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
-                { label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
-                { label: "Ensure",     desc: "Safe, reliable and built for real school environments."      },
-                { label: "Strengthen", desc: "Conceptual clarity today, stronger learning tomorrow."       },
-                { label: "Scale",      desc: "Built for long-term impact across schools and institutions." },
-              ].map((item, i) => (
-                <motion.div key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.9 + i * 0.1, duration: 0.65 }}
-                  whileHover={{ y: -4, scale: 1.03 }}
-                  style={{ flex: 1, textAlign: "center", minWidth: 0 }}
-                >
-                  <p style={{ fontSize: 15, fontWeight: 700, color: "#001a4d", marginBottom: 8 }}>{item.label}</p>
-                  <p style={{ fontSize: 13.5, color: "#64748b", lineHeight: 1.55, fontWeight: 500 }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+                {/* Desktop/Tablet: Labels + Descriptions */}
+                <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+                  {[
+                    { label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
+                    { label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
+                    { label: "Ensure",     desc: "Safe, reliable and built for real school environments."      },
+                    { label: "Strengthen", desc: "Conceptual clarity today, stronger learning tomorrow."       },
+                    { label: "Scale",      desc: "Built for long-term impact across schools and institutions." },
+                  ].map((item, i) => (
+                    <motion.div key={i}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.9 + i * 0.1, duration: 0.65 }}
+                      whileHover={{ y: -4, scale: 1.03 }}
+                      style={{ flex: 1, textAlign: "center", minWidth: 0 }}
+                    >
+                      <p style={{ fontSize: 15, fontWeight: 700, color: "#001a4d", marginBottom: 8 }}>{item.label}</p>
+                      <p style={{ fontSize: 13.5, color: "#64748b", lineHeight: 1.55, fontWeight: 500 }}>{item.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            )}
           </motion.div>
 
           {/* Bottom Statement */}
@@ -1278,7 +1263,7 @@ export default function AboutPage() {
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url('/background6thimage.webp')",
+            backgroundImage: isMobile ? undefined : "url('/background6thimage.webp')",
             backgroundSize: "cover",
             backgroundPosition: "right 15% top 5%", // Precision positioning to clear faces
             zIndex: 0,
@@ -1288,7 +1273,7 @@ export default function AboutPage() {
         {/* ── STRONGER LEFT FADE (To clear face) ── */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, #f0f7ff 0%, #f0f7ff 35%, rgba(240,247,255,0.85) 52%, rgba(240,247,255,0.3) 75%, transparent 100%)",
+          background: isMobile ? "transparent" : "linear-gradient(to right, #f0f7ff 0%, #f0f7ff 35%, rgba(240,247,255,0.85) 52%, rgba(240,247,255,0.3) 75%, transparent 100%)",
           zIndex: 1,
         }} />
         <div style={{

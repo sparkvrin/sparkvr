@@ -216,24 +216,26 @@ export default function SubjectExpansionPage() {
           SECTION 1: HERO (Subject Expansion)
       ══════════════════════════════════════ */}
       <section style={{ minHeight: isMobile ? "auto" : "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-        {/* Background Image Layer */}
-        <motion.div
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: EASE }}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage: "url('/backgroundsc.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            zIndex: 0
-          }}
-        />
+        {/* Background Image Layer — desktop/tablet only */}
+        {!isMobile && (
+          <motion.div
+            initial={{ scale: 1.05, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.5, ease: EASE }}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundImage: "url('/backgroundsc.webp')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              zIndex: 0
+            }}
+          />
+        )}
 
         {/* Content Container (Left Side) */}
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1400, margin: "0 auto", padding: isMobile ? "88px 20px 60px" : "110px 60px 60px", flex: 1, display: "flex", flexDirection: "column" }}>
@@ -468,29 +470,31 @@ export default function SubjectExpansionPage() {
 
                   {/* Button */}
                   <div style={{ padding: "0 20px 20px" }}>
-                    <motion.button
-                      whileTap={{ scale: 0.98 }}
-                      style={{
-                        width: "100%",
-                        padding: "12px",
-                        borderRadius: 8,
-                        background: card.btnBg,
-                        color: card.color,
-                        border: "none",
-                        fontSize: 14,
-                        fontWeight: 800,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 8,
-                        cursor: "pointer"
-                      }}
-                    >
-                      Explore {card.subject.split(' ')[0]}
-                      <motion.div variants={{ hover: { x: 5 } }}>
-                        <ArrowRight size={16} strokeWidth={2.5} />
-                      </motion.div>
-                    </motion.button>
+                    <a href="/subjects" style={{ textDecoration: "none", display: "block" }}>
+                      <motion.button
+                        whileTap={{ scale: 0.98 }}
+                        style={{
+                          width: "100%",
+                          padding: "12px",
+                          borderRadius: 8,
+                          background: card.btnBg,
+                          color: card.color,
+                          border: "none",
+                          fontSize: 14,
+                          fontWeight: 800,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: 8,
+                          cursor: "pointer"
+                        }}
+                      >
+                        Explore {card.subject.split(' ')[0]}
+                        <motion.div variants={{ hover: { x: 5 } }}>
+                          <ArrowRight size={16} strokeWidth={2.5} />
+                        </motion.div>
+                      </motion.button>
+                    </a>
                   </div>
                 </motion.div>
               </motion.div>
@@ -1415,22 +1419,26 @@ export default function SubjectExpansionPage() {
                 </motion.p>
 
                 <motion.div {...fadeUp(0.4)} style={{ display: "flex", gap: 16, marginBottom: 40, flexDirection: isMobile ? "column" : "row" }}>
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(124, 58, 237, 0.3)" }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)", color: "#fff", border: "none", padding: "16px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, cursor: "pointer", boxShadow: "0 8px 20px rgba(124, 58, 237, 0.2)" }}
-                  >
-                    <Calendar size={20} strokeWidth={2.5} />
-                    Book a Demo
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05, background: "#f8fafc" }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{ background: "#fff", color: COLORS.navy, border: "2px solid #e2e8f0", padding: "16px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
-                  >
-                    <MessageSquare size={20} strokeWidth={2.5} color={COLORS.blue} />
-                    Talk to Our Team
-                  </motion.button>
+                  <a href="/contact" style={{ textDecoration: "none" }}>
+                    <motion.button
+                      whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(124, 58, 237, 0.3)" }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)", color: "#fff", border: "none", padding: "16px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, cursor: "pointer", boxShadow: "0 8px 20px rgba(124, 58, 237, 0.2)" }}
+                    >
+                      <Calendar size={20} strokeWidth={2.5} />
+                      Book a Demo
+                    </motion.button>
+                  </a>
+                  <a href="/contact" style={{ textDecoration: "none" }}>
+                    <motion.button
+                      whileHover={{ scale: 1.05, background: "#f8fafc" }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{ background: "#fff", color: COLORS.navy, border: "2px solid #e2e8f0", padding: "16px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
+                    >
+                      <MessageSquare size={20} strokeWidth={2.5} color={COLORS.blue} />
+                      Talk to Our Team
+                    </motion.button>
+                  </a>
                 </motion.div>
 
                 <motion.div {...fadeUp(0.5)}>
@@ -1461,8 +1469,8 @@ export default function SubjectExpansionPage() {
                 </motion.div>
               </div>
 
-              {/* Right Column: Image with Glowing Circle */}
-              <motion.div {...fadeUp(0.5)} style={{ position: "relative", width: isMobile ? "100%" : "min(100%, 500px)", height: isMobile ? 280 : 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {/* Right Column: Image with Glowing Circle — desktop/tablet only */}
+              {!isMobile && <motion.div {...fadeUp(0.5)} style={{ position: "relative", width: "min(100%, 500px)", height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
 
                 {/* Advanced Glowing Outer Ring */}
                 <div style={{ position: "absolute", width: "min(100%, 460px)", height: 460, zIndex: 0 }}>
@@ -1552,7 +1560,7 @@ export default function SubjectExpansionPage() {
                     <p style={{ fontSize: 12, color: COLORS.textGray, margin: 0, fontWeight: 600 }}>Let's shape it—together.</p>
                   </div>
                 </motion.div>
-              </motion.div>
+              </motion.div>}
             </div>
 
             {/* Bottom Banner Inside Card */}
