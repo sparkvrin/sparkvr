@@ -601,7 +601,7 @@ export default function TeachersPage() {
                   </div>
                 </div>
                 <p style={{ fontSize: isMobile ? 13 : 15, color: "#475569", fontWeight: 600, marginBottom: 20 }}>Get started in minutes and see the impact in every class.</p>
-                <a href="/contact" style={{ textDecoration: "none", display: "block", width: "100%", padding: "14px 20px", background: "linear-gradient(90deg, #4f46e5 0%, #6366f1 100%)", color: "#ffffff", borderRadius: 12, fontSize: isMobile ? 15 : 17, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 8px 20px rgba(99,102,241,0.3)" }}>
+                <a href="/contact" style={{ textDecoration: "none", width: "100%", padding: "14px 20px", background: "linear-gradient(90deg, #4f46e5 0%, #6366f1 100%)", color: "#ffffff", borderRadius: 12, fontSize: isMobile ? 15 : 17, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 8px 20px rgba(99,102,241,0.3)" }}>
                   Get Started Now <ArrowRight size={18} strokeWidth={2.5} />
                 </a>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 14 }}>
