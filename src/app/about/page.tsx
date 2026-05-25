@@ -199,11 +199,8 @@ export default function AboutPage() {
         <div style={{
           position: "relative", zIndex: 10,
           display: "flex", alignItems: "center",
-          paddingTop: isMobile ? 88 : isTablet ? 100 : 120,
-          paddingBottom: isMobile ? 48 : 60,
-          paddingLeft: isMobile ? 20 : isTablet ? 32 : "clamp(24px, 5vw, 80px)",
-          paddingRight: isMobile ? 20 : isTablet ? 32 : "clamp(24px, 5vw, 80px)",
-          maxWidth: 1200, margin: "0 auto", width: "100%",
+          padding: isMobile ? "88px 20px 60px" : "110px 60px 60px",
+          maxWidth: 1400, margin: "0 auto", width: "100%",
         }}>
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -269,39 +266,22 @@ export default function AboutPage() {
               transition={{ delay: 0.88, duration: 0.75, type: "spring" }}
               style={{ maxWidth: 520, marginBottom: 22 }}
             >
-              <TiltCard style={{}}>
-                <FloatLoop y={7} duration={6} delay={1}>
-                  <motion.div
-                    animate={{
-                      boxShadow: [
-                        "0 16px 40px rgba(0,82,204,0.07)",
-                        "0 20px 48px rgba(0,82,204,0.14)",
-                        "0 16px 40px rgba(0,82,204,0.07)",
-                      ],
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                      background: "rgba(255,255,255,0.72)",
-                      backdropFilter: "blur(16px)",
-                      border: "1px solid rgba(255,255,255,0.9)",
-                      borderRadius: 18, padding: "18px 28px",
-                      position: "relative",
-                    }}
-                  >
-                    <motion.div
-                      animate={{ opacity: [0.1, 0.2, 0.1], scale: [1, 1.1, 1] }}
-                      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                      style={{ position: "absolute", top: -12, left: 20, color: "#0052cc" }}
-                    >
-                      <Quote size={36} fill="currentColor" />
-                    </motion.div>
-                    <p style={{ fontSize: 18, fontWeight: 500, color: "#001a4d", lineHeight: 1.45, margin: 0 }}>
-                      We are not building gadgets. <br />
-                      We are <span className="text-gradient-primary" style={{ fontWeight: 800 }}>strengthening</span> how learning happens.
-                    </p>
-                  </motion.div>
-                </FloatLoop>
-              </TiltCard>
+              <div style={{
+                background: "rgba(255,255,255,0.72)",
+                backdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.9)",
+                borderRadius: 18, padding: "18px 28px",
+                position: "relative",
+                boxShadow: "0 16px 40px rgba(0,82,204,0.07)",
+              }}>
+                <div style={{ position: "absolute", top: -12, left: 20, color: "#0052cc", opacity: 0.15 }}>
+                  <Quote size={36} fill="currentColor" />
+                </div>
+                <p style={{ fontSize: 18, fontWeight: 500, color: "#001a4d", lineHeight: 1.45, margin: 0 }}>
+                  We are not building gadgets. <br />
+                  We are <span className="text-gradient-primary" style={{ fontWeight: 800 }}>strengthening</span> how learning happens.
+                </p>
+              </div>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -337,7 +317,7 @@ export default function AboutPage() {
         position: "relative", width: "100%",
         background: "#fdfeff", display: "flex", alignItems: "center",
         justifyContent: "center",
-        padding: isMobile ? "80px 20px 48px" : isTablet ? "80px 32px 60px" : "100px 60px 80px",
+        padding: "60px 0",
         overflow: "hidden",
       }}>
         {/* BG arcs */}
@@ -383,7 +363,7 @@ export default function AboutPage() {
         }} />
 
         {/* Content */}
-        <div style={{ position: "relative", zIndex: 10, textAlign: "center", maxWidth: 840 }}>
+        <div style={{ position: "relative", zIndex: 10, textAlign: "center", maxWidth: 840, width: "100%", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Label */}
           <motion.div {...fadeUp(0)} style={{ marginBottom: 40 }}>
@@ -489,7 +469,7 @@ export default function AboutPage() {
       <section style={{
         position: "relative", width: "100%",
         background: "#f9fbff",
-        padding: isMobile ? "80px 20px 48px" : isTablet ? "80px 32px 60px" : "100px 60px 80px",
+        padding: "60px 0",
         overflow: "hidden",
       }}>
         {/* Dot decoration */}
@@ -507,7 +487,7 @@ export default function AboutPage() {
           }}
         />
 
-        <div style={{ maxWidth: 1240, margin: "0 auto", position: "relative", zIndex: 10 }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px", position: "relative", zIndex: 10 }}>
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <motion.div {...fadeUp(0)} style={{ marginBottom: 20 }}>
@@ -811,8 +791,8 @@ export default function AboutPage() {
 
         {/* Content */}
         <div style={{
-          position: "relative", zIndex: 10, maxWidth: 1280, margin: "0 auto", width: "100%",
-          padding: isMobile ? "88px clamp(24px, 5vw, 40px) 48px" : "120px clamp(24px, 5vw, 80px)",
+          position: "relative", zIndex: 10, maxWidth: 1400, margin: "0 auto", width: "100%",
+          padding: isMobile ? "88px 20px 60px" : "110px 60px 60px",
           display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "flex-end", justifyContent: "space-between",
           gap: 40, flexWrap: "wrap",
         }}>
@@ -948,34 +928,29 @@ export default function AboutPage() {
 
           {/* Right: IIT Partnership Card - hide on mobile */}
           {!isMobile && <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 20 }}>
-            <TiltCard style={{}}>
               <motion.div
                 initial={{ opacity: 0, y: 40, scale: 0.92 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.75, duration: 0.88, type: "spring", bounce: 0.25 }}
               >
-                <FloatLoop y={8} duration={7} delay={1.5}>
-                  <motion.div
-                    animate={{ boxShadow: ["0 28px 64px rgba(0,82,204,0.1)", "0 36px 80px rgba(0,82,204,0.2)", "0 28px 64px rgba(0,82,204,0.1)"] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  <div
                     style={{
                       background: "rgba(255,255,255,0.93)", backdropFilter: "blur(22px)",
-                      borderRadius: 26, padding: "28px 30px", width: isTablet ? 300 : 370,
+                      borderRadius: 26, padding: "28px 30px", width: 370,
                       border: "1.5px solid rgba(255,255,255,0.98)",
                       display: "flex", gap: 22, alignItems: "center",
+                      boxShadow: "0 28px 64px rgba(0,82,204,0.1)",
                     }}
                   >
                     {/* IIT Seal */}
                     <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                      <motion.div
-                        animate={{ rotateY: [0, 10, 0, -10, 0], scale: [1, 1.04, 1] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      <div
                         style={{
                           width: 72, height: 72, borderRadius: "50%",
                           background: "linear-gradient(135deg, #0052cc 0%, #1fb3ff 100%)",
                           display: "flex", alignItems: "center", justifyContent: "center",
-                          boxShadow: "0 10px 28px rgba(0,82,204,0.35)", transformStyle: "preserve-3d",
+                          boxShadow: "0 10px 28px rgba(0,82,204,0.35)",
                         }}
                       >
                         <div style={{
@@ -989,7 +964,7 @@ export default function AboutPage() {
                           </svg>
                           <span style={{ fontSize: 6, fontWeight: 800, color: "rgba(255,255,255,0.9)", letterSpacing: "0.04em" }}>IIT</span>
                         </div>
-                      </motion.div>
+                      </div>
                       <p style={{ fontSize: 9.5, fontWeight: 700, color: "#0052cc", letterSpacing: "0.06em", textAlign: "center", whiteSpace: "nowrap" }}>IIT INDORE</p>
                       <p style={{ fontSize: 9, color: "#94a3b8", fontWeight: 600, textAlign: "center", whiteSpace: "nowrap", marginTop: -4 }}>Incubation Partner</p>
                     </div>
@@ -1003,10 +978,8 @@ export default function AboutPage() {
                       <p style={{ fontSize: 13, fontWeight: 800, color: "#0052cc", letterSpacing: "0.04em" }}>IIT INDORE</p>
                       <p style={{ fontSize: 12, color: "#94a3b8", fontWeight: 500 }}>Incubation Partner</p>
                     </div>
-                  </motion.div>
-                </FloatLoop>
+                  </div>
               </motion.div>
-            </TiltCard>
           </div>}
         </div>
       </section>
@@ -1019,7 +992,7 @@ export default function AboutPage() {
         overflow: "hidden", display: "flex", alignItems: "center",
         justifyContent: "center",
         background: "linear-gradient(155deg, #d8e8ff 0%, #e4efff 30%, #edf4ff 58%, #d5e6ff 100%)",
-        padding: isMobile ? "80px 20px 48px" : isTablet ? "80px 32px 60px" : "100px 60px 80px",
+        padding: "60px 0",
       }}>
         {/* Concentric arcs */}
         {[1100, 820, 560].map((size, i) => (
@@ -1078,7 +1051,7 @@ export default function AboutPage() {
         }} />
 
         {/* Content */}
-        <div style={{ position: "relative", zIndex: 10, maxWidth: 1100, width: "100%", textAlign: "center" }}>
+        <div style={{ position: "relative", zIndex: 10, maxWidth: 1400, margin: "0 auto", width: "100%", textAlign: "center", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Label */}
           <motion.div {...fadeUp(0)} style={{ marginBottom: 28 }}>
@@ -1328,8 +1301,8 @@ export default function AboutPage() {
         {/* ── CONTENT CONTAINER ── */}
         <div style={{
           position: "relative", zIndex: 10,
-          maxWidth: 1240, margin: "0 auto", width: "100%",
-          padding: "100px clamp(24px, 5vw, 60px) 40px",
+          maxWidth: 1400, margin: "0 auto", width: "100%",
+          padding: isMobile ? "60px 20px" : "60px 60px",
         }}>
           
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>

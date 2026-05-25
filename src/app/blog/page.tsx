@@ -178,8 +178,8 @@ export default function BlogPage() {
 
         <div style={{
           position: "relative", zIndex: 10,
-          maxWidth: 1440, margin: "0 auto", width: "100%",
-          padding: isMobile ? "100px 20px 40px" : isTablet ? "120px 32px 40px" : "160px 60px 40px",
+          maxWidth: 1400, margin: "0 auto", width: "100%",
+          padding: isMobile ? "100px 20px 60px" : "110px 60px 60px",
           flex: 1, display: "flex", flexDirection: "column",
         }}>
           
@@ -247,7 +247,7 @@ export default function BlogPage() {
 
         <div style={{
           position: "relative", zIndex: 20,
-          maxWidth: 1440, margin: "0 auto", width: "100%",
+          maxWidth: 1400, margin: "0 auto", width: "100%",
           padding: isMobile ? "0 20px" : "0 60px", marginBottom: 50, marginTop: "auto"
         }}>
           <motion.div
@@ -258,7 +258,7 @@ export default function BlogPage() {
               background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(24px)",
               borderRadius: 30,
-              padding: isMobile ? "20px 16px" : isTablet ? "24px 32px" : "36px 54px",
+              padding: isMobile ? "20px 16px" : "36px 54px",
               display: "grid",
               gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(auto-fit, minmax(220px, 1fr))",
               gap: isMobile ? 20 : 40,
@@ -294,8 +294,8 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section id="articles" style={{ minHeight: "100vh", background: "#f8faff", padding: isMobile ? "60px 20px" : "120px 60px" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto" }}>
+      <section id="articles" style={{ background: "#f8faff", padding: "60px 0" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
            <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: 80 }}>
               <motion.span 
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
@@ -316,7 +316,7 @@ export default function BlogPage() {
 
            <div style={{
              display: "grid",
-             gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(auto-fit, minmax(360px, 1fr))",
+             gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(360px, 1fr))",
              gap: 40
            }}>
              {BLOG_POSTS.map((post, i) => (

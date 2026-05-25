@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const jetbrainsMono = {
-  variable: "font-jetbrains",
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0052cc",
 };
 
 export const metadata: Metadata = {
@@ -19,14 +21,7 @@ export const metadata: Metadata = {
     description: "SparkVR transforms abstract textbook concepts into unforgettable 3D VR explorations.",
     url: "https://sparkvr.com",
     siteName: "SparkVR",
-    images: [
-      {
-        url: "/background.webp",
-        width: "min(100%, 1200px)",
-        height: 630,
-        alt: "SparkVR Immersive Learning",
-      },
-    ],
+    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "SparkVR Immersive Learning" }],
     locale: "en_US",
     type: "website",
   },
@@ -38,12 +33,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
-      <body className={jetbrainsMono.variable}>
+    <html lang="en">
+      <head>
+        {/* DNS prefetch & preconnect for faster resource loading */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://sparkvr.com" />
+
+        {/* Preload critical fonts */}
+        <link rel="preload" href="/fonts/VAGRounded-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/VAGRounded-Black.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+
+        {/* Preload hero backgrounds — critical above-the-fold images */}
+        <link rel="preload" href="/background.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/hero-background.webp" as="image" type="image/webp" />
+      </head>
+      <body>
         <ScrollProgress />
         <Navbar />
         <main>{children}</main>

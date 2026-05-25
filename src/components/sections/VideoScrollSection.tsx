@@ -46,9 +46,10 @@ export default function VideoScrollSection() {
 
     // ── Seek engine: queue next seek when previous finishes ───────────
     const doSeek = () => {
-      if (seeking) return; // wait for current seek to finish
+      if (seeking) return;
+      if (!isFinite(targetTime) || targetTime < 0) return; // guard against NaN/Infinity
       const diff = Math.abs(targetTime - currentTime);
-      if (diff < 0.016) return; // ~1 frame at 60fps, skip tiny diffs
+      if (diff < 0.016) return;
 
       seeking = true;
       currentTime = targetTime;
@@ -64,8 +65,11 @@ export default function VideoScrollSection() {
 
     // ── Scroll handler: just update targetTime, never seek directly ───
     const onScroll = () => {
+      if (containerHeight <= 0) return; // avoid 0/0 = NaN
       const scrolled = window.scrollY - containerTop;
-      const progress = Math.min(Math.max(scrolled / containerHeight, 0), 1);
+      const ratio = scrolled / containerHeight;
+      if (!isFinite(ratio)) return; // extra guard
+      const progress = Math.min(Math.max(ratio, 0), 1);
 
       const dur = video.duration;
       if (!dur || !isFinite(dur)) return;

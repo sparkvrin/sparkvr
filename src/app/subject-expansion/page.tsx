@@ -236,7 +236,7 @@ export default function SubjectExpansionPage() {
         />
 
         {/* Content Container (Left Side) */}
-        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1600, margin: "0 auto", padding: isMobile ? "88px 20px 40px" : isTablet ? "100px 32px 40px" : "120px 60px 40px", flex: 1, display: "flex", flexDirection: "column" }}>
+        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1400, margin: "0 auto", padding: isMobile ? "88px 20px 60px" : "110px 60px 60px", flex: 1, display: "flex", flexDirection: "column" }}>
 
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: isMobile ? "100%" : 480, width: isMobile ? "100%" : undefined, marginTop: "20px" }}>
             <div>
@@ -319,11 +319,11 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 2: SUBJECT ECOSYSTEM (New)
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "48px 0" : "80px 0", background: "#f8f9fc", position: "relative" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+      <section style={{ padding: isMobile ? "60px 0" : "60px 0", background: "#f8f9fc", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Top Hero of Ecosystem Section */}
-          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "60px" }}>
 
             {/* Left Content */}
             <div style={{ flex: 1, maxWidth: isMobile ? "100%" : "500px" }}>
@@ -530,8 +530,8 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 3: IMMERSIVE LEARNING EXAMPLES
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "48px 0 20px" : "80px 0 20px 0", background: "#f8f9fc", position: "relative" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+      <section style={{ padding: isMobile ? "60px 0" : "60px 0", background: "#f8f9fc", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Header Row */}
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "flex-end", gap: isMobile ? 24 : 0, marginBottom: 50 }}>
@@ -697,10 +697,10 @@ export default function SubjectExpansionPage() {
       {/* ══════════════════════════════════════
           SECTION 4: CROSS-DISCIPLINARY LEARNING
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "20px 0 60px" : "20px 0 100px 0", background: "#f8fafc", position: "relative", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+      <section style={{ padding: isMobile ? "60px 0" : "60px 0", background: "#f8fafc", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
-          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "80px" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "32px" : "60px", alignItems: "center", marginBottom: isMobile ? "40px" : "60px" }}>
 
             {/* ── Left Content ── */}
             <div style={{ flex: (isMobile || isTablet) ? "1 1 100%" : "0 0 38%", maxWidth: (isMobile || isTablet) ? "100%" : "460px" }}>
@@ -987,9 +987,9 @@ export default function SubjectExpansionPage() {
         backgroundImage: "url('/5thsection.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center right",
-        padding: isMobile ? "60px 0 60px" : isTablet ? "60px 0 80px" : "80px 0 160px 0",
+        padding: isMobile ? "60px 0" : "60px 0",
       }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px", position: "relative", height: "100%", minHeight: (isMobile || isTablet) ? "auto" : 750 }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px", position: "relative", height: "100%", minHeight: (isMobile || isTablet) ? "auto" : 750 }}>
 
           {/* Top Area: Left Text and Right Timeline */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "50px", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 32 : 0 }}>
@@ -1210,7 +1210,7 @@ export default function SubjectExpansionPage() {
         marginTop: (isMobile || isTablet) ? 0 : "-10px",
         overflow: "hidden"
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* Top Half: Text Left, Image Right */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 40 : 80, flexDirection: isMobile ? "column" : "row", gap: isMobile ? 40 : 0 }}>
@@ -1377,7 +1377,7 @@ export default function SubjectExpansionPage() {
         padding: isMobile ? "60px 0" : "80px 0 120px 0",
         overflow: "hidden"
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}

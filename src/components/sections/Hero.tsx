@@ -478,7 +478,7 @@ export default function Hero() {
 
         {/* Student image — smaller, shifted left */}
         <div style={{ position: "absolute", bottom: -30, left: "28%", transform: "translateX(-8%)", zIndex: 10, pointerEvents: "none" }}>
-          <motion.img loading="lazy" decoding="async" src="/student_proper.webp" alt="Student with VR headset"
+          <motion.img loading="eager" decoding="async" fetchPriority="high" src="/student_proper.webp" alt="Student with VR headset"
             style={{
               height: "85vh", objectFit: "contain", objectPosition: "top", display: "block",
               filter: "drop-shadow(0 20px 40px rgba(60,40,150,0.28))",

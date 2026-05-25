@@ -61,7 +61,14 @@
 }
 
 /* ─── Base ──────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html { scroll-behavior: smooth; cursor: auto !important; }
 
 body {
@@ -69,8 +76,33 @@ body {
   color: #001a4d;
   font-family: "VAG Rounded", sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
   cursor: auto !important;
+}
+
+/* ─── Prevent blur on text from 3D transforms & backdrop-filter ─── */
+h1, h2, h3, h4, h5, h6,
+p, span, a, button, label,
+li, td, th, div {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Glass card backdrop-filter isolation — prevents blur leaking onto text */
+[style*="backdrop-filter"],
+[style*="backdropFilter"] {
+  isolation: isolate;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Framer Motion 3D animated elements — snap text to pixel grid */
+[style*="preserve-3d"],
+[style*="perspective"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────── */
@@ -406,6 +438,36 @@ body {
 .animate-glow-ring { animation: glowRingPulse 3s ease-in-out infinite; }
 .animate-rotate    { animation: rotateSlow 20s linear infinite; }
 .animate-neon      { animation: neonPulse 2.5s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════════════════════
+   PERFORMANCE — Off-screen section rendering deferred
+   content-visibility: auto skips paint/layout for sections
+   not yet in viewport → massive First Contentful Paint gain
+═══════════════════════════════════════════════════════════ */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+/* GPU-composite only what's needed — prevent layer explosion */
+[style*="will-change"] {
+  will-change: auto;
+}
+
+/* Framer Motion adds transform to every animated element.
+   Reset will-change after animation so GPU layers are freed. */
+.motion-safe\:will-change-auto {
+  will-change: auto !important;
+}
+
+/* Skip ALL animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════
    GLOBAL RESPONSIVE SYSTEM

@@ -95,7 +95,7 @@ export default function TimetablePage() {
         <div style={{
           maxWidth: 1400,
           margin: "0 auto",
-          padding: isMobile ? "88px 20px 40px" : isTablet ? "100px 32px 40px" : "120px 40px 40px 40px",
+          padding: isMobile ? "88px 20px 60px" : "110px 60px 60px",
           position: "relative",
           zIndex: 2,
           width: "100%",
@@ -285,8 +285,8 @@ export default function TimetablePage() {
       {/* ══════════════════════════════════════
           SECTION 2: STRUCTURED SESSION FLOW
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "48px 0 20px" : "100px 0 20px 0", background: "#f8fafc", position: "relative" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 40px" }}>
+      <section style={{ padding: "60px 0", background: "#f8fafc", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* HEADER */}
           <div style={{ display: "flex", flexDirection: (isMobile || isTablet) ? "column" : "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: isMobile ? 32 : 60, flexWrap: "wrap", gap: isMobile ? 16 : 40 }}>
@@ -413,8 +413,8 @@ export default function TimetablePage() {
       {/* ══════════════════════════════════════
           SECTION 3: BATCH ROTATION SYSTEM
       ══════════════════════════════════════ */}
-      <section style={{ padding: "20px 0 0 0", background: "#f8fafc", position: "relative" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 40px" }}>
+      <section style={{ padding: "60px 0", background: "#f8fafc", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           <div style={{ display: "flex", gap: isMobile ? 24 : 60, alignItems: "flex-start", flexWrap: "wrap", flexDirection: isMobile ? "column" : "row" }}>
             
@@ -599,8 +599,8 @@ export default function TimetablePage() {
       {/* ══════════════════════════════════════
           SECTION 4: OPERATIONAL SIMPLICITY
       ══════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "40px 0 60px" : "40px 0 100px 0", background: "#f8fafc" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 40px" }}>
+      <section style={{ padding: "60px 0", background: "#f8fafc" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           {/* HEADER: 2-column layout */}
           <div style={{ display: "flex", alignItems: "flex-start", gap: isMobile ? 24 : 60, marginBottom: 50, flexWrap: "wrap", flexDirection: isMobile ? "column" : "row" }}>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect, Suspense } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 function useScreenWidth() {
   const [width, setWidth] = useState(1200);
@@ -14,84 +14,7 @@ function useScreenWidth() {
 }
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { CheckCircle2, GraduationCap, ArrowRight, BookOpen, Users, BarChart3, Calendar, Microscope, Calculator, Globe2, Rocket } from "lucide-react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
 
-/* ═══════════════════════════════════════════════════════
-   3D: ATOM
-═══════════════════════════════════════════════════════ */
-function Atom3D() {
-  const g = useRef<THREE.Group>(null);
-  useFrame(({ clock }) => {
-    if (!g.current) return;
-    g.current.rotation.y = clock.getElapsedTime() * 0.9;
-    g.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.4) * 0.3;
-  });
-  return (
-    <group ref={g} scale={1.15}>
-      <mesh>
-        <sphereGeometry args={[0.28, 32, 32]} />
-        <meshStandardMaterial color="#3b82f6" emissive="#1d4ed8" emissiveIntensity={0.8} roughness={0.1} metalness={0.4} />
-      </mesh>
-      {[
-        [0, 0, 0],
-        [Math.PI / 3, Math.PI / 4, 0],
-        [-Math.PI / 3, -Math.PI / 4, 0],
-      ].map((rot, i) => (
-        <group key={i} rotation={rot as [number, number, number]}>
-          <mesh>
-            <torusGeometry args={[0.72, 0.012, 16, 80]} />
-            <meshStandardMaterial color="#93c5fd" emissive="#60a5fa" emissiveIntensity={0.5} />
-          </mesh>
-          <ElectronDot seed={i * 2.09} r={0.72} />
-        </group>
-      ))}
-    </group>
-  );
-}
-
-function ElectronDot({ seed, r }: { seed: number; r: number }) {
-  const m = useRef<THREE.Mesh>(null);
-  useFrame(({ clock }) => {
-    if (!m.current) return;
-    const t = clock.getElapsedTime() * 2.2 + seed;
-    m.current.position.set(Math.cos(t) * r, 0, Math.sin(t) * r);
-  });
-  return (
-    <mesh ref={m}>
-      <sphereGeometry args={[0.07, 16, 16]} />
-      <meshBasicMaterial color="#ffffff" />
-    </mesh>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════
-   3D: SATURN
-═══════════════════════════════════════════════════════ */
-function Saturn3D() {
-  const g = useRef<THREE.Group>(null);
-  useFrame(({ clock }) => {
-    if (!g.current) return;
-    g.current.rotation.y = clock.getElapsedTime() * 0.25;
-    g.current.rotation.x = 0.35 + Math.sin(clock.getElapsedTime() * 0.4) * 0.08;
-  });
-  return (
-    <group ref={g} scale={1.05}>
-      <mesh>
-        <sphereGeometry args={[0.52, 32, 32]} />
-        <meshStandardMaterial color="#d4a055" roughness={0.55} metalness={0.05} />
-      </mesh>
-      <mesh rotation={[Math.PI / 2.15, 0, 0]}>
-        <torusGeometry args={[0.9, 0.13, 2, 80]} />
-        <meshStandardMaterial color="#c0893a" roughness={0.6} transparent opacity={0.92} />
-      </mesh>
-      <mesh rotation={[Math.PI / 2.15, 0, 0]}>
-        <torusGeometry args={[1.15, 0.055, 2, 80]} />
-        <meshStandardMaterial color="#e8c07a" roughness={0.5} transparent opacity={0.72} />
-      </mesh>
-    </group>
-  );
-}
 
 /* ─────────────────────────────────────────────────────────
    Continuous 3D Floating Wrapper
@@ -152,89 +75,57 @@ function TiltCard({ children, style, className = "" }: { children: React.ReactNo
 }
 
 /* ─────────────────────────────────────────────────────────
-   Subject Card Component (Exact Match)
+   Subject Card Component (Exact Match to Screenshot)
 ───────────────────────────────────────────────────────── */
 function SubjectCard({
-  title, desc, imgSrc, gradient, delay, icon: Icon, threeDNode
+  title, desc, imgSrc, gradient, delay, icon: Icon
 }: {
-  title: string, desc: string, imgSrc?: string, gradient: string, delay: number, icon: any, threeDNode?: React.ReactNode
+  title: string, desc: string, imgSrc: string, gradient: string, delay: number, icon: any
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5, y: 50 }}
+      initial={{ opacity: 0, scale: 0.85, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay, duration: 0.9, type: "spring", stiffness: 100, damping: 15 }}
-      style={{ width: 360, height: 260, position: "relative", zIndex: 10 }}
+      transition={{ delay, duration: 0.7, type: "spring", stiffness: 120, damping: 18 }}
+      whileHover={{ scale: 1.04, boxShadow: "0 30px 60px rgba(0,30,100,0.25)" }}
+      style={{
+        width: 300, height: 220, position: "relative", zIndex: 10,
+        borderRadius: 24, overflow: "hidden", cursor: "default",
+        background: gradient,
+        boxShadow: "0 12px 28px rgba(0,20,80,0.18)",
+        border: "1.5px solid rgba(255,255,255,0.3)",
+        display: "flex", flexDirection: "column", justifyContent: "flex-start",
+        padding: "20px",
+      }}
     >
-      <Floating3DWrapper delay={delay} floatAmp={10} rotateAmp={4} duration={7 + delay}>
-        <TiltCard style={{ width: "100%", height: "100%", borderRadius: 28 }}>
-          <motion.div
-            whileHover={{ scale: 1.05, boxShadow: "0 40px 80px rgba(0,30,100,0.3)" }}
-            transition={{ duration: 0.4 }}
-            style={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              borderRadius: 28,
-              background: gradient,
-              padding: "24px",
-              overflow: "hidden",
-              boxShadow: "0 15px 35px rgba(0,20,80,0.15), inset 0 2px 5px rgba(255,255,255,0.4)",
-              border: "1.5px solid rgba(255,255,255,0.3)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              transformStyle: "preserve-3d"
-            }}
-          >
-            {/* Dynamic Background Glows inside card */}
-            <motion.div
-              animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.2, 1] }}
-              transition={{ duration: 4 + delay, repeat: Infinity, ease: "easeInOut" }}
-              style={{ position: "absolute", top: -20, left: -20, width: 100, height: 100, background: "rgba(255,255,255,0.3)", filter: "blur(30px)", borderRadius: "50%" }}
-            />
+      {/* Glow top-left */}
+      <div style={{ position: "absolute", top: -20, left: -20, width: 90, height: 90, background: "rgba(255,255,255,0.25)", filter: "blur(25px)", borderRadius: "50%", pointerEvents: "none" }} />
 
-            {/* Top Left Icon */}
-            <div style={{ transform: "translateZ(30px)", marginBottom: 12 }}>
-              <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255,255,255,0.95)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}>
-                <Icon size={20} color="#1d4ed8" strokeWidth={2.5} />
-              </div>
-            </div>
+      {/* Top Left Icon */}
+      <div style={{ marginBottom: 10, position: "relative", zIndex: 2 }}>
+        <div style={{ width: 40, height: 40, borderRadius: "50%", background: "rgba(255,255,255,0.95)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 3px 10px rgba(0,0,0,0.15)" }}>
+          <Icon size={18} color="#1d4ed8" strokeWidth={2.5} />
+        </div>
+      </div>
 
-            <div style={{ position: "relative", zIndex: 2, maxWidth: "70%", transform: "translateZ(40px)" }}>
-              <h3 style={{ fontSize: 18, fontWeight: 800, color: "#fff", letterSpacing: "0.05em", marginBottom: 10, textTransform: "uppercase" }}>{title}</h3>
-              <p style={{ fontSize: 14, color: "#ffffff", lineHeight: 1.45, fontWeight: 600 }}>
-                {desc.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br /></React.Fragment>)}
-              </p>
-            </div>
+      {/* Text */}
+      <div style={{ position: "relative", zIndex: 2, maxWidth: "56%" }}>
+        <h3 style={{ fontSize: 14, fontWeight: 800, color: "#fff", letterSpacing: "0.04em", marginBottom: 8, textTransform: "uppercase", lineHeight: 1.3, whiteSpace: "pre-line" }}>{title}</h3>
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.9)", lineHeight: 1.5, fontWeight: 500, margin: 0, whiteSpace: "pre-line" }}>{desc}</p>
+      </div>
 
-            {/* 3D Image Object */}
-            {threeDNode ? (
-              <div style={{
-                position: "absolute", right: -20, bottom: -10, width: "85%", height: 180,
-                transform: "translateZ(70px)", pointerEvents: "none"
-              }}>
-                {threeDNode}
-              </div>
-            ) : (
-              imgSrc && (
-                <motion.img loading="lazy" decoding="async"
-                  src={imgSrc}
-                  alt={title}
-                  animate={{ y: [0, -12, 0], rotate: [0, 4, -4, 0] }}
-                  transition={{ duration: 6 + delay, repeat: Infinity, ease: "easeInOut" }}
-                  style={{
-                    position: "absolute", right: -30, bottom: -20, width: "75%", height: "auto", objectFit: "contain",
-                    transform: "translateZ(70px)", filter: "drop-shadow(0 25px 35px rgba(0,0,0,0.4))",
-                    pointerEvents: "none"
-                  }}
-                />
-              )
-            )}
-          </motion.div>
-        </TiltCard>
-      </Floating3DWrapper>
+      {/* Card Image — right side */}
+      <img loading="lazy" decoding="async"
+        src={imgSrc} alt={title}
+        style={{
+          position: "absolute", right: 0, top: 0, width: "52%", height: "100%",
+          objectFit: "cover", objectPosition: "center",
+          pointerEvents: "none"
+        }}
+      />
+      {/* Gradient overlay — text readable */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.6) 42%, rgba(0,0,0,0.1) 100%)", pointerEvents: "none" }} />
     </motion.div>
   );
 }
@@ -318,12 +209,7 @@ export default function SolutionSection() {
         ───────────────────────────────────────────────────────── */}
         <div style={{ flex: "1 1 45%", minWidth: 0, maxWidth: isMobile ? "100%" : 600, width: isMobile || isTablet ? "100%" : undefined, paddingBottom: isMobile ? 20 : 60 }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-              <motion.div
-                animate={{ width: [40, 60, 40] }} transition={{ duration: 3, repeat: Infinity }}
-                style={{ height: 2, background: "#1d4ed8" }}
-              />
-            </div>
+
           </motion.div>
 
           <motion.h2
@@ -412,7 +298,7 @@ export default function SolutionSection() {
                 transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
                 style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)", transform: "skewX(-20deg)" }}
               />
-              <span style={{ position: "relative", zIndex: 2 }}>Experience SparkVR in Your School</span>
+              <span style={{ position: "relative", zIndex: 2 }}>Experience SparkVR in Your School!</span>
               <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ display: "flex" }}>
                 <ArrowRight size={22} strokeWidth={3} />
               </motion.div>
@@ -503,77 +389,65 @@ export default function SolutionSection() {
                     zIndex: 1
                   }} />
 
-                  {/* The main white circle */}
-                  <motion.div
-                    animate={{ boxShadow: ["0 15px 35px rgba(0,40,150,0.15), inset 0 0 40px rgba(255,255,255,1), inset 0 0 10px rgba(59,130,246,0.3)"] }}
+                  {/* The main white circle with SparkVR logo */}
+                  <div
                     style={{
                       width: 220, height: 220, borderRadius: "50%", background: "#ffffff",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       border: "1px solid rgba(255,255,255,1)",
                       transform: "translateZ(30px)",
-                      position: "relative", zIndex: 2
+                      position: "relative", zIndex: 2,
+                      boxShadow: "0 15px 35px rgba(0,40,150,0.15), inset 0 0 40px rgba(255,255,255,1)"
                     }}
                   >
-                    <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR Logo" style={{ width: 120, objectFit: "contain" }} />
-                  </motion.div>
+                    <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR Logo" style={{ width: 130, objectFit: "contain" }} />
+                  </div>
 
                 </Floating3DWrapper>
               </div>
 
               {/* 4 Cards Positioning (Strictly Equidistant from Center) */}
               {/* Top Left - Science */}
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% - 235px), calc(-50% - 240px))" }}>
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% - 220px), calc(-50% - 230px))" }}>
                 <SubjectCard
                   title="SCIENCE"
-                  desc="Explore the unseen. Understand the real."
+                  desc={"Explore the unseen.\nUnderstand the real."}
+                  imgSrc="/science_3d_card.webp"
                   gradient="linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%)"
                   delay={0.2} icon={Microscope}
-                  threeDNode={
-                    <Canvas camera={{ position: [0, 0, 3.6], fov: 45 }} gl={{ alpha: true, antialias: true }}>
-                      <ambientLight intensity={2.2} />
-                      <directionalLight position={[5, 6, 5]} intensity={3.2} />
-                      <Suspense fallback={null}><Atom3D /></Suspense>
-                    </Canvas>
-                  }
                 />
               </div>
 
               {/* Top Right - Mathematics */}
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% + 235px), calc(-50% - 240px))" }}>
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% + 220px), calc(-50% - 230px))" }}>
                 <SubjectCard
                   title="MATHEMATICS"
-                  desc="Visualize. Reason. Solve with clarity."
-                  imgSrc="/forces_transparent.svg"
+                  desc={"Visualize.\nReason.\nSolve with clarity."}
+                  imgSrc="/math_3d_card.webp"
                   gradient="linear-gradient(135deg, #2e1065 0%, #5b21b6 50%, #8b5cf6 100%)"
                   delay={0.4} icon={Calculator}
                 />
               </div>
 
               {/* Bottom Left - Social Studies */}
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% - 260px), calc(-50% + 290px))" }}>
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% - 220px), calc(-50% + 230px))" }}>
                 <SubjectCard
                   title="SOCIAL STUDIES"
-                  desc="Walk through history. Connect with civilizations."
-                  imgSrc="/student.webp"
+                  desc={"Walk through history.\nConnect with civilizations."}
+                  imgSrc="/history_3d_card.webp"
                   gradient="linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #14b8a6 100%)"
                   delay={0.6} icon={Globe2}
                 />
               </div>
 
-              {/* Bottom Right - Future Subjects */}
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% + 260px), calc(-50% + 290px))" }}>
+              {/* Bottom Right - Future Interdisciplinary Subjects */}
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(calc(-50% + 220px), calc(-50% + 230px))" }}>
                 <SubjectCard
-                  title="INTERDISCIPLINARY"
-                  desc="Preparing students for the future of knowledge."
-                  gradient="linear-gradient(135deg, #78350f 0%, #b45309 50%, #f59e0b 100%)"
+                  title={"FUTURE\nINTERDISCIPLINARY\nSUBJECTS"}
+                  desc={"Preparing students\nfor the future of\nknowledge."}
+                  imgSrc="/stem_3d_card.webp"
+                  gradient="linear-gradient(135deg, #7c2d12 0%, #c2410c 50%, #f97316 100%)"
                   delay={0.8} icon={Rocket}
-                  threeDNode={
-                    <Canvas camera={{ position: [0, 0, 3.8], fov: 45 }} gl={{ alpha: true, antialias: true }}>
-                      <ambientLight intensity={1.8} />
-                      <directionalLight position={[-5, 6, 5]} intensity={3.5} />
-                      <Suspense fallback={null}><Saturn3D /></Suspense>
-                    </Canvas>
-                  }
                 />
               </div>
             </motion.div>

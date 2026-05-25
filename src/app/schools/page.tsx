@@ -556,7 +556,7 @@ export default function SchoolHubPage() {
               </motion.div>
 
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
-                Designed for teachers —<br />
+                <br />
                 <span style={{ color: "#0052cc" }}>not technicians.</span>
               </motion.h2>
 
@@ -681,6 +681,148 @@ export default function SchoolHubPage() {
             <p style={{ fontSize: 18, fontWeight: 600, color: "#001a4d", margin: 0 }}>
               Empowering teachers to deliver the future of learning — <span style={{ color: "#0052cc", fontWeight: 800 }}>today.</span>
             </p>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          GUIDED CLASSROOM FLOW SECTION
+      ══════════════════════════════════════ */}
+      <section className="schools-section" style={{ background: "#f8f9fc", paddingBottom: 0 }}>
+        <div className="schools-container">
+
+          {/* ── Two-column hero row ── */}
+          <div className="schools-flow-hero">
+
+            {/* Left: Text + Feature Cards */}
+            <div className="schools-flow-left">
+
+              {/* Badge */}
+              <motion.div {...fadeLeft(0.1)} style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 24, padding: "8px 16px", background: "#eff6ff", borderRadius: 8 }}>
+                <LayoutTemplate size={16} color="#0052cc" />
+                <span style={{ fontSize: 12, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                  GUIDED CLASSROOM FLOW
+                </span>
+              </motion.div>
+
+              {/* Title */}
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(32px, 3.5vw, 52px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
+                A structured flow.<br />
+                <span style={{ color: "#0052cc" }}>Meaningful learning.</span>
+              </motion.h2>
+
+              {/* Description */}
+              <motion.p {...fadeLeft(0.3)} style={{ fontSize: 17, color: "#475569", lineHeight: 1.65, fontWeight: 500, marginBottom: 32 }}>
+                SparkVR provides a simple, guided flow that helps you deliver engaging VR lessons with confidence and clarity.
+              </motion.p>
+
+              {/* 4 Feature Cards */}
+              <div className="schools-flow-features">
+                {[
+                  { icon: <Calendar size={20} />, color: "#7c3aed", bg: "#f3eeff", title: "Plan with purpose", desc: "Preview lessons, objectives, and key outcomes before class." },
+                  { icon: <Users size={20} />, color: "#059669", bg: "#ecfdf5", title: "Teach with confidence", desc: "Facilitate immersive experiences while staying in control." },
+                  { icon: <MessageSquare size={20} />, color: "#d97706", bg: "#fffbeb", title: "Discuss and connect", desc: "Guide reflection and discussion to connect VR experiences to real-world concepts." },
+                  { icon: <ClipboardList size={20} />, color: "#0052cc", bg: "#eff6ff", title: "Assess and reinforce", desc: "Check understanding and reinforce learning with built-in assessments and activities." }
+                ].map((item, idx) => (
+                  <motion.div key={idx} {...fadeLeft(0.4 + idx * 0.08)} className="schools-flow-feature-card">
+                    <div style={{ width: 42, height: 42, borderRadius: 12, background: item.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: item.color }}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: item.color, margin: "0 0 4px 0" }}>{item.title}</h4>
+                      <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.5, margin: 0 }}>{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Full image (not cut, centered) + floating quote */}
+            <motion.div {...scaleUp(0.4)} className="schools-flow-right">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="/sparkvr_classroom.webp"
+                alt="Guided Classroom Flow"
+                className="schools-flow-image"
+              />
+              {/* Floating quote card */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="schools-flow-floating"
+              >
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <ShieldCheck size={20} color="#0052cc" />
+                </div>
+                <div>
+                  <p style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", margin: "0 0 6px 0", lineHeight: 1.4 }}>
+                    You guide.<br />They explore.<br />
+                    <span style={{ color: "#0052cc" }}>Real learning happens together.</span>
+                  </p>
+                  <p style={{ fontSize: 12, color: "#64748b", margin: 0, lineHeight: 1.5 }}>
+                    SparkVR supports your teaching from start to finish.
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* ── Your Guided Classroom Flow – 5 Steps ── */}
+          <motion.div {...fadeUp(0.5)} className="schools-flow-steps-section">
+            <p className="schools-flow-steps-label">Your guided classroom flow</p>
+
+            <div className="schools-flow-steps">
+              {[
+                { num: "1", color: "#7c3aed", bg: "#f3eeff", icon: <Calendar size={26} color="#7c3aed" />, step: "Before Class", desc: "Preview lesson and\nset learning objectives." },
+                { num: "2", color: "#059669", bg: "#ecfdf5", icon: <Headset size={26} color="#059669" />, step: "During Class – Explore", desc: "Students engage in immersive\nVR experiences." },
+                { num: "3", color: "#d97706", bg: "#fffbeb", icon: <Users size={26} color="#d97706" />, step: "During Class – Discuss", desc: "Facilitate discussion and\nconnect to key concepts." },
+                { num: "4", color: "#0052cc", bg: "#eff6ff", icon: <ClipboardList size={26} color="#0052cc" />, step: "After Class – Assess", desc: "Assess understanding with\nquizzes and activities." },
+                { num: "5", color: "#7c3aed", bg: "#f3eeff", icon: <TrendingUp size={26} color="#7c3aed" />, step: "After Class – Reinforce", desc: "Reinforce learning with\nresources and next steps." }
+              ].map((s, idx) => (
+                <React.Fragment key={idx}>
+                  <motion.div {...fadeUp(0.55 + idx * 0.08)} className="schools-flow-step">
+                    <div style={{ width: 34, height: 34, borderRadius: 17, background: s.color, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14, boxShadow: `0 4px 12px ${s.color}50`, position: "relative", zIndex: 1 }}>
+                      <span style={{ fontSize: 15, fontWeight: 900, color: "#fff" }}>{s.num}</span>
+                    </div>
+                    <div style={{ width: 56, height: 56, borderRadius: 16, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                      {s.icon}
+                    </div>
+                    <h4 style={{ fontSize: 13, fontWeight: 800, color: "#001a4d", margin: "0 0 6px 0", textAlign: "center" }}>{s.step}</h4>
+                    <p style={{ fontSize: 12, color: "#64748b", lineHeight: 1.5, margin: 0, textAlign: "center", whiteSpace: "pre-line" }}>{s.desc}</p>
+                  </motion.div>
+                  {idx < 4 && (
+                    <div className="schools-flow-step-arrow">
+                      <ChevronRight size={20} color="#cbd5e1" strokeWidth={2.5} />
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── Bottom Banner ── */}
+          <motion.div {...fadeUp(0.9)} className="schools-flow-banner">
+            <div style={{ display: "flex", alignItems: "center", gap: 14, flex: 1 }}>
+              <div style={{ width: 40, height: 40, borderRadius: 20, background: "#0052cc", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Lightbulb size={20} color="#fff" />
+              </div>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "#001a4d", margin: 0 }}>
+                A clear flow for every lesson. Better engagement. <span style={{ color: "#0052cc" }}>Stronger outcomes.</span>
+              </p>
+            </div>
+            <div className="schools-flow-banner-divider" />
+            <div style={{ display: "flex", alignItems: "center", gap: 14, flex: 1 }}>
+              <div style={{ width: 40, height: 40, borderRadius: 20, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Users size={20} color="#0052cc" />
+              </div>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "#001a4d", margin: 0 }}>
+                You lead. SparkVR supports. <span style={{ color: "#0052cc" }}>Students succeed.</span>
+              </p>
+            </div>
           </motion.div>
 
         </div>
@@ -981,16 +1123,6 @@ export default function SchoolHubPage() {
           <div className="schools-setup-header">
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
-              <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
-                <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                  SIMPLE TO GET STARTED
-                </span>
-              </motion.div>
-
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
-                Easy setup.<br />
-                <span style={{ color: "#0052cc" }}>We handle the rest.</span>
-              </motion.h2>
 
               <motion.p {...fadeLeft(0.3)} style={{ fontSize: 20, color: "#475569", lineHeight: 1.6, fontWeight: 500, maxWidth: 500 }}>
                 From planning to launch and beyond,<br /> SparkVR makes it effortless for your school.
@@ -1099,13 +1231,6 @@ export default function SchoolHubPage() {
           <div className="schools-built-header">
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
-              <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
-                <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                  BUILT FOR SCHOOLS
-                </span>
-                <div style={{ width: 40, height: 2, background: "#0052cc", marginTop: 8 }} />
-              </motion.div>
-
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Designed for today.<br />
                 Ready for <span style={{ color: "#0052cc" }}>tomorrow.</span>
@@ -1179,19 +1304,14 @@ export default function SchoolHubPage() {
       {/* ══════════════════════════════════════
           READY TO GET STARTED SECTION (10th)
       ══════════════════════════════════════ */}
-      <section className="schools-section" style={{ background: "#ffffff", paddingBottom: 120 }}>
+      <section className="schools-section" style={{ background: "#ffffff" }}>
         <div className="schools-container">
 
           <div className="schools-ready-hero">
             {/* Left Content */}
             <div className="schools-ready-content">
               {/* READY TO GET STARTED */}
-              <motion.div {...fadeLeft(0.1)} style={{ marginBottom: 16 }}>
-                <span style={{ fontSize: 14, fontWeight: 800, color: "#0052cc", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                  READY TO GET STARTED?
-                </span>
-                <div style={{ width: 40, height: 2, background: "#0052cc", marginTop: 8 }} />
-              </motion.div>
+
 
               {/* Heading */}
               <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(48px, 5vw, 64px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
@@ -1229,13 +1349,34 @@ export default function SchoolHubPage() {
 
               {/* Floating Bubbles */}
               <div className="schools-ready-bubbles">
-                {/* SVG Dotted Arc */}
-                <svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0 }} viewBox="0 0 600 500">
-                  <path d="M 100 200 Q 300 -50 550 120" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="6 6" />
+                {/* SVG: dashed path + dot traveling through each bubble center */}
+                <svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, overflow: "visible" }} viewBox="0 0 600 500">
+                  <defs>
+                    <filter id="dot-glow">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
+                  </defs>
+
+                  {/* Dashed guide path through all 4 bubble centers */}
+                  <path
+                    id="bp"
+                    d="M 104 252 C 170 200, 210 80, 260 112 C 310 148, 365 55, 416 92 C 460 125, 520 165, 560 192"
+                    fill="none" stroke="#bfdbfe" strokeWidth="2.5" strokeDasharray="7 9" opacity="0.9"
+                  />
+
+                  {/* Glowing dot traveling from Bubble1 to Bubble4 */}
+                  <circle r="7" fill="#0052cc" filter="url(#dot-glow)">
+                    <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
+                      <mpath href="#bp" />
+                    </animateMotion>
+                    <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.06;0.45;0.92;1" dur="3s" repeatCount="indefinite" />
+                    <animate attributeName="r" values="4;7;7;7;4" keyTimes="0;0.06;0.45;0.92;1" dur="3s" repeatCount="indefinite" />
+                  </circle>
                 </svg>
 
                 {/* Bubble 1: Engaged Students */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="schools-ready-bubble-item" style={{ top: 160, left: "12%" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="schools-ready-bubble-item" style={{ top: 220, left: "12%" }}>
                   <motion.div whileHover={{ scale: 1.2, rotate: 15 }} className="schools-ready-bubble-icon">
                     <Rocket size={28} color="#0052cc" />
                   </motion.div>
@@ -1243,7 +1384,7 @@ export default function SchoolHubPage() {
                 </motion.div>
 
                 {/* Bubble 2: Better Results */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="schools-ready-bubble-item" style={{ top: 10, left: "38%" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="schools-ready-bubble-item" style={{ top: 80, left: "38%" }}>
                   <motion.div whileHover={{ scale: 1.2, y: -10 }} className="schools-ready-bubble-icon">
                     <TrendingUp size={28} color="#0052cc" />
                   </motion.div>
@@ -1251,7 +1392,7 @@ export default function SchoolHubPage() {
                 </motion.div>
 
                 {/* Bubble 3: Future Ready */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.9 }} className="schools-ready-bubble-item" style={{ top: 0, left: "64%" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.9 }} className="schools-ready-bubble-item" style={{ top: 60, left: "64%" }}>
                   <motion.div whileHover={{ scale: 1.2, rotate: -15 }} className="schools-ready-bubble-icon">
                     <GraduationCap size={28} color="#0052cc" />
                   </motion.div>
@@ -1259,7 +1400,7 @@ export default function SchoolHubPage() {
                 </motion.div>
 
                 {/* Bubble 4: Limitless Possibilities */}
-                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 1.1 }} className="schools-ready-bubble-item" style={{ top: 80, left: "88%" }}>
+                <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 1.1 }} className="schools-ready-bubble-item" style={{ top: 160, left: "84%" }}>
                   <motion.div whileHover={{ scale: 1.2, rotate: 180 }} transition={{ duration: 0.6 }} className="schools-ready-bubble-icon">
                     <Globe size={28} color="#0052cc" />
                   </motion.div>

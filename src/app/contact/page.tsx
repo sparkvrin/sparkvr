@@ -123,7 +123,6 @@ function InfoItem({ icon: Icon, label, value }: any) {
 export default function ContactPage() {
   const screenWidth = useScreenWidth();
   const isMobile = screenWidth < 768;
-  const isTablet = screenWidth >= 768 && screenWidth < 1024;
 
   return (
     <main style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#fff" }}>
@@ -151,8 +150,8 @@ export default function ContactPage() {
 
         <div style={{
           position: "relative", zIndex: 10,
-          maxWidth: 1440, margin: "0 auto", width: "100%",
-          padding: isMobile ? "100px 20px 40px" : isTablet ? "120px 40px 40px" : "160px 100px 40px",
+          maxWidth: 1400, margin: "0 auto", width: "100%",
+          padding: isMobile ? "100px 20px 60px" : "110px 60px 60px",
           flex: 1,
           display: "flex", flexDirection: "column",
         }}>
@@ -205,7 +204,7 @@ export default function ContactPage() {
               background: "rgba(255,255,255,0.92)",
               backdropFilter: "blur(24px)",
               borderRadius: 28,
-              padding: isMobile ? "20px 16px" : isTablet ? "24px 32px" : "28px 56px",
+              padding: isMobile ? "20px 16px" : "28px 40px",
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: 20,
@@ -231,11 +230,11 @@ export default function ContactPage() {
       </section>
 
       {/* ─── SECTION 2: CONVERSATION & FORM (POWER 3D) ─── */}
-      <section style={{ background: "#ffffff", padding: isMobile ? "60px 0 80px" : isTablet ? "80px 0 100px" : "140px 0 160px", position: "relative" }}>
+      <section style={{ background: "#ffffff", padding: "60px 0", position: "relative" }}>
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
         
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 40px" : "0 100px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr", gap: isMobile ? 24 : isTablet ? 48 : 100, alignItems: "start" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr", gap: isMobile ? 24 : 60, alignItems: "start" }}>
             
             {/* LEFT SIDE: FORM */}
             <motion.div {...fadeUp(0.1)}>
@@ -298,7 +297,7 @@ export default function ContactPage() {
                  background: "rgba(248,250,252,0.7)",
                  backdropFilter: "blur(30px)",
                  borderRadius: 40,
-                 padding: isMobile ? "32px 20px" : isTablet ? "40px 32px" : "56px 48px",
+                 padding: isMobile ? "32px 20px" : "48px 40px",
                  border: "1.5px solid #fff",
                  boxShadow: "0 30px 70px rgba(0,26,77,0.05)",
                  position: "relative", overflow: "hidden"
@@ -332,7 +331,7 @@ export default function ContactPage() {
               marginTop: isMobile ? 60 : 120,
               background: "#f8fafc",
               borderRadius: 36,
-              padding: isMobile ? "32px 20px" : "48px 80px",
+              padding: isMobile ? "32px 20px" : "48px 60px",
               display: "grid",
               gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
               gap: isMobile ? 24 : 40,
