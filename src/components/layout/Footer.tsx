@@ -30,10 +30,9 @@ const LinkedinIcon = () => (
     <circle cx="4" cy="4" r="2" />
   </svg>
 );
-const YoutubeIcon = () => (
+const TwitterIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+    <path d="M4 4l16 16M4 20L20 4" />
   </svg>
 );
 const InstagramIcon = () => (
@@ -126,9 +125,14 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div style={{ display: "flex", gap: 12 }}>
-              {[FacebookIcon, LinkedinIcon, YoutubeIcon, InstagramIcon].map((Icon, i) => (
+              {[
+                { Icon: FacebookIcon,  href: "https://www.facebook.com/profile.php?id=100084532397318" },
+                { Icon: LinkedinIcon,  href: "https://www.linkedin.com/company/sparkvr2/" },
+                { Icon: TwitterIcon,   href: "https://x.com/sparkvr22" },
+                { Icon: InstagramIcon, href: "https://www.instagram.com/sparkvr.in/" },
+              ].map(({ Icon, href }, i) => (
                 <motion.a
-                  key={i} href="#"
+                  key={i} href={href} target="_blank" rel="noopener noreferrer"
                   whileHover={{ y: -4, scale: 1.08, boxShadow: "0 10px 20px rgba(37,99,235,0.15)" }}
                   whileTap={{ scale: 0.95 }}
                   style={{
@@ -166,7 +170,6 @@ export default function Footer() {
               {
                 title: "Solutions", icon: Building2,
                 links: [
-                  { label: "CURRICULUM", href: "/curriculum" },
                   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
                   { label: "TIMETABLE", href: "/timetable" },
                   { label: "BLOG", href: "/blog" }

@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const NAV_LINKS = [
   { label: "FOR SCHOOLS", href: "/schools" },
   { label: "FOR TEACHERS", href: "/teachers" },
-  { label: "CURRICULUM", href: "/curriculum" },
   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
   { label: "TIMETABLE", href: "/timetable" },
   { label: "BLOG", href: "/blog" },
