@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 
 function useScreenWidth() {
   const [width, setWidth] = useState(1200);
@@ -245,31 +246,33 @@ export default function SolutionSection() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.8 }}>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(37,99,235,0.4)" }}
-              whileTap={{ scale: 0.95 }}
-              style={{
-                position: "relative", overflow: "hidden",
-                background: "linear-gradient(90deg, #3b82f6 0%, #6366f1 100%)",
-                color: "white", border: "none",
-                padding: isMobile ? "14px 28px" : "20px 40px",
-                borderRadius: 100,
-                fontSize: isMobile ? 15 : 18,
-                fontWeight: 700,
-                display: "inline-flex", alignItems: "center", gap: 14,
-                cursor: "pointer", boxShadow: "0 15px 35px rgba(37,99,235,0.3)"
-              }}
-            >
-              <motion.div
-                animate={{ x: ["-100%", "200%"] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
-                style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)", transform: "skewX(-20deg)" }}
-              />
-              <span style={{ position: "relative", zIndex: 2 }}>Experience SparkVR in Your School!</span>
-              <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ display: "flex" }}>
-                <ArrowRight size={22} strokeWidth={3} />
-              </motion.div>
-            </motion.button>
+            <Link href="/contact" style={{ textDecoration: "none" }}>
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(37,99,235,0.4)" }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  position: "relative", overflow: "hidden",
+                  background: "linear-gradient(90deg, #3b82f6 0%, #6366f1 100%)",
+                  color: "white", border: "none",
+                  padding: isMobile ? "14px 28px" : "20px 40px",
+                  borderRadius: 100,
+                  fontSize: isMobile ? 15 : 18,
+                  fontWeight: 700,
+                  display: "inline-flex", alignItems: "center", gap: 14,
+                  cursor: "pointer", boxShadow: "0 15px 35px rgba(37,99,235,0.3)"
+                }}
+              >
+                <motion.div
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
+                  style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)", transform: "skewX(-20deg)" }}
+                />
+                <span style={{ position: "relative", zIndex: 2 }}>Experience SparkVR in Your School!</span>
+                <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ display: "flex" }}>
+                  <ArrowRight size={22} strokeWidth={3} />
+                </motion.div>
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
 
