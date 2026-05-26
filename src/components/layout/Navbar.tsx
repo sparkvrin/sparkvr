@@ -216,9 +216,6 @@ export default function Navbar() {
                     </span>
                   </motion.div>
                 </Link>
-                <div style={{ marginTop: 24, textAlign: "center" }}>
-                  <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>© 2024 SPARKVR EDUCATION</p>
-                </div>
               </motion.div>
             </motion.div>
           </>

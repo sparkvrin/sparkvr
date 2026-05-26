@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, Suspense, useState, useEffect } from "react";
+import Link from "next/link";
 
 function useScreenWidth() {
   const [width, setWidth] = useState(1200);
@@ -305,38 +306,39 @@ export default function BannerSection() {
         )}
 
         {/* CTA Button */}
-        <motion.button
-          initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 10 : 0 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.7, type: "spring" }}
-          whileHover={{ scale: 1.06, boxShadow: "0 25px 60px rgba(37,99,235,0.5)" }}
-          whileTap={{ scale: 0.97 }}
-          style={{
-            display: "flex", alignItems: "center", gap: isMobile ? 10 : 14,
-            background: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
-            color: "white", border: "none", borderRadius: 60,
-            padding: isMobile ? "14px 24px" : "18px 36px",
-            fontSize: isMobile ? 13 : 15, fontWeight: 700,
-            cursor: "pointer",
-            boxShadow: "0 15px 40px rgba(37,99,235,0.4)",
-            whiteSpace: "nowrap", flexShrink: 0,
-            position: "relative", overflow: "hidden",
-            letterSpacing: "0.01em",
-            marginBottom: isMobile ? 24 : 0,
-          }}
-        >
-          <motion.div
-            animate={{ x: ["-100%", "220%"] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
-            style={{ position: "absolute", top: 0, left: 0, width: "40%", height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", pointerEvents: "none" }}
-          />
-          <Calendar size={isMobile ? 16 : 20} strokeWidth={2} />
-          {isMobile ? "Schedule Demo" : "Schedule a Guided Demonstration"}
-          <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
-            <ArrowRight size={isMobile ? 16 : 20} strokeWidth={2.5} />
-          </motion.div>
-        </motion.button>
+        <Link href="/contact" style={{ textDecoration: "none", flexShrink: 0, marginBottom: isMobile ? 24 : 0 }}>
+          <motion.button
+            initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 10 : 0 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.7, type: "spring" }}
+            whileHover={{ scale: 1.06, boxShadow: "0 25px 60px rgba(37,99,235,0.5)" }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              display: "flex", alignItems: "center", gap: isMobile ? 10 : 14,
+              background: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
+              color: "white", border: "none", borderRadius: 60,
+              padding: isMobile ? "14px 24px" : "18px 36px",
+              fontSize: isMobile ? 13 : 15, fontWeight: 700,
+              cursor: "pointer",
+              boxShadow: "0 15px 40px rgba(37,99,235,0.4)",
+              whiteSpace: "nowrap",
+              position: "relative", overflow: "hidden",
+              letterSpacing: "0.01em",
+            }}
+          >
+            <motion.div
+              animate={{ x: ["-100%", "220%"] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
+              style={{ position: "absolute", top: 0, left: 0, width: "40%", height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", pointerEvents: "none" }}
+            />
+            <Calendar size={isMobile ? 16 : 20} strokeWidth={2} />
+            {isMobile ? "Schedule Demo" : "Schedule a Guided Demonstration"}
+            <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+              <ArrowRight size={isMobile ? 16 : 20} strokeWidth={2.5} />
+            </motion.div>
+          </motion.button>
+        </Link>
 
       </div>
     </section>

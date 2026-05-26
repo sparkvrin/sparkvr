@@ -246,9 +246,11 @@ export default function BlogDetailPage() {
               </div>
               <h3 className="cta-title">Experience the Impact in Your School</h3>
               <p className="cta-desc">Book a free, no-obligation workshop and explore how SparkVR can transform learning.</p>
-              <button className="cta-button">
-                BOOK FREE WORKSHOP <ChevronRight size={18} strokeWidth={3} />
-              </button>
+              <Link href="/contact" style={{ textDecoration: "none" }}>
+                <button className="cta-button">
+                  BOOK FREE WORKSHOP <ChevronRight size={18} strokeWidth={3} />
+                </button>
+              </Link>
               <div className="cta-wave-bg"></div>
             </motion.div>
           </aside>
