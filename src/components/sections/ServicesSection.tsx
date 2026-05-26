@@ -490,7 +490,7 @@ export default function ServicesSection() {
                   <motion.div key={i}
                     initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     transition={{ delay: 0.1 + i * 0.1 }}
-                    style={{ background: "rgba(255,255,255,0.92)", borderRadius: 18, padding: "14px 12px", boxShadow: "0 6px 24px rgba(0,40,120,0.09)", border: "1px solid rgba(220,235,255,0.8)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center" }}>
+                    style={{ background: "rgba(255,255,255,0.92)", borderRadius: 18, padding: "14px 12px", boxShadow: "0 6px 24px rgba(0,40,120,0.09)", border: "1px solid rgba(220,235,255,0.8)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center", gridColumn: (i === CARDS.length - 1 && CARDS.length % 2 !== 0) ? "1 / -1" : undefined }}>
                     <div style={{ width: 40, height: 40, borderRadius: "50%", background: "rgba(219,234,254,0.7)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {c.icon}
                     </div>

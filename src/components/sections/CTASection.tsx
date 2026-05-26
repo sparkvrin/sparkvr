@@ -211,7 +211,7 @@ export default function CTASection() {
             style={{ marginBottom: 40 }}
           >
             <p style={{ fontSize: 26, color: "#1e293b", fontWeight: 500, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
-              The only question is{" — "}<br />
+              The only question is -<br />
               <span style={{ color: "#2563eb", fontWeight: 700 }}>who adopts first?</span>
             </p>
           </motion.div>

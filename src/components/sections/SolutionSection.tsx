@@ -154,7 +154,7 @@ export default function SolutionSection() {
       style={{
         position: "relative",
         width: "100%",
-        minHeight: "100vh",
+        minHeight: isMobile ? "auto" : "100vh",
         padding: "60px 0",
         background: "radial-gradient(circle at 70% 50%, #f4f8ff 0%, #e2eeff 50%, #cce0ff 100%)",
         overflow: "hidden",

@@ -661,18 +661,18 @@ export default function TimetablePage() {
                 style={{ background: "#fff", borderRadius: 24, border: "1px solid #f0f4f8", display: "flex", flexDirection: "column", overflow: "hidden", transition: "box-shadow 0.3s" }}
               >
                 {/* Top: Icon + Title + Desc */}
-                <div style={{ padding: "28px 20px 20px 20px", textAlign: "center", flex: 1 }}>
-                  <div style={{ width: 52, height: 52, borderRadius: "50%", background: `${card.color}12`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px auto" }}>
-                    <card.icon size={26} color={card.color} strokeWidth={2} />
+                <div style={{ padding: isMobile ? "32px 24px 24px 24px" : "28px 20px 20px 20px", textAlign: "center", flex: 1 }}>
+                  <div style={{ width: isMobile ? 68 : 52, height: isMobile ? 68 : 52, borderRadius: "50%", background: `${card.color}12`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px auto" }}>
+                    <card.icon size={isMobile ? 32 : 26} color={card.color} strokeWidth={2} />
                   </div>
-                  <h4 style={{ fontSize: 15, fontWeight: 800, color: COLORS.navy, marginBottom: 10, whiteSpace: "pre-line", lineHeight: 1.3 }}>{card.title}</h4>
-                  <p style={{ fontSize: 12, color: COLORS.textGray, lineHeight: 1.5, margin: "0 0 16px 0", fontWeight: 500 }}>{card.desc}</p>
-                  <div style={{ width: 30, height: 2, background: card.color, margin: "0 auto" }} />
+                  <h4 style={{ fontSize: isMobile ? 22 : 15, fontWeight: 800, color: COLORS.navy, marginBottom: isMobile ? 14 : 10, whiteSpace: "pre-line", lineHeight: 1.3 }}>{card.title}</h4>
+                  <p style={{ fontSize: isMobile ? 15 : 12, color: COLORS.textGray, lineHeight: 1.6, margin: isMobile ? "0 0 20px 0" : "0 0 16px 0", fontWeight: 500 }}>{card.desc}</p>
+                  <div style={{ width: 36, height: 2.5, background: card.color, margin: "0 auto" }} />
                 </div>
 
                 {/* Bottom: Image */}
-                <motion.div whileHover={{ scale: 1.02 }} style={{ padding: "0 16px 16px 16px", overflow: "hidden" }}>
-                  <img loading="lazy" decoding="async" src={card.img} alt={card.title} style={{ width: "100%", height: isMobile ? 100 : 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
+                <motion.div whileHover={{ scale: 1.02 }} style={{ padding: isMobile ? "0 20px 20px 20px" : "0 16px 16px 16px", overflow: "hidden" }}>
+                  <img loading="lazy" decoding="async" src={card.img} alt={card.title} style={{ width: "100%", height: isMobile ? 220 : 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
                 </motion.div>
               </motion.div>
             ))}

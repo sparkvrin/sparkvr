@@ -289,7 +289,7 @@ export default function BannerSection() {
             transition={{ delay: 0.5, duration: 0.6 }}
             style={{ fontSize: isMobile ? 14 : 16, color: "#475569", margin: 0, fontWeight: 500 }}
           >
-            The only question is{" \u2014 "}who adopts first?
+            The only question is - who adopts first?
           </motion.p>
         </div>
 

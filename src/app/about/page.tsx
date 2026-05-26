@@ -1321,7 +1321,7 @@ export default function AboutPage() {
             <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: isMobile ? 40 : 80, marginTop: 60 }}>
               
               {/* Features (Left) */}
-              <div style={{ display: "flex", alignItems: "stretch", flex: "1 1 500px" }}>
+              <div style={{ display: "flex", alignItems: "stretch", flex: isMobile ? "0 0 auto" : "1 1 500px" }}>
                 {[
                   { icon: Rocket, title: "Future Ready", desc: "Equip learners with\nskills for tomorrow." },
                   { icon: Users, title: "Partner Driven", desc: "We work with you\nevery step of the way." },
