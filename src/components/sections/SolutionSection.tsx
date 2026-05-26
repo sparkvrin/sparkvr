@@ -23,18 +23,9 @@ function Floating3DWrapper({ children, delay = 0, floatAmp = 15, rotateAmp = 5, 
   children: React.ReactNode; delay?: number; floatAmp?: number; rotateAmp?: number; duration?: number; className?: string;
 }) {
   return (
-    <motion.div
-      animate={{
-        y: [0, -floatAmp, 0],
-        rotateX: [0, rotateAmp, 0, -rotateAmp, 0],
-        rotateY: [0, -rotateAmp, 0, rotateAmp, 0],
-      }}
-      transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
-      style={{ transformStyle: "preserve-3d" }}
-      className={className}
-    >
+    <div style={{ transformStyle: "preserve-3d" }} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -174,32 +165,8 @@ export default function SolutionSection() {
         />
 
         {/* Glowing Orbs */}
-        <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 8, repeat: Infinity }} style={{ position: "absolute", top: "10%", left: "40%", width: 300, height: 300, background: "rgba(59, 130, 246, 0.15)", filter: "blur(80px)", borderRadius: "50%" }} />
-        <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 10, repeat: Infinity, delay: 2 }} style={{ position: "absolute", bottom: "10%", right: "20%", width: "min(100%, 400px)", height: 400, background: "rgba(139, 92, 246, 0.15)", filter: "blur(100px)", borderRadius: "50%" }} />
-
-        {/* Small floating particles */}
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              y: [0, -100 - (i % 5) * 10],
-              x: [0, (i % 2 === 0 ? 1 : -1) * (15 + (i % 3) * 5)],
-              opacity: [0, 0.8, 0],
-              scale: [0, 1.5, 0]
-            }}
-            transition={{ duration: 5 + (i % 5), repeat: Infinity, ease: "linear", delay: i * 0.4 }}
-            style={{
-              position: "absolute",
-              top: `${10 + (i * 17) % 80}%`,
-              left: `${5 + (i * 23) % 90}%`,
-              width: 4 + (i % 3) * 2, height: 4 + (i % 3) * 2,
-              borderRadius: "50%",
-              background: ["#3b82f6", "#8b5cf6", "#ec4899", "#10b981"][i % 4],
-              filter: "blur(1px)",
-              boxShadow: `0 0 10px ${["#3b82f6", "#8b5cf6", "#ec4899", "#10b981"][i % 4]}`
-            }}
-          />
-        ))}
+        <div style={{ position: "absolute", top: "10%", left: "40%", width: 300, height: 300, background: "rgba(59, 130, 246, 0.15)", filter: "blur(80px)", borderRadius: "50%", opacity: 0.3 }} />
+        <div style={{ position: "absolute", bottom: "10%", right: "20%", width: "min(100%, 400px)", height: 400, background: "rgba(139, 92, 246, 0.15)", filter: "blur(100px)", borderRadius: "50%", opacity: 0.2 }} />
       </div>
 
       <div className="solution-layout" style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto", width: "100%", display: "flex", flexDirection: isMobile || isTablet ? "column" : "row", flexWrap: "nowrap", gap: isMobile ? 24 : 40, alignItems: isMobile || isTablet ? "flex-start" : "center", paddingLeft: isMobile ? 20 : isTablet ? 32 : 60, paddingRight: isMobile ? 20 : isTablet ? 32 : 60 }}>

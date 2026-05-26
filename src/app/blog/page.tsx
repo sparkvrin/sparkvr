@@ -36,12 +36,9 @@ const fadeUpRotate = (delay = 0) => ({
 /* ─── COMPACT 3D ICON WRAPPER ─── */
 function FloatLoop({ children, y = 10, duration = 4, delay = 0 }: any) {
   return (
-    <motion.div
-      animate={{ y: [0, -y, 0], rotateZ: [0, 1, -1, 0] }}
-      transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
-    >
+    <div>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -326,16 +323,19 @@ export default function BlogPage() {
                >
                  <TiltCard style={{ height: "100%" }}>
                    <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                     <div style={{
-                       background: "#ffffff",
-                       borderRadius: 32,
-                       overflow: "hidden",
-                       height: "100%",
-                       border: "1px solid rgba(0,82,204,0.06)",
-                       boxShadow: "0 20px 50px rgba(0,26,77,0.04)",
-                       display: "flex",
-                       flexDirection: "column"
-                     }}>
+                     <motion.div
+                       whileHover={{ scale: 1.02, y: -5, boxShadow: "0 16px 40px rgba(0,26,77,0.1)" }}
+                       transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                       style={{
+                         background: "#ffffff",
+                         borderRadius: 32,
+                         overflow: "hidden",
+                         height: "100%",
+                         border: "1px solid rgba(0,82,204,0.06)",
+                         boxShadow: "0 20px 50px rgba(0,26,77,0.04)",
+                         display: "flex",
+                         flexDirection: "column"
+                       }}>
                        <div style={{ position: "relative", height: 260, overflow: "hidden" }}>
                          <motion.img loading="lazy" decoding="async" 
                            whileHover={{ scale: 1.1 }}
@@ -370,7 +370,7 @@ export default function BlogPage() {
                            </motion.div>
                          </div>
                        </div>
-                     </div>
+                     </motion.div>
                    </Link>
                  </TiltCard>
                </motion.div>

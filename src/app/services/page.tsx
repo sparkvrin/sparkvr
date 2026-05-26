@@ -58,11 +58,7 @@ export default function ServicesPage() {
             transition={{ scale: { duration: 4 + n, repeat: Infinity, ease: "easeInOut", delay: n * 0.5 }, rotate: { duration: 40 + n * 15, repeat: Infinity, ease: "linear" } }}
           />
         ))}
-        <motion.div
-          animate={{ y: [0, -18, 0], opacity: [0.2, 0.38, 0.2], scale: [1, 1.2, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          style={{ position: "absolute", top: "20%", left: "10%", width: 120, height: 120, borderRadius: "50%", background: "rgba(31,179,255,0.08)", filter: "blur(48px)", pointerEvents: "none" }}
-        />
+        <div style={{ position: "absolute", top: "20%", left: "10%", width: 120, height: 120, borderRadius: "50%", background: "rgba(31,179,255,0.08)", filter: "blur(48px)", pointerEvents: "none", opacity: 0.2 }} />
 
         <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="section-label" style={{ marginBottom: 20 }}>What we offer</motion.p>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   Calendar, Download, ShieldCheck, GraduationCap, Users, School, 
   MapPin, User, Phone, Mail, MessageSquare, Lock, Clock, ChevronRight 
@@ -35,12 +35,12 @@ function useScreenWidth() {
   return width;
 }
 
-/* ─── HELPER COMPONENTS (POWER 3D) ─── */
+/* ─── HELPER COMPONENTS ─── */
 function InteractiveButton({ children, primary = false, icon: Icon, href }: any) {
   const btn = (
     <motion.div
-      whileHover={{ scale: 1.05, y: -5, boxShadow: primary ? "0 15px 35px rgba(0,82,204,0.3)" : "none" }}
-      whileTap={{ scale: 0.96 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       style={{
         display: "flex", alignItems: "center", gap: 12,
         padding: "16px 34px", borderRadius: 14,
@@ -59,65 +59,38 @@ function InteractiveButton({ children, primary = false, icon: Icon, href }: any)
 }
 
 function FormInput({ label, placeholder, icon: Icon }: any) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-30, 30], [10, -10]);
-  const rotateY = useTransform(x, [-30, 30], [-10, 10]);
-  const springX = useSpring(rotateX, { stiffness: 300, damping: 20 });
-  const springY = useSpring(rotateY, { stiffness: 300, damping: 20 });
-
-  function handleMouse(event: React.MouseEvent) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    x.set(event.clientX - (rect.left + rect.width / 2));
-    y.set(event.clientY - (rect.top + rect.height / 2));
-  }
-
   return (
-    <motion.div 
-      style={{ perspective: 1000 }}
-      onMouseMove={handleMouse}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
-    >
-      <motion.div 
-        style={{ 
-          rotateX: springX, rotateY: springY,
-          display: "flex", alignItems: "center", gap: 14, 
-          background: "#f8fafc", padding: "16px 22px", 
-          borderRadius: 16, border: "1.5px solid rgba(0,82,204,0.08)",
-          boxShadow: "0 4px 12px rgba(0,26,77,0.02)",
-          transition: "border-color 0.3s ease"
-        }}
-        whileHover={{ borderColor: "#0052cc40", boxShadow: "0 10px 30px rgba(0,82,204,0.06)" }}
-      >
-        <Icon size={20} color="#0052cc" strokeWidth={2.2} />
-        <div style={{ flex: 1 }}>
-           <p style={{ fontSize: 11, fontWeight: 900, color: "#001a4d", marginBottom: 3, opacity: 0.8 }}>{label}</p>
-           <input placeholder={placeholder} style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500 }} />
-        </div>
-      </motion.div>
-    </motion.div>
+    <div style={{
+      display: "flex", alignItems: "center", gap: 14,
+      background: "#f8fafc", padding: "16px 22px",
+      borderRadius: 16, border: "1.5px solid rgba(0,82,204,0.08)",
+      boxShadow: "0 4px 12px rgba(0,26,77,0.02)",
+    }}>
+      <Icon size={20} color="#0052cc" strokeWidth={2.2} />
+      <div style={{ flex: 1 }}>
+        <p style={{ fontSize: 11, fontWeight: 900, color: "#001a4d", marginBottom: 3, opacity: 0.8 }}>{label}</p>
+        <input placeholder={placeholder} style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500 }} />
+      </div>
+    </div>
   );
 }
 
 function InfoItem({ icon: Icon, label, value }: any) {
   return (
-    <motion.div 
-      whileHover={{ x: 8 }}
-      style={{ display: "flex", alignItems: "center", gap: 20, cursor: "default" }}
-    >
-       <div style={{ 
-         width: 48, height: 48, borderRadius: "50%", 
-         background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", 
-         color: "#0052cc", boxShadow: "0 10px 25px rgba(0,26,77,0.05)",
-         border: "1px solid rgba(0,82,204,0.05)"
-       }}>
-          <Icon size={22} strokeWidth={2.2} />
-       </div>
-       <div>
-          <p style={{ fontSize: 13, fontWeight: 900, color: "#001a4d", marginBottom: 4 }}>{label}</p>
-          <p style={{ fontSize: 14, color: "#64748b", fontWeight: 600 }}>{value}</p>
-       </div>
-    </motion.div>
+    <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+      <div style={{
+        width: 48, height: 48, borderRadius: "50%",
+        background: "#fff", display: "flex", alignItems: "center", justifyContent: "center",
+        color: "#0052cc", boxShadow: "0 10px 25px rgba(0,26,77,0.05)",
+        border: "1px solid rgba(0,82,204,0.05)"
+      }}>
+        <Icon size={22} strokeWidth={2.2} />
+      </div>
+      <div>
+        <p style={{ fontSize: 13, fontWeight: 900, color: "#001a4d", marginBottom: 4 }}>{label}</p>
+        <p style={{ fontSize: 14, color: "#64748b", fontWeight: 600 }}>{value}</p>
+      </div>
+    </div>
   );
 }
 
@@ -202,8 +175,7 @@ export default function ContactPage() {
             style={{
               marginTop: "auto",
               marginBottom: 60,
-              background: "rgba(255,255,255,0.92)",
-              backdropFilter: "blur(24px)",
+              background: "#ffffff",
               borderRadius: 28,
               padding: isMobile ? "20px 16px" : "28px 40px",
               display: "grid",
@@ -219,18 +191,18 @@ export default function ContactPage() {
               { icon: Users, text: "Teacher Guided" },
               { icon: School, text: "Incubated at IIT Indore" },
             ].map((item, i) => (
-              <motion.div key={i} whileHover={{ y: -3 }} style={{ display: "flex", alignItems: "center", gap: 18, borderRight: (!isMobile && i < 3) ? "1px solid rgba(0,26,77,0.06)" : "none" }}>
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 18, borderRight: (!isMobile && i < 3) ? "1px solid rgba(0,26,77,0.06)" : "none" }}>
                 <div style={{ width: 42, height: 42, borderRadius: 12, background: "rgba(0,82,204,0.05)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc" }}>
                   <item.icon size={22} strokeWidth={2} />
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 700, color: "#001a4d" }}>{item.text}</span>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* ─── SECTION 2: CONVERSATION & FORM (POWER 3D) ─── */}
+      {/* ─── SECTION 2: CONVERSATION & FORM ─── */}
       <section id="contact-form" style={{ background: "#ffffff", padding: "60px 0", position: "relative" }}>
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
         
@@ -258,8 +230,8 @@ export default function ContactPage() {
                 </div>
                 <FormInput label="Email Address" placeholder="Enter email address" icon={Mail} />
                 
-                <motion.div whileHover={{ scale: 1.005 }} style={{ perspective: 1000 }}>
-                  <div style={{ 
+                <div>
+                  <div style={{
                     display: "flex", alignItems: "flex-start", gap: 14, 
                     background: "#f8fafc", padding: "20px 22px", 
                     borderRadius: 20, border: "1.5px solid rgba(0,82,204,0.06)",
@@ -271,7 +243,7 @@ export default function ContactPage() {
                         <textarea placeholder="Tell us about your requirements or any specific questions." style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500, resize: "none", height: isMobile ? 80 : 100 }} />
                      </div>
                   </div>
-                </motion.div>
+                </div>
 
                 <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 0, marginTop: 32 }}>
                    <div style={{ display: "flex", alignItems: "center", gap: 14, maxWidth: 320 }}>
@@ -287,16 +259,10 @@ export default function ContactPage() {
               </form>
             </motion.div>
 
-            {/* RIGHT SIDE: INFO BOX (POWER 3D FLOAT) */}
-            <motion.div 
-              {...fadeUp(0.3)}
-              whileHover={{ y: -8, rotateY: -2, rotateX: 2 }}
-              transition={{ duration: 0.4 }}
-              style={{ perspective: 1500 }}
-            >
+            {/* RIGHT SIDE: INFO BOX */}
+            <motion.div {...fadeUp(0.3)}>
                <div style={{
-                 background: "rgba(248,250,252,0.7)",
-                 backdropFilter: "blur(30px)",
+                 background: "#f8fafc",
                  borderRadius: 40,
                  padding: isMobile ? "32px 20px" : "48px 40px",
                  border: "1.5px solid #fff",
@@ -345,9 +311,8 @@ export default function ContactPage() {
               { icon: Users, title: "Academic Focused", desc: "Designed for real classrooms." },
               { icon: Lock, title: "Secure & Private", desc: "We value your privacy." },
             ].map((item, i) => (
-              <motion.div 
-                key={i} 
-                whileHover={{ scale: 1.02 }}
+              <div
+                key={i}
                 style={{ display: "flex", alignItems: "center", gap: 24, borderRight: (!isMobile && i < 2) ? "1px solid rgba(0,0,0,0.06)" : "none" }}
               >
                  <div style={{ 
@@ -361,7 +326,7 @@ export default function ContactPage() {
                     <h4 style={{ fontSize: 17, fontWeight: 900, color: "#001a4d", marginBottom: 6 }}>{item.title}</h4>
                     <p style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>{item.desc}</p>
                  </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>

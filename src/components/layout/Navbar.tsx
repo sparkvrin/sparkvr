@@ -7,14 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const NAV_LINKS = [
   { label: "FOR SCHOOLS", href: "/schools" },
   { label: "FOR TEACHERS", href: "/teachers" },
-  // { label: "VR LABS",           href: "/vr-labs" },
-  // { label: "SUBJECTS & GRADES", href: "/subjects" },
+  { label: "CURRICULUM", href: "/curriculum" },
   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
   { label: "TIMETABLE", href: "/timetable" },
-  // { label: "CASE STUDIES",      href: "/case-studies" },
   { label: "BLOG", href: "/blog" },
   { label: "ABOUT", href: "/about" },
-  // { label: "HELP CENTER", href: "/help" },
   { label: "CONTACT", href: "/contact" },
 ];
 
@@ -51,19 +48,18 @@ export default function Navbar() {
         style={{
           position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
           height: isMobile ? 76 : 120,
-          display: "flex", alignItems: "flex-end",
-          background: "transparent",
+          display: "flex", alignItems: "center",
+          background: "linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.0) 100%)",
         }}
       >
         <div style={{
           maxWidth: 1400, margin: "0 auto", width: "100%", height: "100%",
           paddingLeft: isMobile ? 20 : 60,
           paddingRight: isMobile ? 20 : 60,
-          paddingBottom: isMobile ? 14 : 20,
-          display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
         }}>
           {/* LOGO */}
-          <Link href="/" style={{ display: "flex", alignItems: "flex-end", textDecoration: "none" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
             <img loading="lazy" decoding="async"
               src="/logo1.png"
               alt="SparkVR"
@@ -72,7 +68,7 @@ export default function Navbar() {
           </Link>
 
           {/* RIGHT SIDE: CTA + Hamburger */}
-          <div style={{ display: "flex", alignItems: "flex-end", gap: isMobile ? 12 : 24 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 24 }}>
             {/* Hide CTA button on mobile — it lives in the menu */}
             {!isMobile && (
               <Link href="/contact" style={{ textDecoration: "none" }}>
@@ -162,9 +158,7 @@ export default function Navbar() {
               }}
             >
               {/* Decorative floating glow inside menu */}
-              <motion.div
-                animate={{ y: [0, -15, 0], opacity: [0.15, 0.3, 0.15] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              <div
                 style={{ position: "absolute", top: "15%", left: "10%", width: 100, height: 100, borderRadius: "50%", background: "rgba(31,179,255,0.1)", filter: "blur(40px)", pointerEvents: "none" }}
               />
 

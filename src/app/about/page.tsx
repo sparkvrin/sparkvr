@@ -32,12 +32,9 @@ const slideLeft = (delay = 0) => ({
 /* ─── FLOATING AMBIENT WRAPPER ─── */
 function FloatLoop({ children, y = 10, duration = 4, delay = 0 }: any) {
   return (
-    <motion.div
-      animate={{ y: [0, -y, 0], rotateZ: [0, 1.5, -1.5, 0] }}
-      transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
-    >
+    <div>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -185,7 +182,7 @@ export default function AboutPage() {
           { top: "32%", left: "90%",  size: 7,  color: "#1fb3ff", delay: 3 },
         ].map((orb, i) => (
           <motion.div key={i}
-            animate={{ y: [0, -18, 0], opacity: [0.45, 0.9, 0.45], scale: [1, 1.2, 1] }}
+            animate={{ opacity: [0.45, 0.9, 0.45], scale: [1, 1.2, 1] }}
             transition={{ duration: 4 + i * 0.8, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
             style={{
               position: "absolute", top: orb.top, left: orb.left,
@@ -342,7 +339,7 @@ export default function AboutPage() {
           { top: "75%", left: "78%", size: 14, color: "#60a5fa", delay: 1   },
         ].map((orb, i) => (
           <motion.div key={i}
-            animate={{ y: [0, -22, 0], opacity: [0.4, 0.85, 0.4], scale: [1, 1.15, 1] }}
+            animate={{ opacity: [0.4, 0.85, 0.4], scale: [1, 1.15, 1] }}
             transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
             style={{
               position: "absolute", top: orb.top, left: orb.left,
@@ -730,7 +727,7 @@ export default function AboutPage() {
           { top: "22%", left: "76%", size: 8,  color: "#a78bfa", delay: 0.8 },
         ].map((orb, i) => (
           <motion.div key={i}
-            animate={{ y: [0, -17, 0], opacity: [0.78, 1, 0.78], scale: [1, 1.13, 1] }}
+            animate={{ opacity: [0.78, 1, 0.78], scale: [1, 1.13, 1] }}
             transition={{ duration: 4 + i * 0.65, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
             style={{
               position: "absolute", top: orb.top, left: orb.left,
@@ -983,7 +980,7 @@ export default function AboutPage() {
           { top: "50%", left: "94%", size: 10, bg: "#60a5fa",                                  delay: 0.4 },
         ].map((orb, i) => (
           <motion.div key={i}
-            animate={{ y: [0, -18, 0], opacity: [0.72, 1, 0.72], scale: [1, 1.1, 1] }}
+            animate={{ opacity: [0.72, 1, 0.72], scale: [1, 1.1, 1] }}
             transition={{ duration: 4 + i * 0.65, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
             style={{
               position: "absolute", top: orb.top, left: orb.left,
@@ -1109,100 +1106,46 @@ export default function AboutPage() {
               marginBottom: 28,
             }}
           >
-            {/* Mobile: 2-col icon+label+desc cards */}
-            {isMobile ? (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
-                {[
-                  { icon: Puzzle,      label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
-                  { icon: Users,       label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
-                  { icon: ShieldCheck, label: "Ensure",     desc: "Safe, reliable and built for real school environments."      },
-                  { icon: BarChart3,   label: "Strengthen", desc: "Conceptual clarity today, stronger learning tomorrow."       },
-                  { icon: School,      label: "Scale",      desc: "Built for long-term impact across schools and institutions." },
-                ].map((item, i) => (
-                  <motion.div key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.72 + i * 0.1, duration: 0.6 }}
-                    style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "16px 10px", background: "rgba(232,243,255,0.7)", borderRadius: 16, border: "1px solid rgba(0,82,204,0.08)" }}
-                  >
-                    <div style={{ width: 54, height: 54, borderRadius: "50%", background: "rgba(232,243,255,1)", border: "1.5px solid rgba(0,82,204,0.14)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", marginBottom: 10 }}>
-                      <item.icon size={26} strokeWidth={1.55} />
-                    </div>
-                    <p style={{ fontSize: 13, fontWeight: 700, color: "#001a4d", marginBottom: 5 }}>{item.label}</p>
-                    <p style={{ fontSize: 11, color: "#64748b", lineHeight: 1.5, fontWeight: 500 }}>{item.desc}</p>
+            {/* All screen sizes: Icon + Label + Desc per column */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)",
+              gap: isMobile ? 16 : isTablet ? 20 : 24,
+            }}>
+              {[
+                { icon: Puzzle,      label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
+                { icon: Users,       label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
+                { icon: ShieldCheck, label: "Ensure",     desc: "Safe, reliable and built for real school environments."      },
+                { icon: BarChart3,   label: "Strengthen", desc: "Conceptual clarity today, stronger learning tomorrow."       },
+                { icon: School,      label: "Scale",      desc: "Built for long-term impact across schools and institutions." },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.72 + i * 0.1, duration: 0.6 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", cursor: "default" }}
+                >
+                  <motion.div whileHover={{ scale: 1.08, y: -4 }} transition={{ type: "spring", stiffness: 280, damping: 18 }} style={{
+                    width: isMobile ? 60 : isTablet ? 68 : 78,
+                    height: isMobile ? 60 : isTablet ? 68 : 78,
+                    borderRadius: "50%",
+                    background: "rgba(232,243,255,1)",
+                    border: "1.5px solid rgba(0,82,204,0.14)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#0052cc",
+                    marginBottom: isMobile ? 12 : 16,
+                    flexShrink: 0,
+                  }}>
+                    <item.icon size={isMobile ? 26 : isTablet ? 30 : 34} strokeWidth={1.55} />
                   </motion.div>
-                ))}
-              </div>
-            ) : (
-              <>
-                {/* Desktop/Tablet: Icons row */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 44, gap: 0 }}>
-                  {[
-                    { icon: Puzzle },
-                    { icon: Users },
-                    { icon: ShieldCheck },
-                    { icon: BarChart3 },
-                    { icon: School },
-                  ].map((item, i) => (
-                    <React.Fragment key={i}>
-                      {i > 0 && (
-                        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 0 }}>
-                          <div style={{ flex: 1, height: 0, borderTop: "2px dashed rgba(0,82,204,0.22)" }} />
-                          <motion.div
-                            animate={{ scale: [1, 1.6, 1], opacity: [0.55, 1, 0.55] }}
-                            transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                            style={{ width: 8, height: 8, borderRadius: "50%", background: "#0052cc", flexShrink: 0 }}
-                          />
-                          <div style={{ flex: 1, height: 0, borderTop: "2px dashed rgba(0,82,204,0.22)" }} />
-                        </div>
-                      )}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0, rotateY: -90, y: 24 }}
-                        whileInView={{ opacity: 1, scale: 1, rotateY: 0, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.72 + i * 0.14, duration: 0.75, type: "spring", bounce: 0.5 }}
-                        whileHover={{ scale: 1.18, rotateY: 20, rotateX: -10, y: -6 }}
-                        style={{ width: 82, height: 82, borderRadius: "50%", flexShrink: 0, background: "rgba(232,243,255,1)", border: "1.5px solid rgba(0,82,204,0.14)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", transformStyle: "preserve-3d", cursor: "default" }}
-                      >
-                        <FloatLoop y={6} duration={4 + i * 0.5} delay={i * 0.35}>
-                          <motion.div
-                            animate={{ boxShadow: ["0 10px 28px rgba(0,82,204,0.1)", "0 16px 40px rgba(0,82,204,0.22)", "0 10px 28px rgba(0,82,204,0.1)"] }}
-                            transition={{ duration: 3 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                            style={{ display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
-                          >
-                            <item.icon size={34} strokeWidth={1.55} />
-                          </motion.div>
-                        </FloatLoop>
-                      </motion.div>
-                    </React.Fragment>
-                  ))}
-                </div>
-
-                {/* Desktop/Tablet: Labels + Descriptions */}
-                <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                  {[
-                    { label: "Integrate",  desc: "Fits seamlessly into existing curriculum and schedules."     },
-                    { label: "Empower",    desc: "Teachers lead with confidence. We make it easier."           },
-                    { label: "Ensure",     desc: "Safe, reliable and built for real school environments."      },
-                    { label: "Strengthen", desc: "Conceptual clarity today, stronger learning tomorrow."       },
-                    { label: "Scale",      desc: "Built for long-term impact across schools and institutions." },
-                  ].map((item, i) => (
-                    <motion.div key={i}
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.9 + i * 0.1, duration: 0.65 }}
-                      whileHover={{ y: -4, scale: 1.03 }}
-                      style={{ flex: 1, textAlign: "center", minWidth: 0 }}
-                    >
-                      <p style={{ fontSize: 15, fontWeight: 700, color: "#001a4d", marginBottom: 8 }}>{item.label}</p>
-                      <p style={{ fontSize: 13.5, color: "#64748b", lineHeight: 1.55, fontWeight: 500 }}>{item.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </>
-            )}
+                  <p style={{ fontSize: isMobile ? 13 : 14, fontWeight: 700, color: "#001a4d", marginBottom: 6 }}>{item.label}</p>
+                  <p style={{ fontSize: isMobile ? 11 : 12.5, color: "#64748b", lineHeight: 1.55, fontWeight: 500 }}>{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Bottom Statement */}

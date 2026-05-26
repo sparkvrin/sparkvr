@@ -23,18 +23,9 @@ function Floating3DWrapper({ children, delay = 0, floatAmp = 15, rotateAmp = 5, 
   children: React.ReactNode; delay?: number; floatAmp?: number; rotateAmp?: number; duration?: number; className?: string;
 }) {
   return (
-    <motion.div
-      animate={{
-        y: [0, -floatAmp, 0],
-        rotateX: [0, rotateAmp, 0, -rotateAmp, 0],
-        rotateY: [0, -rotateAmp, 0, rotateAmp, 0],
-      }}
-      transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
-      style={{ transformStyle: "preserve-3d" }}
-      className={className}
-    >
+    <div style={{ transformStyle: "preserve-3d" }} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 

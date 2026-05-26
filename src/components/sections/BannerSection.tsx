@@ -166,7 +166,7 @@ export default function BannerSection() {
           position: "absolute", top: "35%", left: 0,
           width: "50%", height: 2.5,
           background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), rgba(59,130,246,0.6), transparent)",
-          filter: "blur(3px)", borderRadius: 99, pointerEvents: "none",
+          borderRadius: 99, pointerEvents: "none",
         }}
       />
       <motion.div
@@ -176,7 +176,7 @@ export default function BannerSection() {
           position: "absolute", top: "62%", left: 0,
           width: "45%", height: 2,
           background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent)",
-          filter: "blur(2px)", borderRadius: 99, pointerEvents: "none",
+          borderRadius: 99, pointerEvents: "none",
         }}
       />
       <motion.div
@@ -186,7 +186,7 @@ export default function BannerSection() {
           position: "absolute", bottom: "20%", left: 0,
           width: "35%", height: 1.5,
           background: "linear-gradient(90deg, transparent, rgba(59,130,246,0.35), transparent)",
-          filter: "blur(2px)", borderRadius: 99, pointerEvents: "none",
+          borderRadius: 99, pointerEvents: "none",
         }}
       />
 
@@ -201,7 +201,7 @@ export default function BannerSection() {
       ].map((orb, i) => (
         <motion.div
           key={i}
-          animate={{ y: [0, -20, 0], scale: [1, 1.2, 1] }}
+          animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 3 + orb.delay * 2, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
           style={{
             position: "absolute",
@@ -323,6 +323,7 @@ export default function BannerSection() {
             whiteSpace: "nowrap", flexShrink: 0,
             position: "relative", overflow: "hidden",
             letterSpacing: "0.01em",
+            marginBottom: isMobile ? 24 : 0,
           }}
         >
           <motion.div

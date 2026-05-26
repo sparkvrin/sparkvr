@@ -237,10 +237,8 @@ export default function BlogDetailPage() {
               </Link>
             </motion.div>
 
-            <motion.div 
-              {...fadeUp(0.4)} 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            <motion.div
+              {...fadeUp(0.4)}
               className="cta-box"
             >
               <div className="cta-icon-wrapper">

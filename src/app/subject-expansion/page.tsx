@@ -136,10 +136,7 @@ const fadeLeft = (delay = 0) => ({
 });
 
 const floatAnim = {
-  animate: {
-    y: [0, -6, 0] as any,
-    transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" as const }
-  }
+  animate: {}
 };
 
 const ArcIcon = ({ icon: Icon, title, color, top, left, delay }: any) => (
@@ -151,8 +148,6 @@ const ArcIcon = ({ icon: Icon, title, color, top, left, delay }: any) => (
       transition={{ delay, duration: 0.6, type: "spring" as const, bounce: 0.4 }}
     >
       <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" as const, delay: delay + 0.5 }}
         whileHover={{ scale: 1.08, y: -10 }}
         style={{
           display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
@@ -516,10 +511,10 @@ export default function SubjectExpansionPage() {
             }}
           >
             {BOTTOM_FEATURES.map((item, idx) => (
-              <motion.div key={idx} whileHover={{ y: -5 }} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <div style={{ width: 44, height: 44, borderRadius: 22, background: item.color, display: "flex", alignItems: "center", justifyContent: "center", color: item.iconColor }}>
+              <motion.div key={idx} whileHover={{ scale: 1.04, y: -4, boxShadow: "0 12px 28px rgba(0,26,77,0.08)" }} transition={{ type: "spring", stiffness: 280, damping: 18 }} style={{ display: "flex", flexDirection: "column", gap: 12, cursor: "default" }}>
+                <motion.div whileHover={{ scale: 1.08, y: -4 }} transition={{ type: "spring", stiffness: 280, damping: 18 }} style={{ width: 44, height: 44, borderRadius: 22, background: item.color, display: "flex", alignItems: "center", justifyContent: "center", color: item.iconColor }}>
                   <item.icon size={20} strokeWidth={2} />
-                </div>
+                </motion.div>
                 <div>
                   <h4 style={{ fontSize: 14, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px 0" }}>{item.title}</h4>
                   <p style={{ fontSize: 12, color: COLORS.textGray, lineHeight: 1.4, margin: 0 }}>{item.desc}</p>
@@ -683,7 +678,7 @@ export default function SubjectExpansionPage() {
             }}
           >
             {EXAMPLES_BOTTOM.map((item, idx) => (
-              <motion.div key={idx} whileHover={{ y: -5 }} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+              <motion.div key={idx} whileHover={{ scale: 1.04, y: -4 }} transition={{ type: "spring", stiffness: 280, damping: 18 }} style={{ display: "flex", alignItems: "flex-start", gap: 14, cursor: "default" }}>
                 <div style={{ color: "#8b5cf6", marginTop: 2 }}>
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
@@ -1118,7 +1113,7 @@ export default function SubjectExpansionPage() {
                 transition={{ duration: 0.6, delay: 0.8 + (i * 0.2), type: "spring", stiffness: 150 }}
               >
                 <motion.div
-                  animate={{ y: [0, -8, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
+                  animate={{ rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.5 }}
                   whileHover={{ scale: 1.1, rotateX: 0, rotateY: 0, z: 50, boxShadow: "0 20px 50px rgba(124, 58, 237, 0.15)" }}
                   style={{
@@ -1185,7 +1180,7 @@ export default function SubjectExpansionPage() {
                   style={{ display: "flex", alignItems: "flex-start", gap: 12 }}
                 >
                   <motion.div
-                    animate={{ y: [0, -3, 0] }}
+                    animate={{}}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" as const, delay: i * 0.4 }}
                     style={{ width: 42, height: 42, borderRadius: 12, background: ft.bg, display: "flex", alignItems: "center", justifyContent: "center", color: ft.color, flexShrink: 0 }}
                   >
@@ -1263,7 +1258,7 @@ export default function SubjectExpansionPage() {
                   style={{ position: "absolute", top: node.top, left: node.left, width: 72, zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}
                 >
                   <motion.div
-                    animate={{ y: [0, -6, 0] }}
+                    animate={{}}
                     transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
                     style={{ width: 72, height: 72, borderRadius: 36, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 25px rgba(0,0,0,0.08)" }}
                   >
@@ -1547,7 +1542,7 @@ export default function SubjectExpansionPage() {
 
                 {/* Floating Bottom Card */}
                 <motion.div
-                  animate={{ y: [0, -8, 0] }}
+                  animate={{}}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   whileHover={{ scale: 1.05 }}
                   style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "rgba(255, 255, 255, 0.95)", backdropFilter: "blur(20px)", borderRadius: 20, padding: isMobile ? "14px 16px" : "20px 30px", display: "flex", alignItems: "center", gap: 16, width: isMobile ? "calc(100% - 32px)" : 380, zIndex: 2, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(255,255,255,1)", cursor: "default" }}

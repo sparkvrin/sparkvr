@@ -74,7 +74,7 @@ function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
       style={{ position: "absolute", zIndex: 10, ...pos, perspective: 800 }}
     >
       <motion.div
-        animate={{ y: [0, dir * 14, 0], rotateX: [0, 6, 0, -6, 0], rotateY: [0, -6, 0, 6, 0] }}
+        animate={{ rotateX: [0, 6, 0, -6, 0], rotateY: [0, -6, 0, 6, 0] }}
         transition={{ duration: 5.5 + delay * 0.45, repeat: Infinity, ease: "easeInOut", delay: delay * 0.25 }}
         style={{ position: "relative", transformStyle: "preserve-3d" }}
       >
@@ -84,7 +84,6 @@ function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
         </div>
         <div style={{ position: "absolute", top: -42, left: "50%", transform: "translateX(-50%)", zIndex: 20 }}>
           <motion.div
-            animate={{ y: [0, -4, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay * 0.5 }}
             style={{ background: "rgba(255,255,255,0.95)", borderRadius: 30, padding: "6px 20px", boxShadow: "0 8px 24px rgba(0,60,160,0.14)", whiteSpace: "nowrap", border: "1px solid rgba(255,255,255,0.9)", transformStyle: "preserve-3d" }}
           >
             <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", color: "#1d4ed8", textTransform: "uppercase", fontFamily: "'VAG Rounded',sans-serif" }}>{label}</span>
@@ -111,7 +110,7 @@ function GridBubble({ label, children, delay, dir = -1, w = 140 }: {
       style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
     >
       <motion.div
-        animate={{ y: [0, dir * 10, 0] }}
+        animate={{}}
         transition={{ duration: 5 + delay * 0.5, repeat: Infinity, ease: "easeInOut", delay: delay * 0.3 }}
         style={{ position: "relative" }}
       >
@@ -360,7 +359,6 @@ export default function ServicesSection() {
                   whileHover={{ scale: 1.05, x: 10, rotateX: 10 }}
                   style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 16, cursor: "default", perspective: 500, transformStyle: "preserve-3d" }}>
                   <motion.div
-                    animate={{ y: [0, -4, 0] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
                     style={{
                       width: isMobile ? 42 : 52, height: isMobile ? 42 : 52,
                       borderRadius: "50%", flexShrink: 0,
@@ -410,7 +408,7 @@ export default function ServicesSection() {
               />
               <div style={{ position: "absolute", top: "28%", left: "67.5%", transform: "translate(-50%,-50%)", zIndex: 7, pointerEvents: "none" }}>
                 <motion.img loading="lazy" decoding="async"
-                  animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  animate={{}}
                   src="/quastion.webp" alt="Question cloud"
                   style={{ width: isTablet ? 200 : 260, height: "auto", filter: "drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}
                 />
@@ -442,10 +440,8 @@ export default function ServicesSection() {
 
         {/* ── decorative floating dots (desktop/tablet only) ── */}
         {!isMobile && <>
-          <motion.div animate={{ y: [0, -9, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-            aria-hidden style={{ position: "absolute", top: "9%", right: "7%", width: 15, height: 15, borderRadius: "50%", background: "#00d4ff", boxShadow: "0 0 14px 4px rgba(0,212,255,0.5)", zIndex: 1 }} />
-          <motion.div animate={{ y: [0, 9, 0] }} transition={{ duration: 5.1, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            aria-hidden style={{ position: "absolute", top: "37%", right: "4.5%", width: 10, height: 10, borderRadius: "50%", background: "#e91e9c", boxShadow: "0 0 10px 3px rgba(233,30,156,0.45)", zIndex: 1 }} />
+          <div aria-hidden style={{ position: "absolute", top: "9%", right: "7%", width: 15, height: 15, borderRadius: "50%", background: "#00d4ff", boxShadow: "0 0 14px 4px rgba(0,212,255,0.5)", zIndex: 1 }} />
+          <div aria-hidden style={{ position: "absolute", top: "37%", right: "4.5%", width: 10, height: 10, borderRadius: "50%", background: "#e91e9c", boxShadow: "0 0 10px 3px rgba(233,30,156,0.45)", zIndex: 1 }} />
         </>}
 
         {/* ── LEFT TEXT COLUMN ── */}

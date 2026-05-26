@@ -83,8 +83,6 @@ export default function Footer() {
       ].map((orb, i) => (
         <motion.div
           key={i}
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
           style={{
             position: "absolute", top: orb.top, right: orb.right,
             width: orb.size, height: orb.size, borderRadius: "50%",
@@ -105,8 +103,6 @@ export default function Footer() {
         }}
       >
         <motion.img loading="lazy" decoding="async"
-          animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           src="/vr_wireframe.webp" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }}
         />
       </div>
@@ -119,12 +115,14 @@ export default function Footer() {
 
           {/* Left Column: Brand & Socials */}
           <div style={{ maxWidth: isMobile ? "100%" : 350, flexShrink: 0 }}>
-            <Link href="/" style={{ display: "inline-block", marginBottom: 12 }}>
-              <img loading="lazy" decoding="async" src="/logo1.png" alt="SparkVR" style={{ height: isMobile ? 50 : 75, objectFit: "contain" }} />
-            </Link>
-            <p style={{ fontSize: isMobile ? 15 : 19, color: "#334155", lineHeight: 1.6, marginBottom: isMobile ? 24 : 40, fontWeight: 500 }}>
-              Transforming abstract learning into observable understanding through immersive experiences.
-            </p>
+            <div style={{ display: "flex", flexDirection: isMobile ? "row" : "column", alignItems: isMobile ? "center" : "flex-start", gap: isMobile ? 14 : 0, marginBottom: isMobile ? 20 : 0 }}>
+              <Link href="/" style={{ display: "inline-block", flexShrink: 0, marginBottom: isMobile ? 0 : 12 }}>
+                <img loading="lazy" decoding="async" src="/logo1.png" alt="SparkVR" style={{ height: isMobile ? 44 : 75, objectFit: "contain" }} />
+              </Link>
+              <p style={{ fontSize: isMobile ? 13 : 19, color: "#334155", lineHeight: 1.5, marginBottom: isMobile ? 0 : 40, fontWeight: 500, margin: isMobile ? 0 : undefined }}>
+                Transforming abstract learning into observable understanding through immersive experiences.
+              </p>
+            </div>
 
             {/* Social Icons */}
             <div style={{ display: "flex", gap: 12 }}>
@@ -168,6 +166,7 @@ export default function Footer() {
               {
                 title: "Solutions", icon: Building2,
                 links: [
+                  { label: "CURRICULUM", href: "/curriculum" },
                   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
                   { label: "TIMETABLE", href: "/timetable" },
                   { label: "BLOG", href: "/blog" }

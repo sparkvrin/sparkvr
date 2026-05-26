@@ -156,25 +156,6 @@ function useScreenSize() {
 function HeroBackground() {
   return (
     <>
-      <div style={{ position: "absolute", inset: "-3%", zIndex: 0, pointerEvents: "none" }}>
-        <div style={{
-          position: "absolute", inset: "3%",
-          background: "linear-gradient(180deg, rgba(246,248,255,0.1) 0%, rgba(240,244,255,0.3) 40%, rgba(220,232,255,0.2) 65%, rgba(199,184,245,0.3) 82%, rgba(176,200,248,0.4) 100%)",
-        }} />
-        <div style={{
-          position: "absolute", top: "8%", left: "35%",
-          width: "60%", height: "75%",
-          background: "radial-gradient(ellipse at 55% 45%, rgba(196,181,253,0.45) 0%, rgba(147,197,253,0.25) 45%, transparent 70%)",
-          filter: "blur(55px)",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "-10%", left: "-5%", right: "-5%",
-          height: "55%",
-          background: "linear-gradient(180deg, transparent 0%, rgba(196,181,253,0.55) 35%, rgba(147,197,253,0.75) 65%, rgba(125,211,252,0.85) 100%)",
-          filter: "blur(30px)",
-          borderRadius: "50% 50% 0 0 / 30% 30% 0 0",
-        }} />
-      </div>
 
       <motion.div
         animate={{ rotate: 360 }}
@@ -212,10 +193,8 @@ function HeroBackground() {
 
       <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
         {BG_ORBS.map((o, i) => (
-          <motion.div
+          <div
             key={i}
-            animate={{ y: [0, i % 2 === 0 ? -14 : 14, 0], x: [0, i % 3 === 0 ? 6 : -6, 0] }}
-            transition={{ duration: 5 + (i % 5), repeat: Infinity, ease: "easeInOut", delay: i * 0.35 }}
             style={{
               position: "absolute",
               top: o.top, left: o.left,
@@ -223,7 +202,6 @@ function HeroBackground() {
               borderRadius: "50%",
               background: o.color,
               opacity: 0.82,
-              filter: "blur(0.5px)",
               boxShadow: `0 2px 12px ${o.color}55`,
             }}
           />
@@ -280,7 +258,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
-            style={{ width: "100%", textAlign: "left" }}
+            style={{ width: "100%", textAlign: "center" }}
           >
 
             <h1 style={{
@@ -315,7 +293,7 @@ export default function Hero() {
               SparkVR transforms abstract concepts into observable understanding.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-start", marginBottom: 40 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", marginBottom: 40 }}>
               <motion.a
                 href="/services"
                 whileTap={{ scale: 0.97 }}
@@ -354,15 +332,15 @@ export default function Hero() {
               </motion.a>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", marginTop: 4 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginTop: 16, marginBottom: 8 }}>
               {[
                 { label: "Curriculum-aligned\nmodules", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>) },
                 { label: "40-minute\nstructured sessions", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>) },
                 { label: "Teacher-guided\ndelivery", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>) },
               ].map((f, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,82,204,0.08)" }}>{f.icon}</div>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#1e293b", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
+                <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, padding: "8px 4px", textAlign: "center" }}>
+                  <div style={{ width: 30, height: 30, borderRadius: 8, background: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,82,204,0.08)", flexShrink: 0 }}>{f.icon}</div>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: "#1e293b", lineHeight: 1.3, whiteSpace: "pre-line" }}>{f.label}</span>
                 </div>
               ))}
             </div>
@@ -458,7 +436,7 @@ export default function Hero() {
             }}
           >
             {STATS.map((s, i) => (
-              <div key={i} style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center", textAlign: "center" }}>
+              <div key={i} style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center", justifyContent: "center", textAlign: "center", padding: "10px 4px" }}>
                 <span style={{ fontSize: 17, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
                 <span style={{ fontSize: 11, fontWeight: 700, color: "#334155", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
               </div>
@@ -552,15 +530,15 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap", marginTop: 18 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginTop: 24, marginBottom: 8 }}>
               {[
                 { label: "Curriculum-aligned\nmodules", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>) },
                 { label: "40-minute\nstructured sessions", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>) },
                 { label: "Teacher-guided\ndelivery", icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>) },
               ].map((f, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,82,204,0.08)" }}>{f.icon}</div>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#1e293b", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 6, padding: "8px 0" }}>
+                  <div style={{ width: 30, height: 30, borderRadius: 8, background: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,82,204,0.08)", flexShrink: 0 }}>{f.icon}</div>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: "#1e293b", lineHeight: 1.3, whiteSpace: "pre-line" }}>{f.label}</span>
                 </div>
               ))}
             </div>
@@ -571,16 +549,23 @@ export default function Hero() {
         <div style={{ position: "absolute", bottom: 5, left: "52%", right: "2%", zIndex: 40 }}>
           <motion.div initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
             style={{
-              display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px 4px", padding: "10px",
-              background: "linear-gradient(135deg, rgba(255,255,255,0.5), rgba(220,230,255,0.2))",
+              display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "6px", padding: "8px",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.6), rgba(220,230,255,0.3))",
               backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.6)", borderRadius: 18,
-              boxShadow: "0 12px 30px rgba(60,40,150,0.06)"
+              border: "1px solid rgba(255,255,255,0.7)", borderRadius: 20,
+              boxShadow: "0 12px 30px rgba(60,40,150,0.08)"
             }}>
             {STATS.map((s, i) => (
-              <div key={i} style={{ display: "flex", flexDirection: "column", gap: 1, alignItems: "center", textAlign: "center" }}>
-                <span style={{ fontSize: 15, fontWeight: 800, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
-                <span style={{ fontSize: 10, fontWeight: 700, color: "#334155", lineHeight: 1.3, whiteSpace: "pre-line" }}>{s.label}</span>
+              <div key={i} style={{
+                display: "flex", flexDirection: "column", gap: 4,
+                alignItems: "center", textAlign: "center",
+                padding: "16px 10px",
+                background: "rgba(255,255,255,0.45)",
+                borderRadius: 14,
+                border: "1px solid rgba(255,255,255,0.6)",
+              }}>
+                <span style={{ fontSize: 17, fontWeight: 900, lineHeight: 1, background: s.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.val}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155", lineHeight: 1.4, whiteSpace: "pre-line" }}>{s.label}</span>
               </div>
             ))}
           </motion.div>
@@ -856,15 +841,15 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.45 }}
-                style={{ display: "flex", alignItems: "center", gap: 24, marginTop: 32 }}
+                style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 32 }}
               >
                 {[
                   { label: "Curriculum-aligned\nmodules", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>) },
                   { label: "40-minute\nstructured sessions", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>) },
                   { label: "Teacher-guided\ndelivery", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>) },
                 ].map((f, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(255,255,255,0.7)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.08)" }}>{f.icon}</div>
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                    <div style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(255,255,255,0.7)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(0,82,204,0.08)", flexShrink: 0 }}>{f.icon}</div>
                     <span style={{ fontSize: 12, fontWeight: 600, color: "#1e293b", lineHeight: 1.4, whiteSpace: "pre-line" }}>{f.label}</span>
                   </div>
                 ))}
