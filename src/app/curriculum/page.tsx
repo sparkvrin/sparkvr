@@ -867,7 +867,7 @@ export default function CurriculumPage() {
                   { icon: MonitorPlay, title: "Seamless Classroom Integration", desc: "Easy to implement. Easy to teach." },
                   { icon: BookOpen, title: "Reinforces Classroom Teaching", desc: "Perfect for introduction, explanation and revision." },
                   { icon: Brain, title: "Improves Concept Retention", desc: "Students remember what they experience." },
-                ] as { icon: React.ElementType; title: string; desc: string }[]).map((card, i) => (
+                ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; title: string; desc: string }[]).map((card, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }} transition={{ delay: 0.15 + i * 0.12, duration: 0.5, ease: EASE }}
@@ -890,7 +890,7 @@ export default function CurriculumPage() {
                   { icon: CheckCircle2, title: "Exam Aligned", desc: "Mapped to syllabus. Supports exam readiness." },
                   { icon: Users, title: "Boosts Participation", desc: "Every student stays engaged." },
                   { icon: GraduationCap, title: "Teacher Guided", desc: "You teach. SparkVR enhances." },
-                ] as { icon: React.ElementType; title: string; desc: string }[]).map((card, i) => (
+                ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; title: string; desc: string }[]).map((card, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }} transition={{ delay: 0.25 + i * 0.12, duration: 0.5, ease: EASE }}
@@ -921,7 +921,7 @@ export default function CurriculumPage() {
                 { icon: Brain, color: "#d97706", title: "Encourages Conceptual Mastery", desc: "From rote learning to real understanding and application." },
                 { icon: BarChart3, color: "#059669", title: "Improves Learning Outcomes", desc: "Better retention. Better performance. Better results." },
                 { icon: Users, color: "#7c3aed", title: "Inclusive & Accessible", desc: "Supports diverse learning styles and abilities." },
-              ] as { icon: React.ElementType; color: string; title: string; desc: string }[]).map((item, i) => (
+              ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; color: string; title: string; desc: string }[]).map((item, i) => (
                 <motion.div key={i} {...fadeUp(i * 0.06)}
                   whileHover={{ y: -5, boxShadow: "0 16px 40px rgba(0,26,77,0.1)" }}
                   style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", borderRadius: 16, padding: isMobile ? "18px 14px" : "26px 18px", display: "flex", flexDirection: "column", gap: 10, boxShadow: "0 4px 20px rgba(0,26,77,0.08)", border: "1px solid rgba(255,255,255,0.9)", cursor: "default" }}
@@ -1008,7 +1008,7 @@ export default function CurriculumPage() {
               </div>
             </div>
             <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-              {([{ icon: Landmark, label: "Curriculum\nAligned" }, { icon: ShieldCheck, label: "Safe & Secure\nPlatform" }, { icon: Star, label: "Quality\nAssured" }] as { icon: React.ElementType; label: string }[]).map((item, i) => (
+              {([{ icon: Landmark, label: "Curriculum\nAligned" }, { icon: ShieldCheck, label: "Safe & Secure\nPlatform" }, { icon: Star, label: "Quality\nAssured" }] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; label: string }[]).map((item, i) => (
                 <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
                   <item.icon size={22} color="#64748b" strokeWidth={1.8} />
                   <span style={{ fontSize: 10, color: "#64748b", fontWeight: 600, textAlign: "center", whiteSpace: "pre-line", lineHeight: 1.4 }}>{item.label}</span>
