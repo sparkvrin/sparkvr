@@ -172,6 +172,7 @@ export default function Footer() {
                 links: [
                   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
                   { label: "TIMETABLE", href: "/timetable" },
+                  { label: "CURRICULUM", href: "/curriculum" },
                   { label: "BLOG", href: "/blog" }
                 ]
               },

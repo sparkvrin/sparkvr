@@ -8,7 +8,8 @@ import {
   GraduationCap, Layers, ShieldCheck, ChevronRight,
   BarChart3, Calendar, School, MonitorPlay, Lightbulb,
   Brain, BookMarked, Glasses,
-  Eye, Headphones, Hand, Star
+  Eye, Headphones, Hand, Star,
+  Volume2, Maximize2, RefreshCcw
 } from "lucide-react";
 import Link from "next/link";
 
@@ -141,6 +142,7 @@ const BENEFITS = [
 
 function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; isTablet: boolean }) {
   const [activeSlide, setActiveSlide] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState(0);
   const slide = MOCKUP_SLIDES[activeSlide] ?? MOCKUP_SLIDES[0];
 
   const leftFeatures = [
@@ -150,10 +152,10 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
   ];
 
   const sidebarTabs = [
-    { icon: MonitorPlay, label: "Explore", active: true },
-    { icon: CheckCircle2, label: "Quiz", active: false },
-    { icon: BookOpen, label: "Notes", active: false },
-    { icon: BarChart3, label: "Assessment", active: false },
+    { icon: MonitorPlay, label: "Explore" },
+    { icon: CheckCircle2, label: "Quiz" },
+    { icon: BookOpen, label: "Notes" },
+    { icon: BarChart3, label: "Assessment" },
   ];
 
   return (
@@ -259,37 +261,157 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                   </motion.div>
                 </div>
 
-                {/* Center — main image + annotations */}
+                {/* Center — main content area, switches per tab */}
                 <div style={{ flex: 1, position: "relative", height: 420, background: "#0a1020", overflow: "hidden" }}>
                   <AnimatePresence mode="wait">
-                    <motion.img
-                      key={activeSlide}
-                      src={slide.image}
-                      alt={slide.label}
-                      initial={{ opacity: 0, scale: 1.04 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.97 }}
-                      transition={{ duration: 0.4 }}
-                      style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
-                    />
+                    {activeTab === 0 && (
+                      <motion.div key="explore" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} style={{ position: "absolute", inset: 0 }}>
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={activeSlide}
+                            src={slide.image}
+                            alt={slide.label}
+                            initial={{ opacity: 0, scale: 1.04 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.97 }}
+                            transition={{ duration: 0.4 }}
+                            style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
+                          />
+                        </AnimatePresence>
+                        <div style={{ position: "absolute", bottom: 12, right: 12, display: "flex", gap: 6, zIndex: 2 }}>
+                          {/* 360° button */}
+                          <motion.div whileHover={{ scale: 1.08, background: "rgba(37,99,235,0.35)" }} whileTap={{ scale: 0.95 }} style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(10,16,32,0.85)", borderRadius: 8, padding: "5px 10px", cursor: "pointer", border: "1px solid rgba(96,165,250,0.18)", backdropFilter: "blur(6px)" }}>
+                            <RefreshCcw size={11} color="#60a5fa" strokeWidth={2.5} />
+                            <span style={{ fontSize: 10, fontWeight: 800, color: "#60a5fa", letterSpacing: "0.04em" }}>360°</span>
+                          </motion.div>
+                          {/* Volume */}
+                          <motion.div whileHover={{ scale: 1.08, background: "rgba(255,255,255,0.1)" }} whileTap={{ scale: 0.95 }} style={{ width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(10,16,32,0.85)", borderRadius: 8, cursor: "pointer", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(6px)" }}>
+                            <Volume2 size={13} color="#94a3b8" strokeWidth={2} />
+                          </motion.div>
+                          {/* Fullscreen */}
+                          <motion.div whileHover={{ scale: 1.08, background: "rgba(255,255,255,0.1)" }} whileTap={{ scale: 0.95 }} style={{ width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(10,16,32,0.85)", borderRadius: 8, cursor: "pointer", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(6px)" }}>
+                            <Maximize2 size={13} color="#94a3b8" strokeWidth={2} />
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === 1 && (
+                      <motion.div key="quiz" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} style={{ position: "absolute", inset: 0, padding: "24px 28px", display: "flex", flexDirection: "column", gap: 16 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                          <div style={{ background: "rgba(96,165,250,0.12)", borderRadius: 6, padding: "3px 10px", border: "1px solid rgba(96,165,250,0.2)" }}>
+                            <span style={{ fontSize: 9, color: "#60a5fa", fontWeight: 700 }}>QUESTION 2 OF 5</span>
+                          </div>
+                          <div style={{ flex: 1, height: 3, background: "rgba(255,255,255,0.08)", borderRadius: 4 }}>
+                            <div style={{ width: "40%", height: "100%", background: "#2563eb", borderRadius: 4 }} />
+                          </div>
+                        </div>
+                        <p style={{ fontSize: 14, fontWeight: 700, color: "#ffffff", lineHeight: 1.5, margin: 0 }}>What organelle is responsible for producing ATP through cellular respiration?</p>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                          {[
+                            { label: "A", text: "Nucleus", correct: false, selected: false },
+                            { label: "B", text: "Mitochondria", correct: true, selected: true },
+                            { label: "C", text: "Ribosome", correct: false, selected: false },
+                            { label: "D", text: "Vacuole", correct: false, selected: false },
+                          ].map((opt) => (
+                            <div key={opt.label} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${opt.selected ? "#2563eb" : "rgba(255,255,255,0.08)"}`, background: opt.selected ? "rgba(37,99,235,0.18)" : "rgba(255,255,255,0.03)", cursor: "pointer" }}>
+                              <div style={{ width: 22, height: 22, borderRadius: "50%", background: opt.selected ? "#2563eb" : "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                <span style={{ fontSize: 9, fontWeight: 800, color: opt.selected ? "#fff" : "#64748b" }}>{opt.label}</span>
+                              </div>
+                              <span style={{ fontSize: 12, fontWeight: 600, color: opt.selected ? "#ffffff" : "#94a3b8" }}>{opt.text}</span>
+                              {opt.selected && <div style={{ marginLeft: "auto", width: 16, height: 16, borderRadius: "50%", background: "#4ade80", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontSize: 9, color: "#fff", fontWeight: 800 }}>✓</span></div>}
+                            </div>
+                          ))}
+                        </div>
+                        <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <span style={{ fontSize: 11, color: "#4ade80", fontWeight: 700 }}>Correct! Great job.</span>
+                          <div style={{ background: "#2563eb", borderRadius: 8, padding: "7px 18px", cursor: "pointer" }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: "#fff" }}>Next Question →</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === 2 && (
+                      <motion.div key="notes" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} style={{ position: "absolute", inset: 0, padding: "24px 28px", display: "flex", flexDirection: "column", gap: 14, overflowY: "auto" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <BookOpen size={14} color="#60a5fa" strokeWidth={2} />
+                          <span style={{ fontSize: 11, fontWeight: 800, color: "#60a5fa", letterSpacing: "0.1em" }}>KEY CONCEPTS</span>
+                        </div>
+                        <p style={{ fontSize: 15, fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.3 }}>{slide.label}</p>
+                        <div style={{ width: "100%", height: 1, background: "rgba(255,255,255,0.07)" }} />
+                        {[
+                          { title: "Definition", body: "The mitochondrion is a double-membrane organelle found in most eukaryotic cells, producing energy in the form of ATP." },
+                          { title: "Key Function", body: "Site of cellular respiration — converts glucose and oxygen into ATP, CO₂ and water." },
+                          { title: "Structure", body: "Outer membrane (smooth), inner membrane (folded into cristae), matrix (fluid interior)." },
+                          { title: "Did You Know?", body: "Mitochondria have their own DNA, suggesting they evolved from ancient bacteria (endosymbiotic theory)." },
+                        ].map((note, ni) => (
+                          <div key={ni} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: ["#60a5fa", "#4ade80", "#a78bfa", "#fbbf24"][ni], marginTop: 5, flexShrink: 0 }} />
+                            <div>
+                              <p style={{ fontSize: 11, fontWeight: 800, color: "#cbd5e1", margin: "0 0 3px" }}>{note.title}</p>
+                              <p style={{ fontSize: 11, color: "#64748b", margin: 0, lineHeight: 1.6 }}>{note.body}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+
+                    {activeTab === 3 && (
+                      <motion.div key="assessment" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} style={{ position: "absolute", inset: 0, padding: "24px 28px", display: "flex", flexDirection: "column", gap: 18 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <BarChart3 size={14} color="#a78bfa" strokeWidth={2} />
+                          <span style={{ fontSize: 11, fontWeight: 800, color: "#a78bfa", letterSpacing: "0.1em" }}>MODULE ASSESSMENT</span>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                          {[
+                            { label: "Score", value: "82%", color: "#4ade80", sub: "Above average" },
+                            { label: "Time Spent", value: "14 min", color: "#60a5fa", sub: "This session" },
+                            { label: "Questions", value: "4 / 5", color: "#fbbf24", sub: "Answered" },
+                            { label: "Streak", value: "3 days", color: "#f472b6", sub: "Keep it up!" },
+                          ].map((stat) => (
+                            <div key={stat.label} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 12, padding: "14px 16px", border: "1px solid rgba(255,255,255,0.07)" }}>
+                              <p style={{ fontSize: 10, color: "#64748b", fontWeight: 700, margin: "0 0 4px" }}>{stat.label}</p>
+                              <p style={{ fontSize: 20, fontWeight: 900, color: stat.color, margin: "0 0 2px", lineHeight: 1 }}>{stat.value}</p>
+                              <p style={{ fontSize: 9, color: "#475569", margin: 0 }}>{stat.sub}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <div>
+                          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                            <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 700 }}>Module Progress</span>
+                            <span style={{ fontSize: 11, color: "#4ade80", fontWeight: 700 }}>82%</span>
+                          </div>
+                          <div style={{ height: 6, background: "rgba(255,255,255,0.08)", borderRadius: 4 }}>
+                            <motion.div initial={{ width: 0 }} animate={{ width: "82%" }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} style={{ height: "100%", background: "linear-gradient(to right, #2563eb, #4ade80)", borderRadius: 4 }} />
+                          </div>
+                        </div>
+                        <div style={{ marginTop: "auto", display: "flex", gap: 10 }}>
+                          <div style={{ flex: 1, background: "rgba(37,99,235,0.15)", borderRadius: 10, padding: "10px", textAlign: "center", cursor: "pointer", border: "1px solid rgba(96,165,250,0.2)" }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: "#60a5fa" }}>Retry Quiz</span>
+                          </div>
+                          <div style={{ flex: 1, background: "#2563eb", borderRadius: 10, padding: "10px", textAlign: "center", cursor: "pointer" }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: "#fff" }}>Next Module →</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
-
-
-                  {/* Bottom controls */}
-                  <div style={{ position: "absolute", bottom: 12, right: 12, display: "flex", gap: 6, zIndex: 2 }}>
-                    {["360°", "🔊", "⛶"].map((c, ci) => (
-                      <div key={ci} style={{ background: "rgba(10,16,32,0.8)", borderRadius: 6, padding: "4px 9px", fontSize: 11, color: "#94a3b8", fontWeight: 700, cursor: "pointer", border: "1px solid rgba(255,255,255,0.08)" }}>{c}</div>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Right sidebar tabs */}
                 <div style={{ width: 76, flexShrink: 0, borderLeft: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", padding: "14px 6px", gap: 2, background: "#111d30" }}>
                   {sidebarTabs.map((tab, ti) => (
-                    <div key={ti} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, padding: "13px 0", width: "100%", borderRadius: 10, background: tab.active ? "rgba(37,99,235,0.22)" : "transparent", cursor: "pointer" }}>
-                      <tab.icon size={20} color={tab.active ? "#60a5fa" : "#475569"} strokeWidth={1.8} />
-                      <span style={{ fontSize: 9, color: tab.active ? "#60a5fa" : "#475569", fontWeight: 700, textAlign: "center" }}>{tab.label}</span>
-                    </div>
+                    <motion.div
+                      key={ti}
+                      onClick={() => setActiveTab(ti)}
+                      whileHover={{ background: ti === activeTab ? "rgba(37,99,235,0.28)" : "rgba(255,255,255,0.05)" }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, padding: "13px 0", width: "100%", borderRadius: 10, background: ti === activeTab ? "rgba(37,99,235,0.22)" : "transparent", cursor: "pointer", transition: "background 0.2s ease" }}
+                    >
+                      <tab.icon size={20} color={ti === activeTab ? "#60a5fa" : "#475569"} strokeWidth={1.8} />
+                      <span style={{ fontSize: 9, color: ti === activeTab ? "#60a5fa" : "#475569", fontWeight: 700, textAlign: "center" }}>{tab.label}</span>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -410,7 +532,7 @@ export default function CurriculumPage() {
         backgroundSize: "auto 100%",
         backgroundPosition: "right bottom",
         backgroundRepeat: "no-repeat",
-        backgroundColor: "#ffffff",
+        backgroundColor: isMobile ? "#f8fafc" : "#ffffff",
       }}>
 
         {/* White gradient overlay — left side readable panel */}
@@ -428,7 +550,7 @@ export default function CurriculumPage() {
           position: "relative", zIndex: 2,
           maxWidth: 1400, margin: "0 auto",
           padding: isMobile
-            ? "100px 20px 0"
+            ? "100px 20px 36px"
             : isTablet
               ? "140px 32px 180px"
               : "140px 60px 220px",
@@ -471,179 +593,154 @@ export default function CurriculumPage() {
                 mapped to national education standards.
               </motion.p>
 
-              {/* Each module label */}
-              <motion.p {...fadeUp(0.26)} style={{
-                fontSize: isMobile ? 14 : 16, fontWeight: 900,
-                color: "#001a4d", margin: "0 0 18px",
-              }}>
-                Each module:
-              </motion.p>
+              {/* Each module label + grid + info card — desktop/tablet only */}
+              {!isMobile && (
+                <>
+                  <motion.p {...fadeUp(0.26)} style={{ fontSize: 16, fontWeight: 900, color: "#001a4d", margin: "0 0 18px" }}>
+                    Each module:
+                  </motion.p>
 
-              {/* 2×2 feature grid */}
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: isMobile ? "14px 10px" : "20px 24px",
-                marginBottom: 30,
-              }}>
-                {MODULE_FEATURES.map((f, i) => (
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px 24px", marginBottom: 30 }}>
+                    {MODULE_FEATURES.map((f, i) => (
+                      <motion.div
+                        key={i}
+                        {...fadeUp(0.3 + i * 0.07)}
+                        whileHover={{ scale: 1.04, y: -3 }}
+                        transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                        style={{ display: "flex", alignItems: "flex-start", gap: 13, cursor: "default" }}
+                      >
+                        <div style={{ width: 48, height: 48, borderRadius: "50%", background: "#eff6ff", border: "1.5px solid rgba(0,82,204,0.18)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", flexShrink: 0 }}>
+                          <f.icon size={22} strokeWidth={2} />
+                        </div>
+                        <div>
+                          <p style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px" }}>{f.title}</p>
+                          <p style={{ fontSize: 13, color: "#64748b", fontWeight: 500, margin: 0 }}>{f.sub}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
                   <motion.div
-                    key={i}
-                    {...fadeUp(0.3 + i * 0.07)}
-                    whileHover={{ scale: 1.04, y: -3 }}
-                    transition={{ type: "spring", stiffness: 280, damping: 18 }}
-                    style={{ display: "flex", alignItems: "flex-start", gap: 13, cursor: "default" }}
+                    {...fadeUp(0.52)}
+                    whileHover={{ scale: 1.02, y: -4, boxShadow: "0 20px 48px rgba(0,26,77,0.12)" }}
+                    style={{ display: "flex", alignItems: "center", gap: 18, background: "transparent", border: "1.5px solid rgba(0,82,204,0.12)", borderRadius: 20, padding: "22px 28px", cursor: "default", boxShadow: "0 4px 20px rgba(0,26,77,0.06)" }}
                   >
-                    <div style={{
-                      width: isMobile ? 40 : 48, height: isMobile ? 40 : 48,
-                      borderRadius: "50%", background: "#eff6ff",
-                      border: "1.5px solid rgba(0,82,204,0.18)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      color: "#0052cc", flexShrink: 0,
-                    }}>
-                      <f.icon size={isMobile ? 18 : 22} strokeWidth={2} />
+                    <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#001a4d", display: "flex", alignItems: "center", justifyContent: "center", color: "#ffffff", flexShrink: 0 }}>
+                      <GraduationCap size={28} strokeWidth={2} />
                     </div>
                     <div>
-                      <p style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px" }}>{f.title}</p>
-                      <p style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", fontWeight: 500, margin: 0 }}>{f.sub}</p>
+                      <p style={{ fontSize: 16, fontWeight: 900, color: "#001a4d", margin: "0 0 4px" }}>This is not video playback.</p>
+                      <p style={{ fontSize: 14, fontWeight: 600, color: "#2563eb", margin: 0 }}>It is interactive guided learning.</p>
                     </div>
                   </motion.div>
-                ))}
-              </div>
-
-              {/* Info card — white with navy icon */}
-              <motion.div
-                {...fadeUp(0.52)}
-                whileHover={{ scale: 1.02, y: -4, boxShadow: "0 20px 48px rgba(0,26,77,0.12)" }}
-                style={{
-                  display: "flex", alignItems: "center", gap: 18,
-                  background: "transparent",
-                  border: "1.5px solid rgba(0,82,204,0.12)",
-                  borderRadius: 20,
-                  padding: isMobile ? "16px 20px" : "22px 28px",
-                  cursor: "default",
-                  boxShadow: "0 4px 20px rgba(0,26,77,0.06)",
-                }}
-              >
-                <div style={{
-                  width: isMobile ? 44 : 56, height: isMobile ? 44 : 56,
-                  borderRadius: "50%", background: "#001a4d",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  color: "#ffffff", flexShrink: 0,
-                }}>
-                  <GraduationCap size={isMobile ? 22 : 28} strokeWidth={2} />
-                </div>
-                <div>
-                  <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 900, color: "#001a4d", margin: "0 0 4px" }}>
-                    This is not video playback.
-                  </p>
-                  <p style={{ fontSize: isMobile ? 12 : 14, fontWeight: 600, color: "#2563eb", margin: 0 }}>
-                    It is interactive guided learning.
-                  </p>
-                </div>
-              </motion.div>
+                </>
+              )}
 
             </div>
           </div>
         </div>
 
-        {/* Mobile: image strip below text */}
-        {isMobile && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{
-              width: "100%",
-              height: 280,
-              backgroundImage: "url('/background1.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center top",
-            }}
-          />
-        )}
-
-        {/* ── Flow steps card — overlaid at bottom of hero ── */}
+        {/* ── Flow steps card ── */}
         <motion.div
           {...fadeUp(0.5)}
-          style={{
+          style={isMobile ? {
+            position: "relative",
+            zIndex: 4,
+            background: "#ffffff",
+            borderRadius: 24,
+            boxShadow: "0 8px 32px rgba(0,26,77,0.08)",
+            border: "1px solid rgba(0,82,204,0.06)",
+            padding: "28px 20px 32px",
+            margin: "0 20px 40px",
+          } : {
             position: "absolute",
             bottom: 0, left: 0, right: 0,
             zIndex: 4,
             background: "rgba(255,255,255,0.97)",
             backdropFilter: "blur(16px)",
-            borderRadius: isMobile ? 0 : "28px 28px 0 0",
+            borderRadius: isTablet ? "20px 20px 0 0" : "28px 28px 0 0",
             boxShadow: "0 -8px 40px rgba(0,26,77,0.08)",
-            padding: isMobile
-              ? "24px 20px 28px"
-              : isTablet
-                ? "28px 32px 32px"
-                : "28px 60px 36px",
+            padding: isTablet ? "28px 32px 32px" : "28px 60px 36px",
           }}
         >
           <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-            <div style={{
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}>
-              {FLOW_STEPS.map((step, i) => (
-                <React.Fragment key={i}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6 + i * 0.08, duration: 0.6, ease: EASE }}
-                    whileHover={{ scale: 1.08, y: -5 }}
-                    style={{
-                      display: "flex",
-                      flexDirection: isMobile ? "row" : "column",
-                      alignItems: "center",
-                      textAlign: isMobile ? "left" : "center",
-                      gap: isMobile ? 14 : 12,
-                      flex: isMobile ? "none" : 1,
-                      padding: isMobile ? "10px 0" : "0 6px",
-                      cursor: "default",
-                    }}
-                  >
-                    <motion.div
-                      animate={{ scale: [1, 1.07, 1], boxShadow: ["0 4px 14px rgba(0,82,204,0.1)", "0 8px 28px rgba(0,82,204,0.22)", "0 4px 14px rgba(0,82,204,0.1)"] }}
-                      transition={{ duration: 2.8 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-                      whileHover={{ scale: 1.18, boxShadow: "0 12px 36px rgba(0,82,204,0.28)", background: "#dbeafe" }}
-                      style={{
-                        width: isMobile ? 52 : 68, height: isMobile ? 52 : 68,
-                        borderRadius: "50%",
-                        background: "#eff6ff",
-                        border: "1.5px solid rgba(0,82,204,0.18)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        color: "#0052cc", flexShrink: 0,
-                        boxShadow: "0 4px 14px rgba(0,82,204,0.1)",
-                      }}
-                    >
-                      <step.icon size={isMobile ? 22 : 30} strokeWidth={1.6} />
-                    </motion.div>
-                    <div>
-                      <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#0052cc", margin: "0 0 4px" }}>{step.title}</p>
-                      <p style={{ fontSize: isMobile ? 12 : 13, color: "#64748b", fontWeight: 500, margin: 0 }}>{step.sub}</p>
+            {isMobile ? (
+              /* ── Mobile: vertical timeline ── */
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <p style={{ fontSize: 13, fontWeight: 900, color: "#0052cc", letterSpacing: "0.12em", margin: "0 0 20px" }}>EACH MODULE</p>
+                {FLOW_STEPS.map((step, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "stretch", gap: 0 }}>
+                    {/* Left column: icon + line */}
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 52, flexShrink: 0 }}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 + i * 0.08, duration: 0.5, ease: EASE }}
+                        style={{
+                          width: 48, height: 48, borderRadius: "50%",
+                          background: "#eff6ff", border: "1.5px solid rgba(0,82,204,0.2)",
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          color: "#0052cc", flexShrink: 0,
+                          boxShadow: "0 4px 14px rgba(0,82,204,0.1)",
+                        }}
+                      >
+                        <step.icon size={22} strokeWidth={1.7} />
+                      </motion.div>
+                      {i < FLOW_STEPS.length - 1 && (
+                        <div style={{ flex: 1, width: 2, minHeight: 20, background: "repeating-linear-gradient(to bottom, rgba(0,82,204,0.3) 0px, rgba(0,82,204,0.3) 5px, transparent 5px, transparent 9px)", margin: "4px 0" }} />
+                      )}
                     </div>
-                  </motion.div>
-
-                  {i < FLOW_STEPS.length - 1 && (
-                    isMobile ? (
-                      <div style={{ paddingLeft: 26, paddingBottom: 2 }}>
-                        <div style={{ height: 18, borderLeft: "2px dashed rgba(0,82,204,0.28)", marginLeft: 26 }} />
+                    {/* Right: text */}
+                    <motion.div
+                      initial={{ opacity: 0, x: 12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.32 + i * 0.08, duration: 0.5, ease: EASE }}
+                      style={{ paddingLeft: 16, paddingBottom: i < FLOW_STEPS.length - 1 ? 20 : 0, paddingTop: 10 }}
+                    >
+                      <p style={{ fontSize: 15, fontWeight: 800, color: "#0052cc", margin: "0 0 3px" }}>{step.title}</p>
+                      <p style={{ fontSize: 12, color: "#64748b", fontWeight: 500, margin: 0 }}>{step.sub}</p>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* ── Desktop/Tablet: horizontal row ── */
+              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                {FLOW_STEPS.map((step, i) => (
+                  <React.Fragment key={i}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 + i * 0.08, duration: 0.6, ease: EASE }}
+                      whileHover={{ scale: 1.08, y: -5 }}
+                      style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 12, flex: 1, padding: "0 6px", cursor: "default" }}
+                    >
+                      <motion.div
+                        animate={{ scale: [1, 1.07, 1], boxShadow: ["0 4px 14px rgba(0,82,204,0.1)", "0 8px 28px rgba(0,82,204,0.22)", "0 4px 14px rgba(0,82,204,0.1)"] }}
+                        transition={{ duration: 2.8 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+                        whileHover={{ scale: 1.18, boxShadow: "0 12px 36px rgba(0,82,204,0.28)", background: "#dbeafe" }}
+                        style={{ width: 68, height: 68, borderRadius: "50%", background: "#eff6ff", border: "1.5px solid rgba(0,82,204,0.18)", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", flexShrink: 0, boxShadow: "0 4px 14px rgba(0,82,204,0.1)" }}
+                      >
+                        <step.icon size={30} strokeWidth={1.6} />
+                      </motion.div>
+                      <div>
+                        <p style={{ fontSize: 16, fontWeight: 800, color: "#0052cc", margin: "0 0 4px" }}>{step.title}</p>
+                        <p style={{ fontSize: 13, color: "#64748b", fontWeight: 500, margin: 0 }}>{step.sub}</p>
                       </div>
-                    ) : (
+                    </motion.div>
+                    {i < FLOW_STEPS.length - 1 && (
                       <div style={{ display: "flex", alignItems: "center", gap: 3, flexShrink: 0, paddingBottom: 30 }}>
                         <div style={{ width: 24, height: 0, borderTop: "2px dashed rgba(0,82,204,0.35)" }} />
                         <div style={{ width: 0, height: 0, borderTop: "5px solid transparent", borderBottom: "5px solid transparent", borderLeft: "8px solid rgba(0,82,204,0.4)" }} />
                       </div>
-                    )
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
           </div>
         </motion.div>
       </section>
