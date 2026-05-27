@@ -36,7 +36,7 @@ function useScreenWidth() {
 }
 
 /* ─── HELPER COMPONENTS ─── */
-function InteractiveButton({ children, primary = false, icon: Icon, href }: any) {
+function InteractiveButton({ children, primary = false, icon: Icon, href, download }: any) {
   const btn = (
     <motion.div
       whileHover={{ scale: 1.03 }}
@@ -55,7 +55,7 @@ function InteractiveButton({ children, primary = false, icon: Icon, href }: any)
       {children}
     </motion.div>
   );
-  return href ? <a href={href} style={{ textDecoration: "none" }}>{btn}</a> : btn;
+  return href ? <a href={href} download={download} style={{ textDecoration: "none" }}>{btn}</a> : btn;
 }
 
 function FormInput({ label, placeholder, icon: Icon }: any) {
@@ -163,7 +163,7 @@ export default function ContactPage() {
 
             <motion.div {...fadeUp(0.5)} style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
               <InteractiveButton primary icon={Calendar} href="#contact-form">Schedule a Demo</InteractiveButton>
-              <InteractiveButton icon={Download} href="/contact#contact-form">Download Brochure</InteractiveButton>
+              <InteractiveButton icon={Download} href="/SparkVR-Brochure .pdf" download="SparkVR-Brochure.pdf">Download Brochure</InteractiveButton>
             </motion.div>
           </div>
 
