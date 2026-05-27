@@ -250,11 +250,15 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 20, flexWrap: "wrap" }}>
-            {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((item, i) => (
-              <React.Fragment key={item}>
-                <a href="#" style={{ fontSize: isMobile ? 11 : 14, color: "#475569", textDecoration: "none", fontWeight: 500 }}>
-                  {item}
-                </a>
+            {[
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms of Use", href: "/terms-of-use" },
+              { label: "Cookie Policy", href: "/cookie-policy" },
+            ].map((item, i) => (
+              <React.Fragment key={item.label}>
+                <Link href={item.href} style={{ fontSize: isMobile ? 11 : 14, color: "#475569", textDecoration: "none", fontWeight: 500 }}>
+                  {item.label}
+                </Link>
                 {i < 2 && <span style={{ color: "#cbd5e1" }}>|</span>}
               </React.Fragment>
             ))}
