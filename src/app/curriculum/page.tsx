@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FlaskConical, Calculator, Landmark, Globe, Settings,
   BookOpen, Target, Users, CheckCircle2, ArrowRight,
   GraduationCap, Layers, ShieldCheck, ChevronRight,
   BarChart3, Calendar, School, MonitorPlay, Lightbulb,
   Brain, BookMarked, Glasses,
-  Eye, Headphones, Hand, Search, FileText, PenLine, Star
+  Eye, Headphones, Hand, Star
 } from "lucide-react";
 import Link from "next/link";
 
@@ -54,42 +54,71 @@ const FLOW_STEPS = [
   { icon: Glasses,    title: "Immersive Experience", sub: "Learn by experiencing" },
 ];
 
-const SUBJECTS = [
+const MOCKUP_SLIDES = [
   {
-    icon: FlaskConical, color: "#1d4ed8", bg: "#eff6ff",
-    title: "Science",
-    desc: "Explore physics, chemistry and biology through 3D simulations and interactive models. Students visualise what textbooks can only describe.",
-    modules: "120+ Modules", grades: "Grades 6–12",
-    topics: ["Atoms & Molecules", "Human Anatomy", "Cell Structure", "Forces & Motion", "Ecosystems"],
+    image: "/human_anatomy.webp",
+    label: "The Human Heart",
+    subject: "Science • Class 8 • Chapter 6",
+    desc: "Explore the structure and function of the human heart through an immersive 3D experience.",
+    annotations: [
+      { title: "Aorta",             desc: "Carries oxygenated blood to the body." },
+      { title: "Pulmonary Artery",  desc: "Carries blood to the lungs."           },
+      { title: "Left Ventricle",    desc: "Pumps oxygenated blood to the body."   },
+    ],
   },
   {
-    icon: Calculator, color: "#059669", bg: "#ecfdf5",
-    title: "Mathematics",
-    desc: "Visualise abstract concepts like geometry, algebra and calculus in three dimensions. Make complex formulas observable and intuitive.",
-    modules: "100+ Modules", grades: "Grades 6–12",
-    topics: ["3D Geometry", "Trigonometry", "Coordinate Systems", "Probability", "Mensuration"],
+    image: "/earth_core.webp",
+    label: "Earth's Core",
+    subject: "Geography • Class 9 • Chapter 3",
+    desc: "Discover the layers of the Earth and understand how heat and pressure shape our planet.",
+    annotations: [
+      { title: "Inner Core", desc: "Solid iron and nickel at extreme temperatures." },
+      { title: "Mantle",     desc: "Semi-molten rock driving tectonic movement."    },
+      { title: "Crust",      desc: "The thin outer layer where life exists."        },
+    ],
   },
   {
-    icon: Landmark, color: "#7c3aed", bg: "#f5f3ff",
-    title: "History & Civics",
-    desc: "Walk through historical timelines and civilisations. Experience events that shaped the world through immersive walkthroughs.",
-    modules: "80+ Modules", grades: "Grades 6–12",
-    topics: ["Ancient Civilisations", "Indian Freedom Struggle", "World Wars", "Constitutional Values", "Monuments"],
+    image: "/space.webp",
+    label: "The Solar System",
+    subject: "Science • Class 6 • Chapter 5",
+    desc: "Journey through our solar system and explore each planet's unique characteristics.",
+    annotations: [
+      { title: "Inner Planets",  desc: "Rocky worlds close to the Sun."                   },
+      { title: "Asteroid Belt",  desc: "A ring of space rocks between Mars and Jupiter."  },
+      { title: "Outer Giants",   desc: "Gas giants in the outer solar system."            },
+    ],
   },
   {
-    icon: Globe, color: "#d97706", bg: "#fffbeb",
-    title: "Geography",
-    desc: "Explore Earth's layers, landforms, climate zones and ecosystems through interactive 3D maps and models.",
-    modules: "90+ Modules", grades: "Grades 6–12",
-    topics: ["Layers of Earth", "Weather & Climate", "Landforms", "Natural Disasters", "Solar System"],
+    image: "/biological_systems.webp",
+    label: "DNA Structure",
+    subject: "Biology • Class 10 • Chapter 2",
+    desc: "Unravel the double helix and understand how genetic information is encoded and passed on.",
+    annotations: [
+      { title: "Base Pairs",       desc: "The genetic code written in four letters."        },
+      { title: "Sugar-Phosphate",  desc: "The backbone that holds the helix together."      },
+      { title: "Double Helix",     desc: "Two strands twisted into a spiral."               },
+    ],
   },
   {
-    icon: Settings, color: "#db2777", bg: "#fdf2f8",
-    title: "STEM Integration",
-    desc: "Bridge science, technology, engineering and mathematics through project-based learning in virtual labs.",
-    modules: "110+ Modules", grades: "Grades 6–12",
-    topics: ["Robotics", "Circuit Design", "Bridges & Structures", "Environmental Engineering", "Coding Concepts"],
+    image: "/cell_proper.webp",
+    label: "Cell Structure",
+    subject: "Biology • Class 8 • Chapter 1",
+    desc: "Explore the living cell and understand the function of each organelle in detail.",
+    annotations: [
+      { title: "Nucleus",        desc: "Control centre of the cell."                    },
+      { title: "Mitochondria",   desc: "Produces energy for the cell."                  },
+      { title: "Cell Membrane",  desc: "Regulates what enters and exits the cell."      },
+    ],
   },
+];
+
+const EXPLORE_SUBJECT_CARDS = [
+  { icon: FlaskConical, color: "#16a34a", name: "Biology",        range: "Class 6–12", topics: "48 Topics", pct: 78, image: "/biological_systems.webp" },
+  { icon: FlaskConical, color: "#7c3aed", name: "Chemistry",      range: "Class 8–12", topics: "52 Topics", pct: 65, image: "/atoms.webp"              },
+  { icon: Layers,       color: "#2563eb", name: "Physics",        range: "Class 9–12", topics: "46 Topics", pct: 72, image: "/forces.webp"              },
+  { icon: Landmark,     color: "#ea580c", name: "Social Science", range: "Class 6–10", topics: "40 Topics", pct: 68, image: "/history_card.webp"        },
+  { icon: Calculator,   color: "#1d4ed8", name: "Mathematics",    range: "Class 6–12", topics: "60 Topics", pct: 80, image: "/math_3d_card.webp"        },
+  { icon: Globe,        color: "#16a34a", name: "Geography",      range: "Class 6–10", topics: "38 Topics", pct: 70, image: "/geography_card.webp"      },
 ];
 
 const GRADES = [
@@ -114,13 +143,6 @@ const LEARNING_TYPES = [
   { icon: Brain,      color: "#d97706", bg: "#fffbeb", title: "Deeper Understanding",  desc: "Stronger connections lead to long-term retention and concept mastery." },
 ];
 
-const ENGAGE_STEPS = [
-  { icon: Users,    color: "#2563eb", bg: "#eff6ff", title: "Engage",   desc: "Captures attention from the first moment." },
-  { icon: Search,   color: "#7c3aed", bg: "#f5f3ff", title: "Explore",  desc: "Students interact, observe and discover." },
-  { icon: FileText, color: "#1d4ed8", bg: "#e0f2fe", title: "Explain",  desc: "Complex ideas made simple." },
-  { icon: PenLine,  color: "#d97706", bg: "#fffbeb", title: "Apply",    desc: "Students practice and apply knowledge." },
-  { icon: Brain,    color: "#059669", bg: "#ecfdf5", title: "Remember", desc: "Better retention through experience and repetition." },
-];
 
 const BENEFITS = [
   { icon: Target,    color: "#2563eb", bg: "#eff6ff", title: "Improves Focus",       desc: "Immersive lessons keep students engaged and attentive." },
@@ -129,6 +151,284 @@ const BENEFITS = [
   { icon: Users,     color: "#d97706", bg: "#fffbeb", title: "Builds Confidence",    desc: "Understanding concepts deeply leads to greater academic confidence." },
   { icon: Star,      color: "#0891b2", bg: "#ecfeff", title: "Encourages Curiosity", desc: "Exploration-driven learning sparks curiosity and a love for learning." },
 ];
+
+function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; isTablet: boolean }) {
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  const slide = MOCKUP_SLIDES[activeSlide];
+
+  const leftFeatures = [
+    { icon: Glasses,   title: "Immersive 3D Visuals",         desc: "Experience concepts in 3D that make complex topics easy to grasp."             },
+    { icon: Hand,      title: "Interactive Exploration",       desc: "Rotate, zoom, manipulate and explore to build deeper understanding."           },
+    { icon: BarChart3, title: "Concept-Focused Assessments",  desc: "Built-in quizzes and activities to reinforce learning and track progress."    },
+  ];
+
+  const sidebarTabs = [
+    { icon: MonitorPlay,  label: "Explore",  active: true  },
+    { icon: CheckCircle2, label: "Quiz",     active: false },
+    { icon: BookOpen,     label: "Notes",    active: false },
+    { icon: BarChart3,    label: "Assess",   active: false },
+  ];
+
+  return (
+    <section style={{ padding: isMobile ? "60px 20px 40px" : isTablet ? "80px 40px 60px" : "100px 60px 80px", background: "#f8fafc" }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+
+        {/* ── Top: left text + right dark UI mockup ── */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "38% 1fr",
+          gap: isMobile ? 40 : 60,
+          alignItems: "center",
+          marginBottom: isMobile ? 48 : 72,
+        }}>
+
+          {/* LEFT */}
+          <div>
+            <motion.div {...fadeLeft(0.05)} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
+              <div style={{ width: 28, height: 2.5, background: "#2563eb", borderRadius: 4 }} />
+              <span style={{ fontSize: 11, fontWeight: 800, color: "#2563eb", letterSpacing: "0.18em" }}>RICH CURRICULUM VISUALS</span>
+            </motion.div>
+
+            <motion.h2 {...fadeLeft(0.1)} style={{
+              fontSize: isMobile ? "clamp(26px,8vw,36px)" : "clamp(30px,3.2vw,44px)",
+              fontWeight: 900, color: "#001a4d", lineHeight: 1.1,
+              letterSpacing: "-0.03em", margin: "0 0 18px",
+            }}>
+              From textbook topics<br />to{" "}
+              <span style={{ color: "#2563eb" }}>real understanding.</span>
+            </motion.h2>
+
+            <motion.p {...fadeUp(0.18)} style={{ fontSize: isMobile ? 13 : 15, color: "#475569", lineHeight: 1.7, fontWeight: 500, margin: "0 0 32px", maxWidth: 440 }}>
+              SparkVR immersive modules bring curriculum to life with stunning 3D visuals, interactive exploration and concept-focused learning.
+            </motion.p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              {leftFeatures.map((f, i) => (
+                <motion.div
+                  key={i} {...fadeUp(0.24 + i * 0.07)}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                  style={{ display: "flex", gap: 16, alignItems: "flex-start" }}
+                >
+                  <div style={{
+                    width: 44, height: 44, borderRadius: "50%",
+                    background: "#eff6ff", border: "1.5px solid rgba(37,99,235,0.15)",
+                    display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                  }}>
+                    <f.icon size={20} color="#2563eb" strokeWidth={1.8} />
+                  </div>
+                  <div style={{ borderBottom: "1px solid rgba(0,82,204,0.08)", paddingBottom: 16, flex: 1 }}>
+                    <p style={{ fontSize: 15, fontWeight: 800, color: "#001a4d", margin: "0 0 4px" }}>{f.title}</p>
+                    <p style={{ fontSize: 13, color: "#64748b", fontWeight: 500, margin: 0, lineHeight: 1.55 }}>{f.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT — dark UI mockup */}
+          {!isMobile && (
+            <motion.div {...fadeUp(0.15)} style={{
+              background: "#0e1726", borderRadius: 20, overflow: "hidden",
+              boxShadow: "0 40px 100px rgba(0,26,77,0.28)",
+              border: "1px solid rgba(255,255,255,0.06)",
+            }}>
+              {/* Top bar */}
+              <div style={{ display: "flex", alignItems: "center", padding: "10px 18px", gap: 14, background: "#111d30", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 5, cursor: "pointer" }}>
+                  <ChevronRight size={13} color="#64748b" style={{ transform: "rotate(180deg)" }} />
+                  <span style={{ fontSize: 11, color: "#64748b", fontWeight: 600 }}>Back to Modules</span>
+                </div>
+                <div style={{ flex: 1, textAlign: "center" }}>
+                  <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{slide.subject}</span>
+                </div>
+                <div style={{ padding: "3px 10px", background: "rgba(37,99,235,0.22)", borderRadius: 6 }}>
+                  <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 700 }}>Explore</span>
+                </div>
+              </div>
+
+              {/* Main area */}
+              <div style={{ display: "flex" }}>
+                {/* Left info panel */}
+                <div style={{ width: 186, flexShrink: 0, padding: "18px 14px", borderRight: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div>
+                    <h4 style={{ fontSize: 14, fontWeight: 800, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.25 }}>{slide.label}</h4>
+                    <p style={{ fontSize: 10, color: "#94a3b8", lineHeight: 1.55, margin: 0 }}>{slide.desc}</p>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                    {["3D Interactive Model", "Guided Learning", "In-built Assessment"].map((feat, fi) => (
+                      <div key={fi} style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                        <div style={{ width: 15, height: 15, borderRadius: "50%", background: (["rgba(74,222,128,0.15)", "rgba(96,165,250,0.15)", "rgba(167,139,250,0.15)"])[fi], display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: (["#4ade80", "#60a5fa", "#a78bfa"])[fi] }} />
+                        </div>
+                        <span style={{ fontSize: 10, color: "#cbd5e1", fontWeight: 600 }}>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#2563eb", borderRadius: 30, padding: "7px 14px", cursor: "pointer" }}
+                  >
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#fff" }}>Start Exploring</span>
+                    <ArrowRight size={12} color="#fff" strokeWidth={2.5} />
+                  </motion.div>
+                </div>
+
+                {/* Center — main image + annotations */}
+                <div style={{ flex: 1, position: "relative", height: 280, background: "#0a1020", overflow: "hidden" }}>
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeSlide}
+                      src={slide.image}
+                      alt={slide.label}
+                      initial={{ opacity: 0, scale: 1.04 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.97 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }}
+                    />
+                  </AnimatePresence>
+
+                  {/* Annotation labels */}
+                  <div style={{ position: "absolute", right: 10, top: "8%", display: "flex", flexDirection: "column", gap: 10, zIndex: 2 }}>
+                    {slide.annotations.map((ann, ai) => (
+                      <AnimatePresence key={`${activeSlide}-${ai}`} mode="wait">
+                        <motion.div
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 10 }}
+                          transition={{ delay: ai * 0.08, duration: 0.3 }}
+                          style={{
+                            background: "rgba(10,16,32,0.82)", backdropFilter: "blur(8px)",
+                            borderRadius: 8, padding: "5px 9px",
+                            border: "1px solid rgba(255,255,255,0.1)", maxWidth: 128,
+                          }}
+                        >
+                          <p style={{ fontSize: 10, fontWeight: 800, color: "#ffffff", margin: "0 0 2px" }}>{ann.title}</p>
+                          <p style={{ fontSize: 9, color: "#94a3b8", fontWeight: 500, margin: 0, lineHeight: 1.4 }}>{ann.desc}</p>
+                        </motion.div>
+                      </AnimatePresence>
+                    ))}
+                  </div>
+
+                  {/* Bottom controls */}
+                  <div style={{ position: "absolute", bottom: 8, right: 8, display: "flex", gap: 5, zIndex: 2 }}>
+                    {["360°", "♪", "⛶"].map((c, ci) => (
+                      <div key={ci} style={{ background: "rgba(10,16,32,0.75)", borderRadius: 5, padding: "3px 7px", fontSize: 10, color: "#94a3b8", fontWeight: 700, cursor: "pointer" }}>{c}</div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right sidebar tabs */}
+                <div style={{ width: 58, flexShrink: 0, borderLeft: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", padding: "10px 4px", gap: 2, background: "#111d30" }}>
+                  {sidebarTabs.map((tab, ti) => (
+                    <div key={ti} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "9px 0", width: "100%", borderRadius: 8, background: tab.active ? "rgba(37,99,235,0.2)" : "transparent", cursor: "pointer" }}>
+                      <tab.icon size={15} color={tab.active ? "#60a5fa" : "#475569"} strokeWidth={1.8} />
+                      <span style={{ fontSize: 9, color: tab.active ? "#60a5fa" : "#475569", fontWeight: 700, textAlign: "center" }}>{tab.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Thumbnail strip */}
+              <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 14px", background: "#111d30", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                <button onClick={() => setActiveSlide(s => Math.max(0, s - 1))} style={{ background: "rgba(255,255,255,0.07)", border: "none", borderRadius: 6, padding: "5px 8px", cursor: "pointer", display: "flex", color: "#64748b" }}>
+                  <ChevronRight size={13} style={{ transform: "rotate(180deg)" }} />
+                </button>
+                <div style={{ flex: 1, display: "flex", gap: 8 }}>
+                  {MOCKUP_SLIDES.map((s, si) => (
+                    <motion.div
+                      key={si}
+                      onClick={() => setActiveSlide(si)}
+                      whileHover={{ scale: 1.07, opacity: 1 }}
+                      style={{
+                        width: 62, height: 44, borderRadius: 7, overflow: "hidden", cursor: "pointer", flexShrink: 0,
+                        border: `2px solid ${si === activeSlide ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
+                        opacity: si === activeSlide ? 1 : 0.52,
+                        transition: "all 0.22s ease",
+                        boxShadow: si === activeSlide ? "0 4px 14px rgba(37,99,235,0.4)" : "none",
+                      }}
+                    >
+                      <img src={s.image} alt={s.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </motion.div>
+                  ))}
+                </div>
+                <button onClick={() => setActiveSlide(s => Math.min(MOCKUP_SLIDES.length - 1, s + 1))} style={{ background: "rgba(255,255,255,0.07)", border: "none", borderRadius: 6, padding: "5px 8px", cursor: "pointer", display: "flex", color: "#64748b" }}>
+                  <ChevronRight size={13} />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </div>
+
+        {/* ── Explore across subjects ── */}
+        <div style={{ marginBottom: 40 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 20 : 28 }}>
+            <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 900, color: "#001a4d", margin: 0 }}>Explore across subjects</h3>
+            <Link href="/contact" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 700, color: "#2563eb", textDecoration: "none" }}>
+              View all modules <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(6, 1fr)", gap: isMobile ? 12 : 16 }}>
+            {EXPLORE_SUBJECT_CARDS.map((card, ci) => (
+              <motion.div
+                key={ci}
+                {...fadeUp(ci * 0.06)}
+                whileHover={{ y: -6, boxShadow: "0 20px 50px rgba(0,26,77,0.12)" }}
+                style={{ background: "#ffffff", borderRadius: 18, overflow: "hidden", border: "1.5px solid rgba(0,82,204,0.06)", boxShadow: "0 4px 16px rgba(0,26,77,0.04)", cursor: "default" }}
+              >
+                <div style={{ height: 100, overflow: "hidden", position: "relative" }}>
+                  <img src={card.image} alt={card.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <div style={{ position: "absolute", top: 8, left: 8, width: 26, height: 26, borderRadius: "50%", background: card.color + "30", border: `1.5px solid ${card.color}50`, backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <card.icon size={12} color={card.color} strokeWidth={2} />
+                  </div>
+                </div>
+                <div style={{ padding: "12px 12px 14px" }}>
+                  <p style={{ fontSize: isMobile ? 13 : 14, fontWeight: 900, color: card.color, margin: "0 0 3px" }}>{card.name}</p>
+                  <p style={{ fontSize: 10, color: "#64748b", fontWeight: 500, margin: "0 0 10px", lineHeight: 1.4 }}>{card.range} • {card.topics}</p>
+                  <div style={{ height: 3, background: "#f1f5f9", borderRadius: 4, marginBottom: 5 }}>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${card.pct}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: ci * 0.08, ease: "easeOut" }}
+                      style={{ height: "100%", background: card.color, borderRadius: 4 }}
+                    />
+                  </div>
+                  <p style={{ fontSize: 10, fontWeight: 700, color: card.color, margin: 0 }}>{card.pct}% Completed</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Bottom banner ── */}
+        <motion.div {...fadeUp(0.3)} style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          gap: 24, background: "#ffffff", borderRadius: 20,
+          padding: isMobile ? "20px" : "22px 40px",
+          border: "1.5px solid rgba(0,82,204,0.08)",
+          boxShadow: "0 4px 20px rgba(0,26,77,0.04)", flexWrap: "wrap",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            <div style={{ width: 50, height: 50, borderRadius: "50%", background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <GraduationCap size={24} color="#fff" strokeWidth={2} />
+            </div>
+            <div>
+              <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#001a4d", margin: "0 0 3px" }}>Aligned. Structured. Immersive.</p>
+              <p style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", fontWeight: 500, margin: 0, lineHeight: 1.5 }}>Every module is mapped to your curriculum to ensure clarity, continuity and confidence.</p>
+            </div>
+          </div>
+          <Link href="/contact" style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, fontWeight: 700, color: "#2563eb", textDecoration: "none", whiteSpace: "nowrap" }}>
+            See curriculum mapping <ArrowRight size={16} strokeWidth={2.5} />
+          </Link>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
 
 export default function CurriculumPage() {
   const screenWidth = useScreenWidth();
@@ -479,55 +779,6 @@ export default function CurriculumPage() {
           </div>
         </div>
 
-        {/* Floating cards — right side (Engage/Explore/Explain/Apply/Remember) */}
-        {!isMobile && (
-          <div style={{
-            position: "absolute",
-            right: isTablet ? "2%" : "3%",
-            top: "50%",
-            transform: "translateY(-55%)",
-            zIndex: 3,
-            display: "flex", flexDirection: "column", gap: 10,
-          }}>
-            {ENGAGE_STEPS.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.1, duration: 0.6, ease: EASE }}
-                whileHover={{ scale: 1.05, x: -8, boxShadow: "0 14px 36px rgba(0,26,77,0.16)" }}
-                style={{
-                  background: "rgba(255,255,255,0.94)",
-                  backdropFilter: "blur(12px)",
-                  borderRadius: 14,
-                  padding: "10px 16px",
-                  display: "flex", alignItems: "center", gap: 12,
-                  boxShadow: "0 4px 18px rgba(0,26,77,0.1)",
-                  minWidth: isMobile ? 160 : 220,
-                  cursor: "default",
-                  border: "1px solid rgba(255,255,255,0.8)",
-                }}
-              >
-                <motion.div
-                  animate={{ scale: [1, 1.07, 1] }}
-                  transition={{ duration: 2.5 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                  style={{
-                    width: 36, height: 36, borderRadius: "50%",
-                    background: item.bg,
-                    display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-                  }}
-                >
-                  <item.icon size={17} color={item.color} strokeWidth={2} />
-                </motion.div>
-                <div>
-                  <p style={{ fontWeight: 800, fontSize: 13, color: "#001a4d", margin: 0 }}>{item.title}</p>
-                  <p style={{ fontSize: 11, color: "#64748b", margin: 0, lineHeight: 1.35 }}>{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
 
         {/* Bottom quote card */}
         <motion.div
@@ -614,67 +865,9 @@ export default function CurriculumPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          SECTION 3 — SUBJECTS
+          SECTION 3 — RICH CURRICULUM VISUALS
       ══════════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "60px 20px" : isTablet ? "80px 40px" : "100px 60px", background: "#f8fafc" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-          <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: isMobile ? 40 : 60 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#eff6ff", borderRadius: 30, padding: "6px 18px", marginBottom: 18 }}>
-              <BookOpen size={14} color="#0052cc" strokeWidth={2.5} />
-              <span style={{ fontSize: 12, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em" }}>SUBJECTS</span>
-            </div>
-            <h2 style={{ fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(32px,3.5vw,48px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", margin: 0 }}>
-              Five subjects.<br />Hundreds of concepts.
-            </h2>
-          </motion.div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 20 : 24 }}>
-            {SUBJECTS.map((subj, i) => (
-              <motion.div
-                key={i}
-                {...fadeUp(i * 0.08)}
-                whileHover={{ scale: 1.01, y: -3, boxShadow: "0 16px 48px rgba(0,26,77,0.09)" }}
-                style={{
-                  display: "flex",
-                  flexDirection: isMobile ? "column" : (i % 2 === 0 ? "row" : "row-reverse"),
-                  gap: isMobile ? 20 : 40,
-                  alignItems: isMobile ? "flex-start" : "center",
-                  background: "#ffffff",
-                  borderRadius: 28,
-                  padding: isMobile ? "24px 20px" : "36px 44px",
-                  border: "1.5px solid rgba(0,82,204,0.06)",
-                  boxShadow: "0 4px 20px rgba(0,26,77,0.04)",
-                  cursor: "default",
-                }}
-              >
-                <div style={{ display: "flex", flexDirection: "column", alignItems: isMobile ? "flex-start" : "center", gap: 12, flexShrink: 0, minWidth: isMobile ? "auto" : 160, textAlign: isMobile ? "left" : "center" }}>
-                  <div style={{ width: isMobile ? 60 : 76, height: isMobile ? 60 : 76, borderRadius: "50%", background: subj.bg, display: "flex", alignItems: "center", justifyContent: "center", color: subj.color, border: `1.5px solid ${subj.color}22` }}>
-                    <subj.icon size={isMobile ? 26 : 34} strokeWidth={1.8} />
-                  </div>
-                  <p style={{ fontSize: isMobile ? 17 : 20, fontWeight: 900, color: "#001a4d", margin: 0 }}>{subj.title}</p>
-                  <div style={{ display: "flex", flexDirection: isMobile ? "row" : "column", gap: 6, alignItems: "center" }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: subj.color, background: subj.bg, padding: "4px 12px", borderRadius: 20 }}>{subj.modules}</span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: "#64748b", background: "#f1f5f9", padding: "4px 12px", borderRadius: 20 }}>{subj.grades}</span>
-                  </div>
-                </div>
-
-                {!isMobile && <div style={{ width: 1, alignSelf: "stretch", background: "rgba(0,82,204,0.08)" }} />}
-
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: isMobile ? 14 : 16, color: "#475569", lineHeight: 1.65, fontWeight: 500, marginBottom: 20 }}>{subj.desc}</p>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {subj.topics.map((topic, j) => (
-                      <span key={j} style={{ fontSize: isMobile ? 11 : 12, fontWeight: 700, color: subj.color, background: subj.bg, padding: "5px 14px", borderRadius: 20, border: `1px solid ${subj.color}22` }}>
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CurriculumVisualsSection isMobile={isMobile} isTablet={isTablet} />
 
       {/* ══════════════════════════════════════════
           SECTION 4 — GRADE LEVELS
