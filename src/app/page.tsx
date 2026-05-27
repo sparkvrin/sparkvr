@@ -19,7 +19,9 @@ export default function Home() {
     <div style={{ position: "relative" }}>
       <GlobalParticles />
       <Hero />
-      <ServicesSection />
+      <div id="spark-features">
+        <ServicesSection />
+      </div>
       <div style={{ display: "none" }}>
         <VideoScrollSection />
       </div>

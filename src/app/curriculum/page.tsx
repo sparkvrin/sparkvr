@@ -159,8 +159,8 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
   ];
 
   return (
-    <section style={{ padding: isMobile ? "40px 20px 16px" : isTablet ? "40px 32px 20px" : "40px 60px 20px", background: "#f8fafc" }}>
-      <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+    <section style={{ background: "#f8fafc" }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "40px 20px 16px" : isTablet ? "40px 32px 20px" : "40px 60px 20px" }}>
 
         {/* ── Top: left text + right dark UI mockup ── */}
         <div style={{
@@ -450,7 +450,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
         </div>
 
         {/* ── Explore across subjects + Bottom banner ── */}
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px 16px" : isTablet ? "0 32px 20px" : "0 60px 20px" }}>
 
           {/* Explore across subjects */}
           <div style={{ marginBottom: 40 }}>
@@ -838,38 +838,7 @@ export default function CurriculumPage() {
         </div>
 
 
-        {/* Bottom quote card */}
-        <motion.div
-          {...fadeUp(0.5)}
-          style={{
-            position: "absolute",
-            bottom: 0, left: 0, right: 0, zIndex: 4,
-            background: "rgba(255,255,255,0.97)",
-            backdropFilter: "blur(16px)",
-            borderRadius: isMobile ? 0 : "28px 28px 0 0",
-            boxShadow: "0 -8px 40px rgba(0,26,77,0.08)",
-            padding: isMobile ? "18px 20px 22px" : isTablet ? "20px 32px" : "22px 60px",
-            display: "flex", alignItems: "center", gap: 18,
-          }}
-        >
-          <div style={{
-            width: isMobile ? 44 : 54, height: isMobile ? 44 : 54,
-            borderRadius: "50%", background: "#001a4d",
-            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-          }}>
-            <GraduationCap size={isMobile ? 20 : 26} color="white" strokeWidth={2} />
-          </div>
-          <div>
-            <p style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#0052cc", margin: "0 0 3px", lineHeight: 1.4 }}>
-              When students see it, hear it and experience it, they truly understand it.
-            </p>
-            <p style={{ fontSize: isMobile ? 12 : 14, color: "#64748b", fontWeight: 500, margin: 0 }}>
-              SparkVR makes learning natural, effective and memorable.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Mobile: image strip */}
+{/* Mobile: image strip */}
         {isMobile && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}
@@ -882,9 +851,8 @@ export default function CurriculumPage() {
       <section style={{
         background: "#f8fafc",
         borderTop: "1px solid rgba(0,82,204,0.06)",
-        padding: isMobile ? "32px 20px 0" : isTablet ? "28px 32px 0" : "28px 60px 0",
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "32px 20px 0" : isTablet ? "28px 32px 0" : "28px 60px 0" }}>
           <div style={{
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
@@ -896,7 +864,7 @@ export default function CurriculumPage() {
                 key={i}
                 {...fadeUp(0.05 + i * 0.07)}
                 whileHover={{ scale: 1.04, y: -4 }}
-                style={{ display: "flex", alignItems: "flex-start", gap: 14, flex: 1, padding: isMobile ? 0 : "0 12px", cursor: "default" }}
+                style={{ display: "flex", alignItems: "flex-start", gap: 14, flex: 1, padding: isMobile ? 0 : "0 8px", cursor: "default" }}
               >
                 <motion.div
                   animate={{ scale: [1, 1.07, 1] }}
@@ -933,7 +901,8 @@ export default function CurriculumPage() {
       <section style={{ background: "#ffffff", overflow: "hidden" }}>
 
         {/* Part 1: Left text + Right image */}
-        <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "42% 58%", alignItems: "start" }}>
+        <div style={{ position: "relative" }}>
+          <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "42% 58%", alignItems: "start", maxWidth: isMobile ? "100%" : 1400, margin: "0 auto" }}>
 
           {/* Left text */}
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: isMobile ? "28px 20px" : isTablet ? "28px 32px" : "32px 60px" }}>
@@ -1005,11 +974,12 @@ export default function CurriculumPage() {
               </div>
             </div>
           )}
+          </div>
         </div>
 
         {/* Part 2: 6 feature cards — starts from bottom of image */}
-        <div style={{ background: "transparent", position: "relative", zIndex: 2, marginTop: isMobile ? 0 : -160, padding: isMobile ? "36px 20px 40px" : isTablet ? "0 32px 48px" : "0 60px 48px" }}>
-          <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+        <div style={{ background: "transparent", position: "relative", zIndex: 2, marginTop: isMobile ? 0 : -160 }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "36px 20px 40px" : isTablet ? "0 32px 48px" : "0 60px 48px" }}>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(6, 1fr)", gap: isMobile ? 14 : 18 }}>
               {([
                 { icon: School, color: "#16a34a", title: "Supports Classroom Teaching", desc: "Complements lesson plans and teaching strategies." },
@@ -1036,8 +1006,8 @@ export default function CurriculumPage() {
         </div>
 
         {/* Part 3: Proven Impact stats */}
-        <div style={{ background: "transparent", padding: isMobile ? "16px 20px 28px" : isTablet ? "0 32px 28px" : "0 60px 28px" }}>
-          <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 28 : 32, alignItems: "center" }}>
+        <div style={{ background: "transparent" }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "16px 20px 28px" : isTablet ? "0 32px 28px" : "0 60px 28px", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 28 : 32, alignItems: "center" }}>
             {/* Label */}
             <div style={{ flexShrink: 0, minWidth: 160 }}>
               <p style={{ fontSize: 14, fontWeight: 800, color: "#2563eb", margin: "0 0 6px" }}>Proven Impact</p>
@@ -1093,8 +1063,8 @@ export default function CurriculumPage() {
         </div>
 
         {/* Part 4: Trust banner */}
-        <div style={{ background: "#ffffff", borderTop: "1px solid rgba(0,82,204,0.06)", padding: isMobile ? "24px 20px" : isTablet ? "24px 32px" : "24px 60px" }}>
-          <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 20 : 24, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+        <div style={{ background: "#ffffff", borderTop: "1px solid rgba(0,82,204,0.06)" }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "24px 20px" : isTablet ? "24px 32px" : "24px 60px", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 20 : 24, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div style={{ width: 48, height: 48, borderRadius: "50%", background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <ShieldCheck size={24} color="#fff" strokeWidth={2} />

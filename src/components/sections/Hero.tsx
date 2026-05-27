@@ -295,7 +295,7 @@ export default function Hero() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", marginBottom: 40 }}>
               <motion.a
-                href="/services"
+                href="#spark-features"
                 whileTap={{ scale: 0.97 }}
                 style={{
                   display: "inline-flex", alignItems: "center", gap: 12,
@@ -522,7 +522,7 @@ export default function Hero() {
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
               style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <motion.a href="/services" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#38bdf8 100%)", color: "#fff", padding: "13px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", boxShadow: "0 10px 28px rgba(29,78,216,0.3)" }}>
+              <motion.a href="#spark-features" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#38bdf8 100%)", color: "#fff", padding: "13px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", boxShadow: "0 10px 28px rgba(29,78,216,0.3)" }}>
                 SEE IT DIFFERENTLY
               </motion.a>
               <motion.a href="/contact" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.5)", border: "2px solid #fff", color: "#1e293b", padding: "11px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", backdropFilter: "blur(12px)", boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}>
@@ -795,7 +795,7 @@ export default function Hero() {
                 style={{ display: "flex", alignItems: "center", gap: 20 }}
               >
                 <motion.a
-                  href="/services"
+                  href="#spark-features"
                   whileHover={{ scale: 1.07, y: -4, boxShadow: "0 24px 50px rgba(29,78,216,0.42)" }}
                   whileTap={{ scale: 0.97 }}
                   style={{
