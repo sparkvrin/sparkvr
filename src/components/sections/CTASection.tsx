@@ -209,33 +209,32 @@ export default function CTASection() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
-            <Link href="/contact" style={{ textDecoration: "none" }}>
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(37,99,235,0.4)" }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  position: "relative", overflow: "hidden",
-                  background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
-                  color: "white", border: "none", padding: "12px 12px 12px 24px",
-                  borderRadius: 100, fontSize: 17, fontWeight: 600,
-                  display: "inline-flex", alignItems: "center", gap: 16,
-                  cursor: "pointer", boxShadow: "0 15px 35px rgba(37,99,235,0.3)",
-                  marginBottom: 28, transformStyle: "preserve-3d"
-                }}
-              >
-                <motion.div
-                  animate={{ x: ["-100%", "200%"] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
-                  style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", transform: "skewX(-20deg)" }}
-                />
-                <CalendarDays size={20} style={{ opacity: 0.9 }} />
-                <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.2)" }} />
-                <span style={{ position: "relative", zIndex: 2, marginRight: 8 }}>Schedule a Guided Demonstration</span>
-                <motion.div animate={{ rotate: [0, 90, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} style={{ display: "flex", background: "white", color: "#2563eb", borderRadius: "50%", padding: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}>
-                  <ArrowRight size={20} strokeWidth={3} />
-                </motion.div>
-              </motion.button>
-            </Link>
+            <motion.a
+              href="/contact"
+              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(37,99,235,0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                position: "relative", overflow: "hidden",
+                background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
+                color: "white", padding: "12px 12px 12px 24px",
+                borderRadius: 100, fontSize: 17, fontWeight: 600,
+                display: "inline-flex", alignItems: "center", gap: 16,
+                cursor: "pointer", boxShadow: "0 15px 35px rgba(37,99,235,0.3)",
+                marginBottom: 28, textDecoration: "none"
+              }}
+            >
+              <motion.div
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
+                style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", transform: "skewX(-20deg)", pointerEvents: "none" }}
+              />
+              <CalendarDays size={20} style={{ opacity: 0.9 }} />
+              <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.2)" }} />
+              <span style={{ position: "relative", zIndex: 2, marginRight: 8 }}>Schedule a Guided Demonstration</span>
+              <motion.div animate={{ rotate: [0, 90, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} style={{ display: "flex", background: "white", color: "#2563eb", borderRadius: "50%", padding: 8, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}>
+                <ArrowRight size={20} strokeWidth={3} />
+              </motion.div>
+            </motion.a>
           </motion.div>
 
           <motion.div

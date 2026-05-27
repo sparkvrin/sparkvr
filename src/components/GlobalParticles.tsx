@@ -55,7 +55,7 @@ function Particles() {
 export default function GlobalParticles() {
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}>
-      <Canvas camera={{ position: [0, 0, 15], fov: 60 }} gl={{ alpha: true, antialias: false }}>
+      <Canvas style={{ pointerEvents: "none" }} camera={{ position: [0, 0, 15], fov: 60 }} gl={{ alpha: true, antialias: false }}>
         <Suspense fallback={null}>
           <Particles />
         </Suspense>

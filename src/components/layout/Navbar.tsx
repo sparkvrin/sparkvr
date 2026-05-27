@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "FOR TEACHERS", href: "/teachers" },
   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
   { label: "TIMETABLE", href: "/timetable" },
+  { label: "CURRICULUM", href: "/curriculum" },
   { label: "BLOG", href: "/blog" },
   { label: "ABOUT", href: "/about" },
   { label: "CONTACT", href: "/contact" },
@@ -152,7 +153,8 @@ export default function Navbar() {
                 background: "linear-gradient(195deg, rgba(0,26,77,0.97) 0%, rgba(0,40,110,0.98) 100%)",
                 backdropFilter: "blur(24px)",
                 display: "flex", flexDirection: "column",
-                padding: isMobile ? "80px 28px 40px" : "120px 48px 48px",
+                padding: isMobile ? "70px 28px 24px" : "120px 48px 48px",
+                overflowY: "auto",
                 boxShadow: "-20px 0 60px rgba(0,0,0,0.25)",
               }}
             >
@@ -162,7 +164,7 @@ export default function Navbar() {
               />
 
               {/* Nav links */}
-              <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+              <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
                 {NAV_LINKS.map((link, i) => (
                   <motion.div
                     key={link.label}
@@ -177,7 +179,7 @@ export default function Navbar() {
                         onClick={() => setMenuOpen(false)}
                         style={{
                           display: "flex", alignItems: "center", gap: 16,
-                          padding: "18px 20px",
+                          padding: isMobile ? "11px 20px" : "18px 20px",
                           borderRadius: 16,
                           textDecoration: "none",
                           fontSize: 15, fontWeight: 600, letterSpacing: "0.08em",
@@ -198,7 +200,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.4 }}
-                style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}
+                style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: isMobile ? 20 : 32 }}
               >
                 <Link href="/contact" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
                   <motion.div

@@ -40,150 +40,137 @@ function useScreenWidth() {
 }
 
 const MODULE_FEATURES = [
-  { icon: MonitorPlay, title: "Supports",   sub: "classroom teaching"  },
-  { icon: Lightbulb,   title: "Clarifies",  sub: "complex topics"      },
-  { icon: Target,      title: "Reinforces", sub: "exam relevance"      },
-  { icon: Brain,       title: "Encourages", sub: "conceptual mastery"  },
+  { icon: MonitorPlay, title: "Supports", sub: "classroom teaching" },
+  { icon: Lightbulb, title: "Clarifies", sub: "complex topics" },
+  { icon: Target, title: "Reinforces", sub: "exam relevance" },
+  { icon: Brain, title: "Encourages", sub: "conceptual mastery" },
 ];
 
 const FLOW_STEPS = [
-  { icon: School,     title: "Class",               sub: "Select your class"     },
-  { icon: BookOpen,   title: "Subject",             sub: "Choose a subject"      },
-  { icon: BookMarked, title: "Chapter",             sub: "Pick a chapter"        },
-  { icon: Lightbulb,  title: "Concept",             sub: "Explore the concept"   },
-  { icon: Glasses,    title: "Immersive Experience", sub: "Learn by experiencing" },
+  { icon: School, title: "Class", sub: "Select your class" },
+  { icon: BookOpen, title: "Subject", sub: "Choose a subject" },
+  { icon: BookMarked, title: "Chapter", sub: "Pick a chapter" },
+  { icon: Lightbulb, title: "Concept", sub: "Explore the concept" },
+  { icon: Glasses, title: "Immersive Experience", sub: "Learn by experiencing" },
 ];
 
 const MOCKUP_SLIDES = [
   {
-    image: "/human_anatomy.webp",
+    image: "/human_anatomys.webp",
     label: "The Human Heart",
     subject: "Science • Class 8 • Chapter 6",
     desc: "Explore the structure and function of the human heart through an immersive 3D experience.",
-    annotations: [
-      { title: "Aorta",             desc: "Carries oxygenated blood to the body." },
-      { title: "Pulmonary Artery",  desc: "Carries blood to the lungs."           },
-      { title: "Left Ventricle",    desc: "Pumps oxygenated blood to the body."   },
-    ],
+    annotations: [],
   },
   {
-    image: "/earth_core.webp",
+    image: "/spaces.webp",
     label: "Earth's Core",
     subject: "Geography • Class 9 • Chapter 3",
     desc: "Discover the layers of the Earth and understand how heat and pressure shape our planet.",
-    annotations: [
-      { title: "Inner Core", desc: "Solid iron and nickel at extreme temperatures." },
-      { title: "Mantle",     desc: "Semi-molten rock driving tectonic movement."    },
-      { title: "Crust",      desc: "The thin outer layer where life exists."        },
-    ],
+    annotations: [],
   },
   {
-    image: "/space.webp",
+    image: "/biological_systemss.webp",
     label: "The Solar System",
     subject: "Science • Class 6 • Chapter 5",
     desc: "Journey through our solar system and explore each planet's unique characteristics.",
-    annotations: [
-      { title: "Inner Planets",  desc: "Rocky worlds close to the Sun."                   },
-      { title: "Asteroid Belt",  desc: "A ring of space rocks between Mars and Jupiter."  },
-      { title: "Outer Giants",   desc: "Gas giants in the outer solar system."            },
-    ],
+    annotations: [],
   },
   {
-    image: "/biological_systems.webp",
+    image: "/cell_propers.webp",
     label: "DNA Structure",
     subject: "Biology • Class 10 • Chapter 2",
     desc: "Unravel the double helix and understand how genetic information is encoded and passed on.",
-    annotations: [
-      { title: "Base Pairs",       desc: "The genetic code written in four letters."        },
-      { title: "Sugar-Phosphate",  desc: "The backbone that holds the helix together."      },
-      { title: "Double Helix",     desc: "Two strands twisted into a spiral."               },
-    ],
+    annotations: [],
   },
   {
-    image: "/cell_proper.webp",
+    image: "/earth_cores.webp",
     label: "Cell Structure",
     subject: "Biology • Class 8 • Chapter 1",
     desc: "Explore the living cell and understand the function of each organelle in detail.",
-    annotations: [
-      { title: "Nucleus",        desc: "Control centre of the cell."                    },
-      { title: "Mitochondria",   desc: "Produces energy for the cell."                  },
-      { title: "Cell Membrane",  desc: "Regulates what enters and exits the cell."      },
-    ],
+    annotations: [],
+  },
+  {
+    image: "/geography_cards.webp",
+    label: "World Geography",
+    subject: "Geography • Class 7 • Chapter 2",
+    desc: "Explore continents, countries, and physical features through an interactive global map.",
+    annotations: [],
   },
 ];
 
 const EXPLORE_SUBJECT_CARDS = [
-  { icon: FlaskConical, color: "#16a34a", name: "Biology",        range: "Class 6–12", topics: "48 Topics", pct: 78, image: "/biological_systems.webp" },
-  { icon: FlaskConical, color: "#7c3aed", name: "Chemistry",      range: "Class 8–12", topics: "52 Topics", pct: 65, image: "/atoms.webp"              },
-  { icon: Layers,       color: "#2563eb", name: "Physics",        range: "Class 9–12", topics: "46 Topics", pct: 72, image: "/forces.webp"              },
-  { icon: Landmark,     color: "#ea580c", name: "Social Science", range: "Class 6–10", topics: "40 Topics", pct: 68, image: "/history_card.webp"        },
-  { icon: Calculator,   color: "#1d4ed8", name: "Mathematics",    range: "Class 6–12", topics: "60 Topics", pct: 80, image: "/math_3d_card.webp"        },
-  { icon: Globe,        color: "#16a34a", name: "Geography",      range: "Class 6–10", topics: "38 Topics", pct: 70, image: "/geography_card.webp"      },
+  { icon: FlaskConical, color: "#16a34a", name: "Biology", range: "Class 6–12", topics: "48 Topics", pct: 78, image: "/biological_systems.webp" },
+  { icon: FlaskConical, color: "#7c3aed", name: "Chemistry", range: "Class 8–12", topics: "52 Topics", pct: 65, image: "/cell_proper.webp" },
+  { icon: Layers, color: "#2563eb", name: "Physics", range: "Class 9–12", topics: "46 Topics", pct: 72, image: "/space.webp" },
+  { icon: Landmark, color: "#ea580c", name: "Social Science", range: "Class 6–10", topics: "40 Topics", pct: 68, image: "/earth_core.webp" },
+  { icon: Calculator, color: "#1d4ed8", name: "Mathematics", range: "Class 6–12", topics: "60 Topics", pct: 80, image: "/human_anatomys.webp" },
+  { icon: Globe, color: "#16a34a", name: "Geography", range: "Class 6–10", topics: "38 Topics", pct: 70, image: "/geography_card.webp" },
 ];
 
 const GRADES = [
-  { range: "Grades 6–7",  focus: "Foundation Building", desc: "Basic concepts in science and maths made visual and concrete. Build curiosity and foundational understanding.", count: "80+ modules"  },
-  { range: "Grades 8–9",  focus: "Conceptual Depth",    desc: "Deeper exploration of complex topics. Bridge the gap between abstract theory and real-world application.",   count: "120+ modules" },
-  { range: "Grades 10–12", focus: "Exam Ready",         desc: "Curriculum-aligned modules mapped directly to board exam topics. Strengthen clarity under exam pressure.",    count: "230+ modules" },
+  { range: "Grades 6–7", focus: "Foundation Building", desc: "Basic concepts in science and maths made visual and concrete. Build curiosity and foundational understanding.", count: "80+ modules" },
+  { range: "Grades 8–9", focus: "Conceptual Depth", desc: "Deeper exploration of complex topics. Bridge the gap between abstract theory and real-world application.", count: "120+ modules" },
+  { range: "Grades 10–12", focus: "Exam Ready", desc: "Curriculum-aligned modules mapped directly to board exam topics. Strengthen clarity under exam pressure.", count: "230+ modules" },
 ];
 
 const FEATURES = [
-  { icon: BookOpen,      title: "NCERT Aligned",     desc: "Every module mapped chapter by chapter to national curriculum standards." },
-  { icon: GraduationCap, title: "Teacher Led",        desc: "Designed for structured classroom delivery with guided lesson plans." },
-  { icon: Layers,        title: "Graded Progression", desc: "Content organised by grade and difficulty for smooth learning journeys." },
-  { icon: Target,        title: "Concept Specific",   desc: "Each module targets one core concept for maximum clarity and retention." },
-  { icon: ShieldCheck,   title: "Assessment Ready",   desc: "Includes concept checks, quizzes and outcome measurements per module." },
-  { icon: BarChart3,     title: "Progress Trackable", desc: "Teachers can monitor engagement and understanding for every session." },
+  { icon: BookOpen, title: "NCERT Aligned", desc: "Every module mapped chapter by chapter to national curriculum standards." },
+  { icon: GraduationCap, title: "Teacher Led", desc: "Designed for structured classroom delivery with guided lesson plans." },
+  { icon: Layers, title: "Graded Progression", desc: "Content organised by grade and difficulty for smooth learning journeys." },
+  { icon: Target, title: "Concept Specific", desc: "Each module targets one core concept for maximum clarity and retention." },
+  { icon: ShieldCheck, title: "Assessment Ready", desc: "Includes concept checks, quizzes and outcome measurements per module." },
+  { icon: BarChart3, title: "Progress Trackable", desc: "Teachers can monitor engagement and understanding for every session." },
 ];
 
 const LEARNING_TYPES = [
-  { icon: Eye,        color: "#2563eb", bg: "#eff6ff", title: "Visual Learning",       desc: "3D models, animations and visualizations bring abstract concepts to life." },
-  { icon: Headphones, color: "#7c3aed", bg: "#f5f3ff", title: "Auditory Learning",     desc: "Clear explanations and guided narration reinforce understanding." },
-  { icon: Hand,       color: "#059669", bg: "#ecfdf5", title: "Experiential Learning", desc: "Hands-on interaction and exploration deepen engagement and curiosity." },
-  { icon: Brain,      color: "#d97706", bg: "#fffbeb", title: "Deeper Understanding",  desc: "Stronger connections lead to long-term retention and concept mastery." },
+  { icon: Eye, color: "#2563eb", bg: "#eff6ff", title: "Visual Learning", desc: "3D models, animations and visualizations bring abstract concepts to life." },
+  { icon: Headphones, color: "#7c3aed", bg: "#f5f3ff", title: "Auditory Learning", desc: "Clear explanations and guided narration reinforce understanding." },
+  { icon: Hand, color: "#059669", bg: "#ecfdf5", title: "Experiential Learning", desc: "Hands-on interaction and exploration deepen engagement and curiosity." },
+  { icon: Brain, color: "#d97706", bg: "#fffbeb", title: "Deeper Understanding", desc: "Stronger connections lead to long-term retention and concept mastery." },
 ];
 
 
 const BENEFITS = [
-  { icon: Target,    color: "#2563eb", bg: "#eff6ff", title: "Improves Focus",       desc: "Immersive lessons keep students engaged and attentive." },
+  { icon: Target, color: "#2563eb", bg: "#eff6ff", title: "Improves Focus", desc: "Immersive lessons keep students engaged and attentive." },
   { icon: BarChart3, color: "#059669", bg: "#ecfdf5", title: "Boosts Participation", desc: "Interactive experiences encourage active involvement." },
-  { icon: Brain,     color: "#7c3aed", bg: "#f5f3ff", title: "Enhances Retention",   desc: "Experiential learning improves long-term memory and recall." },
-  { icon: Users,     color: "#d97706", bg: "#fffbeb", title: "Builds Confidence",    desc: "Understanding concepts deeply leads to greater academic confidence." },
-  { icon: Star,      color: "#0891b2", bg: "#ecfeff", title: "Encourages Curiosity", desc: "Exploration-driven learning sparks curiosity and a love for learning." },
+  { icon: Brain, color: "#7c3aed", bg: "#f5f3ff", title: "Enhances Retention", desc: "Experiential learning improves long-term memory and recall." },
+  { icon: Users, color: "#d97706", bg: "#fffbeb", title: "Builds Confidence", desc: "Understanding concepts deeply leads to greater academic confidence." },
+  { icon: Star, color: "#0891b2", bg: "#ecfeff", title: "Encourages Curiosity", desc: "Exploration-driven learning sparks curiosity and a love for learning." },
 ];
 
 function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; isTablet: boolean }) {
   const [activeSlide, setActiveSlide] = React.useState(0);
-  const slide = MOCKUP_SLIDES[activeSlide];
+  const slide = MOCKUP_SLIDES[activeSlide] ?? MOCKUP_SLIDES[0];
 
   const leftFeatures = [
-    { icon: Glasses,   title: "Immersive 3D Visuals",         desc: "Experience concepts in 3D that make complex topics easy to grasp."             },
-    { icon: Hand,      title: "Interactive Exploration",       desc: "Rotate, zoom, manipulate and explore to build deeper understanding."           },
-    { icon: BarChart3, title: "Concept-Focused Assessments",  desc: "Built-in quizzes and activities to reinforce learning and track progress."    },
+    { icon: Glasses, title: "Immersive 3D Visuals", desc: "Experience concepts in 3D that make complex topics easy to grasp." },
+    { icon: Hand, title: "Interactive Exploration", desc: "Rotate, zoom, manipulate and explore to build deeper understanding." },
+    { icon: BarChart3, title: "Concept-Focused Assessments", desc: "Built-in quizzes and activities to reinforce learning and track progress." },
   ];
 
   const sidebarTabs = [
-    { icon: MonitorPlay,  label: "Explore",  active: true  },
-    { icon: CheckCircle2, label: "Quiz",     active: false },
-    { icon: BookOpen,     label: "Notes",    active: false },
-    { icon: BarChart3,    label: "Assess",   active: false },
+    { icon: MonitorPlay, label: "Explore", active: true },
+    { icon: CheckCircle2, label: "Quiz", active: false },
+    { icon: BookOpen, label: "Notes", active: false },
+    { icon: BarChart3, label: "Assessment", active: false },
   ];
 
   return (
-    <section style={{ padding: isMobile ? "60px 20px 40px" : isTablet ? "80px 40px 60px" : "100px 60px 80px", background: "#f8fafc" }}>
+    <section style={{ padding: isMobile ? "40px 20px 16px" : isTablet ? "40px 32px 20px" : "40px 60px 20px", background: "#f8fafc" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
 
         {/* ── Top: left text + right dark UI mockup ── */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "38% 1fr",
-          gap: isMobile ? 40 : 60,
+          gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1.4fr" : "1fr 1.7fr",
+          gap: isMobile ? 40 : 48,
           alignItems: "center",
-          marginBottom: isMobile ? 48 : 72,
+          marginBottom: isMobile ? 32 : 40,
         }}>
 
           {/* LEFT */}
-          <div>
+          <div style={{ paddingLeft: 0 }}>
             <motion.div {...fadeLeft(0.05)} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
               <div style={{ width: 28, height: 2.5, background: "#2563eb", borderRadius: 4 }} />
               <span style={{ fontSize: 11, fontWeight: 800, color: "#2563eb", letterSpacing: "0.18em" }}>RICH CURRICULUM VISUALS</span>
@@ -230,8 +217,8 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
           {!isMobile && (
             <motion.div {...fadeUp(0.15)} style={{
               background: "#0e1726", borderRadius: 20, overflow: "hidden",
-              boxShadow: "0 40px 100px rgba(0,26,77,0.28)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              boxShadow: "0 40px 100px rgba(0,26,77,0.35)",
+              border: "1px solid rgba(255,255,255,0.08)",
             }}>
               {/* Top bar */}
               <div style={{ display: "flex", alignItems: "center", padding: "10px 18px", gap: 14, background: "#111d30", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
@@ -239,26 +226,24 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                   <ChevronRight size={13} color="#64748b" style={{ transform: "rotate(180deg)" }} />
                   <span style={{ fontSize: 11, color: "#64748b", fontWeight: 600 }}>Back to Modules</span>
                 </div>
-                <div style={{ flex: 1, textAlign: "center" }}>
-                  <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{slide.subject}</span>
-                </div>
-                <div style={{ padding: "3px 10px", background: "rgba(37,99,235,0.22)", borderRadius: 6 }}>
-                  <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 700 }}>Explore</span>
-                </div>
+                <div style={{ flex: 1 }} />
               </div>
 
               {/* Main area */}
               <div style={{ display: "flex" }}>
                 {/* Left info panel */}
-                <div style={{ width: 186, flexShrink: 0, padding: "18px 14px", borderRight: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", gap: 12 }}>
+                <div style={{ width: 200, flexShrink: 0, padding: "20px 16px", display: "flex", flexDirection: "column", gap: 14 }}>
                   <div>
-                    <h4 style={{ fontSize: 14, fontWeight: 800, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.25 }}>{slide.label}</h4>
-                    <p style={{ fontSize: 10, color: "#94a3b8", lineHeight: 1.55, margin: 0 }}>{slide.desc}</p>
+                    <div style={{ display: "inline-flex", alignItems: "center", padding: "3px 10px", background: "rgba(37,99,235,0.15)", borderRadius: 20, marginBottom: 10, border: "1px solid rgba(96,165,250,0.2)" }}>
+                      <span style={{ fontSize: 9, color: "#60a5fa", fontWeight: 600 }}>{slide.subject}</span>
+                    </div>
+                    <h4 style={{ fontSize: 15, fontWeight: 800, color: "#ffffff", margin: "0 0 7px", lineHeight: 1.25 }}>{slide.label}</h4>
+                    <p style={{ fontSize: 10, color: "#94a3b8", lineHeight: 1.6, margin: 0 }}>{slide.desc}</p>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
                     {["3D Interactive Model", "Guided Learning", "In-built Assessment"].map((feat, fi) => (
-                      <div key={fi} style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                        <div style={{ width: 15, height: 15, borderRadius: "50%", background: (["rgba(74,222,128,0.15)", "rgba(96,165,250,0.15)", "rgba(167,139,250,0.15)"])[fi], display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <div key={fi} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <div style={{ width: 16, height: 16, borderRadius: "50%", background: (["rgba(74,222,128,0.15)", "rgba(96,165,250,0.15)", "rgba(167,139,250,0.15)"])[fi], display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                           <div style={{ width: 6, height: 6, borderRadius: "50%", background: (["#4ade80", "#60a5fa", "#a78bfa"])[fi] }} />
                         </div>
                         <span style={{ fontSize: 10, color: "#cbd5e1", fontWeight: 600 }}>{feat}</span>
@@ -266,8 +251,8 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                     ))}
                   </div>
                   <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#2563eb", borderRadius: 30, padding: "7px 14px", cursor: "pointer" }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 8px 24px rgba(37,99,235,0.5)" }}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#2563eb", borderRadius: 30, padding: "9px 16px", cursor: "pointer", boxShadow: "0 4px 14px rgba(37,99,235,0.35)" }}
                   >
                     <span style={{ fontSize: 11, fontWeight: 700, color: "#fff" }}>Start Exploring</span>
                     <ArrowRight size={12} color="#fff" strokeWidth={2.5} />
@@ -275,7 +260,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                 </div>
 
                 {/* Center — main image + annotations */}
-                <div style={{ flex: 1, position: "relative", height: 280, background: "#0a1020", overflow: "hidden" }}>
+                <div style={{ flex: 1, position: "relative", height: 420, background: "#0a1020", overflow: "hidden" }}>
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={activeSlide}
@@ -284,46 +269,25 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                       initial={{ opacity: 0, scale: 1.04 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.97 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }}
+                      transition={{ duration: 0.4 }}
+                      style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
                     />
                   </AnimatePresence>
 
-                  {/* Annotation labels */}
-                  <div style={{ position: "absolute", right: 10, top: "8%", display: "flex", flexDirection: "column", gap: 10, zIndex: 2 }}>
-                    {slide.annotations.map((ann, ai) => (
-                      <AnimatePresence key={`${activeSlide}-${ai}`} mode="wait">
-                        <motion.div
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 10 }}
-                          transition={{ delay: ai * 0.08, duration: 0.3 }}
-                          style={{
-                            background: "rgba(10,16,32,0.82)", backdropFilter: "blur(8px)",
-                            borderRadius: 8, padding: "5px 9px",
-                            border: "1px solid rgba(255,255,255,0.1)", maxWidth: 128,
-                          }}
-                        >
-                          <p style={{ fontSize: 10, fontWeight: 800, color: "#ffffff", margin: "0 0 2px" }}>{ann.title}</p>
-                          <p style={{ fontSize: 9, color: "#94a3b8", fontWeight: 500, margin: 0, lineHeight: 1.4 }}>{ann.desc}</p>
-                        </motion.div>
-                      </AnimatePresence>
-                    ))}
-                  </div>
 
                   {/* Bottom controls */}
-                  <div style={{ position: "absolute", bottom: 8, right: 8, display: "flex", gap: 5, zIndex: 2 }}>
-                    {["360°", "♪", "⛶"].map((c, ci) => (
-                      <div key={ci} style={{ background: "rgba(10,16,32,0.75)", borderRadius: 5, padding: "3px 7px", fontSize: 10, color: "#94a3b8", fontWeight: 700, cursor: "pointer" }}>{c}</div>
+                  <div style={{ position: "absolute", bottom: 12, right: 12, display: "flex", gap: 6, zIndex: 2 }}>
+                    {["360°", "🔊", "⛶"].map((c, ci) => (
+                      <div key={ci} style={{ background: "rgba(10,16,32,0.8)", borderRadius: 6, padding: "4px 9px", fontSize: 11, color: "#94a3b8", fontWeight: 700, cursor: "pointer", border: "1px solid rgba(255,255,255,0.08)" }}>{c}</div>
                     ))}
                   </div>
                 </div>
 
                 {/* Right sidebar tabs */}
-                <div style={{ width: 58, flexShrink: 0, borderLeft: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", padding: "10px 4px", gap: 2, background: "#111d30" }}>
+                <div style={{ width: 76, flexShrink: 0, borderLeft: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", padding: "14px 6px", gap: 2, background: "#111d30" }}>
                   {sidebarTabs.map((tab, ti) => (
-                    <div key={ti} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, padding: "9px 0", width: "100%", borderRadius: 8, background: tab.active ? "rgba(37,99,235,0.2)" : "transparent", cursor: "pointer" }}>
-                      <tab.icon size={15} color={tab.active ? "#60a5fa" : "#475569"} strokeWidth={1.8} />
+                    <div key={ti} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, padding: "13px 0", width: "100%", borderRadius: 10, background: tab.active ? "rgba(37,99,235,0.22)" : "transparent", cursor: "pointer" }}>
+                      <tab.icon size={20} color={tab.active ? "#60a5fa" : "#475569"} strokeWidth={1.8} />
                       <span style={{ fontSize: 9, color: tab.active ? "#60a5fa" : "#475569", fontWeight: 700, textAlign: "center" }}>{tab.label}</span>
                     </div>
                   ))}
@@ -331,87 +295,86 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
               </div>
 
               {/* Thumbnail strip */}
-              <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 14px", background: "#111d30", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                <button onClick={() => setActiveSlide(s => Math.max(0, s - 1))} style={{ background: "rgba(255,255,255,0.07)", border: "none", borderRadius: 6, padding: "5px 8px", cursor: "pointer", display: "flex", color: "#64748b" }}>
-                  <ChevronRight size={13} style={{ transform: "rotate(180deg)" }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", background: "#111d30", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                <button onClick={() => setActiveSlide(s => Math.max(0, s - 1))} style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 7, padding: "7px 10px", cursor: "pointer", display: "flex", color: "#94a3b8" }}>
+                  <ChevronRight size={14} style={{ transform: "rotate(180deg)" }} />
                 </button>
-                <div style={{ flex: 1, display: "flex", gap: 8 }}>
+                <div style={{ flex: 1, display: "flex", gap: 10 }}>
                   {MOCKUP_SLIDES.map((s, si) => (
                     <motion.div
                       key={si}
                       onClick={() => setActiveSlide(si)}
-                      whileHover={{ scale: 1.07, opacity: 1 }}
+                      whileHover={{ scale: 1.08, opacity: 1 }}
                       style={{
-                        width: 62, height: 44, borderRadius: 7, overflow: "hidden", cursor: "pointer", flexShrink: 0,
-                        border: `2px solid ${si === activeSlide ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
-                        opacity: si === activeSlide ? 1 : 0.52,
+                        width: 80, height: 54, borderRadius: 9, overflow: "hidden", cursor: "pointer", flexShrink: 0,
+                        border: `2.5px solid ${si === activeSlide ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
+                        opacity: si === activeSlide ? 1 : 0.5,
                         transition: "all 0.22s ease",
-                        boxShadow: si === activeSlide ? "0 4px 14px rgba(37,99,235,0.4)" : "none",
+                        boxShadow: si === activeSlide ? "0 6px 18px rgba(37,99,235,0.45)" : "none",
                       }}
                     >
-                      <img src={s.image} alt={s.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <div style={{ width: "100%", height: "100%", background: "#0f1e38", overflow: "hidden" }}>
+                        <img src={s.image} alt={s.label} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                      </div>
                     </motion.div>
                   ))}
                 </div>
-                <button onClick={() => setActiveSlide(s => Math.min(MOCKUP_SLIDES.length - 1, s + 1))} style={{ background: "rgba(255,255,255,0.07)", border: "none", borderRadius: 6, padding: "5px 8px", cursor: "pointer", display: "flex", color: "#64748b" }}>
-                  <ChevronRight size={13} />
+                <button onClick={() => setActiveSlide(s => Math.min(MOCKUP_SLIDES.length - 1, s + 1))} style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 7, padding: "7px 10px", cursor: "pointer", display: "flex", color: "#94a3b8" }}>
+                  <ChevronRight size={14} />
                 </button>
               </div>
             </motion.div>
           )}
         </div>
 
-        {/* ── Explore across subjects ── */}
-        <div style={{ marginBottom: 40 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 20 : 28 }}>
-            <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 900, color: "#001a4d", margin: 0 }}>Explore across subjects</h3>
-            <Link href="/contact" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 700, color: "#2563eb", textDecoration: "none" }}>
-              View all modules <ArrowRight size={16} strokeWidth={2.5} />
-            </Link>
+        {/* ── Explore across subjects + Bottom banner ── */}
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+
+          {/* Explore across subjects */}
+          <div style={{ marginBottom: 40 }}>
+            <h3 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 900, color: "#001a4d", margin: "0 0 28px" }}>Explore across subjects</h3>
+
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(6, 1fr)", gap: isMobile ? 12 : 16 }}>
+              {EXPLORE_SUBJECT_CARDS.map((card, ci) => (
+                <motion.div
+                  key={ci}
+                  {...fadeUp(ci * 0.06)}
+                  whileHover={{ y: -6, boxShadow: "0 20px 50px rgba(0,26,77,0.12)" }}
+                  style={{ background: "transparent", borderRadius: 18, overflow: "hidden", cursor: "default" }}
+                >
+                  <div style={{ height: 100, overflow: "hidden", position: "relative" }}>
+                    <img src={card.image} alt={card.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                    <div style={{ position: "absolute", top: 8, left: 8, width: 32, height: 32, borderRadius: "50%", background: "rgba(255,255,255,0.92)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}>
+                      <card.icon size={16} color={card.color} strokeWidth={2} />
+                    </div>
+                  </div>
+                  <div style={{ padding: "12px 12px 14px" }}>
+                    <p style={{ fontSize: isMobile ? 13 : 14, fontWeight: 900, color: card.color, margin: "0 0 3px" }}>{card.name}</p>
+                    <p style={{ fontSize: 10, color: "#64748b", fontWeight: 500, margin: "0 0 10px", lineHeight: 1.4 }}>{card.range} • {card.topics}</p>
+                    <div style={{ height: 3, background: "#f1f5f9", borderRadius: 4, marginBottom: 5 }}>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${card.pct}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: ci * 0.08, ease: "easeOut" }}
+                        style={{ height: "100%", background: card.color, borderRadius: 4 }}
+                      />
+                    </div>
+                    <p style={{ fontSize: 10, fontWeight: 700, color: card.color, margin: 0 }}>{card.pct}% Completed</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(6, 1fr)", gap: isMobile ? 12 : 16 }}>
-            {EXPLORE_SUBJECT_CARDS.map((card, ci) => (
-              <motion.div
-                key={ci}
-                {...fadeUp(ci * 0.06)}
-                whileHover={{ y: -6, boxShadow: "0 20px 50px rgba(0,26,77,0.12)" }}
-                style={{ background: "#ffffff", borderRadius: 18, overflow: "hidden", border: "1.5px solid rgba(0,82,204,0.06)", boxShadow: "0 4px 16px rgba(0,26,77,0.04)", cursor: "default" }}
-              >
-                <div style={{ height: 100, overflow: "hidden", position: "relative" }}>
-                  <img src={card.image} alt={card.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  <div style={{ position: "absolute", top: 8, left: 8, width: 26, height: 26, borderRadius: "50%", background: card.color + "30", border: `1.5px solid ${card.color}50`, backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <card.icon size={12} color={card.color} strokeWidth={2} />
-                  </div>
-                </div>
-                <div style={{ padding: "12px 12px 14px" }}>
-                  <p style={{ fontSize: isMobile ? 13 : 14, fontWeight: 900, color: card.color, margin: "0 0 3px" }}>{card.name}</p>
-                  <p style={{ fontSize: 10, color: "#64748b", fontWeight: 500, margin: "0 0 10px", lineHeight: 1.4 }}>{card.range} • {card.topics}</p>
-                  <div style={{ height: 3, background: "#f1f5f9", borderRadius: 4, marginBottom: 5 }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${card.pct}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: ci * 0.08, ease: "easeOut" }}
-                      style={{ height: "100%", background: card.color, borderRadius: 4 }}
-                    />
-                  </div>
-                  <p style={{ fontSize: 10, fontWeight: 700, color: card.color, margin: 0 }}>{card.pct}% Completed</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Bottom banner ── */}
-        <motion.div {...fadeUp(0.3)} style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          gap: 24, background: "#ffffff", borderRadius: 20,
-          padding: isMobile ? "20px" : "22px 40px",
-          border: "1.5px solid rgba(0,82,204,0.08)",
-          boxShadow: "0 4px 20px rgba(0,26,77,0.04)", flexWrap: "wrap",
-        }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          {/* Bottom banner */}
+          <motion.div {...fadeUp(0.3)} style={{
+            display: "flex", alignItems: "center",
+            gap: 24, background: "#ffffff", borderRadius: 20,
+            padding: isMobile ? "20px" : "22px 40px",
+            border: "1.5px solid rgba(0,82,204,0.08)",
+            boxShadow: "0 4px 20px rgba(0,26,77,0.04)",
+          }}>
             <div style={{ width: 50, height: 50, borderRadius: "50%", background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <GraduationCap size={24} color="#fff" strokeWidth={2} />
             </div>
@@ -419,11 +382,9 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
               <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 800, color: "#001a4d", margin: "0 0 3px" }}>Aligned. Structured. Immersive.</p>
               <p style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", fontWeight: 500, margin: 0, lineHeight: 1.5 }}>Every module is mapped to your curriculum to ensure clarity, continuity and confidence.</p>
             </div>
-          </div>
-          <Link href="/contact" style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, fontWeight: 700, color: "#2563eb", textDecoration: "none", whiteSpace: "nowrap" }}>
-            See curriculum mapping <ArrowRight size={16} strokeWidth={2.5} />
-          </Link>
-        </motion.div>
+          </motion.div>
+
+        </div>
 
       </div>
     </section>
@@ -467,123 +428,123 @@ export default function CurriculumPage() {
           position: "relative", zIndex: 2,
           maxWidth: 1400, margin: "0 auto",
           padding: isMobile
-            ? "100px 24px 0"
+            ? "100px 20px 0"
             : isTablet
-              ? "140px 44px 180px"
-              : "140px 72px 220px",
+              ? "140px 32px 180px"
+              : "140px 60px 220px",
           minHeight: isMobile ? "auto" : "100vh",
           display: "flex",
           alignItems: "center",
         }}>
 
-        {/* ── Left Panel ── */}
-        <div style={{
-          width: isMobile ? "100%" : isTablet ? "55%" : "48%",
-          paddingBottom: isMobile ? 0 : 0,
-        }}>
-          <div style={{ width: "100%" }}>
+          {/* ── Left Panel ── */}
+          <div style={{
+            width: isMobile ? "100%" : isTablet ? "55%" : "48%",
+            paddingBottom: isMobile ? 0 : 0,
+          }}>
+            <div style={{ width: "100%" }}>
 
-            {/* Heading */}
-            <motion.h1 {...fadeLeft(0.12)} style={{
-              fontSize: isMobile
-                ? "clamp(30px,8vw,44px)"
-                : isTablet
-                  ? "clamp(34px,4.5vw,50px)"
-                  : "clamp(40px,3.8vw,62px)",
-              fontWeight: 900, color: "#001a4d", lineHeight: 1.08,
-              letterSpacing: "-0.03em", margin: "0 0 20px",
-            }}>
-              Built{" "}
-              <span style={{ color: "#2563eb" }}>chapter</span>
-              {" "}by chapter.<br />
-              Designed lesson{" "}
-              <span style={{ color: "#2563eb" }}>by lesson.</span>
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p {...fadeUp(0.2)} style={{
-              fontSize: isMobile ? 14 : 16, color: "#475569",
-              lineHeight: 1.7, fontWeight: 500, margin: "0 0 28px",
-              maxWidth: 460,
-            }}>
-              SparkVR covers curriculum-aligned immersive modules
-              mapped to national education standards.
-            </motion.p>
-
-            {/* Each module label */}
-            <motion.p {...fadeUp(0.26)} style={{
-              fontSize: isMobile ? 14 : 16, fontWeight: 900,
-              color: "#001a4d", margin: "0 0 18px",
-            }}>
-              Each module:
-            </motion.p>
-
-            {/* 2×2 feature grid */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: isMobile ? "14px 10px" : "20px 24px",
-              marginBottom: 30,
-            }}>
-              {MODULE_FEATURES.map((f, i) => (
-                <motion.div
-                  key={i}
-                  {...fadeUp(0.3 + i * 0.07)}
-                  whileHover={{ scale: 1.04, y: -3 }}
-                  transition={{ type: "spring", stiffness: 280, damping: 18 }}
-                  style={{ display: "flex", alignItems: "flex-start", gap: 13, cursor: "default" }}
-                >
-                  <div style={{
-                    width: isMobile ? 40 : 48, height: isMobile ? 40 : 48,
-                    borderRadius: "50%", background: "#eff6ff",
-                    border: "1.5px solid rgba(0,82,204,0.18)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#0052cc", flexShrink: 0,
-                  }}>
-                    <f.icon size={isMobile ? 18 : 22} strokeWidth={2} />
-                  </div>
-                  <div>
-                    <p style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px" }}>{f.title}</p>
-                    <p style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", fontWeight: 500, margin: 0 }}>{f.sub}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Info card — white with navy icon */}
-            <motion.div
-              {...fadeUp(0.52)}
-              whileHover={{ scale: 1.02, y: -4, boxShadow: "0 20px 48px rgba(0,26,77,0.12)" }}
-              style={{
-                display: "flex", alignItems: "center", gap: 18,
-                background: "#ffffff",
-                border: "1.5px solid rgba(0,82,204,0.12)",
-                borderRadius: 20,
-                padding: isMobile ? "16px 20px" : "22px 28px",
-                cursor: "default",
-                boxShadow: "0 4px 20px rgba(0,26,77,0.06)",
-              }}
-            >
-              <div style={{
-                width: isMobile ? 44 : 56, height: isMobile ? 44 : 56,
-                borderRadius: "50%", background: "#001a4d",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                color: "#ffffff", flexShrink: 0,
+              {/* Heading */}
+              <motion.h1 {...fadeLeft(0.12)} style={{
+                fontSize: isMobile
+                  ? "clamp(30px,8vw,44px)"
+                  : isTablet
+                    ? "clamp(34px,4.5vw,50px)"
+                    : "clamp(40px,3.8vw,62px)",
+                fontWeight: 900, color: "#001a4d", lineHeight: 1.08,
+                letterSpacing: "-0.03em", margin: "0 0 20px",
               }}>
-                <GraduationCap size={isMobile ? 22 : 28} strokeWidth={2} />
-              </div>
-              <div>
-                <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 900, color: "#001a4d", margin: "0 0 4px" }}>
-                  This is not video playback.
-                </p>
-                <p style={{ fontSize: isMobile ? 12 : 14, fontWeight: 600, color: "#2563eb", margin: 0 }}>
-                  It is interactive guided learning.
-                </p>
-              </div>
-            </motion.div>
+                Built{" "}
+                <span style={{ color: "#2563eb" }}>chapter</span>
+                {" "}by chapter.<br />
+                Designed lesson{" "}
+                <span style={{ color: "#2563eb" }}>by lesson.</span>
+              </motion.h1>
 
+              {/* Subtitle */}
+              <motion.p {...fadeUp(0.2)} style={{
+                fontSize: isMobile ? 14 : 16, color: "#475569",
+                lineHeight: 1.7, fontWeight: 500, margin: "0 0 28px",
+                maxWidth: 460,
+              }}>
+                SparkVR covers curriculum-aligned immersive modules
+                mapped to national education standards.
+              </motion.p>
+
+              {/* Each module label */}
+              <motion.p {...fadeUp(0.26)} style={{
+                fontSize: isMobile ? 14 : 16, fontWeight: 900,
+                color: "#001a4d", margin: "0 0 18px",
+              }}>
+                Each module:
+              </motion.p>
+
+              {/* 2×2 feature grid */}
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: isMobile ? "14px 10px" : "20px 24px",
+                marginBottom: 30,
+              }}>
+                {MODULE_FEATURES.map((f, i) => (
+                  <motion.div
+                    key={i}
+                    {...fadeUp(0.3 + i * 0.07)}
+                    whileHover={{ scale: 1.04, y: -3 }}
+                    transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                    style={{ display: "flex", alignItems: "flex-start", gap: 13, cursor: "default" }}
+                  >
+                    <div style={{
+                      width: isMobile ? 40 : 48, height: isMobile ? 40 : 48,
+                      borderRadius: "50%", background: "#eff6ff",
+                      border: "1.5px solid rgba(0,82,204,0.18)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#0052cc", flexShrink: 0,
+                    }}>
+                      <f.icon size={isMobile ? 18 : 22} strokeWidth={2} />
+                    </div>
+                    <div>
+                      <p style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px" }}>{f.title}</p>
+                      <p style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", fontWeight: 500, margin: 0 }}>{f.sub}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Info card — white with navy icon */}
+              <motion.div
+                {...fadeUp(0.52)}
+                whileHover={{ scale: 1.02, y: -4, boxShadow: "0 20px 48px rgba(0,26,77,0.12)" }}
+                style={{
+                  display: "flex", alignItems: "center", gap: 18,
+                  background: "transparent",
+                  border: "1.5px solid rgba(0,82,204,0.12)",
+                  borderRadius: 20,
+                  padding: isMobile ? "16px 20px" : "22px 28px",
+                  cursor: "default",
+                  boxShadow: "0 4px 20px rgba(0,26,77,0.06)",
+                }}
+              >
+                <div style={{
+                  width: isMobile ? 44 : 56, height: isMobile ? 44 : 56,
+                  borderRadius: "50%", background: "#001a4d",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "#ffffff", flexShrink: 0,
+                }}>
+                  <GraduationCap size={isMobile ? 22 : 28} strokeWidth={2} />
+                </div>
+                <div>
+                  <p style={{ fontSize: isMobile ? 14 : 16, fontWeight: 900, color: "#001a4d", margin: "0 0 4px" }}>
+                    This is not video playback.
+                  </p>
+                  <p style={{ fontSize: isMobile ? 12 : 14, fontWeight: 600, color: "#2563eb", margin: 0 }}>
+                    It is interactive guided learning.
+                  </p>
+                </div>
+              </motion.div>
+
+            </div>
           </div>
-        </div>
         </div>
 
         {/* Mobile: image strip below text */}
@@ -616,8 +577,8 @@ export default function CurriculumPage() {
             padding: isMobile
               ? "24px 20px 28px"
               : isTablet
-                ? "28px 44px 32px"
-                : "28px 72px 36px",
+                ? "28px 32px 32px"
+                : "28px 60px 36px",
           }}
         >
           <div style={{ maxWidth: 1400, margin: "0 auto" }}>
@@ -715,7 +676,7 @@ export default function CurriculumPage() {
         <div style={{
           position: "relative", zIndex: 2,
           maxWidth: 1400, margin: "0 auto",
-          padding: isMobile ? "60px 24px 0" : isTablet ? "80px 44px 180px" : "140px 72px 220px",
+          padding: isMobile ? "60px 20px 0" : isTablet ? "80px 32px 180px" : "140px 60px 220px",
           minHeight: isMobile ? "auto" : "100vh",
           display: "flex", alignItems: "center",
         }}>
@@ -790,7 +751,7 @@ export default function CurriculumPage() {
             backdropFilter: "blur(16px)",
             borderRadius: isMobile ? 0 : "28px 28px 0 0",
             boxShadow: "0 -8px 40px rgba(0,26,77,0.08)",
-            padding: isMobile ? "18px 20px 22px" : isTablet ? "20px 44px" : "22px 72px",
+            padding: isMobile ? "18px 20px 22px" : isTablet ? "20px 32px" : "22px 60px",
             display: "flex", alignItems: "center", gap: 18,
           }}
         >
@@ -824,7 +785,7 @@ export default function CurriculumPage() {
       <section style={{
         background: "#f8fafc",
         borderTop: "1px solid rgba(0,82,204,0.06)",
-        padding: isMobile ? "32px 20px 36px" : isTablet ? "28px 44px" : "28px 72px",
+        padding: isMobile ? "32px 20px 0" : isTablet ? "28px 32px 0" : "28px 60px 0",
       }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{
@@ -870,132 +831,206 @@ export default function CurriculumPage() {
       <CurriculumVisualsSection isMobile={isMobile} isTablet={isTablet} />
 
       {/* ══════════════════════════════════════════
-          SECTION 4 — GRADE LEVELS
+          SECTION 4 — IMPACT IN THE CLASSROOM
       ══════════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "60px 20px" : isTablet ? "80px 40px" : "100px 60px", background: "#ffffff" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-          <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: isMobile ? 40 : 60 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#eff6ff", borderRadius: 30, padding: "6px 18px", marginBottom: 18 }}>
-              <GraduationCap size={14} color="#0052cc" strokeWidth={2.5} />
-              <span style={{ fontSize: 12, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em" }}>GRADE LEVELS</span>
-            </div>
-            <h2 style={{ fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(32px,3.5vw,48px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", margin: 0 }}>
-              Built for every stage<br />of the learning journey.
-            </h2>
-          </motion.div>
+      <section style={{ background: "#ffffff", overflow: "hidden" }}>
 
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: isMobile ? 16 : 24 }}>
-            {GRADES.map((g, i) => (
-              <motion.div
-                key={i}
-                {...fadeUp(i * 0.1)}
-                whileHover={{ scale: 1.03, y: -5, boxShadow: "0 20px 48px rgba(0,26,77,0.1)" }}
-                style={{
-                  background: "#f8fafc", borderRadius: 24, padding: isMobile ? "28px 22px" : "40px 36px",
-                  border: "1.5px solid rgba(0,82,204,0.08)",
-                  boxShadow: "0 8px 30px rgba(0,26,77,0.04)",
-                  position: "relative", overflow: "hidden",
-                  cursor: "default",
-                }}
-              >
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: "linear-gradient(90deg, #0052cc, #38bdf8)", borderRadius: "24px 24px 0 0" }} />
-                <p style={{ fontSize: 12, fontWeight: 800, color: "#0052cc", letterSpacing: "0.12em", marginBottom: 8 }}>{g.range}</p>
-                <h3 style={{ fontSize: isMobile ? 20 : 22, fontWeight: 900, color: "#001a4d", marginBottom: 14, lineHeight: 1.2 }}>{g.focus}</h3>
-                <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.6, fontWeight: 500, marginBottom: 20 }}>{g.desc}</p>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#0052cc", background: "#eff6ff", padding: "5px 14px", borderRadius: 20 }}>{g.count}</span>
-              </motion.div>
-            ))}
+        {/* Part 1: Left text + Right image */}
+        <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "42% 58%", alignItems: "start" }}>
+
+          {/* Left text */}
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: isMobile ? "28px 20px" : isTablet ? "28px 32px" : "32px 60px" }}>
+
+            <motion.h2 {...fadeLeft(0.1)} style={{ fontSize: isMobile ? "clamp(22px,5.5vw,30px)" : "clamp(26px,2.2vw,38px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", margin: "0 0 10px" }}>
+              Built for classrooms.<br />Designed for <span style={{ color: "#2563eb" }}>outcomes.</span>
+            </motion.h2>
+            <motion.p {...fadeUp(0.18)} style={{ fontSize: isMobile ? 13 : 14, color: "#475569", lineHeight: 1.6, fontWeight: 500, maxWidth: 420, margin: 0 }}>
+              SparkVR seamlessly integrates into teaching and learning to improve understanding, boost engagement and strengthen academic performance.
+            </motion.p>
+          </div>
+
+          {/* Right: image full fill with absolute positioning */}
+          {!isMobile && (
+            <div style={{ position: "relative", minHeight: 540, overflow: "hidden" }}>
+              {/* Full fill image */}
+              <img
+                src="/teacher1.png"
+                alt="SparkVR Classroom"
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+              />
+              {/* Subtle left gradient for blend */}
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 20%)" }} />
+
+              {/* Left floating cards */}
+              <div style={{ position: "absolute", left: 16, top: 16, display: "flex", flexDirection: "column", gap: 10, zIndex: 2 }}>
+                {([
+                  { icon: MonitorPlay, title: "Seamless Classroom Integration", desc: "Easy to implement. Easy to teach." },
+                  { icon: BookOpen, title: "Reinforces Classroom Teaching", desc: "Perfect for introduction, explanation and revision." },
+                  { icon: Brain, title: "Improves Concept Retention", desc: "Students remember what they experience." },
+                ] as { icon: React.ElementType; title: string; desc: string }[]).map((card, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }} transition={{ delay: 0.15 + i * 0.12, duration: 0.5, ease: EASE }}
+                    style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(14px)", borderRadius: 12, padding: "10px 13px", width: 210, boxShadow: "0 4px 18px rgba(0,26,77,0.15)", display: "flex", gap: 10, alignItems: "flex-start" }}
+                  >
+                    <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <card.icon size={16} color="#2563eb" strokeWidth={2} />
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 12, fontWeight: 800, color: "#001a4d", margin: "0 0 2px", lineHeight: 1.3 }}>{card.title}</p>
+                      <p style={{ fontSize: 10.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>{card.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Right floating cards */}
+              <div style={{ position: "absolute", right: 16, top: 16, display: "flex", flexDirection: "column", gap: 10, zIndex: 2 }}>
+                {([
+                  { icon: CheckCircle2, title: "Exam Aligned", desc: "Mapped to syllabus. Supports exam readiness." },
+                  { icon: Users, title: "Boosts Participation", desc: "Every student stays engaged." },
+                  { icon: GraduationCap, title: "Teacher Guided", desc: "You teach. SparkVR enhances." },
+                ] as { icon: React.ElementType; title: string; desc: string }[]).map((card, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }} transition={{ delay: 0.25 + i * 0.12, duration: 0.5, ease: EASE }}
+                    style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(14px)", borderRadius: 12, padding: "10px 13px", width: 210, boxShadow: "0 4px 18px rgba(0,26,77,0.15)", display: "flex", gap: 10, alignItems: "flex-start" }}
+                  >
+                    <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <card.icon size={16} color="#2563eb" strokeWidth={2} />
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 12, fontWeight: 800, color: "#001a4d", margin: "0 0 2px", lineHeight: 1.3 }}>{card.title}</p>
+                      <p style={{ fontSize: 10.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>{card.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Part 2: 6 feature cards — starts from bottom of image */}
+        <div style={{ background: "transparent", position: "relative", zIndex: 2, marginTop: isMobile ? 0 : -160, padding: isMobile ? "36px 20px 40px" : isTablet ? "0 32px 48px" : "0 60px 48px" }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(6, 1fr)", gap: isMobile ? 14 : 18 }}>
+              {([
+                { icon: School, color: "#16a34a", title: "Supports Classroom Teaching", desc: "Complements lesson plans and teaching strategies." },
+                { icon: BookOpen, color: "#7c3aed", title: "Clarifies Complex Topics", desc: "Breaks down difficult concepts into observable understanding." },
+                { icon: Target, color: "#2563eb", title: "Reinforces Exam Relevance", desc: "Strengthens syllabus coverage and exam preparedness." },
+                { icon: Brain, color: "#d97706", title: "Encourages Conceptual Mastery", desc: "From rote learning to real understanding and application." },
+                { icon: BarChart3, color: "#059669", title: "Improves Learning Outcomes", desc: "Better retention. Better performance. Better results." },
+                { icon: Users, color: "#7c3aed", title: "Inclusive & Accessible", desc: "Supports diverse learning styles and abilities." },
+              ] as { icon: React.ElementType; color: string; title: string; desc: string }[]).map((item, i) => (
+                <motion.div key={i} {...fadeUp(i * 0.06)}
+                  whileHover={{ y: -5, boxShadow: "0 16px 40px rgba(0,26,77,0.1)" }}
+                  style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", borderRadius: 16, padding: isMobile ? "18px 14px" : "26px 18px", display: "flex", flexDirection: "column", gap: 10, boxShadow: "0 4px 20px rgba(0,26,77,0.08)", border: "1px solid rgba(255,255,255,0.9)", cursor: "default" }}
+                >
+                  <div style={{ width: 52, height: 52, borderRadius: "50%", background: item.color + "18", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <item.icon size={24} color={item.color} strokeWidth={1.8} />
+                  </div>
+                  <p style={{ fontSize: isMobile ? 12 : 13, fontWeight: 800, color: "#001a4d", margin: 0, lineHeight: 1.3 }}>{item.title}</p>
+                  <p style={{ fontSize: isMobile ? 10 : 11, color: "#64748b", margin: 0, lineHeight: 1.5, flex: 1 }}>{item.desc}</p>
+                  <div style={{ height: 3, width: 28, background: item.color, borderRadius: 2 }} />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* ══════════════════════════════════════════
-          SECTION 5 — FEATURES
-      ══════════════════════════════════════════ */}
-      <section style={{ padding: isMobile ? "60px 20px" : isTablet ? "80px 40px" : "100px 60px", background: "#f8fafc" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-          <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: isMobile ? 40 : 60 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#eff6ff", borderRadius: 30, padding: "6px 18px", marginBottom: 18 }}>
-              <ShieldCheck size={14} color="#0052cc" strokeWidth={2.5} />
-              <span style={{ fontSize: 12, fontWeight: 800, color: "#0052cc", letterSpacing: "0.15em" }}>WHY IT WORKS</span>
+        {/* Part 3: Proven Impact stats */}
+        <div style={{ background: "transparent", padding: isMobile ? "16px 20px 28px" : isTablet ? "0 32px 28px" : "0 60px 28px" }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 28 : 32, alignItems: "center" }}>
+            {/* Label */}
+            <div style={{ flexShrink: 0, minWidth: 160 }}>
+              <p style={{ fontSize: 14, fontWeight: 800, color: "#2563eb", margin: "0 0 6px" }}>Proven Impact</p>
+              <p style={{ fontSize: 12, color: "#64748b", margin: 0, lineHeight: 1.6 }}>Real results from real classrooms using SparkVR.</p>
             </div>
-            <h2 style={{ fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(32px,3.5vw,48px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", margin: 0 }}>
-              Designed for classrooms,<br />not just content libraries.
-            </h2>
-          </motion.div>
+            {/* Stat circles */}
+            <div style={{ flex: 1, display: "flex", flexWrap: isMobile ? "wrap" : "nowrap", gap: isMobile ? 24 : 0, justifyContent: "space-around", alignItems: "center" }}>
+              {[
+                { pct: 82, color: "#16a34a", label: "Better Concept\nUnderstanding" },
+                { pct: 76, color: "#7c3aed", label: "Improved\nRetention" },
+                { pct: 71, color: "#2563eb", label: "Higher Student\nEngagement" },
+                { pct: 68, color: "#d97706", label: "Better Performance\nin Assessments" },
+                { pct: 90, color: "#db2777", label: "Teachers Recommend\nSparkVR" },
+              ].map((stat, i) => {
+                const r = 36; const circ = 2 * Math.PI * r;
+                return (
+                  <motion.div key={i} {...fadeUp(i * 0.07)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                    <div style={{ position: "relative", width: 88, height: 88 }}>
+                      <svg width="88" height="88" viewBox="0 0 88 88">
+                        <circle cx="44" cy="44" r={r} fill="none" stroke="#e2e8f0" strokeWidth="6" />
+                        <motion.circle cx="44" cy="44" r={r} fill="none" stroke={stat.color} strokeWidth="6"
+                          strokeLinecap="round" strokeDasharray={circ}
+                          initial={{ strokeDashoffset: circ }}
+                          whileInView={{ strokeDashoffset: circ - (stat.pct / 100) * circ }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.4, delay: 0.1 + i * 0.1, ease: "easeOut" }}
+                          style={{ transformOrigin: "44px 44px", transform: "rotate(-90deg)" }}
+                        />
+                      </svg>
+                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <span style={{ fontSize: 18, fontWeight: 900, color: stat.color }}>{stat.pct}%</span>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: 10, fontWeight: 600, color: "#475569", textAlign: "center", maxWidth: 90, margin: 0, lineHeight: 1.4, whiteSpace: "pre-line" }}>{stat.label}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+            {/* Bar chart decoration */}
+            {!isMobile && (
+              <motion.div {...fadeUp(0.3)} style={{ flexShrink: 0 }}>
+                <svg width="72" height="72" viewBox="0 0 72 72">
+                  <rect x="4" y="46" width="12" height="22" rx="3" fill="#dbeafe" />
+                  <rect x="20" y="34" width="12" height="34" rx="3" fill="#93c5fd" />
+                  <rect x="36" y="20" width="12" height="48" rx="3" fill="#3b82f6" />
+                  <rect x="52" y="28" width="12" height="40" rx="3" fill="#60a5fa" />
+                  <polyline points="10,46 26,34 42,20 58,28" fill="none" stroke="#1d4ed8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <polygon points="58,16 60.2,21.5 66,21.5 61.4,24.7 63.6,30.2 58,27 52.4,30.2 54.6,24.7 50,21.5 55.8,21.5" fill="#fbbf24" />
+                </svg>
+              </motion.div>
+            )}
+          </div>
+        </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)", gap: isMobile ? 14 : 24 }}>
-            {FEATURES.map((f, i) => (
-              <motion.div
-                key={i}
-                {...fadeUp(i * 0.08)}
-                whileHover={{ scale: 1.04, y: -5, boxShadow: "0 20px 44px rgba(0,26,77,0.1)" }}
-                style={{
-                  background: "#ffffff", borderRadius: 20, padding: isMobile ? "20px 16px" : "32px 28px",
-                  border: "1.5px solid rgba(0,82,204,0.06)",
-                  boxShadow: "0 4px 16px rgba(0,26,77,0.04)",
-                  cursor: "default",
-                }}
-              >
-                <div style={{ width: isMobile ? 44 : 52, height: isMobile ? 44 : 52, borderRadius: 14, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", color: "#0052cc", marginBottom: 16 }}>
-                  <f.icon size={isMobile ? 20 : 24} strokeWidth={2} />
+        {/* Part 4: Trust banner */}
+        <div style={{ background: "#ffffff", borderTop: "1px solid rgba(0,82,204,0.06)", padding: isMobile ? "24px 20px" : isTablet ? "24px 32px" : "24px 60px" }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 20 : 24, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ width: 48, height: 48, borderRadius: "50%", background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <ShieldCheck size={24} color="#fff" strokeWidth={2} />
+              </div>
+              <div>
+                <p style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px" }}>Trusted by forward-thinking schools and educators.</p>
+                <p style={{ fontSize: isMobile ? 11 : 12, color: "#64748b", margin: 0 }}>SparkVR is used by <span style={{ color: "#2563eb", fontWeight: 700 }}>500+ schools</span> across India and beyond.</p>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+              {([{ icon: Landmark, label: "Curriculum\nAligned" }, { icon: ShieldCheck, label: "Safe & Secure\nPlatform" }, { icon: Star, label: "Quality\nAssured" }] as { icon: React.ElementType; label: string }[]).map((item, i) => (
+                <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
+                  <item.icon size={22} color="#64748b" strokeWidth={1.8} />
+                  <span style={{ fontSize: 10, color: "#64748b", fontWeight: 600, textAlign: "center", whiteSpace: "pre-line", lineHeight: 1.4 }}>{item.label}</span>
                 </div>
-                <h4 style={{ fontSize: isMobile ? 13 : 16, fontWeight: 800, color: "#001a4d", marginBottom: 8 }}>{f.title}</h4>
-                <p style={{ fontSize: isMobile ? 11 : 13.5, color: "#64748b", lineHeight: 1.6, fontWeight: 500, margin: 0 }}>{f.desc}</p>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: isMobile ? "flex-start" : "flex-end" }}>
+              <Link href="/contact" style={{ textDecoration: "none" }}>
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#2563eb", color: "#fff", padding: "11px 24px", borderRadius: 30, fontSize: 13, fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 14px rgba(37,99,235,0.3)" }}>
+                  See SparkVR in Action <ArrowRight size={14} strokeWidth={2.5} />
+                </motion.div>
+              </Link>
+              <Link href="/contact" style={{ fontSize: 12, color: "#2563eb", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
+                Schedule a Guided Demo <ArrowRight size={12} strokeWidth={2.5} />
+              </Link>
+            </div>
           </div>
         </div>
+
       </section>
 
-      {/* ══════════════════════════════════════════
-          SECTION 6 — CTA
-      ══════════════════════════════════════════ */}
-      <section style={{
-        padding: isMobile ? "60px 20px" : isTablet ? "80px 40px" : "100px 60px",
-        background: "linear-gradient(135deg, #001a4d 0%, #0052cc 100%)",
-        position: "relative", overflow: "hidden",
-      }}>
-        <div style={{ position: "absolute", top: "-30%", right: "-10%", width: 400, height: 400, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", pointerEvents: "none" }} />
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-          <motion.div {...fadeUp(0)} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.1)", borderRadius: 30, padding: "6px 18px", marginBottom: 24 }}>
-            <School size={14} color="#38bdf8" strokeWidth={2.5} />
-            <span style={{ fontSize: 12, fontWeight: 800, color: "#38bdf8", letterSpacing: "0.15em" }}>GET STARTED</span>
-          </motion.div>
-          <motion.h2
-            {...fadeUp(0.1)}
-            style={{ fontSize: isMobile ? "clamp(28px,7vw,40px)" : "clamp(36px,4vw,52px)", fontWeight: 900, color: "#ffffff", lineHeight: 1.12, letterSpacing: "-0.02em", marginBottom: 20 }}
-          >
-            Bring the curriculum<br />to life in your school.
-          </motion.h2>
-          <motion.p
-            {...fadeUp(0.2)}
-            style={{ fontSize: isMobile ? 15 : 17, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, fontWeight: 500, marginBottom: 44, maxWidth: 560, margin: "0 auto 44px" }}
-          >
-            Book a free guided demonstration and see exactly how SparkVR aligns with your school's timetable and curriculum.
-          </motion.p>
-          <motion.div {...fadeUp(0.3)} style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-            <Link href="/contact" style={{ textDecoration: "none" }}>
-              <motion.div
-                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#ffffff", color: "#0052cc", padding: isMobile ? "13px 28px" : "16px 36px", borderRadius: 40, fontSize: isMobile ? 13 : 15, fontWeight: 800, letterSpacing: "0.06em", cursor: "pointer", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}
-              >
-                <Calendar size={18} strokeWidth={2.5} />
-                BOOK FREE WORKSHOP
-              </motion.div>
-            </Link>
-            <Link href="/subject-expansion" style={{ textDecoration: "none" }}>
-              <motion.div
-                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.12)", color: "#ffffff", border: "1.5px solid rgba(255,255,255,0.28)", padding: isMobile ? "13px 28px" : "16px 36px", borderRadius: 40, fontSize: isMobile ? 13 : 15, fontWeight: 700, letterSpacing: "0.06em", cursor: "pointer" }}
-              >
-                EXPLORE SUBJECTS
-                <ChevronRight size={16} strokeWidth={2.5} />
-              </motion.div>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
 
     </main>
   );
