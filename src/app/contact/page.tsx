@@ -215,7 +215,7 @@ export default function ContactPage() {
                 Let's start a conversation.
               </h2>
               <div style={{ width: 48, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 32 }} />
-              <p style={{ fontSize: 17, color: "#64748b", fontWeight: 500, marginBottom: 56, maxWidth: 520, lineHeight: 1.6, display: "none" }}>
+              <p style={{ fontSize: 17, color: "#64748b", fontWeight: 500, marginBottom: 56, maxWidth: 520, lineHeight: 1.6 }}>
                 Fill in your details and our academic team will get in touch to schedule your guided demonstration.
               </p>
 
@@ -232,47 +232,6 @@ export default function ContactPage() {
                 />
               </motion.div>
 
-              {/* FORM HIDDEN TEMPORARILY */}
-              <div style={{ display: "none" }}>
-                <form style={{ display: "grid", gap: 24 }}>
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 24 }}>
-                    <FormInput label="School Name" placeholder="Enter school name" icon={School} />
-                    <FormInput label="City" placeholder="Enter your city" icon={MapPin} />
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 24 }}>
-                    <FormInput label="Contact Person" placeholder="Your full name" icon={User} />
-                    <FormInput label="Phone Number" placeholder="Enter phone number" icon={Phone} />
-                  </div>
-                  <FormInput label="Email Address" placeholder="Enter email address" icon={Mail} />
-
-                  <div>
-                    <div style={{
-                      display: "flex", alignItems: "flex-start", gap: 14,
-                      background: "#f8fafc", padding: "20px 22px",
-                      borderRadius: 20, border: "1.5px solid rgba(0,82,204,0.06)",
-                      boxShadow: "0 4px 12px rgba(0,26,77,0.02)"
-                    }}>
-                      <MessageSquare size={20} color="#0052cc" style={{ marginTop: 4 }} strokeWidth={2.2} />
-                      <div style={{ flex: 1 }}>
-                        <p style={{ fontSize: 11, fontWeight: 900, color: "#001a4d", marginBottom: 6, opacity: 0.8 }}>Message (Optional)</p>
-                        <textarea placeholder="Tell us about your requirements or any specific questions." style={{ width: "100%", background: "none", border: "none", outline: "none", fontSize: 14, color: "#1e293b", fontWeight: 500, resize: "none", height: isMobile ? 80 : 100 }} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 0, marginTop: 32 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 14, maxWidth: 320 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <Lock size={16} color="#94a3b8" strokeWidth={2.5} />
-                      </div>
-                      <p style={{ fontSize: 11, color: "#64748b", lineHeight: 1.5, fontWeight: 500 }}>
-                        We respect your privacy. Your information will only be used to connect with you regarding your demo request.
-                      </p>
-                    </div>
-                    <InteractiveButton primary icon={ChevronRight}>Request a Demo</InteractiveButton>
-                  </div>
-                </form>
-              </div>
             </motion.div>
 
             {/* RIGHT SIDE: INFO BOX */}
