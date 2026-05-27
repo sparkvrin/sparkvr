@@ -55,6 +55,7 @@ const BLOG_POSTS = [
 export default function BlogPage() {
   const screenWidth = useScreenWidth();
   const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth < 1024;
 
   return (
     <>
@@ -81,7 +82,7 @@ export default function BlogPage() {
         <div style={{
           position: "relative", zIndex: 10,
           maxWidth: 1400, margin: "0 auto", width: "100%",
-          padding: isMobile ? "100px 20px 60px" : "110px 60px 60px",
+          padding: isMobile ? "100px 20px 60px" : isTablet ? "110px 32px 60px" : "110px 60px 60px",
           flex: 1, display: "flex", flexDirection: "column",
         }}>
           <div style={{ maxWidth: 680 }}>
@@ -138,20 +139,20 @@ export default function BlogPage() {
         <div style={{
           position: "relative", zIndex: 20,
           maxWidth: 1400, margin: "0 auto", width: "100%",
-          padding: isMobile ? "0 20px" : "0 60px", marginBottom: 50, marginTop: "auto"
+          padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px", marginBottom: 50, marginTop: "auto"
         }}>
           <motion.div
             {...fadeUp(0.5)}
             style={{
               background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(24px)",
-              borderRadius: 30,
-              padding: isMobile ? "20px 16px" : "36px 54px",
+              borderRadius: 24,
+              padding: isMobile ? "20px 20px" : isTablet ? "24px 32px" : "32px 48px",
               display: "grid",
-              gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: isMobile ? 20 : 40,
+              gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
+              gap: isMobile ? 20 : isTablet ? 24 : 36,
               boxShadow: "0 20px 60px rgba(0,26,77,0.05)",
-              border: "1px solid #ffffff",
+              border: "1px solid rgba(0,82,204,0.06)",
             }}
           >
             {[
@@ -186,22 +187,22 @@ export default function BlogPage() {
       </section>
 
       {/* ── ARTICLES ── */}
-      <section id="articles" style={{ background: "#f8faff", padding: "60px 0" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
-          <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: 64 }}>
+      <section id="articles" style={{ background: "#f8faff", padding: isMobile ? "48px 0 60px" : "60px 0 80px" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px" }}>
+          <motion.div {...fadeUp(0)} style={{ textAlign: "center", marginBottom: isMobile ? 40 : 56 }}>
             <span style={{ fontSize: 13, fontWeight: 800, color: "#0052cc", letterSpacing: "0.2em", display: "block", marginBottom: 16 }}>
               OUR PERSPECTIVES
             </span>
-            <h2 style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 900, color: "#001a4d", marginBottom: 24 }}>
+            <h2 style={{ fontSize: isMobile ? "clamp(26px, 7vw, 36px)" : "clamp(32px, 4vw, 48px)", fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>
               Latest from the <span className="text-gradient-primary">Spark Lab.</span>
             </h2>
-            <div style={{ width: 80, height: 3, background: "#0052cc", margin: "0 auto", borderRadius: 4 }} />
+            <div style={{ width: 60, height: 3, background: "#0052cc", margin: "0 auto", borderRadius: 4 }} />
           </motion.div>
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(360px, 1fr))",
-            gap: 40
+            gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
+            gap: isMobile ? 24 : 32
           }}>
             {BLOG_POSTS.map((post, i) => (
               <motion.div key={post.slug} {...fadeUp(0.1 + i * 0.1)}>
