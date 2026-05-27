@@ -257,8 +257,8 @@ export default function BlogDetailPage() {
 
         /* ── Main article card ── */
         .blog-main { background: #ffffff; padding: 48px 56px; border-radius: 28px; box-shadow: 0 8px 40px rgba(0,26,77,0.04); border: 1px solid rgba(0,82,204,0.06); }
-        @media (max-width: 1100px) { .blog-main { padding: 36px 40px; } }
-        @media (max-width: 768px) { .blog-main { padding: 28px 20px; border-radius: 20px; } }
+        @media (max-width: 1100px) { .blog-main { padding: 36px 32px; } }
+        @media (max-width: 768px) { .blog-main { padding: 0; background: transparent; border-radius: 0; box-shadow: none; border: none; } }
 
         /* ── Category + Title ── */
         .blog-category-badge { display: inline-block; background: #f0f7ff; color: #0052cc; font-size: 11px; font-weight: 900; letter-spacing: 0.15em; padding: 7px 14px; border-radius: 8px; margin-bottom: 20px; }
@@ -278,6 +278,7 @@ export default function BlogDetailPage() {
 
         /* ── Blockquote ── */
         .custom-blockquote { display: flex; background: #f8fafc; border-radius: 16px; padding: 28px 32px; margin: 36px 0; gap: 20px; border-left: 5px solid #0052cc; }
+        @media (max-width: 768px) { .custom-blockquote { padding: 20px; flex-direction: column; gap: 8px; } .quote-icon { font-size: 48px; margin-top: -8px; } }
         .quote-icon { font-size: 64px; color: #0052cc; line-height: 1; opacity: 0.12; margin-top: -16px; flex-shrink: 0; }
         .quote-text { font-size: 18px; color: #001a4d; font-weight: 700; line-height: 1.55; font-style: italic; margin-bottom: 12px !important; }
         .quote-author { font-size: 13px; color: #0052cc; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0 !important; }
@@ -300,7 +301,9 @@ export default function BlogDetailPage() {
 
         /* ── Sidebar ── */
         .blog-sidebar { display: flex; flex-direction: column; gap: 28px; position: sticky; top: 120px; }
+        @media (max-width: 768px) { .blog-sidebar { position: relative; top: 0; } }
         .related-articles-box { background: #fff; border-radius: 24px; padding: 32px 28px; border: 1px solid rgba(0,82,204,0.06); box-shadow: 0 8px 32px rgba(0,26,77,0.03); }
+        @media (max-width: 768px) { .related-articles-box { padding: 24px 20px; border-radius: 16px; } }
         .sidebar-title { font-size: 12px; font-weight: 900; color: #0052cc; letter-spacing: 0.18em; margin-bottom: 24px; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; display: inline-block; }
         .related-list { display: flex; flex-direction: column; gap: 20px; }
         .related-item { display: flex; align-items: center; gap: 16px; }
