@@ -101,12 +101,12 @@ const MOCKUP_SLIDES = [
 ];
 
 const EXPLORE_SUBJECT_CARDS = [
-  { icon: FlaskConical, color: "#16a34a", name: "Biology", range: "Class 6–12", topics: "48 Topics", pct: 78, image: "/biological_systems.webp" },
-  { icon: FlaskConical, color: "#7c3aed", name: "Chemistry", range: "Class 8–12", topics: "52 Topics", pct: 65, image: "/cell_proper.webp" },
-  { icon: Layers, color: "#2563eb", name: "Physics", range: "Class 9–12", topics: "46 Topics", pct: 72, image: "/space.webp" },
-  { icon: Landmark, color: "#ea580c", name: "Social Science", range: "Class 6–10", topics: "40 Topics", pct: 68, image: "/earth_core.webp" },
+  { icon: FlaskConical, color: "#16a34a", name: "Biology", range: "Class 6–12", topics: "48 Topics", pct: 78, image: "/biological_systemss.webp" },
+  { icon: FlaskConical, color: "#7c3aed", name: "Chemistry", range: "Class 8–12", topics: "52 Topics", pct: 65, image: "/cell_propers.webp" },
+  { icon: Layers, color: "#2563eb", name: "Physics", range: "Class 9–12", topics: "46 Topics", pct: 72, image: "/spaces.webp" },
+  { icon: Landmark, color: "#ea580c", name: "Social Science", range: "Class 6–10", topics: "40 Topics", pct: 68, image: "/earth_cores.webp" },
   { icon: Calculator, color: "#1d4ed8", name: "Mathematics", range: "Class 6–12", topics: "60 Topics", pct: 80, image: "/human_anatomys.webp" },
-  { icon: Globe, color: "#16a34a", name: "Geography", range: "Class 6–10", topics: "38 Topics", pct: 70, image: "/geography_card.webp" },
+  { icon: Globe, color: "#16a34a", name: "Geography", range: "Class 6–10", topics: "38 Topics", pct: 70, image: "/geography_cards.webp" },
 ];
 
 const GRADES = [
