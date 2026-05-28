@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
   { label: "TIMETABLE", href: "/timetable" },
   { label: "CURRICULUM", href: "/curriculum" },
+  { label: "LEARNING OUTCOME", href: "/learning-outcome" },
   { label: "BLOG", href: "/blog" },
   { label: "ABOUT", href: "/about" },
   { label: "CONTACT", href: "/contact" },
