@@ -1061,16 +1061,15 @@ export default function LearningOutcomePage() {
                   <motion.div
                     key={title}
                     {...fadeUp(0.1 + i * 0.07)}
-                    whileHover={{ x: 4, boxShadow: "0 6px 20px rgba(0,0,0,0.08)" }}
+                    whileHover={{ y: -3, boxShadow: "0 10px 28px rgba(0,0,0,0.1)" }}
                     style={{
-                      background: "rgba(255,255,255,0.88)",
-                      backdropFilter: "blur(8px)",
+                      background: "#ffffff",
                       borderRadius: 16,
-                      border: "1px solid rgba(255,255,255,0.6)",
-                      padding: isMobile ? "18px 16px" : "22px 18px",
-                      minHeight: isMobile ? "auto" : 110,
+                      border: "1px solid #e2e8f0",
+                      borderLeft: `3px solid ${color}`,
+                      padding: isMobile ? "16px 16px" : "20px 18px",
                       display: "flex", alignItems: "flex-start", gap: 14,
-                      boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+                      boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
                       transition: "all 0.25s ease",
                     }}
                   >
