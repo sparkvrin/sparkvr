@@ -211,15 +211,16 @@ export default function CTASection() {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(37,99,235,0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
+              whileTap={{ scale: 0.97 }}
               style={{
                 position: "relative", overflow: "hidden",
-                background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
-                color: "white", padding: "12px 12px 12px 24px",
-                borderRadius: 100, fontSize: 17, fontWeight: 600,
+                background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+                color: "#ffffff", padding: "14px 32px",
+                borderRadius: 40, fontSize: 17, fontWeight: 700,
+                letterSpacing: "0.14em",
                 display: "inline-flex", alignItems: "center", gap: 16,
-                cursor: "pointer", boxShadow: "0 15px 35px rgba(37,99,235,0.3)",
+                cursor: "pointer", boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
                 marginBottom: 28, textDecoration: "none"
               }}
             >

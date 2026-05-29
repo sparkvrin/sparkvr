@@ -50,11 +50,10 @@ export default function SparkButton({
     mouseY.set(0);
   };
 
-  const h        = large ? 48 : 34;
   const fontSize = large ? 12 : 10;
   const padX     = large ? 32 : 24;
 
-  const isWhite = variant === "white";
+  const isSecondary = secondary || variant === "white";
 
   const content = (
     <motion.div
@@ -69,40 +68,42 @@ export default function SparkButton({
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        height: h,
         minWidth: large ? 220 : 179,
         width: fullWidth ? "100%" : undefined,
-        padding: `0 ${padX}px`,
+        padding: `14px ${padX}px`,
         /* Variant Styling */
-        backgroundImage: isWhite ? "none" : "url('/c.webp')",
-        backgroundColor: isWhite ? "#ffffff" : "transparent",
-        backgroundSize: "100% 100%",
-        backgroundRepeat: "no-repeat",
-        borderRadius: h / 2,
-        border: isWhite ? "1px solid rgba(0,82,204,0.1)" : "none",
+        background: isSecondary
+          ? "rgba(255,255,255,0.5)"
+          : "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+        border: isSecondary ? "2px solid #2563eb" : "none",
+        borderRadius: 40,
+        color: isSecondary ? "#2563eb" : "#ffffff",
         cursor: "pointer",
         position: "relative",
-        boxShadow: isWhite 
-          ? "0 4px 15px rgba(0,0,0,0.05)" 
-          : "0 6px 20px rgba(0,82,204,0.35)",
+        boxShadow: isSecondary
+          ? "none"
+          : "0 10px 28px rgba(29,78,216,0.3)",
         zIndex: 1,
+        fontWeight: 700,
+        letterSpacing: "0.14em",
+        textDecoration: "none",
       }}
-      whileHover={{ 
-        scale: 1.05, 
-        boxShadow: isWhite 
-          ? "0 8px 25px rgba(0,0,0,0.1)" 
-          : "0 10px 30px rgba(0,82,204,0.5)" 
+      whileHover={{
+        scale: 1.05,
+        boxShadow: isSecondary
+          ? "none"
+          : "0 16px 40px rgba(29,78,216,0.4)",
       }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.97 }}
     >
       <span
         style={{
           fontFamily: "var(--font-jetbrains), 'JetBrains Mono', monospace",
-          fontWeight: 500,
+          fontWeight: 700,
           fontSize,
           lineHeight: 1,
-          letterSpacing: "0.2em",
-          color: isWhite ? "#0052cc" : "#ffffff",
+          letterSpacing: "0.14em",
+          color: isSecondary ? "#2563eb" : "#ffffff",
           textAlign: "center",
           whiteSpace: "nowrap",
           textTransform: "uppercase",

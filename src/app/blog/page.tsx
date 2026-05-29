@@ -117,17 +117,19 @@ export default function BlogPage() {
             <motion.div {...fadeUp(0.4)}>
               <Link href="#articles" style={{ textDecoration: "none" }}>
                 <motion.div
-                  whileHover={{ scale: 1.04 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                   whileTap={{ scale: 0.97 }}
                   style={{
-                    display: "inline-flex", alignItems: "center", gap: 12,
-                    background: "#0052cc", borderRadius: 14,
-                    padding: "16px 34px", color: "#fff",
-                    boxShadow: "0 8px 24px rgba(0,82,204,0.2)",
-                    cursor: "pointer",
+                    display: "inline-flex", alignItems: "center", gap: 10,
+                    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+                    borderRadius: 40,
+                    padding: "14px 32px", color: "#ffffff",
+                    boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
+                    cursor: "pointer", fontWeight: 700, letterSpacing: "0.14em",
+                    textDecoration: "none",
                   }}
                 >
-                  <span style={{ fontSize: 15, fontWeight: 800 }}>Explore Articles</span>
+                  EXPLORE OUR LATEST INSIGHTS
                   <ChevronRight size={20} strokeWidth={2.8} />
                 </motion.div>
               </Link>

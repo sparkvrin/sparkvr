@@ -1084,9 +1084,12 @@ export default function CurriculumPage() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: isMobile ? "flex-start" : "flex-end" }}>
               <Link href="/contact" style={{ textDecoration: "none" }}>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#2563eb", color: "#fff", padding: "11px 24px", borderRadius: 30, fontSize: 13, fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 14px rgba(37,99,235,0.3)" }}>
-                  See SparkVR in Action <ArrowRight size={14} strokeWidth={2.5} />
+                <motion.div
+                  whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
+                  whileTap={{ scale: 0.97 }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 32px", borderRadius: 40, background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)", color: "#ffffff", cursor: "pointer", fontWeight: 700, letterSpacing: "0.14em", boxShadow: "0 10px 28px rgba(29,78,216,0.3)", textDecoration: "none" }}
+                >
+                  See SparkVR in Action <ArrowRight size={16} strokeWidth={2.5} />
                 </motion.div>
               </Link>
               <Link href="/contact" style={{ fontSize: 12, color: "#2563eb", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>

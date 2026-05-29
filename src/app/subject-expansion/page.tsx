@@ -61,7 +61,7 @@ const ECOSYSTEM_CARDS = [
     btnBg: "#f5f3ff"
   },
   {
-    subject: "Geography", icon: Globe, color: COLORS.icons.geo, image: "/geography_card.webp",
+    subject: "Geography", icon: Globe, color: COLORS.icons.geo, image: "/geography_cards.webp",
     desc: "Understand Earth's systems, landscapes and cultures through immersive visual journeys.",
     modules: "90+ Modules", grades: "Grades 6 - 12", alignment: "Aligned to NCERT",
     btnBg: "#fffbeb"
@@ -1239,7 +1239,7 @@ export default function SubjectExpansionPage() {
 
               {/* The Image Wrapper */}
               <div style={{ width: isMobile ? 240 : 360, height: isMobile ? 240 : 360, borderRadius: "50%", background: "#e2e8f0", overflow: "hidden", position: "relative", zIndex: 1, boxShadow: "0 30px 60px rgba(0,0,0,0.1)" }}>
-                <img loading="lazy" decoding="async" src="/teacher_2.webp" alt="Teacher and students using VR" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="Teacher and students using VR" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
 
               {/* Orbiting Icons — desktop only */}
@@ -1415,24 +1415,24 @@ export default function SubjectExpansionPage() {
 
                 <motion.div {...fadeUp(0.4)} style={{ display: "flex", gap: 16, marginBottom: 40, flexDirection: isMobile ? "column" : "row" }}>
                   <a href="/contact" style={{ textDecoration: "none" }}>
-                    <motion.button
-                      whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(124, 58, 237, 0.3)" }}
-                      whileTap={{ scale: 0.95 }}
-                      style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)", color: "#fff", border: "none", padding: "16px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, cursor: "pointer", boxShadow: "0 8px 20px rgba(124, 58, 237, 0.2)" }}
+                    <motion.div
+                      whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{ background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)", color: "#ffffff", border: "none", padding: "14px 32px", borderRadius: 40, fontWeight: 700, letterSpacing: "0.14em", display: "flex", alignItems: "center", gap: 10, cursor: "pointer", boxShadow: "0 10px 28px rgba(29,78,216,0.3)" }}
                     >
                       <Calendar size={20} strokeWidth={2.5} />
-                      Book a Demo
-                    </motion.button>
+                      SCHEDULE A GUIDED DEMONSTRATION
+                    </motion.div>
                   </a>
                   <a href="/contact" style={{ textDecoration: "none" }}>
-                    <motion.button
-                      whileHover={{ scale: 1.05, background: "#f8fafc" }}
-                      whileTap={{ scale: 0.95 }}
-                      style={{ background: "#fff", color: COLORS.navy, border: "2px solid #e2e8f0", padding: "16px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{ background: "#ffffff", border: "2px solid #2563eb", color: "#2563eb", padding: "14px 32px", borderRadius: 40, fontWeight: 700, letterSpacing: "0.14em", display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
                     >
-                      <MessageSquare size={20} strokeWidth={2.5} color={COLORS.blue} />
-                      Talk to Our Team
-                    </motion.button>
+                      <MessageSquare size={20} strokeWidth={2.5} />
+                      EXPLORE ALL SUBJECTS
+                    </motion.div>
                   </a>
                 </motion.div>
 

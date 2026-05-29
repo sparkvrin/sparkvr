@@ -164,7 +164,8 @@ export default function Footer() {
                 title: "Product", icon: Package,
                 links: [
                   { label: "FOR SCHOOLS", href: "/schools" },
-                  { label: "FOR TEACHERS", href: "/teachers" }
+                  { label: "FOR TEACHERS", href: "/teachers" },
+                  { label: "FOR PARENTS", href: "/parents" }
                 ]
               },
               {
@@ -181,8 +182,7 @@ export default function Footer() {
                 title: "Resources", icon: BookOpen,
                 links: [
                   { label: "ABOUT", href: "/about" },
-                  { label: "CONTACT", href: "/contact" },
-                  { label: "CASE STUDIES", href: "/case-studies" }
+                  { label: "CONTACT", href: "/contact" }
                 ]
               }
             ].map((col, idx) => (

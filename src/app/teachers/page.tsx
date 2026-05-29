@@ -597,8 +597,14 @@ export default function TeachersPage() {
                   </div>
                 </div>
                 <p style={{ fontSize: isMobile ? 13 : 15, color: "#475569", fontWeight: 600, marginBottom: 20 }}>Get started in minutes and see the impact in every class.</p>
-                <a href="/contact" style={{ textDecoration: "none", width: "100%", padding: "14px 20px", background: "linear-gradient(90deg, #4f46e5 0%, #6366f1 100%)", color: "#ffffff", borderRadius: 12, fontSize: isMobile ? 15 : 17, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 8px 20px rgba(99,102,241,0.3)" }}>
-                  Get Started Now <ArrowRight size={18} strokeWidth={2.5} />
+                <a href="/contact" style={{ textDecoration: "none", width: "100%" }}>
+                  <motion.div
+                    whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
+                    whileTap={{ scale: 0.97 }}
+                    style={{ padding: "14px 32px", background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)", color: "#ffffff", borderRadius: 40, fontWeight: 700, letterSpacing: "0.14em", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 10px 28px rgba(29,78,216,0.3)", cursor: "pointer" }}
+                  >
+                    GET STARTED NOW <ArrowRight size={18} strokeWidth={2.5} />
+                  </motion.div>
                 </a>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 14 }}>
                   <ShieldCheck size={14} color="#475569" />
@@ -609,7 +615,7 @@ export default function TeachersPage() {
 
             <div style={{ flex: 1, position: "relative", minHeight: isMobile ? 240 : 420 }}>
               <motion.div {...fadeUp(0.3)} style={{ position: "absolute", inset: 0, borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,0.1)" }}>
-                <img loading="lazy" decoding="async" src="/teacher_2.webp" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </motion.div>
               {!isMobile && (
                 <motion.div

@@ -39,16 +39,26 @@ function useScreenWidth() {
 function InteractiveButton({ children, primary = false, icon: Icon, href, download }: any) {
   const btn = (
     <motion.div
-      whileHover={{ scale: 1.03 }}
+      whileHover={primary
+        ? { scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }
+        : { scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
-      style={{
-        display: "flex", alignItems: "center", gap: 12,
-        padding: "16px 34px", borderRadius: 14,
-        background: primary ? "#0052cc" : "transparent",
-        border: primary ? "none" : "2px solid #0052cc",
-        color: primary ? "#fff" : "#0052cc",
-        cursor: "pointer", fontWeight: 800, fontSize: 15,
-        transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)"
+      style={primary ? {
+        display: "inline-flex", alignItems: "center", gap: 10,
+        padding: "14px 32px", borderRadius: 40,
+        background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+        color: "#ffffff",
+        fontWeight: 700, letterSpacing: "0.14em",
+        boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
+        cursor: "pointer", textDecoration: "none",
+      } : {
+        display: "inline-flex", alignItems: "center", gap: 10,
+        padding: "14px 32px", borderRadius: 40,
+        background: "#ffffff",
+        border: "2px solid #2563eb",
+        color: "#2563eb",
+        fontWeight: 700, letterSpacing: "0.14em",
+        cursor: "pointer",
       }}
     >
       <Icon size={20} strokeWidth={2.5} />

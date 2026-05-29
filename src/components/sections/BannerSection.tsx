@@ -311,19 +311,19 @@ export default function BannerSection() {
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.7, type: "spring" }}
-          whileHover={{ scale: 1.06, boxShadow: "0 25px 60px rgba(37,99,235,0.5)" }}
+          whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
           whileTap={{ scale: 0.97 }}
           style={{
-            display: "flex", alignItems: "center", gap: isMobile ? 10 : 14,
-            background: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
-            color: "white", borderRadius: 60,
-            padding: isMobile ? "14px 24px" : "18px 36px",
+            display: "inline-flex", alignItems: "center", gap: isMobile ? 10 : 14,
+            background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+            color: "#ffffff", borderRadius: 40,
+            padding: isMobile ? "14px 24px" : "14px 32px",
             fontSize: isMobile ? 13 : 15, fontWeight: 700,
             cursor: "pointer",
-            boxShadow: "0 15px 40px rgba(37,99,235,0.4)",
+            boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
             whiteSpace: "nowrap",
             position: "relative", overflow: "hidden",
-            letterSpacing: "0.01em",
+            letterSpacing: "0.14em",
             textDecoration: "none",
             flexShrink: 0,
             marginBottom: isMobile ? 24 : 0,

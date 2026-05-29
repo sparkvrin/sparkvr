@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const NAV_LINKS = [
   { label: "FOR SCHOOLS", href: "/schools" },
   { label: "FOR TEACHERS", href: "/teachers" },
+  { label: "FOR PARENTS", href: "/parents" },
   { label: "SUBJECT EXPANSION", href: "/subject-expansion" },
   { label: "TIMETABLE", href: "/timetable" },
   { label: "CURRICULUM", href: "/curriculum" },
@@ -74,19 +75,19 @@ export default function Navbar() {
             {!isMobile && (
               <Link href="/contact" style={{ textDecoration: "none" }}>
                 <motion.div
-                  whileHover={{ scale: 1.04, y: -2, boxShadow: "0 12px 28px rgba(0,102,255,0.3)" }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
+                  whileTap={{ scale: 0.97 }}
                   style={{
-                    background: "#0052cc",
-                    borderRadius: 30, padding: "13px 28px",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    boxShadow: "0 8px 20px rgba(0,82,204,0.2)",
+                    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+                    borderRadius: 40, padding: "14px 32px",
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
                     cursor: "pointer",
                   }}
                 >
                   <span style={{
-                    color: "#fff", fontSize: 11, fontWeight: 800,
-                    letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap",
+                    color: "#ffffff", fontSize: 11, fontWeight: 700,
+                    letterSpacing: "0.14em", lineHeight: 1, whiteSpace: "nowrap",
                   }}>BOOK FREE WORKSHOP</span>
                 </motion.div>
               </Link>

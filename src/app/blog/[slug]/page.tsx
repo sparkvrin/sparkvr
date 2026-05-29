@@ -316,8 +316,9 @@ export default function BlogDetailPage() {
         .cta-icon-wrapper { width: 60px; height: 60px; border-radius: 18px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
         .cta-title { font-size: 20px; font-weight: 900; color: #ffffff; line-height: 1.3; margin-bottom: 14px; }
         .cta-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 28px; font-weight: 500; }
-        .cta-button { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; background: #ffffff; color: #001a4d; border: none; border-radius: 30px; font-weight: 900; font-size: 13px; cursor: pointer; transition: all 0.25s; letter-spacing: 0.04em; }
-        .cta-button:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(255,255,255,0.2); }
+        .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 32px; background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%); color: #ffffff; border: none; border-radius: 40px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.25s; letter-spacing: 0.14em; box-shadow: 0 10px 28px rgba(29,78,216,0.3); }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 16px 40px rgba(29,78,216,0.4); }
+        .cta-button:active { transform: scale(0.97); }
         .cta-wave-bg { position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(0,82,204,0.18) 0%, transparent 70%); pointer-events: none; }
       `}</style>
     </main>

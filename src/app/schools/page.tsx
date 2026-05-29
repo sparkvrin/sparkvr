@@ -82,22 +82,13 @@ export default function SchoolHubPage() {
             <motion.div {...fadeUp(0.7)}>
               <Link href="/contact" style={{ textDecoration: "none" }}>
                 <motion.div
-                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                   whileTap={{ scale: 0.97 }}
-                  animate={{ boxShadow: ["0 10px 25px rgba(0,82,204,0.3)", "0 15px 35px rgba(0,82,204,0.5)", "0 10px 25px rgba(0,82,204,0.3)"] }}
-                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                  style={{ position: "relative", display: "inline-flex", alignItems: "center", gap: 14, padding: "16px 30px", borderRadius: 12, background: "linear-gradient(135deg, #0052cc 0%, #003d99 100%)", color: "#fff", cursor: "pointer", overflow: "hidden" }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 32px", borderRadius: 40, background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)", color: "#ffffff", cursor: "pointer", fontWeight: 700, letterSpacing: "0.14em", boxShadow: "0 10px 28px rgba(29,78,216,0.3)", textDecoration: "none" }}
                 >
-                  <motion.div
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: "linear", repeatDelay: 2 }}
-                    style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "30%", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)", transform: "skewX(-20deg)" }}
-                  />
-                  <Calendar size={18} style={{ position: "relative", zIndex: 2 }} />
-                  <span style={{ position: "relative", zIndex: 2, fontWeight: 800, fontSize: 13, letterSpacing: "0.08em" }}>
-                    SCHEDULE A GUIDED DEMONSTRATION
-                  </span>
-                  <ChevronRight size={18} strokeWidth={3} style={{ position: "relative", zIndex: 2 }} />
+                  <Calendar size={18} />
+                  SCHEDULE A GUIDED DEMONSTRATION
+                  <ChevronRight size={18} strokeWidth={3} />
                 </motion.div>
               </Link>
             </motion.div>
@@ -1326,10 +1317,16 @@ export default function SchoolHubPage() {
               </motion.p>
 
               {/* Button */}
-              <motion.div {...fadeLeft(0.4)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: "inline-block", marginBottom: 24 }}>
-                <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 12, background: "#0052cc", color: "#fff", padding: "18px 40px", borderRadius: 12, fontSize: 18, fontWeight: 700, textDecoration: "none", boxShadow: "0 10px 25px rgba(0,82,204,0.3)" }}>
-                  <Calendar size={24} />
-                  Book a Free Demo
+              <motion.div {...fadeLeft(0.4)} style={{ display: "inline-block", marginBottom: 24 }}>
+                <Link href="/contact" style={{ textDecoration: "none" }}>
+                  <motion.div
+                    whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
+                    whileTap={{ scale: 0.97 }}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 32px", borderRadius: 40, background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)", color: "#ffffff", cursor: "pointer", fontWeight: 700, letterSpacing: "0.14em", boxShadow: "0 10px 28px rgba(29,78,216,0.3)", textDecoration: "none" }}
+                  >
+                    <Calendar size={20} />
+                    Book a Free Demo
+                  </motion.div>
                 </Link>
               </motion.div>
 
