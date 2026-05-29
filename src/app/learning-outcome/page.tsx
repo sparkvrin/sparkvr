@@ -459,6 +459,7 @@ export default function LearningOutcomePage() {
                 style={{
                   background: "#ffffff", borderRadius: 20, overflow: "hidden",
                   boxShadow: "0 8px 48px rgba(0,0,0,0.25)",
+                  display: "flex", flexDirection: "column",
                 }}
               >
                 {/* Header */}
@@ -469,8 +470,8 @@ export default function LearningOutcomePage() {
                 </div>
 
                 {/* Comparison — 2 columns, VS badge absolutely centered */}
-                <div style={{ padding: isMobile ? "12px" : "18px 20px" }}>
-                  <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 14, overflow: "hidden" }}>
+                <div style={{ padding: isMobile ? "12px" : "18px 20px", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 14, overflow: "hidden", flex: 1, alignItems: "stretch" }}>
 
                     {/* Traditional */}
                     <div style={{ background: "#faf5ff", padding: isMobile ? "16px 12px" : "24px 18px" }}>
@@ -1398,7 +1399,7 @@ export default function LearningOutcomePage() {
                     Schedule a Guided Demo <ArrowRight size={16} strokeWidth={2.5} />
                   </motion.div>
                 </Link>
-                <Link href="/modules" style={{ textDecoration: "none" }}>
+                <Link href="/curriculum" style={{ textDecoration: "none" }}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
