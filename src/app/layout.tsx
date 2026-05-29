@@ -45,9 +45,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preload" href="/fonts/VAGRounded-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/VAGRounded-Black.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 
-        {/* Preload hero backgrounds — critical above-the-fold images */}
-        <link rel="preload" href="/background.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/hero-background.webp" as="image" type="image/webp" />
       </head>
       <body>
         <ScrollProgress />
