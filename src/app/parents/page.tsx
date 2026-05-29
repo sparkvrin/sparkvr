@@ -44,7 +44,7 @@ function useScreenWidth() {
 
 /* ─── Shared feature-row component ─── */
 function FeatureRow({ icon: Icon, color, title, desc, delay = 0 }: {
-  icon: React.ElementType; color: string; title: string; desc: string; delay?: number;
+  icon: React.FC<{ size?: number; color?: string; strokeWidth?: number }>; color: string; title: string; desc: string; delay?: number;
 }) {
   const isMobile = useScreenWidth() < 768;
   return (
