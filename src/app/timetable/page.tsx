@@ -110,12 +110,7 @@ export default function TimetablePage() {
 
             {/* LEFT PANEL */}
             <div style={{ flex: isMobile ? "1 1 100%" : "0 0 35%", maxWidth: isMobile ? "100%" : 450, display: "flex", flexDirection: "column" }}>
-              <motion.div {...fadeUp(0.1)} style={{ marginBottom: 20 }}>
-                <span style={{ fontSize: 12, fontWeight: 800, color: COLORS.darkBlue, letterSpacing: "0.1em", textTransform: "uppercase" }}>
 
-                </span>
-                <div style={{ width: 30, height: 2, background: COLORS.darkBlue, marginTop: 6 }} />
-              </motion.div>
 
               <motion.h1 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 3vw, 44px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 30, letterSpacing: "-0.02em" }}>
                 Designed to fit<br />into the school day <br />

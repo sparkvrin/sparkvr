@@ -140,11 +140,7 @@ export default function ContactPage() {
           display: "flex", flexDirection: "column",
         }}>
 
-          <motion.div {...fadeUp(0.1)} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 40 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#0052cc" }} />
-            <span style={{ fontSize: 12, fontWeight: 900, color: "#0052cc", letterSpacing: "0.2em" }}>CONTACT US</span>
-            <div style={{ width: 40, height: 1.5, background: "#0052cc", opacity: 0.2, borderRadius: 4 }} />
-          </motion.div>
+
 
           <div style={{ maxWidth: 680, marginBottom: 80 }}>
             <motion.h1

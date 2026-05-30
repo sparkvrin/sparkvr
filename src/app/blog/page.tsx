@@ -86,10 +86,7 @@ export default function BlogPage() {
           flex: 1, display: "flex", flexDirection: "column",
         }}>
           <div style={{ maxWidth: 680 }}>
-            <motion.div {...fadeUp(0.1)} style={{ marginBottom: 20, display: "flex", flexDirection: "column", gap: 10 }}>
-              <p style={{ fontSize: 14, fontWeight: 900, color: "#0052cc", letterSpacing: "0.2em" }}>BLOG</p>
-              <div style={{ width: 44, height: 2.5, background: "#0052cc", borderRadius: 4 }} />
-            </motion.div>
+
 
             <motion.h1
               {...fadeUp(0.2)}
