@@ -845,7 +845,7 @@ export default function AboutPage() {
                 borderRadius: 22, padding: "18px 28px",
                 border: "1.5px solid rgba(255,255,255,0.95)",
                 boxShadow: "0 14px 40px rgba(0,82,204,0.07)",
-                display: "flex", gap: 0, alignItems: "center", flexWrap: "wrap",
+                display: "flex", gap: 0, alignItems: "center", flexWrap: "nowrap", justifyContent: "space-between", width: "100%",
               }}
             >
               {[
@@ -861,7 +861,7 @@ export default function AboutPage() {
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ delay: 1.0 + i * 0.08, duration: 0.5, type: "spring", bounce: 0.4 }}
                     whileHover={{ scale: 1.08, y: -2 }}
-                    style={{ display: "flex", alignItems: "center", gap: 12 }}
+                    style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, justifyContent: "center" }}
                   >
                     <motion.div
                       animate={{ boxShadow: ["0 0 0 rgba(0,82,204,0)", "0 0 14px rgba(0,82,204,0.18)", "0 0 0 rgba(0,82,204,0)"] }}
