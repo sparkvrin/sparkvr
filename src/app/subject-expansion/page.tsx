@@ -1414,7 +1414,7 @@ export default function SubjectExpansionPage() {
                 </motion.p>
 
                 <motion.div {...fadeUp(0.4)} style={{ display: "flex", gap: 16, marginBottom: 40, flexDirection: isMobile ? "column" : "row" }}>
-                  <a href="/contact" style={{ textDecoration: "none" }}>
+                  <a href="/contact#contact-form" style={{ textDecoration: "none" }}>
                     <motion.div
                       whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                       whileTap={{ scale: 0.97 }}
@@ -1424,7 +1424,7 @@ export default function SubjectExpansionPage() {
                       SCHEDULE A GUIDED DEMONSTRATION
                     </motion.div>
                   </a>
-                  <a href="/contact" style={{ textDecoration: "none" }}>
+                  <a href="/contact#contact-form" style={{ textDecoration: "none" }}>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}

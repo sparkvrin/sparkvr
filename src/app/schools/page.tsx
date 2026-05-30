@@ -80,7 +80,7 @@ export default function SchoolHubPage() {
             </div>
 
             <motion.div {...fadeUp(0.7)}>
-              <Link href="/contact" style={{ textDecoration: "none" }}>
+              <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                 <motion.div
                   whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                   whileTap={{ scale: 0.97 }}
@@ -1318,7 +1318,7 @@ export default function SchoolHubPage() {
 
               {/* Button */}
               <motion.div {...fadeLeft(0.4)} style={{ display: "inline-block", marginBottom: 24 }}>
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                   <motion.div
                     whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                     whileTap={{ scale: 0.97 }}

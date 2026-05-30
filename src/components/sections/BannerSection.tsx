@@ -306,7 +306,7 @@ export default function BannerSection() {
 
         {/* CTA Button */}
         <motion.a
-          href="/contact"
+          href="/contact#contact-form"
           initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 10 : 0 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}

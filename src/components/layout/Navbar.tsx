@@ -73,7 +73,7 @@ export default function Navbar() {
           <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 24 }}>
             {/* Hide CTA button on mobile — it lives in the menu */}
             {!isMobile && (
-              <Link href="/contact" style={{ textDecoration: "none" }}>
+              <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                 <motion.div
                   whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                   whileTap={{ scale: 0.97 }}
@@ -204,7 +204,7 @@ export default function Navbar() {
                 transition={{ delay: 0.5, duration: 0.4 }}
                 style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: isMobile ? 20 : 32 }}
               >
-                <Link href="/contact" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                <Link href="/contact#contact-form" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
                   <motion.div
                     whileHover={{ scale: 1.03, boxShadow: "0 12px 28px rgba(0,100,255,0.45)" }}
                     whileTap={{ scale: 0.97 }}

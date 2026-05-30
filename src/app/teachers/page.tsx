@@ -597,7 +597,7 @@ export default function TeachersPage() {
                   </div>
                 </div>
                 <p style={{ fontSize: isMobile ? 13 : 15, color: "#475569", fontWeight: 600, marginBottom: 20 }}>Get started in minutes and see the impact in every class.</p>
-                <a href="/contact" style={{ textDecoration: "none", width: "100%" }}>
+                <a href="/contact#contact-form" style={{ textDecoration: "none", width: "100%" }}>
                   <motion.div
                     whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                     whileTap={{ scale: 0.97 }}

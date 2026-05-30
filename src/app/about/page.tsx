@@ -288,7 +288,7 @@ export default function AboutPage() {
               transition={{ delay: 1.12, duration: 0.7, type: "spring" }}
               style={{ display: "flex", gap: 14 }}
             >
-              <SparkButton href="/contact" text="Book free workshop" />
+              <SparkButton href="/contact#contact-form" text="Book free workshop" />
               <SparkButton href="/services" text="Our modules" secondary />
             </motion.div>
           </motion.div>
@@ -1346,7 +1346,7 @@ export default function AboutPage() {
 
                     <div style={{ display: "flex", gap: 10, marginBottom: 16 }}>
                       <motion.a
-                        href="/contact"
+                        href="/contact#contact-form"
                         whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(31,179,255,0.5)" }}
                         style={{
                           flex: 1, padding: "10px", borderRadius: 8,
@@ -1357,7 +1357,7 @@ export default function AboutPage() {
                         Book Demo
                       </motion.a>
                       <motion.a
-                        href="/contact"
+                        href="/contact#contact-form"
                         whileHover={{ scale: 1.05, background: "rgba(255,255,255,0.1)" }}
                         style={{
                           flex: 1, padding: "10px", borderRadius: 8,

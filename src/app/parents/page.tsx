@@ -1158,7 +1158,7 @@ export default function ParentsPage() {
                 {/* Buttons */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                    <Link href="/contact" style={{ textDecoration: "none" }}>
+                    <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                       <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#ffffff", borderRadius: 40, padding: isMobile ? "12px 22px" : "14px 28px", cursor: "pointer" }}>
                         <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <ArrowRight size={14} color="#fff" strokeWidth={2.5} />
@@ -1166,7 +1166,7 @@ export default function ParentsPage() {
                         <span style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#4c1d95" }}>Get Started with SparkVR</span>
                       </motion.div>
                     </Link>
-                    <Link href="/contact" style={{ textDecoration: "none" }}>
+                    <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                       <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", background: "transparent", border: "2px solid rgba(255,255,255,0.7)", borderRadius: 40, padding: isMobile ? "12px 22px" : "14px 28px", cursor: "pointer" }}>
                         <span style={{ fontSize: isMobile ? 13 : 15, fontWeight: 700, color: "#fff" }}>Book a Demo</span>
                       </motion.div>

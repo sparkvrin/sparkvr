@@ -214,7 +214,7 @@ export default function ServicesPage() {
           </h2>
           <p style={{ fontSize: 18, color: "#333", opacity: 0.7, marginBottom: 40 }}>Not entertainment. Not a one-off. A structured, scalable system.</p>
           <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
-            <SparkButton href="/contact" text="Experience SparkVR" large />
+            <SparkButton href="/contact#contact-form" text="Experience SparkVR" large />
             <SparkButton href="/about" text="Our story" />
           </div>
         </motion.div>

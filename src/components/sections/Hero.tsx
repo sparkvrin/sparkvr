@@ -312,7 +312,7 @@ export default function Hero() {
               </motion.a>
 
               <motion.a
-                href="/contact"
+                href="/contact#contact-form"
                 whileTap={{ scale: 0.97 }}
                 style={{
                   display: "inline-flex", alignItems: "center", gap: 12,
@@ -525,7 +525,7 @@ export default function Hero() {
               <motion.a href="#spark-features" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#38bdf8 100%)", color: "#fff", padding: "13px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", boxShadow: "0 10px 28px rgba(29,78,216,0.3)" }}>
                 SEE IT DIFFERENTLY
               </motion.a>
-              <motion.a href="/contact" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.5)", border: "2px solid #fff", color: "#1e293b", padding: "11px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", backdropFilter: "blur(12px)", boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}>
+              <motion.a href="/contact#contact-form" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.5)", border: "2px solid #fff", color: "#1e293b", padding: "11px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", backdropFilter: "blur(12px)", boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}>
                 ✨ BOOK FREE WORKSHOP
               </motion.a>
             </motion.div>
@@ -814,7 +814,7 @@ export default function Hero() {
                 </motion.a>
 
                 <motion.a
-                  href="/contact"
+                  href="/contact#contact-form"
                   whileHover={{ scale: 1.07, backgroundColor: "#ffffff", y: -4 }}
                   whileTap={{ scale: 0.97 }}
                   style={{

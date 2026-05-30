@@ -1083,7 +1083,7 @@ export default function CurriculumPage() {
               ))}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: isMobile ? "flex-start" : "flex-end" }}>
-              <Link href="/contact" style={{ textDecoration: "none" }}>
+              <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                 <motion.div
                   whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                   whileTap={{ scale: 0.97 }}
@@ -1092,7 +1092,7 @@ export default function CurriculumPage() {
                   See SparkVR in Action <ArrowRight size={16} strokeWidth={2.5} />
                 </motion.div>
               </Link>
-              <Link href="/contact" style={{ fontSize: 12, color: "#2563eb", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
+              <Link href="/contact#contact-form" style={{ fontSize: 12, color: "#2563eb", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
                 Schedule a Guided Demo <ArrowRight size={12} strokeWidth={2.5} />
               </Link>
             </div>

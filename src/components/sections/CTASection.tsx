@@ -210,7 +210,7 @@ export default function CTASection() {
 
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
             <motion.a
-              href="/contact"
+              href="/contact#contact-form"
               whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
               whileTap={{ scale: 0.97 }}
               style={{

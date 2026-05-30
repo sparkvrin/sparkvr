@@ -1380,7 +1380,7 @@ export default function LearningOutcomePage() {
 
               {/* Buttons */}
               <motion.div {...fadeUp(0.16)} style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28 }}>
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
                   <motion.div
                     whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
                     whileTap={{ scale: 0.97 }}
