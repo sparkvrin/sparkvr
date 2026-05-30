@@ -10,18 +10,18 @@ import {
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const fadeUp = (delay = 0, duration = 0.8) => ({
-  initial: { opacity: 0, y: 20 },
+const fadeUp = (delay = 0, duration = 0.7) => ({
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true as const },
+  viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
 });
 
 const fadeUpRotate = (delay = 0) => ({
   initial: { opacity: 0, y: 30, rotateX: 10 },
   whileInView: { opacity: 1, y: 0, rotateX: 0 },
-  viewport: { once: true as const },
-  transition: { delay, duration: 0.9, ease: EASE },
+  viewport: { once: true as const, margin: "-60px" },
+  transition: { delay, duration: 0.7, ease: EASE },
 });
 
 function useScreenWidth() {
@@ -181,7 +181,7 @@ export default function ContactPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 1.2, ease: EASE }}
+            transition={{ delay: 0.8, duration: 0.7, ease: EASE }}
             style={{
               marginTop: "auto",
               marginBottom: 60,
@@ -268,10 +268,10 @@ export default function ContactPage() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 1.2, ease: EASE }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.6, duration: 0.7, ease: EASE }}
             style={{
               marginTop: isMobile ? 60 : 120,
               background: "#f8fafc",

@@ -8,25 +8,25 @@ import SparkButton from "@/components/SparkButton";
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const fadeUp = (delay = 0, duration = 0.8) => ({
-  initial: { opacity: 0, y: 32 },
+const fadeUp = (delay = 0, duration = 0.7) => ({
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true as const },
+  viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
 });
 
 const fadeUpRotate = (delay = 0) => ({
-  initial: { opacity: 0, y: 36, rotateX: 16 },
+  initial: { opacity: 0, y: 30, rotateX: 16 },
   whileInView: { opacity: 1, y: 0, rotateX: 0 },
-  viewport: { once: true as const },
-  transition: { delay, duration: 0.95, ease: EASE },
+  viewport: { once: true as const, margin: "-60px" },
+  transition: { delay, duration: 0.7, ease: EASE },
 });
 
 const slideLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30, rotateY: -12 },
   whileInView: { opacity: 1, x: 0, rotateY: 0 },
-  viewport: { once: true as const },
-  transition: { delay, duration: 0.65, type: "spring" as const, bounce: 0.3 },
+  viewport: { once: true as const, margin: "-60px" },
+  transition: { delay, duration: 0.7, type: "spring" as const, bounce: 0.3 },
 });
 
 /* ─── FLOATING AMBIENT WRAPPER ─── */
@@ -200,16 +200,16 @@ export default function AboutPage() {
           maxWidth: 1400, margin: "0 auto", width: "100%",
         }}>
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: EASE }}
+            transition={{ duration: 0.7, ease: EASE }}
             style={{ maxWidth: 600 }}
           >
             {/* Title */}
             <motion.h1
-              initial={{ opacity: 0, y: 36, rotateX: 18 }}
+              initial={{ opacity: 0, y: 30, rotateX: 18 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ delay: 0.18, duration: 0.95, ease: EASE }}
+              transition={{ delay: 0.18, duration: 0.7, ease: EASE }}
               style={{
                 fontSize: "clamp(38px, 4.8vw, 60px)",
                 fontWeight: 800, color: "#001a4d",
@@ -225,7 +225,7 @@ export default function AboutPage() {
             <motion.p
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.36, duration: 0.75 }}
+              transition={{ delay: 0.36, duration: 0.7 }}
               style={{ fontSize: 17, color: "#475569", lineHeight: 1.55, marginBottom: 22, maxWidth: 500 }}
             >
               Incubated at <strong style={{ color: "#0052cc" }}>IIT Indore</strong> with a pedagogy-first philosophy and long-term institutional partnerships.
@@ -239,7 +239,7 @@ export default function AboutPage() {
                 { icon: Handshake, text: "Long-term institutional partnerships." },
               ].map((item, i) => (
                 <motion.div key={i}
-                  {...slideLeft(0.5 + i * 0.12)}
+                  {...slideLeft(0.5 + i * 0.08)}
                   whileHover={{ x: 8, scale: 1.02 }}
                   style={{ display: "flex", alignItems: "center", gap: 14, cursor: "default" }}
                 >
@@ -247,7 +247,7 @@ export default function AboutPage() {
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 + i * 0.12 }}
+                    transition={{ delay: 0.6 + i * 0.08 }}
                     style={{ fontSize: 15, fontWeight: 600, color: "#001a4d" }}
                   >
                     {item.text}
@@ -258,9 +258,9 @@ export default function AboutPage() {
 
             {/* Quote Card */}
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.94 }}
+              initial={{ opacity: 0, y: 30, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.88, duration: 0.75, type: "spring" }}
+              transition={{ delay: 0.88, duration: 0.7, type: "spring" }}
               style={{ maxWidth: 520, marginBottom: 22 }}
             >
               <div style={{
@@ -283,7 +283,7 @@ export default function AboutPage() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.12, duration: 0.7, type: "spring" }}
               style={{ display: "flex", gap: 14 }}
@@ -375,7 +375,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: 0.1 }}
               style={{ width: 40, height: 2, background: "#0052cc", margin: "0 auto", opacity: 0.35, transformOrigin: "center" }}
             />
@@ -403,10 +403,10 @@ export default function AboutPage() {
               "But understanding deepens when learners can observe, interact, and explore.",
             ].map((line, i) => (
               <motion.p key={i}
-                initial={{ opacity: 0, y: 20, x: i % 2 === 0 ? -8 : 8 }}
+                initial={{ opacity: 0, y: 30, x: i % 2 === 0 ? -8 : 8 }}
                 whileInView={{ opacity: 1, y: 0, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.38 + i * 0.18, duration: 0.65 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: 0.38 + i * 0.08, duration: 0.7 }}
               >
                 {line}
               </motion.p>
@@ -417,8 +417,8 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.62, duration: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.62, duration: 0.7 }}
             style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, marginBottom: 52 }}
           >
             <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, transparent, rgba(0,82,204,0.18))" }} />
@@ -449,10 +449,10 @@ export default function AboutPage() {
 
           {/* Footer text */}
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.98, duration: 0.8 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.98, duration: 0.7 }}
             style={{ fontSize: 18, color: "#94a3b8", fontWeight: 500 }}
           >
             This is the foundation of everything we build.
@@ -498,7 +498,7 @@ export default function AboutPage() {
               </motion.p>
               <motion.div
                 initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+                viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.1 }}
                 style={{ width: 40, height: 2, background: "#0052cc", margin: "12px auto 0", opacity: 0.3, transformOrigin: "center" }}
               />
             </motion.div>
@@ -550,14 +550,14 @@ export default function AboutPage() {
               },
             ].map((card, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.8, ease: EASE }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.08, duration: 0.7, ease: EASE }}
                 style={{ height: "100%" }}
               >
                 <motion.div
-                  whileHover={{ y: -4, boxShadow: "0 16px 36px rgba(0,82,204,0.09)" }}
+                  whileHover={{ y: -5, boxShadow: "0 20px 50px rgba(0,26,77,0.1)" }}
                   transition={{ duration: 0.25 }}
                   style={{
                     background: "#ffffff",
@@ -609,10 +609,10 @@ export default function AboutPage() {
 
           {/* Footer Commitment Bar */}
           <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.97 }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.55, duration: 0.8, type: "spring" }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.55, duration: 0.7, type: "spring" }}
             style={{
               background: "#ffffff", borderRadius: 30, padding: "24px 40px",
               border: "1.5px solid rgba(0,82,204,0.06)",
@@ -676,7 +676,7 @@ export default function AboutPage() {
         <motion.div
           initial={{ scale: 1.06 }}
           whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
@@ -779,7 +779,7 @@ export default function AboutPage() {
             </motion.div>
             <motion.div
               initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1 }}
+              viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.1 }}
               style={{ width: 40, height: 2, background: "#0052cc", marginBottom: 36, opacity: 0.35, transformOrigin: "left" }}
             />
 
@@ -804,8 +804,8 @@ export default function AboutPage() {
                 <motion.p key={i}
                   initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.28 + i * 0.14, duration: 0.65 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: 0.28 + i * 0.08, duration: 0.7 }}
                   style={{ fontSize: 16, color: "#475569", lineHeight: 1.65, fontWeight: 500 }}
                 >
                   {line}
@@ -821,7 +821,7 @@ export default function AboutPage() {
                 { icon: Users,        title: "Focused on Outcomes",     desc: "Every module is crafted to improve conceptual clarity and long-term retention." },
               ].map((item, i) => (
                 <motion.div key={i}
-                  {...slideLeft(0.46 + i * 0.14)}
+                  {...slideLeft(0.46 + i * 0.08)}
                   whileHover={{ x: 8, scale: 1.02 }}
                   style={{ display: "flex", alignItems: "flex-start", gap: 18, cursor: "default" }}
                 >
@@ -836,10 +836,10 @@ export default function AboutPage() {
 
             {/* Stats Bar */}
             <motion.div
-              initial={{ opacity: 0, y: 26, scale: 0.96 }}
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.92, duration: 0.75, type: "spring" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: 0.92, duration: 0.7, type: "spring" }}
               style={{
                 background: "rgba(255,255,255,0.88)", backdropFilter: "blur(18px)",
                 borderRadius: 22, padding: "18px 28px",
@@ -856,10 +856,10 @@ export default function AboutPage() {
                 <React.Fragment key={i}>
                   {i > 0 && <div style={{ width: 1, height: 38, background: "rgba(0,82,204,0.09)", flexShrink: 0, margin: "0 20px" }} />}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.7, y: 12 }}
+                    initial={{ opacity: 0, scale: 0.7, y: 30 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 1.0 + i * 0.12, duration: 0.55, type: "spring", bounce: 0.4 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ delay: 1.0 + i * 0.08, duration: 0.7, type: "spring", bounce: 0.4 }}
                     whileHover={{ scale: 1.08, y: -2 }}
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
@@ -888,10 +888,10 @@ export default function AboutPage() {
           {/* Right: IIT Partnership Card - hide on mobile */}
           {!isMobile && <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 20 }}>
               <motion.div
-                initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                initial={{ opacity: 0, y: 30, scale: 0.92 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.75, duration: 0.88, type: "spring", bounce: 0.25 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: 0.75, duration: 0.7, type: "spring", bounce: 0.25 }}
               >
                   <div
                     style={{
@@ -1023,7 +1023,7 @@ export default function AboutPage() {
             </motion.p>
             <motion.div
               initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.1 }}
               style={{ width: 44, height: 2.5, background: "linear-gradient(90deg,#0052cc,#1fb3ff)", margin: "0 auto", borderRadius: 2, opacity: 0.55, transformOrigin: "center" }}
             />
             <motion.div
@@ -1040,10 +1040,10 @@ export default function AboutPage() {
           }}>
             {["SparkVR is not", <>a <span className="text-gradient-primary">product</span> layer.</>].map((line, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 44, rotateX: 20 }}
+                initial={{ opacity: 0, y: 30, rotateX: 20 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.14 + i * 0.18, duration: 1, ease: EASE }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: 0.14 + i * 0.08, duration: 0.7, ease: EASE }}
               >
                 {line}
               </motion.div>
@@ -1052,10 +1052,10 @@ export default function AboutPage() {
 
           {/* Sub Heading */}
           <motion.h3
-            initial={{ opacity: 0, y: 28, rotateY: -8 }}
+            initial={{ opacity: 0, y: 30, rotateY: -8 }}
             whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.38, duration: 0.88, ease: EASE }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.38, duration: 0.7, ease: EASE }}
             style={{
               fontSize: "clamp(22px, 3.5vw, 44px)", fontWeight: 700, lineHeight: 1.2, marginBottom: 20,
               background: "linear-gradient(90deg,#0052cc 0%,#1fb3ff 100%)",
@@ -1069,7 +1069,7 @@ export default function AboutPage() {
           {/* Gradient underline */}
           <motion.div
             initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }} transition={{ delay: 0.48, duration: 0.7 }}
+            viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.48, duration: 0.7 }}
             style={{ width: 60, height: 3, background: "linear-gradient(90deg,#0052cc,#1fb3ff)", margin: "0 auto 32px", borderRadius: 3, transformOrigin: "center" }}
           />
 
@@ -1080,10 +1080,10 @@ export default function AboutPage() {
               "without disruption, without compromise.",
             ].map((line, i) => (
               <motion.p key={i}
-                initial={{ opacity: 0, y: 18 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.54 + i * 0.16, duration: 0.65 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: 0.54 + i * 0.08, duration: 0.7 }}
                 style={{ fontSize: 18, color: "#475569", lineHeight: 1.7, fontWeight: 500 }}
               >
                 {line}
@@ -1093,10 +1093,10 @@ export default function AboutPage() {
 
           {/* 5-Step Process Card */}
           <motion.div
-            initial={{ opacity: 0, y: 44, scale: 0.96 }}
+            initial={{ opacity: 0, y: 30, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.62, duration: 0.9, type: "spring", bounce: 0.2 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.62, duration: 0.7, type: "spring", bounce: 0.2 }}
             whileHover={{ boxShadow: "0 32px 80px rgba(0,82,204,0.1)" }}
             style={{
               background: "rgba(255,255,255,0.58)", backdropFilter: "blur(20px)",
@@ -1121,10 +1121,10 @@ export default function AboutPage() {
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.72 + i * 0.1, duration: 0.6 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: 0.72 + i * 0.08, duration: 0.7 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", cursor: "default" }}
                 >
@@ -1150,10 +1150,10 @@ export default function AboutPage() {
 
           {/* Bottom Statement */}
           <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.88 }}
+            initial={{ opacity: 0, y: 30, scale: 0.88 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.18, duration: 0.75, type: "spring", bounce: 0.38 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 1.18, duration: 0.7, type: "spring", bounce: 0.38 }}
             whileHover={{ scale: 1.02, boxShadow: "0 20px 52px rgba(0,82,204,0.1)" }}
             style={{
               display: "inline-flex", alignItems: "center", gap: 18,
@@ -1202,7 +1202,7 @@ export default function AboutPage() {
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 1.4, ease: EASE }}
           style={{
             position: "absolute", inset: 0,
@@ -1272,7 +1272,7 @@ export default function AboutPage() {
                 ].map((item, i) => (
                   <React.Fragment key={i}>
                     <motion.div
-                      {...fadeUp(0.3 + i * 0.1)}
+                      {...fadeUp(0.3 + i * 0.08)}
                       whileHover={{ y: -5 }}
                       style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 10px" }}
                     >
@@ -1311,10 +1311,10 @@ export default function AboutPage() {
               }}>
                 <TiltCard style={{ width: "100%" }}>
                   <motion.div
-                    initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, type: "spring", bounce: 0.3 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.7, type: "spring", bounce: 0.3 }}
                     style={{
                       background: "linear-gradient(145deg, #001a4d 0%, #003399 100%)",
                       borderRadius: 24,
@@ -1381,10 +1381,10 @@ export default function AboutPage() {
 
           {/* ABSOLUTE BOTTOM: Stats Bar (Fully Integrated) */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.9, type: "spring" }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.5, duration: 0.7, type: "spring" }}
             style={{
               background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(12px)",

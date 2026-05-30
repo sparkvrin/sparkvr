@@ -121,18 +121,18 @@ const EXAMPLES_BOTTOM = [
 // Consistent Site Animations
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const fadeUp = (delay = 0, duration = 0.8) => ({
-  initial: { opacity: 0, y: 40 },
+const fadeUp = (delay = 0, duration = 0.7) => ({
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true as const, margin: "-50px" },
+  viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
 });
 
 const fadeLeft = (delay = 0) => ({
-  initial: { opacity: 0, x: -50 },
+  initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true as const },
-  transition: { delay, duration: 0.9, ease: EASE },
+  viewport: { once: true as const, margin: "-60px" },
+  transition: { delay, duration: 0.7, ease: EASE },
 });
 
 const floatAnim = {
@@ -144,11 +144,11 @@ const ArcIcon = ({ icon: Icon, title, color, top, left, delay }: any) => (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.6, type: "spring" as const, bounce: 0.4 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ delay, duration: 0.7, type: "spring" as const, bounce: 0.4 }}
     >
       <motion.div
-        whileHover={{ scale: 1.08, y: -10 }}
+        whileHover={{ scale: 1.08, y: -5 }}
         style={{
           display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
           cursor: "pointer"
@@ -173,8 +173,8 @@ const SmallDot = ({ left, top, color, delay = 0 }: any) => (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.8 + delay, duration: 0.4 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ delay: 0.8 + delay, duration: 0.7 }}
     >
       <motion.div
         animate={{ opacity: [0.4, 1, 0.4], boxShadow: [`0 0 0px ${color}`, `0 0 12px ${color}`, `0 0 0px ${color}`] }}
@@ -257,7 +257,7 @@ export default function SubjectExpansionPage() {
                 {PILLS.map((pill, idx) => (
                   <motion.div
                     key={idx}
-                    {...fadeLeft(0.4 + idx * 0.1)}
+                    {...fadeLeft(0.4 + idx * 0.08)}
                     whileHover={{ scale: 1.04, x: 10, boxShadow: "0 15px 35px rgba(0,0,0,0.12)" }}
                     style={{
                       display: "flex", alignItems: "center", gap: 14, background: COLORS.cardBg,
@@ -346,7 +346,7 @@ export default function SubjectExpansionPage() {
                 <motion.path
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 1.8, ease: "easeInOut" as const, delay: 0.1 }}
                   d="M 80 300 A 420 300 0 0 1 920 300"
                   fill="none"
@@ -370,10 +370,10 @@ export default function SubjectExpansionPage() {
 
               {/* Boy Image */}
               <motion.img loading="lazy" decoding="async"
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: EASE }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, ease: EASE }}
                 src="/student_proper.webp"
                 alt="Student in VR"
                 style={{ position: "relative", zIndex: 2, maxHeight: "100%", objectFit: "contain", filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.15))" }}
@@ -400,10 +400,10 @@ export default function SubjectExpansionPage() {
             {ECOSYSTEM_CARDS.map((card, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                initial={{ opacity: 0, y: 30, rotateX: -10 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: 0.2 + idx * 0.1, duration: 0.7, ease: EASE }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: 0.2 + idx * 0.08, duration: 0.7, ease: EASE }}
                 whileHover="hover"
                 style={{
                   background: COLORS.cardBg,
@@ -417,7 +417,7 @@ export default function SubjectExpansionPage() {
                 }}
               >
                 <motion.div
-                  variants={{ hover: { y: -8, boxShadow: "0 25px 50px rgba(0,0,0,0.1)" } }}
+                  variants={{ hover: { y: -5, boxShadow: "0 20px 50px rgba(0,26,77,0.1)" } }}
                   transition={{ duration: 0.3 }}
                   style={{ display: "flex", flexDirection: "column", flexGrow: 1, background: "#fff" }}
                 >
@@ -578,10 +578,10 @@ export default function SubjectExpansionPage() {
             {EXAMPLES_CARDS.map((card, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 60, rotateX: -10 }}
+                initial={{ opacity: 0, y: 30, rotateX: -10 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: 0.2 + idx * 0.1, duration: 0.8, ease: EASE }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: 0.2 + idx * 0.08, duration: 0.7, ease: EASE }}
                 whileHover="hover"
                 style={{
                   borderRadius: 16,
@@ -617,11 +617,11 @@ export default function SubjectExpansionPage() {
                 <motion.div
                   variants={{
                     hover: {
-                      y: -12,
+                      y: -5,
                       scale: 1.02,
                       rotateX: 4,
                       rotateY: -4,
-                      boxShadow: `0 30px 60px ${card.color}30`
+                      boxShadow: "0 20px 50px rgba(0,26,77,0.1)"
                     }
                   }}
                   transition={{ duration: 0.4, ease: "easeOut" as const }}
@@ -771,8 +771,8 @@ export default function SubjectExpansionPage() {
                       <motion.circle
                         cx="400" cy="365" r={r}
                         fill="none" stroke="#c7d2fe" strokeWidth="1.2" strokeDasharray="6 8"
-                        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                        transition={{ duration: 1.4, delay: 0.1 * i }}
+                        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.7, delay: 0.1 * i }}
                       />
                     </motion.g>
                   ))}
@@ -790,10 +790,10 @@ export default function SubjectExpansionPage() {
                       stroke="url(#s4spoke)" strokeWidth="1.3" strokeDasharray="5 7"
                       initial={{ pathLength: 0, opacity: 0 }}
                       whileInView={{ pathLength: 1, opacity: 1, strokeDashoffset: [0, -24] }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: "-60px" }}
                       transition={{
-                        pathLength: { duration: 1.6, delay: 0.7 + i * 0.1, ease: "easeInOut" as const },
-                        opacity: { duration: 1.6, delay: 0.7 + i * 0.1 },
+                        pathLength: { duration: 1.6, delay: 0.7 + i * 0.08, ease: "easeInOut" as const },
+                        opacity: { duration: 1.6, delay: 0.7 + i * 0.08 },
                         strokeDashoffset: { duration: 1.5, repeat: Infinity, ease: "linear" as const }
                       }}
                     />
@@ -812,8 +812,8 @@ export default function SubjectExpansionPage() {
                         fill="#818cf8"
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 0.85, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 1.3 + i * 0.03 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.7, delay: 1.3 + i * 0.03 }}
                       />
                     </motion.g>
                   ))}
@@ -823,8 +823,8 @@ export default function SubjectExpansionPage() {
                 <motion.img loading="lazy" decoding="async"
                   initial={{ opacity: 0, scale: 0.85, x: "-50%", y: "-48%" }}
                   whileInView={{ opacity: 1, scale: 1, x: "-50%", y: "-48%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.1, ease: EASE, delay: 0.3 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
                   src="/studenttap.webp"
                   alt="Student in VR"
                   style={{
@@ -839,10 +839,10 @@ export default function SubjectExpansionPage() {
 
                 {/* Stronger Connections badge */}
                 <motion.div
-                  initial={{ opacity: 0, y: 14, x: "-50%" }}
+                  initial={{ opacity: 0, y: 30, x: "-50%" }}
                   whileInView={{ opacity: 1, y: 0, x: "-50%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 1.1, duration: 0.6 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: 1.1, duration: 0.7 }}
                   style={{
                     position: "absolute", bottom: "3%", left: "50%",
                     zIndex: 4, textAlign: "center", whiteSpace: "nowrap",
@@ -868,8 +868,8 @@ export default function SubjectExpansionPage() {
                     key={i}
                     initial={{ opacity: 0, scale: 0, x: "-50%" }}
                     whileInView={{ opacity: 1, scale: 1, x: "-50%" }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + i * 0.13, type: "spring", stiffness: 200, damping: 18 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ delay: 0.5 + i * 0.08, type: "spring", stiffness: 200, damping: 18 }}
                     style={{
                       position: "absolute",
                       left: node.nodeLeft,
@@ -998,8 +998,8 @@ export default function SubjectExpansionPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, x: -20 }}
                 whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, ease: EASE }}
                 style={{ marginBottom: 14 }}
               >
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#7c3aed", letterSpacing: "0.14em", textTransform: "uppercase", background: "rgba(124, 58, 237, 0.1)", padding: "4px 12px", borderRadius: 20 }}>
@@ -1009,18 +1009,18 @@ export default function SubjectExpansionPage() {
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
                 style={{ fontSize: "clamp(36px, 4vw, 54px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.05, marginBottom: 18, letterSpacing: "-0.02em" }}
               >
                 Built to evolve<br />
                 <span style={{ color: "#7c3aed" }}>with education.</span>
               </motion.h2>
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: 0.3 }}
                 style={{ fontSize: "15px", color: COLORS.textGray, lineHeight: 1.65, fontWeight: 500 }}
               >
                 SparkVR is designed to grow with curriculum needs, technology advancements and the future of learning.
@@ -1047,8 +1047,8 @@ export default function SubjectExpansionPage() {
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.5 + i * 0.1 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.5 + i * 0.08 }}
                     whileHover={{ y: -8, scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.08)" }}
                     style={{ width: 125, display: "flex", flexDirection: "column", alignItems: "center", zIndex: 1, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(14px)", borderRadius: 14, padding: "12px 8px", boxShadow: "0 6px 16px rgba(0,0,0,0.04)", border: "1px solid rgba(255,255,255,1)", cursor: "default" }}
                   >
@@ -1078,8 +1078,8 @@ export default function SubjectExpansionPage() {
                 key={i}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.6 + i * 0.1 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.6 + i * 0.08 }}
                 whileHover={{ x: 12, background: "rgba(255,255,255,0.95)", boxShadow: "0 15px 40px rgba(124, 58, 237, 0.1)" }}
                 style={{ display: "flex", gap: 16, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "18px 20px", borderRadius: 16, boxShadow: "0 8px 25px rgba(0,0,0,0.03)", border: "1px solid rgba(255,255,255,1)", cursor: "default" }}
               >
@@ -1109,8 +1109,8 @@ export default function SubjectExpansionPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.8 + (i * 0.2), type: "spring", stiffness: 150 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: 0.8 + (i * 0.08), type: "spring", stiffness: 150 }}
               >
                 <motion.div
                   animate={{ rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
@@ -1172,10 +1172,10 @@ export default function SubjectExpansionPage() {
               ].map((ft, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 1.2 + i * 0.1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, delay: 1.2 + i * 0.08 }}
                   whileHover={{ y: -5 }}
                   style={{ display: "flex", alignItems: "flex-start", gap: 12 }}
                 >
@@ -1253,8 +1253,8 @@ export default function SubjectExpansionPage() {
                   key={i}
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 120 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: 0.6 + i * 0.08, type: "spring", stiffness: 120 }}
                   style={{ position: "absolute", top: node.top, left: node.left, width: 72, zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}
                 >
                   <motion.div
@@ -1281,10 +1281,10 @@ export default function SubjectExpansionPage() {
             ].map((step, i, arr) => (
               <React.Fragment key={i}>
                 <motion.div
-                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.15, type: "spring", stiffness: 100, damping: 15 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: 0.2 + i * 0.08, type: "spring", stiffness: 100, damping: 15 }}
                   whileHover={{ y: -8, scale: 1.02, boxShadow: `0 20px 40px ${step.color}15`, borderColor: step.color }}
                   style={{ flex: 1, background: "#fff", borderRadius: 16, padding: "30px 24px", boxShadow: "0 10px 30px rgba(0,0,0,0.03)", display: "flex", flexDirection: "column", gap: 16, border: "1px solid #f1f5f9", transition: "border-color 0.3s ease" }}
                 >
@@ -1304,8 +1304,8 @@ export default function SubjectExpansionPage() {
                   <motion.div
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 + i * 0.15 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ delay: 0.4 + i * 0.08 }}
                     animate={{ x: [0, 5, 0] }}
                     style={{ color: "#cbd5e1", flexShrink: 0 }}
                   >
@@ -1320,7 +1320,7 @@ export default function SubjectExpansionPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 20, padding: isMobile ? "20px" : "24px 40px", display: "flex", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: isMobile ? 20 : 30, flexDirection: isMobile ? "column" : "row" }}
           >
             {/* Left Header */}
@@ -1340,10 +1340,10 @@ export default function SubjectExpansionPage() {
               ].map((stat, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + i * 0.1, type: "spring", stiffness: 120 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: 0.4 + i * 0.08, type: "spring", stiffness: 120 }}
                   whileHover={{ y: -6, scale: 1.05 }}
                   style={{ display: "flex", alignItems: "center", gap: 14, cursor: "default" }}
                 >
@@ -1379,10 +1379,10 @@ export default function SubjectExpansionPage() {
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7 }}
             style={{
               background: "#ffffff",
               borderRadius: 32,

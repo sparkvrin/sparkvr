@@ -15,18 +15,18 @@ import Link from "next/link";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const fadeUp = (delay = 0, duration = 0.8) => ({
-  initial: { opacity: 0, y: 40 },
+const fadeUp = (delay = 0, duration = 0.7) => ({
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true as const, margin: "-80px" },
+  viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
 });
 
 const fadeLeft = (delay = 0) => ({
-  initial: { opacity: 0, x: -40 },
+  initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true as const },
-  transition: { delay, duration: 0.8, ease: EASE },
+  viewport: { once: true as const, margin: "-60px" },
+  transition: { delay, duration: 0.7, ease: EASE },
 });
 
 function useScreenWidth() {
@@ -194,7 +194,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               {leftFeatures.map((f, i) => (
                 <motion.div
-                  key={i} {...fadeUp(0.24 + i * 0.07)}
+                  key={i} {...fadeUp(0.24 + i * 0.08)}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 280, damping: 18 }}
                   style={{ display: "flex", gap: 16, alignItems: "flex-start" }}
@@ -460,8 +460,8 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
               {EXPLORE_SUBJECT_CARDS.map((card, ci) => (
                 <motion.div
                   key={ci}
-                  {...fadeUp(ci * 0.06)}
-                  whileHover={{ y: -6, boxShadow: "0 20px 50px rgba(0,26,77,0.12)" }}
+                  {...fadeUp(ci * 0.08)}
+                  whileHover={{ y: -5, boxShadow: "0 20px 50px rgba(0,26,77,0.1)" }}
                   style={{ background: "transparent", borderRadius: 18, overflow: "hidden", cursor: "default" }}
                 >
                   <div style={{ height: 100, overflow: "hidden", position: "relative" }}>
@@ -477,8 +477,8 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${card.pct}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: ci * 0.08, ease: "easeOut" }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.7, delay: ci * 0.08, ease: "easeOut" }}
                         style={{ height: "100%", background: card.color, borderRadius: 4 }}
                       />
                     </div>
@@ -604,7 +604,7 @@ export default function CurriculumPage() {
                     {MODULE_FEATURES.map((f, i) => (
                       <motion.div
                         key={i}
-                        {...fadeUp(0.3 + i * 0.07)}
+                        {...fadeUp(0.3 + i * 0.08)}
                         whileHover={{ scale: 1.04, y: -3 }}
                         transition={{ type: "spring", stiffness: 280, damping: 18 }}
                         style={{ display: "flex", alignItems: "flex-start", gap: 13, cursor: "default" }}
@@ -622,7 +622,7 @@ export default function CurriculumPage() {
 
                   <motion.div
                     {...fadeUp(0.52)}
-                    whileHover={{ scale: 1.02, y: -4, boxShadow: "0 20px 48px rgba(0,26,77,0.12)" }}
+                    whileHover={{ scale: 1.02, y: -5, boxShadow: "0 20px 50px rgba(0,26,77,0.1)" }}
                     style={{ display: "flex", alignItems: "center", gap: 18, background: "transparent", border: "1.5px solid rgba(0,82,204,0.12)", borderRadius: 20, padding: "22px 28px", cursor: "default", boxShadow: "0 4px 20px rgba(0,26,77,0.06)" }}
                   >
                     <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#001a4d", display: "flex", alignItems: "center", justifyContent: "center", color: "#ffffff", flexShrink: 0 }}>
@@ -675,8 +675,8 @@ export default function CurriculumPage() {
                       <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + i * 0.08, duration: 0.5, ease: EASE }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ delay: 0.3 + i * 0.08, duration: 0.7, ease: EASE }}
                         style={{
                           width: 48, height: 48, borderRadius: "50%",
                           background: "#eff6ff", border: "1.5px solid rgba(0,82,204,0.2)",
@@ -695,8 +695,8 @@ export default function CurriculumPage() {
                     <motion.div
                       initial={{ opacity: 0, x: 12 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.32 + i * 0.08, duration: 0.5, ease: EASE }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ delay: 0.32 + i * 0.08, duration: 0.7, ease: EASE }}
                       style={{ paddingLeft: 16, paddingBottom: i < FLOW_STEPS.length - 1 ? 20 : 0, paddingTop: 10 }}
                     >
                       <p style={{ fontSize: 15, fontWeight: 800, color: "#0052cc", margin: "0 0 3px" }}>{step.title}</p>
@@ -711,10 +711,10 @@ export default function CurriculumPage() {
                 {FLOW_STEPS.map((step, i) => (
                   <React.Fragment key={i}>
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.6 + i * 0.08, duration: 0.6, ease: EASE }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}
                       whileHover={{ scale: 1.08, y: -5 }}
                       style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 12, flex: 1, padding: "0 6px", cursor: "default" }}
                     >
@@ -808,7 +808,7 @@ export default function CurriculumPage() {
               {LEARNING_TYPES.map((item, i) => (
                 <motion.div
                   key={i}
-                  {...fadeUp(0.28 + i * 0.07)}
+                  {...fadeUp(0.28 + i * 0.08)}
                   whileHover={{ x: 6, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 280, damping: 18 }}
                   style={{ display: "flex", alignItems: "flex-start", gap: 16, cursor: "default" }}
@@ -862,7 +862,7 @@ export default function CurriculumPage() {
             {BENEFITS.map((b, i) => (
               <motion.div
                 key={i}
-                {...fadeUp(0.05 + i * 0.07)}
+                {...fadeUp(0.05 + i * 0.08)}
                 whileHover={{ scale: 1.04, y: -4 }}
                 style={{ display: "flex", alignItems: "flex-start", gap: 14, flex: 1, padding: isMobile ? 0 : "0 8px", cursor: "default" }}
               >
@@ -936,7 +936,7 @@ export default function CurriculumPage() {
                 ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; title: string; desc: string }[]).map((card, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }} transition={{ delay: 0.15 + i * 0.12, duration: 0.5, ease: EASE }}
+                    viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.15 + i * 0.08, duration: 0.7, ease: EASE }}
                     style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(14px)", borderRadius: 12, padding: "10px 13px", width: 210, boxShadow: "0 4px 18px rgba(0,26,77,0.15)", display: "flex", gap: 10, alignItems: "flex-start" }}
                   >
                     <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -959,7 +959,7 @@ export default function CurriculumPage() {
                 ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; title: string; desc: string }[]).map((card, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }} transition={{ delay: 0.25 + i * 0.12, duration: 0.5, ease: EASE }}
+                    viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.25 + i * 0.08, duration: 0.7, ease: EASE }}
                     style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(14px)", borderRadius: 12, padding: "10px 13px", width: 210, boxShadow: "0 4px 18px rgba(0,26,77,0.15)", display: "flex", gap: 10, alignItems: "flex-start" }}
                   >
                     <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -989,8 +989,8 @@ export default function CurriculumPage() {
                 { icon: BarChart3, color: "#059669", title: "Improves Learning Outcomes", desc: "Better retention. Better performance. Better results." },
                 { icon: Users, color: "#7c3aed", title: "Inclusive & Accessible", desc: "Supports diverse learning styles and abilities." },
               ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; color: string; title: string; desc: string }[]).map((item, i) => (
-                <motion.div key={i} {...fadeUp(i * 0.06)}
-                  whileHover={{ y: -5, boxShadow: "0 16px 40px rgba(0,26,77,0.1)" }}
+                <motion.div key={i} {...fadeUp(i * 0.08)}
+                  whileHover={{ y: -5, boxShadow: "0 20px 50px rgba(0,26,77,0.1)" }}
                   style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", borderRadius: 16, padding: isMobile ? "18px 14px" : "26px 18px", display: "flex", flexDirection: "column", gap: 10, boxShadow: "0 4px 20px rgba(0,26,77,0.08)", border: "1px solid rgba(255,255,255,0.9)", cursor: "default" }}
                 >
                   <div style={{ width: 52, height: 52, borderRadius: "50%", background: item.color + "18", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -1024,7 +1024,7 @@ export default function CurriculumPage() {
               ].map((stat, i) => {
                 const r = 36; const circ = 2 * Math.PI * r;
                 return (
-                  <motion.div key={i} {...fadeUp(i * 0.07)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <motion.div key={i} {...fadeUp(i * 0.08)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                     <div style={{ position: "relative", width: 88, height: 88 }}>
                       <svg width="88" height="88" viewBox="0 0 88 88">
                         <circle cx="44" cy="44" r={r} fill="none" stroke="#e2e8f0" strokeWidth="6" />
@@ -1032,8 +1032,8 @@ export default function CurriculumPage() {
                           strokeLinecap="round" strokeDasharray={circ}
                           initial={{ strokeDashoffset: circ }}
                           whileInView={{ strokeDashoffset: circ - (stat.pct / 100) * circ }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.4, delay: 0.1 + i * 0.1, ease: "easeOut" }}
+                          viewport={{ once: true, margin: "-60px" }}
+                          transition={{ duration: 1.4, delay: 0.1 + i * 0.08, ease: "easeOut" }}
                           style={{ transformOrigin: "44px 44px", transform: "rotate(-90deg)" }}
                         />
                       </svg>

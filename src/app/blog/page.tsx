@@ -19,9 +19,9 @@ function useScreenWidth() {
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0, duration = 0.7) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true as const },
+  viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
 });
 
@@ -207,10 +207,10 @@ export default function BlogPage() {
             gap: isMobile ? 24 : 32
           }}>
             {BLOG_POSTS.map((post, i) => (
-              <motion.div key={post.slug} {...fadeUp(0.1 + i * 0.1)}>
+              <motion.div key={post.slug} {...fadeUp(0.1 + i * 0.08)}>
                 <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
                   <motion.div
-                    whileHover={{ y: -6, boxShadow: "0 20px 48px rgba(0,26,77,0.1)" }}
+                    whileHover={{ y: -5, boxShadow: "0 20px 50px rgba(0,26,77,0.1)" }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
                     style={{
                       background: "#ffffff",
