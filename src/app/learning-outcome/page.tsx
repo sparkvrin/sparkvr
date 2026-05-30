@@ -15,7 +15,7 @@ import Link from "next/link";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0, duration = 0.7) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
@@ -25,7 +25,7 @@ const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true as const },
-  transition: { delay, duration: 0.7, ease: EASE },
+  transition: { delay, duration: 0.5, ease: EASE },
 });
 
 function useScreenWidth() {

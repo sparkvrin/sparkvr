@@ -78,7 +78,7 @@ function SubjectCard({
       initial={{ opacity: 0, scale: 0.85, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay, duration: 0.7, type: "spring", stiffness: 120, damping: 18 }}
+      transition={{ delay, duration: 0.5, type: "spring", stiffness: 120, damping: 18 }}
       whileHover={{ scale: 1.04, boxShadow: "0 30px 60px rgba(0,30,100,0.25)" }}
       style={{
         width: 300, height: 220, position: "relative", zIndex: 10,
@@ -183,7 +183,7 @@ export default function SolutionSection() {
             initial={{ opacity: 0, y: 30, rotateX: 20 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.9, type: "spring" }}
+            transition={{ delay: 0.1, duration: 0.5, type: "spring" }}
             style={{ fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(34px, 4.5vw, 56px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, marginBottom: isMobile ? 20 : 32, transformPerspective: 800 }}
           >
             A structured immersive curriculum{isMobile ? " " : <br />}

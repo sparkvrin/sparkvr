@@ -420,7 +420,7 @@ export default function Hero() {
           <motion.div
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
             style={{
               width: "100%",
               display: "grid",
@@ -516,11 +516,11 @@ export default function Hero() {
               <span style={{ background: "linear-gradient(90deg,#e040fb 0%,#7c3aed 55%,#38bdf8 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>imagine</span><br />
               anymore?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.18 }}
+            <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.18 }}
               style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.6, color: "#475569", margin: "0 0 28px" }}>
               We believe clarity begins with experience. SparkVR transforms abstract concepts into observable understanding.
             </motion.p>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
               style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <motion.a href="#spark-features" whileTap={{ scale: 0.97 }} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#38bdf8 100%)", color: "#fff", padding: "13px 28px", borderRadius: 40, fontSize: 12, fontWeight: 700, letterSpacing: "0.13em", textDecoration: "none", boxShadow: "0 10px 28px rgba(29,78,216,0.3)" }}>
                 SEE IT DIFFERENTLY
@@ -547,7 +547,7 @@ export default function Hero() {
 
         {/* Stats bar — aligned right at bottom, on top of student */}
         <div style={{ position: "absolute", bottom: 5, left: "52%", right: "2%", zIndex: 40 }}>
-          <motion.div initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
+          <motion.div initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }}
             style={{
               display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "6px", padding: "8px",
               background: "linear-gradient(135deg, rgba(255,255,255,0.6), rgba(220,230,255,0.3))",
@@ -740,7 +740,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 22 }}
               >
 
@@ -748,7 +748,7 @@ export default function Hero() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+                transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
                 style={{
                   fontSize: "clamp(42px, 4.5vw, 64px)",
                   fontWeight: 800,
@@ -774,7 +774,7 @@ export default function Hero() {
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
+                transition={{ duration: 0.5, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
                 style={{
                   fontSize: 18,
                   fontWeight: 500,
@@ -840,7 +840,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.45 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
                 style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 32 }}
               >
                 {[
@@ -869,7 +869,7 @@ export default function Hero() {
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             style={{
               display: "flex",
               justifyContent: "space-between",

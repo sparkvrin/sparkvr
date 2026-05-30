@@ -148,7 +148,7 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 28, rotateX: 18 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+              transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
               style={{ fontSize: 42, fontWeight: 700, color: "#001a4d", letterSpacing: "-0.02em", transformPerspective: 700 }}
             >
               Built for the <span className="text-gradient-primary">classroom.</span>
@@ -161,7 +161,7 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, y: 36, rotateX: 18 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+                transition={{ delay: i * 0.08, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
                 style={{ transformPerspective: 800 }}
               >
                 <TiltCard maxTilt={8} style={{ borderRadius: 16, display: "block" }}>
@@ -206,7 +206,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 32, rotateX: 16 }}
           whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+          transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
           style={{ maxWidth: 640, margin: "0 auto", position: "relative", zIndex: 1, transformPerspective: 800 }}
         >
           <h2 style={{ fontSize: 42, fontWeight: 700, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20, lineHeight: 1.2 }}>

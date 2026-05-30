@@ -41,17 +41,17 @@ const COLORS = {
 
 // Powerful Animation helpers
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true as const, margin: "-50px" },
-  transition: { duration: 0.8, delay, type: "spring" as const, stiffness: 70, damping: 15 }
+  transition: { duration: 0.5, delay, type: "spring" as const, stiffness: 70, damping: 15 }
 });
 
 const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true as const, margin: "-50px" },
-  transition: { duration: 0.8, delay, type: "spring" as const, stiffness: 70, damping: 15 }
+  transition: { duration: 0.5, delay, type: "spring" as const, stiffness: 70, damping: 15 }
 });
 
 const scaleIn = (delay = 0) => ({

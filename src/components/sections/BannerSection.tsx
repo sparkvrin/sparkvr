@@ -257,7 +257,7 @@ export default function BannerSection() {
             initial={{ opacity: 0, x: isMobile ? 0 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
             style={{
               fontSize: isMobile ? "clamp(22px,6vw,30px)" : "clamp(24px, 2.8vw, 40px)",
               fontWeight: 900, color: "#0f172a",
@@ -278,7 +278,7 @@ export default function BannerSection() {
             initial={{ width: 0 }}
             whileInView={{ width: 70 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.9, ease: "easeOut" }}
+            transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
             style={{ height: 4, background: "linear-gradient(90deg, #2563eb, #6366f1)", borderRadius: 99, marginBottom: 14, marginLeft: isMobile ? "auto" : 0, marginRight: isMobile ? "auto" : 0 }}
           />
 
@@ -310,7 +310,7 @@ export default function BannerSection() {
           initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 10 : 0 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.7, type: "spring" }}
+          transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
           whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(29,78,216,0.4)" }}
           whileTap={{ scale: 0.97 }}
           style={{

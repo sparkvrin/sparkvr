@@ -9,7 +9,7 @@ import SparkButton from "@/components/SparkButton";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0, duration = 0.7) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
@@ -19,14 +19,14 @@ const fadeUpRotate = (delay = 0) => ({
   initial: { opacity: 0, y: 30, rotateX: 16 },
   whileInView: { opacity: 1, y: 0, rotateX: 0 },
   viewport: { once: true as const, margin: "-60px" },
-  transition: { delay, duration: 0.7, ease: EASE },
+  transition: { delay, duration: 0.5, ease: EASE },
 });
 
 const slideLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30, rotateY: -12 },
   whileInView: { opacity: 1, x: 0, rotateY: 0 },
   viewport: { once: true as const, margin: "-60px" },
-  transition: { delay, duration: 0.7, type: "spring" as const, bounce: 0.3 },
+  transition: { delay, duration: 0.5, type: "spring" as const, bounce: 0.3 },
 });
 
 /* ─── FLOATING AMBIENT WRAPPER ─── */
@@ -44,7 +44,7 @@ function FloatingIcon({ icon: Icon, top, left, delay = 0, size = 52 }: any) {
     <motion.div
       initial={{ opacity: 0, scale: 0, rotateY: -30 }}
       animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-      transition={{ delay: delay + 0.3, duration: 0.8, type: "spring", bounce: 0.4 }}
+      transition={{ delay: delay + 0.3, duration: 0.5, type: "spring", bounce: 0.4 }}
       style={{ position: "absolute", top, left, zIndex: 5, pointerEvents: "none", perspective: 600 }}
     >
       <FloatLoop y={14} duration={5 + delay} delay={delay}>
@@ -202,14 +202,14 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: EASE }}
+            transition={{ duration: 0.5, ease: EASE }}
             style={{ maxWidth: 600 }}
           >
             {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30, rotateX: 18 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ delay: 0.18, duration: 0.7, ease: EASE }}
+              transition={{ delay: 0.18, duration: 0.5, ease: EASE }}
               style={{
                 fontSize: "clamp(38px, 4.8vw, 60px)",
                 fontWeight: 800, color: "#001a4d",
@@ -225,7 +225,7 @@ export default function AboutPage() {
             <motion.p
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.36, duration: 0.7 }}
+              transition={{ delay: 0.36, duration: 0.5 }}
               style={{ fontSize: 17, color: "#475569", lineHeight: 1.55, marginBottom: 22, maxWidth: 500 }}
             >
               Incubated at <strong style={{ color: "#0052cc" }}>IIT Indore</strong> with a pedagogy-first philosophy and long-term institutional partnerships.
@@ -260,7 +260,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.88, duration: 0.7, type: "spring" }}
+              transition={{ delay: 0.88, duration: 0.5, type: "spring" }}
               style={{ maxWidth: 520, marginBottom: 22 }}
             >
               <div style={{
@@ -285,7 +285,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.12, duration: 0.7, type: "spring" }}
+              transition={{ delay: 1.12, duration: 0.5, type: "spring" }}
               style={{ display: "flex", gap: 14 }}
             >
               <SparkButton href="/contact#contact-form" text="Book free workshop" />
@@ -376,7 +376,7 @@ export default function AboutPage() {
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               style={{ width: 40, height: 2, background: "#0052cc", margin: "0 auto", opacity: 0.35, transformOrigin: "center" }}
             />
           </motion.div>
@@ -406,7 +406,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30, x: i % 2 === 0 ? -8 : 8 }}
                 whileInView={{ opacity: 1, y: 0, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: 0.38 + i * 0.08, duration: 0.7 }}
+                transition={{ delay: 0.38 + i * 0.08, duration: 0.5 }}
               >
                 {line}
               </motion.p>
@@ -418,7 +418,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.62, duration: 0.7 }}
+            transition={{ delay: 0.62, duration: 0.5 }}
             style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, marginBottom: 52 }}
           >
             <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, transparent, rgba(0,82,204,0.18))" }} />
@@ -452,7 +452,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.98, duration: 0.7 }}
+            transition={{ delay: 0.98, duration: 0.5 }}
             style={{ fontSize: 18, color: "#94a3b8", fontWeight: 500 }}
           >
             This is the foundation of everything we build.
@@ -498,7 +498,7 @@ export default function AboutPage() {
               </motion.p>
               <motion.div
                 initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-                viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.1 }}
+                viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, delay: 0.1 }}
                 style={{ width: 40, height: 2, background: "#0052cc", margin: "12px auto 0", opacity: 0.3, transformOrigin: "center" }}
               />
             </motion.div>
@@ -553,7 +553,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.08, duration: 0.7, ease: EASE }}
+                transition={{ delay: i * 0.08, duration: 0.5, ease: EASE }}
                 style={{ height: "100%" }}
               >
                 <motion.div
@@ -612,7 +612,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.55, duration: 0.7, type: "spring" }}
+            transition={{ delay: 0.55, duration: 0.5, type: "spring" }}
             style={{
               background: "#ffffff", borderRadius: 30, padding: "24px 40px",
               border: "1.5px solid rgba(0,82,204,0.06)",
@@ -779,7 +779,7 @@ export default function AboutPage() {
             </motion.div>
             <motion.div
               initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, delay: 0.1 }}
               style={{ width: 40, height: 2, background: "#0052cc", marginBottom: 36, opacity: 0.35, transformOrigin: "left" }}
             />
 
@@ -805,7 +805,7 @@ export default function AboutPage() {
                   initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: 0.28 + i * 0.08, duration: 0.7 }}
+                  transition={{ delay: 0.28 + i * 0.08, duration: 0.5 }}
                   style={{ fontSize: 16, color: "#475569", lineHeight: 1.65, fontWeight: 500 }}
                 >
                   {line}
@@ -839,7 +839,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: 0.92, duration: 0.7, type: "spring" }}
+              transition={{ delay: 0.92, duration: 0.5, type: "spring" }}
               style={{
                 background: "rgba(255,255,255,0.88)", backdropFilter: "blur(18px)",
                 borderRadius: 22, padding: "18px 28px",
@@ -859,7 +859,7 @@ export default function AboutPage() {
                     initial={{ opacity: 0, scale: 0.7, y: 30 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
-                    transition={{ delay: 1.0 + i * 0.08, duration: 0.7, type: "spring", bounce: 0.4 }}
+                    transition={{ delay: 1.0 + i * 0.08, duration: 0.5, type: "spring", bounce: 0.4 }}
                     whileHover={{ scale: 1.08, y: -2 }}
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
@@ -891,7 +891,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30, scale: 0.92 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: 0.75, duration: 0.7, type: "spring", bounce: 0.25 }}
+                transition={{ delay: 0.75, duration: 0.5, type: "spring", bounce: 0.25 }}
               >
                   <div
                     style={{
@@ -1023,7 +1023,7 @@ export default function AboutPage() {
             </motion.p>
             <motion.div
               initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, delay: 0.1 }}
               style={{ width: 44, height: 2.5, background: "linear-gradient(90deg,#0052cc,#1fb3ff)", margin: "0 auto", borderRadius: 2, opacity: 0.55, transformOrigin: "center" }}
             />
             <motion.div
@@ -1043,7 +1043,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30, rotateX: 20 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: 0.14 + i * 0.08, duration: 0.7, ease: EASE }}
+                transition={{ delay: 0.14 + i * 0.08, duration: 0.5, ease: EASE }}
               >
                 {line}
               </motion.div>
@@ -1055,7 +1055,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30, rotateY: -8 }}
             whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.38, duration: 0.7, ease: EASE }}
+            transition={{ delay: 0.38, duration: 0.5, ease: EASE }}
             style={{
               fontSize: "clamp(22px, 3.5vw, 44px)", fontWeight: 700, lineHeight: 1.2, marginBottom: 20,
               background: "linear-gradient(90deg,#0052cc 0%,#1fb3ff 100%)",
@@ -1069,7 +1069,7 @@ export default function AboutPage() {
           {/* Gradient underline */}
           <motion.div
             initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.48, duration: 0.7 }}
+            viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.48, duration: 0.5 }}
             style={{ width: 60, height: 3, background: "linear-gradient(90deg,#0052cc,#1fb3ff)", margin: "0 auto 32px", borderRadius: 3, transformOrigin: "center" }}
           />
 
@@ -1083,7 +1083,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: 0.54 + i * 0.08, duration: 0.7 }}
+                transition={{ delay: 0.54 + i * 0.08, duration: 0.5 }}
                 style={{ fontSize: 18, color: "#475569", lineHeight: 1.7, fontWeight: 500 }}
               >
                 {line}
@@ -1096,7 +1096,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.62, duration: 0.7, type: "spring", bounce: 0.2 }}
+            transition={{ delay: 0.62, duration: 0.5, type: "spring", bounce: 0.2 }}
             whileHover={{ boxShadow: "0 32px 80px rgba(0,82,204,0.1)" }}
             style={{
               background: "rgba(255,255,255,0.58)", backdropFilter: "blur(20px)",
@@ -1124,7 +1124,7 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: 0.72 + i * 0.08, duration: 0.7 }}
+                  transition={{ delay: 0.72 + i * 0.08, duration: 0.5 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", cursor: "default" }}
                 >
@@ -1153,7 +1153,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30, scale: 0.88 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 1.18, duration: 0.7, type: "spring", bounce: 0.38 }}
+            transition={{ delay: 1.18, duration: 0.5, type: "spring", bounce: 0.38 }}
             whileHover={{ scale: 1.02, boxShadow: "0 20px 52px rgba(0,82,204,0.1)" }}
             style={{
               display: "inline-flex", alignItems: "center", gap: 18,
@@ -1314,7 +1314,7 @@ export default function AboutPage() {
                     initial={{ opacity: 0, y: 30, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 0.7, type: "spring", bounce: 0.3 }}
+                    transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
                     style={{
                       background: "linear-gradient(145deg, #001a4d 0%, #003399 100%)",
                       borderRadius: 24,
@@ -1384,7 +1384,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.5, duration: 0.7, type: "spring" }}
+            transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
             style={{
               background: "rgba(255,255,255,0.95)",
               backdropFilter: "blur(12px)",

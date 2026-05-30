@@ -16,7 +16,7 @@ import Link from "next/link";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0, duration = 0.7) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
@@ -26,7 +26,7 @@ const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true as const, margin: "-60px" },
-  transition: { delay, duration: 0.7, ease: EASE },
+  transition: { delay, duration: 0.5, ease: EASE },
 });
 
 function useScreenWidth() {
@@ -383,7 +383,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                             <span style={{ fontSize: 11, color: "#4ade80", fontWeight: 700 }}>82%</span>
                           </div>
                           <div style={{ height: 6, background: "rgba(255,255,255,0.08)", borderRadius: 4 }}>
-                            <motion.div initial={{ width: 0 }} animate={{ width: "82%" }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} style={{ height: "100%", background: "linear-gradient(to right, #2563eb, #4ade80)", borderRadius: 4 }} />
+                            <motion.div initial={{ width: 0 }} animate={{ width: "82%" }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} style={{ height: "100%", background: "linear-gradient(to right, #2563eb, #4ade80)", borderRadius: 4 }} />
                           </div>
                         </div>
                         <div style={{ marginTop: "auto", display: "flex", gap: 10 }}>
@@ -478,7 +478,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                         initial={{ width: 0 }}
                         whileInView={{ width: `${card.pct}%` }}
                         viewport={{ once: true, margin: "-60px" }}
-                        transition={{ duration: 0.7, delay: ci * 0.08, ease: "easeOut" }}
+                        transition={{ duration: 0.5, delay: ci * 0.08, ease: "easeOut" }}
                         style={{ height: "100%", background: card.color, borderRadius: 4 }}
                       />
                     </div>
@@ -676,7 +676,7 @@ export default function CurriculumPage() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: "-60px" }}
-                        transition={{ delay: 0.3 + i * 0.08, duration: 0.7, ease: EASE }}
+                        transition={{ delay: 0.3 + i * 0.08, duration: 0.5, ease: EASE }}
                         style={{
                           width: 48, height: 48, borderRadius: "50%",
                           background: "#eff6ff", border: "1.5px solid rgba(0,82,204,0.2)",
@@ -696,7 +696,7 @@ export default function CurriculumPage() {
                       initial={{ opacity: 0, x: 12 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-60px" }}
-                      transition={{ delay: 0.32 + i * 0.08, duration: 0.7, ease: EASE }}
+                      transition={{ delay: 0.32 + i * 0.08, duration: 0.5, ease: EASE }}
                       style={{ paddingLeft: 16, paddingBottom: i < FLOW_STEPS.length - 1 ? 20 : 0, paddingTop: 10 }}
                     >
                       <p style={{ fontSize: 15, fontWeight: 800, color: "#0052cc", margin: "0 0 3px" }}>{step.title}</p>
@@ -714,7 +714,7 @@ export default function CurriculumPage() {
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-60px" }}
-                      transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}
+                      transition={{ delay: 0.6 + i * 0.08, duration: 0.5, ease: EASE }}
                       whileHover={{ scale: 1.08, y: -5 }}
                       style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 12, flex: 1, padding: "0 6px", cursor: "default" }}
                     >
@@ -936,7 +936,7 @@ export default function CurriculumPage() {
                 ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; title: string; desc: string }[]).map((card, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.15 + i * 0.08, duration: 0.7, ease: EASE }}
+                    viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.15 + i * 0.08, duration: 0.5, ease: EASE }}
                     style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(14px)", borderRadius: 12, padding: "10px 13px", width: 210, boxShadow: "0 4px 18px rgba(0,26,77,0.15)", display: "flex", gap: 10, alignItems: "flex-start" }}
                   >
                     <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -959,7 +959,7 @@ export default function CurriculumPage() {
                 ] as { icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>; title: string; desc: string }[]).map((card, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.25 + i * 0.08, duration: 0.7, ease: EASE }}
+                    viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.25 + i * 0.08, duration: 0.5, ease: EASE }}
                     style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(14px)", borderRadius: 12, padding: "10px 13px", width: 210, boxShadow: "0 4px 18px rgba(0,26,77,0.15)", display: "flex", gap: 10, alignItems: "flex-start" }}
                   >
                     <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>

@@ -13,7 +13,7 @@ import {
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0, duration = 0.7) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
@@ -23,7 +23,7 @@ const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true as const, margin: "-60px" },
-  transition: { delay, duration: 0.7, ease: EASE },
+  transition: { delay, duration: 0.5, ease: EASE },
 });
 
 const float = {
@@ -401,7 +401,7 @@ export default function TeachersPage() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: 0.5, duration: 0.7, ease: EASE }}
+                  transition={{ delay: 0.5, duration: 0.5, ease: EASE }}
                   style={{ position: "absolute", bottom: -10, right: "4%", background: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)", padding: "20px 24px", borderRadius: 20, boxShadow: "0 20px 50px rgba(0,0,0,0.12)", maxWidth: 290, zIndex: 10, border: "1px solid rgba(99,102,241,0.15)" }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
@@ -514,7 +514,7 @@ export default function TeachersPage() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: 0.5, duration: 0.7, ease: EASE }}
+                  transition={{ delay: 0.5, duration: 0.5, ease: EASE }}
                   style={{ maxWidth: 380, background: "rgba(255,255,255,0.97)", backdropFilter: "blur(10px)", padding: "18px 22px", borderRadius: 16, boxShadow: "0 15px 35px rgba(0,0,0,0.08)", border: "1px solid rgba(79,70,229,0.1)", display: "flex", gap: 14, alignItems: "center" }}
                 >
                   <div style={{ width: 48, height: 48, borderRadius: 24, background: "linear-gradient(135deg, #f0f5ff 0%, #e0e7ff 100%)", border: "1px solid #c7d2fe", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>

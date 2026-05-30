@@ -106,7 +106,7 @@ function GridBubble({ label, children, delay, dir = -1, w = 140 }: {
       initial={{ opacity: 0, scale: 0.7, y: 16 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
+      transition={{ delay, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
       style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}
     >
       <motion.div
@@ -339,7 +339,7 @@ export default function ServicesSection() {
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20, rotateX: 16 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: true }} transition={{ delay: 0.08, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+              viewport={{ once: true }} transition={{ delay: 0.08, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
               style={{
                 fontSize: isMobile ? "clamp(28px,7vw,40px)" : isTablet ? "clamp(28px,3.5vw,46px)" : "clamp(34px,4.5vw,62px)",
                 fontWeight: 800, lineHeight: 1.1, color: "#0b1a3b",
@@ -467,7 +467,7 @@ export default function ServicesSection() {
                 : "60px 60px",
             display: "flex", flexDirection: "column", justifyContent: "flex-start", position: "relative", zIndex: 2,
           }}>
-            <motion.h2 initial={{ opacity: 0, y: 20, rotateX: 16 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+            <motion.h2 initial={{ opacity: 0, y: 20, rotateX: 16 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
               style={{ fontSize: isMobile ? "clamp(24px,6.5vw,36px)" : "clamp(26px,2.9vw,44px)", fontWeight: 800, lineHeight: 1.18, color: "#0b1a3b", margin: "0 0 12px", fontFamily: "'VAG Rounded',sans-serif", transformPerspective: 700 }}>
               We make concepts<br />
               <span style={{ background: "linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>observable</span>{ }<br />

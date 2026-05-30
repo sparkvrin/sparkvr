@@ -18,7 +18,7 @@ import "./schools.css";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0, duration = 0.7) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true as const, margin: "-60px" },
   transition: { delay, duration, ease: EASE },
@@ -28,14 +28,14 @@ const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -30 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true as const, margin: "-60px" },
-  transition: { delay, duration: 0.7, ease: EASE },
+  transition: { delay, duration: 0.5, ease: EASE },
 });
 
 const scaleUp = (delay = 0) => ({
   initial: { opacity: 0, scale: 0.9 },
   whileInView: { opacity: 1, scale: 1 },
   viewport: { once: true as const, margin: "-60px" },
-  transition: { delay, duration: 0.7, ease: EASE },
+  transition: { delay, duration: 0.5, ease: EASE },
 });
 
 export default function SchoolHubPage() {
@@ -112,7 +112,7 @@ export default function SchoolHubPage() {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.4, duration: 0.7, ease: EASE }}
+            transition={{ delay: 0.4, duration: 0.5, ease: EASE }}
             whileHover={{ y: -5, boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}
             className="schools-hero-stats-bar"
           >
@@ -608,7 +608,7 @@ export default function SchoolHubPage() {
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: 0.8, duration: 0.7 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="schools-teacher-quote"
               >
@@ -743,7 +743,7 @@ export default function SchoolHubPage() {
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: 0.8, duration: 0.7 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
                 className="schools-flow-floating"
               >
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -1373,7 +1373,7 @@ export default function SchoolHubPage() {
                 </svg>
 
                 {/* Bubble 1: Engaged Students */}
-                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.5, duration: 0.7, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 220, left: "12%" }}>
+                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.5, duration: 0.5, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 220, left: "12%" }}>
                   <motion.div whileHover={{ scale: 1.2, rotate: 15 }} className="schools-ready-bubble-icon">
                     <Rocket size={28} color="#0052cc" />
                   </motion.div>
@@ -1381,7 +1381,7 @@ export default function SchoolHubPage() {
                 </motion.div>
 
                 {/* Bubble 2: Better Results */}
-                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.7, duration: 0.7, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 80, left: "38%" }}>
+                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.7, duration: 0.5, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 80, left: "38%" }}>
                   <motion.div whileHover={{ scale: 1.2, y: -10 }} className="schools-ready-bubble-icon">
                     <TrendingUp size={28} color="#0052cc" />
                   </motion.div>
@@ -1389,7 +1389,7 @@ export default function SchoolHubPage() {
                 </motion.div>
 
                 {/* Bubble 3: Future Ready */}
-                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.9, duration: 0.7, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 60, left: "64%" }}>
+                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 0.9, duration: 0.5, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 60, left: "64%" }}>
                   <motion.div whileHover={{ scale: 1.2, rotate: -15 }} className="schools-ready-bubble-icon">
                     <GraduationCap size={28} color="#0052cc" />
                   </motion.div>
@@ -1397,7 +1397,7 @@ export default function SchoolHubPage() {
                 </motion.div>
 
                 {/* Bubble 4: Limitless Possibilities */}
-                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 1.1, duration: 0.7, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 160, left: "84%" }}>
+                <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: 1.1, duration: 0.5, ease: EASE }} className="schools-ready-bubble-item" style={{ top: 160, left: "84%" }}>
                   <motion.div whileHover={{ scale: 1.2, rotate: 180 }} transition={{ duration: 0.6 }} className="schools-ready-bubble-icon">
                     <Globe size={28} color="#0052cc" />
                   </motion.div>
