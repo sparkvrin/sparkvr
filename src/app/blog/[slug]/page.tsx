@@ -44,33 +44,33 @@ const BLOG_POSTS: Record<string, any> = {
     contentChunks: [
       { type: "p", content: "For decades, education has relied on explanation. Teachers explain brilliantly. The curriculum is structured. Examinations are rigorous. Yet many concepts remain abstract. Students are asked to imagine." },
       { type: "p", content: "What if they didn't have to? What if learning could be experienced instead of imagined?" },
-      { type: "p", content: "Emerging research in experiential learning shows that when students actively engage with concepts through immersive and interactive experiences, their understanding deepens significantly—and more importantly, they remember longer." },
+      { type: "p", content: <>Emerging research in experiential learning shows that when students actively engage with concepts through immersive and interactive experiences, their understanding deepens significantly—and more importantly, they remember longer. Learn more about our research-backed <Link href="/learning-outcome" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link> or see how we design <Link href="/blog/vr-modern-classrooms" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR modern classrooms</Link>.</> },
       { type: "h3", content: "The Science Behind Experiential Learning" },
       { type: "p", content: "Studies from cognitive science and educational psychology consistently highlight that experiential learning activates multiple areas of the brain. This multi-sensory engagement helps students form stronger neural connections, leading to improved retention and application of knowledge." },
       { type: "quote", content: "Students remember 75% of what they experience, compared to only 10% of what they read.", author: "National Training Laboratories" },
       { type: "h3", content: "Why It Matters in Classrooms" },
       { type: "p", content: "When abstract topics—like the human heart, planetary motion, or chemical reactions—are experienced in a safe, immersive environment, students move from passive reception to active discovery." },
       { type: "list", items: ["Concepts become visible.", "Thinking becomes deeper.", "Confidence grows naturally."] },
-      { type: "p", content: "At SparkVR, we design experiences that fit seamlessly into the school day and curriculum—making conceptual clarity a reality for every student." }
+      { type: "p", content: <>At SparkVR, we design experiences that fit seamlessly into the school day and curriculum—making conceptual clarity a reality for every student. If you are interested in trying this out, <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>contact our academic team</Link> to schedule a demo.</> }
     ]
   },
   "vr-modern-classrooms": {
      slug: "vr-modern-classrooms", category: "EDUCATION", title: "How VR is Transforming Modern Classrooms", subtitle: "Explore the shift from textbook learning to immersive 3D explorations.", date: "May 4, 2024", readTime: "8 min read", author: "By SparkVR Editorial Team", image: "/blog_vr.webp", tags: ["VR", "Classroom", "Tech"],
      contentChunks: [
-       { type: "p", content: "Virtual Reality (VR) is no longer a futuristic concept—it's here, and it's changing the way students learn. By stepping inside a cell or walking through ancient Rome, history and science come alive in ways books never could." },
+       { type: "p", content: <>Virtual Reality (VR) is no longer a futuristic concept—it's here, and it's changing the way students learn. By stepping inside a cell or walking through ancient Rome, history and science come alive in ways books never could. Read more about how we establish <Link href="/schools" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR labs in schools</Link> or explore how <Link href="/blog/how-experiential-learning-improves-concept-retention" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>experiential learning improves retention</Link>.</> },
        { type: "h3", content: "Beyond the Textbook" },
        { type: "p", content: "Traditional teaching methods, while effective, often struggle to convey the scale and complexity of certain subjects. VR bridges this gap by providing a 1:1 scale experience of everything from atomic structures to the vastness of space." },
        { type: "quote", content: "Education is not the learning of facts, but the training of the mind to think.", author: "Albert Einstein" },
-       { type: "p", content: "In a modern SparkVR-enabled classroom, students are not just spectators; they are explorers. This shift from passive to active learning is the cornerstone of the modern educational revolution." }
+       { type: "p", content: <>In a modern SparkVR-enabled classroom, students are not just spectators; they are explorers. This shift from passive to active learning is the cornerstone of the modern educational revolution. Ready to bring this to your institution? Feel free to <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>contact us</Link> for details.</> }
      ]
   },
   "future-cognitive-learning": {
      slug: "future-cognitive-learning", category: "RESEARCH", title: "The Future of Cognitive Learning & Tech", subtitle: "Understanding the neural impact of interactive virtual environments.", date: "April 28, 2024", readTime: "12 min read", author: "By Sanya Verma", image: "/blog_tech.webp", tags: ["Cognitive", "AI", "Neuroscience"],
      contentChunks: [
-       { type: "p", content: "Cognitive learning is evolving at a rapid pace, driven by breakthroughs in neuroscience and immersive technology. Interactive virtual environments are proving to be powerful tools for cognitive development." },
+       { type: "p", content: <>Cognitive learning is evolving at a rapid pace, driven by breakthroughs in neuroscience and immersive technology. Interactive virtual environments are proving to be powerful tools for cognitive development. Discover our NCERT-aligned <Link href="/curriculum" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link> or read about how <Link href="/blog/vr-modern-classrooms" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR is transforming modern classrooms</Link>.</> },
        { type: "h3", content: "Neural Mapping in VR" },
        { type: "p", content: "Recent data suggests that the brain processes virtual experiences with a high degree of 'presence,' leading to the same neural pathways being activated as in real-world scenarios. This has profound implications for skill acquisition and emotional intelligence." },
-       { type: "p", content: "As we move toward more personalized, AI-driven learning paths, the integration of VR will become standard, offering a customized pace for every unique learner." }
+       { type: "p", content: <>As we move toward more personalized, AI-driven learning paths, the integration of VR will become standard, offering a customized pace for every unique learner. To explore custom pathways, <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> with us.</> }
      ]
   }
 };

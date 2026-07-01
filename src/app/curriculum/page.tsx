@@ -188,7 +188,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
             </motion.h2>
 
             <motion.p {...fadeUp(0.18)} style={{ fontSize: isMobile ? 13 : 15, color: "#475569", lineHeight: 1.7, fontWeight: 500, margin: "0 0 32px", maxWidth: 440 }}>
-              SparkVR immersive modules bring curriculum to life with stunning 3D visuals, interactive exploration and concept-focused learning.
+              SparkVR immersive modules bring curriculum to life with stunning 3D visuals, interactive exploration and concept-focused learning. Learn about our solutions for <Link href="/schools" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>smart schools</Link>, discover our impact on student <Link href="/learning-outcome" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> with us to see the difference.
             </motion.p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

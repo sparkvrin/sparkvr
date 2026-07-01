@@ -174,7 +174,7 @@ export default function ParentsPage() {
                 fontSize: isMobile ? 13 : 15, color: "#64748b",
                 lineHeight: 1.7, margin: "0 0 26px", fontWeight: 500, maxWidth: 380,
               }}>
-                SparkVR turns screen time into valuable learning time through immersive, curriculum-aligned experiences.
+                SparkVR turns screen time into valuable learning time through immersive, curriculum-aligned experiences. Discover how we partner with <Link href="/schools" style={{ color: "#7c3aed", fontWeight: 700, textDecoration: "underline" }}>schools</Link>, explore our comprehensive <Link href="/curriculum" style={{ color: "#7c3aed", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see our impact on student <Link href="/learning-outcome" style={{ color: "#7c3aed", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#7c3aed", fontWeight: 700, textDecoration: "underline" }}>contact us</Link> to schedule a trial.
               </motion.p>
 
               {/* 5 feature cards */}

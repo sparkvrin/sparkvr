@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 
 function useScreenWidth() {
   const [width, setWidth] = useState(1200);
@@ -240,6 +241,9 @@ export default function SolutionSection() {
               <p style={{ margin: 0, fontSize: 16.5, color: "#1e3a8a", fontWeight: 500, lineHeight: 1.4 }}>
                 This is academic infrastructure,<br />
                 <strong style={{ fontWeight: 800 }}>not entertainment.</strong>
+              </p>
+              <p style={{ marginTop: 24, fontSize: 15, color: "#475569", lineHeight: 1.6, fontWeight: 500 }}>
+                Explore our structured <Link href="/curriculum" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see how we enhance student <Link href="/learning-outcome" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or learn about our <Link href="/subject-expansion" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>subject expansion</Link> resources for modern classrooms.
               </p>
             </motion.div>
           </motion.div>

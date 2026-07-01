@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   GraduationCap, Target, Settings, BookOpen, ShieldCheck,
@@ -72,7 +73,7 @@ export default function TeachersPage() {
               Technology that<br /><span style={{ color: "#6366f1" }}>respects teaching.</span>
             </motion.h2>
             <motion.p {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 14 : 16, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 24 }}>
-              SparkVR is designed to support how you teach, engage your students, and achieve your learning goals.
+              SparkVR is designed to support how you teach, engage your students, and achieve your learning goals. Discover our solutions for <Link href="/schools" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>smart schools</Link>, explore our comprehensive <Link href="/curriculum" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see our impact on student <Link href="/learning-outcome" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> to schedule a demo.
             </motion.p>
             <motion.div {...fadeLeft(0.3)} style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 24 }}>
               {[
