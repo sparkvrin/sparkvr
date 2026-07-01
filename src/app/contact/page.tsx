@@ -223,7 +223,7 @@ export default function ContactPage() {
               </h2>
               <div style={{ width: 48, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 32 }} />
               <p style={{ fontSize: 17, color: "#64748b", fontWeight: 500, marginBottom: 56, maxWidth: 520, lineHeight: 1.6 }}>
-                Fill in your details and our academic team will get in touch to schedule your guided demonstration. In the meantime, you can learn about our solutions for <Link href="/schools" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>schools</Link> or explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link> options.
+                Reach out to us directly using the contact options on the right to schedule your guided demonstration. In the meantime, you can learn about our solutions for <Link href="/schools" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>schools</Link> or explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link> options.
               </p>
 
               {/* IMAGE IN PLACE OF CONTACT CARDS */}
