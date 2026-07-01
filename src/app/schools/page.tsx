@@ -12,6 +12,7 @@ import {
   MessageSquare, Truck, Presentation, Rocket, TrendingUp, Puzzle, TabletSmartphone, Lightbulb, Handshake
 } from "lucide-react";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import "./schools.css";
 
 /* ─── ANIMATION VARIANTS ─── */

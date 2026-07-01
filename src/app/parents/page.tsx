@@ -10,6 +10,7 @@ import {
   Lock, Hourglass, Rocket, Mail, Headphones, MessageSquare, Settings, Zap,
 } from "lucide-react";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const fadeUp = (delay = 0, dur = 0.7) => ({
@@ -159,6 +160,7 @@ export default function ParentsPage() {
             <div style={{ width: isMobile ? "100%" : isTablet ? "52%" : "44%" }}>
 
 
+              <Breadcrumbs />
               {/* Heading */}
               <motion.h1 {...fadeLeft(0.1)} style={{
                 fontSize: isMobile ? "clamp(34px,10vw,48px)" : isTablet ? "clamp(36px,4.8vw,54px)" : "clamp(42px,4.2vw,66px)",

@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import StickyCTA from "@/components/layout/StickyCTA";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main>{children}</main>
         <Footer />
         <WhatsAppButton />
+        <StickyCTA />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { motion } from "framer-motion";
 import {
   GraduationCap, Target, Settings, BookOpen, ShieldCheck,
@@ -68,6 +69,7 @@ export default function TeachersPage() {
           </div>
         )}
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: px, position: "relative", zIndex: 2 }}>
+          <Breadcrumbs />
           <div style={{ maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%" }}>
             <motion.h2 {...fadeLeft(0.1)} style={{ fontSize: isMobile ? 28 : isTablet ? 34 : "clamp(32px,4vw,40px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
               Technology that<br /><span style={{ color: "#6366f1" }}>respects teaching.</span>
