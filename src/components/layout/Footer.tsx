@@ -257,7 +257,7 @@ export default function Footer() {
                 title: "Resources", icon: BookOpen,
                 links: [
                   { label: "ABOUT", href: "/about" },
-                  { label: "CONTACT", href: "/contact" }
+                  { label: "CONTACT", href: "/contact#contact-form" }
                 ]
               }
             ].map((col, idx) => (
