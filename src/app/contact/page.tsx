@@ -214,53 +214,63 @@ export default function ContactPage() {
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40%", height: "60%", background: "radial-gradient(circle, rgba(0,82,204,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr", gap: isMobile ? 24 : 60, alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.3fr", gap: isMobile ? 24 : 60, alignItems: "start" }}>
 
-            {/* LEFT SIDE: FORM */}
+            {/* LEFT SIDE: INFO & DETAILS */}
             <motion.div {...fadeUp(0.1)}>
               <h2 style={{ fontSize: isMobile ? "clamp(26px,6vw,36px)" : "clamp(32px,4vw,46px)", fontWeight: 900, color: "#001a4d", marginBottom: 28, letterSpacing: "-0.02em" }}>
-                Let's start a conversation.
+                We're here to help.
               </h2>
               <div style={{ width: 48, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 32 }} />
               <p style={{ fontSize: 17, color: "#64748b", fontWeight: 500, marginBottom: 56, maxWidth: 520, lineHeight: 1.6 }}>
-                Reach out to us directly using the contact options on the right to schedule your guided demonstration. In the meantime, you can learn about our solutions for <Link href="/schools" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>schools</Link> or explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link> options.
+                Reach out to us directly using the contact options below to schedule your guided demonstration. In the meantime, you can learn about our solutions for <Link href="/schools" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>schools</Link> or explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link> options.
               </p>
 
-              {/* IMAGE IN PLACE OF CONTACT CARDS */}
-              <motion.div
-                {...fadeUp(0.25)}
-                style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 12px 40px rgba(0,26,77,0.08)" }}
-              >
-                <img
-                  loading="lazy" decoding="async"
-                  src="/backgroundcontact.webp"
-                  alt="VR Experience"
-                  style={{ width: "100%", height: 260, objectFit: "cover", display: "block" }}
-                />
-              </motion.div>
-
-            </motion.div>
-
-            {/* RIGHT SIDE: INFO BOX */}
-            <motion.div {...fadeUp(0.3)}>
               <div style={{
                 background: "#f8fafc",
                 borderRadius: 40,
                 padding: isMobile ? "32px 20px" : "48px 40px",
                 border: "1.5px solid #fff",
                 boxShadow: "0 30px 70px rgba(0,26,77,0.05)",
-                position: "relative", overflow: "hidden"
+                position: "relative", overflow: "hidden",
+                marginBottom: isMobile ? 32 : 0
               }}>
-                <h3 style={{ fontSize: 26, fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>We're here to help</h3>
-                <div style={{ width: 50, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 48 }} />
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 36, marginBottom: 56 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
                   <InfoItem icon={Phone} label="Call Us" value="+91 73892 92658" />
                   <InfoItem icon={Mail} label="Email Us" value="hello@sparkvr.in" />
                   <InfoItem icon={Clock} label="Response Time" value="Within 24 working hours" />
                 </div>
-
               </div>
+            </motion.div>
+
+            {/* RIGHT SIDE: FORM */}
+            <motion.div {...fadeUp(0.3)}>
+              <h3 style={{ fontSize: isMobile ? 26 : 32, fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>Let's start a conversation</h3>
+              <div style={{ width: 50, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 48 }} />
+
+              {/* GOOGLE FORM EMBED */}
+              <motion.div
+                {...fadeUp(0.25)}
+                style={{
+                  borderRadius: 24,
+                  overflow: "hidden",
+                  boxShadow: "0 12px 40px rgba(0,26,77,0.08)",
+                  border: "1.5px solid rgba(0,82,204,0.08)",
+                  background: "#f8fafc",
+                  height: isMobile ? 800 : 950,
+                  position: "relative"
+                }}
+              >
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSfdGt6CDKWD37Hv6iYuOLx_GJJpnhpp5ypAqWTuDdbkyq6Lkw/viewform?embedded=true"
+                  width="100%"
+                  height="100%"
+                  style={{ border: "none", display: "block" }}
+                  title="Experience the Future of Learning with SparkVR"
+                >
+                  Loading…
+                </iframe>
+              </motion.div>
             </motion.div>
           </div>
 
