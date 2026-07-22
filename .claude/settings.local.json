@@ -3,7 +3,18 @@
     "allow": [
       "Bash(npx tsc *)",
       "Bash(node -e ' *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(Get-ChildItem -Path \"d:\\\\sparkvr\" -Recurse -Directory -Name)",
+      "Bash(Select-Object -First 20)",
+      "Bash(git commit -m ' *)",
+      "Bash(Get-ChildItem -Path \"d:\\\\sparkvr\\\\src\" -Recurse -Directory)",
+      "Bash(node -e \"const fs=require\\('fs'\\); console.log\\('biological_systems1.webp exists:', fs.existsSync\\('public/biological_systems1.webp'\\)\\);\")",
+      "Bash(cmd /c \"cd /d D:\\\\sparkvr && npx tsc --noEmit 2>&1\")",
+      "PowerShell(git add src/app/about/page.tsx)",
+      "PowerShell(git commit -m \"fix: align stats bar items in single row with equal spacing on about page\")",
+      "PowerShell(git push origin main)",
+      "PowerShell(git add src/components/layout/Navbar.tsx)",
+      "PowerShell(git commit -m \"feat: redesign navbar with premium glass sticky design, desktop links, active states\")"
     ]
   }
 }
