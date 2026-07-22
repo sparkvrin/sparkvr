@@ -13,6 +13,8 @@ import CTASection from "@/components/sections/CTASection";
 import BannerSection from "@/components/sections/BannerSection";
 import VideoScrollSection from "@/components/sections/VideoScrollSection";
 import GlobalParticles from "@/components/GlobalParticles";
+import SchoolLogosSection from "@/components/sections/SchoolLogosSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 export default function Home() {
   const jsonLd = {
@@ -86,10 +88,12 @@ export default function Home() {
       <div id="spark-features">
         <ServicesSection />
       </div>
+      <SchoolLogosSection />
       <div style={{ display: "none" }}>
         <VideoScrollSection />
       </div>
       <SolutionSection />
+      <TestimonialsSection />
 
 
       {/* ═══════════════════════════════════════════

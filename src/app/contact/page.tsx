@@ -7,6 +7,7 @@ import {
   Calendar, Download, ShieldCheck, GraduationCap, Users, School,
   MapPin, User, Phone, Mail, MessageSquare, Lock, Clock, ChevronRight
 } from "lucide-react";
+import ContactForm from "@/components/sections/ContactForm";
 
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -248,29 +249,8 @@ export default function ContactPage() {
               <h3 style={{ fontSize: isMobile ? 26 : 32, fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>Let's start a conversation</h3>
               <div style={{ width: 50, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 48 }} />
 
-              {/* GOOGLE FORM EMBED */}
-              <motion.div
-                {...fadeUp(0.25)}
-                style={{
-                  borderRadius: 24,
-                  overflow: "hidden",
-                  boxShadow: "0 12px 40px rgba(0,26,77,0.08)",
-                  border: "1.5px solid rgba(0,82,204,0.08)",
-                  background: "#f8fafc",
-                  height: isMobile ? 800 : 950,
-                  position: "relative"
-                }}
-              >
-                <iframe
-                  src="https://docs.google.com/forms/d/e/1FAIpQLSfdGt6CDKWD37Hv6iYuOLx_GJJpnhpp5ypAqWTuDdbkyq6Lkw/viewform?embedded=true"
-                  width="100%"
-                  height="100%"
-                  style={{ border: "none", display: "block" }}
-                  title="Experience the Future of Learning with SparkVR"
-                >
-                  Loading…
-                </iframe>
-              </motion.div>
+              {/* CUSTOM CONTACT FORM */}
+              <ContactForm />
             </motion.div>
           </div>
 
