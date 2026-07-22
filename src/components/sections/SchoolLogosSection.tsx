@@ -22,14 +22,24 @@ const LOGOS = [
     name: "Satya Prakash Public School",
     src: "/schoollogos/satya prakash public school.png",
   },
+  {
+    name: "Army Goodwill School",
+    src: "/schoollogos/Army Goodwill School.png",
+  },
+  {
+    name: "Vidyodaya International School",
+    src: "/schoollogos/Vidyodaya international school.png",
+  },
 ];
+
+const TRIPLE_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
 
 export default function SchoolLogosSection() {
   return (
     <section
       style={{
         position: "relative",
-        padding: "80px 20px",
+        padding: "80px 0",
         background: "linear-gradient(to bottom, #d8eaff 0%, #ffffff 100%)",
         overflow: "hidden",
       }}
@@ -38,6 +48,7 @@ export default function SchoolLogosSection() {
         style={{
           maxWidth: 1200,
           margin: "0 auto",
+          padding: "0 20px",
           position: "relative",
           zIndex: 10,
         }}
@@ -80,23 +91,35 @@ export default function SchoolLogosSection() {
             Empowering Classrooms in Leading Institutions
           </motion.h3>
         </div>
+      </div>
 
-        {/* Logos Grid */}
+      {/* Infinite Logo Marquee Carousel */}
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          overflow: "hidden",
+          padding: "24px 0",
+          zIndex: 10,
+          WebkitMaskImage: "linear-gradient(to right, transparent, white 15%, white 85%, transparent)",
+          maskImage: "linear-gradient(to right, transparent, white 15%, white 85%, transparent)",
+        }}
+      >
         <div
+          className="marquee-track"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            display: "flex",
             gap: 24,
-            justifyContent: "center",
+            width: "max-content",
+            padding: "12px 0",
           }}
         >
-          {LOGOS.map((logo, i) => (
-            <motion.div
+          {TRIPLE_LOGOS.map((logo, i) => (
+            <div
               key={i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: EASE }}
+              style={{
+                flex: "0 0 240px",
+              }}
             >
               <motion.div
                 whileHover={{
@@ -113,7 +136,7 @@ export default function SchoolLogosSection() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  height: 180,
+                  height: 150,
                   boxShadow: "0 10px 30px rgba(0, 40, 120, 0.03)",
                   border: "1.5px solid rgba(220, 235, 255, 0.7)",
                   cursor: "default",
@@ -132,7 +155,7 @@ export default function SchoolLogosSection() {
                   }}
                 />
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -162,6 +185,23 @@ export default function SchoolLogosSection() {
           zIndex: 1,
         }}
       />
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes marquee-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.3333%);
+          }
+        }
+        .marquee-track {
+          animation: marquee-scroll 35s linear infinite;
+        }
+        .marquee-track:hover {
+          animation-play-state: paused;
+        }
+      `}} />
     </section>
   );
 }
