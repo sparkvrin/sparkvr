@@ -380,7 +380,7 @@ export default function LearningOutcomePage() {
               </div>
               <div>
                 <p style={{ fontSize: isMobile ? 12 : 13, color: "#475569", fontWeight: 500, margin: "0 0 6px", lineHeight: 1.65 }}>
-                  Research in experiential learning frameworks consistently shows that active engagement improves retention and understanding.
+                  Research in experiential learning frameworks consistently shows that active engagement improves retention and understanding. Learn about our solutions for <Link href="/schools" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>schools</Link>, explore our comprehensive <Link href="/curriculum" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, or <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>contact us</Link> to schedule a trial.
                 </p>
                 <p style={{ fontSize: isMobile ? 13 : 14, color: "#2563eb", fontWeight: 800, margin: 0 }}>
                   SparkVR applies this principle responsibly.

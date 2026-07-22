@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 function useScreenWidth() {
@@ -15,7 +16,7 @@ function useScreenWidth() {
   return width;
 }
 import {
-  Package, Building2, BookOpen, ChevronRight, ShieldCheck
+  Package, Building2, BookOpen, ChevronRight, ShieldCheck, Calendar, ArrowRight
 } from "lucide-react";
 
 const FacebookIcon = () => (
@@ -47,6 +48,8 @@ export default function Footer() {
   const screenWidth = useScreenWidth();
   const isMobile = screenWidth < 768;
   const isTablet = screenWidth >= 768 && screenWidth < 1024;
+  const pathname = usePathname();
+  const showPreFooterCTA = pathname !== "/contact" && pathname !== "/";
 
   return (
     <footer style={{
@@ -54,7 +57,7 @@ export default function Footer() {
       position: "relative",
       overflow: "hidden",
       paddingTop: isMobile ? 48 : 80,
-      paddingBottom: isMobile ? 32 : 40,
+      paddingBottom: isMobile ? 88 : 40, // Add bottom space on mobile to not overlap with the bottom action bar
       fontFamily: "'VAG Rounded', sans-serif"
     }}>
       {/* ── Background Graphics (Arcs & Floating Orbs) ── */}
@@ -108,6 +111,78 @@ export default function Footer() {
 
 
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 20px" : isTablet ? "0 32px" : "0 60px", position: "relative", zIndex: 10 }}>
+
+        {showPreFooterCTA && (
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.215, 0.610, 0.355, 1.000] }}
+            style={{
+              background: "linear-gradient(135deg, #0b1528 0%, #00225c 100%)",
+              borderRadius: isMobile ? 24 : 32,
+              padding: isMobile ? "32px 24px" : "48px 60px",
+              boxShadow: "0 20px 50px rgba(0,40,100,0.18), inset 0 1px 1px rgba(255,255,255,0.1)",
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              justifyContent: "space-between",
+              alignItems: isMobile ? "flex-start" : "center",
+              gap: 32,
+              marginBottom: isMobile ? 48 : 80,
+              position: "relative",
+              overflow: "hidden",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            {/* Floating accent lights */}
+            <div style={{ position: "absolute", top: "-20%", right: "-10%", width: 250, height: 250, borderRadius: "50%", background: "rgba(56,189,248,0.15)", filter: "blur(50px)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: "-30%", left: "-10%", width: 200, height: 200, borderRadius: "50%", background: "rgba(99,102,241,0.12)", filter: "blur(50px)", pointerEvents: "none" }} />
+
+            {/* Text content */}
+            <div style={{ position: "relative", zIndex: 2, maxWidth: isMobile ? "100%" : "65%" }}>
+              <span style={{ fontSize: 11, fontWeight: 900, color: "#38bdf8", letterSpacing: "0.15em", textTransform: "uppercase", display: "block", marginBottom: 12 }}>
+                BRING SPARKVR TO YOUR INSTITUTION
+              </span>
+              <h3 style={{ fontSize: isMobile ? 22 : 32, fontWeight: 800, color: "#ffffff", lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: 12, textTransform: "none" }}>
+                Ready to transform your school's learning experience?
+              </h3>
+              <p style={{ fontSize: isMobile ? 13.5 : 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.5, fontWeight: 500, margin: 0 }}>
+                Schedule a guided virtual reality demonstration for your academic team. Experience firsthand how our curriculum-aligned interactive modules make learning observable and engaging.
+              </p>
+            </div>
+
+            {/* Button */}
+            <div style={{ position: "relative", zIndex: 2, flexShrink: 0, width: isMobile ? "100%" : "auto" }}>
+              <Link href="/contact#contact-form" style={{ textDecoration: "none" }}>
+                <motion.div
+                  whileHover={{ scale: 1.05, boxShadow: "0 16px 40px rgba(56,189,248,0.4)" }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
+                    color: "#ffffff",
+                    padding: "16px 36px",
+                    borderRadius: 40,
+                    fontSize: 14,
+                    fontWeight: 800,
+                    letterSpacing: "0.08em",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    boxShadow: "0 8px 30px rgba(29,78,216,0.35)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 10,
+                  }}
+                >
+                  <Calendar size={16} />
+                  <span>BOOK A FREE DEMO</span>
+                  <ArrowRight size={16} />
+                </motion.div>
+              </Link>
+            </div>
+          </motion.div>
+        )}
 
         {/* ── Top Main Content ── */}
         <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", flexWrap: isMobile ? "nowrap" : "wrap", justifyContent: "space-between", gap: isMobile ? 32 : 60, marginBottom: isMobile ? 36 : 60 }}>
@@ -182,7 +257,7 @@ export default function Footer() {
                 title: "Resources", icon: BookOpen,
                 links: [
                   { label: "ABOUT", href: "/about" },
-                  { label: "CONTACT", href: "/contact" }
+                  { label: "CONTACT", href: "/contact#contact-form" }
                 ]
               }
             ].map((col, idx) => (
@@ -211,13 +286,29 @@ export default function Footer() {
                           whileHover={{ x: 6, color: "#2563eb" }}
                           style={{
                             display: "flex", justifyContent: "space-between", alignItems: "center",
-                            fontSize: isMobile ? 12 : 15, color: "#475569", fontWeight: 500,
+                            fontSize: isMobile ? 12 : 15,
+                            color: link.label === "CONTACT" ? "#2563eb" : "#475569",
+                            fontWeight: link.label === "CONTACT" ? 700 : 500,
                             cursor: "pointer", borderBottom: "1px solid rgba(59,130,246,0.08)", paddingBottom: isMobile ? 8 : 10,
                             transition: "color 0.2s"
                           }}
                         >
-                          {link.label}
-                          <ChevronRight size={14} color="#94a3b8" />
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <span>{link.label}</span>
+                            {link.label === "CONTACT" && (
+                              <span style={{
+                                fontSize: 9,
+                                background: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)",
+                                color: "#2563eb",
+                                padding: "2px 8px",
+                                borderRadius: 10,
+                                border: "1px solid rgba(37,99,235,0.15)",
+                                fontWeight: 800,
+                                letterSpacing: "0.05em",
+                              }}>GET IN TOUCH</span>
+                            )}
+                          </div>
+                          <ChevronRight size={14} color={link.label === "CONTACT" ? "#2563eb" : "#94a3b8"} />
                         </motion.div>
                       </Link>
                     </li>

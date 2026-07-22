@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 function useScreenWidth() {
@@ -116,6 +117,9 @@ export default function TimetablePage() {
                 Designed to fit<br />into the school day <br />
                 <span style={{ color: "#4f46e5" }}>seamlessly.</span>
               </motion.h1>
+              <motion.p {...fadeUp(0.25)} style={{ fontSize: 15, color: COLORS.textGray, lineHeight: 1.6, marginBottom: 24, fontWeight: 500 }}>
+                SparkVR integrates perfectly into your school's timetable without disrupting daily classes. Explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see how it sets up in <Link href="/schools" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>schools</Link>, or read our guide for <Link href="/teachers" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>teachers</Link> facilitating these sessions.
+              </motion.p>
 
               <motion.div
                 initial="hidden"

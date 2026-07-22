@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   FlaskConical, Calculator, Landmark, Globe, Settings,
@@ -250,7 +251,7 @@ export default function SubjectExpansionPage() {
               </motion.h1>
 
               <motion.p {...fadeLeft(0.3)} style={{ fontSize: "15px", color: COLORS.navy, lineHeight: 1.5, marginBottom: 32, maxWidth: 420, fontWeight: 600 }}>
-                SparkVR is expanding across disciplines to build deeper understanding through immersive experiences.
+                SparkVR is expanding across disciplines to build deeper understanding through immersive experiences. Check out our core <Link href="/curriculum" style={{ color: COLORS.blue, fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see how we deploy in <Link href="/schools" style={{ color: COLORS.blue, fontWeight: 700, textDecoration: "underline" }}>schools</Link>, or explore resources for <Link href="/teachers" style={{ color: COLORS.blue, fontWeight: 700, textDecoration: "underline" }}>teachers</Link> to get started.
               </motion.p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 40 }}>

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { School, BookOpen, Handshake, Quote, Users, GraduationCap, TrendingUp, Shield, Target, Puzzle, ShieldCheck, BarChart3, Rocket, Star, Globe, ChevronRight } from "lucide-react";
 import SparkButton from "@/components/SparkButton";
@@ -228,7 +229,7 @@ export default function AboutPage() {
               transition={{ delay: 0.36, duration: 0.5 }}
               style={{ fontSize: 17, color: "#475569", lineHeight: 1.55, marginBottom: 22, maxWidth: 500 }}
             >
-              Incubated at <strong style={{ color: "#0052cc" }}>IIT Indore</strong> with a pedagogy-first philosophy and long-term institutional partnerships.
+              Incubated at <strong style={{ color: "#0052cc" }}>IIT Indore</strong> with a pedagogy-first philosophy and long-term institutional partnerships. We build immersive tools that deploy directly in <Link href="/schools" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>smart schools</Link> to deliver a robust <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link> across India.
             </motion.p>
 
             {/* Feature List */}

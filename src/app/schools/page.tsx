@@ -12,6 +12,7 @@ import {
   MessageSquare, Truck, Presentation, Rocket, TrendingUp, Puzzle, TabletSmartphone, Lightbulb, Handshake
 } from "lucide-react";
 import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import "./schools.css";
 
 /* ─── ANIMATION VARIANTS ─── */
@@ -58,7 +59,7 @@ export default function SchoolHubPage() {
             </motion.h1>
 
             <motion.p {...fadeUp(0.2)} style={{ fontSize: 16, color: "#475569", lineHeight: 1.65, marginBottom: 36, fontWeight: 500 }}>
-              Built to fit within existing infrastructure,<br />schedules, and teaching systems.
+              Built to fit within existing infrastructure,<br />schedules, and teaching systems. Discover how our <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>structured VR curriculum</Link> enhances student <Link href="/learning-outcome" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>contact our academic team</Link> directly to explore setup options.
             </motion.p>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 20px", marginBottom: 40 }}>

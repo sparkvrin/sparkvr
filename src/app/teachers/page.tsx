@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { motion } from "framer-motion";
 import {
   GraduationCap, Target, Settings, BookOpen, ShieldCheck,
@@ -67,12 +69,13 @@ export default function TeachersPage() {
           </div>
         )}
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: px, position: "relative", zIndex: 2 }}>
+          <Breadcrumbs />
           <div style={{ maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%" }}>
             <motion.h2 {...fadeLeft(0.1)} style={{ fontSize: isMobile ? 28 : isTablet ? 34 : "clamp(32px,4vw,40px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
               Technology that<br /><span style={{ color: "#6366f1" }}>respects teaching.</span>
             </motion.h2>
             <motion.p {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 14 : 16, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 24 }}>
-              SparkVR is designed to support how you teach, engage your students, and achieve your learning goals.
+              SparkVR is designed to support how you teach, engage your students, and achieve your learning goals. Discover our solutions for <Link href="/schools" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>smart schools</Link>, explore our comprehensive <Link href="/curriculum" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see our impact on student <Link href="/learning-outcome" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> to schedule a demo.
             </motion.p>
             <motion.div {...fadeLeft(0.3)} style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 24 }}>
               {[

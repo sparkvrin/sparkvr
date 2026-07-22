@@ -254,7 +254,7 @@ export default function BlogDetailPage() {
                             transition: "all 0.3s ease"
                           }}>
                              <div style={{ height: 140, borderRadius: 16, overflow: "hidden", marginBottom: 20 }}>
-                                <img loading="lazy" decoding="async" src={other.image} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                <img loading="lazy" decoding="async" src={other.image} alt={other.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                              </div>
                              <span style={{ fontSize: 10, fontWeight: 900, color: "#0052cc", letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>
                                {other.category}
