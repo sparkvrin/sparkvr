@@ -1,30 +1,44 @@
 @import "tailwindcss";
 
-/* ─── VAG Rounded Local Fonts ────────────────────────────── */
+/* ─── VAG Rounded Aliased to Google Fonts Nunito CDN for smoothness ──────────────── */
 @font-face {
   font-family: "VAG Rounded";
-  src: url("/fonts/VAGRounded-Thin.ttf") format("truetype");
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDOUhRTM.ttf) format("truetype");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "VAG Rounded";
-  src: url("/fonts/VAGRounded-Light.ttf") format("truetype");
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDOUhRTM.ttf) format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "VAG Rounded";
-  src: url("/fonts/VAGRounded-Bold.ttf") format("truetype");
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTM.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VAG Rounded";
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDGUmRTM.ttf) format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VAG Rounded";
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTM.ttf) format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "VAG Rounded";
-  src: url("/fonts/VAGRounded-Black.ttf") format("truetype");
+  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXI3I6Li01BKofiOc5wtlZ2di8HDBImRTM.ttf) format("truetype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -74,7 +88,7 @@ html { scroll-behavior: smooth; cursor: auto !important; }
 body {
   background: #ffffff;
   color: #001a4d;
-  font-family: "VAG Rounded", sans-serif;
+  font-family: var(--font-nunito), "VAG Rounded", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

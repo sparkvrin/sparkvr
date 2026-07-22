@@ -6,6 +6,14 @@ import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import StickyCTA from "@/components/layout/StickyCTA";
+import { Nunito } from "next/font/google";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -43,10 +51,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* DNS prefetch & preconnect for faster resource loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://sparkvr.com" />
-
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/VAGRounded-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/VAGRounded-Black.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 
         {/* Google Analytics */}
         <Script
@@ -88,7 +92,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           />
         </noscript>
       </head>
-      <body>
+      <body className={nunito.variable}>
         <ScrollProgress />
         <Navbar />
         <main>{children}</main>
