@@ -42,15 +42,17 @@ export async function POST(request: Request) {
 
     // Validation of environment configurations
     if (!publicKey) {
+      console.error("[API/Contact Error] EMAILJS_PUBLIC_KEY environment variable is missing.");
       return NextResponse.json(
-        { error: "EmailJS Public Key is not configured in .env.local" },
+        { error: "Server configuration error: EmailJS Public Key is missing. Please set environment variables on your live server." },
         { status: 500 }
       );
     }
     
     if (!templateId || templateId === "template_xxxxxx") {
+      console.error("[API/Contact Error] EMAILJS_TEMPLATE_ID environment variable is missing or default.");
       return NextResponse.json(
-        { error: "Please configure your actual EMAILJS_TEMPLATE_ID in your .env.local file to receive form submissions." },
+        { error: "Server configuration error: EMAILJS_TEMPLATE_ID is missing or invalid. Please set environment variables on your live server." },
         { status: 500 }
       );
     }
