@@ -31,7 +31,7 @@ export default function Home() {
       "https://sparkvr.in/background.webp"
     ],
     "telephone": "+91 73892 92658",
-    "email": "hello@sparkvr.in",
+    "email": "services@sparkvr.in",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "IIT Indore Campus, Simrol",

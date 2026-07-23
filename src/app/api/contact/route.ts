@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     const privateKey = process.env.EMAILJS_PRIVATE_KEY;
     const serviceId = process.env.EMAILJS_SERVICE_ID || "default_service";
     const templateId = process.env.EMAILJS_TEMPLATE_ID;
-    const recipientEmail = process.env.RECIPIENT_EMAIL || "hello@sparkvr.in";
+    const recipientEmail = process.env.RECIPIENT_EMAIL || "services@sparkvr.in";
 
     // Validation of environment configurations
     if (!publicKey) {

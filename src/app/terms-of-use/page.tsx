@@ -66,7 +66,7 @@ const SECTIONS = [
   },
   {
     title: "11. Contact",
-    body: "For questions regarding these Terms of Use, please contact us at hello@sparkvr.in or call +91 73892 92658.",
+    body: "For questions regarding these Terms of Use, please contact us at services@sparkvr.in or call +91 73892 92658.",
   },
 ];
 

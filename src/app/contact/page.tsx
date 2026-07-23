@@ -238,7 +238,7 @@ export default function ContactPage() {
               }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
                   <InfoItem icon={Phone} label="Call Us" value="+91 73892 92658" />
-                  <InfoItem icon={Mail} label="Email Us" value="hello@sparkvr.in" />
+                  <InfoItem icon={Mail} label="Email Us" value="services@sparkvr.in" />
                   <InfoItem icon={Clock} label="Response Time" value="Within 24 working hours" />
                 </div>
               </div>

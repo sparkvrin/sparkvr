@@ -54,7 +54,7 @@ const SECTIONS = [
   },
   {
     title: "8. Contact Us",
-    body: "If you have any questions about our use of cookies, please contact us at hello@sparkvr.in or call +91 73892 92658.",
+    body: "If you have any questions about our use of cookies, please contact us at services@sparkvr.in or call +91 73892 92658.",
   },
 ];
 

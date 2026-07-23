@@ -50,7 +50,7 @@ const SECTIONS = [
   },
   {
     title: "7. Your Rights",
-    body: "You have the right to access, correct, or delete your personal information. You may also object to or restrict certain types of processing. To exercise these rights, please contact us at hello@sparkvr.in.",
+    body: "You have the right to access, correct, or delete your personal information. You may also object to or restrict certain types of processing. To exercise these rights, please contact us at services@sparkvr.in.",
   },
   {
     title: "8. Children's Privacy",
@@ -62,7 +62,7 @@ const SECTIONS = [
   },
   {
     title: "10. Contact Us",
-    body: "If you have questions about this Privacy Policy or our data practices, please contact us at hello@sparkvr.in or call +91 73892 92658.",
+    body: "If you have questions about this Privacy Policy or our data practices, please contact us at services@sparkvr.in or call +91 73892 92658.",
   },
 ];
 
