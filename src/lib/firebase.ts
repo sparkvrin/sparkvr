@@ -18,8 +18,12 @@ const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Optional client analytics initialization
-if (typeof window !== "undefined") {
+// Optional client analytics initialization — production only. Analytics'
+// IndexedDB connection (used for the Firebase installation ID) gets
+// disrupted by Next.js Fast Refresh reinitializing modules during local
+// dev, throwing a spurious "Database is closing/hidden" runtime error.
+// Dev-time traffic shouldn't be reported to analytics anyway.
+if (typeof window !== "undefined" && process.env.NODE_ENV === "production") {
   isSupported().then((supported) => {
     if (supported) {
       getAnalytics(app);
