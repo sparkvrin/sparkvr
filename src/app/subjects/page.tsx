@@ -5,14 +5,17 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
+  metadataBase: new URL("https://sparkvr.in"),
   title: "SparkVR Subjects | Immersive VR for All Grade Levels",
   description: "Explore SparkVR curriculum modules across Science, Math, History, Geography, Biology and STEM for grades 5-12.",
   keywords: ["VR Curriculum","School Subjects VR","STEM VR","Grade Level VR Content"],
+  alternates: {
+    canonical: "https://sparkvr.in/subjects",
+  },
   openGraph: {
     title: "SparkVR Subjects | Immersive VR for All Grade Levels",
     description: "Explore SparkVR curriculum modules across Science, Math, History, Geography, Biology and STEM for grades 5-12.",
-    url: "https://sparkvr-ten.vercel.app/subjects",
+    url: "https://sparkvr.in/subjects",
     siteName: "SparkVR",
     images: [{ url: "/background.webp", width: 1200, height: 630, alt: "SparkVR Subjects | Immersive VR for All Grade Levels" }],
     locale: "en_US",

@@ -6,6 +6,7 @@ import { Book, Users, FileText, Target, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 function useScreenWidth() {
   const [width, setWidth] = React.useState(1200);
@@ -93,6 +94,10 @@ export default function BlogPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Blog", path: "/blog" }])) }}
+      />
       {/* ── HERO ── */}
       <section style={{
         position: "relative", width: "100%", minHeight: "100vh",

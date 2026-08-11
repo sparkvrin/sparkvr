@@ -2,7 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
   GraduationCap, Target, Settings, BookOpen, ShieldCheck,
@@ -54,15 +56,20 @@ export default function TeachersPage() {
 
   return (
     <main style={{ minHeight: "100vh", background: "#f8f9fc" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "For Teachers", path: "/teachers" }])) }}
+      />
 
       {/* ══ SECTION 1 ══ */}
       <section style={{ padding: isMobile ? "80px 0 60px" : isTablet ? "110px 0 60px" : "120px 0 60px", background: "#ffffff", position: "relative" }}>
         {!isMobile && (
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
             <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              <img loading="eager" decoding="async" fetchPriority="high"
-                src="/teacher1.png" alt="VR Learning"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}
+              <Image
+                src="/teacher1.png" alt="Teacher leading a SparkVR class with students wearing VR headsets"
+                fill priority
+                style={{ objectFit: "cover", objectPosition: "top center" }}
               />
             </div>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: isTablet ? "70%" : "55%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.97) 50%, rgba(255,255,255,0.6) 80%, transparent 100%)" }} />
@@ -71,11 +78,11 @@ export default function TeachersPage() {
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: px, position: "relative", zIndex: 2 }}>
           <Breadcrumbs />
           <div style={{ maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%" }}>
-            <motion.h2 {...fadeLeft(0.1)} style={{ fontSize: isMobile ? 28 : isTablet ? 34 : "clamp(32px,4vw,40px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
+            <motion.h1 {...fadeLeft(0.1)} style={{ fontSize: isMobile ? 28 : isTablet ? 34 : "clamp(32px,4vw,40px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
               Technology that<br /><span style={{ color: "#6366f1" }}>respects teaching.</span>
-            </motion.h2>
+            </motion.h1>
             <motion.p {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 14 : 16, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 24 }}>
-              SparkVR is designed to support how you teach, engage your students, and achieve your learning goals. Discover our solutions for <Link href="/schools" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>smart schools</Link>, explore our comprehensive <Link href="/curriculum" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see our impact on student <Link href="/learning-outcome" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> to schedule a demo.
+              SparkVR is designed to support how you teach, engage your students, and achieve your learning goals. See how it comes together in a <Link href="/schools" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>school VR lab</Link>, explore our comprehensive <Link href="/curriculum" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see our impact on student <Link href="/learning-outcome" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#6366f1", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> to schedule a demo.
             </motion.p>
             <motion.div {...fadeLeft(0.3)} style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 24 }}>
               {[
@@ -129,8 +136,8 @@ export default function TeachersPage() {
         {!isMobile && (
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
             <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              <img loading="lazy" decoding="async" src="/teacher2.png" alt="VR Learning"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+              <Image src="/teacher2.png" alt="Teacher guiding students through a VR lesson in the classroom"
+                fill loading="lazy" style={{ objectFit: "cover", objectPosition: "top center" }} />
             </div>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: isTablet ? "70%" : "55%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.97) 50%, rgba(255,255,255,0.6) 80%, transparent 100%)" }} />
           </div>
@@ -188,8 +195,8 @@ export default function TeachersPage() {
         {!isMobile && (
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
             <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              <img loading="lazy" decoding="async" src="/teacher3.png" alt="VR Learning Flow"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+              <Image src="/teacher3.png" alt="Structured VR classroom flow guided by a teacher using SparkVR"
+                fill loading="lazy" style={{ objectFit: "cover", objectPosition: "top center" }} />
             </div>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: isTablet ? "70%" : "55%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.97) 50%, rgba(255,255,255,0.6) 80%, transparent 100%)" }} />
           </div>
@@ -267,8 +274,8 @@ export default function TeachersPage() {
         {!isMobile && (
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
             <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              <img loading="lazy" decoding="async" src="/teacher4.png" alt="VR Learning Effortless"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+              <Image src="/teacher4.png" alt="Teacher easily running a SparkVR session with minimal setup"
+                fill loading="lazy" style={{ objectFit: "cover", objectPosition: "top center" }} />
             </div>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: isTablet ? "70%" : "55%", background: "linear-gradient(to right, #f8f9fc 0%, rgba(248,249,252,0.97) 50%, rgba(248,249,252,0.6) 80%, transparent 100%)" }} />
           </div>
@@ -358,8 +365,8 @@ export default function TeachersPage() {
         {!isMobile && (
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
             <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              <img loading="lazy" decoding="async" src="/teacher5.png" alt="VR Curriculum Alignment"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+              <Image src="/teacher5.png" alt="Teacher reviewing curriculum-aligned VR lesson content on SparkVR"
+                fill loading="lazy" style={{ objectFit: "cover", objectPosition: "top center" }} />
             </div>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: isTablet ? "70%" : "55%", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.98) 50%, rgba(255,255,255,0.7) 78%, transparent 100%)" }} />
           </div>
@@ -471,8 +478,8 @@ export default function TeachersPage() {
         {!isMobile && (
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
             <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-              <img loading="lazy" decoding="async" src="/teacher6.png" alt="SparkVR Training"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+              <Image src="/teacher6.png" alt="Teacher receiving SparkVR onboarding and training support"
+                fill loading="lazy" style={{ objectFit: "cover", objectPosition: "top center" }} />
             </div>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: isTablet ? "70%" : "55%", background: "linear-gradient(to right, #f8fafc 0%, rgba(248,250,252,0.98) 50%, rgba(248,250,252,0.7) 78%, transparent 100%)" }} />
           </div>
@@ -620,7 +627,7 @@ export default function TeachersPage() {
 
             <div style={{ flex: 1, position: "relative", minHeight: isMobile ? 240 : 420 }}>
               <motion.div {...fadeUp(0.3)} style={{ position: "absolute", inset: 0, borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,0.1)" }}>
-                <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="SparkVR Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <Image src="/sparkvr_classroom.webp" alt="Students taking part in a VR learning session in a SparkVR classroom" fill loading="lazy" style={{ objectFit: "cover", objectPosition: "center" }} />
               </motion.div>
               {!isMobile && (
                 <motion.div

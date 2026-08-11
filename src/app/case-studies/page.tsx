@@ -5,14 +5,17 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
+  metadataBase: new URL("https://sparkvr.in"),
   title: "SparkVR Case Studies | Real Results from Real Schools",
   description: "See how SparkVR has transformed learning outcomes at schools across India. Read case studies on student engagement, concept clarity, and teacher adoption.",
   keywords: ["VR Education Case Studies","SparkVR Success Stories","EdTech Results"],
+  alternates: {
+    canonical: "https://sparkvr.in/case-studies",
+  },
   openGraph: {
     title: "SparkVR Case Studies | Real Results from Real Schools",
     description: "See how SparkVR has transformed learning outcomes at schools across India. Read case studies on student engagement, concept clarity, and teacher adoption.",
-    url: "https://sparkvr-ten.vercel.app/case-studies",
+    url: "https://sparkvr.in/case-studies",
     siteName: "SparkVR",
     images: [{ url: "/background.webp", width: 1200, height: 630, alt: "SparkVR Case Studies | Real Results from Real Schools" }],
     locale: "en_US",

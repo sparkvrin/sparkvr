@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 function useScreenWidth() {
@@ -20,6 +21,7 @@ import {
   Target, BookOpen, Shield, ShieldCheck, Settings, Zap, Archive, WifiOff, Rocket,
   ArrowRight, TrendingUp
 } from "lucide-react";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 const VRIcon = ({ size = 24, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -69,6 +71,10 @@ export default function TimetablePage() {
 
   return (
     <main style={{ minHeight: "100vh", background: "#f8fafc", fontFamily: "'VAG Rounded', sans-serif" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Timetable", path: "/timetable" }])) }}
+      />
 
       {/* ══════════════════════════════════════
           SECTION 1: HERO SECTION (FULL BACKGROUND)
@@ -118,7 +124,7 @@ export default function TimetablePage() {
                 <span style={{ color: "#4f46e5" }}>seamlessly.</span>
               </motion.h1>
               <motion.p {...fadeUp(0.25)} style={{ fontSize: 15, color: COLORS.textGray, lineHeight: 1.6, marginBottom: 24, fontWeight: 500 }}>
-                SparkVR integrates perfectly into your school's timetable without disrupting daily classes. Explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see how it sets up in <Link href="/schools" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>schools</Link>, or read our guide for <Link href="/teachers" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>teachers</Link> facilitating these sessions.
+                SparkVR integrates perfectly into your school's timetable without disrupting daily classes. Explore our NCERT-aligned <Link href="/curriculum" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see a full <Link href="/schools" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>VR lab implementation for schools</Link>, or read our guide for <Link href="/teachers" style={{ color: "#4f46e5", fontWeight: 700, textDecoration: "underline" }}>teachers</Link> facilitating these sessions.
               </motion.p>
 
               <motion.div
@@ -325,11 +331,11 @@ export default function TimetablePage() {
               style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, position: "relative", zIndex: 2 }}
             >
               {[
-                { time: "5 MIN", title: "1. Introduction", desc: "Teacher introduces the\ntopic and learning\nobjectives.", color: COLORS.blue, icon: FileText, img: "/section2/session_image_1.webp" },
-                { time: "20 MIN", title: "2. VR Experience", desc: "Students explore the concept\nthrough immersive,\ninteractive content.", color: COLORS.purple, icon: null, isVR: true, img: "/section2/session_image_2.webp" },
-                { time: "5 MIN", title: "3. Teacher Guidance", desc: "Teacher leads a guided\ndiscussion and checks\nunderstanding.", color: COLORS.green, icon: Users, img: "/section2/session_image_3.webp" },
-                { time: "5 MIN", title: "4. Discussion", desc: "Students share observations,\nask questions and connect\nideas.", color: COLORS.orange, icon: MessageCircle, img: "/section2/session_image_4.webp" },
-                { time: "5 MIN", title: "5. Concept Reinforcement", desc: "Key takeaways are\nreinforced with a quick\nrecap and reflection.", color: COLORS.blue, icon: CheckCircle, img: "/section2/session_image_5.webp" },
+                { time: "5 MIN", title: "1. Introduction", imgAlt: "Teacher introducing the lesson topic before a SparkVR session", desc: "Teacher introduces the\ntopic and learning\nobjectives.", color: COLORS.blue, icon: FileText, img: "/section2/session_image_1.webp" },
+                { time: "20 MIN", title: "2. VR Experience", imgAlt: "Students exploring an immersive VR lesson with SparkVR headsets", desc: "Students explore the concept\nthrough immersive,\ninteractive content.", color: COLORS.purple, icon: null, isVR: true, img: "/section2/session_image_2.webp" },
+                { time: "5 MIN", title: "3. Teacher Guidance", imgAlt: "Teacher guiding classroom discussion during a SparkVR session", desc: "Teacher leads a guided\ndiscussion and checks\nunderstanding.", color: COLORS.green, icon: Users, img: "/section2/session_image_3.webp" },
+                { time: "5 MIN", title: "4. Discussion", imgAlt: "Students discussing what they experienced in the VR lesson", desc: "Students share observations,\nask questions and connect\nideas.", color: COLORS.orange, icon: MessageCircle, img: "/section2/session_image_4.webp" },
+                { time: "5 MIN", title: "5. Concept Reinforcement", imgAlt: "Teacher reinforcing key concepts after a SparkVR classroom session", desc: "Key takeaways are\nreinforced with a quick\nrecap and reflection.", color: COLORS.blue, icon: CheckCircle, img: "/section2/session_image_5.webp" },
               ].map((step, i) => (
                 <motion.div
                   key={i}
@@ -357,8 +363,8 @@ export default function TimetablePage() {
                   <p style={{ fontSize: 13, color: COLORS.textGray, lineHeight: 1.5, marginBottom: 30, padding: "0 10px", flexGrow: 1, whiteSpace: "pre-line" }}>{step.desc}</p>
 
                   {/* Image */}
-                  <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }} style={{ width: "100%", height: isMobile ? 120 : 160, borderRadius: 16, overflow: "hidden", marginTop: "auto", transition: "box-shadow 0.3s" }}>
-                    <img loading="lazy" decoding="async" src={step.img} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <motion.div whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }} style={{ width: "100%", height: isMobile ? 120 : 160, borderRadius: 16, overflow: "hidden", marginTop: "auto", transition: "box-shadow 0.3s", position: "relative" }}>
+                    <Image src={step.img} alt={step.imgAlt} fill loading="lazy" style={{ objectFit: "cover" }} />
                   </motion.div>
 
                 </motion.div>
@@ -512,8 +518,8 @@ export default function TimetablePage() {
 
               <div style={{ display: "flex", gap: 16, alignItems: "stretch", flexDirection: isMobile ? "column" : "row" }}>
                 {/* Main Classroom Image */}
-                <motion.div {...scaleIn(0.4)} style={{ flex: 1, borderRadius: 24, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", minHeight: isMobile ? 200 : undefined }}>
-                  <img loading="lazy" decoding="async" src="/extracted_classroom_image.webp" alt="Classroom Rotation" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <motion.div {...scaleIn(0.4)} style={{ flex: 1, borderRadius: 24, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", minHeight: isMobile ? 200 : undefined, position: "relative" }}>
+                  <Image src="/extracted_classroom_image.webp" alt="Students rotating through SparkVR stations in small batch groups" fill loading="lazy" style={{ objectFit: "cover" }} />
                 </motion.div>
 
                 {/* Vertical Panel */}
@@ -646,11 +652,11 @@ export default function TimetablePage() {
             style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(1, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: 20, marginBottom: 30 }}
           >
             {[
-              { icon: WifiOff, color: COLORS.purple, title: "No Internet\nDependency", desc: "Works offline once content is installed. Reliable learning, every time.", img: "/section5/operational_image_1.webp" },
-              { icon: Archive, color: COLORS.green, title: "Safe Storage", desc: "Compact, durable and easy to store in classroom cabinets.", img: "/section5/operational_image_2.webp" },
-              { icon: Zap, color: COLORS.orange, title: "Easy Charging", desc: "Quick charging with organized docks. Ready whenever you are.", img: "/section5/operational_image_3.webp" },
-              { icon: Settings, color: COLORS.blue, title: "Predictable\nMaintenance", desc: "Designed for long-term use with minimal upkeep and maximum reliability.", img: "/section5/operational_image_4.webp" },
-              { icon: Rocket, color: COLORS.purple, title: "Quick\nDeployment", desc: "Simple setup process. Get started in hours, not weeks.", img: "/section5/operational_image_5.webp" },
+              { icon: WifiOff, color: COLORS.purple, title: "No Internet\nDependency", imgAlt: "SparkVR headsets running offline without internet dependency", desc: "Works offline once content is installed. Reliable learning, every time.", img: "/section5/operational_image_1.webp" },
+              { icon: Archive, color: COLORS.green, title: "Safe Storage", imgAlt: "SparkVR headsets stored safely in a classroom storage cart", desc: "Compact, durable and easy to store in classroom cabinets.", img: "/section5/operational_image_2.webp" },
+              { icon: Zap, color: COLORS.orange, title: "Easy Charging", imgAlt: "SparkVR headsets charging in an organized docking station", desc: "Quick charging with organized docks. Ready whenever you are.", img: "/section5/operational_image_3.webp" },
+              { icon: Settings, color: COLORS.blue, title: "Predictable\nMaintenance", imgAlt: "SparkVR equipment undergoing routine maintenance checks", desc: "Designed for long-term use with minimal upkeep and maximum reliability.", img: "/section5/operational_image_4.webp" },
+              { icon: Rocket, color: COLORS.purple, title: "Quick\nDeployment", imgAlt: "SparkVR lab equipment ready for quick deployment at a school", desc: "Simple setup process. Get started in hours, not weeks.", img: "/section5/operational_image_5.webp" },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -671,7 +677,9 @@ export default function TimetablePage() {
 
                 {/* Bottom: Image */}
                 <motion.div whileHover={{ scale: 1.02 }} style={{ padding: isMobile ? "0 20px 20px 20px" : "0 16px 16px 16px", overflow: "hidden" }}>
-                  <img loading="lazy" decoding="async" src={card.img} alt={card.title} style={{ width: "100%", height: isMobile ? 220 : 160, objectFit: "cover", borderRadius: 16, display: "block" }} />
+                  <div style={{ position: "relative", width: "100%", height: isMobile ? 220 : 160, borderRadius: 16, overflow: "hidden" }}>
+                    <Image src={card.img} alt={card.imgAlt} fill loading="lazy" style={{ objectFit: "cover" }} />
+                  </div>
                 </motion.div>
               </motion.div>
             ))}

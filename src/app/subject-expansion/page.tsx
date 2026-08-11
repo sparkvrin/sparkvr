@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   FlaskConical, Calculator, Landmark, Globe, Settings,
@@ -10,6 +11,7 @@ import {
   ChevronRight, School, ThumbsUp, ClipboardList, Box,
   Calendar, MessageSquare, Heart, Dna, Atom, Mountain
 } from "lucide-react";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 // Exact colors matching the image design
 const COLORS = {
@@ -140,6 +142,8 @@ const floatAnim = {
   animate: {}
 };
 
+const MotionImage = motion.create(Image);
+
 const ArcIcon = ({ icon: Icon, title, color, top, left, delay }: any) => (
   <div style={{ position: "absolute", top, left, transform: "translate(-50%, -50%)", zIndex: 3 }}>
     <motion.div
@@ -207,6 +211,10 @@ export default function SubjectExpansionPage() {
 
   return (
     <main style={{ fontFamily: "'VAG Rounded', sans-serif", background: "#f8f9fc" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Subject Expansion", path: "/subject-expansion" }])) }}
+      />
 
       {/* ══════════════════════════════════════
           SECTION 1: HERO (Subject Expansion)
@@ -370,14 +378,15 @@ export default function SubjectExpansionPage() {
               <div style={{ position: "absolute", bottom: "0%", left: "50%", transform: "translateX(-50%)", width: "90%", height: "80%", background: "radial-gradient(circle at bottom, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0) 60%)", zIndex: 1, pointerEvents: "none" }} />
 
               {/* Boy Image */}
-              <motion.img loading="lazy" decoding="async"
+              <MotionImage loading="lazy"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: EASE }}
                 src="/student_proper.webp"
-                alt="Student in VR"
-                style={{ position: "relative", zIndex: 2, maxHeight: "100%", objectFit: "contain", filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.15))" }}
+                alt="Student wearing a SparkVR headset exploring an immersive 3D lesson"
+                fill
+                style={{ zIndex: 2, objectFit: "contain", filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.15))" }}
               />
 
               {/* Arc Icons */}
@@ -435,9 +444,9 @@ export default function SubjectExpansionPage() {
                     <motion.div
                       variants={{ hover: { scale: 1.03 } }}
                       transition={{ duration: 0.4 }}
-                      style={{ width: "100%", height: 160, borderRadius: 12, overflow: "hidden", background: "#f1f5f9" }}
+                      style={{ width: "100%", height: 160, borderRadius: 12, overflow: "hidden", background: "#f1f5f9", position: "relative" }}
                     >
-                      <img loading="lazy" decoding="async" src={card.image} alt={card.subject} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <Image loading="lazy" src={card.image} alt={`${card.subject} VR lesson preview for SparkVR curriculum`} fill style={{ objectFit: "cover" }} />
                     </motion.div>
                   </div>
 
@@ -630,12 +639,13 @@ export default function SubjectExpansionPage() {
                 >
                   {/* Image Section */}
                   <div style={{ position: "relative", height: 220, overflow: "hidden", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
-                    <motion.img loading="lazy" decoding="async"
+                    <MotionImage loading="lazy"
                       variants={{ hover: { scale: 1.15 } }}
                       transition={{ duration: 0.5, ease: "easeOut" as const }}
                       src={card.image}
-                      alt={card.title}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      alt={`${card.title} immersive VR lesson example for ${card.subject.toLowerCase()}`}
+                      fill
+                      style={{ objectFit: "cover" }}
                     />
                     {/* Top Left Badge */}
                     <div style={{ position: "absolute", top: 12, left: 12, background: "rgba(255, 255, 255, 0.8)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)", border: `1px solid ${card.color}40` }}>
@@ -821,17 +831,20 @@ export default function SubjectExpansionPage() {
                 </svg>
 
                 {/* Student image – centred at (400, 345) */}
-                <motion.img loading="lazy" decoding="async"
+                <MotionImage loading="lazy"
                   initial={{ opacity: 0, scale: 0.85, x: "-50%", y: "-48%" }}
                   whileInView={{ opacity: 1, scale: 1, x: "-50%", y: "-48%" }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: EASE, delay: 0.3 }}
                   src="/studenttap.webp"
-                  alt="Student in VR"
+                  alt="Student tapping and interacting with a SparkVR headset interface"
+                  width={612}
+                  height={408}
                   style={{
                     position: "absolute",
                     top: "56%", left: "40%",
                     height: "60%",
+                    width: "auto",
                     objectFit: "contain",
                     zIndex: 2,
                     filter: "drop-shadow(0 20px 44px rgba(0,0,0,0.16))"
@@ -926,8 +939,9 @@ export default function SubjectExpansionPage() {
                         overflow: "hidden",
                         border: "3px solid rgba(255,255,255,0.78)",
                         boxShadow: `0 6px 18px rgba(0,0,0,0.12), inset 0 2px 4px rgba(0,0,0,0.06)`,
+                        position: "relative",
                       }}>
-                        <img loading="lazy" decoding="async" src={node.image} alt={node.subject} style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.12)" }} />
+                        <Image loading="lazy" src={node.image} alt={`${node.subject} 3D VR learning icon`} fill style={{ objectFit: "cover", transform: "scale(1.12)" }} />
                       </div>
                     </motion.div>
                   </motion.div>
@@ -1240,7 +1254,7 @@ export default function SubjectExpansionPage() {
 
               {/* The Image Wrapper */}
               <div style={{ width: isMobile ? 240 : 360, height: isMobile ? 240 : 360, borderRadius: "50%", background: "#e2e8f0", overflow: "hidden", position: "relative", zIndex: 1, boxShadow: "0 30px 60px rgba(0,0,0,0.1)" }}>
-                <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="Teacher and students using VR" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <Image loading="lazy" src="/sparkvr_classroom.webp" alt="Teacher guiding students through a SparkVR headset session in a school classroom" fill style={{ objectFit: "cover" }} />
               </div>
 
               {/* Orbiting Icons — desktop only */}
@@ -1333,8 +1347,8 @@ export default function SubjectExpansionPage() {
             {/* Stats */}
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: isMobile ? 16 : 0, justifyContent: "space-between", flex: 1 }}>
               {[
-                { val: "500+", text: "Schools\nOnboarded", icon: School, color: "#3b82f6" },
-                { val: "1M+", text: "Students\nImpacted", icon: Users, color: "#10b981" },
+                { val: "260+", text: "Schools\nOnboarded", icon: School, color: "#3b82f6" },
+                { val: "10,000+", text: "Students\nImpacted", icon: Users, color: "#10b981" },
                 { val: "2000+", text: "Immersive Modules\nand Growing", icon: Eye, color: "#8b5cf6" },
                 { val: "98%", text: "Teacher\nSatisfaction", icon: ThumbsUp, color: "#f59e0b" },
                 { val: "40%", text: "Improvement in\nConcept Retention", icon: TrendingUp, color: "#ec4899" }
@@ -1538,7 +1552,7 @@ export default function SubjectExpansionPage() {
                   </svg>
 
                   {/* The Transparent Boy Image */}
-                  <img loading="lazy" decoding="async" src="/student_proper.webp" alt="Student experiencing VR" style={{ width: "100%", height: "100%", objectFit: "cover", position: "relative", zIndex: 2 }} />
+                  <Image loading="lazy" src="/student_proper.webp" alt="Student immersed in a SparkVR virtual reality lesson, surrounded by floating 3D subject icons" fill style={{ objectFit: "cover", zIndex: 2 }} />
                 </div>
 
                 {/* Floating Bottom Card */}

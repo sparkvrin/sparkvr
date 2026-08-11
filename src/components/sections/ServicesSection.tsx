@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
 
 function useScreenWidth() {
@@ -57,11 +58,11 @@ function MedalIcon() {
 /* ─────────────────────────────────────────────────────────
    THE PROBLEM  —  subject image floaters
 ───────────────────────────────────────────────────────── */
-const imgStyle: React.CSSProperties = { width: "100%", height: "100%", objectFit: "contain" };
-function ForcesSVG() { return <img loading="lazy" decoding="async" src="/forces.webp" alt="Forces" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(29,78,216,0.22))" }} />; }
-function AnatomySVG() { return <img loading="lazy" decoding="async" src="/human_anatomy12.webp" alt="Anatomy" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(220,38,38,0.24))" }} />; }
-function CellSVG() { return <img loading="lazy" decoding="async" src="/cell1.webp" alt="Cell" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(109,40,217,0.24))" }} />; }
-function PlantCellSVG() { return <img loading="lazy" decoding="async" src="/biological_systems1.webp" alt="Bio" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(21,128,61,0.24))" }} />; }
+const imgStyle: React.CSSProperties = { objectFit: "contain" };
+function ForcesSVG() { return <Image fill loading="lazy" src="/forces.webp" alt="Physics forces VR learning module" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(29,78,216,0.22))" }} />; }
+function AnatomySVG() { return <Image fill loading="lazy" src="/human_anatomy12.webp" alt="Human anatomy VR learning module" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(220,38,38,0.24))" }} />; }
+function CellSVG() { return <Image fill loading="lazy" src="/cell1.webp" alt="Cell structure VR learning module" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(109,40,217,0.24))" }} />; }
+function PlantCellSVG() { return <Image fill loading="lazy" src="/biological_systems1.webp" alt="Biological systems VR learning module" style={{ ...imgStyle, filter: "drop-shadow(0 4px 14px rgba(21,128,61,0.24))" }} />; }
 
 function SubjectBubble({ label, children, pos, delay, dir = -1, w = 210 }: {
   label: string; children: React.ReactNode; pos: React.CSSProperties;
@@ -399,18 +400,17 @@ export default function ServicesSection() {
               flex: 1, position: "relative", overflow: "hidden", minHeight: "100vh",
               zIndex: 2,
             }}>
-              <img loading="lazy" decoding="async" src="/student.webp" alt="Student"
+              <Image loading="lazy" src="/student.webp" alt="Student wearing a VR headset in a SparkVR classroom session" width={1536} height={1024}
                 style={{
                   position: "absolute", bottom: 0, left: "67.5%", transform: "translateX(-50%)",
-                  height: isTablet ? "42%" : "48%",
+                  height: isTablet ? "42%" : "48%", width: "auto",
                   objectFit: "contain", objectPosition: "bottom center", zIndex: 6, pointerEvents: "none",
                   filter: "drop-shadow(0 30px 60px rgba(0,40,130,0.25))"
                 }}
               />
               <div style={{ position: "absolute", top: "28%", left: "67.5%", transform: "translate(-50%,-50%)", zIndex: 7, pointerEvents: "none" }}>
-                <motion.img loading="lazy" decoding="async"
-                  animate={{}}
-                  src="/quastion.webp" alt="Question cloud"
+                <Image loading="lazy"
+                  src="/quastion.webp" alt="Question mark cloud graphic representing abstract concepts before VR learning" width={1024} height={1024}
                   style={{ width: isTablet ? 200 : 260, height: "auto", filter: "drop-shadow(0 0 32px rgba(180,220,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.75))" }}
                 />
               </div>
@@ -619,7 +619,7 @@ export default function ServicesSection() {
                           whileHover={{ scale: 1.08 }}
                           style={{ width: 152, height: 152, borderRadius: "50%", background: "linear-gradient(160deg,#e8f4ff 0%,#d8eeff 100%)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 6px 28px rgba(59,130,246,0.28)" }}
                         >
-                          <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR" style={{ width: 112, height: "auto", objectFit: "contain" }} />
+                          <Image loading="lazy" src="/logo.webp" alt="SparkVR logo" width={4096} height={4096} style={{ width: 112, height: "auto", objectFit: "contain" }} />
                         </motion.div>
                       </div>
                     </div>

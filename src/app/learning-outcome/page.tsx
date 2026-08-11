@@ -11,6 +11,8 @@ import {
   HelpCircle, Compass, Smile, Heart, Calendar
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -151,6 +153,10 @@ export default function LearningOutcomePage() {
 
   return (
     <main style={{ minHeight: "100vh", background: "#ffffff", fontFamily: "'VAG Rounded', sans-serif" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Learning Outcome", path: "/learning-outcome" }])) }}
+      />
 
       {/* ── HERO ── */}
       <section style={{
@@ -203,7 +209,7 @@ export default function LearningOutcomePage() {
             {/* Floating metric badges */}
             {[
               { val: "82%", label: "Concept Clarity", color: "#2563eb", bg: "rgba(255,255,255,0.92)", x: "58%", y: "12%", delay: 0 },
-              { val: "500+", label: "Schools", color: "#7c3aed", bg: "rgba(255,255,255,0.92)", x: "84%", y: "20%", delay: 0.8 },
+              { val: "260+", label: "Schools", color: "#7c3aed", bg: "rgba(255,255,255,0.92)", x: "84%", y: "20%", delay: 0.8 },
               { val: "76%", label: "Better Retention", color: "#059669", bg: "rgba(255,255,255,0.92)", x: "91%", y: "50%", delay: 1.5 },
               { val: "430+", label: "Modules", color: "#ea580c", bg: "rgba(255,255,255,0.92)", x: "62%", y: "80%", delay: 0.4 },
             ].map((badge, i) => (
@@ -725,12 +731,14 @@ export default function LearningOutcomePage() {
           {isMobile && (
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}
-              style={{ width: "100%", height: 260, overflow: "hidden" }}
+              style={{ width: "100%", height: 260, overflow: "hidden", position: "relative" }}
             >
-              <img
+              <Image
                 src="/learingbackground4.png"
-                alt="SparkVR classroom impact"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+                alt="Students using SparkVR headsets in a classroom, showing visible engagement and hands-on VR learning"
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover", objectPosition: "center top" }}
               />
             </motion.div>
           )}

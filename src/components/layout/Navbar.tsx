@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
@@ -62,9 +63,11 @@ export default function Navbar() {
         }}>
           {/* LOGO */}
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <img loading="lazy" decoding="async"
+            <Image loading="lazy"
               src="/logo1.png"
-              alt="SparkVR"
+              alt="SparkVR logo"
+              width={512}
+              height={330}
               style={{ height: isMobile ? 40 : 52, width: "auto", objectFit: "contain" }}
             />
           </Link>

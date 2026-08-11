@@ -9,10 +9,13 @@ import {
   User, UserCheck, LayoutDashboard, BatteryCharging, ClipboardList,
   MousePointerClick, BarChart, BadgeCheck, Plug, Package, Maximize,
   MonitorPlay, BookOpen, Target, MousePointer2, Clock, Heart, RefreshCw, BarChart2,
-  MessageSquare, Truck, Presentation, Rocket, TrendingUp, Puzzle, TabletSmartphone, Lightbulb, Handshake
+  MessageSquare, Truck, Presentation, Rocket, TrendingUp, Puzzle, TabletSmartphone, Lightbulb, Handshake,
+  Wifi, HelpCircle, ChevronDown, Layers
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import "./schools.css";
 
 /* ─── ANIMATION VARIANTS ─── */
@@ -42,6 +45,10 @@ const scaleUp = (delay = 0) => ({
 export default function SchoolHubPage() {
   return (
     <main className="schools-main">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "For Schools", path: "/schools" }])) }}
+      />
 
       {/* ══════════════════════════════════════
           HERO SECTION  —  32% text | 68% image
@@ -53,13 +60,13 @@ export default function SchoolHubPage() {
           <div style={{ position: "relative" }}>
 
             <motion.h1 {...fadeLeft(0.1)} style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 20, margin: "0 0 20px 0" }}>
-              A VR Lab designed <br />
-              for real schools<br />
-              not future fantasies.
+              A Curriculum-Aligned <br />
+              VR Lab for Schools<br />
+              built for real classrooms.
             </motion.h1>
 
             <motion.p {...fadeUp(0.2)} style={{ fontSize: 16, color: "#475569", lineHeight: 1.65, marginBottom: 36, fontWeight: 500 }}>
-              Built to fit within existing infrastructure,<br />schedules, and teaching systems. Discover how our <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>structured VR curriculum</Link> enhances student <Link href="/learning-outcome" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>contact our academic team</Link> directly to explore setup options.
+              One of the growing number of VR labs in schools, built to fit within existing infrastructure,<br />schedules, and teaching systems. Discover how our <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>structured VR curriculum</Link> enhances student <Link href="/learning-outcome" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>contact our academic team</Link> directly to explore setup options.
             </motion.p>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 20px", marginBottom: 40 }}>
@@ -118,7 +125,7 @@ export default function SchoolHubPage() {
             className="schools-hero-stats-bar"
           >
             {[
-              { icon: ShieldCheck, top: "Trusted by", bottom: "250+ Schools", accent: false },
+              { icon: ShieldCheck, top: "Trusted by", bottom: "260+ Schools", accent: false },
               { icon: Users, top: "10,000+", bottom: "Students Impacted", accent: false },
               { icon: GraduationCap, top: "Curriculum", bottom: "Aligned Content", accent: true },
               { icon: Headset, top: "Reliable Support", bottom: "Every Step of the Way", accent: true },
@@ -194,8 +201,8 @@ export default function SchoolHubPage() {
                     transition={{ type: "spring", stiffness: 300 }}
                     className="schools-realities-item">
                     {/* Image */}
-                    <div className="schools-realities-item-img">
-                      <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <div className="schools-realities-item-img" style={{ position: "relative" }}>
+                      <Image src={item.image} alt={item.title} fill loading="lazy" style={{ objectFit: "cover" }} />
                     </div>
                     {/* Icon + Text */}
                     <div className="schools-realities-item-body">
@@ -259,8 +266,8 @@ export default function SchoolHubPage() {
                     transition={{ type: "spring", stiffness: 300 }}
                     className="schools-realities-item schools-realities-item-solve">
                     {/* Image */}
-                    <div className="schools-realities-item-img">
-                      <img loading="lazy" decoding="async" src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <div className="schools-realities-item-img" style={{ position: "relative" }}>
+                      <Image src={item.image} alt={item.title} fill loading="lazy" style={{ objectFit: "cover" }} />
                     </div>
                     {/* Icon + Text */}
                     <div className="schools-realities-item-body">
@@ -380,8 +387,8 @@ export default function SchoolHubPage() {
                   </div>
 
                   {/* Image */}
-                  <div className="schools-flow-card-img">
-                    <img loading="lazy" decoding="async" src={step.image} alt={step.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <div className="schools-flow-card-img" style={{ position: "relative" }}>
+                    <Image src={step.image} alt={step.title} fill loading="lazy" style={{ objectFit: "cover" }} />
                   </div>
 
                   {/* Bottom Text Block */}
@@ -452,8 +459,8 @@ export default function SchoolHubPage() {
             </div>
 
             {/* Right Large Image */}
-            <motion.div {...scaleUp(0.5)} className="schools-infra-image">
-              <img loading="lazy" decoding="async" src="/backgroundimageschoolhub.webp" alt="SparkVR Cart" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "right center" }} />
+            <motion.div {...scaleUp(0.5)} className="schools-infra-image" style={{ position: "relative" }}>
+              <Image src="/backgroundimageschoolhub.webp" alt="SparkVR VR headset storage and charging cart for schools" fill loading="lazy" style={{ objectFit: "cover", objectPosition: "right center" }} />
             </motion.div>
           </div>
 
@@ -503,8 +510,8 @@ export default function SchoolHubPage() {
                   <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.5, whiteSpace: "pre-line", margin: 0 }}>{card.desc}</p>
                 </div>
 
-                <div className="schools-infra-card-img">
-                  <img loading="lazy" decoding="async" src={card.image} alt={card.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: idx === 0 ? "right center" : "center" }} />
+                <div className="schools-infra-card-img" style={{ position: "relative" }}>
+                  <Image src={card.image} alt={card.title} fill loading="lazy" style={{ objectFit: "cover", objectPosition: idx === 0 ? "right center" : "center" }} />
                 </div>
               </motion.div>
             ))}
@@ -600,8 +607,8 @@ export default function SchoolHubPage() {
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="schools-teacher-image-container"
             >
-              <div className="schools-teacher-image">
-                <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Teacher Dashboard" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <div className="schools-teacher-image" style={{ position: "relative" }}>
+                <Image src="/teacher_tablet.webp" alt="Teacher using the SparkVR classroom control dashboard on a tablet" fill loading="lazy" style={{ objectFit: "cover" }} />
               </div>
 
               {/* Floating Quote */}
@@ -732,12 +739,14 @@ export default function SchoolHubPage() {
 
             {/* Right: Full image (not cut, centered) + floating quote */}
             <motion.div {...scaleUp(0.4)} className="schools-flow-right">
-              <img
+              <Image
                 loading="lazy"
-                decoding="async"
                 src="/sparkvr_classroom.webp"
-                alt="Guided Classroom Flow"
+                alt="Teacher guiding a VR lesson in a SparkVR-equipped classroom"
                 className="schools-flow-image"
+                width={1024}
+                height={1024}
+                style={{ width: "100%", height: "auto" }}
               />
               {/* Floating quote card */}
               <motion.div
@@ -860,7 +869,7 @@ export default function SchoolHubPage() {
               </div>
               <div className="schools-ops-card-visual">
                 <div style={{ width: "100%", height: 200, borderRadius: 16, overflow: "hidden", position: "relative", background: "#0f172a" }}>
-                  <img loading="lazy" decoding="async" src="/sparkvr_classroom.webp" alt="Classroom" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
+                  <Image src="/sparkvr_classroom.webp" alt="SparkVR classroom during a timed VR learning session" fill loading="lazy" style={{ objectFit: "cover", opacity: 0.6 }} />
                   <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", textAlign: "center" }}>
                     <div style={{ fontSize: 10, fontWeight: 700, color: "#38bdf8", letterSpacing: "0.1em", marginBottom: 4 }}>SESSION IN PROGRESS</div>
                     <div style={{ fontSize: 32, fontWeight: 800, color: "#fff", lineHeight: 1 }}>40:00</div>
@@ -999,6 +1008,137 @@ export default function SchoolHubPage() {
       </section>
 
       {/* ══════════════════════════════════════
+          WHAT IS A VR LAB / SPACE / INTERNET / SAFETY / STORAGE
+      ══════════════════════════════════════ */}
+      <section className="schools-section" style={{ background: "#f8f9fc" }}>
+        <div className="schools-container">
+
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
+              Everything schools ask <span style={{ color: "#0052cc" }}>before saying yes.</span>
+            </motion.h2>
+            <motion.p {...fadeUp(0.2)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 700, margin: "0 auto" }}>
+              Clear answers on what a VR lab actually is, what it needs, and how it fits into daily school life.
+            </motion.p>
+          </div>
+
+          <div className="schools-info-grid">
+
+            <motion.div {...fadeUp(0.2)} className="schools-info-card">
+              <div className="schools-info-card-icon"><HelpCircle size={26} color="#0052cc" /></div>
+              <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a4d", marginBottom: 10 }}>What Is a VR Lab for Schools?</h3>
+              <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7, margin: 0 }}>
+                A VR lab for schools is a dedicated setup — headsets, a teacher dashboard and a storage cart — that lets students explore <Link href="/curriculum" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>curriculum-aligned VR modules</Link> in 3D instead of only reading about them. Rather than replacing the classroom, it adds an immersive layer to lessons already on the timetable, with a teacher guiding every session from start to finish.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeUp(0.28)} className="schools-info-card">
+              <div className="schools-info-card-icon"><Maximize size={26} color="#0052cc" /></div>
+              <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a4d", marginBottom: 10 }}>Space and Infrastructure Required</h3>
+              <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7, margin: 0 }}>
+                A SparkVR lab fits inside a standard classroom or resource room — no structural changes, extra flooring or dedicated hall required. A compact corner is enough for the storage cart, and students use headsets in small rotating batches rather than needing every desk equipped at once, which keeps the footprint minimal.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeUp(0.36)} className="schools-info-card">
+              <div className="schools-info-card-icon"><Wifi size={26} color="#0052cc" /></div>
+              <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a4d", marginBottom: 10 }}>Does a VR Lab Require Internet?</h3>
+              <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7, margin: 0 }}>
+                No — SparkVR content runs fully offline once loaded, so an unreliable connection never interrupts a lesson. A network is only useful occasionally, for syncing content updates or usage reports, not for running day-to-day sessions. This is core to how <Link href="/timetable" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR sessions in the school timetable</Link> stay predictable.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeUp(0.44)} className="schools-info-card">
+              <div className="schools-info-card-icon"><ShieldCheck size={26} color="#0052cc" /></div>
+              <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a4d", marginBottom: 10 }}>Student Safety and Supervised Learning</h3>
+              <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7, margin: 0 }}>
+                Every session is short, time-boxed and led by a teacher who can see and manage every headset from a single dashboard. Content is age-appropriate and built specifically for classroom use, students stay seated or in a fixed position throughout, and <Link href="/teachers" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>teacher-guided VR lessons</Link> mean no student ever uses a headset unsupervised.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeUp(0.52)} className="schools-info-card">
+              <div className="schools-info-card-icon"><BatteryCharging size={26} color="#0052cc" /></div>
+              <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a4d", marginBottom: 10 }}>VR Headset Storage, Charging and Maintenance</h3>
+              <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7, margin: 0 }}>
+                Headsets live in a lockable storage-and-charging cart between sessions, so they're always cleaned, charged and ready for the next batch without teachers managing cables individually. Routine upkeep and any repairs are handled as part of ongoing support, keeping maintenance predictable rather than a hidden cost.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeUp(0.6)} className="schools-info-card">
+              <div className="schools-info-card-icon"><Layers size={26} color="#0052cc" /></div>
+              <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a4d", marginBottom: 10 }}>Built to Grow With Your School</h3>
+              <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7, margin: 0 }}>
+                As a school's needs grow, the lab grows with it — more headsets, more batches, and <Link href="/subject-expansion" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>VR learning across subjects</Link> beyond the initial rollout. The same storage, scheduling and supervision model scales up without requiring a redesign of the space.
+              </p>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          VR LAB VS SMART CLASSROOM COMPARISON
+      ══════════════════════════════════════ */}
+      <section className="schools-section" style={{ background: "#ffffff" }}>
+        <div className="schools-container">
+
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
+              VR Lab vs <span style={{ color: "#0052cc" }}>Smart Classroom.</span>
+            </motion.h2>
+            <motion.p {...fadeUp(0.2)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 700, margin: "0 auto" }}>
+              Not a replacement for smart classrooms — a complementary layer for concepts that are hard to visualize on a shared screen.
+            </motion.p>
+          </div>
+
+          <motion.div {...fadeUp(0.3)} className="schools-compare-wrap">
+            <table className="schools-compare-table">
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>VR Lab</th>
+                  <th>Smart Classroom</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Core experience</td>
+                  <td>Students explore concepts in immersive 3D, from inside the subject matter</td>
+                  <td>Students view digital content on a shared screen</td>
+                </tr>
+                <tr>
+                  <td>Interaction</td>
+                  <td>Individual, hands-on exploration per student via headset</td>
+                  <td>Whole-class viewing, typically teacher-led</td>
+                </tr>
+                <tr>
+                  <td>Internet dependency</td>
+                  <td>Runs offline once content is loaded</td>
+                  <td>Often needs a stable connection for streaming content</td>
+                </tr>
+                <tr>
+                  <td>Best suited for</td>
+                  <td>Spatial, hard-to-visualize concepts like anatomy, geography or physics</td>
+                  <td>General presentations, videos and shared reference material</td>
+                </tr>
+                <tr>
+                  <td>Session format</td>
+                  <td>Small batch rotation with a fixed duration</td>
+                  <td>Whole class together for the full period</td>
+                </tr>
+                <tr>
+                  <td>Supervision</td>
+                  <td>Teacher guides and monitors each headset via a dashboard</td>
+                  <td>Teacher controls a single shared display</td>
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
           CONSISTENT EXCELLENCE SECTION (7th)
       ══════════════════════════════════════ */}
       <section className="schools-section" style={{ background: "#ffffff" }}>
@@ -1010,7 +1150,7 @@ export default function SchoolHubPage() {
           transition={{ duration: 1.5, ease: EASE }}
           className="schools-excellence-bg-image"
         >
-          <img loading="lazy" decoding="async" src="/section7.webp" alt="Consistent Experience" />
+          <Image src="/section7.webp" alt="Students using SparkVR headsets in a consistent, standardized classroom setup" fill loading="lazy" style={{ objectFit: "cover", objectPosition: "top right" }} />
           <div className="schools-excellence-bg-image-fade-left" />
           <div className="schools-excellence-bg-image-fade-bottom" />
         </motion.div>
@@ -1103,7 +1243,7 @@ export default function SchoolHubPage() {
           transition={{ duration: 1.5, ease: EASE }}
           className="schools-setup-bg-image"
         >
-          <img loading="lazy" decoding="async" src="/teacher_tablet.webp" alt="Setup Classroom" />
+          <Image src="/teacher_tablet.webp" alt="Teacher setting up a SparkVR classroom session on a tablet" fill loading="lazy" style={{ objectFit: "cover", objectPosition: "left" }} />
           {/* Gradients to fade it seamlessly into the page background */}
           <div className="schools-setup-bg-image-fade-left" />
           <div className="schools-setup-bg-image-fade-bottom" />
@@ -1211,7 +1351,7 @@ export default function SchoolHubPage() {
           transition={{ duration: 1.5, ease: EASE }}
           className="schools-built-bg-image"
         >
-          <img loading="lazy" decoding="async" src="/section7.webp" alt="Students in VR" />
+          <Image src="/section7.webp" alt="Students engaged in a VR learning session with SparkVR headsets" fill loading="lazy" style={{ objectFit: "cover" }} />
           {/* Gradients to fade it seamlessly into the page background */}
           <div className="schools-setup-bg-image-fade-left" />
           <div className="schools-setup-bg-image-fade-bottom" />
@@ -1294,6 +1434,11 @@ export default function SchoolHubPage() {
       </section>
 
       {/* ══════════════════════════════════════
+          FAQ SECTION
+      ══════════════════════════════════════ */}
+      <SchoolsFAQSection />
+
+      {/* ══════════════════════════════════════
           READY TO GET STARTED SECTION (10th)
       ══════════════════════════════════════ */}
       <section className="schools-section" style={{ background: "#ffffff" }}>
@@ -1341,7 +1486,7 @@ export default function SchoolHubPage() {
             {/* Spacer for Right side */}
             <div className="schools-ready-image-container">
               <div className="schools-ready-image-arc">
-                <img loading="lazy" decoding="async" src="/vr_girl_pointing.webp" alt="VR Learning" />
+                <Image src="/vr_girl_pointing.webp" alt="Student pointing during an immersive VR lesson with SparkVR" fill loading="lazy" style={{ objectFit: "cover" }} />
               </div>
               <div className="schools-ready-image-fade" />
 
@@ -1433,5 +1578,140 @@ export default function SchoolHubPage() {
       </section>
 
     </main>
+  );
+}
+
+/* ══════════════════════════════════════
+    FAQ SECTION COMPONENT
+════════════════════════════════════════ */
+const SCHOOL_FAQS: { q: string; a: string; aNode?: React.ReactNode }[] = [
+  {
+    q: "What is a VR lab in a school?",
+    a: "A VR lab is a dedicated space where students use headsets to explore curriculum-aligned 3D content instead of relying only on textbooks and diagrams. At a school VR lab, small batches of students step inside subjects like the human body, planetary systems, or historical events under a teacher's guidance. SparkVR's VR lab for schools uses existing classrooms or resource rooms, works entirely offline during sessions, and follows a structured, curriculum-aligned approach so every session maps directly to what's being taught that term.",
+  },
+  {
+    q: "What equipment is included in a school VR lab?",
+    a: "A SparkVR lab includes VR headsets for students, a teacher control tablet or dashboard to manage sessions, a storage-and-charging cart, and pre-loaded curriculum content covering Science, Maths and Social Studies. Everything is delivered, installed and configured by our team, so schools don't need to source or maintain separate hardware. The setup is designed to be plug-and-play, with content organized by grade and chapter so teachers can start a guided lesson without extra technical setup each time.",
+  },
+  {
+    q: "How much space does a VR lab require?",
+    a: "SparkVR labs are built to fit inside a standard classroom or resource room — there's no need for structural changes, special flooring, or a dedicated large hall. A compact area is enough for a batch of students to use headsets safely while seated or standing in place, with the storage cart positioned along a wall. Because sessions run in small rotating batches rather than requiring every desk to be replaced, most schools can set up a lab within their existing infrastructure.",
+  },
+  {
+    q: "Does a SparkVR lab require continuous internet connectivity?",
+    a: "No. SparkVR content runs fully offline once it's loaded onto the headsets, so an unreliable or absent internet connection won't interrupt a lesson. This matters for schools where broadband can be inconsistent — sessions continue smoothly regardless of network status. Occasional connectivity is only needed for content updates or syncing usage reports, not for day-to-day teaching, which keeps implementation predictable and low-maintenance.",
+  },
+  {
+    q: "Which subjects can students learn using VR?",
+    a: "SparkVR currently covers Science, Maths and Social Studies for Classes 6–12, with modules mapped chapter-by-chapter to what students are already studying. Topics like human anatomy, cell structure, physics concepts, geography and historical events are presented as interactive 3D experiences rather than static diagrams. The library continues to grow — explore how VR learning across subjects is expanding to see upcoming additions to the curriculum.",
+  },
+  {
+    q: "Is SparkVR aligned with CBSE, ICSE and school curriculum?",
+    a: "Yes. SparkVR's modules are designed around CBSE and ICSE curriculum structures, so each VR experience corresponds to specific chapters and learning objectives rather than standing apart from what's being taught. Teachers can slot a session into a topic they're already covering, and students see the same concepts they'll be assessed on — just experienced immersively instead of only read about. This alignment is core to how our curriculum-aligned VR modules are built.",
+  },
+  {
+    q: "How long is a typical VR learning session?",
+    a: "A standard SparkVR session runs for 40 minutes, matching a typical school period. This includes time for students to put on headsets, go through the guided experience, and take part in a short teacher-led discussion afterward to reinforce what they explored. The fixed duration makes it easy to plan VR sessions in the school timetable without disrupting the rest of the day's schedule.",
+  },
+  {
+    q: "How do teachers manage students using VR headsets?",
+    a: "Teachers use a simple control dashboard to start, pause and monitor sessions across all headsets in the room at once, so no student is ever unsupervised. The dashboard shows which module each student is in, allows the teacher to guide pacing, and supports classroom discussion once headsets come off. Because the interface is built for educators rather than technicians, teacher-guided VR lessons don't require coding knowledge or IT support to run.",
+  },
+  {
+    q: "Is VR learning safe for school students?",
+    a: "Yes — SparkVR sessions are short, teacher-supervised, and use age-appropriate content designed specifically for classroom use rather than general consumer VR apps. Students remain seated or in a fixed position during use, sessions are time-boxed to reduce extended exposure, and a teacher is present throughout to monitor comfort and behavior. Devices are cleaned and maintained between uses as part of standard lab operating procedure.",
+  },
+  {
+    q: "How are VR headsets stored and charged?",
+    a: "Headsets are kept in a dedicated storage-and-charging cart that locks the devices safely between sessions and charges them automatically so they're ready for the next class. This keeps headsets organized, protected from damage, and consistently available throughout the school day without teachers needing to manage cables or chargers individually. The cart is compact enough to fit against a classroom wall.",
+  },
+  {
+    q: "How long does VR lab setup take?",
+    a: "Once a school confirms its requirements, SparkVR typically completes delivery, installation and configuration within a short, scheduled window — most labs are ready to run their first sessions within days, not months. Our team handles the physical setup, loads the curriculum content, and configures the teacher dashboard before handover, so there's minimal disruption to the school's regular routine during installation.",
+  },
+  {
+    q: "What training does SparkVR provide teachers?",
+    a: "Every school receives hands-on training for teachers on how to start sessions, manage the batch rotation, use the control dashboard, and lead post-session discussions. Training is designed for educators with no technical background, and our team remains available for ongoing support as teachers become more confident running sessions independently. Refresher sessions and support are available as new modules are added.",
+  },
+  {
+    q: "Can a VR lab fit into an existing school timetable?",
+    a: "Yes. SparkVR sessions are built around a fixed 40-minute duration with batch rotation, so a VR lab can be scheduled like any other period — for example, one batch of students at a time during a science or social studies slot — without extending the school day or disrupting other classes. See how VR sessions in the school timetable typically fit into a full day of rotating batches.",
+  },
+  {
+    q: "What is the cost of setting up a VR lab for a school?",
+    a: "Cost depends on factors like the number of headsets, the size of student batches, curriculum coverage, and the level of training and ongoing support a school needs — so there isn't a single fixed price that applies to every school. The most accurate way to get a quote tailored to your school's size and requirements is to book a school VR demonstration, where our team can walk through options and provide a proposal based on your specific setup.",
+    aNode: (
+      <>
+        Cost depends on factors like the number of headsets, the size of student batches, curriculum coverage, and the level of training and ongoing support a school needs — so there isn't a single fixed price that applies to every school. The most accurate way to get a quote tailored to your school's size and requirements is to{" "}
+        <Link href="/contact#contact-form" style={{ color: "#0052cc", fontWeight: 700, textDecoration: "underline" }}>book a school VR demonstration</Link>, where our team can walk through options and provide a proposal based on your specific setup.
+      </>
+    ),
+  },
+];
+
+function SchoolsFAQSection() {
+  const [openIndex, setOpenIndex] = React.useState<number | null>(0);
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": SCHOOL_FAQS.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a,
+      },
+    })),
+  };
+
+  return (
+    <section className="schools-section" style={{ background: "#f8f9fc" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <div className="schools-container">
+
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
+            Frequently Asked Questions <span style={{ color: "#0052cc" }}>About VR Labs for Schools</span>
+          </motion.h2>
+          <motion.p {...fadeUp(0.2)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 700, margin: "0 auto" }}>
+            Straight answers for school leaders evaluating a VR lab for the first time.
+          </motion.p>
+        </div>
+
+        <div className="schools-faq-list">
+          {SCHOOL_FAQS.map((item, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <motion.div key={idx} {...fadeUp(0.05 * idx, 0.5)} className="schools-faq-item">
+                <button
+                  type="button"
+                  className="schools-faq-question"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenIndex(isOpen ? null : idx)}
+                >
+                  <span className="schools-faq-question-text">{item.q}</span>
+                  <span className="schools-faq-icon" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}>
+                    <ChevronDown size={16} />
+                  </span>
+                </button>
+                <motion.div
+                  className="schools-faq-answer"
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0 }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                >
+                  <div className="schools-faq-answer-inner">{item.aNode ?? item.a}</div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
   );
 }

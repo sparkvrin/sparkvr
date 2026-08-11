@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
-  title: "About SparkVR | Immersive Learning Company for Indian Schools",
-  description: "SparkVR EdTech transforms abstract textbook concepts into 3D VR explorations. Trusted by 260+ schools across India to make learning observable and unforgettable.",
+  metadataBase: new URL("https://sparkvr.in"),
+  title: "About SparkVR | VR Education Company for Schools in India",
+  description: "Learn about SparkVR, an IIT Indore-incubated immersive learning company building curriculum-aligned, teacher-guided VR solutions for Indian schools.",
   keywords: ["About SparkVR","SparkVR Mission","EdTech Company","VR Education Company"],
+  alternates: {
+    canonical: "https://sparkvr.in/about",
+  },
   openGraph: {
-    title: "About SparkVR | Immersive Learning Company for Indian Schools",
-    description: "SparkVR EdTech transforms abstract textbook concepts into 3D VR explorations. Trusted by 260+ schools across India to make learning observable and unforgettable.",
-    url: "https://sparkvr-ten.vercel.app/about",
+    title: "About SparkVR | VR Education Company for Schools in India",
+    description: "Learn about SparkVR, an IIT Indore-incubated immersive learning company building curriculum-aligned, teacher-guided VR solutions for Indian schools.",
+    url: "https://sparkvr.in/about",
     siteName: "SparkVR",
-    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "About SparkVR | Immersive Learning Company for Indian Schools" }],
+    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "About SparkVR | VR Education Company for Schools in India" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About SparkVR | Immersive Learning Company for Indian Schools",
-    description: "SparkVR EdTech transforms abstract textbook concepts into 3D VR explorations. Trusted by 260+ schools across India to make learning observable and unforgettable.",
+    title: "About SparkVR | VR Education Company for Schools in India",
+    description: "Learn about SparkVR, an IIT Indore-incubated immersive learning company building curriculum-aligned, teacher-guided VR solutions for Indian schools.",
     images: ["/background.webp"],
   },
 };

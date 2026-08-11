@@ -10,6 +10,7 @@ import {
   Lock, Hourglass, Rocket, Mail, Headphones, MessageSquare, Settings, Zap,
 } from "lucide-react";
 import Link from "next/link";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -127,6 +128,10 @@ export default function ParentsPage() {
 
   return (
     <main style={{ minHeight: "100vh", background: "#ffffff", fontFamily: "'VAG Rounded', sans-serif" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "For Parents", path: "/parents" }])) }}
+      />
 
       {/* ══════════════════════════════════════════════════
           SECTION 1 — Screen time with purpose
@@ -285,14 +290,14 @@ export default function ParentsPage() {
 
 
 
-              <motion.h2 {...fadeLeft(0.1)} style={{
+              <motion.h1 {...fadeLeft(0.1)} style={{
                 fontSize: isMobile ? "clamp(34px,10vw,48px)" : isTablet ? "clamp(36px,4.8vw,54px)" : "clamp(42px,4.2vw,66px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.05,
                 margin: "0 0 18px", letterSpacing: "-0.022em",
               }}>
                 Screen time<br />with{" "}
                 <span style={{ color: "#7c3aed" }}>purpose.</span>
-              </motion.h2>
+              </motion.h1>
 
               <motion.p {...fadeLeft(0.16)} style={{
                 fontSize: isMobile ? 13 : 15, color: "#64748b",
@@ -1177,10 +1182,10 @@ export default function ParentsPage() {
                   {/* Trust items */}
                   <div style={{ display: "flex", gap: isMobile ? 12 : 20, flexWrap: "wrap" }}>
                     {[
-                      { icon: ShieldCheck, label: "No hidden fees" },
-                      { icon: CheckCircle2, label: "Cancel anytime" },
-                      { icon: ShieldCheck, label: "7-day free trial" },
-                      { icon: Settings, label: "Works with most VR headsets" },
+                      { icon: ShieldCheck, label: "Teacher-supervised sessions" },
+                      { icon: CheckCircle2, label: "Curriculum-aligned content" },
+                      { icon: ShieldCheck, label: "Safe, school-based setup" },
+                      { icon: Settings, label: "Dedicated setup & support" },
                     ].map(({ icon: Icon, label }) => (
                       <div key={label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
                         <Icon size={13} color="rgba(255,255,255,0.7)" strokeWidth={2} />

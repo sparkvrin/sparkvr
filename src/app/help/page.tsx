@@ -5,14 +5,17 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
+  metadataBase: new URL("https://sparkvr.in"),
   title: "SparkVR Help Center | Support & FAQs",
   description: "Find answers to common questions about SparkVR setup, usage, maintenance, and support. Get help from our team.",
   keywords: ["SparkVR Help","VR Support","SparkVR FAQ","VR Lab Support"],
+  alternates: {
+    canonical: "https://sparkvr.in/help",
+  },
   openGraph: {
     title: "SparkVR Help Center | Support & FAQs",
     description: "Find answers to common questions about SparkVR setup, usage, maintenance, and support. Get help from our team.",
-    url: "https://sparkvr-ten.vercel.app/help",
+    url: "https://sparkvr.in/help",
     siteName: "SparkVR",
     images: [{ url: "/background.webp", width: 1200, height: 630, alt: "SparkVR Help Center | Support & FAQs" }],
     locale: "en_US",

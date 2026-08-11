@@ -8,6 +8,7 @@ import {
   MapPin, User, Phone, Mail, MessageSquare, Lock, Clock, ChevronRight
 } from "lucide-react";
 import ContactForm from "@/components/sections/ContactForm";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -112,6 +113,10 @@ export default function ContactPage() {
 
   return (
     <main style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#fff" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Contact", path: "/contact" }])) }}
+      />
 
       {/* ─── SECTION 1: HERO ─── */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column" }}>

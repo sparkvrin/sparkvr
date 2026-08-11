@@ -2,23 +2,26 @@ import type { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
-  title: "VR Learning for Kids - Safe, Supervised, Classroom-Based | SparkVR",
-  description: "See how SparkVR turns screen time into purposeful learning — safe, supervised VR that helps your child understand more and remember longer.",
+  metadataBase: new URL("https://sparkvr.in"),
+  title: "VR Learning for Students | Safe School VR | SparkVR",
+  description: "See how SparkVR makes school learning immersive, safe and teacher-supervised with short, curriculum-aligned VR sessions that build understanding.",
   keywords: ["SparkVR for Parents", "VR Education for Kids", "Better Learning for Children", "School EdTech Parents"],
+  alternates: {
+    canonical: "https://sparkvr.in/parents",
+  },
   openGraph: {
-    title: "VR Learning for Kids - Safe, Supervised, Classroom-Based | SparkVR",
-    description: "See how SparkVR turns screen time into purposeful learning — safe, supervised VR that helps your child understand more and remember longer.",
-    url: "https://sparkvr-ten.vercel.app/parents",
+    title: "VR Learning for Students | Safe School VR | SparkVR",
+    description: "See how SparkVR makes school learning immersive, safe and teacher-supervised with short, curriculum-aligned VR sessions that build understanding.",
+    url: "https://sparkvr.in/parents",
     siteName: "SparkVR",
-    images: [{ url: "/learingbackground1.png", width: 1200, height: 630, alt: "VR Learning for Kids - Safe, Supervised, Classroom-Based | SparkVR" }],
+    images: [{ url: "/learingbackground1.png", width: 1200, height: 630, alt: "VR Learning for Students | Safe School VR | SparkVR" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VR Learning for Kids - Safe, Supervised, Classroom-Based | SparkVR",
-    description: "See how SparkVR turns screen time into purposeful learning — safe, supervised VR that helps your child understand more and remember longer.",
+    title: "VR Learning for Students | Safe School VR | SparkVR",
+    description: "See how SparkVR makes school learning immersive, safe and teacher-supervised with short, curriculum-aligned VR sessions that build understanding.",
     images: ["/learingbackground1.png"],
   },
 };

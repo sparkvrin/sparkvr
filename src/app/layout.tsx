@@ -18,15 +18,18 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr.com"),
-  title: "VR Learning for Schools | Curriculum-Aligned VR Labs - SparkVR",
-  description: "SparkVR brings curriculum-aligned VR labs to Indian schools. Offline, teacher-guided 40-min sessions across Science, Maths & Social Studies.",
-  keywords: ["VR", "Education", "Virtual Reality", "EdTech", "SparkVR", "Immersive Learning", "STEM", "Classroom Tech"],
+  metadataBase: new URL("https://sparkvr.in"),
+  title: "VR Learning for Schools in India | SparkVR",
+  description: "Bring curriculum-aligned VR learning to schools with SparkVR. Offline, teacher-guided immersive sessions across Science, Maths and Social Studies.",
+  keywords: ["VR", "Education", "Virtual Reality", "EdTech", "SparkVR", "Immersive Learning", "STEM", "Classroom Tech", "VR Learning for Schools"],
   authors: [{ name: "SparkVR Team" }],
+  alternates: {
+    canonical: "https://sparkvr.in/",
+  },
   openGraph: {
-    title: "VR Learning for Schools | Curriculum-Aligned VR Labs - SparkVR",
-    description: "SparkVR brings curriculum-aligned VR labs to Indian schools. Offline, teacher-guided 40-min sessions across Science, Maths & Social Studies.",
-    url: "https://sparkvr.com",
+    title: "VR Learning for Schools in India | SparkVR",
+    description: "Bring curriculum-aligned VR learning to schools with SparkVR. Offline, teacher-guided immersive sessions across Science, Maths and Social Studies.",
+    url: "https://sparkvr.in/",
     siteName: "SparkVR",
     images: [{ url: "/background.webp", width: 1200, height: 630, alt: "SparkVR Immersive Learning" }],
     locale: "en_US",
@@ -34,19 +37,37 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VR Learning for Schools | Curriculum-Aligned VR Labs - SparkVR",
-    description: "SparkVR brings curriculum-aligned VR labs to Indian schools. Offline, teacher-guided 40-min sessions across Science, Maths & Social Studies.",
+    title: "VR Learning for Schools in India | SparkVR",
+    description: "Bring curriculum-aligned VR learning to schools with SparkVR. Offline, teacher-guided immersive sessions across Science, Maths and Social Studies.",
     images: ["/background.webp"],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://sparkvr.in/#website",
+    "name": "SparkVR",
+    "url": "https://sparkvr.in",
+    "publisher": {
+      "@id": "https://sparkvr.in/#localbusiness"
+    },
+    "inLanguage": "en-US"
+  };
+
   return (
     <html lang="en">
       <head>
         {/* DNS prefetch & preconnect for faster resource loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://sparkvr.com" />
+        <link rel="preconnect" href="https://sparkvr.in" />
+
+        {/* WebSite structured data (Organization/LocalBusiness schema lives on the homepage) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
 
         {/* Google Analytics */}
         <Script

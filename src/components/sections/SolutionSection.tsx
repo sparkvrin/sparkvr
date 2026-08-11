@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function useScreenWidth() {
   const [width, setWidth] = useState(1200);
@@ -108,8 +109,9 @@ function SubjectCard({
       </div>
 
       {/* Card Image — right side */}
-      <img loading="lazy" decoding="async"
-        src={imgSrc} alt={title}
+      <Image loading="lazy"
+        src={imgSrc} alt={`${title} subject illustration for SparkVR VR learning module`}
+        width={1024} height={1024}
         style={{
           position: "absolute", right: 0, top: 0, width: "52%", height: "100%",
           objectFit: "cover", objectPosition: "center",
@@ -373,7 +375,7 @@ export default function SolutionSection() {
                       boxShadow: "0 15px 35px rgba(0,40,150,0.15), inset 0 0 40px rgba(255,255,255,1)"
                     }}
                   >
-                    <img loading="lazy" decoding="async" src="/logo.webp" alt="SparkVR Logo" style={{ width: 130, objectFit: "contain" }} />
+                    <Image loading="lazy" src="/logo.webp" alt="SparkVR logo" width={4096} height={4096} style={{ width: 130, height: "auto", objectFit: "contain" }} />
                   </div>
 
                 </Floating3DWrapper>

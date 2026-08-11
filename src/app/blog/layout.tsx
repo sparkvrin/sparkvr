@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
-  title: "SparkVR Blog | Insights on VR, EdTech & Immersive Learning",
-  description: "Explore articles, case studies, and insights on virtual reality in education, EdTech trends, and immersive learning strategies from the SparkVR team.",
+  metadataBase: new URL("https://sparkvr.in"),
+  title: "VR in Education Blog | VR Labs & Immersive Learning | SparkVR",
+  description: "Read practical insights on VR labs in schools, immersive learning, classroom technology, student engagement and the future of education in India.",
   keywords: ["VR Education Blog","EdTech Insights","Immersive Learning Articles","SparkVR Blog"],
+  alternates: {
+    canonical: "https://sparkvr.in/blog",
+  },
   openGraph: {
-    title: "SparkVR Blog | Insights on VR, EdTech & Immersive Learning",
-    description: "Explore articles, case studies, and insights on virtual reality in education, EdTech trends, and immersive learning strategies from the SparkVR team.",
-    url: "https://sparkvr-ten.vercel.app/blog",
+    title: "VR in Education Blog | VR Labs & Immersive Learning | SparkVR",
+    description: "Read practical insights on VR labs in schools, immersive learning, classroom technology, student engagement and the future of education in India.",
+    url: "https://sparkvr.in/blog",
     siteName: "SparkVR",
-    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "SparkVR Blog | Insights on VR, EdTech & Immersive Learning" }],
+    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "VR in Education Blog | VR Labs & Immersive Learning | SparkVR" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SparkVR Blog | Insights on VR, EdTech & Immersive Learning",
-    description: "Explore articles, case studies, and insights on virtual reality in education, EdTech trends, and immersive learning strategies from the SparkVR team.",
+    title: "VR in Education Blog | VR Labs & Immersive Learning | SparkVR",
+    description: "Read practical insights on VR labs in schools, immersive learning, classroom technology, student engagement and the future of education in India.",
     images: ["/background.webp"],
   },
 };

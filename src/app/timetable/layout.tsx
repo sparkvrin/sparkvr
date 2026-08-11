@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
-  title: "VR in the School Timetable - 40-Min Sessions, Batch Rotation | SparkVR",
-  description: "SparkVR fits your school timetable with 40-minute structured sessions and batch rotation — equal access for every student without disrupting class flow.",
+  metadataBase: new URL("https://sparkvr.in"),
+  title: "VR Lab in School Timetable | 40-Minute Sessions | SparkVR",
+  description: "See how a VR lab fits into the school timetable with 40-minute sessions, batch rotation, teacher supervision and offline learning without disruption.",
   keywords: ["VR Timetable","VR Session Schedule","Batch Rotation VR","SparkVR Schedule"],
+  alternates: {
+    canonical: "https://sparkvr.in/timetable",
+  },
   openGraph: {
-    title: "VR in the School Timetable - 40-Min Sessions, Batch Rotation | SparkVR",
-    description: "SparkVR fits your school timetable with 40-minute structured sessions and batch rotation — equal access for every student without disrupting class flow.",
-    url: "https://sparkvr-ten.vercel.app/timetable",
+    title: "VR Lab in School Timetable | 40-Minute Sessions | SparkVR",
+    description: "See how a VR lab fits into the school timetable with 40-minute sessions, batch rotation, teacher supervision and offline learning without disruption.",
+    url: "https://sparkvr.in/timetable",
     siteName: "SparkVR",
-    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "VR in the School Timetable - 40-Min Sessions, Batch Rotation | SparkVR" }],
+    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "VR Lab in School Timetable | 40-Minute Sessions | SparkVR" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VR in the School Timetable - 40-Min Sessions, Batch Rotation | SparkVR",
-    description: "SparkVR fits your school timetable with 40-minute structured sessions and batch rotation — equal access for every student without disrupting class flow.",
+    title: "VR Lab in School Timetable | 40-Minute Sessions | SparkVR",
+    description: "See how a VR lab fits into the school timetable with 40-minute sessions, batch rotation, teacher supervision and offline learning without disruption.",
     images: ["/background.webp"],
   },
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 function useScreenWidth() {
@@ -117,7 +118,7 @@ export default function ServicesPage() {
                       boxShadow: "0 12px 40px rgba(0,0,0,0.12)",
                     }}
                   >
-                    <img loading="lazy" decoding="async" src={s.img} alt={s.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease" }}
+                    <Image loading="lazy" src={s.img} alt={`${s.name} VR module preview — SparkVR curriculum for ${s.grade}`} fill style={{ objectFit: "cover", transition: "transform 0.6s ease" }}
                       onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
                       onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
                     />

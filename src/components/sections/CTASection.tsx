@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect, Suspense, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function useScreenWidth() {
   const [width, setWidth] = useState(1200);
@@ -304,7 +305,7 @@ export default function CTASection() {
                 style={{ width: "100%", height: "100%", position: "relative" }}
               >
                 <motion.div style={{ position: "absolute", bottom: "-8%", left: "0%", right: "10%", height: "170%", zIndex: 10, display: "flex", justifyContent: "center" }}>
-                  <img loading="lazy" decoding="async" src="/613b5178-f8eb-4d14-9f65-6d70c957a41c.png" alt="Girl student tapping with VR headset" style={{ height: "110%", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
+                  <Image loading="lazy" src="/613b5178-f8eb-4d14-9f65-6d70c957a41c.png" alt="Girl student tapping with VR headset" width={1024} height={1536} style={{ height: "110%", width: "auto", maxWidth: "110%", objectFit: "contain", filter: "drop-shadow(0 40px 80px rgba(0,30,90,0.35))" }} />
                 </motion.div>
                 <FloatingLabel title="Deeper Understanding" desc="Students learn by seeing, doing and experiencing." icon={GraduationCap} color="#3b82f6" delay={0} top="-10%" left="-16%" isTapped={true} />
                 <FloatingLabel title="Stronger Outcomes" desc="Better engagement. Better retention. Better results." icon={TrendingUp} color="#6366f1" delay={0.2} top="-10%" right="-16%" />

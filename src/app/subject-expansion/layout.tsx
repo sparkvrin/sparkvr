@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sparkvr-ten.vercel.app"),
-  title: "Scalable VR Curriculum Across Subjects & Grades | SparkVR",
-  description: "SparkVR scales across Science, Maths, Social Studies and future interdisciplinary subjects — curriculum-mapped modules for Class 6-12 in Indian schools.",
+  metadataBase: new URL("https://sparkvr.in"),
+  title: "VR Curriculum for Schools | Science, Maths & More | SparkVR",
+  description: "Explore SparkVR's expanding VR curriculum across Science, Maths, History, Geography and STEM, with immersive modules designed for school learning.",
   keywords: ["VR Subjects","Science VR","Math VR","History VR","Biology VR","SparkVR Subjects"],
+  alternates: {
+    canonical: "https://sparkvr.in/subject-expansion",
+  },
   openGraph: {
-    title: "Scalable VR Curriculum Across Subjects & Grades | SparkVR",
-    description: "SparkVR scales across Science, Maths, Social Studies and future interdisciplinary subjects — curriculum-mapped modules for Class 6-12 in Indian schools.",
-    url: "https://sparkvr-ten.vercel.app/subject-expansion",
+    title: "VR Curriculum for Schools | Science, Maths & More | SparkVR",
+    description: "Explore SparkVR's expanding VR curriculum across Science, Maths, History, Geography and STEM, with immersive modules designed for school learning.",
+    url: "https://sparkvr.in/subject-expansion",
     siteName: "SparkVR",
-    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "Scalable VR Curriculum Across Subjects & Grades | SparkVR" }],
+    images: [{ url: "/background.webp", width: 1200, height: 630, alt: "VR Curriculum for Schools | Science, Maths & More | SparkVR" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scalable VR Curriculum Across Subjects & Grades | SparkVR",
-    description: "SparkVR scales across Science, Maths, Social Studies and future interdisciplinary subjects — curriculum-mapped modules for Class 6-12 in Indian schools.",
+    title: "VR Curriculum for Schools | Science, Maths & More | SparkVR",
+    description: "Explore SparkVR's expanding VR curriculum across Science, Maths, History, Geography and STEM, with immersive modules designed for school learning.",
     images: ["/background.webp"],
   },
 };

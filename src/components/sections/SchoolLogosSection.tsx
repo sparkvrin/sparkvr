@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -143,14 +144,18 @@ export default function SchoolLogosSection() {
                   cursor: "default",
                 }}
               >
-                <img
+                <Image
                   src={logo.src}
-                  alt={logo.name}
+                  alt={`${logo.name} logo`}
                   title={logo.name}
                   loading="lazy"
+                  width={160}
+                  height={150}
                   style={{
                     maxHeight: "100%",
                     maxWidth: "100%",
+                    width: "auto",
+                    height: "auto",
                     objectFit: "contain",
                     filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.03))",
                   }}

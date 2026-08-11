@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { School, BookOpen, Handshake, Quote, Users, GraduationCap, TrendingUp, Shield, Target, Puzzle, ShieldCheck, BarChart3, Rocket, Star, Globe, ChevronRight } from "lucide-react";
 import SparkButton from "@/components/SparkButton";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -145,6 +146,10 @@ export default function AboutPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "About", path: "/about" }])) }}
+      />
       {/* ═══════════════════════════════════════════════════════
           SECTION 1: HERO / ABOUT
       ═══════════════════════════════════════════════════════ */}
@@ -1401,8 +1406,8 @@ export default function AboutPage() {
             }}
           >
             {[
-              { icon: Shield, title: "100+ Schools", pre: "Trusted by" },
-              { icon: GraduationCap, title: "25K+ Students", pre: "Impacting" },
+              { icon: Shield, title: "260+ Schools", pre: "Trusted by" },
+              { icon: GraduationCap, title: "10,000+ Students", pre: "Impacting" },
               { icon: Star, title: "Educators", pre: "Loved by" },
               { icon: Globe, title: "Global Standards", pre: "Aligned with" }
             ].map((stat, i) => (

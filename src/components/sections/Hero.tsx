@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, Suspense, useState, useEffect } from "react";
+import Image from "next/image";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import * as THREE from "three";
@@ -290,7 +291,7 @@ export default function Hero() {
               margin: "0 0 28px",
             }}>
               We believe clarity begins with experience.{" "}
-              SparkVR transforms abstract concepts into observable understanding.
+              SparkVR brings immersive VR learning built for schools, turning abstract concepts into observable understanding.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", marginBottom: 40 }}>
@@ -376,7 +377,7 @@ export default function Hero() {
             >
               <div style={{ ...GLASS_STYLE, width: 120, height: 120 }}>
                 <div style={{ position: "absolute", width: "76%", height: "76%", borderRadius: "50%", background: "rgba(255,255,255,0.6)" }} />
-                <img loading="lazy" decoding="async" src="/anatomy.webp" alt="Human Anatomy"
+                <Image loading="lazy" src="/anatomy.webp" alt="Human anatomy VR module preview" width={1024} height={1536}
                   style={{
                     width: "78%", height: "78%", objectFit: "contain", position: "relative", zIndex: 1,
                     filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22)) contrast(1.05) brightness(1.1)"
@@ -391,7 +392,7 @@ export default function Hero() {
             >
               <div style={{ ...GLASS_STYLE, width: 120, height: 120 }}>
                 <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
-                <img loading="lazy" decoding="async" src="cell1.webp" alt="Cell Structure"
+                <Image loading="lazy" src="/cell1.webp" alt="Cell structure VR module preview" width={1536} height={1024}
                   style={{
                     width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1,
                     filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3)) contrast(1.05) brightness(1.1)"
@@ -456,9 +457,9 @@ export default function Hero() {
 
         {/* Student image — smaller, shifted left */}
         <div style={{ position: "absolute", bottom: -30, left: "28%", transform: "translateX(-8%)", zIndex: 10, pointerEvents: "none" }}>
-          <motion.img loading="eager" decoding="async" fetchPriority="high" src="/student_proper.webp" alt="Student with VR headset"
+          <Image priority src="/student_proper.webp" alt="Student wearing a SparkVR headset during an immersive VR learning session" width={4096} height={2234}
             style={{
-              height: "85vh", objectFit: "contain", objectPosition: "top", display: "block",
+              height: "85vh", width: "auto", objectFit: "contain", objectPosition: "top", display: "block",
               filter: "drop-shadow(0 20px 40px rgba(60,40,150,0.28))",
             }} />
         </div>
@@ -479,7 +480,7 @@ export default function Hero() {
           <motion.div style={{ transformStyle: "preserve-3d" }}>
             <div style={{ ...GLASS_STYLE, width: bubSz - 10, height: bubSz - 10 }}>
               <div style={{ position: "absolute", width: "76%", height: "76%", borderRadius: "50%", background: "rgba(255,255,255,0.6)" }} />
-              <img loading="lazy" decoding="async" src="/anatomy.webp" alt="Human Anatomy" style={{ width: "78%", height: "78%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22))" }} />
+              <Image loading="lazy" src="/anatomy.webp" alt="Human anatomy VR module preview" width={1024} height={1536} style={{ width: "78%", height: "78%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 18px rgba(220,50,50,0.22))" }} />
             </div>
             <div style={{ ...LABEL_STYLE, bottom: -14, color: "#7c3aed", fontSize: 9 }}>HUMAN ANATOMY</div>
           </motion.div>
@@ -488,7 +489,7 @@ export default function Hero() {
           <motion.div style={{ transformStyle: "preserve-3d" }}>
             <div style={{ ...GLASS_STYLE, width: bubSz, height: bubSz }}>
               <div style={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", background: "rgba(255,255,255,0.55)" }} />
-              <img loading="lazy" decoding="async" src="/cell1.webp" alt="Cell Structure" style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3))" }} />
+              <Image loading="lazy" src="/cell1.webp" alt="Cell structure VR module preview" width={1536} height={1024} style={{ width: "82%", height: "82%", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 6px 16px rgba(80,200,120,0.3))" }} />
             </div>
             <div style={{ ...LABEL_STYLE, bottom: -14 }}>CELLS</div>
           </motion.div>
@@ -518,7 +519,7 @@ export default function Hero() {
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.18 }}
               style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.6, color: "#475569", margin: "0 0 28px" }}>
-              We believe clarity begins with experience. SparkVR transforms abstract concepts into observable understanding.
+              We believe clarity begins with experience. SparkVR brings immersive VR learning built for schools, turning abstract concepts into observable understanding.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
               style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -602,11 +603,14 @@ export default function Hero() {
           zIndex: 10, pointerEvents: "none",
         }}>
           <motion.div style={{ perspective: 1000, transformStyle: "preserve-3d" }}>
-            <motion.img loading="lazy" decoding="async"
+            <Image priority
               src="/student_proper.webp"
-              alt="Student with VR headset"
+              alt="Student wearing a SparkVR headset during an immersive VR learning session"
+              width={4096}
+              height={2234}
               style={{
                 height: "92vh",
+                width: "auto",
                 objectFit: "contain",
                 objectPosition: "bottom",
                 display: "block",
@@ -654,9 +658,11 @@ export default function Hero() {
                 position: "absolute", width: "76%", height: "76%", borderRadius: "50%",
                 background: "rgba(255,255,255,0.6)",
               }} />
-              <img loading="lazy" decoding="async"
+              <Image loading="lazy"
                 src="/anatomy.webp"
-                alt="Human Anatomy"
+                alt="Human anatomy VR module preview"
+                width={1024}
+                height={1536}
                 style={{
                   width: "90%", height: "90%",
                   objectFit: "contain",
@@ -683,9 +689,11 @@ export default function Hero() {
                 position: "absolute", width: "80%", height: "80%", borderRadius: "50%",
                 background: "rgba(255,255,255,0.55)",
               }} />
-              <img loading="lazy" decoding="async"
+              <Image loading="lazy"
                 src="/cell1.webp"
-                alt="Cell Structure"
+                alt="Cell structure VR module preview"
+                width={1536}
+                height={1024}
                 style={{
                   width: "82%", height: "82%",
                   objectFit: "contain",
@@ -785,7 +793,7 @@ export default function Hero() {
                 }}
               >
                 We believe clarity begins with experience.<br />
-                SparkVR transforms abstract concepts into observable understanding.
+                SparkVR brings immersive VR learning built for schools, turning abstract concepts into observable understanding.
               </motion.p>
 
               <motion.div

@@ -12,6 +12,8 @@ import {
   Volume2, Maximize2, RefreshCcw
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -188,7 +190,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
             </motion.h2>
 
             <motion.p {...fadeUp(0.18)} style={{ fontSize: isMobile ? 13 : 15, color: "#475569", lineHeight: 1.7, fontWeight: 500, margin: "0 0 32px", maxWidth: 440 }}>
-              SparkVR immersive modules bring curriculum to life with stunning 3D visuals, interactive exploration and concept-focused learning. Learn about our solutions for <Link href="/schools" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>smart schools</Link>, discover our impact on student <Link href="/learning-outcome" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> with us to see the difference.
+              SparkVR immersive modules bring curriculum to life with stunning 3D visuals, interactive exploration and concept-focused learning. See how this fits into a <Link href="/schools" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR lab for schools</Link>, discover our impact on student <Link href="/learning-outcome" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or <Link href="/contact" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>get in touch</Link> with us to see the difference.
             </motion.p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -435,8 +437,8 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                         boxShadow: si === activeSlide ? "0 6px 18px rgba(37,99,235,0.45)" : "none",
                       }}
                     >
-                      <div style={{ width: "100%", height: "100%", background: "#0f1e38", overflow: "hidden" }}>
-                        <img src={s.image} alt={s.label} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                      <div style={{ width: "100%", height: "100%", background: "#0f1e38", overflow: "hidden", position: "relative" }}>
+                        <Image src={s.image} alt={s.label} fill loading="lazy" style={{ objectFit: "cover", objectPosition: "center" }} />
                       </div>
                     </motion.div>
                   ))}
@@ -465,7 +467,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
                   style={{ background: "transparent", borderRadius: 18, overflow: "hidden", cursor: "default" }}
                 >
                   <div style={{ height: 100, overflow: "hidden", position: "relative" }}>
-                    <img src={card.image} alt={card.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                    <Image src={card.image} alt={`${card.name} VR curriculum module thumbnail`} fill loading="lazy" style={{ objectFit: "cover", objectPosition: "center" }} />
                     <div style={{ position: "absolute", top: 8, left: 8, width: 32, height: 32, borderRadius: "50%", background: "rgba(255,255,255,0.92)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}>
                       <card.icon size={16} color={card.color} strokeWidth={2} />
                     </div>
@@ -520,6 +522,10 @@ export default function CurriculumPage() {
 
   return (
     <main style={{ minHeight: "100vh", background: "#f8fafc", fontFamily: "'VAG Rounded', sans-serif" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Curriculum", path: "/curriculum" }])) }}
+      />
 
       {/* ══════════════════════════════════════════
           SECTION 1 — HERO  (full-bleed background)
@@ -919,10 +925,12 @@ export default function CurriculumPage() {
           {!isMobile && (
             <div style={{ position: "relative", minHeight: 540, overflow: "hidden" }}>
               {/* Full fill image */}
-              <img
+              <Image
                 src="/teacher1.png"
-                alt="SparkVR Classroom"
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+                alt="Teacher leading a curriculum-aligned VR lesson in a SparkVR classroom"
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover", objectPosition: "center top" }}
               />
               {/* Subtle left gradient for blend */}
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 20%)" }} />
@@ -1071,7 +1079,7 @@ export default function CurriculumPage() {
               </div>
               <div>
                 <p style={{ fontSize: isMobile ? 13 : 15, fontWeight: 800, color: "#001a4d", margin: "0 0 2px" }}>Trusted by forward-thinking schools and educators.</p>
-                <p style={{ fontSize: isMobile ? 11 : 12, color: "#64748b", margin: 0 }}>SparkVR is used by <span style={{ color: "#2563eb", fontWeight: 700 }}>500+ schools</span> across India and beyond.</p>
+                <p style={{ fontSize: isMobile ? 11 : 12, color: "#64748b", margin: 0 }}>SparkVR is used by <span style={{ color: "#2563eb", fontWeight: 700 }}>260+ schools</span> across India and beyond.</p>
               </div>
             </div>
             <div style={{ display: "flex", gap: 32, alignItems: "center" }}>

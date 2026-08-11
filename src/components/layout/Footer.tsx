@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -104,8 +105,8 @@ export default function Footer() {
           zIndex: 0
         }}
       >
-        <motion.img loading="lazy" decoding="async"
-          src="/vr_wireframe.webp" alt="" style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }}
+        <Image loading="lazy"
+          src="/vr_wireframe.webp" alt="" width={1024} height={1024} style={{ width: "100%", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(59,130,246,0.15))" }}
         />
       </div>
 
@@ -191,7 +192,7 @@ export default function Footer() {
           <div style={{ maxWidth: isMobile ? "100%" : 350, flexShrink: 0 }}>
             <div style={{ display: "flex", flexDirection: isMobile ? "row" : "column", alignItems: isMobile ? "center" : "flex-start", gap: isMobile ? 14 : 0, marginBottom: isMobile ? 20 : 0 }}>
               <Link href="/" style={{ display: "inline-block", flexShrink: 0, marginBottom: isMobile ? 0 : 12 }}>
-                <img loading="lazy" decoding="async" src="/logo1.png" alt="SparkVR" style={{ height: isMobile ? 44 : 75, objectFit: "contain" }} />
+                <Image loading="lazy" src="/logo1.png" alt="SparkVR logo" width={512} height={330} style={{ height: isMobile ? 44 : 75, width: "auto", objectFit: "contain" }} />
               </Link>
               <p style={{ fontSize: isMobile ? 13 : 19, color: "#334155", lineHeight: 1.5, marginBottom: isMobile ? 0 : 40, fontWeight: 500, margin: isMobile ? 0 : undefined }}>
                 Transforming abstract learning into observable understanding through immersive experiences.
