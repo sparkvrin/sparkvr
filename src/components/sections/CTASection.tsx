@@ -183,7 +183,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5, type: "spring" }}
-            style={{ fontSize: isMobile ? "clamp(32px,8vw,44px)" : "clamp(42px, 5vw, 68px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.1, marginBottom: isMobile ? 24 : 40, transformPerspective: 800, letterSpacing: "-0.03em" }}
+            style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, marginBottom: isMobile ? 24 : 40, transformPerspective: 800, letterSpacing: "-0.02em" }}
           >
             Experiential learning <br />
             will become <br />

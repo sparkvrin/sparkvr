@@ -185,7 +185,7 @@ export default function SolutionSection() {
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5, type: "spring" }}
-            style={{ fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(34px, 4.5vw, 56px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, marginBottom: isMobile ? 20 : 32, transformPerspective: 800 }}
+            style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, marginBottom: isMobile ? 20 : 32, transformPerspective: 800, letterSpacing: "-0.02em" }}
           >
             A structured immersive curriculum{isMobile ? " " : <br />}
             <motion.span

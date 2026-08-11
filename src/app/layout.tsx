@@ -1,11 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import ScrollProgress from "@/components/ScrollProgress";
-import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import StickyCTA from "@/components/layout/StickyCTA";
+import MainLayoutWrapper from "@/components/layout/MainLayoutWrapper";
 import { Nunito } from "next/font/google";
 
 const nunito = Nunito({
@@ -93,12 +89,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </noscript>
       </head>
       <body className={nunito.variable}>
-        <ScrollProgress />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <StickyCTA />
+        <MainLayoutWrapper>{children}</MainLayoutWrapper>
       </body>
     </html>
   );

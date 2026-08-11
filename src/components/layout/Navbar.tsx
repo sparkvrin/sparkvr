@@ -49,15 +49,15 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "absolute", top: 0, left: 0, right: 0, zIndex: 1000,
-          height: isMobile ? 76 : 120,
+          height: isMobile ? 70 : 90,
           display: "flex", alignItems: "center",
           background: "linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.0) 100%)",
         }}
       >
         <div style={{
           maxWidth: 1400, margin: "0 auto", width: "100%", height: "100%",
-          paddingLeft: isMobile ? 20 : 60,
-          paddingRight: isMobile ? 20 : 60,
+          paddingLeft: isMobile ? 20 : "clamp(20px, 4vw, 60px)",
+          paddingRight: isMobile ? 20 : "clamp(20px, 4vw, 60px)",
           display: "flex", alignItems: "center", justifyContent: "space-between",
         }}>
           {/* LOGO */}
@@ -65,7 +65,7 @@ export default function Navbar() {
             <img loading="lazy" decoding="async"
               src="/logo1.png"
               alt="SparkVR"
-              style={{ height: isMobile ? 45 : 62, width: "auto", objectFit: "contain" }}
+              style={{ height: isMobile ? 40 : 52, width: "auto", objectFit: "contain" }}
             />
           </Link>
 
@@ -79,7 +79,7 @@ export default function Navbar() {
                   whileTap={{ scale: 0.97 }}
                   style={{
                     background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%)",
-                    borderRadius: 40, padding: "14px 32px",
+                    borderRadius: 40, padding: "11px 26px",
                     display: "inline-flex", alignItems: "center", justifyContent: "center",
                     boxShadow: "0 10px 28px rgba(29,78,216,0.3)",
                     cursor: "pointer",

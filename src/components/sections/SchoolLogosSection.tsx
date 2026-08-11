@@ -74,22 +74,23 @@ export default function SchoolLogosSection() {
             Trusted by Progressive Schools
           </motion.span>
           
-          <motion.h3
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
+              fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
               fontWeight: 800,
+              lineHeight: 1.15,
               color: "#0b1a3b",
               margin: 0,
               fontFamily: "'VAG Rounded', sans-serif",
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.02em",
             }}
           >
             Empowering Classrooms in Leading Institutions
-          </motion.h3>
+          </motion.h2>
         </div>
       </div>
 

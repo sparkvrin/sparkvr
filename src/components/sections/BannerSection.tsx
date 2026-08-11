@@ -259,9 +259,10 @@ export default function BannerSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             style={{
-              fontSize: isMobile ? "clamp(22px,6vw,30px)" : "clamp(24px, 2.8vw, 40px)",
-              fontWeight: 900, color: "#0f172a",
-              lineHeight: 1.2, margin: 0, marginBottom: 8,
+              fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
+              fontWeight: 800, color: "#0f172a",
+              lineHeight: 1.15, margin: 0, marginBottom: 8,
+              letterSpacing: "-0.02em",
             }}
           >
             Experiential learning<br />

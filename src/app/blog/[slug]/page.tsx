@@ -8,6 +8,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { isHtmlContent } from "@/lib/richText";
 
 /* ─── CUSTOM SOCIAL ICONS (SVG) ─── */
 const FacebookIcon = () => (
@@ -98,7 +101,55 @@ function useScreenWidth() {
 export default function BlogDetailPage() {
   const params = useParams();
   const rawSlug = params.slug as string;
-  const post = BLOG_POSTS[rawSlug] || BLOG_POSTS["how-experiential-learning-improves-concept-retention"];
+
+  const defaultPost = BLOG_POSTS[rawSlug] || BLOG_POSTS["how-experiential-learning-improves-concept-retention"];
+  const [post, setPost] = React.useState<any>(defaultPost);
+
+  React.useEffect(() => {
+    async function fetchPostFromFirestore() {
+      try {
+        const q = query(collection(db, "blogs"), where("slug", "==", rawSlug));
+        const snap = await getDocs(q);
+        const publishedDoc = snap.docs.find((d) => d.data().status !== "draft");
+        if (publishedDoc) {
+          const docData = publishedDoc.data();
+
+          // Content saved by the rich text editor is HTML — render it as-is.
+          // Older posts saved as plain text still get split into paragraphs.
+          const rawContent = docData.content || "";
+          const contentIsHtml = isHtmlContent(rawContent);
+          const paragraphs = contentIsHtml
+            ? []
+            : rawContent
+                .split("\n\n")
+                .filter((p: string) => p.trim().length > 0)
+                .map((p: string) => ({ type: "p", content: p.trim() }));
+
+          setPost({
+            slug: docData.slug,
+            category: docData.category || "EDUCATION",
+            title: docData.title,
+            subtitle: docData.excerpt || "",
+            date: docData.date || "Recent",
+            readTime: "5 min read",
+            author: docData.author ? `By ${docData.author}` : "By SparkVR Team",
+            image: docData.image || "/blog_vr.webp",
+            tags: [docData.category || "Education", "SparkVR", "Learning"],
+            contentHtml: contentIsHtml ? rawContent : null,
+            contentChunks: paragraphs.length > 0 ? paragraphs : [{ type: "p", content: rawContent }],
+          });
+        }
+      } catch (err: any) {
+        if (process.env.NODE_ENV === "development") {
+          console.info("[Blog Detail] Using static article fallback (Firestore rules or connection notice)");
+        }
+      }
+    }
+
+    if (rawSlug) {
+      fetchPostFromFirestore();
+    }
+  }, [rawSlug]);
 
   const screenWidth = useScreenWidth();
   const isMobile = screenWidth < 768;
@@ -136,36 +187,40 @@ export default function BlogDetailPage() {
               />
             </motion.div>
 
-            <div className="blog-content">
-              {post.contentChunks.map((chunk: any, i: number) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: 0.1, duration: 0.5, ease: EASE }}
-                >
-                  {chunk.type === "p" && <p>{chunk.content}</p>}
-                  {chunk.type === "h3" && <h3>{chunk.content}</h3>}
-                  {chunk.type === "quote" && (
-                    <div className="custom-blockquote">
-                      <div className="quote-icon">“</div>
-                      <div className="quote-content">
-                        <p className="quote-text">{chunk.content}</p>
-                        <p className="quote-author">– {chunk.author}</p>
+            {post.contentHtml ? (
+              <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            ) : (
+              <div className="blog-content">
+                {post.contentChunks.map((chunk: any, i: number) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 0.1, duration: 0.5, ease: EASE }}
+                  >
+                    {chunk.type === "p" && <p>{chunk.content}</p>}
+                    {chunk.type === "h3" && <h3>{chunk.content}</h3>}
+                    {chunk.type === "quote" && (
+                      <div className="custom-blockquote">
+                        <div className="quote-icon">“</div>
+                        <div className="quote-content">
+                          <p className="quote-text">{chunk.content}</p>
+                          <p className="quote-author">– {chunk.author}</p>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {chunk.type === "list" && (
-                    <ul className="custom-list">
-                      {chunk.items.map((item: string, j: number) => (
-                        <li key={j}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+                    )}
+                    {chunk.type === "list" && (
+                      <ul className="custom-list">
+                        {chunk.items.map((item: string, j: number) => (
+                          <li key={j}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            )}
 
             {/* Tags & Share */}
             <motion.div {...fadeUp(0.4)}>
@@ -272,7 +327,16 @@ export default function BlogDetailPage() {
         /* ── Body content ── */
         .blog-content { font-size: 16px; line-height: 1.9; color: #334155; }
         .blog-content p { margin-bottom: 24px; }
+        .blog-content h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: #001a4d; margin: 48px 0 20px; letter-spacing: -0.01em; }
         .blog-content h3 { font-size: clamp(18px, 2.5vw, 24px); font-weight: 900; color: #001a4d; margin: 44px 0 18px; letter-spacing: -0.01em; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
+        .blog-content ul, .blog-content ol { margin: 0 0 24px; padding-left: 24px; }
+        .blog-content ul { list-style: disc; }
+        .blog-content ol { list-style: decimal; }
+        .blog-content li { margin-bottom: 10px; }
+        .blog-content blockquote { border-left: 5px solid #0052cc; background: #f8fafc; border-radius: 16px; padding: 20px 28px; margin: 32px 0; color: #001a4d; font-style: italic; }
+        .blog-content strong { font-weight: 800; color: #001a4d; }
+        .blog-content a { color: #0052cc; font-weight: 700; text-decoration: underline; }
+        .blog-content img { max-width: 100%; height: auto; border-radius: 16px; margin: 32px 0; display: block; box-shadow: 0 12px 40px rgba(0,26,77,0.08); }
 
         /* ── Blockquote ── */
         .custom-blockquote { display: flex; background: #f8fafc; border-radius: 16px; padding: 28px 32px; margin: 36px 0; gap: 20px; border-left: 5px solid #0052cc; }

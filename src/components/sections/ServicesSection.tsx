@@ -341,9 +341,10 @@ export default function ServicesSection() {
               initial={{ opacity: 0, y: 20, rotateX: 16 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }} transition={{ delay: 0.08, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
               style={{
-                fontSize: isMobile ? "clamp(28px,7vw,40px)" : isTablet ? "clamp(28px,3.5vw,46px)" : "clamp(34px,4.5vw,62px)",
-                fontWeight: 800, lineHeight: 1.1, color: "#0b1a3b",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
+                fontWeight: 800, lineHeight: 1.15, color: "#0b1a3b",
                 margin: "0 0 28px", fontFamily: "'VAG Rounded',sans-serif", transformPerspective: 700,
+                letterSpacing: "-0.02em",
               }}>
               For decades, education has relied on{isMobile ? " " : <br />}
               <span style={{ background: "linear-gradient(90deg,#1d4ed8 0%,#7c3aed 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>explanation.</span>
@@ -468,7 +469,7 @@ export default function ServicesSection() {
             display: "flex", flexDirection: "column", justifyContent: "flex-start", position: "relative", zIndex: 2,
           }}>
             <motion.h2 initial={{ opacity: 0, y: 20, rotateX: 16 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
-              style={{ fontSize: isMobile ? "clamp(24px,6.5vw,36px)" : "clamp(26px,2.9vw,44px)", fontWeight: 800, lineHeight: 1.18, color: "#0b1a3b", margin: "0 0 12px", fontFamily: "'VAG Rounded',sans-serif", transformPerspective: 700 }}>
+              style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, lineHeight: 1.15, color: "#0b1a3b", margin: "0 0 12px", fontFamily: "'VAG Rounded',sans-serif", transformPerspective: 700, letterSpacing: "-0.02em" }}>
               We make concepts<br />
               <span style={{ background: "linear-gradient(90deg,#1d4ed8 0%,#3b82f6 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>observable</span>{ }<br />
               without disrupting schools.

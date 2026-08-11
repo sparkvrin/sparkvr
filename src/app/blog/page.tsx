@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Book, Users, FileText, Target, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 function useScreenWidth() {
   const [width, setWidth] = React.useState(1200);
@@ -25,7 +27,7 @@ const fadeUp = (delay = 0, duration = 0.7) => ({
   transition: { delay, duration, ease: EASE },
 });
 
-const BLOG_POSTS = [
+const DEFAULT_BLOG_POSTS = [
   {
     slug: "vr-modern-classrooms",
     title: "How VR is Transforming Modern Classrooms",
@@ -56,6 +58,38 @@ export default function BlogPage() {
   const screenWidth = useScreenWidth();
   const isMobile = screenWidth < 768;
   const isTablet = screenWidth >= 768 && screenWidth < 1024;
+  const [posts, setPosts] = useState<any[]>(DEFAULT_BLOG_POSTS);
+
+  useEffect(() => {
+    async function loadBlogs() {
+      try {
+        const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        if (!snap.empty) {
+          const loaded = snap.docs
+            .map((d) => d.data())
+            .filter((data) => data.status !== "draft")
+            .map((data) => ({
+              slug: data.slug,
+              title: data.title,
+              desc: data.excerpt || data.desc || "",
+              category: data.category || "EDUCATION",
+              image: data.image || "/blog_vr.webp",
+              date: data.date || "Recent"
+            }));
+          if (loaded.length > 0) {
+            setPosts(loaded);
+          }
+        }
+      } catch (err: any) {
+        // Silent fallback to default posts if permissions or network fail
+        if (process.env.NODE_ENV === "development") {
+          console.info("[Blog] Using default static posts (Firestore rules or connection notice)");
+        }
+      }
+    }
+    loadBlogs();
+  }, []);
 
   return (
     <>
@@ -203,7 +237,7 @@ export default function BlogPage() {
             gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
             gap: isMobile ? 24 : 32
           }}>
-            {BLOG_POSTS.map((post, i) => (
+            {posts.map((post, i) => (
               <motion.div key={post.slug} {...fadeUp(0.1 + i * 0.08)}>
                 <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
                   <motion.div

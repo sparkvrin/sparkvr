@@ -506,11 +506,11 @@ export default function Hero() {
         </div>
 
         {/* Text — left column, narrower on tablet */}
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, display: "flex", alignItems: "flex-start", justifyContent: "center", flexDirection: "column", zIndex: 30, paddingLeft: "clamp(20px,4vw,40px)", paddingTop: "clamp(120px,16vh,160px)", paddingBottom: "80px", maxWidth: "46%" }}>
+        <div style={{ position: "absolute", left: 0, top: "90px", bottom: "70px", display: "flex", alignItems: "flex-start", justifyContent: "center", flexDirection: "column", zIndex: 30, paddingLeft: "clamp(20px,4vw,40px)", paddingTop: "10px", paddingBottom: "20px", maxWidth: "46%" }}>
           <div>
 
             <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
-              style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 800, lineHeight: 1.18, color: "#0f172a", margin: "0 0 18px", letterSpacing: "-0.02em" }}>
+              style={{ fontSize: "clamp(26px, min(3.5vw, 5vh), 42px)", fontWeight: 800, lineHeight: 1.18, color: "#0f172a", margin: "0 0 14px", letterSpacing: "-0.02em" }}>
               What if students<br />
               didn&#39;t have to{" "}
               <span style={{ background: "linear-gradient(90deg,#e040fb 0%,#7c3aed 55%,#38bdf8 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>imagine</span><br />
@@ -725,15 +725,15 @@ export default function Hero() {
         {/* ── LEFT TEXT COLUMN ── */}
         <div style={{
           position: "absolute",
-          left: 0, top: 0, bottom: 0,
+          left: 0, top: "95px", bottom: "50px",
           display: "flex", alignItems: "flex-start",
           justifyContent: "center",
           flexDirection: "column",
           zIndex: 30,
           paddingLeft: "clamp(20px, 4vw, 60px)",
-          paddingTop: "clamp(100px, 14vh, 160px)",
-          paddingBottom: "60px",
-          maxWidth: "50%",
+          paddingTop: "clamp(10px, 2vh, 40px)",
+          paddingBottom: "20px",
+          maxWidth: "52%",
         }}>
           <div>
             <div style={{ maxWidth: "min(560px, 100%)" }}>
@@ -750,11 +750,11 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
                 style={{
-                  fontSize: "clamp(42px, 4.5vw, 64px)",
+                  fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                   fontWeight: 800,
                   lineHeight: 1.15,
                   color: "#0f172a",
-                  margin: "0 0 24px",
+                  margin: "0 0 clamp(12px, 2vh, 24px)",
                   letterSpacing: "-0.02em",
                 }}
               >
@@ -776,11 +776,11 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15, ease: [0.215, 0.61, 0.355, 1] }}
                 style={{
-                  fontSize: 18,
+                  fontSize: "clamp(14px, 1.2vw, 18px)",
                   fontWeight: 500,
                   lineHeight: 1.6,
                   color: "#475569",
-                  margin: "0 0 40px",
+                  margin: "0 0 clamp(20px, 3vh, 36px)",
                   maxWidth: 500,
                 }}
               >
@@ -841,7 +841,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.45 }}
-                style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 32 }}
+                style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: "clamp(16px, 2.5vh, 32px)" }}
               >
                 {[
                   { label: "Curriculum-aligned\nmodules", icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052cc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>) },
