@@ -439,7 +439,7 @@ export default function LearningOutcomePage() {
                 <motion.h2
                   {...fadeUp(0.2)}
                   style={{
-                    fontSize: isMobile ? "clamp(24px,7vw,34px)" : "clamp(28px,2.6vw,46px)",
+                    fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                     fontWeight: 900, color: "#0f172a", lineHeight: 1.2,
                     margin: "0 0 20px",
                   }}
@@ -667,7 +667,7 @@ export default function LearningOutcomePage() {
               <motion.h2
                 {...fadeUp(0.08)}
                 style={{
-                  fontSize: isMobile ? "clamp(26px,7vw,34px)" : "clamp(28px,2.4vw,42px)",
+                  fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                   fontWeight: 900, color: "#0f172a", lineHeight: 1.2,
                   margin: "0 0 16px",
                 }}
@@ -837,7 +837,7 @@ export default function LearningOutcomePage() {
                 <motion.h2
                   {...fadeUp(0.08)}
                   style={{
-                    fontSize: isMobile ? "clamp(26px,7vw,34px)" : "clamp(28px,2.4vw,46px)",
+                    fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                     fontWeight: 900, color: "#0f172a", lineHeight: 1.15,
                     margin: "0 0 20px",
                   }}
@@ -1035,7 +1035,7 @@ export default function LearningOutcomePage() {
               <motion.h2
                 {...fadeUp(0.08)}
                 style={{
-                  fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(28px,2.6vw,46px)",
+                  fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                   fontWeight: 900, color: "#0f172a", lineHeight: 1.15,
                   margin: "0 0 20px",
                 }}
@@ -1218,7 +1218,7 @@ export default function LearningOutcomePage() {
 
               {/* Heading */}
               <motion.h2 {...fadeUp(0.08)} style={{
-                fontSize: isMobile ? "clamp(26px,7vw,36px)" : "clamp(28px,2.6vw,46px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.15, margin: "0 0 20px",
               }}>
                 Grounded in research.<br />
@@ -1370,7 +1370,7 @@ export default function LearningOutcomePage() {
 
               {/* Heading */}
               <motion.h2 {...fadeUp(0.08)} style={{
-                fontSize: isMobile ? "clamp(28px,8vw,38px)" : "clamp(30px,2.8vw,50px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.12, margin: "0 0 20px",
               }}>
                 See the difference{" "}

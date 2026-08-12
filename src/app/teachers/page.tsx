@@ -145,7 +145,7 @@ export default function TeachersPage() {
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: px, position: "relative", zIndex: 2 }}>
           <div style={{ maxWidth: isMobile ? "100%" : isTablet ? "60%" : "45%", minHeight: isMobile ? "auto" : 500 }}>
             <motion.div {...fadeLeft(0.1)} style={{ width: 36, height: 3, background: "#4f46e5", borderRadius: 2, marginBottom: 14 }} />
-            <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 26 : isTablet ? 32 : "clamp(30px,4vw,40px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
+            <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
               Teachers remain<br />at the <span style={{ color: "#6366f1" }}>center of learning.</span>
             </motion.h2>
             <motion.p {...fadeLeft(0.3)} style={{ fontSize: isMobile ? 14 : 15, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 22 }}>
@@ -207,7 +207,7 @@ export default function TeachersPage() {
               <BookOpen size={18} color="#0052cc" />
               <span style={{ fontSize: 12, fontWeight: 800, color: "#4f46e5", letterSpacing: "0.1em", textTransform: "uppercase" }}>GUIDED CLASSROOM FLOW</span>
             </motion.div>
-            <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 26 : isTablet ? 32 : "clamp(30px,4vw,44px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
+            <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
               A structured flow.<br /><span style={{ color: "#4f46e5" }}>Meaningful learning.</span>
             </motion.h2>
             <motion.p {...fadeLeft(0.3)} style={{ fontSize: isMobile ? 14 : 15, color: "#475569", lineHeight: 1.5, fontWeight: 500, marginBottom: 22 }}>
@@ -286,7 +286,7 @@ export default function TeachersPage() {
               <Rocket size={16} color="#4f46e5" />
               <span style={{ fontSize: 12, fontWeight: 800, color: "#4f46e5", letterSpacing: "0.1em", textTransform: "uppercase" }}>SIMPLE TO USE</span>
             </motion.div>
-            <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 26 : isTablet ? 32 : "clamp(30px,4vw,44px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
+            <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
               Powerful learning.<br /><span style={{ color: "#4f46e5" }}>Effortless for teachers.</span>
             </motion.h2>
             <motion.p {...fadeLeft(0.3)} style={{ fontSize: isMobile ? 14 : 15, color: "#475569", lineHeight: 1.5, fontWeight: 500, marginBottom: 24 }}>
@@ -379,7 +379,7 @@ export default function TeachersPage() {
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#4f46e5", letterSpacing: "0.1em", textTransform: "uppercase" }}>ACADEMIC ALIGNMENT</span>
               </motion.div>
               <motion.div {...fadeLeft(0.1)} style={{ width: 36, height: 3, background: "#4f46e5", borderRadius: 2, marginBottom: 14 }} />
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: isMobile ? 26 : isTablet ? 32 : "clamp(30px,4vw,44px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
                 Aligned with curriculum.<br /><span style={{ color: "#6366f1" }}>Focused on outcomes.</span>
               </motion.h2>
               <motion.p {...fadeLeft(0.3)} style={{ fontSize: isMobile ? 14 : 15, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 20 }}>
@@ -492,7 +492,7 @@ export default function TeachersPage() {
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#6366f1", letterSpacing: "0.1em", textTransform: "uppercase" }}>SUPPORT &amp; TRAINING</span>
               </motion.div>
               <motion.div {...fadeLeft(0.1)} style={{ width: 36, height: 3, background: "#6366f1", borderRadius: 2, marginBottom: 14 }} />
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: isMobile ? 26 : isTablet ? 32 : "clamp(30px,4vw,44px)", fontWeight: 900, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>
                 You're never alone.<br /><span style={{ color: "#6366f1" }}>We're here to help you succeed.</span>
               </motion.h2>
               <motion.p {...fadeUp(0.3)} style={{ fontSize: isMobile ? 14 : 15, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 22 }}>
@@ -592,7 +592,7 @@ export default function TeachersPage() {
                 <Rocket size={20} color="#6366f1" strokeWidth={2} />
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#6366f1", letterSpacing: "0.1em", textTransform: "uppercase" }}>GET STARTED WITH SPARKVR</span>
               </motion.div>
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: isMobile ? 28 : isTablet ? 34 : "clamp(32px,4.5vw,48px)", fontWeight: 900, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 18 }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#0f172a", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 18 }}>
                 Ready to transform<br /><span style={{ color: "#6366f1" }}>the way you teach?</span>
               </motion.h2>
               <motion.p {...fadeUp(0.3)} style={{ fontSize: isMobile ? 14 : 16, color: "#475569", lineHeight: 1.6, fontWeight: 500, marginBottom: 28 }}>

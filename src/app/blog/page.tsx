@@ -231,7 +231,7 @@ export default function BlogPage() {
             <span style={{ fontSize: 13, fontWeight: 800, color: "#0052cc", letterSpacing: "0.2em", display: "block", marginBottom: 16 }}>
               OUR PERSPECTIVES
             </span>
-            <h2 style={{ fontSize: isMobile ? "clamp(26px, 7vw, 36px)" : "clamp(32px, 4vw, 48px)", fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>
+            <h2 style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", marginBottom: 20 }}>
               Latest from the <span className="text-gradient-primary">Spark Lab.</span>
             </h2>
             <div style={{ width: 60, height: 3, background: "#0052cc", margin: "0 auto", borderRadius: 4 }} />

@@ -224,7 +224,7 @@ export default function ContactPage() {
 
             {/* LEFT SIDE: INFO & DETAILS */}
             <motion.div {...fadeUp(0.1)}>
-              <h2 style={{ fontSize: isMobile ? "clamp(26px,6vw,36px)" : "clamp(32px,4vw,46px)", fontWeight: 900, color: "#001a4d", marginBottom: 28, letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", marginBottom: 28, letterSpacing: "-0.02em" }}>
                 We're here to help.
               </h2>
               <div style={{ width: 48, height: 4, background: "#0052cc", borderRadius: 4, marginBottom: 32 }} />

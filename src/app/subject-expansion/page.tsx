@@ -338,7 +338,7 @@ export default function SubjectExpansionPage() {
 
                 </span>
               </motion.div>
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
                 One platform.<br />
                 <span style={{ color: COLORS.blue }}>Endless subjects.</span>
               </motion.h2>
@@ -550,7 +550,7 @@ export default function SubjectExpansionPage() {
                   IMMERSIVE LEARNING EXAMPLES
                 </span>
               </motion.div>
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
                 Concepts come alive <br />
                 <span style={{ color: COLORS.blue }}>across every subject.</span>
               </motion.h2>
@@ -719,7 +719,7 @@ export default function SubjectExpansionPage() {
                   CROSS-DISCIPLINARY LEARNING
                 </span>
               </motion.div>
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 3.5vw, 48px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 18, letterSpacing: "-0.02em" }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 18, letterSpacing: "-0.02em" }}>
                 Real understanding<br />happens when<br />
                 <span style={{ color: "#7c3aed" }}>subjects connect.</span>
               </motion.h2>
@@ -1238,7 +1238,7 @@ export default function SubjectExpansionPage() {
                 </span>
               </motion.div>
 
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(40px, 4.5vw, 56px)", fontWeight: 900, color: COLORS.blue, lineHeight: 1.1, marginBottom: 24, letterSpacing: "-0.02em" }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.blue, lineHeight: 1.1, marginBottom: 24, letterSpacing: "-0.02em" }}>
                 Expansion without<br />classroom disruption.
               </motion.h2>
 
@@ -1420,7 +1420,7 @@ export default function SubjectExpansionPage() {
                   </span>
                 </motion.div>
 
-                <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(38px, 4vw, 52px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 24, letterSpacing: "-0.02em" }}>
+                <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, marginBottom: 24, letterSpacing: "-0.02em" }}>
                   Let's build the future<br />of <span style={{ color: "#7c3aed" }}>learning together.</span>
                 </motion.h2>
 

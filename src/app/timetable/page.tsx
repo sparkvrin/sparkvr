@@ -302,7 +302,7 @@ export default function TimetablePage() {
                 </span>
                 <div style={{ width: 40, height: 3, background: COLORS.purple, marginTop: 8 }} />
               </motion.div>
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 3.5vw, 48px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
                 A 40-minute structured<br />
                 <span style={{ color: COLORS.purple }}>session. Maximum learning.</span>
               </motion.h2>
@@ -432,7 +432,7 @@ export default function TimetablePage() {
                 <div style={{ width: 40, height: 3, background: COLORS.purple, marginTop: 8 }} />
               </motion.div>
 
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 3.5vw, 48px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
                 Normal classes.<br />
                 <span style={{ color: COLORS.purple }}>Smarter rotation.</span>
               </motion.h2>
@@ -617,7 +617,7 @@ export default function TimetablePage() {
                 </span>
                 <div style={{ width: 40, height: 3, background: COLORS.purple, marginTop: 8 }} />
               </motion.div>
-              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 3.5vw, 52px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
+              <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: COLORS.navy, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
                 Simple to manage.<br />
                 <span style={{ color: COLORS.purple }}>Easy to sustain.</span>
               </motion.h2>

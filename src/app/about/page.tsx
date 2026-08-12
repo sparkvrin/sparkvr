@@ -391,7 +391,7 @@ export default function AboutPage() {
           <motion.h2
             {...fadeUpRotate(0.2)}
             style={{
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
               fontWeight: 700, color: "#001a4d",
               lineHeight: 1.1, marginBottom: 36,
               letterSpacing: "-0.02em", perspective: 800,
@@ -512,7 +512,7 @@ export default function AboutPage() {
             <motion.h2
               {...fadeUpRotate(0.12)}
               style={{
-                fontSize: "clamp(34px, 5vw, 52px)", fontWeight: 800, color: "#001a4d",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d",
                 lineHeight: 1.1, marginBottom: 24, letterSpacing: "-0.02em", perspective: 800,
               }}
             >
@@ -792,7 +792,7 @@ export default function AboutPage() {
             {/* Heading */}
             <motion.h2 {...fadeUpRotate(0.15)}
               style={{
-                fontSize: "clamp(40px, 5.2vw, 66px)", fontWeight: 800, color: "#001a4d",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d",
                 lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 22, perspective: 800,
               }}
             >
@@ -1250,7 +1250,7 @@ export default function AboutPage() {
               <motion.h2
                 {...fadeUpRotate(0.1)}
                 style={{
-                  fontSize: "clamp(32px, 3.8vw, 48px)",
+                  fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                   fontWeight: 900, color: "#001a4d",
                   lineHeight: 1.1, letterSpacing: "-0.025em",
                   marginBottom: 24,

@@ -463,7 +463,7 @@ export default function ParentsPage() {
 
               {/* Heading */}
               <motion.h2 {...fadeLeft(0.1)} style={{
-                fontSize: isMobile ? "clamp(30px,9vw,44px)" : isTablet ? "clamp(32px,4.5vw,50px)" : "clamp(38px,4vw,60px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.08,
                 margin: "0 0 14px", letterSpacing: "-0.02em",
               }}>
@@ -657,7 +657,7 @@ export default function ParentsPage() {
             <div style={{ width: isMobile ? "100%" : isTablet ? "52%" : "44%" }}>
               {/* Heading */}
               <motion.h2 {...fadeLeft(0.1)} style={{
-                fontSize: isMobile ? "clamp(30px,9vw,44px)" : isTablet ? "clamp(32px,4.5vw,50px)" : "clamp(38px,4vw,60px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.08,
                 margin: "0 0 16px", letterSpacing: "-0.02em",
               }}>
@@ -779,7 +779,7 @@ export default function ParentsPage() {
             <div style={{ width: isMobile ? "100%" : isTablet ? "52%" : "44%" }}>
               {/* Heading */}
               <motion.h2 {...fadeLeft(0.1)} style={{
-                fontSize: isMobile ? "clamp(28px,8vw,42px)" : isTablet ? "clamp(30px,4.2vw,48px)" : "clamp(34px,3.5vw,54px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.08,
                 margin: "0 0 16px", letterSpacing: "-0.02em",
               }}>
@@ -975,7 +975,7 @@ export default function ParentsPage() {
             <div style={{ width: isMobile ? "100%" : isTablet ? "52%" : "44%" }}>
 
               <motion.h2 {...fadeLeft(0.1)} style={{
-                fontSize: isMobile ? "clamp(30px,9vw,44px)" : isTablet ? "clamp(32px,4.5vw,50px)" : "clamp(36px,3.8vw,56px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.08, margin: "0 0 4px", letterSpacing: "-0.02em",
               }}>
                 Confidence comes<br />from clarity.
@@ -1115,7 +1115,7 @@ export default function ParentsPage() {
 
 
               <motion.h2 {...fadeLeft(0.1)} style={{
-                fontSize: isMobile ? "clamp(30px,9vw,44px)" : isTablet ? "clamp(32px,4.5vw,50px)" : "clamp(36px,3.8vw,56px)",
+                fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
                 fontWeight: 900, color: "#0f172a", lineHeight: 1.08, margin: "0 0 16px", letterSpacing: "-0.02em",
               }}>
                 Give your child{" "}

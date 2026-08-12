@@ -181,7 +181,7 @@ function CurriculumVisualsSection({ isMobile, isTablet }: { isMobile: boolean; i
             </motion.div>
 
             <motion.h2 {...fadeLeft(0.1)} style={{
-              fontSize: isMobile ? "clamp(26px,8vw,36px)" : "clamp(30px,3.2vw,44px)",
+              fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
               fontWeight: 900, color: "#001a4d", lineHeight: 1.1,
               letterSpacing: "-0.03em", margin: "0 0 18px",
             }}>
@@ -793,7 +793,7 @@ export default function CurriculumPage() {
 
             {/* Heading */}
             <motion.h2 {...fadeLeft(0.12)} style={{
-              fontSize: isMobile ? "clamp(28px,8vw,40px)" : isTablet ? "clamp(32px,4.5vw,48px)" : "clamp(36px,3.8vw,56px)",
+              fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)",
               fontWeight: 900, color: "#001a4d", lineHeight: 1.08,
               letterSpacing: "-0.03em", margin: "0 0 20px",
             }}>
@@ -913,7 +913,7 @@ export default function CurriculumPage() {
           {/* Left text */}
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: isMobile ? "28px 20px" : isTablet ? "28px 32px" : "32px 60px" }}>
 
-            <motion.h2 {...fadeLeft(0.1)} style={{ fontSize: isMobile ? "clamp(22px,5.5vw,30px)" : "clamp(26px,2.2vw,38px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", margin: "0 0 10px" }}>
+            <motion.h2 {...fadeLeft(0.1)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.15, letterSpacing: "-0.02em", margin: "0 0 10px" }}>
               Built for classrooms.<br />Designed for <span style={{ color: "#2563eb" }}>outcomes.</span>
             </motion.h2>
             <motion.p {...fadeUp(0.18)} style={{ fontSize: isMobile ? 13 : 14, color: "#475569", lineHeight: 1.6, fontWeight: 500, maxWidth: 420, margin: 0 }}>

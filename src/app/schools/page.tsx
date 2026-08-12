@@ -151,7 +151,7 @@ export default function SchoolHubPage() {
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 60 }}>
 
-            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20 }}>
+            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20 }}>
               Built for <span style={{ color: "#0052cc" }}>real school</span> realities.
             </motion.h2>
             <motion.p {...fadeUp(0.3)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500 }}>
@@ -306,7 +306,7 @@ export default function SchoolHubPage() {
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 60 }}>
 
-            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20 }}>
+            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 20 }}>
               How it works <span style={{ color: "#0052cc" }}>inside your school</span>
             </motion.h2>
             <motion.p {...fadeUp(0.3)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 600, margin: "0 auto" }}>
@@ -436,7 +436,7 @@ export default function SchoolHubPage() {
             {/* Left Content */}
             <div className="schools-infra-content">
 
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Simple infrastructure.<br />
                 <span style={{ color: "#0052cc" }}>Maximum impact.</span>
               </motion.h2>
@@ -554,7 +554,7 @@ export default function SchoolHubPage() {
                 </span>
               </motion.div>
 
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 <br />
                 <span style={{ color: "#0052cc" }}>not technicians.</span>
               </motion.h2>
@@ -706,7 +706,7 @@ export default function SchoolHubPage() {
               </motion.div>
 
               {/* Title */}
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(32px, 3.5vw, 52px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
                 A structured flow.<br />
                 <span style={{ color: "#0052cc" }}>Meaningful learning.</span>
               </motion.h2>
@@ -838,7 +838,7 @@ export default function SchoolHubPage() {
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 0 }}>
 
-            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(36px, 4vw, 56px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
+            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 20 }}>
               Predictable operations.<br />
               <span style={{ color: "#0052cc" }}>Smooth learning every day.</span>
             </motion.h2>
@@ -1014,7 +1014,7 @@ export default function SchoolHubPage() {
         <div className="schools-container">
 
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
+            <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
               Everything schools ask <span style={{ color: "#0052cc" }}>before saying yes.</span>
             </motion.h2>
             <motion.p {...fadeUp(0.2)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 700, margin: "0 auto" }}>
@@ -1083,7 +1083,7 @@ export default function SchoolHubPage() {
         <div className="schools-container">
 
           <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
+            <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
               VR Lab vs <span style={{ color: "#0052cc" }}>Smart Classroom.</span>
             </motion.h2>
             <motion.p {...fadeUp(0.2)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 700, margin: "0 auto" }}>
@@ -1163,7 +1163,7 @@ export default function SchoolHubPage() {
               <div style={{ width: 40, height: 2, background: "#0052cc", borderRadius: 2 }} />
             </motion.div>
 
-            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+            <motion.h2 {...fadeUp(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
               Consistent experience.<br />
               <span style={{ color: "#0052cc" }}>Every time.</span>
             </motion.h2>
@@ -1363,7 +1363,7 @@ export default function SchoolHubPage() {
           <div className="schools-built-header">
             {/* Header Content */}
             <div style={{ maxWidth: 600 }}>
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Designed for today.<br />
                 Ready for <span style={{ color: "#0052cc" }}>tomorrow.</span>
               </motion.h2>
@@ -1451,7 +1451,7 @@ export default function SchoolHubPage() {
 
 
               {/* Heading */}
-              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(48px, 5vw, 64px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+              <motion.h2 {...fadeLeft(0.2)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 900, color: "#001a4d", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
                 Let's bring<br />
                 VR learning to<br />
                 <span style={{ color: "#0052cc" }}>your school.</span>
@@ -1674,7 +1674,7 @@ function SchoolsFAQSection() {
       <div className="schools-container">
 
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
+          <motion.h2 {...fadeUp(0.1)} style={{ fontSize: "clamp(34px, min(4.2vw, 6.2vh), 60px)", fontWeight: 800, color: "#001a4d", letterSpacing: "-0.02em", marginBottom: 16 }}>
             Frequently Asked Questions <span style={{ color: "#0052cc" }}>About VR Labs for Schools</span>
           </motion.h2>
           <motion.p {...fadeUp(0.2)} style={{ fontSize: 18, color: "#64748b", lineHeight: 1.6, fontWeight: 500, maxWidth: 700, margin: "0 auto" }}>
