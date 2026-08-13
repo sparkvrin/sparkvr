@@ -57,7 +57,7 @@ function ProtectedAdminShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col md:flex-row font-sans">
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between p-5 shrink-0">
+      <aside className="w-full md:w-64 md:fixed md:inset-y-0 md:left-0 md:h-screen md:overflow-y-auto bg-white border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between p-5 shrink-0 z-20">
         <div>
           {/* Brand Header */}
           <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-200">
@@ -134,7 +134,7 @@ function ProtectedAdminShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto p-6 md:p-10">
+      <main className="flex-1 overflow-y-auto p-6 md:p-10 md:ml-64">
         {children}
       </main>
     </div>
