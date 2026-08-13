@@ -8,10 +8,10 @@ import {
   FileText,
   Inbox,
   LogOut,
-  UserPlus,
   LayoutDashboard,
   ExternalLink,
   Tag,
+  Settings,
 } from "lucide-react";
 
 function ProtectedAdminShell({ children }: { children: React.ReactNode }) {
@@ -51,7 +51,7 @@ function ProtectedAdminShell({ children }: { children: React.ReactNode }) {
     { label: "Blogs", href: "/admin/blogs", icon: FileText },
     { label: "Categories", href: "/admin/categories", icon: Tag },
     { label: "Enquiries", href: "/admin/enquiries", icon: Inbox },
-    { label: "Administrators", href: "/admin/users", icon: UserPlus },
+    { label: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
   return (
