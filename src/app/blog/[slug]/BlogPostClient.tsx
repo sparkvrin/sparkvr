@@ -4,24 +4,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Calendar, Clock, User, ChevronRight,
-  Share2, Link as LinkIcon, CheckCircle2
+  CheckCircle2
 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { isHtmlContent } from "@/lib/richText";
-
-/* ─── CUSTOM SOCIAL ICONS (SVG) ─── */
-const FacebookIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-);
-const TwitterIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-);
-const LinkedinIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-);
 
 /* ─── ANIMATION VARIANTS ─── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -233,14 +222,6 @@ export default function BlogDetailPage() {
                     <span key={tag} className="tag-pill">{tag}</span>
                   ))}
                 </div>
-
-                <div className="share-row">
-                  <span style={{ fontWeight: 800, fontSize: 13, color: "#001a4d", marginRight: 8, letterSpacing: "0.05em" }}>SHARE:</span>
-                  <motion.div whileHover={{ scale: 1.2, color: "#0052cc" }} className="share-icon"><FacebookIcon /></motion.div>
-                  <motion.div whileHover={{ scale: 1.2, color: "#00acee" }} className="share-icon"><TwitterIcon /></motion.div>
-                  <motion.div whileHover={{ scale: 1.2, color: "#0077b5" }} className="share-icon"><LinkedinIcon /></motion.div>
-                  <motion.div whileHover={{ scale: 1.2, color: "#0052cc" }} className="share-icon"><LinkIcon size={16} /></motion.div>
-                </div>
               </div>
 
               <motion.div whileHover={{ scale: 1.01 }} className="author-box">
@@ -350,14 +331,11 @@ export default function BlogDetailPage() {
         .custom-list li { display: flex; align-items: center; gap: 16px; font-weight: 700; color: #334155; font-size: 16px; }
         .custom-list li::before { content: "✓"; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #eff6ff; color: #0052cc; font-size: 12px; flex-shrink: 0; }
 
-        /* ── Tags & share ── */
+        /* ── Tags ── */
         .blog-divider { height: 1px; background: #f1f5f9; margin: 40px 0 32px; }
         .tags-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .share-row { display: flex; align-items: center; gap: 10px; }
         .tag-pill { background: #f8fafc; color: #64748b; font-size: 11px; font-weight: 800; padding: 7px 16px; border-radius: 20px; border: 1px solid #e2e8f0; cursor: default; transition: all 0.2s; }
         .tag-pill:hover { background: #0052cc; color: #fff; border-color: #0052cc; }
-        .share-icon { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: center; color: #94a3b8; cursor: pointer; transition: all 0.2s; }
-        .share-icon:hover { border-color: #0052cc; color: #0052cc; }
         .author-box { display: flex; align-items: center; gap: 24px; background: #f8fafc; padding: 28px 32px; border-radius: 16px; margin-top: 40px; border: 1px solid rgba(0,82,204,0.06); }
         @media (max-width: 768px) { .author-box { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; border-radius: 14px; } }
 
