@@ -14,6 +14,7 @@ import BannerSection from "@/components/sections/BannerSection";
 import VideoScrollSection from "@/components/sections/VideoScrollSection";
 import GlobalParticles from "@/components/GlobalParticles";
 import SchoolLogosSection from "@/components/sections/SchoolLogosSection";
+import PhotoGallerySection from "@/components/sections/PhotoGallerySection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 export default function Home() {
@@ -89,6 +90,7 @@ export default function Home() {
         <ServicesSection />
       </div>
       <SchoolLogosSection />
+      <PhotoGallerySection />
       <div style={{ display: "none" }}>
         <VideoScrollSection />
       </div>
@@ -99,7 +101,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           FINAL CTA 
       ═══════════════════════════════════════════ */}
-      <CTASection />
+      <div style={{ display: "none" }}>
+        <CTASection />
+      </div>
       <BannerSection />
     </div>
   );
