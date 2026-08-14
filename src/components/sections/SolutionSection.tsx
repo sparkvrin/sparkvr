@@ -229,8 +229,10 @@ export default function SolutionSection() {
               whileHover={{ scale: 1.02, boxShadow: "0 15px 30px rgba(0,40,120,0.1)" }}
               style={{
                 background: "rgba(255,255,255,0.8)", backdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,1)", borderRadius: 100,
-                padding: "16px 28px", display: "inline-flex", alignItems: "center", gap: 18,
+                border: "1px solid rgba(255,255,255,1)", borderRadius: isMobile ? 28 : 100,
+                padding: isMobile ? "24px" : "16px 28px",
+                display: "flex", flexDirection: isMobile ? "column" : "row",
+                alignItems: isMobile ? "stretch" : "center", gap: 18,
                 marginBottom: 44, boxShadow: "0 10px 25px rgba(0,30,80,0.06)", cursor: "default"
               }}
             >
@@ -244,7 +246,7 @@ export default function SolutionSection() {
                 This is academic infrastructure,<br />
                 <strong style={{ fontWeight: 800 }}>not entertainment.</strong>
               </p>
-              <p style={{ marginTop: 24, fontSize: 15, color: "#475569", lineHeight: 1.6, fontWeight: 500 }}>
+              <p style={{ marginTop: isMobile ? 0 : 24, fontSize: 15, color: "#475569", lineHeight: 1.6, fontWeight: 500 }}>
                 Explore our structured <Link href="/curriculum" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>VR curriculum</Link>, see how we enhance student <Link href="/learning-outcome" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>learning outcomes</Link>, or learn about our <Link href="/subject-expansion" style={{ color: "#2563eb", fontWeight: 700, textDecoration: "underline" }}>subject expansion</Link> resources for modern classrooms.
               </p>
             </motion.div>

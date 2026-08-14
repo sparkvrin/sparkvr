@@ -34,18 +34,26 @@ const PHOTO_DIMENSIONS: Record<string, { width: number; height: number }> = {
   "/photos/sparkvr (7).jpeg": { width: 2000, height: 1500 },
 };
 
-function useCardSize() {
-  const [w, setW] = useState(280);
+function useCarouselLayout() {
+  const [layout, setLayout] = useState({ cardW: 280, visibleCount: 3 });
   useEffect(() => {
     const calc = () => {
       const vw = window.innerWidth;
-      setW(vw < 480 ? 100 : vw < 768 ? 190 : vw < 1400 ? 280 : 360);
+      if (vw < 480) {
+        setLayout({ cardW: Math.min(vw - 140, 300), visibleCount: 1 });
+      } else if (vw < 768) {
+        setLayout({ cardW: 190, visibleCount: 3 });
+      } else if (vw < 1400) {
+        setLayout({ cardW: 280, visibleCount: 3 });
+      } else {
+        setLayout({ cardW: 360, visibleCount: 3 });
+      }
     };
     calc();
     window.addEventListener("resize", calc);
     return () => window.removeEventListener("resize", calc);
   }, []);
-  return w;
+  return layout;
 }
 
 function navBtnStyle(side: "left" | "right"): React.CSSProperties {
@@ -90,15 +98,19 @@ function lightboxBtnStyle(side: "left" | "right"): React.CSSProperties {
 }
 
 export default function PhotoGallerySection() {
-  const visibleCount = 3;
+  const { cardW, visibleCount } = useCarouselLayout();
   const windowMax = PHOTOS.length - visibleCount;
+  const centerOffset = Math.floor((visibleCount - 1) / 2);
   const [windowStart, setWindowStart] = useState(0);
   const [paused, setPaused] = useState(false);
-  const cardW = useCardSize();
   const cardH = Math.round(cardW * 1.33);
   const gap = Math.round(cardW * 0.12);
   const arrowZone = 56;
   const activeScale = 1.06;
+
+  useEffect(() => {
+    setWindowStart((w) => Math.min(w, windowMax));
+  }, [windowMax]);
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [lightboxDir, setLightboxDir] = useState(1);
@@ -113,8 +125,8 @@ export default function PhotoGallerySection() {
   }, [windowMax]);
 
   const goTo = useCallback((i: number) => {
-    setWindowStart(Math.min(Math.max(i - 1, 0), windowMax));
-  }, [windowMax]);
+    setWindowStart(Math.min(Math.max(i - centerOffset, 0), windowMax));
+  }, [windowMax, centerOffset]);
 
   const openLightbox = useCallback((i: number) => {
     goTo(i);
@@ -263,7 +275,7 @@ export default function PhotoGallerySection() {
           >
             {PHOTOS.map((src, i) => {
               const isInWindow = i >= windowStart && i <= windowStart + visibleCount - 1;
-              const isActive = i === windowStart + 1;
+              const isActive = i === windowStart + centerOffset;
               const scale = isActive ? activeScale : 1;
               const opacity = isInWindow ? 1 : 0;
 
@@ -304,7 +316,7 @@ export default function PhotoGallerySection() {
         {/* Dots */}
         <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 26 }}>
           {PHOTOS.map((src, i) => {
-            const isActive = i === windowStart + 1;
+            const isActive = i === windowStart + centerOffset;
             return (
               <button
                 key={src}
