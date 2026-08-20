@@ -59,6 +59,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="ovR_9wsdTHmyikAiXcQBOCT8NNHLa58zaNCTea7O37o" />
+
         {/* DNS prefetch & preconnect for faster resource loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://sparkvr.in" />
