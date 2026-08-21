@@ -69,7 +69,7 @@ export default function BlogPage() {
         if (!snap.empty) {
           const loaded = snap.docs
             .map((d) => d.data())
-            .filter((data) => data.status !== "draft")
+            .filter((data) => data.status !== "draft" && !data.trashed)
             .map((data) => ({
               slug: data.slug,
               title: data.title,

@@ -32,7 +32,7 @@ async function getPostMeta(slug: string): Promise<{ title: string; description: 
   try {
     const q = query(collection(db, "blogs"), where("slug", "==", slug));
     const snap = await getDocs(q);
-    const publishedDoc = snap.docs.find((d) => d.data().status !== "draft");
+    const publishedDoc = snap.docs.find((d) => d.data().status !== "draft" && !d.data().trashed);
     if (publishedDoc) {
       const data = publishedDoc.data();
       return {

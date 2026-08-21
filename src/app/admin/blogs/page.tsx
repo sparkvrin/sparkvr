@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { collection, getDocs, deleteDoc, doc, query, orderBy, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, updateDoc, doc, query, orderBy, addDoc, serverTimestamp, deleteField } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { Plus, Search, Trash2, Edit3, Eye, FileText, Clock, Download } from "lucide-react";
+import { Plus, Search, Trash2, Edit3, Eye, FileText, Clock, Download, RotateCcw, XCircle } from "lucide-react";
 import { SEED_BLOGS } from "@/lib/seedBlogs";
 
 export default function AdminBlogsPage() {
@@ -14,6 +14,7 @@ export default function AdminBlogsPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [permissionError, setPermissionError] = useState(false);
   const [importing, setImporting] = useState(false);
+  const [tab, setTab] = useState<"active" | "trash">("active");
 
   const fetchBlogs = async () => {
     setLoading(true);
@@ -37,15 +38,42 @@ export default function AdminBlogsPage() {
     fetchBlogs();
   }, []);
 
-  const handleDelete = async (id: string, title: string) => {
-    if (!window.confirm(`Are you sure you want to delete "${title}"?`)) return;
+  const handleTrash = async (id: string, title: string) => {
+    if (!window.confirm(`Move "${title}" to Trash? You can restore it later.`)) return;
+    setDeletingId(id);
+    try {
+      await updateDoc(doc(db, "blogs", id), { trashed: true, trashedAt: serverTimestamp() });
+      setBlogs((prev) => prev.map((b) => (b.id === id ? { ...b, trashed: true } : b)));
+    } catch (err) {
+      console.error("Error trashing blog:", err);
+      alert("Failed to move blog post to trash.");
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  const handleRestore = async (id: string) => {
+    setDeletingId(id);
+    try {
+      await updateDoc(doc(db, "blogs", id), { trashed: false, trashedAt: deleteField() });
+      setBlogs((prev) => prev.map((b) => (b.id === id ? { ...b, trashed: false } : b)));
+    } catch (err) {
+      console.error("Error restoring blog:", err);
+      alert("Failed to restore blog post.");
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  const handlePermanentDelete = async (id: string, title: string) => {
+    if (!window.confirm(`Permanently delete "${title}"? This cannot be undone.`)) return;
     setDeletingId(id);
     try {
       await deleteDoc(doc(db, "blogs", id));
       setBlogs((prev) => prev.filter((b) => b.id !== id));
     } catch (err) {
       console.error("Error deleting blog:", err);
-      alert("Failed to delete blog post.");
+      alert("Failed to permanently delete blog post.");
     } finally {
       setDeletingId(null);
     }
@@ -76,12 +104,16 @@ export default function AdminBlogsPage() {
     }
   };
 
-  const filteredBlogs = blogs.filter(
-    (b) =>
-      b.title?.toLowerCase().includes(search.toLowerCase()) ||
-      b.category?.toLowerCase().includes(search.toLowerCase()) ||
-      b.slug?.toLowerCase().includes(search.toLowerCase())
-  );
+  const trashedCount = blogs.filter((b) => b.trashed).length;
+
+  const filteredBlogs = blogs
+    .filter((b) => (tab === "trash" ? b.trashed : !b.trashed))
+    .filter(
+      (b) =>
+        b.title?.toLowerCase().includes(search.toLowerCase()) ||
+        b.category?.toLowerCase().includes(search.toLowerCase()) ||
+        b.slug?.toLowerCase().includes(search.toLowerCase())
+    );
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 font-sans">
@@ -120,6 +152,31 @@ export default function AdminBlogsPage() {
             <span>New Blog Article</span>
           </Link>
         </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => setTab("active")}
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
+            tab === "active"
+              ? "bg-blue-600 text-white"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          }`}
+        >
+          Articles
+        </button>
+        <button
+          onClick={() => setTab("trash")}
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer flex items-center gap-2 ${
+            tab === "trash"
+              ? "bg-blue-600 text-white"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          }`}
+        >
+          <Trash2 className="w-4 h-4" />
+          <span>Trash{trashedCount > 0 ? ` (${trashedCount})` : ""}</span>
+        </button>
       </div>
 
       {/* Search Bar */}
@@ -166,12 +223,22 @@ service cloud.firestore {
         </div>
       ) : filteredBlogs.length === 0 ? (
         <div className="bg-white border border-slate-200 rounded-2xl p-16 text-center text-slate-400 space-y-3">
-          <FileText className="w-12 h-12 text-slate-300 mx-auto" />
-          <p className="font-bold text-slate-900 text-lg">No blog articles found</p>
-          <p className="text-sm text-slate-500 max-w-md mx-auto">
-            {search ? "No articles match your search term." : "Get started by publishing your first blog article."}
+          {tab === "trash" ? (
+            <Trash2 className="w-12 h-12 text-slate-300 mx-auto" />
+          ) : (
+            <FileText className="w-12 h-12 text-slate-300 mx-auto" />
+          )}
+          <p className="font-bold text-slate-900 text-lg">
+            {tab === "trash" ? "Trash is empty" : "No blog articles found"}
           </p>
-          {!search && (
+          <p className="text-sm text-slate-500 max-w-md mx-auto">
+            {search
+              ? "No articles match your search term."
+              : tab === "trash"
+              ? "Deleted articles will show up here and can be restored."
+              : "Get started by publishing your first blog article."}
+          </p>
+          {!search && tab === "active" && (
             <div className="flex items-center justify-center gap-3 flex-wrap">
               <Link
                 href="/admin/blogs/new"
@@ -247,29 +314,52 @@ service cloud.firestore {
 
               {/* Actions */}
               <div className="flex items-center gap-2 self-end md:self-center shrink-0">
-                <Link
-                  href={`/blog/${b.slug}`}
-                  target="_blank"
-                  className="p-2.5 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
-                  title="Preview Article"
-                >
-                  <Eye className="w-4.5 h-4.5" />
-                </Link>
-                <Link
-                  href={`/admin/blogs/${b.id}/edit`}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold transition-colors"
-                >
-                  <Edit3 className="w-3.5 h-3.5" />
-                  <span>Edit</span>
-                </Link>
-                <button
-                  onClick={() => handleDelete(b.id, b.title)}
-                  disabled={deletingId === b.id}
-                  className="p-2.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-colors cursor-pointer"
-                  title="Delete Article"
-                >
-                  <Trash2 className="w-4.5 h-4.5" />
-                </button>
+                {tab === "trash" ? (
+                  <>
+                    <button
+                      onClick={() => handleRestore(b.id)}
+                      disabled={deletingId === b.id}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold transition-colors cursor-pointer disabled:opacity-50"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Restore</span>
+                    </button>
+                    <button
+                      onClick={() => handlePermanentDelete(b.id, b.title)}
+                      disabled={deletingId === b.id}
+                      className="p-2.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-colors cursor-pointer disabled:opacity-50"
+                      title="Delete Permanently"
+                    >
+                      <XCircle className="w-4.5 h-4.5" />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href={`/blog/${b.slug}`}
+                      target="_blank"
+                      className="p-2.5 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
+                      title="Preview Article"
+                    >
+                      <Eye className="w-4.5 h-4.5" />
+                    </Link>
+                    <Link
+                      href={`/admin/blogs/${b.id}/edit`}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold transition-colors"
+                    >
+                      <Edit3 className="w-3.5 h-3.5" />
+                      <span>Edit</span>
+                    </Link>
+                    <button
+                      onClick={() => handleTrash(b.id, b.title)}
+                      disabled={deletingId === b.id}
+                      className="p-2.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-colors cursor-pointer disabled:opacity-50"
+                      title="Move to Trash"
+                    >
+                      <Trash2 className="w-4.5 h-4.5" />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           ))}

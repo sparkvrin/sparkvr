@@ -99,7 +99,7 @@ export default function BlogDetailPage() {
       try {
         const q = query(collection(db, "blogs"), where("slug", "==", rawSlug));
         const snap = await getDocs(q);
-        const publishedDoc = snap.docs.find((d) => d.data().status !== "draft");
+        const publishedDoc = snap.docs.find((d) => d.data().status !== "draft" && !d.data().trashed);
         if (publishedDoc) {
           const docData = publishedDoc.data();
 
